@@ -10,31 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 
 
-class Reaction(GitHubModel):
-    """Reaction
+class CodeScanningCodeqlDatabase(GitHubModel):
+    """CodeQL Database
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A CodeQL database.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(description="The reaction to use")
-    created_at: _dt.datetime = Field()
+    id: int = Field(description="The ID of the CodeQL database.")
+    name: str = Field(description="The name of the CodeQL database.")
+    language: str = Field(description="The language of the CodeQL database.")
+    uploader: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    content_type: str = Field(description="The MIME type of the CodeQL database file.")
+    size: int = Field(description="The size of the CodeQL database file in bytes.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the CodeQL database was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    url: str = Field(
+        description="The URL at which to download the CodeQL database. The `Accept` header must be set to the value of the `content_type` property."
+    )
+    commit_oid: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The commit SHA of the repository at the time the CodeQL database was created.",
+    )
 
 
-model_rebuild(Reaction)
+model_rebuild(CodeScanningCodeqlDatabase)
 
-__all__ = ("Reaction",)
+__all__ = ("CodeScanningCodeqlDatabase",)

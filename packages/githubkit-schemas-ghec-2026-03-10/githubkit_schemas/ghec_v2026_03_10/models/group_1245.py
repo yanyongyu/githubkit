@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0185 import SecretScanningCustomPattern
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
-    )
+    credential_id: int = Field()
+    credential_type: Literal["classic_pat"] = Field()
+    organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)

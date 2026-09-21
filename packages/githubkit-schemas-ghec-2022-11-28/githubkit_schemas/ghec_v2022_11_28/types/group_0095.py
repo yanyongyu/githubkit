@@ -9,62 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
+
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
+
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-class EnterpriseRoleType(TypedDict):
-    """Enterprise Role
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    Enterprise custom roles
-    """
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
-    permissions: list[str]
-    enterprise: Union[EnterpriseType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class EnterpriseRoleTypeForResponse(TypedDict):
-    """Enterprise Role
-
-    Enterprise custom roles
-    """
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
-    permissions: list[str]
-    enterprise: Union[EnterpriseTypeForResponse, None]
-    created_at: str
-    updated_at: str
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleType]]
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterpriseRoleType",
-    "EnterpriseRoleTypeForResponse",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
 )

@@ -9,51 +9,230 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0403 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0055 import IssueType, IssueTypeForResponse
+from .group_0157 import TeamType, TeamTypeForResponse
+from .group_0423 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0424 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0425 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class ParentIssueAddedIssueEventType(TypedDict):
-    """Parent-issue Added Issue Event
+class IssueEventType(TypedDict):
+    """Issue Event
 
-    Parent-issue Added Issue Event
+    Issue Event
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserType
+    actor: Union[SimpleUserType, None]
     event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    parent_issue: Union[None, IssueReferenceType, None]
+    created_at: _dt.datetime
+    issue: NotRequired[Union[IssueType, None]]
+    label: NotRequired[IssueEventLabelType]
+    assignee: NotRequired[Union[SimpleUserType, None]]
+    assigner: NotRequired[Union[SimpleUserType, None]]
+    review_requester: NotRequired[Union[SimpleUserType, None]]
+    requested_reviewer: NotRequired[Union[SimpleUserType, None]]
+    requested_team: NotRequired[TeamType]
+    dismissed_review: NotRequired[IssueEventDismissedReviewType]
+    milestone: NotRequired[IssueEventMilestoneType]
+    project_card: NotRequired[IssueEventProjectCardType]
+    rename: NotRequired[IssueEventRenameType]
+    issue_type: NotRequired[Union[IssueTypeWebhookType, None]]
+    prev_issue_type: NotRequired[Union[IssueTypeWebhookType, None]]
+    sub_issue: NotRequired[Union[None, IssueReferenceType, None]]
+    parent_issue: NotRequired[Union[None, IssueReferenceType, None]]
+    blocked_by: NotRequired[Union[None, IssueReferenceType, None]]
+    blocking: NotRequired[Union[None, IssueReferenceType, None]]
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    lock_reason: NotRequired[Union[str, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class ParentIssueAddedIssueEventTypeForResponse(TypedDict):
-    """Parent-issue Added Issue Event
+class IssueEventTypeForResponse(TypedDict):
+    """Issue Event
 
-    Parent-issue Added Issue Event
+    Issue Event
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
+    actor: Union[SimpleUserTypeForResponse, None]
     event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
+    issue: NotRequired[Union[IssueTypeForResponse, None]]
+    label: NotRequired[IssueEventLabelTypeForResponse]
+    assignee: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    assigner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    review_requester: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    requested_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    requested_team: NotRequired[TeamTypeForResponse]
+    dismissed_review: NotRequired[IssueEventDismissedReviewTypeForResponse]
+    milestone: NotRequired[IssueEventMilestoneTypeForResponse]
+    project_card: NotRequired[IssueEventProjectCardTypeForResponse]
+    rename: NotRequired[IssueEventRenameTypeForResponse]
+    issue_type: NotRequired[Union[IssueTypeWebhookTypeForResponse, None]]
+    prev_issue_type: NotRequired[Union[IssueTypeWebhookTypeForResponse, None]]
+    sub_issue: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
+    parent_issue: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
+    blocked_by: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
+    blocking: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    lock_reason: NotRequired[Union[str, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+
+
+class IssueEventLabelType(TypedDict):
+    """Issue Event Label
+
+    Issue Event Label
+    """
+
+    name: Union[str, None]
+    color: Union[str, None]
+
+
+class IssueEventLabelTypeForResponse(TypedDict):
+    """Issue Event Label
+
+    Issue Event Label
+    """
+
+    name: Union[str, None]
+    color: Union[str, None]
+
+
+class IssueEventDismissedReviewType(TypedDict):
+    """Issue Event Dismissed Review"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[Union[str, None]]
+
+
+class IssueEventDismissedReviewTypeForResponse(TypedDict):
+    """Issue Event Dismissed Review"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[Union[str, None]]
+
+
+class IssueEventMilestoneType(TypedDict):
+    """Issue Event Milestone
+
+    Issue Event Milestone
+    """
+
+    title: str
+
+
+class IssueEventMilestoneTypeForResponse(TypedDict):
+    """Issue Event Milestone
+
+    Issue Event Milestone
+    """
+
+    title: str
+
+
+class IssueEventProjectCardType(TypedDict):
+    """Issue Event Project Card
+
+    Issue Event Project Card
+    """
+
+    url: str
+    id: int
+    project_url: str
+    project_id: int
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class IssueEventProjectCardTypeForResponse(TypedDict):
+    """Issue Event Project Card
+
+    Issue Event Project Card
+    """
+
+    url: str
+    id: int
+    project_url: str
+    project_id: int
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class IssueEventRenameType(TypedDict):
+    """Issue Event Rename
+
+    Issue Event Rename
+    """
+
+    from_: str
+    to: str
+
+
+class IssueEventRenameTypeForResponse(TypedDict):
+    """Issue Event Rename
+
+    Issue Event Rename
+    """
+
+    from_: str
+    to: str
 
 
 __all__ = (
-    "ParentIssueAddedIssueEventType",
-    "ParentIssueAddedIssueEventTypeForResponse",
+    "IssueEventDismissedReviewType",
+    "IssueEventDismissedReviewTypeForResponse",
+    "IssueEventLabelType",
+    "IssueEventLabelTypeForResponse",
+    "IssueEventMilestoneType",
+    "IssueEventMilestoneTypeForResponse",
+    "IssueEventProjectCardType",
+    "IssueEventProjectCardTypeForResponse",
+    "IssueEventRenameType",
+    "IssueEventRenameTypeForResponse",
+    "IssueEventType",
+    "IssueEventTypeForResponse",
 )

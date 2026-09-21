@@ -9,64 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0226 import LabelType, LabelTypeForResponse
+from .group_0236 import IssueType, IssueTypeForResponse
 
 
-class GistCommentType(TypedDict):
-    """Gist Comment
+class IssuesEventType(TypedDict):
+    """IssuesEvent"""
 
-    A comment made to a gist.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    body: str
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    action: str
+    issue: IssueType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class GistCommentTypeForResponse(TypedDict):
-    """Gist Comment
+class IssuesEventTypeForResponse(TypedDict):
+    """IssuesEvent"""
 
-    A comment made to a gist.
-    """
-
-    id: int
-    node_id: str
-    url: str
-    body: str
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    action: str
+    issue: IssueTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "GistCommentType",
-    "GistCommentTypeForResponse",
+    "IssuesEventType",
+    "IssuesEventTypeForResponse",
 )

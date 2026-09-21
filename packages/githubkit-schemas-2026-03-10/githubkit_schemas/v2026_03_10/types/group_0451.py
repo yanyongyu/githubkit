@@ -9,167 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class PagesHealthCheckType(TypedDict):
-    """Pages Health Check Status
+class IssueSuggestionType(TypedDict):
+    """Issue Suggestion
 
-    Pages Health Check Status
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    domain: NotRequired[PagesHealthCheckPropDomainType]
-    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
+    id: int
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class PagesHealthCheckTypeForResponse(TypedDict):
-    """Pages Health Check Status
+class IssueSuggestionTypeForResponse(TypedDict):
+    """Issue Suggestion
 
-    Pages Health Check Status
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    domain: NotRequired[PagesHealthCheckPropDomainTypeForResponse]
-    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainTypeForResponse, None]]
-
-
-class PagesHealthCheckPropDomainType(TypedDict):
-    """PagesHealthCheckPropDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
-
-
-class PagesHealthCheckPropDomainTypeForResponse(TypedDict):
-    """PagesHealthCheckPropDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
-
-
-class PagesHealthCheckPropAltDomainType(TypedDict):
-    """PagesHealthCheckPropAltDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
-
-
-class PagesHealthCheckPropAltDomainTypeForResponse(TypedDict):
-    """PagesHealthCheckPropAltDomain"""
-
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
+    id: int
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "PagesHealthCheckPropAltDomainType",
-    "PagesHealthCheckPropAltDomainTypeForResponse",
-    "PagesHealthCheckPropDomainType",
-    "PagesHealthCheckPropDomainTypeForResponse",
-    "PagesHealthCheckType",
-    "PagesHealthCheckTypeForResponse",
+    "IssueSuggestionType",
+    "IssueSuggestionTypeForResponse",
 )

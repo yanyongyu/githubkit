@@ -9,176 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0269 import CodespaceMachineType, CodespaceMachineTypeForResponse
-from .group_0333 import FullRepositoryType, FullRepositoryTypeForResponse
+from .group_0606 import MetaType, MetaTypeForResponse
+from .group_0611 import (
+    UserEmailsResponseItemsType,
+    UserEmailsResponseItemsTypeForResponse,
+    UserNameResponseType,
+    UserNameResponseTypeForResponse,
+)
+from .group_0612 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0616 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class CodespaceWithFullRepositoryType(TypedDict):
-    """Codespace
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
-    A codespace.
-    """
-
-    id: int
-    name: str
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
     display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: FullRepositoryType
-    machine: Union[CodespaceMachineType, None]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsType
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
+    emails: list[UserEmailsResponseItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
-    """Codespace
+class ScimEnterpriseUserResponseTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
-    A codespace.
-    """
-
-    id: int
-    name: str
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseTypeForResponse]
     display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: FullRepositoryTypeForResponse
-    machine: Union[CodespaceMachineTypeForResponse, None]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: str
-    updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    emails: list[UserEmailsResponseItemsTypeForResponse]
+    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
     ]
-    url: str
-    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[
-        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
-    ]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
+    meta: MetaTypeForResponse
 
 
-class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
 
 
-class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropGitStatus
+class ScimEnterpriseUserListTypeForResponse(TypedDict):
+    """ScimEnterpriseUserList"""
 
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
-
-
-class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: list[ScimEnterpriseUserResponseTypeForResponse]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "CodespaceWithFullRepositoryPropGitStatusType",
-    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
-    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
-    "CodespaceWithFullRepositoryType",
-    "CodespaceWithFullRepositoryTypeForResponse",
+    "ScimEnterpriseUserListType",
+    "ScimEnterpriseUserListTypeForResponse",
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserResponseTypeForResponse",
 )

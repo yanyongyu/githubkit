@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str
+    name: str
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class DependabotAlertPackageTypeForResponse(TypedDict):
+    """DependabotAlertPackage
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+    Details for the vulnerable package.
+    """
+
+    ecosystem: str
+    name: str
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
-    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
+    "DependabotAlertPackageType",
+    "DependabotAlertPackageTypeForResponse",
 )

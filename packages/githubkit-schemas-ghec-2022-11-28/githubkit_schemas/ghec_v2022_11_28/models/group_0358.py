@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsVariable(GitHubModel):
-    """Actions Variable"""
+class ImmutableReleasesOrganizationSettings(GitHubModel):
+    """Check immutable releases organization settings
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
     )
 
 
-model_rebuild(ActionsVariable)
+model_rebuild(ImmutableReleasesOrganizationSettings)
 
-__all__ = ("ActionsVariable",)
+__all__ = ("ImmutableReleasesOrganizationSettings",)

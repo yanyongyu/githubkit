@@ -9,84 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    A commit.
+    Check immutable releases settings for an organization.
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: _dt.datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class SimpleCommitTypeForResponse(TypedDict):
-    """Simple Commit
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    A commit.
+    Check immutable releases settings for an organization.
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: str
-    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
-    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
-
-
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropAuthorTypeForResponse(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterTypeForResponse(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropAuthorTypeForResponse",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitPropCommitterTypeForResponse",
-    "SimpleCommitType",
-    "SimpleCommitTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

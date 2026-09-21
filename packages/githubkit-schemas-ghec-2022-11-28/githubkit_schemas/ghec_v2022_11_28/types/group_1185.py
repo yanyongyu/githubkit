@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
+class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    labels: list[str]
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
+class EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    labels: list[str]
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
-    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsPutBodyTypeForResponse",
 )

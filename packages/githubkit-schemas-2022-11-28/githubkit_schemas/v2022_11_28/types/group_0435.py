@@ -9,26 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0055 import IssueType, IssueTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0157 import TeamType, TeamTypeForResponse
 
 
-class TimelineCrossReferencedEventPropSourceType(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueType]
+    Review Request Removed Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["review_request_removed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
-    """TimelineCrossReferencedEventPropSource"""
+class ReviewRequestRemovedIssueEventTypeForResponse(TypedDict):
+    """Review Request Removed Issue Event
 
-    type: NotRequired[str]
-    issue: NotRequired[IssueTypeForResponse]
+    Review Request Removed Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["review_request_removed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    review_requester: SimpleUserTypeForResponse
+    requested_team: NotRequired[TeamTypeForResponse]
+    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventPropSourceType",
-    "TimelineCrossReferencedEventPropSourceTypeForResponse",
+    "ReviewRequestRemovedIssueEventType",
+    "ReviewRequestRemovedIssueEventTypeForResponse",
 )

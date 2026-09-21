@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SshSigningKey(GitHubModel):
-    """SSH Signing Key
+class ReferrerTraffic(GitHubModel):
+    """Referrer Traffic
 
-    A public SSH key used to sign Git commits
+    Referrer Traffic
     """
 
-    key: str = Field()
-    id: int = Field()
-    title: str = Field()
-    created_at: _dt.datetime = Field()
+    referrer: str = Field()
+    count: int = Field()
+    uniques: int = Field()
 
 
-model_rebuild(SshSigningKey)
+model_rebuild(ReferrerTraffic)
 
-__all__ = ("SshSigningKey",)
+__all__ = ("ReferrerTraffic",)

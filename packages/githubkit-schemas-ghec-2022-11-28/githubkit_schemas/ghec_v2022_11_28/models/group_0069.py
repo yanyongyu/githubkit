@@ -9,32 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0050 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
+from .group_0063 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
+class ActionsPolicyEnterpriseConditionsOneof1(GitHubModel):
+    """organization_name_and_repository_property
+
+    Conditions to target organizations by name and repositories by property
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
-    )
-    guid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
-    )
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof1)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof1",)

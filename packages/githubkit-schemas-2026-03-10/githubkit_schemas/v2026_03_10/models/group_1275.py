@@ -9,30 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
     )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    validation_errors: Missing[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
         default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200)
+class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-__all__ = ("ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
+
+__all__ = (
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

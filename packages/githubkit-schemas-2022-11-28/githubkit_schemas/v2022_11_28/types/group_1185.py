@@ -9,109 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesPostBody"""
+class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
+    ]
+    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
+
+
+class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
+
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
+    ]
+    page_info: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
     ]
 
 
-class OrgsOrgCopilotSpacesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesPostBody"""
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
-    resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse]
-    ]
+Mapping of subject digest to bundles.
+"""
 
 
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
-    ]
+Mapping of subject digest to bundles.
+"""
 
 
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
+    Information about the current page.
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
-class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
 
-    Metadata specific to the resource type.
+    Information about the current page.
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
-    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
-    "OrgsOrgCopilotSpacesPostBodyType",
-    "OrgsOrgCopilotSpacesPostBodyTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
 )

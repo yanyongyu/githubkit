@@ -9,155 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
-from .group_0002 import SecurityAdvisoryEpssType, SecurityAdvisoryEpssTypeForResponse
-from .group_0088 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
+class AmazonS3OidcConfigType(TypedDict):
+    """AmazonS3OIDCConfig
 
-    Details for the GitHub Security Advisory.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
-    severity: Literal["low", "medium", "high", "critical"]
-    classification: NotRequired[Literal["general", "malware"]]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    epss: NotRequired[Union[SecurityAdvisoryEpssType, None]]
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: _dt.datetime
-    updated_at: _dt.datetime
-    withdrawn_at: Union[_dt.datetime, None]
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class DependabotAlertSecurityAdvisoryTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisory
+class AmazonS3OidcConfigTypeForResponse(TypedDict):
+    """AmazonS3OIDCConfig
 
-    Details for the GitHub Security Advisory.
+    Amazon S3 OIDC Config for audit log streaming configuration.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: list[DependabotAlertSecurityVulnerabilityTypeForResponse]
-    severity: Literal["low", "medium", "high", "critical"]
-    classification: NotRequired[Literal["general", "malware"]]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssTypeForResponse
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    epss: NotRequired[Union[SecurityAdvisoryEpssTypeForResponse, None]]
-    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse]
-    identifiers: list[
-        DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse
-    ]
-    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse]
-    published_at: str
-    updated_at: str
-    withdrawn_at: Union[str, None]
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["oidc"]
+    arn_role: str
 
 
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class SplunkConfigType(TypedDict):
+    """SplunkConfig
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Splunk Config for Audit Log Stream Configuration
     """
 
-    score: float
-    vector_string: Union[str, None]
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
-class DependabotAlertSecurityAdvisoryPropCvssTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class SplunkConfigTypeForResponse(TypedDict):
+    """SplunkConfig
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Splunk Config for Audit Log Stream Configuration
     """
 
-    score: float
-    vector_string: Union[str, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
-    name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    ssl_verify: bool
 
 
 __all__ = (
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCvssTypeForResponse",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "DependabotAlertSecurityAdvisoryType",
-    "DependabotAlertSecurityAdvisoryTypeForResponse",
+    "AmazonS3OidcConfigType",
+    "AmazonS3OidcConfigTypeForResponse",
+    "SplunkConfigType",
+    "SplunkConfigTypeForResponse",
 )

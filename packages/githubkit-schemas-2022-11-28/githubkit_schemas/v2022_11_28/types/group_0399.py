@@ -9,40 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0396 import MetadataType, MetadataTypeForResponse
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class SnapshotType(TypedDict):
+    """snapshot
 
-    Porter Author
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: _dt.datetime
 
 
-class PorterAuthorTypeForResponse(TypedDict):
-    """Porter Author
+class SnapshotTypeForResponse(TypedDict):
+    """snapshot
 
-    Porter Author
+    Create a new snapshot of a repository's dependencies.
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
+    version: int
+    job: SnapshotPropJobTypeForResponse
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorTypeForResponse
+    metadata: NotRequired[MetadataTypeForResponse]
+    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
+    scanned: str
+
+
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropJobTypeForResponse(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
     name: str
+    version: str
     url: str
-    import_url: str
+
+
+class SnapshotPropDetectorTypeForResponse(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
+    url: str
+
+
+SnapshotPropManifestsType: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
+
+
+SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
 
 
 __all__ = (
-    "PorterAuthorType",
-    "PorterAuthorTypeForResponse",
+    "SnapshotPropDetectorType",
+    "SnapshotPropDetectorTypeForResponse",
+    "SnapshotPropJobType",
+    "SnapshotPropJobTypeForResponse",
+    "SnapshotPropManifestsType",
+    "SnapshotPropManifestsTypeForResponse",
+    "SnapshotType",
+    "SnapshotTypeForResponse",
 )

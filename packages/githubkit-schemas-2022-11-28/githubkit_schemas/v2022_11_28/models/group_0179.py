@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,100 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0047 import Milestone
-from .group_0130 import Team
-from .group_0177 import AutoMerge
-from .group_0178 import PullRequestStack
-from .group_0180 import PullRequestSimplePropBase, PullRequestSimplePropHead
-from .group_0181 import PullRequestSimplePropLinks
 
+class OrgHook(GitHubModel):
+    """Org Hook
 
-class PullRequestSimple(GitHubModel):
-    """Pull Request Simple
-
-    Pull Request Simple
+    Org Hook
     """
 
-    url: str = Field()
     id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field()
-    state: str = Field()
-    locked: bool = Field()
-    title: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    body: Union[str, None] = Field()
-    labels: list[PullRequestSimplePropLabelsItems] = Field()
-    milestone: Union[Milestone, None] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[SimpleUser, None] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_teams: Missing[list[Team]] = Field(default=UNSET)
-    head: PullRequestSimplePropHead = Field()
-    base: PullRequestSimplePropBase = Field()
-    links: PullRequestSimplePropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    stack: Missing[Union[PullRequestStack, None]] = Field(
-        default=UNSET,
-        title="Pull Request Stack",
-        description="The stack information associated with a pull request.",
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
-    )
-
-
-class PullRequestSimplePropLabelsItems(GitHubModel):
-    """PullRequestSimplePropLabelsItems"""
-
-    id: int = Field()
-    node_id: str = Field()
     url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
     name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
+    events: list[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    type: str = Field()
 
 
-model_rebuild(PullRequestSimple)
-model_rebuild(PullRequestSimplePropLabelsItems)
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
+
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
 
 __all__ = (
-    "PullRequestSimple",
-    "PullRequestSimplePropLabelsItems",
+    "OrgHook",
+    "OrgHookPropConfig",
 )

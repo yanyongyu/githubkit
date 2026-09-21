@@ -18,18 +18,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0542 import EnterpriseWebhooks
-from .group_0543 import SimpleInstallation
-from .group_0544 import OrganizationSimpleWebhooks
-from .group_0545 import RepositoryWebhooks
-from .group_0591 import SecretScanningAlertWebhook
+from .group_0563 import EnterpriseWebhooks
+from .group_0564 import SimpleInstallation
+from .group_0565 import OrganizationSimpleWebhooks
+from .group_0566 import RepositoryWebhooks
 
 
-class WebhookSecretScanningAlertMetadataCreated(GitHubModel):
-    """secret_scanning_alert metadata created event"""
+class WebhookRepositoryPrivatized(GitHubModel):
+    """repository privatized event"""
 
-    action: Literal["metadata_created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,11 +47,9 @@ class WebhookSecretScanningAlertMetadataCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertMetadataCreated)
+model_rebuild(WebhookRepositoryPrivatized)
 
-__all__ = ("WebhookSecretScanningAlertMetadataCreated",)
+__all__ = ("WebhookRepositoryPrivatized",)

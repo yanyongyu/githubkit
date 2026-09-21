@@ -9,46 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    total: int
-    completed: int
-    percent_completed: int
-
-
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
-
-    total: int
-    completed: int
-    percent_completed: int
+    message: str
+    budget: UpdateBudgetPropBudgetType
 
 
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
+class UpdateBudgetTypeForResponse(TypedDict):
+    """UpdateBudget"""
 
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    message: str
+    budget: UpdateBudgetPropBudgetTypeForResponse
 
 
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
+    expires_at: NotRequired[_dt.date]
+
+
+class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[
+        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+    expires_at: NotRequired[str]
+
+
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetPropBudgetTypeForResponse",
+    "UpdateBudgetType",
+    "UpdateBudgetTypeForResponse",
 )

@@ -13,36 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0164 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Parameters to be used for the commit_author_email_pattern rule
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
 
 
-class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
-    """code_scanning
+class RepositoryRuleCommitAuthorEmailPatternTypeForResponse(TypedDict):
+    """commit_author_email_pattern
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Parameters to be used for the commit_author_email_pattern rule
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningType",
-    "RepositoryRuleCodeScanningTypeForResponse",
+    "RepositoryRuleCommitAuthorEmailPatternType",
+    "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
 )

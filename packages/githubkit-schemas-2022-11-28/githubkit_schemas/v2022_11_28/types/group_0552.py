@@ -9,36 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class KeyType(TypedDict):
+    """Key
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    Key
+    """
+
+    key: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    url: str
+    title: str
+    created_at: _dt.datetime
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class KeyTypeForResponse(TypedDict):
+    """Key
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    Key
+    """
+
+    key: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    url: str
+    title: str
+    created_at: str
+    verified: bool
+    read_only: bool
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhooksWorkflowJobRunType",
-    "WebhooksWorkflowJobRunTypeForResponse",
+    "KeyType",
+    "KeyTypeForResponse",
 )

@@ -12,21 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GoogleCloudConfig(GitHubModel):
-    """GoogleCloudConfig
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Google Cloud Config for audit log streaming configuration.
-    """
-
-    bucket: str = Field(description="Google Cloud Bucket Name")
-    key_id: str = Field(
-        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
     )
-    encrypted_json_credentials: str = Field()
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
 
 
-model_rebuild(GoogleCloudConfig)
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
 
-__all__ = ("GoogleCloudConfig",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)

@@ -13,41 +13,44 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0638 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0665 import WebhooksIssueType, WebhooksIssueTypeForResponse
+from .group_0668 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
 
 
-class WebhookMemberRemovedType(TypedDict):
-    """member removed event"""
+class WebhookIssuesUnassignedType(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["removed"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    issue: WebhooksIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMemberRemovedTypeForResponse(TypedDict):
-    """member removed event"""
+class WebhookIssuesUnassignedTypeForResponse(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["removed"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
+    issue: WebhooksIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMemberRemovedType",
-    "WebhookMemberRemovedTypeForResponse",
+    "WebhookIssuesUnassignedType",
+    "WebhookIssuesUnassignedTypeForResponse",
 )

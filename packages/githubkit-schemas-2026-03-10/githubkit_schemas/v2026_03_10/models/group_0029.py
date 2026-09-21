@@ -148,8 +148,11 @@ class CodeSecurityConfiguration(GitHubModel):
         default=UNSET,
         description="The enablement status of private vulnerability reporting",
     )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
+    enforcement: Missing[Literal["enforced", "unenforced", "enterprise_enforced"]] = (
+        Field(
+            default=UNSET,
+            description="The enforcement status for a security configuration",
+        )
     )
     url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
     html_url: Missing[str] = Field(

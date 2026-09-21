@@ -9,22 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
 
-    update_allows_fetch_and_merge: bool
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
 
-    update_allows_fetch_and_merge: bool
+    A draft issue in a project
+    """
+
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "RepositoryRuleUpdatePropParametersType",
-    "RepositoryRuleUpdatePropParametersTypeForResponse",
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
 )

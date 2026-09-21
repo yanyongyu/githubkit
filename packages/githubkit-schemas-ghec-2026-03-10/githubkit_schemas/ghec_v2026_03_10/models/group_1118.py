@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,86 +17,58 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1120 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
+    )
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[str]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Literal["in_progress", "completed", "queued"] = Field()
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
+    )
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
+    )
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
+        Field()
+    )
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "pending", "queued"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
 )
-from .group_1121 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
-from .group_1123 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
-
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
-        default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
-    )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
-    )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-    ] = Field(
-        default=UNSET, description="Custom agent metadata associated with this task"
-    )
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200)
-
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200",)

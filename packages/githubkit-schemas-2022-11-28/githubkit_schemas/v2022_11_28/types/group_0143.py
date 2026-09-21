@@ -9,113 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0"""
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+from .group_0122 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0137 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
 
-class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0"""
+class ActionsPolicyEnterpriseConditionsOneof3Type(TypedDict):
+    """organization_id_and_repository_property
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    Conditions to target organizations by id and repositories by property
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof1"""
+class ActionsPolicyEnterpriseConditionsOneof3TypeForResponse(TypedDict):
+    """organization_id_and_repository_property
 
-    actor_type: Literal["Team"]
-    role: Literal["reader", "writer", "admin"]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    type: Literal["Team"]
-    description: NotRequired[Union[str, None]]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    members_url: NotRequired[str]
-    repositories_url: NotRequired[str]
-    organization_id: NotRequired[int]
-    parent: NotRequired[None]
+    Conditions to target organizations by id and repositories by property
+    """
 
-
-class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof1"""
-
-    actor_type: Literal["Team"]
-    role: Literal["reader", "writer", "admin"]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    type: Literal["Team"]
-    description: NotRequired[Union[str, None]]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    members_url: NotRequired[str]
-    repositories_url: NotRequired[str]
-    organization_id: NotRequired[int]
-    parent: NotRequired[None]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Type",
-    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
-    "CopilotSpaceCollaboratorAnyof1Type",
-    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof3Type",
+    "ActionsPolicyEnterpriseConditionsOneof3TypeForResponse",
 )

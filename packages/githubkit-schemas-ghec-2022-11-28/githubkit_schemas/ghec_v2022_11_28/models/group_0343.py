@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,46 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0236 import Issue
+from .group_0339 import PullRequestSimple
+from .group_0342 import ProjectsV2DraftIssue
 
-class TeamMember(GitHubModel):
-    """Team Member
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+class ProjectsV2ItemSimple(GitHubModel):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET,
-        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    id: float = Field(description="The unique identifier of the project item.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project item."
     )
-    inherited: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
+        default=UNSET, description="The content represented by the item."
+    )
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
+        title="Projects v2 Item Content Type",
+        description="The type of content tracked in a project item",
+    )
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="The time when the item was archived."
+    )
+    project_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the project this item belongs to."
+    )
+    item_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the item in the project."
     )
 
 
-model_rebuild(TeamMember)
+model_rebuild(ProjectsV2ItemSimple)
 
-__all__ = ("TeamMember",)
+__all__ = ("ProjectsV2ItemSimple",)

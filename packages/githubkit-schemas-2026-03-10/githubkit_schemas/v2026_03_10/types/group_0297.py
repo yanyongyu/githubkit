@@ -9,60 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActivityType(TypedDict):
-    """Activity
+class ActionsCacheStorageLimitForRepositoryType(TypedDict):
+    """Actions cache storage limit for a repository
 
-    Activity
+    GitHub Actions cache storage policy for a repository.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[SimpleUserType, None]
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache storage limit for a repository
 
-    Activity
+    GitHub Actions cache storage policy for a repository.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[SimpleUserTypeForResponse, None]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "ActionsCacheStorageLimitForRepositoryType",
+    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
 )

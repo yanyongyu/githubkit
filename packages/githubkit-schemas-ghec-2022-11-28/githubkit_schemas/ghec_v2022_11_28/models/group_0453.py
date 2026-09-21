@@ -9,26 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0400 import DiffEntry
+from .group_0401 import Commit
 
 
-class DeploymentBranchPolicySettings(GitHubModel):
-    """DeploymentBranchPolicySettings
+class CommitComparison(GitHubModel):
+    """Commit Comparison
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Commit Comparison
     """
 
-    protected_branches: bool = Field(
-        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
-    )
-    custom_branch_policies: bool = Field(
-        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
-    )
+    url: str = Field()
+    html_url: str = Field()
+    permalink_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    base_commit: Commit = Field(title="Commit", description="Commit")
+    merge_base_commit: Commit = Field(title="Commit", description="Commit")
+    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
+    ahead_by: int = Field()
+    behind_by: int = Field()
+    total_commits: int = Field()
+    commits: list[Commit] = Field()
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentBranchPolicySettings)
+model_rebuild(CommitComparison)
 
-__all__ = ("DeploymentBranchPolicySettings",)
+__all__ = ("CommitComparison",)

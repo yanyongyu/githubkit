@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +18,154 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
 
-    The source branch and directory used to publish your Pages site.
+    Pending suggestions for each suggestible field (`type`,
+    `issue_field_values`, `labels`, `assignees`, `state`) the
+    request touched. Omitted for fields not in the request or
+    with no pending or ignored suggestions. Items tagged
+    `ignored` are echoes of the current request's inputs that
+    were not persisted as pending suggestions.
     """
 
-    branch: str = Field(
-        description="The repository branch used to publish your site's source files."
+    type: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
+        ]
+    ] = Field(default=UNSET)
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
+        ]
+    ] = Field(default=UNSET)
+    labels: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
+        ]
+    ] = Field(default=UNSET)
+    assignees: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
+        ]
+    ] = Field(default=UNSET)
+    state: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
+    s
+    """
+
+    value: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
     )
-    path: Missing[Literal["/", "/docs"]] = Field(
-        default=UNSET,
-        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
+    ldValuesItems
+    """
+
+    field_id: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, float, list[str]]] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
+    ems
+    """
 
-__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)
+    name: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
+    sItems
+    """
+
+    login: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
+    ms
+    """
+
+    value: Missing[str] = Field(default=UNSET)
+    state_reason: Missing[str] = Field(default=UNSET)
+    duplicate_issue_id: Missing[int] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
+)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems",
+)

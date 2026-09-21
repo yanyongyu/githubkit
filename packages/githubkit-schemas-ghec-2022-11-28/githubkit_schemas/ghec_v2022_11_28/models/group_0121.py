@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0122 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
-)
+from .group_0116 import DependabotAlertPackage
 
 
-class EnterpriseRulesetConditionsOrganizationIdTarget(GitHubModel):
-    """Repository ruleset conditions for organization IDs
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Parameters for an organization ID condition
+    Details for the vulnerable dependency.
     """
 
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
+    )
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationIdTarget)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationIdTarget",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

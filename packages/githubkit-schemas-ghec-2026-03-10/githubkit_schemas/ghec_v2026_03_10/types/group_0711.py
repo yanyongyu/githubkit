@@ -9,52 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0712 import (
-    WebhookCodeScanningAlertReopenedByUserPropAlertType,
-    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCheckRunCreatedFormEncodedType(TypedDict):
+    """Check Run Created Event
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    The check_run.created webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCheckRunCreatedFormEncodedTypeForResponse(TypedDict):
+    """Check Run Created Event
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
-    commit_oid: str
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    The check_run.created webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserType",
-    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
+    "WebhookCheckRunCreatedFormEncodedType",
+    "WebhookCheckRunCreatedFormEncodedTypeForResponse",
 )

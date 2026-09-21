@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReviewCustomGatesCommentRequiredType(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    environment_name: str
-    comment: str
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class ReviewCustomGatesCommentRequiredTypeForResponse(TypedDict):
-    """ReviewCustomGatesCommentRequired"""
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
 
-    environment_name: str
-    comment: str
+    Team Membership
+    """
+
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
 __all__ = (
-    "ReviewCustomGatesCommentRequiredType",
-    "ReviewCustomGatesCommentRequiredTypeForResponse",
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
 )

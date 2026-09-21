@@ -9,45 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0628 import WebhooksRuleType, WebhooksRuleTypeForResponse
+
+class WebhooksProjectChangesType(TypedDict):
+    """WebhooksProjectChanges"""
+
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
 
 
-class WebhookBranchProtectionRuleDeletedType(TypedDict):
-    """branch protection rule deleted event"""
+class WebhooksProjectChangesTypeForResponse(TypedDict):
+    """WebhooksProjectChanges"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
 
 
-class WebhookBranchProtectionRuleDeletedTypeForResponse(TypedDict):
-    """branch protection rule deleted event"""
+class WebhooksProjectChangesPropArchivedAtType(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
-    sender: SimpleUserTypeForResponse
+    from_: NotRequired[Union[_dt.datetime, None]]
+    to: NotRequired[Union[_dt.datetime, None]]
+
+
+class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleDeletedType",
-    "WebhookBranchProtectionRuleDeletedTypeForResponse",
+    "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
+    "WebhooksProjectChangesType",
+    "WebhooksProjectChangesTypeForResponse",
 )

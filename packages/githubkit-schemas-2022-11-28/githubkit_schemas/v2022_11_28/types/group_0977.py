@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0544 import (
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0593 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0611 import WebhooksAlertType, WebhooksAlertTypeForResponse
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["cancelled"]
+    action: Literal["reopen"]
+    alert: WebhooksAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipCancelledTypeForResponse(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["cancelled"]
+    action: Literal["reopen"]
+    alert: WebhooksAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookSponsorshipCancelledType",
-    "WebhookSponsorshipCancelledTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertReopenType",
+    "WebhookRepositoryVulnerabilityAlertReopenTypeForResponse",
 )

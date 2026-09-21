@@ -9,29 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0122 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
 
-class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
-    """Code scanning AI Scan organization settings update
 
-    The AI Scan organization setting to apply
-    """
+class ActionsPolicyOrgConditionsOneof2Type(TypedDict):
+    """ActionsPolicyOrgConditionsOneof2"""
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
-    """Code scanning AI Scan organization settings update
+class ActionsPolicyOrgConditionsOneof2TypeForResponse(TypedDict):
+    """ActionsPolicyOrgConditionsOneof2"""
 
-    The AI Scan organization setting to apply
-    """
-
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "CodeScanningAiScanOrgEnablementUpdateType",
-    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
+    "ActionsPolicyOrgConditionsOneof2Type",
+    "ActionsPolicyOrgConditionsOneof2TypeForResponse",
 )

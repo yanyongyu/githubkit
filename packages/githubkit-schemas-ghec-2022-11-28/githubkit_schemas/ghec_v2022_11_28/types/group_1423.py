@@ -13,21 +13,25 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
 
 
-class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    action: Literal["revoke"]
-    pat_ids: list[int]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPostBodyType",
-    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType",
+    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
 )

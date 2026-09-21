@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhookCheckRunCompletedFormEncoded(GitHubModel):
-    """Check Run Completed Event
+class WebhooksProjectChanges(GitHubModel):
+    """WebhooksProjectChanges"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
-
-    payload: str = Field(
-        description="A URL-encoded string of the check_run.completed JSON payload. The decoded payload is a JSON object."
-    )
+    archived_at: Missing[WebhooksProjectChangesPropArchivedAt] = Field(default=UNSET)
 
 
-model_rebuild(WebhookCheckRunCompletedFormEncoded)
+class WebhooksProjectChangesPropArchivedAt(GitHubModel):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-__all__ = ("WebhookCheckRunCompletedFormEncoded",)
+    from_: Missing[Union[_dt.datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksProjectChanges)
+model_rebuild(WebhooksProjectChangesPropArchivedAt)
+
+__all__ = (
+    "WebhooksProjectChanges",
+    "WebhooksProjectChangesPropArchivedAt",
+)

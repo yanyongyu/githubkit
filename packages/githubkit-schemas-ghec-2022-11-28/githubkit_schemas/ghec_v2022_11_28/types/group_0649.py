@@ -13,678 +13,486 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0211 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0213 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0216 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0217 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0648 import ExemptionResponseType, ExemptionResponseTypeForResponse
 
 
-class WebhooksIssue2Type(TypedDict):
-    """Issue
+class ExemptionRequestType(TypedDict):
+    """Exemption Request
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/issues#get-an-issue) itself.
+    A request from a user to be exempted from a set of rules.
     """
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
+    id: NotRequired[int]
+    number: NotRequired[Union[int, None]]
+    repository_id: NotRequired[int]
+    requester_id: NotRequired[int]
+    requester_login: NotRequired[str]
+    request_type: NotRequired[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+            "dependabot_alert_dismissal",
+            "license_compliance_dismissal",
+        ]
     ]
-    assignee: NotRequired[Union[WebhooksIssue2PropAssigneeType, None]]
-    assignees: list[Union[WebhooksIssue2PropAssigneesItemsType, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    exemption_request_data: NotRequired[
+        Union[
+            ExemptionRequestPushRulesetBypassType,
+            ExemptionRequestSecretScanningType,
+            DismissalRequestSecretScanningType,
+            DismissalRequestCodeScanningType,
+            DismissalRequestDependabotType,
+            DismissalRequestLicenseComplianceType,
+        ]
     ]
-    body: Union[str, None]
-    closed_at: Union[_dt.datetime, None]
-    comments: int
-    comments_url: str
-    created_at: _dt.datetime
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[list[WebhooksIssue2PropLabelsItemsType]]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[WebhooksIssue2PropMilestoneType, None]
-    node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhooksIssue2PropPerformedViaGithubAppType, None]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
+    requester_comment: NotRequired[Union[str, None]]
+    metadata: NotRequired[
+        Union[
+            ExemptionRequestSecretScanningMetadataType,
+            DismissalRequestSecretScanningMetadataType,
+            DismissalRequestCodeScanningMetadataType,
+            DismissalRequestDependabotMetadataType,
+            DismissalRequestLicenseComplianceMetadataType,
+            None,
+        ]
     ]
-    pull_request: NotRequired[WebhooksIssue2PropPullRequestType]
-    reactions: WebhooksIssue2PropReactionsType
-    repository_url: str
-    pinned_comment: NotRequired[Union[IssueCommentType, None]]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeType, None]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhooksIssue2PropUserType, None]
+    expires_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    responses: NotRequired[Union[list[ExemptionResponseType], None]]
+    html_url: NotRequired[str]
 
 
-class WebhooksIssue2TypeForResponse(TypedDict):
-    """Issue
+class ExemptionRequestTypeForResponse(TypedDict):
+    """Exemption Request
 
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/issues#get-an-issue) itself.
+    A request from a user to be exempted from a set of rules.
     """
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
+    id: NotRequired[int]
+    number: NotRequired[Union[int, None]]
+    repository_id: NotRequired[int]
+    requester_id: NotRequired[int]
+    requester_login: NotRequired[str]
+    request_type: NotRequired[
+        Literal[
+            "push_ruleset_bypass",
+            "secret_scanning",
+            "secret_scanning_closure",
+            "code_scanning_alert_dismissal",
+            "dependabot_alert_dismissal",
+            "license_compliance_dismissal",
+        ]
     ]
-    assignee: NotRequired[Union[WebhooksIssue2PropAssigneeTypeForResponse, None]]
-    assignees: list[Union[WebhooksIssue2PropAssigneesItemsTypeForResponse, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    exemption_request_data: NotRequired[
+        Union[
+            ExemptionRequestPushRulesetBypassTypeForResponse,
+            ExemptionRequestSecretScanningTypeForResponse,
+            DismissalRequestSecretScanningTypeForResponse,
+            DismissalRequestCodeScanningTypeForResponse,
+            DismissalRequestDependabotTypeForResponse,
+            DismissalRequestLicenseComplianceTypeForResponse,
+        ]
     ]
-    body: Union[str, None]
-    closed_at: Union[str, None]
-    comments: int
-    comments_url: str
-    created_at: str
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[list[WebhooksIssue2PropLabelsItemsTypeForResponse]]
-    labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[WebhooksIssue2PropMilestoneTypeForResponse, None]
-    node_id: str
-    number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhooksIssue2PropPerformedViaGithubAppTypeForResponse, None]
+    resource_identifier: NotRequired[str]
+    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
+    requester_comment: NotRequired[Union[str, None]]
+    metadata: NotRequired[
+        Union[
+            ExemptionRequestSecretScanningMetadataTypeForResponse,
+            DismissalRequestSecretScanningMetadataTypeForResponse,
+            DismissalRequestCodeScanningMetadataTypeForResponse,
+            DismissalRequestDependabotMetadataTypeForResponse,
+            DismissalRequestLicenseComplianceMetadataTypeForResponse,
+            None,
+        ]
     ]
-    pull_request: NotRequired[WebhooksIssue2PropPullRequestTypeForResponse]
-    reactions: WebhooksIssue2PropReactionsTypeForResponse
-    repository_url: str
-    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    updated_at: str
-    url: str
-    user: Union[WebhooksIssue2PropUserTypeForResponse, None]
-
-
-class WebhooksIssue2PropAssigneeType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    expires_at: NotRequired[str]
+    created_at: NotRequired[str]
+    responses: NotRequired[Union[list[ExemptionResponseTypeForResponse], None]]
     html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhooksIssue2PropAssigneeTypeForResponse(TypedDict):
-    """User"""
+class ExemptionRequestSecretScanningMetadataType(TypedDict):
+    """Secret Scanning Push Protection Exemption Request Metadata
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropAssigneesItemsTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhooksIssue2PropLabelsItemsTypeForResponse(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhooksIssue2PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
+    Metadata for a secret scanning push protection exemption request.
     """
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[WebhooksIssue2PropMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
+    label: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
 
 
-class WebhooksIssue2PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class ExemptionRequestSecretScanningMetadataTypeForResponse(TypedDict):
+    """Secret Scanning Push Protection Exemption Request Metadata
 
-    A collection of related issues and pull requests.
+    Metadata for a secret scanning push protection exemption request.
     """
 
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[WebhooksIssue2PropMilestonePropCreatorTypeForResponse, None]
-    description: Union[str, None]
-    due_on: Union[str, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
+    label: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
 
 
-class WebhooksIssue2PropMilestonePropCreatorType(TypedDict):
-    """User"""
+class DismissalRequestSecretScanningMetadataType(TypedDict):
+    """Secret scanning alert dismissal request metadata
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropMilestonePropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropPerformedViaGithubAppType(TypedDict):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    Metadata for a secret scanning alert dismissal request.
     """
 
-    created_at: Union[_dt.datetime, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[WebhooksIssue2PropPerformedViaGithubAppPropOwnerType, None]
-    permissions: NotRequired[WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType]
-    slug: NotRequired[str]
-    updated_at: Union[_dt.datetime, None]
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
 
 
-class WebhooksIssue2PropPerformedViaGithubAppTypeForResponse(TypedDict):
-    """App
+class DismissalRequestSecretScanningMetadataTypeForResponse(TypedDict):
+    """Secret scanning alert dismissal request metadata
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    Metadata for a secret scanning alert dismissal request.
     """
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    events: NotRequired[list[str]]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[WebhooksIssue2PropPerformedViaGithubAppPropOwnerTypeForResponse, None]
-    permissions: NotRequired[
-        WebhooksIssue2PropPerformedViaGithubAppPropPermissionsTypeForResponse
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+
+
+class DismissalRequestCodeScanningMetadataType(TypedDict):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
+
+
+class DismissalRequestCodeScanningMetadataTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request metadata
+
+    Metadata for a code scanning alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["false positive", "won't fix", "used in tests"]]
+
+
+class DismissalRequestDependabotMetadataType(TypedDict):
+    """Dependabot alert dismissal request metadata
+
+    Metadata for a Dependabot alert dismissal request.
+    """
+
+    alert_title: NotRequired[str]
+    reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
     ]
-    slug: NotRequired[str]
-    updated_at: Union[str, None]
 
 
-class WebhooksIssue2PropPerformedViaGithubAppPropOwnerType(TypedDict):
-    """User"""
+class DismissalRequestDependabotMetadataTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request metadata
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropPerformedViaGithubAppPropOwnerTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType(TypedDict):
-    """WebhooksIssue2PropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
+    Metadata for a Dependabot alert dismissal request.
     """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    alert_title: NotRequired[str]
+    reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
 
 
-class WebhooksIssue2PropPerformedViaGithubAppPropPermissionsTypeForResponse(TypedDict):
-    """WebhooksIssue2PropPerformedViaGithubAppPropPermissions
+class DismissalRequestLicenseComplianceMetadataType(TypedDict):
+    """License compliance alert closure request metadata
 
-    The set of permissions for the GitHub app
+    Metadata for a License compliance alert closure request.
     """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["amendment", "private package", "inaccurate license"]]
 
 
-class WebhooksIssue2PropPullRequestType(TypedDict):
-    """WebhooksIssue2PropPullRequest"""
+class DismissalRequestLicenseComplianceMetadataTypeForResponse(TypedDict):
+    """License compliance alert closure request metadata
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    Metadata for a License compliance alert closure request.
+    """
 
-
-class WebhooksIssue2PropPullRequestTypeForResponse(TypedDict):
-    """WebhooksIssue2PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    alert_title: NotRequired[str]
+    reason: NotRequired[Literal["amendment", "private package", "inaccurate license"]]
 
 
-class WebhooksIssue2PropReactionsType(TypedDict):
-    """Reactions"""
+class ExemptionRequestPushRulesetBypassType(TypedDict):
+    """Push ruleset bypass exemption request data
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["push_ruleset_bypass"]]
+    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
 
 
-class WebhooksIssue2PropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
+class ExemptionRequestPushRulesetBypassTypeForResponse(TypedDict):
+    """Push ruleset bypass exemption request data
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    Push rules that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["push_ruleset_bypass"]]
+    data: NotRequired[
+        list[ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse]
+    ]
 
 
-class WebhooksIssue2PropUserType(TypedDict):
-    """User"""
+class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
 
 
-class WebhooksIssue2PropUserTypeForResponse(TypedDict):
-    """User"""
+class ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse(TypedDict):
+    """ExemptionRequestPushRulesetBypassPropDataItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    ruleset_id: NotRequired[int]
+    ruleset_name: NotRequired[str]
+    total_violations: NotRequired[int]
+    rule_type: NotRequired[str]
+
+
+class DismissalRequestSecretScanningType(TypedDict):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["secret_scanning_closure"]]
+    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsType]]
+
+
+class DismissalRequestSecretScanningTypeForResponse(TypedDict):
+    """Secret scanning alert dismissal request data
+
+    Secret scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["secret_scanning_closure"]]
+    data: NotRequired[list[DismissalRequestSecretScanningPropDataItemsTypeForResponse]]
+
+
+class DismissalRequestSecretScanningPropDataItemsType(TypedDict):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestSecretScanningPropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestSecretScanningPropDataItems"""
+
+    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    secret_type: NotRequired[str]
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestCodeScanningType(TypedDict):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsType]]
+
+
+class DismissalRequestCodeScanningTypeForResponse(TypedDict):
+    """Code scanning alert dismissal request data
+
+    Code scanning alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["code_scanning_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestCodeScanningPropDataItemsTypeForResponse]]
+
+
+class DismissalRequestCodeScanningPropDataItemsType(TypedDict):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestCodeScanningPropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestCodeScanningPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestDependabotType(TypedDict):
+    """Dependabot alert dismissal request data
+
+    Dependabot alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["dependabot_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestDependabotPropDataItemsType]]
+
+
+class DismissalRequestDependabotTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request data
+
+    Dependabot alerts that have dismissal requests.
+    """
+
+    type: NotRequired[Literal["dependabot_alert_dismissal"]]
+    data: NotRequired[list[DismissalRequestDependabotPropDataItemsTypeForResponse]]
+
+
+class DismissalRequestDependabotPropDataItemsType(TypedDict):
+    """DismissalRequestDependabotPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestDependabotPropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestDependabotPropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestLicenseComplianceType(TypedDict):
+    """License compliance alert closure request data
+
+    License compliance alerts that have closure requests.
+    """
+
+    type: NotRequired[Literal["license_compliance_dismissal"]]
+    data: NotRequired[list[DismissalRequestLicenseCompliancePropDataItemsType]]
+
+
+class DismissalRequestLicenseComplianceTypeForResponse(TypedDict):
+    """License compliance alert closure request data
+
+    License compliance alerts that have closure requests.
+    """
+
+    type: NotRequired[Literal["license_compliance_dismissal"]]
+    data: NotRequired[
+        list[DismissalRequestLicenseCompliancePropDataItemsTypeForResponse]
+    ]
+
+
+class DismissalRequestLicenseCompliancePropDataItemsType(TypedDict):
+    """DismissalRequestLicenseCompliancePropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class DismissalRequestLicenseCompliancePropDataItemsTypeForResponse(TypedDict):
+    """DismissalRequestLicenseCompliancePropDataItems"""
+
+    alert_number: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningType(TypedDict):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["secret_scanning"]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
+
+
+class ExemptionRequestSecretScanningTypeForResponse(TypedDict):
+    """Secret scanning push protection exemption request data
+
+    Secret scanning push protections that are being requested to be bypassed.
+    """
+
+    type: NotRequired[Literal["secret_scanning"]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsTypeForResponse]]
+
+
+class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: NotRequired[str]
+    locations: NotRequired[
+        list[ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType]
+    ]
+
+
+class ExemptionRequestSecretScanningPropDataItemsTypeForResponse(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItems"""
+
+    secret_type: NotRequired[str]
+    locations: NotRequired[
+        list[
+            ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse
+        ]
+    ]
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType(TypedDict):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: NotRequired[str]
+    branch: NotRequired[str]
+    path: NotRequired[str]
+
+
+class ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse(
+    TypedDict
+):
+    """ExemptionRequestSecretScanningPropDataItemsPropLocationsItems"""
+
+    commit: NotRequired[str]
+    branch: NotRequired[str]
+    path: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksIssue2PropAssigneeType",
-    "WebhooksIssue2PropAssigneeTypeForResponse",
-    "WebhooksIssue2PropAssigneesItemsType",
-    "WebhooksIssue2PropAssigneesItemsTypeForResponse",
-    "WebhooksIssue2PropLabelsItemsType",
-    "WebhooksIssue2PropLabelsItemsTypeForResponse",
-    "WebhooksIssue2PropMilestonePropCreatorType",
-    "WebhooksIssue2PropMilestonePropCreatorTypeForResponse",
-    "WebhooksIssue2PropMilestoneType",
-    "WebhooksIssue2PropMilestoneTypeForResponse",
-    "WebhooksIssue2PropPerformedViaGithubAppPropOwnerType",
-    "WebhooksIssue2PropPerformedViaGithubAppPropOwnerTypeForResponse",
-    "WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType",
-    "WebhooksIssue2PropPerformedViaGithubAppPropPermissionsTypeForResponse",
-    "WebhooksIssue2PropPerformedViaGithubAppType",
-    "WebhooksIssue2PropPerformedViaGithubAppTypeForResponse",
-    "WebhooksIssue2PropPullRequestType",
-    "WebhooksIssue2PropPullRequestTypeForResponse",
-    "WebhooksIssue2PropReactionsType",
-    "WebhooksIssue2PropReactionsTypeForResponse",
-    "WebhooksIssue2PropUserType",
-    "WebhooksIssue2PropUserTypeForResponse",
-    "WebhooksIssue2Type",
-    "WebhooksIssue2TypeForResponse",
+    "DismissalRequestCodeScanningMetadataType",
+    "DismissalRequestCodeScanningMetadataTypeForResponse",
+    "DismissalRequestCodeScanningPropDataItemsType",
+    "DismissalRequestCodeScanningPropDataItemsTypeForResponse",
+    "DismissalRequestCodeScanningType",
+    "DismissalRequestCodeScanningTypeForResponse",
+    "DismissalRequestDependabotMetadataType",
+    "DismissalRequestDependabotMetadataTypeForResponse",
+    "DismissalRequestDependabotPropDataItemsType",
+    "DismissalRequestDependabotPropDataItemsTypeForResponse",
+    "DismissalRequestDependabotType",
+    "DismissalRequestDependabotTypeForResponse",
+    "DismissalRequestLicenseComplianceMetadataType",
+    "DismissalRequestLicenseComplianceMetadataTypeForResponse",
+    "DismissalRequestLicenseCompliancePropDataItemsType",
+    "DismissalRequestLicenseCompliancePropDataItemsTypeForResponse",
+    "DismissalRequestLicenseComplianceType",
+    "DismissalRequestLicenseComplianceTypeForResponse",
+    "DismissalRequestSecretScanningMetadataType",
+    "DismissalRequestSecretScanningMetadataTypeForResponse",
+    "DismissalRequestSecretScanningPropDataItemsType",
+    "DismissalRequestSecretScanningPropDataItemsTypeForResponse",
+    "DismissalRequestSecretScanningType",
+    "DismissalRequestSecretScanningTypeForResponse",
+    "ExemptionRequestPushRulesetBypassPropDataItemsType",
+    "ExemptionRequestPushRulesetBypassPropDataItemsTypeForResponse",
+    "ExemptionRequestPushRulesetBypassType",
+    "ExemptionRequestPushRulesetBypassTypeForResponse",
+    "ExemptionRequestSecretScanningMetadataType",
+    "ExemptionRequestSecretScanningMetadataTypeForResponse",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsType",
+    "ExemptionRequestSecretScanningPropDataItemsPropLocationsItemsTypeForResponse",
+    "ExemptionRequestSecretScanningPropDataItemsType",
+    "ExemptionRequestSecretScanningPropDataItemsTypeForResponse",
+    "ExemptionRequestSecretScanningType",
+    "ExemptionRequestSecretScanningTypeForResponse",
+    "ExemptionRequestType",
+    "ExemptionRequestTypeForResponse",
 )

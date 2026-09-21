@@ -9,55 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
+from .group_0329 import VerificationType, VerificationTypeForResponse
 
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Review Requested Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["review_requested"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class ReviewRequestedIssueEventTypeForResponse(TypedDict):
-    """Review Requested Issue Event
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    Review Requested Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["review_requested"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    review_requester: SimpleUserTypeForResponse
-    requested_team: NotRequired[TeamTypeForResponse]
-    requested_reviewer: NotRequired[SimpleUserTypeForResponse]
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "ReviewRequestedIssueEventType",
-    "ReviewRequestedIssueEventTypeForResponse",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

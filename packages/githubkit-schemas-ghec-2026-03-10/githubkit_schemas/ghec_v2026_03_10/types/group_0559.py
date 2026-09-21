@@ -12,33 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0159 import (
-    RepositoryRuleMaxFileSizePropParametersType,
-    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+from .group_0190 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof22Type(TypedDict):
-    """RepositoryRuleDetailedOneof22"""
+class RepositoryRuleDetailedOneof4Type(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof22TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof22"""
+class RepositoryRuleDetailedOneof4TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof4"""
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof22Type",
-    "RepositoryRuleDetailedOneof22TypeForResponse",
+    "RepositoryRuleDetailedOneof4Type",
+    "RepositoryRuleDetailedOneof4TypeForResponse",
 )

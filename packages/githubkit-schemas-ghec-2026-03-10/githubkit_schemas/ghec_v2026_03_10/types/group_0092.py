@@ -9,44 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0087 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class BypassResponseType(TypedDict):
+    """Bypass response
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
-
-    Details for the vulnerable dependency.
+    A response made by a delegated bypasser to a bypass request.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: NotRequired[int]
+    reviewer: NotRequired[BypassResponsePropReviewerType]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class BypassResponseTypeForResponse(TypedDict):
+    """Bypass response
 
-    Details for the vulnerable dependency.
+    A response made by a delegated bypasser to a bypass request.
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: NotRequired[int]
+    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
+    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    created_at: NotRequired[str]
+
+
+class BypassResponsePropReviewerType(TypedDict):
+    """BypassResponsePropReviewer
+
+    The user who reviewed the bypass request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+
+
+class BypassResponsePropReviewerTypeForResponse(TypedDict):
+    """BypassResponsePropReviewer
+
+    The user who reviewed the bypass request.
+    """
+
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertWithRepositoryPropDependencyType",
-    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
+    "BypassResponsePropReviewerType",
+    "BypassResponsePropReviewerTypeForResponse",
+    "BypassResponseType",
+    "BypassResponseTypeForResponse",
 )

@@ -9,25 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheRetentionLimitForRepository(GitHubModel):
-    """Actions cache retention limit for a repository
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    GitHub Actions cache retention policy for a repository.
+    Code of Conduct Simple
     """
 
-    max_cache_retention_days: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum number of days to keep caches in this repository.",
-    )
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-model_rebuild(ActionsCacheRetentionLimitForRepository)
+model_rebuild(CodeOfConductSimple)
 
-__all__ = ("ActionsCacheRetentionLimitForRepository",)
+__all__ = ("CodeOfConductSimple",)

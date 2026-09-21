@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GitUserType(TypedDict):
-    """Git User
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class GitUserTypeForResponse(TypedDict):
-    """Git User
+class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "GitUserType",
-    "GitUserTypeForResponse",
+    "ActionsRepositoryPermissionsType",
+    "ActionsRepositoryPermissionsTypeForResponse",
 )

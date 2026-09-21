@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
-
-    usernames: list[str] = Field(
-        description="The GitHub user handles to be removed from the team."
-    )
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody)
+model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)

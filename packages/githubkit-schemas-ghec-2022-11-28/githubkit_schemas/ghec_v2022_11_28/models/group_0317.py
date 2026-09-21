@@ -18,55 +18,70 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0316 import ProjectsV2StatusUpdate
 
+class IssueField(GitHubModel):
+    """Issue Field
 
-class ProjectsV2(GitHubModel):
-    """Projects v2 Project
-
-    A projects v2 project
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    id: float = Field(description="The unique identifier of the project.")
-    node_id: str = Field(description="The node ID of the project.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    title: str = Field(description="The project title.")
-    description: Union[str, None] = Field(
-        description="A short description of the project."
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the issue field."
     )
-    public: bool = Field(
-        description="Whether the project is visible to anyone with access to the owner."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was closed."
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
     )
-    created_at: _dt.datetime = Field(
-        description="The time when the project was created."
+    options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
+        default=UNSET,
+        description="Available options for single select and multi select fields.",
     )
-    updated_at: _dt.datetime = Field(
-        description="The time when the project was last updated."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
     )
-    number: int = Field(description="The project number.")
-    short_description: Union[str, None] = Field(
-        description="A concise summary of the project."
-    )
-    deleted_at: Union[_dt.datetime, None] = Field(
-        description="The time when the project was deleted."
-    )
-    deleted_by: Union[SimpleUser, None] = Field()
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The current state of the project."
-    )
-    latest_status_update: Missing[Union[ProjectsV2StatusUpdate, None]] = Field(
-        default=UNSET
-    )
-    is_template: Missing[bool] = Field(
-        default=UNSET, description="Whether this project is a template"
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was last updated."
     )
 
 
-model_rebuild(ProjectsV2)
+class IssueFieldPropOptionsItems(GitHubModel):
+    """IssueFieldPropOptionsItems"""
 
-__all__ = ("ProjectsV2",)
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the option."
+    )
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
+
+
+model_rebuild(IssueField)
+model_rebuild(IssueFieldPropOptionsItems)
+
+__all__ = (
+    "IssueField",
+    "IssueFieldPropOptionsItems",
+)

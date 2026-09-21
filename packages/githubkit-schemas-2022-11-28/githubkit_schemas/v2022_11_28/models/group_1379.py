@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,51 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoHooksPostBody(GitHubModel):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
+    GitHubModel
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
-    )
-    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
-    )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-    )
-
-
-class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
-    """ReposOwnerRepoHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
     """
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
     )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoHooksPostBody)
-model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
 
-__all__ = (
-    "ReposOwnerRepoHooksPostBody",
-    "ReposOwnerRepoHooksPostBodyPropConfig",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

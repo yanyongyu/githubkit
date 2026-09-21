@@ -9,45 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0628 import WebhooksRuleType, WebhooksRuleTypeForResponse
+
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: _dt.datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookBranchProtectionRuleCreatedType(TypedDict):
-    """branch protection rule created event"""
+class WebhooksProjectColumnTypeForResponse(TypedDict):
+    """Project Column"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
-
-
-class WebhookBranchProtectionRuleCreatedTypeForResponse(TypedDict):
-    """branch protection rule created event"""
-
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
-    sender: SimpleUserTypeForResponse
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: str
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleCreatedType",
-    "WebhookBranchProtectionRuleCreatedTypeForResponse",
+    "WebhooksProjectColumnType",
+    "WebhooksProjectColumnTypeForResponse",
 )

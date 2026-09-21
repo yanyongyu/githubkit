@@ -9,76 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-    Converted Note to Issue Issue Event
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
     url: str
-    actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    import_url: str
 
 
-class ConvertedNoteToIssueIssueEventTypeForResponse(TypedDict):
-    """Converted Note to Issue Issue Event
+class PorterAuthorTypeForResponse(TypedDict):
+    """Porter Author
 
-    Converted Note to Issue Issue Event
+    Porter Author
     """
 
     id: int
-    node_id: str
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse
-    ]
-
-
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    import_url: str
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse",
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventTypeForResponse",
+    "PorterAuthorType",
+    "PorterAuthorTypeForResponse",
 )

@@ -9,130 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
-    """Organization private registry
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    Private registry configuration for an organization
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
-    """Organization private registry
+class CopilotOrganizationDetailsTypeForResponse(TypedDict):
+    """Copilot Organization Details
 
-    Private registry configuration for an organization
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
+    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
-    created_at: str
-    updated_at: str
+    plan_type: NotRequired[Literal["business", "enterprise"]]
+
+
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
+
+
+class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationDetailsTypeForResponse",
+    "CopilotOrganizationSeatBreakdownType",
+    "CopilotOrganizationSeatBreakdownTypeForResponse",
 )

@@ -9,47 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0253 import MinimalRepository
-
-
-class Thread(GitHubModel):
-    """Thread
-
-    Thread
-    """
-
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
-    url: str = Field()
-    subscription_url: str = Field()
+from .group_0003 import SimpleUser
+from .group_0230 import ReactionRollup
 
 
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
+class CommitCommentEventPropComment(GitHubModel):
+    """CommitCommentEventPropComment"""
 
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
-    type: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    path: Missing[Union[str, None]] = Field(default=UNSET)
+    position: Missing[Union[int, None]] = Field(default=UNSET)
+    line: Missing[Union[int, None]] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
+model_rebuild(CommitCommentEventPropComment)
 
-__all__ = (
-    "Thread",
-    "ThreadPropSubject",
-)
+__all__ = ("CommitCommentEventPropComment",)

@@ -18,18 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    scope: Literal[
+        "all", "all_without_configurations", "public", "private_or_internal", "selected"
+    ] = Field(
+        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
     )
-    selected_repositories_url: Missing[str] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)

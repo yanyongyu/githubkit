@@ -19,17 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0542 import EnterpriseWebhooks
-from .group_0543 import SimpleInstallation
-from .group_0544 import OrganizationSimpleWebhooks
-from .group_0545 import RepositoryWebhooks
-from .group_0908 import WebhookPullRequestReviewThreadUnresolvedPropPullRequest
+from .group_0563 import EnterpriseWebhooks
+from .group_0564 import SimpleInstallation
+from .group_0565 import OrganizationSimpleWebhooks
+from .group_0566 import RepositoryWebhooks
+from .group_0908 import WebhookPullRequestReviewCommentCreatedPropPullRequest
 
 
-class WebhookPullRequestReviewThreadUnresolved(GitHubModel):
-    """pull_request_review_thread unresolved event"""
+class WebhookPullRequestReviewCommentCreated(GitHubModel):
+    """pull_request_review_comment created event"""
 
-    action: Literal["unresolved"] = Field()
+    action: Literal["created"] = Field()
+    comment: WebhookPullRequestReviewCommentCreatedPropComment = Field(
+        title="Pull Request Review Comment",
+        description="The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,37 +49,22 @@ class WebhookPullRequestReviewThreadUnresolved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequest = Field(
-        title="Simple Pull Request"
-    )
+    pull_request: WebhookPullRequestReviewCommentCreatedPropPullRequest = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    thread: WebhookPullRequestReviewThreadUnresolvedPropThread = Field()
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThread(GitHubModel):
-    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
-
-    comments: list[
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems
-    ] = Field()
-    node_id: str = Field()
-
-
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHubModel):
+class WebhookPullRequestReviewCommentCreatedPropComment(GitHubModel):
     """Pull Request Review Comment
 
     The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-
     for-a-pull-request) itself.
     """
 
-    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks = Field(
+    links: WebhookPullRequestReviewCommentCreatedPropCommentPropLinks = Field(
         alias="_links"
     )
     author_association: Literal[
@@ -111,7 +100,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHub
     original_commit_id: str = Field(
         description="The SHA of the original commit to which the comment applies."
     )
-    original_line: int = Field(
+    original_line: Union[int, None] = Field(
         description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
     )
     original_position: int = Field(
@@ -132,7 +121,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHub
     pull_request_url: str = Field(
         description="URL for the pull request that the review comment belongs to."
     )
-    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions = Field(
+    reactions: WebhookPullRequestReviewCommentCreatedPropCommentPropReactions = Field(
         title="Reactions"
     )
     side: Literal["LEFT", "RIGHT"] = Field(
@@ -151,15 +140,12 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHub
     )
     updated_at: _dt.datetime = Field()
     url: str = Field(description="URL for the pull request review comment")
-    user: Union[
-        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser,
-        None,
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestReviewCommentCreatedPropCommentPropUser, None] = (
+        Field(title="User")
+    )
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions(
-    GitHubModel
-):
+class WebhookPullRequestReviewCommentCreatedPropCommentPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -174,9 +160,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropRea
     url: str = Field()
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser(
-    GitHubModel
-):
+class WebhookPullRequestReviewCommentCreatedPropCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -203,23 +187,27 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUse
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks(
-    GitHubModel
-):
-    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinks(GitHubModel):
+    """WebhookPullRequestReviewCommentCreatedPropCommentPropLinks"""
 
-    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml = Field(
+    html: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml = Field(
         title="Link"
     )
-    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest = Field(
+    pull_request: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest = Field(
         title="Link"
     )
-    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf = Field(
+    self_: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf = Field(
         alias="self", title="Link"
     )
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml(
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest(
     GitHubModel
 ):
     """Link"""
@@ -227,52 +215,28 @@ class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLin
     href: str = Field()
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest(
-    GitHubModel
-):
+class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf(GitHubModel):
     """Link"""
 
     href: str = Field()
 
 
-class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf(
-    GitHubModel
-):
-    """Link"""
-
-    href: str = Field()
-
-
-model_rebuild(WebhookPullRequestReviewThreadUnresolved)
-model_rebuild(WebhookPullRequestReviewThreadUnresolvedPropThread)
-model_rebuild(WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems)
-model_rebuild(
-    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions
-)
-model_rebuild(
-    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser
-)
-model_rebuild(
-    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks
-)
-model_rebuild(
-    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml
-)
-model_rebuild(
-    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest
-)
-model_rebuild(
-    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf
-)
+model_rebuild(WebhookPullRequestReviewCommentCreated)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropComment)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropUser)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinks)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest)
+model_rebuild(WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf)
 
 __all__ = (
-    "WebhookPullRequestReviewThreadUnresolved",
-    "WebhookPullRequestReviewThreadUnresolvedPropThread",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions",
-    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser",
+    "WebhookPullRequestReviewCommentCreated",
+    "WebhookPullRequestReviewCommentCreatedPropComment",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinks",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropReactions",
+    "WebhookPullRequestReviewCommentCreatedPropCommentPropUser",
 )

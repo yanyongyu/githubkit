@@ -13,38 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1030 import (
+    WebhookPullRequestUnlockedPropPullRequestType,
+    WebhookPullRequestUnlockedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryArchivedType(TypedDict):
-    """repository archived event"""
+class WebhookPullRequestUnlockedType(TypedDict):
+    """pull_request unlocked event"""
 
-    action: Literal["archived"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestUnlockedPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryArchivedTypeForResponse(TypedDict):
-    """repository archived event"""
+class WebhookPullRequestUnlockedTypeForResponse(TypedDict):
+    """pull_request unlocked event"""
 
-    action: Literal["archived"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestUnlockedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryArchivedType",
-    "WebhookRepositoryArchivedTypeForResponse",
+    "WebhookPullRequestUnlockedType",
+    "WebhookPullRequestUnlockedTypeForResponse",
 )

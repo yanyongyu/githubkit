@@ -9,36 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
-
-    A hosted compute network settings resource.
-    """
-
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+from .group_0101 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    A hosted compute network settings resource.
-    """
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+
+class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
+
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "CodeSecurityDefaultConfigurationsItemsType",
+    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
 )

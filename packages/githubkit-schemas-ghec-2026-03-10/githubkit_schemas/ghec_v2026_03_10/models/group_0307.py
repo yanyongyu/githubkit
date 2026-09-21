@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -21,59 +20,26 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
+class OrganizationInvitation(GitHubModel):
+    """Organization Invitation
 
-    Organization roles
+    Organization Invitation
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Missing[
-        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
-    ] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    source: Missing[
-        Union[Literal["Organization", "Enterprise", "Predefined"], None]
-    ] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[SimpleUser, None] = Field()
-    created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
-    )
+    id: int = Field()
+    login: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    role: str = Field()
+    created_at: str = Field()
+    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team_count: int = Field()
+    node_id: str = Field()
+    invitation_teams_url: str = Field()
+    invitation_source: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+model_rebuild(OrganizationInvitation)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization roles available to the organization.",
-    )
-    roles: Missing[list[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
-    )
-
-
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
-
-__all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
-)
+__all__ = ("OrganizationInvitation",)

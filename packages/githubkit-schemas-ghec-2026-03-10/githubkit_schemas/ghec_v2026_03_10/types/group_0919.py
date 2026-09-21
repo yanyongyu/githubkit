@@ -13,41 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0134 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
 )
-from .group_0661 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserType
-    installation: SimpleInstallationType
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyType
+    enterprise: EnterpriseWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
+    action: Literal["created"]
+    definition: OrganizationCustomPropertyTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestCancelledType",
-    "WebhookPersonalAccessTokenRequestCancelledTypeForResponse",
+    "WebhookOrganizationCustomPropertyCreatedType",
+    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
 )

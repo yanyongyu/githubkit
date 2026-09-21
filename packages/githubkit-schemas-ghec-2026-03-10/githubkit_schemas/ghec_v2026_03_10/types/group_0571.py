@@ -9,90 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0183 import (
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+)
 
 
-class PullRequestStackMinimalType(TypedDict):
-    """Pull Request Stack Minimal"""
+class RepositoryRuleDetailedOneof16Type(TypedDict):
+    """RepositoryRuleDetailedOneof16"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class PullRequestStackMinimalTypeForResponse(TypedDict):
-    """Pull Request Stack Minimal"""
+class RepositoryRuleDetailedOneof16TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof16"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
-
-
-class PullRequestStackMinimalPropBaseType(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[_dt.datetime, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
-
-
-class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[str, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str
-    sha: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str
-    sha: str
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "PullRequestStackMinimalPropBaseType",
-    "PullRequestStackMinimalPropBaseTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsType",
-    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
-    "PullRequestStackMinimalType",
-    "PullRequestStackMinimalTypeForResponse",
+    "RepositoryRuleDetailedOneof16Type",
+    "RepositoryRuleDetailedOneof16TypeForResponse",
 )

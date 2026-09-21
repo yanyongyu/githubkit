@@ -9,271 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0225 import DiscussionEventType, DiscussionEventTypeForResponse
-from .group_0226 import IssuesEventType, IssuesEventTypeForResponse
-from .group_0227 import IssueCommentEventType, IssueCommentEventTypeForResponse
-from .group_0228 import ForkEventType, ForkEventTypeForResponse
-from .group_0230 import MemberEventType, MemberEventTypeForResponse
-from .group_0231 import PullRequestEventType, PullRequestEventTypeForResponse
-from .group_0232 import (
-    PullRequestReviewCommentEventType,
-    PullRequestReviewCommentEventTypeForResponse,
-)
-from .group_0233 import (
-    PullRequestReviewEventType,
-    PullRequestReviewEventTypeForResponse,
-)
-from .group_0235 import CommitCommentEventType, CommitCommentEventTypeForResponse
-from .group_0237 import ReleaseEventType, ReleaseEventTypeForResponse
+
+class BillingUsageSummaryReportGheType(TypedDict):
+    """BillingUsageSummaryReportGhe"""
+
+    time_period: BillingUsageSummaryReportGhePropTimePeriodType
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
 
 
-class EventType(TypedDict):
-    """Event
+class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhe"""
 
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: Union[
-        CreateEventType,
-        DeleteEventType,
-        DiscussionEventType,
-        IssuesEventType,
-        IssueCommentEventType,
-        ForkEventType,
-        GollumEventType,
-        MemberEventType,
-        PublicEventType,
-        PushEventType,
-        PullRequestEventType,
-        PullRequestReviewCommentEventType,
-        PullRequestReviewEventType,
-        CommitCommentEventType,
-        ReleaseEventType,
-        WatchEventType,
-    ]
-    public: bool
-    created_at: Union[_dt.datetime, None]
+    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
 
 
-class EventTypeForResponse(TypedDict):
-    """Event
+class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
 
-    Event
-    """
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
 
     id: str
-    type: Union[str, None]
-    actor: ActorTypeForResponse
-    repo: EventPropRepoTypeForResponse
-    org: NotRequired[ActorTypeForResponse]
-    payload: Union[
-        CreateEventTypeForResponse,
-        DeleteEventTypeForResponse,
-        DiscussionEventTypeForResponse,
-        IssuesEventTypeForResponse,
-        IssueCommentEventTypeForResponse,
-        ForkEventTypeForResponse,
-        GollumEventTypeForResponse,
-        MemberEventTypeForResponse,
-        PublicEventTypeForResponse,
-        PushEventTypeForResponse,
-        PullRequestEventTypeForResponse,
-        PullRequestReviewCommentEventTypeForResponse,
-        PullRequestReviewEventTypeForResponse,
-        CommitCommentEventTypeForResponse,
-        ReleaseEventTypeForResponse,
-        WatchEventTypeForResponse,
-    ]
-    public: bool
-    created_at: Union[str, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class ActorTypeForResponse(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
     name: str
-    url: str
 
 
-class EventPropRepoTypeForResponse(TypedDict):
-    """EventPropRepo"""
+class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
 
-    id: int
+    id: str
     name: str
-    url: str
 
 
-class CreateEventType(TypedDict):
-    """CreateEvent"""
+class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
 
-    ref: str
-    ref_type: str
-    full_ref: str
-    master_branch: str
-    description: NotRequired[Union[str, None]]
-    pusher_type: str
-
-
-class CreateEventTypeForResponse(TypedDict):
-    """CreateEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    master_branch: str
-    description: NotRequired[Union[str, None]]
-    pusher_type: str
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class DeleteEventType(TypedDict):
-    """DeleteEvent"""
+class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
 
-    ref: str
-    ref_type: str
-    full_ref: str
-    pusher_type: str
-
-
-class DeleteEventTypeForResponse(TypedDict):
-    """DeleteEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    pusher_type: str
-
-
-class PublicEventType(TypedDict):
-    """PublicEvent"""
-
-
-class PublicEventTypeForResponse(TypedDict):
-    """PublicEvent"""
-
-
-class PushEventType(TypedDict):
-    """PushEvent"""
-
-    repository_id: int
-    push_id: int
-    ref: str
-    head: str
-    before: str
-
-
-class PushEventTypeForResponse(TypedDict):
-    """PushEvent"""
-
-    repository_id: int
-    push_id: int
-    ref: str
-    head: str
-    before: str
-
-
-class WatchEventType(TypedDict):
-    """WatchEvent"""
-
-    action: str
-
-
-class WatchEventTypeForResponse(TypedDict):
-    """WatchEvent"""
-
-    action: str
-
-
-class GollumEventType(TypedDict):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItemsType]
-
-
-class GollumEventTypeForResponse(TypedDict):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItemsTypeForResponse]
-
-
-class GollumEventPropPagesItemsType(TypedDict):
-    """GollumEventPropPagesItems"""
-
-    page_name: NotRequired[Union[str, None]]
-    title: NotRequired[Union[str, None]]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class GollumEventPropPagesItemsTypeForResponse(TypedDict):
-    """GollumEventPropPagesItems"""
-
-    page_name: NotRequired[Union[str, None]]
-    title: NotRequired[Union[str, None]]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "ActorType",
-    "ActorTypeForResponse",
-    "CreateEventType",
-    "CreateEventTypeForResponse",
-    "DeleteEventType",
-    "DeleteEventTypeForResponse",
-    "EventPropRepoType",
-    "EventPropRepoTypeForResponse",
-    "EventType",
-    "EventTypeForResponse",
-    "GollumEventPropPagesItemsType",
-    "GollumEventPropPagesItemsTypeForResponse",
-    "GollumEventType",
-    "GollumEventTypeForResponse",
-    "PublicEventType",
-    "PublicEventTypeForResponse",
-    "PushEventType",
-    "PushEventTypeForResponse",
-    "WatchEventType",
-    "WatchEventTypeForResponse",
+    "BillingUsageSummaryReportGhePropCostCenterType",
+    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
+    "BillingUsageSummaryReportGhePropTimePeriodType",
+    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportGheType",
+    "BillingUsageSummaryReportGheTypeForResponse",
 )

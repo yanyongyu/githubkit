@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,53 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
-
-    Configuration for code scanning default setup.
-    """
+class CodeQualitySetupUpdateAnyof2(GitHubModel):
+    """CodeQualitySetupUpdateAnyof2"""
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+        default=UNSET, description="The desired state of code quality setup."
+    )
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Union[str, None] = Field(
+        description="Runner label to be used if the runner type is labeled."
     )
     languages: Missing[
         list[
             Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
             ]
         ]
     ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[Literal["standard", "labeled"], None]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
-    )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
-        default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[Literal["weekly"], None]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
+        description="Whether AI findings run for Code Quality on this repository.",
     )
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeQualitySetupUpdateAnyof2)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = ("CodeQualitySetupUpdateAnyof2",)

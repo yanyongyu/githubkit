@@ -9,28 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0051 import ActionsPolicyRepoConditionsOneof0
+from .group_0052 import ActionsPolicyRepoConditionsOneof1
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class ReposOwnerRepoAutolinksPostBody(GitHubModel):
-    """ReposOwnerRepoAutolinksPostBody"""
 
-    key_prefix: str = Field(
-        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
+class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
+
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
     )
-    url_template: str = Field(
-        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
-    )
-    is_alphanumeric: Missing[bool] = Field(
+    conditions: Missing[
+        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    ] = Field(
         default=UNSET,
-        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+        title="Repository Actions policy conditions",
+        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
     )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoAutolinksPostBody)
+model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
 
-__all__ = ("ReposOwnerRepoAutolinksPostBody",)
+__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)

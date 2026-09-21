@@ -18,21 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0684 import WebhookIssueCommentCreatedPropComment
-from .group_0685 import WebhookIssueCommentCreatedPropIssue
+from .group_0046 import Discussion
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0684 import WebhookDiscussionTransferredPropChanges
 
 
-class WebhookIssueCommentCreated(GitHubModel):
-    """issue_comment created event"""
+class WebhookDiscussionTransferred(GitHubModel):
+    """discussion transferred event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhookIssueCommentCreatedPropComment = Field(
-        title="issue comment",
-        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
+    action: Literal["transferred"] = Field()
+    changes: WebhookDiscussionTransferredPropChanges = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -43,9 +43,6 @@ class WebhookIssueCommentCreated(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    issue: WebhookIssueCommentCreatedPropIssue = Field(
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -59,6 +56,6 @@ class WebhookIssueCommentCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentCreated)
+model_rebuild(WebhookDiscussionTransferred)
 
-__all__ = ("WebhookIssueCommentCreated",)
+__all__ = ("WebhookDiscussionTransferred",)

@@ -9,69 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupType(TypedDict):
-    """Concurrency Group
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    A custom pattern for secret scanning.
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class ConcurrencyGroupTypeForResponse(TypedDict):
-    """Concurrency Group
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    A custom pattern for secret scanning.
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
-
-
-class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
-
-
-class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupPropGroupMembersItemsType",
-    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupType",
-    "ConcurrencyGroupTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

@@ -13,268 +13,160 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0081 import TeamType, TeamTypeForResponse
-from .group_0338 import (
-    RepositoryAdvisoryCreditType,
-    RepositoryAdvisoryCreditTypeForResponse,
+from .group_0108 import TeamType, TeamTypeForResponse
+from .group_0228 import MilestoneType, MilestoneTypeForResponse
+from .group_0337 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0338 import PullRequestStackType, PullRequestStackTypeForResponse
+from .group_0340 import (
+    PullRequestSimplePropBaseType,
+    PullRequestSimplePropBaseTypeForResponse,
+    PullRequestSimplePropHeadType,
+    PullRequestSimplePropHeadTypeForResponse,
+)
+from .group_0341 import (
+    PullRequestSimplePropLinksType,
+    PullRequestSimplePropLinksTypeForResponse,
 )
 
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
+class PullRequestSimpleType(TypedDict):
+    """Pull Request Simple
 
-    A repository security advisory.
+    Pull Request Simple
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
     url: str
+    id: int
+    node_id: str
     html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[Literal["critical", "high", "medium", "low"], None]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    published_at: Union[_dt.datetime, None]
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[SimpleUserType, None]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsType]
+    milestone: Union[MilestoneType, None]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     closed_at: Union[_dt.datetime, None]
-    withdrawn_at: Union[_dt.datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[list[SimpleUserType], None]
-    collaborating_teams: Union[list[TeamType], None]
-    private_fork: None
+    merged_at: Union[_dt.datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[SimpleUserType, None]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamType]]
+    head: PullRequestSimplePropHeadType
+    base: PullRequestSimplePropBaseType
+    links: PullRequestSimplePropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    stack: NotRequired[Union[PullRequestStackType, None]]
+    draft: NotRequired[bool]
 
 
-class RepositoryAdvisoryTypeForResponse(TypedDict):
-    """RepositoryAdvisory
+class PullRequestSimpleTypeForResponse(TypedDict):
+    """Pull Request Simple
 
-    A repository security advisory.
+    Pull Request Simple
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
     url: str
+    id: int
+    node_id: str
     html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[Literal["critical", "high", "medium", "low"], None]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    published_at: Union[str, None]
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[SimpleUserTypeForResponse, None]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
     closed_at: Union[str, None]
-    withdrawn_at: Union[str, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
-    cvss: Union[RepositoryAdvisoryPropCvssTypeForResponse, None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
-    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
-    collaborating_teams: Union[list[TeamTypeForResponse], None]
-    private_fork: None
+    merged_at: Union[str, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[SimpleUserTypeForResponse, None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamTypeForResponse]]
+    head: PullRequestSimplePropHeadTypeForResponse
+    base: PullRequestSimplePropBaseTypeForResponse
+    links: PullRequestSimplePropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
+    draft: NotRequired[bool]
 
 
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
+class PullRequestSimplePropLabelsItemsType(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
 
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCvssTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
+    id: int
+    node_id: str
+    url: str
     name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_by: None
 
 
-class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
+class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
 
-    cwe_id: str
+    id: int
+    node_id: str
+    url: str
     name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_by: None
 
 
 __all__ = (
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCvssTypeForResponse",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropSubmissionTypeForResponse",
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
-    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityTypeForResponse",
+    "PullRequestSimplePropLabelsItemsType",
+    "PullRequestSimplePropLabelsItemsTypeForResponse",
+    "PullRequestSimpleType",
+    "PullRequestSimpleTypeForResponse",
 )

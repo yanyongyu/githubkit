@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0261 import SecretScanningCustomPatternToCreate
+
+class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
 
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        description="The list of custom patterns to create."
-    )
-
-
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
-
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)

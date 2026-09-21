@@ -9,54 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0221 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
+from .group_0185 import (
+    RepositoryRuleCopilotCodeReviewPropParametersType,
+    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
 )
 
 
-class PullRequestStackPullRequestType(TypedDict):
-    """Pull Request Stack Pull Request"""
+class RepositoryRuleDetailedOneof17Type(TypedDict):
+    """RepositoryRuleDetailedOneof17"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[_dt.datetime, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserType, None]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class PullRequestStackPullRequestTypeForResponse(TypedDict):
-    """Pull Request Stack Pull Request"""
+class RepositoryRuleDetailedOneof17TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof17"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[str, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    type: Literal["copilot_code_review"]
+    parameters: NotRequired[
+        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "PullRequestStackPullRequestType",
-    "PullRequestStackPullRequestTypeForResponse",
+    "RepositoryRuleDetailedOneof17Type",
+    "RepositoryRuleDetailedOneof17TypeForResponse",
 )

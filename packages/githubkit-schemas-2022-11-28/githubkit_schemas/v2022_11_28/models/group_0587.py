@@ -10,103 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0589 import WebhooksLabelArchivedAllof1PropArchivedBy
 
 
-class WebhooksReview(GitHubModel):
-    """WebhooksReview
+class WebhooksLabelArchived(GitHubModel):
+    """Archived label"""
 
-    The review that was affected.
-    """
-
-    links: WebhooksReviewPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    body: Union[str, None] = Field(description="The text of the review.")
-    commit_id: str = Field(description="A commit SHA for the review.")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the review")
-    node_id: str = Field()
-    pull_request_url: str = Field()
-    state: str = Field()
-    submitted_at: Union[_dt.datetime, None] = Field()
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
-
-
-class WebhooksReviewPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    archived_at: _dt.datetime = Field(
+        description="Timestamp indicating when the label was archived."
+    )
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedBy = Field(
+        description="The user who archived the label."
+    )
     id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-class WebhooksReviewPropLinks(GitHubModel):
-    """WebhooksReviewPropLinks"""
+model_rebuild(WebhooksLabelArchived)
 
-    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
-    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
-
-
-class WebhooksReviewPropLinksPropHtml(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
-    """Link"""
-
-    href: str = Field()
-
-
-model_rebuild(WebhooksReview)
-model_rebuild(WebhooksReviewPropUser)
-model_rebuild(WebhooksReviewPropLinks)
-model_rebuild(WebhooksReviewPropLinksPropHtml)
-model_rebuild(WebhooksReviewPropLinksPropPullRequest)
-
-__all__ = (
-    "WebhooksReview",
-    "WebhooksReviewPropLinks",
-    "WebhooksReviewPropLinksPropHtml",
-    "WebhooksReviewPropLinksPropPullRequest",
-    "WebhooksReviewPropUser",
-)
+__all__ = ("WebhooksLabelArchived",)

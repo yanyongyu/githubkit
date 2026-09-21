@@ -9,43 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0303 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-)
 
+class ConcurrencyGroup(GitHubModel):
+    """Concurrency Group
 
-class ProtectedBranchPullRequestReview(GitHubModel):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    url: Missing[str] = Field(default=UNSET)
-    dismissal_restrictions: Missing[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-    ] = Field(
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(description="API URL for this concurrency group.")
+    total_count: int = Field()
+    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
+
+
+class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int = Field(description="The ID of the workflow run.")
+    run_name: str = Field(description="The name of the workflow run.")
+    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
+    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
+    job_id: Missing[int] = Field(
         default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
     )
-    dismiss_stale_reviews: bool = Field()
-    require_code_owner_reviews: bool = Field()
-    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
+    job_name: Missing[str] = Field(
         default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
     )
+    job_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="API URL for the job."
+    )
+    job_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web URL for the job."
+    )
+    status: Literal["in_progress", "pending"] = Field()
 
 
-model_rebuild(ProtectedBranchPullRequestReview)
+model_rebuild(ConcurrencyGroup)
+model_rebuild(ConcurrencyGroupPropGroupMembersItems)
 
-__all__ = ("ProtectedBranchPullRequestReview",)
+__all__ = (
+    "ConcurrencyGroup",
+    "ConcurrencyGroupPropGroupMembersItems",
+)

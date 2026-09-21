@@ -13,47 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0544 import (
+from .group_0047 import MilestoneType, MilestoneTypeForResponse
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0587 import WebhooksReviewType, WebhooksReviewTypeForResponse
-from .group_0904 import (
-    WebhookPullRequestReviewSubmittedPropPullRequestType,
-    WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse,
-)
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0606 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookPullRequestReviewSubmittedType(TypedDict):
-    """pull_request_review submitted event"""
+class WebhookPullRequestMilestonedType(TypedDict):
+    """pull_request milestoned event"""
 
-    action: Literal["submitted"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: NotRequired[MilestoneType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestType
+    pull_request: WebhooksPullRequest5Type
     repository: RepositoryWebhooksType
-    review: WebhooksReviewType
     sender: SimpleUserType
 
 
-class WebhookPullRequestReviewSubmittedTypeForResponse(TypedDict):
-    """pull_request_review submitted event"""
+class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
+    """pull_request milestoned event"""
 
-    action: Literal["submitted"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: NotRequired[MilestoneTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse
+    pull_request: WebhooksPullRequest5TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    review: WebhooksReviewTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestReviewSubmittedType",
-    "WebhookPullRequestReviewSubmittedTypeForResponse",
+    "WebhookPullRequestMilestonedType",
+    "WebhookPullRequestMilestonedTypeForResponse",
 )

@@ -10,113 +10,95 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2ViewType(TypedDict):
-    """Projects v2 View
+class PackageVersionType(TypedDict):
+    """Package Version
 
-    A view inside a projects v2 project
+    A version of a software package
     """
 
     id: int
-    number: int
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
-    project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorType
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
+    deleted_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class ProjectsV2ViewTypeForResponse(TypedDict):
-    """Projects v2 View
+class PackageVersionTypeForResponse(TypedDict):
+    """Package Version
 
-    A view inside a projects v2 project
+    A version of a software package
     """
 
     id: int
-    number: int
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
-    project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorTypeForResponse
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
     created_at: str
     updated_at: str
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
+    deleted_at: NotRequired[str]
+    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
 
 
-class ProjectsV2ViewPropCreatorType(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
 
 
-class ProjectsV2ViewPropCreatorTypeForResponse(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+class PackageVersionPropMetadataTypeForResponse(TypedDict):
+    """Package Version Metadata"""
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
+    """Container Metadata"""
+
+    tags: list[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
+
+
+class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[list[str]]
 
 
 __all__ = (
-    "ProjectsV2ViewPropCreatorType",
-    "ProjectsV2ViewPropCreatorTypeForResponse",
-    "ProjectsV2ViewType",
-    "ProjectsV2ViewTypeForResponse",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropContainerTypeForResponse",
+    "PackageVersionPropMetadataPropDockerType",
+    "PackageVersionPropMetadataPropDockerTypeForResponse",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataTypeForResponse",
+    "PackageVersionType",
+    "PackageVersionTypeForResponse",
 )

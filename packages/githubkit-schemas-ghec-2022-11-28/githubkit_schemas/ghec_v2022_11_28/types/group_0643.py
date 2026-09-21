@@ -9,30 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    full_name: str
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest/admin/overview/about-enterprise-accounts)."
+    """
+
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    name: str
     node_id: str
-    private: bool
+    name: str
+    slug: str
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    avatar_url: str
 
 
-class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesItems"""
+class EnterpriseWebhooksTypeForResponse(TypedDict):
+    """Enterprise
 
-    full_name: str
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest/admin/overview/about-enterprise-accounts)."
+    """
+
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    name: str
     node_id: str
-    private: bool
+    name: str
+    slug: str
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    avatar_url: str
 
 
 __all__ = (
-    "WebhooksRepositoriesItemsType",
-    "WebhooksRepositoriesItemsTypeForResponse",
+    "EnterpriseWebhooksType",
+    "EnterpriseWebhooksTypeForResponse",
 )

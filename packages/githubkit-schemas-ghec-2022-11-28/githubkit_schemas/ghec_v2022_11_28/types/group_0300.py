@@ -9,55 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationCreateIssueFieldType(TypedDict):
-    """OrganizationCreateIssueField"""
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
-    ]
+    The public key used for setting Dependabot Secrets.
+    """
+
+    key_id: str
+    key: str
 
 
-class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationCreateIssueField"""
+class DependabotPublicKeyTypeForResponse(TypedDict):
+    """DependabotPublicKey
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
-    ]
+    The public key used for setting Dependabot Secrets.
+    """
 
-
-class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
-
-
-class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "OrganizationCreateIssueFieldPropOptionsItemsType",
-    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationCreateIssueFieldType",
-    "OrganizationCreateIssueFieldTypeForResponse",
+    "DependabotPublicKeyType",
+    "DependabotPublicKeyTypeForResponse",
 )

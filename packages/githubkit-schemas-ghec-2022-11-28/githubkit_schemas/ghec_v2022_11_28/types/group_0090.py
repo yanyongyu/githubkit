@@ -9,62 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class DependabotAlertDismissalRequestSimpleType(TypedDict):
-    """Dependabot alert dismissal request
+class GoogleCloudConfigType(TypedDict):
+    """GoogleCloudConfig
 
-    Information about an active dismissal request for this Dependabot alert.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    id: NotRequired[int]
-    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
-    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
-    created_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
 
 
-class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
-    """Dependabot alert dismissal request
+class GoogleCloudConfigTypeForResponse(TypedDict):
+    """GoogleCloudConfig
 
-    Information about an active dismissal request for this Dependabot alert.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    id: NotRequired[int]
-    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
-    requester: NotRequired[
-        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
-    ]
-    created_at: NotRequired[str]
-    url: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
-    """DependabotAlertDismissalRequestSimplePropRequester
-
-    The user who requested the dismissal.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestSimplePropRequester
-
-    The user who requested the dismissal.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
+    bucket: str
+    key_id: str
+    encrypted_json_credentials: str
 
 
 __all__ = (
-    "DependabotAlertDismissalRequestSimplePropRequesterType",
-    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
-    "DependabotAlertDismissalRequestSimpleType",
-    "DependabotAlertDismissalRequestSimpleTypeForResponse",
+    "GoogleCloudConfigType",
+    "GoogleCloudConfigTypeForResponse",
 )

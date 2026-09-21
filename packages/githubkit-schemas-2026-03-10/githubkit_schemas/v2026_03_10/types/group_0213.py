@@ -9,40 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0214 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
 
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
-
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    The configuration for iteration fields.
     """
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
-
-
-class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
-    """required_deployments
-
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    start_date: _dt.date
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
     ]
 
 
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
+
+    The configuration for iteration fields.
+    """
+
+    start_date: str
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    ]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: str
+    start_date: _dt.date
+    duration: int
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: str
+    start_date: str
+    duration: int
+
+
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsType",
-    "RepositoryRuleRequiredDeploymentsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

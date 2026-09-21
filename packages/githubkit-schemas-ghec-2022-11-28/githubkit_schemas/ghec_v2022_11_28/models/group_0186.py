@@ -15,31 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0143 import RepositoryRulesetConditionsPropRefName
 
-class SecretScanningCustomPatternToCreate(GitHubModel):
-    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to create in a bulk operation.
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
     """
 
-    name: str = Field(description="The name of the custom pattern.")
-    pattern: str = Field(description="The regular expression of the custom pattern.")
-    start_delimiter: Missing[str] = Field(
-        default=UNSET,
-        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
-    )
-    end_delimiter: Missing[str] = Field(
-        default=UNSET,
-        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
-    )
-    must_match: Missing[list[str]] = Field(
-        default=UNSET, description="List of regexes that the secret must match."
-    )
-    must_not_match: Missing[list[str]] = Field(
-        default=UNSET, description="List of regexes that the secret must not match."
-    )
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
 
 
-model_rebuild(SecretScanningCustomPatternToCreate)
+model_rebuild(OrgRulesetConditionsOneof0)
 
-__all__ = ("SecretScanningCustomPatternToCreate",)
+__all__ = ("OrgRulesetConditionsOneof0",)

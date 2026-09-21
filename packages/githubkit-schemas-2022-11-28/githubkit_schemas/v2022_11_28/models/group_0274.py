@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0273 import RateLimit
-from .group_0275 import RateLimitOverviewPropResources
+from .group_0273 import RulesetVersionPropActor
+from .group_0276 import RulesetVersionWithStateAllof1PropState
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
 
-    Rate Limit Overview
-    """
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
+    )
+    updated_at: _dt.datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
+    )
 
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
 
+model_rebuild(RulesetVersionWithState)
 
-model_rebuild(RateLimitOverview)
-
-__all__ = ("RateLimitOverview",)
+__all__ = ("RulesetVersionWithState",)

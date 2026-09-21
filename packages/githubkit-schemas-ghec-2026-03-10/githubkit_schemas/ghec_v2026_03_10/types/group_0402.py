@@ -9,74 +9,264 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0068 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
+from .group_0393 import (
+    BranchRestrictionPolicyType,
+    BranchRestrictionPolicyTypeForResponse,
 )
-from .group_0069 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0071 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
+from .group_0403 import (
+    ProtectedBranchPropRequiredPullRequestReviewsType,
+    ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse,
 )
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class ProtectedBranchType(TypedDict):
+    """Protected Branch
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
+    Branch protections protect branches
+    """
+
     url: str
-    html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    required_status_checks: NotRequired[StatusCheckPolicyType]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsType
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
-    assignees: NotRequired[list[SimpleUserType]]
+    required_signatures: NotRequired[ProtectedBranchPropRequiredSignaturesType]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsType]
+    required_linear_history: NotRequired[ProtectedBranchPropRequiredLinearHistoryType]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesType]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsType]
+    restrictions: NotRequired[BranchRestrictionPolicyType]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionType
+    ]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsType]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchType]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingType]
 
 
-class CodeScanningAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertItems"""
+class ProtectedBranchTypeForResponse(TypedDict):
+    """Protected Branch
 
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
+    Branch protections protect branches
+    """
+
     url: str
-    html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    required_status_checks: NotRequired[StatusCheckPolicyTypeForResponse]
+    required_pull_request_reviews: NotRequired[
+        ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    required_signatures: NotRequired[
+        ProtectedBranchPropRequiredSignaturesTypeForResponse
+    ]
+    enforce_admins: NotRequired[ProtectedBranchPropEnforceAdminsTypeForResponse]
+    required_linear_history: NotRequired[
+        ProtectedBranchPropRequiredLinearHistoryTypeForResponse
+    ]
+    allow_force_pushes: NotRequired[ProtectedBranchPropAllowForcePushesTypeForResponse]
+    allow_deletions: NotRequired[ProtectedBranchPropAllowDeletionsTypeForResponse]
+    restrictions: NotRequired[BranchRestrictionPolicyTypeForResponse]
+    required_conversation_resolution: NotRequired[
+        ProtectedBranchPropRequiredConversationResolutionTypeForResponse
+    ]
+    block_creations: NotRequired[ProtectedBranchPropBlockCreationsTypeForResponse]
+    lock_branch: NotRequired[ProtectedBranchPropLockBranchTypeForResponse]
+    allow_fork_syncing: NotRequired[ProtectedBranchPropAllowForkSyncingTypeForResponse]
+
+
+class ProtectedBranchPropRequiredSignaturesType(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredSignaturesTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredSignatures"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropEnforceAdminsType(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropEnforceAdminsTypeForResponse(TypedDict):
+    """ProtectedBranchPropEnforceAdmins"""
+
+    url: str
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryType(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredLinearHistoryTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredLinearHistory"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesType(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowForcePushesTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowForcePushes"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsType(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropAllowDeletionsTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowDeletions"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropRequiredConversationResolutionType(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropRequiredConversationResolutionTypeForResponse(TypedDict):
+    """ProtectedBranchPropRequiredConversationResolution"""
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropBlockCreationsType(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropBlockCreationsTypeForResponse(TypedDict):
+    """ProtectedBranchPropBlockCreations"""
+
+    enabled: bool
+
+
+class ProtectedBranchPropLockBranchType(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropLockBranchTypeForResponse(TypedDict):
+    """ProtectedBranchPropLockBranch
+
+    Whether to set the branch as read-only. If this is true, users will not be able
+    to push to the branch.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingType(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class ProtectedBranchPropAllowForkSyncingTypeForResponse(TypedDict):
+    """ProtectedBranchPropAllowForkSyncing
+
+    Whether users can pull changes from upstream when the branch is locked. Set to
+    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
+    """
+
+    enabled: NotRequired[bool]
+
+
+class StatusCheckPolicyType(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsType]
+    contexts_url: str
+
+
+class StatusCheckPolicyTypeForResponse(TypedDict):
+    """Status Check Policy
+
+    Status Check Policy
+    """
+
+    url: str
+    strict: bool
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsTypeForResponse]
+    contexts_url: str
+
+
+class StatusCheckPolicyPropChecksItemsType(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
+
+
+class StatusCheckPolicyPropChecksItemsTypeForResponse(TypedDict):
+    """StatusCheckPolicyPropChecksItems"""
+
+    context: str
+    app_id: Union[int, None]
 
 
 __all__ = (
-    "CodeScanningAlertItemsType",
-    "CodeScanningAlertItemsTypeForResponse",
+    "ProtectedBranchPropAllowDeletionsType",
+    "ProtectedBranchPropAllowDeletionsTypeForResponse",
+    "ProtectedBranchPropAllowForcePushesType",
+    "ProtectedBranchPropAllowForcePushesTypeForResponse",
+    "ProtectedBranchPropAllowForkSyncingType",
+    "ProtectedBranchPropAllowForkSyncingTypeForResponse",
+    "ProtectedBranchPropBlockCreationsType",
+    "ProtectedBranchPropBlockCreationsTypeForResponse",
+    "ProtectedBranchPropEnforceAdminsType",
+    "ProtectedBranchPropEnforceAdminsTypeForResponse",
+    "ProtectedBranchPropLockBranchType",
+    "ProtectedBranchPropLockBranchTypeForResponse",
+    "ProtectedBranchPropRequiredConversationResolutionType",
+    "ProtectedBranchPropRequiredConversationResolutionTypeForResponse",
+    "ProtectedBranchPropRequiredLinearHistoryType",
+    "ProtectedBranchPropRequiredLinearHistoryTypeForResponse",
+    "ProtectedBranchPropRequiredSignaturesType",
+    "ProtectedBranchPropRequiredSignaturesTypeForResponse",
+    "ProtectedBranchType",
+    "ProtectedBranchTypeForResponse",
+    "StatusCheckPolicyPropChecksItemsType",
+    "StatusCheckPolicyPropChecksItemsTypeForResponse",
+    "StatusCheckPolicyType",
+    "StatusCheckPolicyTypeForResponse",
 )

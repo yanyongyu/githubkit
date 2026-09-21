@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,22 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
-from .group_0913 import WebhookPackagePublishedPropPackage
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
 
 
-class WebhookPackagePublished(GitHubModel):
-    """package published event"""
+class WebhookMetaDeleted(GitHubModel):
+    """meta deleted event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
+    hook: WebhookMetaDeletedPropHook = Field(
+        description="The deleted webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
+    )
+    hook_id: int = Field(description="The id of the modified webhook.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -44,17 +47,44 @@ class WebhookPackagePublished(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    package: WebhookPackagePublishedPropPackage = Field(
-        description="Information about the package."
+    repository: Missing[Union[RepositoryWebhooks, None]] = Field(default=UNSET)
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPackagePublished)
+class WebhookMetaDeletedPropHook(GitHubModel):
+    """WebhookMetaDeletedPropHook
 
-__all__ = ("WebhookPackagePublished",)
+    The deleted webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool = Field()
+    config: WebhookMetaDeletedPropHookPropConfig = Field()
+    created_at: str = Field()
+    events: list[str] = Field(description="")
+    id: int = Field()
+    name: str = Field()
+    type: str = Field()
+    updated_at: str = Field()
+
+
+class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"] = Field()
+    insecure_ssl: str = Field()
+    secret: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+
+
+model_rebuild(WebhookMetaDeleted)
+model_rebuild(WebhookMetaDeletedPropHook)
+model_rebuild(WebhookMetaDeletedPropHookPropConfig)
+
+__all__ = (
+    "WebhookMetaDeleted",
+    "WebhookMetaDeletedPropHook",
+    "WebhookMetaDeletedPropHookPropConfig",
+)

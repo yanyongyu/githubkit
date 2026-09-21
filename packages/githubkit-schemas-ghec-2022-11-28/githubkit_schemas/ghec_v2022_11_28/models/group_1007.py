@@ -18,21 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
-from .group_0650 import WebhooksUserMannequin
-from .group_1008 import WebhookPullRequestUnassignedPropPullRequest
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
+from .group_1008 import WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest
 
 
-class WebhookPullRequestUnassigned(GitHubModel):
-    """pull_request unassigned event"""
+class WebhookPullRequestReviewRequestRemovedOneof0(GitHubModel):
+    """WebhookPullRequestReviewRequestRemovedOneof0"""
 
-    action: Literal["unassigned"] = Field()
-    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
-        default=UNSET, title="User"
-    )
+    action: Literal["review_request_removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,16 +45,50 @@ class WebhookPullRequestUnassigned(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestUnassignedPropPullRequest = Field(
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest = Field(
         title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    requested_reviewer: Union[
+        WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer, None
+    ] = Field(title="User")
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestUnassigned)
+class WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookPullRequestUnassigned",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof0)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer)
+
+__all__ = (
+    "WebhookPullRequestReviewRequestRemovedOneof0",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer",
+)

@@ -9,29 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class RepositoryHashAlgorithmType(TypedDict):
-    """Repository hash algorithm
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    Repository hash algorithm
-    """
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
-    hash_algorithm: Literal["sha1", "sha256"]
+
+class DependencyGraphDiffItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItems"""
+
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[
+        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
+    ]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class RepositoryHashAlgorithmTypeForResponse(TypedDict):
-    """Repository hash algorithm
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    Repository hash algorithm
-    """
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
-    hash_algorithm: Literal["sha1", "sha256"]
+
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "RepositoryHashAlgorithmType",
-    "RepositoryHashAlgorithmTypeForResponse",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsTypeForResponse",
 )

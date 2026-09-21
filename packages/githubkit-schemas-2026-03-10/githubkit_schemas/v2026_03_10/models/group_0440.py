@@ -14,15 +14,19 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0421 import IssueTypeWebhook
+from .group_0423 import IssueEventIntent
 
 
-class TimelineConnectedEvent(GitHubModel):
-    """Timeline Connected Event
+class IssueTypeAddedIssueEvent(GitHubModel):
+    """Issue Type Added Issue Event
 
-    Timeline Connected Event
+    Issue Type Added Issue Event
     """
 
     id: int = Field()
@@ -34,8 +38,12 @@ class TimelineConnectedEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
+    issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(TimelineConnectedEvent)
+model_rebuild(IssueTypeAddedIssueEvent)
 
-__all__ = ("TimelineConnectedEvent",)
+__all__ = ("IssueTypeAddedIssueEvent",)

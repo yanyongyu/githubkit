@@ -9,44 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
+
+    Contributor Activity
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    author: Union[SimpleUserType, None]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class CodespaceExportDetailsTypeForResponse(TypedDict):
-    """Fetches information about an export of a codespace.
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    Contributor Activity
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    author: Union[SimpleUserTypeForResponse, None]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+
+
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "CodespaceExportDetailsType",
-    "CodespaceExportDetailsTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

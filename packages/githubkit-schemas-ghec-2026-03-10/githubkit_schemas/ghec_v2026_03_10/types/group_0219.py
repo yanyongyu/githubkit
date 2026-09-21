@@ -9,60 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class IssuePropLabelsItemsOneof1Type(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class DeleteCostCenterType(TypedDict):
+    """DeleteCostCenter"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
-    archived_by: NotRequired[None]
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
-class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class DeleteCostCenterTypeForResponse(TypedDict):
+    """DeleteCostCenter"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
-    archived_by: NotRequired[None]
-
-
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
-
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class IssuePropPullRequestTypeForResponse(TypedDict):
-    """IssuePropPullRequest"""
-
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    message: str
+    id: str
+    name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1Type",
-    "IssuePropLabelsItemsOneof1TypeForResponse",
-    "IssuePropPullRequestType",
-    "IssuePropPullRequestTypeForResponse",
+    "DeleteCostCenterType",
+    "DeleteCostCenterTypeForResponse",
 )

@@ -9,63 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependencyGraphDiffItemsType(TypedDict):
-    """DependencyGraphDiffItems"""
+class RepositoryCollaboratorPermissionType(TypedDict):
+    """Repository Collaborator Permission
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
-    scope: Literal["unknown", "runtime", "development"]
+    Repository Collaborator Permission
+    """
+
+    permission: str
+    role_name: str
+    user: Union[CollaboratorType, None]
 
 
-class DependencyGraphDiffItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItems"""
+class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
+    """Repository Collaborator Permission
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[
-        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
-    ]
-    scope: Literal["unknown", "runtime", "development"]
+    Repository Collaborator Permission
+    """
+
+    permission: str
+    role_name: str
+    user: Union[CollaboratorTypeForResponse, None]
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class CollaboratorType(TypedDict):
+    """Collaborator
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsType]
+    role_name: str
+    user_view_type: NotRequired[str]
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class CollaboratorTypeForResponse(TypedDict):
+    """Collaborator
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
+
+
+class CollaboratorPropPermissionsTypeForResponse(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
 __all__ = (
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
-    "DependencyGraphDiffItemsType",
-    "DependencyGraphDiffItemsTypeForResponse",
+    "CollaboratorPropPermissionsType",
+    "CollaboratorPropPermissionsTypeForResponse",
+    "CollaboratorType",
+    "CollaboratorTypeForResponse",
+    "RepositoryCollaboratorPermissionType",
+    "RepositoryCollaboratorPermissionTypeForResponse",
 )

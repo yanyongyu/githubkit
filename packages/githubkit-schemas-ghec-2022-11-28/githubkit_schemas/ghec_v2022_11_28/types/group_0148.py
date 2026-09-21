@@ -9,38 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0149 import (
-    RepositoryRuleBranchNamePatternPropParametersType,
-    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0067 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
 )
 
 
-class RepositoryRuleBranchNamePatternType(TypedDict):
-    """branch_name_pattern
+class EnterpriseRulesetConditionsOneof4Type(TypedDict):
+    """organization_property_and_repository_name
 
-    Parameters to be used for the branch_name_pattern rule
+    Conditions to target organizations by property and all repositories
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
-    """branch_name_pattern
+class EnterpriseRulesetConditionsOneof4TypeForResponse(TypedDict):
+    """organization_property_and_repository_name
 
-    Parameters to be used for the branch_name_pattern rule
+    Conditions to target organizations by property and all repositories
     """
 
-    type: Literal["branch_name_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
-    ]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleBranchNamePatternType",
-    "RepositoryRuleBranchNamePatternTypeForResponse",
+    "EnterpriseRulesetConditionsOneof4Type",
+    "EnterpriseRulesetConditionsOneof4TypeForResponse",
 )

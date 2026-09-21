@@ -9,25 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0122 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0126 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0139 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class ActionsPolicyEnterpriseConditionsOneof4Type(TypedDict):
+    """organization_property_and_repository_name
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    Conditions to target organizations by property and repositories by name
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class ActionsPolicyEnterpriseConditionsOneof4TypeForResponse(TypedDict):
+    """organization_property_and_repository_name
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    Conditions to target organizations by property and repositories by name
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Allof1Type",
-    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof4Type",
+    "ActionsPolicyEnterpriseConditionsOneof4TypeForResponse",
 )

@@ -12,22 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0137 import CustomPropertyValue
 
 
-class ActionsCacheStorageLimitForRepository(GitHubModel):
-    """Actions cache storage limit for a repository
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    GitHub Actions cache storage policy for a repository.
+    List of custom property values for a repository
     """
 
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum total cache size for this repository, in gigabytes.",
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
 
 
-model_rebuild(ActionsCacheStorageLimitForRepository)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = ("ActionsCacheStorageLimitForRepository",)
+__all__ = ("OrgRepoCustomPropertyValues",)

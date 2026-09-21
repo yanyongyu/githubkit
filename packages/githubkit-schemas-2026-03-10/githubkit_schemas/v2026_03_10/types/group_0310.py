@@ -9,61 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0303 import BranchProtectionType, BranchProtectionTypeForResponse
-from .group_0308 import CommitType, CommitTypeForResponse
 
+class ConcurrencyGroupRunListType(TypedDict):
+    """Concurrency Group Run List
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
-
-    Branch With Protection
+    A list of concurrency groups associated with a workflow run.
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
 
 
-class BranchWithProtectionTypeForResponse(TypedDict):
-    """Branch With Protection
+class ConcurrencyGroupRunListTypeForResponse(TypedDict):
+    """Concurrency Group Run List
 
-    Branch With Protection
+    A list of concurrency groups associated with a workflow run.
     """
 
-    name: str
-    commit: CommitTypeForResponse
-    links: BranchWithProtectionPropLinksTypeForResponse
-    protected: bool
-    protection: BranchProtectionTypeForResponse
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
+    ]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
 
-    html: str
-    self_: str
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
+    ]
 
 
-class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
 
-    html: str
-    self_: str
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionPropLinksTypeForResponse",
-    "BranchWithProtectionType",
-    "BranchWithProtectionTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupRunListType",
+    "ConcurrencyGroupRunListTypeForResponse",
 )

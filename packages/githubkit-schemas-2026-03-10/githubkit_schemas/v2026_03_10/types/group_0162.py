@@ -9,53 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationUpdateIssueFieldType(TypedDict):
-    """OrganizationUpdateIssueField"""
+class CodeScanningAnalysisToolType(TypedDict):
+    """CodeScanningAnalysisTool"""
 
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
-class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueField"""
+class CodeScanningAnalysisToolTypeForResponse(TypedDict):
+    """CodeScanningAnalysisTool"""
 
     name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
-    ]
-
-
-class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
-
-
-class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationUpdateIssueFieldPropOptionsItemsType",
-    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationUpdateIssueFieldType",
-    "OrganizationUpdateIssueFieldTypeForResponse",
+    "CodeScanningAnalysisToolType",
+    "CodeScanningAnalysisToolTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,109 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulePullRequestPropParameters(GitHubModel):
-    """RepositoryRulePullRequestPropParameters"""
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
-    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
-        default=UNSET,
-        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
-    )
-    dismiss_stale_reviews_on_push: bool = Field(
-        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
-    )
-    dismissal_restriction: Missing[RepositoryRuleParamsDismissalRestriction] = Field(
-        default=UNSET,
-        title="DismissalRestriction",
-        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
-    )
-    require_code_owner_review: bool = Field(
-        description="Require an approving review in pull requests that modify files that have a designated code owner."
-    )
-    require_last_push_approval: bool = Field(
-        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
-    )
-    required_approving_review_count: int = Field(
-        le=10.0,
-        description="The number of approving reviews that are required before a pull request can be merged.",
-    )
-    required_review_thread_resolution: bool = Field(
-        description="All conversations on code must be resolved before a pull request can be merged."
-    )
-    required_reviewers: Missing[
-        list[RepositoryRuleParamsRequiredReviewerConfiguration]
-    ] = Field(
-        default=UNSET,
-        description="> [!NOTE]\n> `required_reviewers` is in beta and subject to change.\n\nA collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
-    )
-
-
-class RepositoryRuleParamsDismissalRestriction(GitHubModel):
-    """DismissalRestriction
-
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Custom property defined on an organization
     """
 
-    allowed_actors: Missing[list[RepositoryRuleParamsActor]] = Field(
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
         default=UNSET,
-        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
     )
-    enabled: bool = Field(
-        description="Whether to restrict review dismissal to specific actors."
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
     )
-
-
-class RepositoryRuleParamsActor(GitHubModel):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int = Field(description="ID of the actor that can dismiss reviews.")
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"] = Field(
-        description="The type of the actor"
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
-
-
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax."
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
     )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
     )
-    reviewer: RepositoryRuleParamsReviewer = Field(
-        title="Reviewer", description="A required reviewing team"
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    require_explicit_values: Missing[bool] = Field(
+        default=UNSET, description="Whether setting properties values is mandatory"
     )
 
 
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
+model_rebuild(CustomProperty)
 
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRulePullRequestPropParameters)
-model_rebuild(RepositoryRuleParamsDismissalRestriction)
-model_rebuild(RepositoryRuleParamsActor)
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
-
-__all__ = (
-    "RepositoryRuleParamsActor",
-    "RepositoryRuleParamsDismissalRestriction",
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
-    "RepositoryRulePullRequestPropParameters",
-)
+__all__ = ("CustomProperty",)

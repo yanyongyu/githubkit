@@ -9,30 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

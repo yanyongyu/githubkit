@@ -9,30 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
-
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+from .group_0592 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserEmailsPostBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
-    emails: list[str]
+
+class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "UserEmailsPostBodyOneof0Type",
-    "UserEmailsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201PropBaseType",
+    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201Type",
+    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
 )

@@ -9,74 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0134 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
-)
-from .group_0135 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
-from .group_0137 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
-)
+from .group_0330 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0332 import CommitPropCommitType, CommitPropCommitTypeForResponse
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class CommitType(TypedDict):
+    """Commit
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
+    Commit
+    """
+
     url: str
+    sha: str
+    node_id: str
     html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
-    assignees: NotRequired[list[SimpleUserType]]
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: list[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class CodeScanningAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertItems"""
+class CommitTypeForResponse(TypedDict):
+    """Commit
 
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
+    Commit
+    """
+
     url: str
+    sha: str
+    node_id: str
     html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    comments_url: str
+    commit: CommitPropCommitTypeForResponse
+    author: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    committer: Union[SimpleUserTypeForResponse, EmptyObjectTypeForResponse, None]
+    parents: list[CommitPropParentsItemsTypeForResponse]
+    stats: NotRequired[CommitPropStatsTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class EmptyObjectTypeForResponse(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropParentsItemsTypeForResponse(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
+class CommitPropStatsTypeForResponse(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "CodeScanningAlertItemsType",
-    "CodeScanningAlertItemsTypeForResponse",
+    "CommitPropParentsItemsType",
+    "CommitPropParentsItemsTypeForResponse",
+    "CommitPropStatsType",
+    "CommitPropStatsTypeForResponse",
+    "CommitType",
+    "CommitTypeForResponse",
+    "EmptyObjectType",
+    "EmptyObjectTypeForResponse",
 )

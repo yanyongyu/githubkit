@@ -9,44 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0396 import GitUserType, GitUserTypeForResponse
+from .group_0397 import VerificationType, VerificationTypeForResponse
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    Hovercard
-    """
-
-    contexts: list[HovercardPropContextsItemsType]
-
-
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
-
-    Hovercard
-    """
-
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
-
-
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[GitUserType, None]
+    comment_count: int
     message: str
-    octicon: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
+    url: str
+    verification: NotRequired[VerificationType]
 
 
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
+class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
+    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
+    committer: Union[GitUserTypeForResponse, None]
+    comment_count: int
     message: str
-    octicon: str
+    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
+    url: str
+    verification: NotRequired[VerificationTypeForResponse]
+
+
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: _dt.datetime
+
+
+class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str
+    email: str
+    date: str
+
+
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
+    "CommitSearchResultItemPropCommitPropTreeType",
+    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitTypeForResponse",
 )

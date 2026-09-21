@@ -9,79 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
+    """Actions cache retention limit for a repository
 
-class DeploymentType(TypedDict):
-    """Deployment
-
-    A request for a specific ref(branch,sha,tag) to be deployed
+    GitHub Actions cache retention policy for a repository.
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0Type, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    max_cache_retention_days: NotRequired[int]
 
 
-class DeploymentTypeForResponse(TypedDict):
-    """Deployment
+class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache retention limit for a repository
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    GitHub Actions cache retention policy for a repository.
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0TypeForResponse, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-
-
-DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
-
-
-DeploymentPropPayloadOneof0TypeForResponse: TypeAlias = dict[str, Any]
-"""DeploymentPropPayloadOneof0
-"""
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "DeploymentPropPayloadOneof0Type",
-    "DeploymentPropPayloadOneof0TypeForResponse",
-    "DeploymentType",
-    "DeploymentTypeForResponse",
+    "ActionsCacheRetentionLimitForRepositoryType",
+    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
 )

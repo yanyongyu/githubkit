@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,22 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomRepositoryRoleCreateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
+    )
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
 
 
-model_rebuild(OrganizationCustomRepositoryRoleCreateSchema)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("OrganizationCustomRepositoryRoleCreateSchema",)
+__all__ = ("SelfHostedRunnersSettings",)

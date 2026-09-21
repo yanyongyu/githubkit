@@ -9,22 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    selected_repository_ids: list[int]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    selected_repository_ids: list[int]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyType",
-    "UserCodespacesSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
+class AgentsReposOwnerRepoTasksGetResponse403(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,17 +30,17 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+class AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +59,10 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse403)
+model_rebuild(AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse404",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoTasksGetResponse403",
+    "AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems",
 )

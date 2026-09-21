@@ -9,69 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0404 import (
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
+    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+)
 
 
-class IssueReferenceType(TypedDict):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
-    """
-
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryType
-    issue_type: Union[IssueReferencePropIssueTypeType, None]
-
-
-class IssueReferenceTypeForResponse(TypedDict):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
-    """
-
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
-
-
-class IssueReferencePropIssueTypeType(TypedDict):
-    """Issue Type
-
-    The type of the referenced issue.
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int
     node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
-    """Issue Type
-
-    The type of the referenced issue.
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int
     node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    ]
 
 
 __all__ = (
-    "IssueReferencePropIssueTypeType",
-    "IssueReferencePropIssueTypeTypeForResponse",
-    "IssueReferenceType",
-    "IssueReferenceTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1Type",
+    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
 )

@@ -9,33 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class SecretScanningCustomPatternToCreateType(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    Set secrets for GitHub Actions.
+    A custom pattern to create in a bulk operation.
     """
 
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
-class ActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret
+class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    Set secrets for GitHub Actions.
+    A custom pattern to create in a bulk operation.
     """
 
     name: str
-    created_at: str
-    updated_at: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "ActionsSecretType",
-    "ActionsSecretTypeForResponse",
+    "SecretScanningCustomPatternToCreateType",
+    "SecretScanningCustomPatternToCreateTypeForResponse",
 )

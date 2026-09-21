@@ -9,39 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0382 import DiffEntry
-from .group_0383 import Commit
+from .group_0432 import CodeScanningVariantAnalysisSkippedRepoGroup
 
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Commit Comparison
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
 
 
-model_rebuild(CommitComparison)
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-__all__ = ("CommitComparison",)
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repository_full_names: list[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    )
+
+
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
+
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+)

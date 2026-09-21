@@ -9,28 +9,196 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
+class EnterpriseTokenInventoryItemType(TypedDict):
+    """Enterprise Token Inventory Item
+
+    A credential or GitHub App installation in an enterprise's token inventory.
+    """
+
+    inventory_id: str
+    credential_id: NotRequired[Union[int, None]]
+    hashed_token: NotRequired[Union[str, None]]
+    fingerprint: NotRequired[Union[str, None]]
+    item_type: Literal["credential", "token_issuer_principal"]
+    credential_type: Literal[
+        "classic_pat",
+        "oauth_app_user_token",
+        "github_app_user_token",
+        "fine_grained_pat",
+        "ssh_key",
+        "github_app_installation",
+        "federated_jti",
+    ]
+    display_name: NotRequired[Union[str, None]]
+    owner: NotRequired[Union[EnterpriseTokenInventoryItemPropOwnerType, None]]
+    owner_type: NotRequired[
+        Union[Literal["user", "oauth_application", "github_app"], None]
+    ]
+    application: NotRequired[
+        Union[EnterpriseTokenInventoryItemPropApplicationType, None]
+    ]
+    credential_state: Literal["active", "expired", "revoked", "deleted"]
+    authorization_state: Literal["currently_authorized", "member_owned_only"]
+    effective_access_state: Literal["effective", "not_effective", "unknown"]
+    state_reason: NotRequired[Union[str, None]]
+    created_at: NotRequired[Union[_dt.datetime, None]]
+    last_used_at: NotRequired[Union[_dt.datetime, None]]
+    expires_at: NotRequired[Union[_dt.datetime, None]]
+    next_expires_at: NotRequired[Union[_dt.datetime, None]]
+    credential_instance_count: NotRequired[Union[int, None]]
+    enterprise_authorized: bool
+    authorization_count: int
+    authorized_organizations: list[
+        EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItemsType
+    ]
+    age_days: NotRequired[Union[int, None]]
+    never_expires: NotRequired[bool]
+    past_expiration_policy: NotRequired[Union[bool, None]]
+    past_expiration_policy_basis: NotRequired[
+        Union[Literal["enforced_limit", "proposed_baseline"], None]
+    ]
+    expiry_unknown: NotRequired[bool]
+    scopes: NotRequired[Union[list[str], None]]
+    permissions: NotRequired[
+        Union[EnterpriseTokenInventoryItemPropPermissionsType, None]
+    ]
+    repository_selection: NotRequired[Union[Literal["all", "subset", "none"], None]]
+
+
+class EnterpriseTokenInventoryItemTypeForResponse(TypedDict):
+    """Enterprise Token Inventory Item
+
+    A credential or GitHub App installation in an enterprise's token inventory.
+    """
+
+    inventory_id: str
+    credential_id: NotRequired[Union[int, None]]
+    hashed_token: NotRequired[Union[str, None]]
+    fingerprint: NotRequired[Union[str, None]]
+    item_type: Literal["credential", "token_issuer_principal"]
+    credential_type: Literal[
+        "classic_pat",
+        "oauth_app_user_token",
+        "github_app_user_token",
+        "fine_grained_pat",
+        "ssh_key",
+        "github_app_installation",
+        "federated_jti",
+    ]
+    display_name: NotRequired[Union[str, None]]
+    owner: NotRequired[
+        Union[EnterpriseTokenInventoryItemPropOwnerTypeForResponse, None]
+    ]
+    owner_type: NotRequired[
+        Union[Literal["user", "oauth_application", "github_app"], None]
+    ]
+    application: NotRequired[
+        Union[EnterpriseTokenInventoryItemPropApplicationTypeForResponse, None]
+    ]
+    credential_state: Literal["active", "expired", "revoked", "deleted"]
+    authorization_state: Literal["currently_authorized", "member_owned_only"]
+    effective_access_state: Literal["effective", "not_effective", "unknown"]
+    state_reason: NotRequired[Union[str, None]]
+    created_at: NotRequired[Union[str, None]]
+    last_used_at: NotRequired[Union[str, None]]
+    expires_at: NotRequired[Union[str, None]]
+    next_expires_at: NotRequired[Union[str, None]]
+    credential_instance_count: NotRequired[Union[int, None]]
+    enterprise_authorized: bool
+    authorization_count: int
+    authorized_organizations: list[
+        EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItemsTypeForResponse
+    ]
+    age_days: NotRequired[Union[int, None]]
+    never_expires: NotRequired[bool]
+    past_expiration_policy: NotRequired[Union[bool, None]]
+    past_expiration_policy_basis: NotRequired[
+        Union[Literal["enforced_limit", "proposed_baseline"], None]
+    ]
+    expiry_unknown: NotRequired[bool]
+    scopes: NotRequired[Union[list[str], None]]
+    permissions: NotRequired[
+        Union[EnterpriseTokenInventoryItemPropPermissionsTypeForResponse, None]
+    ]
+    repository_selection: NotRequired[Union[Literal["all", "subset", "none"], None]]
+
+
+class EnterpriseTokenInventoryItemPropOwnerType(TypedDict):
+    """EnterpriseTokenInventoryItemPropOwner"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+
+
+class EnterpriseTokenInventoryItemPropOwnerTypeForResponse(TypedDict):
+    """EnterpriseTokenInventoryItemPropOwner"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+
+
+class EnterpriseTokenInventoryItemPropApplicationType(TypedDict):
+    """EnterpriseTokenInventoryItemPropApplication"""
+
+    id: NotRequired[int]
+    name: NotRequired[Union[str, None]]
+
+
+class EnterpriseTokenInventoryItemPropApplicationTypeForResponse(TypedDict):
+    """EnterpriseTokenInventoryItemPropApplication"""
+
+    id: NotRequired[int]
+    name: NotRequired[Union[str, None]]
+
+
+class EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItemsType(TypedDict):
+    """EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+class EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+    """EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems"""
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+    id: NotRequired[int]
+    login: NotRequired[str]
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+EnterpriseTokenInventoryItemPropPermissionsType: TypeAlias = dict[str, Any]
+"""EnterpriseTokenInventoryItemPropPermissions
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+Permissions by resource for fine-grained PATs and GitHub App installations. Null
+when not reported; an empty object means no recorded permissions.
+"""
+
+
+EnterpriseTokenInventoryItemPropPermissionsTypeForResponse: TypeAlias = dict[str, Any]
+"""EnterpriseTokenInventoryItemPropPermissions
+
+Permissions by resource for fine-grained PATs and GitHub App installations. Null
+when not reported; an empty object means no recorded permissions.
+"""
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
+    "EnterpriseTokenInventoryItemPropApplicationType",
+    "EnterpriseTokenInventoryItemPropApplicationTypeForResponse",
+    "EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItemsType",
+    "EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItemsTypeForResponse",
+    "EnterpriseTokenInventoryItemPropOwnerType",
+    "EnterpriseTokenInventoryItemPropOwnerTypeForResponse",
+    "EnterpriseTokenInventoryItemPropPermissionsType",
+    "EnterpriseTokenInventoryItemPropPermissionsTypeForResponse",
+    "EnterpriseTokenInventoryItemType",
+    "EnterpriseTokenInventoryItemTypeForResponse",
 )

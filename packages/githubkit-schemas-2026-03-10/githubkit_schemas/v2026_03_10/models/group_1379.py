@@ -9,41 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
+from .group_1378 import (
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
+)
 
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    config: Missing[WebhookConfig] = Field(
-        default=UNSET,
-        title="Webhook Configuration",
-        description="Configuration object of the webhook",
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
     )
-    events: Missing[list[str]] = Field(
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    add_events: Missing[list[str]] = Field(
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
         default=UNSET,
-        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
+        description="An optional comment associated with dismissing the alert.",
     )
-    remove_events: Missing[list[str]] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`).",
     )
-    active: Missing[bool] = Field(
+    agent_assignment: Missing[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    ] = Field(
         default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="Parameters for AI agent assignment. Only used when an agent bot login is\nincluded in `assignees`. Ignored when no agent is being assigned.",
     )
 
 
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",)

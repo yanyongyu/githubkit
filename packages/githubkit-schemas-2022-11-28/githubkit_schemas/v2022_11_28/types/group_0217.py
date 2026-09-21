@@ -9,135 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    dismissal_restriction: NotRequired[RepositoryRuleParamsDismissalRestrictionType]
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationType]
+    Custom property set payload
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
+    require_explicit_values: NotRequired[bool]
 
 
-class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class CustomPropertySetPayloadTypeForResponse(TypedDict):
+    """Custom Property Set Payload
 
-    allowed_merge_methods: NotRequired[list[Literal["merge", "squash", "rebase"]]]
-    dismiss_stale_reviews_on_push: bool
-    dismissal_restriction: NotRequired[
-        RepositoryRuleParamsDismissalRestrictionTypeForResponse
+    Custom property set payload
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
-    required_reviewers: NotRequired[
-        list[RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse]
-    ]
-
-
-class RepositoryRuleParamsDismissalRestrictionType(TypedDict):
-    """DismissalRestriction
-
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
-    """
-
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorType]]
-    enabled: bool
-
-
-class RepositoryRuleParamsDismissalRestrictionTypeForResponse(TypedDict):
-    """DismissalRestriction
-
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
-    """
-
-    allowed_actors: NotRequired[list[RepositoryRuleParamsActorTypeForResponse]]
-    enabled: bool
-
-
-class RepositoryRuleParamsActorType(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
-
-
-class RepositoryRuleParamsActorTypeForResponse(TypedDict):
-    """Actor
-
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"]
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationType(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerType
-
-
-class RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse(TypedDict):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str]
-    minimum_approvals: int
-    reviewer: RepositoryRuleParamsReviewerTypeForResponse
-
-
-class RepositoryRuleParamsReviewerType(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
-
-
-class RepositoryRuleParamsReviewerTypeForResponse(TypedDict):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int
-    type: Literal["Team"]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleParamsActorType",
-    "RepositoryRuleParamsActorTypeForResponse",
-    "RepositoryRuleParamsDismissalRestrictionType",
-    "RepositoryRuleParamsDismissalRestrictionTypeForResponse",
-    "RepositoryRuleParamsRequiredReviewerConfigurationType",
-    "RepositoryRuleParamsRequiredReviewerConfigurationTypeForResponse",
-    "RepositoryRuleParamsReviewerType",
-    "RepositoryRuleParamsReviewerTypeForResponse",
-    "RepositoryRulePullRequestPropParametersType",
-    "RepositoryRulePullRequestPropParametersTypeForResponse",
+    "CustomPropertySetPayloadType",
+    "CustomPropertySetPayloadTypeForResponse",
 )

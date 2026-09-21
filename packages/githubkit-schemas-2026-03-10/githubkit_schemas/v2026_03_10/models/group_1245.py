@@ -11,24 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0191 import CustomPropertyValue
-
-
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
-    )
+from .group_0167 import Codespace
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)

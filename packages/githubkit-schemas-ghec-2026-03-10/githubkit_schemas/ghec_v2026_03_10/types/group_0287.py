@@ -9,72 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    Information about an external group's usage and its members
+    A description of the machine powering a codespace.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
-class ExternalGroupTypeForResponse(TypedDict):
-    """ExternalGroup
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    Information about an external group's usage and its members
+    A description of the machine powering a codespace.
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
-    members: list[ExternalGroupPropMembersItemsTypeForResponse]
-
-
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropMembersItemsTypeForResponse",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropTeamsItemsTypeForResponse",
-    "ExternalGroupType",
-    "ExternalGroupTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

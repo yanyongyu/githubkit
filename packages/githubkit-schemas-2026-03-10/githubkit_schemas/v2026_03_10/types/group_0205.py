@@ -11,39 +11,50 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0197 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0201 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
-)
 
+class PullRequestStackType(TypedDict):
+    """Pull Request Stack
 
-class OrgRulesetConditionsOneof1Type(TypedDict):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
+    The stack information associated with a pull request.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    base: PullRequestStackPropBaseType
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
 
 
-class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
-    """repository_id_and_ref_name
+class PullRequestStackTypeForResponse(TypedDict):
+    """Pull Request Stack
 
-    Conditions to target repositories by id and refs by name
+    The stack information associated with a pull request.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
-    )
+    base: PullRequestStackPropBaseTypeForResponse
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+
+
+class PullRequestStackPropBaseType(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof1Type",
-    "OrgRulesetConditionsOneof1TypeForResponse",
+    "PullRequestStackPropBaseType",
+    "PullRequestStackPropBaseTypeForResponse",
+    "PullRequestStackType",
+    "PullRequestStackTypeForResponse",
 )

@@ -9,49 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
 
+class WorkflowUsage(GitHubModel):
+    """Workflow Usage
 
-class DeploymentSimple(GitHubModel):
-    """Deployment
-
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Workflow Usage
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    task: str = Field(description="Parameter to specify a task to execute")
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    billable: WorkflowUsagePropBillable = Field()
+
+
+class WorkflowUsagePropBillable(GitHubModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-model_rebuild(DeploymentSimple)
+class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-__all__ = ("DeploymentSimple",)
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowUsage)
+model_rebuild(WorkflowUsagePropBillable)
+model_rebuild(WorkflowUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowUsagePropBillablePropMacos)
+model_rebuild(WorkflowUsagePropBillablePropWindows)
+
+__all__ = (
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropWindows",
+)

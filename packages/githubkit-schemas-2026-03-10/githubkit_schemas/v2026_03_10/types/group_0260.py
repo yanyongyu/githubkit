@@ -9,54 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningCustomPatternType(TypedDict):
-    """Secret Scanning Custom Pattern
+class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    A custom pattern for secret scanning.
-    """
-
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    restricted_file_paths: list[str]
 
 
-class SecretScanningCustomPatternTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern
+class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    A custom pattern for secret scanning.
-    """
-
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    restricted_file_paths: list[str]
 
 
 __all__ = (
-    "SecretScanningCustomPatternType",
-    "SecretScanningCustomPatternTypeForResponse",
+    "RepositoryRuleFilePathRestrictionPropParametersType",
+    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
 )

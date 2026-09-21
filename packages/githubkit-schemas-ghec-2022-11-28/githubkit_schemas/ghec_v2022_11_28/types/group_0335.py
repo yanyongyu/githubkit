@@ -9,126 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0334 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
 
-class RuleSuitePullRequestType(TypedDict):
-    """Pull request rule suite metadata
 
-    Metadata for a pull request rule evaluation result.
+class ProjectsV2Type(TypedDict):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
+    id: float
+    node_id: str
+    owner: SimpleUserType
+    creator: SimpleUserType
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[_dt.datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[_dt.datetime, None]
+    deleted_by: Union[SimpleUserType, None]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[Union[ProjectsV2StatusUpdateType, None]]
+    is_template: NotRequired[bool]
 
 
-class RuleSuitePullRequestTypeForResponse(TypedDict):
-    """Pull request rule suite metadata
+class ProjectsV2TypeForResponse(TypedDict):
+    """Projects v2 Project
 
-    Metadata for a pull request rule evaluation result.
+    A projects v2 project
     """
 
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
-
-
-class RuleSuitePullRequestPropPullRequestType(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
-    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
-
-
-class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
-    reviews: NotRequired[
-        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    id: float
+    node_id: str
+    owner: SimpleUserTypeForResponse
+    creator: SimpleUserTypeForResponse
+    title: str
+    description: Union[str, None]
+    public: bool
+    closed_at: Union[str, None]
+    created_at: str
+    updated_at: str
+    number: int
+    short_description: Union[str, None]
+    deleted_at: Union[str, None]
+    deleted_by: Union[SimpleUserTypeForResponse, None]
+    state: NotRequired[Literal["open", "closed"]]
+    latest_status_update: NotRequired[
+        Union[ProjectsV2StatusUpdateTypeForResponse, None]
     ]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
-    state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[
-        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
-    ]
-    state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+    is_template: NotRequired[bool]
 
 
 __all__ = (
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestType",
-    "RuleSuitePullRequestPropPullRequestTypeForResponse",
-    "RuleSuitePullRequestType",
-    "RuleSuitePullRequestTypeForResponse",
+    "ProjectsV2Type",
+    "ProjectsV2TypeForResponse",
 )

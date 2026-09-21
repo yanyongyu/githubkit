@@ -9,70 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0174 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
+CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
+CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-    A projects v2 project
-    """
-
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[_dt.datetime, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[SimpleUserType, None]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[ProjectsV2StatusUpdateType, None]]
-    is_template: NotRequired[bool]
-
-
-class ProjectsV2TypeForResponse(TypedDict):
-    """Projects v2 Project
-
-    A projects v2 project
-    """
-
-    id: float
-    node_id: str
-    owner: SimpleUserTypeForResponse
-    creator: SimpleUserTypeForResponse
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[str, None]
-    created_at: str
-    updated_at: str
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[str, None]
-    deleted_by: Union[SimpleUserTypeForResponse, None]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[
-        Union[ProjectsV2StatusUpdateTypeForResponse, None]
-    ]
-    is_template: NotRequired[bool]
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
 __all__ = (
-    "ProjectsV2Type",
-    "ProjectsV2TypeForResponse",
+    "CopilotOrganizationContentExclusionDetailsType",
+    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
 )

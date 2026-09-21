@@ -9,36 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
-    A hosted compute network settings resource.
-    """
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
 
+class RuleSuitesItemsTypeForResponse(TypedDict):
+    """RuleSuitesItems"""
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
-
-    A hosted compute network settings resource.
-    """
-
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "RuleSuitesItemsType",
+    "RuleSuitesItemsTypeForResponse",
 )

@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0662 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0678 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookProjectCardCreatedType(TypedDict):
-    """project_card created event"""
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
 
-    action: Literal["created"]
+    action: Literal["member_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
+    membership: WebhooksMembershipType
+    organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectCardCreatedTypeForResponse(TypedDict):
-    """project_card created event"""
+class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
+    """organization member_removed event"""
 
-    action: Literal["created"]
+    action: Literal["member_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhooksProjectCardTypeForResponse
+    membership: WebhooksMembershipTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectCardCreatedType",
-    "WebhookProjectCardCreatedTypeForResponse",
+    "WebhookOrganizationMemberRemovedType",
+    "WebhookOrganizationMemberRemovedTypeForResponse",
 )

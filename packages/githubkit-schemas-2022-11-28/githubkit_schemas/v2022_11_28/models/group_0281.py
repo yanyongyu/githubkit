@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,48 +19,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ConcurrencyGroup(GitHubModel):
-    """Concurrency Group
+class SecretScanningCustomPattern(GitHubModel):
+    """Secret Scanning Custom Pattern
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    A custom pattern for secret scanning.
     """
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    total_count: int = Field()
-    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
-
-
-class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    job_id: Missing[int] = Field(
+    id: int = Field(description="The ID of the custom pattern.")
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    slug: str = Field(
+        description="A URL-friendly identifier for the custom pattern, derived from its name."
+    )
+    state: Literal["published", "unpublished"] = Field(
+        description="The state of the custom pattern."
+    )
+    push_protection_enabled: bool = Field(
+        description="Whether push protection is enabled for this custom pattern."
+    )
+    start_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start delimiter regex for the custom pattern."
+    )
+    end_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The end delimiter regex for the custom pattern."
+    )
+    must_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    job_name: Missing[str] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The date and time the custom pattern was created in ISO 8601 format.",
     )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was last updated in ISO 8601 format.",
     )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
-    )
-    status: Literal["in_progress", "pending"] = Field()
 
 
-model_rebuild(ConcurrencyGroup)
-model_rebuild(ConcurrencyGroupPropGroupMembersItems)
+model_rebuild(SecretScanningCustomPattern)
 
-__all__ = (
-    "ConcurrencyGroup",
-    "ConcurrencyGroupPropGroupMembersItems",
-)
+__all__ = ("SecretScanningCustomPattern",)

@@ -9,54 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0250 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
-    MarketplacePurchasePropMarketplacePurchaseType,
-    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0226 import LabelType, LabelTypeForResponse
+from .group_0238 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class PullRequestEventType(TypedDict):
+    """PullRequestEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    action: str
+    number: int
+    pull_request: PullRequestMinimalType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
 
 
-class MarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase
+class PullRequestEventTypeForResponse(TypedDict):
+    """PullRequestEvent"""
 
-    Marketplace Purchase
-    """
-
-    url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
+    action: str
+    number: int
+    pull_request: PullRequestMinimalTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "MarketplacePurchaseType",
-    "MarketplacePurchaseTypeForResponse",
+    "PullRequestEventType",
+    "PullRequestEventTypeForResponse",
 )

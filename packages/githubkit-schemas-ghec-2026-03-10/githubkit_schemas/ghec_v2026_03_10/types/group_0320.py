@@ -9,52 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestStackType(TypedDict):
-    """Pull Request Stack
+class OrganizationCreateIssueTypeType(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    The stack information associated with a pull request.
-    """
-
-    base: PullRequestStackPropBaseType
-    size: NotRequired[int]
-    position: NotRequired[int]
-    id: NotRequired[int]
-    number: NotRequired[int]
-
-
-class PullRequestStackTypeForResponse(TypedDict):
-    """Pull Request Stack
-
-    The stack information associated with a pull request.
-    """
-
-    base: PullRequestStackPropBaseTypeForResponse
-    size: NotRequired[int]
-    position: NotRequired[int]
-    id: NotRequired[int]
-    number: NotRequired[int]
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
-class PullRequestStackPropBaseType(TypedDict):
-    """PullRequestStackPropBase"""
+class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    ref: str
-    sha: str
-
-
-class PullRequestStackPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackPropBase"""
-
-    ref: str
-    sha: str
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
 __all__ = (
-    "PullRequestStackPropBaseType",
-    "PullRequestStackPropBaseTypeForResponse",
-    "PullRequestStackType",
-    "PullRequestStackTypeForResponse",
+    "OrganizationCreateIssueTypeType",
+    "OrganizationCreateIssueTypeTypeForResponse",
 )

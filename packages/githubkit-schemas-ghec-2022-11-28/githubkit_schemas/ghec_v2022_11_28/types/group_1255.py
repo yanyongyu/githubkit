@@ -9,28 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
+    """
 
-    name: str
-    ai_credit_pool_enabled: NotRequired[bool]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
+    """
 
-    name: str
-    ai_credit_pool_enabled: NotRequired[bool]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
 )

@@ -13,73 +13,71 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0667 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0681 import WebhooksProjectCardType, WebhooksProjectCardTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedType(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesType
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectsV2ItemConvertedTypeForResponse(TypedDict):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectCardEditedTypeForResponse(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectsV2ItemConvertedPropChangesTypeForResponse
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2_item: ProjectsV2ItemTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    project_card: WebhooksProjectCardTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
 
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
-    ]
+    note: WebhookProjectCardEditedPropChangesPropNoteType
 
 
-class WebhookProjectsV2ItemConvertedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+class WebhookProjectCardEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
 
-    content_type: NotRequired[
-        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse
-    ]
+    note: WebhookProjectCardEditedPropChangesPropNoteTypeForResponse
 
 
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
+    from_: Union[str, None]
 
 
-class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse(
-    TypedDict
-):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+class WebhookProjectCardEditedPropChangesPropNoteTypeForResponse(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[str]
+    from_: Union[str, None]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeTypeForResponse",
-    "WebhookProjectsV2ItemConvertedPropChangesType",
-    "WebhookProjectsV2ItemConvertedPropChangesTypeForResponse",
-    "WebhookProjectsV2ItemConvertedType",
-    "WebhookProjectsV2ItemConvertedTypeForResponse",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropChangesPropNoteTypeForResponse",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesTypeForResponse",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedTypeForResponse",
 )

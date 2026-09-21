@@ -9,105 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0638 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0658 import WebhooksTeamType, WebhooksTeamTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0892 import (
+    WebhookIssuesUnlockedPropIssueType,
+    WebhookIssuesUnlockedPropIssueTypeForResponse,
+)
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookIssuesUnlockedType(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["removed"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhooksTeamType
+    issue: WebhookIssuesUnlockedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookMembershipRemovedTypeForResponse(TypedDict):
-    """membership removed event"""
+class WebhookIssuesUnlockedTypeForResponse(TypedDict):
+    """issues unlocked event"""
 
-    action: Literal["removed"]
+    action: Literal["unlocked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderTypeForResponse, None]
-    team: WebhooksTeamTypeForResponse
-
-
-class WebhookMembershipRemovedPropSenderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookMembershipRemovedPropSenderTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    issue: WebhookIssuesUnlockedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropSenderTypeForResponse",
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedTypeForResponse",
+    "WebhookIssuesUnlockedType",
+    "WebhookIssuesUnlockedTypeForResponse",
 )

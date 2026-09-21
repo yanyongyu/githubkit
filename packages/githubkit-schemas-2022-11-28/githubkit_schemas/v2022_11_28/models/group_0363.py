@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,67 +18,70 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0032 import SimpleRepository
+from .group_0364 import CodeScanningVariantAnalysisPropScannedRepositoriesItems
+from .group_0365 import CodeScanningVariantAnalysisPropSkippedRepositories
 
-class ContentTree(GitHubModel):
-    """Content Tree
 
-    Content Tree
+class CodeScanningVariantAnalysis(GitHubModel):
+    """Variant Analysis
+
+    A run of a CodeQL query against one or more repositories.
     """
 
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
-    encoding: Missing[str] = Field(default=UNSET)
-    links: ContentTreePropLinks = Field(alias="_links")
+    id: int = Field(description="The ID of the variant analysis.")
+    controller_repo: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    query_language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack_url: str = Field(description="The download url for the query pack.")
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
+    )
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"] = Field()
+    actions_workflow_run_id: Missing[int] = Field(
+        default=UNSET,
+        description="The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
+    )
+    failure_reason: Missing[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ] = Field(
+        default=UNSET,
+        description="The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
+    )
+    scanned_repositories: Missing[
+        list[CodeScanningVariantAnalysisPropScannedRepositoriesItems]
+    ] = Field(default=UNSET)
+    skipped_repositories: Missing[
+        CodeScanningVariantAnalysisPropSkippedRepositories
+    ] = Field(
+        default=UNSET,
+        description="Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis.",
+    )
 
 
-class ContentTreePropLinks(GitHubModel):
-    """ContentTreePropLinks"""
+model_rebuild(CodeScanningVariantAnalysis)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-class ContentTreePropEntriesItems(GitHubModel):
-    """ContentTreePropEntriesItems"""
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
-
-
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentTree)
-model_rebuild(ContentTreePropLinks)
-model_rebuild(ContentTreePropEntriesItems)
-model_rebuild(ContentTreePropEntriesItemsPropLinks)
-
-__all__ = (
-    "ContentTree",
-    "ContentTreePropEntriesItems",
-    "ContentTreePropEntriesItemsPropLinks",
-    "ContentTreePropLinks",
-)
+__all__ = ("CodeScanningVariantAnalysis",)

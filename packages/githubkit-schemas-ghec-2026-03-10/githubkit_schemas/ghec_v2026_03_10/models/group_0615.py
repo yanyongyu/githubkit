@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0606 import Meta
+from .group_0616 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class Email(GitHubModel):
-    """Email
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Email
-    """
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
+    )
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
+    )
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
 
+model_rebuild(ScimEnterpriseUserResponseAllof1)
 
-model_rebuild(Email)
-
-__all__ = ("Email",)
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

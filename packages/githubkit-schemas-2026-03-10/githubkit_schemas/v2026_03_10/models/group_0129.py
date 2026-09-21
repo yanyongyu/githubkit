@@ -9,56 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-    Groups of organization members that gives permissions on specified repositories.
+    Parameters for a repository property condition
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
-        default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-    )
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(TeamSimple)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
 
-__all__ = ("TeamSimple",)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

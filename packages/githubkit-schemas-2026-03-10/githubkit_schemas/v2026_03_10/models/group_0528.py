@@ -9,25 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Email(GitHubModel):
-    """Email
+class Tag(GitHubModel):
+    """Tag
 
-    Email
+    Tag
     """
 
-    email: str = Field()
-    primary: bool = Field()
-    verified: bool = Field()
-    visibility: Union[str, None] = Field()
+    name: str = Field()
+    commit: TagPropCommit = Field()
+    zipball_url: str = Field()
+    tarball_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(Email)
+class TagPropCommit(GitHubModel):
+    """TagPropCommit"""
 
-__all__ = ("Email",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Tag)
+model_rebuild(TagPropCommit)
+
+__all__ = (
+    "Tag",
+    "TagPropCommit",
+)

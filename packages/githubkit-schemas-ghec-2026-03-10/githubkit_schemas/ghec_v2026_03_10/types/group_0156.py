@@ -10,39 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0157 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleFileExtensionRestrictionType(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleParamsProofOfPresenceType(TypedDict):
+    """ProofOfPresence
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
-class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleParamsProofOfPresenceTypeForResponse(TypedDict):
+    """ProofOfPresence
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
-    ]
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionType",
-    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
+    "RepositoryRuleParamsProofOfPresenceType",
+    "RepositoryRuleParamsProofOfPresenceTypeForResponse",
 )

@@ -9,122 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class TimelineReviewedEventType(TypedDict):
-    """Timeline Reviewed Event
+class RemovedFromProjectIssueEventType(TypedDict):
+    """Removed from Project Issue Event
 
-    Timeline Reviewed Event
+    Removed from Project Issue Event
     """
 
-    event: Literal["reviewed"]
     id: int
     node_id: str
-    user: SimpleUserType
-    body: Union[str, None]
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    url: str
+    actor: SimpleUserType
+    event: Literal["removed_from_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+
+
+class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
+    """Removed from Project Issue Event
+
+    Removed from Project Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["removed_from_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    project_card: NotRequired[
+        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
     ]
 
 
-class TimelineReviewedEventTypeForResponse(TypedDict):
-    """Timeline Reviewed Event
+class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
-    Timeline Reviewed Event
-    """
-
-    event: Literal["reviewed"]
     id: int
-    node_id: str
-    user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    updated_at: NotRequired[Union[str, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
-class TimelineReviewedEventPropLinksType(TypedDict):
-    """TimelineReviewedEventPropLinks"""
+class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
-    html: TimelineReviewedEventPropLinksPropHtmlType
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
-
-
-class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
-
-
-class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "TimelineReviewedEventPropLinksPropHtmlType",
-    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
-    "TimelineReviewedEventPropLinksPropPullRequestType",
-    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
-    "TimelineReviewedEventPropLinksType",
-    "TimelineReviewedEventPropLinksTypeForResponse",
-    "TimelineReviewedEventType",
-    "TimelineReviewedEventTypeForResponse",
+    "RemovedFromProjectIssueEventPropProjectCardType",
+    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
+    "RemovedFromProjectIssueEventType",
+    "RemovedFromProjectIssueEventTypeForResponse",
 )

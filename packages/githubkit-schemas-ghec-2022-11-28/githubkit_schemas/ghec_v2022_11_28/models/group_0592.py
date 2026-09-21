@@ -9,42 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0590 import Meta
-
-
-class ScimEnterpriseGroupResponseAllof1(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1"""
-
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
-    )
-    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
-        default=UNSET, description="The security group members."
-    )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
+from .group_0003 import SimpleUser
+from .group_0239 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class PullRequestStackPullRequest(GitHubModel):
+    """Pull Request Stack Pull Request"""
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(ScimEnterpriseGroupResponseAllof1)
-model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
+model_rebuild(PullRequestStackPullRequest)
 
-__all__ = (
-    "ScimEnterpriseGroupResponseAllof1",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
-)
+__all__ = ("PullRequestStackPullRequest",)

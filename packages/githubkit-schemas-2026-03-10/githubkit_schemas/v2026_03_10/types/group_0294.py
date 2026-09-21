@@ -12,159 +12,81 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowRunUsageType(TypedDict):
-    """Workflow Run Usage
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Workflow Run Usage
+    Rate Limit Overview
     """
 
-    billable: WorkflowRunUsagePropBillableType
-    run_duration_ms: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesType
 
 
-class WorkflowRunUsageTypeForResponse(TypedDict):
-    """Workflow Run Usage
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    Workflow Run Usage
+    Rate Limit Overview
     """
 
-    billable: WorkflowRunUsagePropBillableTypeForResponse
-    run_duration_ms: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
 
 
-class WorkflowRunUsagePropBillableType(TypedDict):
-    """WorkflowRunUsagePropBillable"""
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsType]
-
-
-class WorkflowRunUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowRunUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowRunUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowRunUsagePropBillablePropWindowsTypeForResponse]
-
-
-class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
-    ]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+    dependency_sbom: NotRequired[RateLimitType]
+    code_scanning_autofix: NotRequired[RateLimitType]
+    copilot_usage_records: NotRequired[RateLimitType]
 
 
-class WorkflowRunUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
+class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
+    core: RateLimitTypeForResponse
+    graphql: NotRequired[RateLimitTypeForResponse]
+    search: RateLimitTypeForResponse
+    code_search: NotRequired[RateLimitTypeForResponse]
+    source_import: NotRequired[RateLimitTypeForResponse]
+    integration_manifest: NotRequired[RateLimitTypeForResponse]
+    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
+    scim: NotRequired[RateLimitTypeForResponse]
+    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
+    dependency_sbom: NotRequired[RateLimitTypeForResponse]
+    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
+    copilot_usage_records: NotRequired[RateLimitTypeForResponse]
 
 
-class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacos"""
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse]
-    ]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int
-    jobs: int
-    job_runs: NotRequired[
-        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse]
-    ]
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse(TypedDict):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int
-    duration_ms: int
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsTypeForResponse",
-    "WorkflowRunUsagePropBillablePropMacosType",
-    "WorkflowRunUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsTypeForResponse",
-    "WorkflowRunUsagePropBillablePropUbuntuType",
-    "WorkflowRunUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsTypeForResponse",
-    "WorkflowRunUsagePropBillablePropWindowsType",
-    "WorkflowRunUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowRunUsagePropBillableType",
-    "WorkflowRunUsagePropBillableTypeForResponse",
-    "WorkflowRunUsageType",
-    "WorkflowRunUsageTypeForResponse",
+    "RateLimitOverviewPropResourcesType",
+    "RateLimitOverviewPropResourcesTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

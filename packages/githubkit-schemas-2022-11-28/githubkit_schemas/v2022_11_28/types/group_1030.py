@@ -10,225 +10,129 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
-
-    Full session details within a task
-    """
-
-    id: str
-    name: NotRequired[str]
-    user: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType
-    ]
-    owner: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType
-    ]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType
-    ]
-    task_id: NotRequired[str]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    completed_at: NotRequired[_dt.datetime]
-    prompt: NotRequired[str]
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
-    model: NotRequired[str]
-    usage: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType
-    ]
-    error: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0316 import DeploymentType, DeploymentTypeForResponse
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems
+class WebhookWorkflowJobWaitingType(TypedDict):
+    """workflow_job waiting event"""
 
-    Full session details within a task
-    """
+    action: Literal["waiting"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
 
-    id: str
-    name: NotRequired[str]
-    user: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse
-    ]
-    owner: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse
-    ]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse
-    ]
-    task_id: NotRequired[str]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
+
+class WebhookWorkflowJobWaitingTypeForResponse(TypedDict):
+    """workflow_job waiting event"""
+
+    action: Literal["waiting"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
+
+
+class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
     created_at: str
-    updated_at: NotRequired[str]
-    completed_at: NotRequired[str]
-    prompt: NotRequired[str]
-    head_ref: NotRequired[str]
-    base_ref: NotRequired[str]
-    model: NotRequired[str]
-    usage: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse
-    ]
-    error: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse
-    ]
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: _dt.datetime
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType]
+    url: str
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
+class WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
 
-    The user who created this session
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse]
+    url: str
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
+    """Workflow Step"""
 
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
-    ry
-
-    The repository this session belongs to
-    """
-
-    id: NotRequired[int]
+    completed_at: Union[str, None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropReposito
-    ry
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
+    """Workflow Step"""
 
-    The repository this session belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
-
-    Structured information about billing units consumed by the session.
-    """
-
-    type: Literal["ai_credits", "premium_requests"]
-    amount: float
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
-
-    Structured information about billing units consumed by the session.
-    """
-
-    type: Literal["ai_credits", "premium_requests"]
-    amount: float
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropErrorTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwnerTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsageTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUserTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobWaitingPropWorkflowJobType",
+    "WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobWaitingType",
+    "WebhookWorkflowJobWaitingTypeForResponse",
 )

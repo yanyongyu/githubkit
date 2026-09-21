@@ -16,16 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    pattern_config_version: Missing[str] = Field(
-        default=UNSET, description="The updated pattern configuration version."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202",)

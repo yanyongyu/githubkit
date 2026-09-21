@@ -13,41 +13,55 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyPayloadType(TypedDict):
-    """Organization Custom Property Payload
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
-    ]
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
-    """Organization Custom Property Payload
+class TeamSimpleTypeForResponse(TypedDict):
+    """Team Simple
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
-    ]
+    id: int
+    node_id: str
+    url: str
+    members_url: str
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationCustomPropertyPayloadType",
-    "OrganizationCustomPropertyPayloadTypeForResponse",
+    "TeamSimpleType",
+    "TeamSimpleTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,115 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class FileCommit(GitHubModel):
-    """File Commit
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-    File Commit
-    """
-
-    content: Union[FileCommitPropContent, None] = Field()
-    commit: FileCommitPropCommit = Field()
-
-
-class FileCommitPropContent(GitHubModel):
-    """FileCommitPropContent"""
-
-    name: Missing[str] = Field(default=UNSET)
-    path: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    git_url: Missing[str] = Field(default=UNSET)
-    download_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    links: Missing[FileCommitPropContentPropLinks] = Field(
-        default=UNSET, alias="_links"
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
+        default=UNSET,
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    )
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
+    )
+    errors: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
     )
 
 
-class FileCommitPropContentPropLinks(GitHubModel):
-    """FileCommitPropContentPropLinks"""
+model_rebuild(CodeScanningSarifsStatus)
 
-    self_: Missing[str] = Field(default=UNSET, alias="self")
-    git: Missing[str] = Field(default=UNSET)
-    html: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommit(GitHubModel):
-    """FileCommitPropCommit"""
-
-    sha: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    author: Missing[FileCommitPropCommitPropAuthor] = Field(default=UNSET)
-    committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
-    parents: Missing[list[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
-    verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropAuthor(GitHubModel):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropCommitter(GitHubModel):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropTree(GitHubModel):
-    """FileCommitPropCommitPropTree"""
-
-    url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropParentsItems(GitHubModel):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropVerification(GitHubModel):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: Missing[bool] = Field(default=UNSET)
-    reason: Missing[str] = Field(default=UNSET)
-    signature: Missing[Union[str, None]] = Field(default=UNSET)
-    payload: Missing[Union[str, None]] = Field(default=UNSET)
-    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(FileCommit)
-model_rebuild(FileCommitPropContent)
-model_rebuild(FileCommitPropContentPropLinks)
-model_rebuild(FileCommitPropCommit)
-model_rebuild(FileCommitPropCommitPropAuthor)
-model_rebuild(FileCommitPropCommitPropCommitter)
-model_rebuild(FileCommitPropCommitPropTree)
-model_rebuild(FileCommitPropCommitPropParentsItems)
-model_rebuild(FileCommitPropCommitPropVerification)
-
-__all__ = (
-    "FileCommit",
-    "FileCommitPropCommit",
-    "FileCommitPropCommitPropAuthor",
-    "FileCommitPropCommitPropCommitter",
-    "FileCommitPropCommitPropParentsItems",
-    "FileCommitPropCommitPropTree",
-    "FileCommitPropCommitPropVerification",
-    "FileCommitPropContent",
-    "FileCommitPropContentPropLinks",
-)
+__all__ = ("CodeScanningSarifsStatus",)

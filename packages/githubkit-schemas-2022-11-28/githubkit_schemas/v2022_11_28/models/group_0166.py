@@ -9,50 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
 
 
-class Migration(GitHubModel):
-    """Migration
+class CodespaceMachine(GitHubModel):
+    """Codespace machine
 
-    A migration.
+    A description of the machine powering a codespace.
     """
 
-    id: int = Field()
-    owner: Union[SimpleUser, None] = Field()
-    guid: str = Field()
-    state: str = Field()
-    lock_repositories: bool = Field()
-    exclude_metadata: bool = Field()
-    exclude_git_data: bool = Field()
-    exclude_attachments: bool = Field()
-    exclude_releases: bool = Field()
-    exclude_owner_projects: bool = Field()
-    org_metadata_only: bool = Field()
-    repositories: list[Repository] = Field(
-        description="The repositories included in the migration. Only returned for export migrations."
+    name: str = Field(description="The name of the machine.")
+    display_name: str = Field(
+        description="The display name of the machine includes cores, memory, and storage."
     )
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    node_id: str = Field()
-    archive_url: Missing[str] = Field(default=UNSET)
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+    operating_system: str = Field(description="The operating system of the machine.")
+    storage_in_bytes: int = Field(
+        description="How much storage is available to the codespace."
+    )
+    memory_in_bytes: int = Field(
+        description="How much memory is available to the codespace."
+    )
+    cpus: int = Field(description="How many cores are available to the codespace.")
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
+        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 
 
-model_rebuild(Migration)
+model_rebuild(CodespaceMachine)
 
-__all__ = ("Migration",)
+__all__ = ("CodespaceMachine",)

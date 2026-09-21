@@ -10,55 +10,122 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0069 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0238 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0271 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0379 import SimpleCommitType, SimpleCommitTypeForResponse
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: _dt.datetime
-    results_count: int
-    rules_count: int
+    A suite of checks performed on the code of a given code change
+    """
+
     id: int
-    url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+        None,
+    ]
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+        None,
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-class CodeScanningAnalysisTypeForResponse(TypedDict):
-    """CodeScanningAnalysis"""
+class CheckSuiteTypeForResponse(TypedDict):
+    """CheckSuite
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: str
-    results_count: int
-    rules_count: int
+    A suite of checks performed on the code of a given code change
+    """
+
     id: int
-    url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolTypeForResponse
-    deletable: bool
-    warning: str
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+        None,
+    ]
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+        None,
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    repository: MinimalRepositoryTypeForResponse
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    head_commit: SimpleCommitTypeForResponse
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteType]
+
+
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: list[CheckSuiteTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningAnalysisType",
-    "CodeScanningAnalysisTypeForResponse",
+    "CheckSuiteType",
+    "CheckSuiteTypeForResponse",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
 )

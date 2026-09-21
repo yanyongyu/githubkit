@@ -9,24 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0123 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+)
+from .group_0124 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0146 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
-class ReposOwnerRepoAgentsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
+
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
 
     name: NotRequired[str]
-    value: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-class ReposOwnerRepoAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
 
     name: NotRequired[str]
-    value: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesNamePatchBodyType",
-    "ReposOwnerRepoAgentsVariablesNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
+    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse",
 )

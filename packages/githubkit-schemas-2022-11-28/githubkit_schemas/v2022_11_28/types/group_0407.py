@@ -9,69 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0404 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from typing_extensions import TypedDict
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    Unlabeled Issue Event
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
     id: int
+    slug: str
+    integration_url: str
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: UnlabeledIssueEventPropLabelType
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class UnlabeledIssueEventTypeForResponse(TypedDict):
-    """Unlabeled Issue Event
+class CustomDeploymentRuleAppTypeForResponse(TypedDict):
+    """Custom deployment protection rule app
 
-    Unlabeled Issue Event
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
     id: int
+    slug: str
+    integration_url: str
     node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    label: UnlabeledIssueEventPropLabelTypeForResponse
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
-
-
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
-
-
-class UnlabeledIssueEventPropLabelTypeForResponse(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
-
-    name: str
-    color: str
 
 
 __all__ = (
-    "UnlabeledIssueEventPropLabelType",
-    "UnlabeledIssueEventPropLabelTypeForResponse",
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventTypeForResponse",
+    "CustomDeploymentRuleAppType",
+    "CustomDeploymentRuleAppTypeForResponse",
 )

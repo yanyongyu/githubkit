@@ -10,129 +10,270 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0243 import DiscussionEventType, DiscussionEventTypeForResponse
+from .group_0244 import IssuesEventType, IssuesEventTypeForResponse
+from .group_0245 import IssueCommentEventType, IssueCommentEventTypeForResponse
+from .group_0246 import ForkEventType, ForkEventTypeForResponse
+from .group_0248 import MemberEventType, MemberEventTypeForResponse
+from .group_0249 import PullRequestEventType, PullRequestEventTypeForResponse
+from .group_0250 import (
+    PullRequestReviewCommentEventType,
+    PullRequestReviewCommentEventTypeForResponse,
+)
+from .group_0251 import (
+    PullRequestReviewEventType,
+    PullRequestReviewEventTypeForResponse,
+)
+from .group_0253 import CommitCommentEventType, CommitCommentEventTypeForResponse
+from .group_0255 import ReleaseEventType, ReleaseEventTypeForResponse
 
 
-class GistHistoryType(TypedDict):
-    """Gist History
+class EventType(TypedDict):
+    """Event
 
-    Gist History
+    Event
     """
 
-    user: NotRequired[Union[SimpleUserType, None]]
-    version: NotRequired[str]
-    committed_at: NotRequired[_dt.datetime]
-    change_status: NotRequired[GistHistoryPropChangeStatusType]
-    url: NotRequired[str]
-
-
-class GistHistoryTypeForResponse(TypedDict):
-    """Gist History
-
-    Gist History
-    """
-
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    version: NotRequired[str]
-    committed_at: NotRequired[str]
-    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
-    url: NotRequired[str]
-
-
-class GistHistoryPropChangeStatusType(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
-
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
     id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
+    type: Union[str, None]
+    actor: ActorType
+    repo: EventPropRepoType
+    org: NotRequired[ActorType]
+    payload: Union[
+        CreateEventType,
+        DeleteEventType,
+        DiscussionEventType,
+        IssuesEventType,
+        IssueCommentEventType,
+        ForkEventType,
+        GollumEventType,
+        MemberEventType,
+        PublicEventType,
+        PushEventType,
+        PullRequestEventType,
+        PullRequestReviewCommentEventType,
+        PullRequestReviewEventType,
+        CommitCommentEventType,
+        ReleaseEventType,
+        WatchEventType,
+    ]
     public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserType, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserType, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    created_at: Union[_dt.datetime, None]
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class EventTypeForResponse(TypedDict):
+    """Event
 
-    Gist
+    Event
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
     id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
+    type: Union[str, None]
+    actor: ActorTypeForResponse
+    repo: EventPropRepoTypeForResponse
+    org: NotRequired[ActorTypeForResponse]
+    payload: Union[
+        CreateEventTypeForResponse,
+        DeleteEventTypeForResponse,
+        DiscussionEventTypeForResponse,
+        IssuesEventTypeForResponse,
+        IssueCommentEventTypeForResponse,
+        ForkEventTypeForResponse,
+        GollumEventTypeForResponse,
+        MemberEventTypeForResponse,
+        PublicEventTypeForResponse,
+        PushEventTypeForResponse,
+        PullRequestEventTypeForResponse,
+        PullRequestReviewCommentEventTypeForResponse,
+        PullRequestReviewEventTypeForResponse,
+        CommitCommentEventTypeForResponse,
+        ReleaseEventTypeForResponse,
+        WatchEventTypeForResponse,
+    ]
     public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserTypeForResponse, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    created_at: Union[str, None]
 
 
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class ActorType(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
 
 
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class ActorTypeForResponse(TypedDict):
+    """Actor
+
+    Actor
+    """
+
+    id: int
+    login: str
+    display_login: NotRequired[str]
+    gravatar_id: Union[str, None]
+    url: str
+    avatar_url: str
+
+
+class EventPropRepoType(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class EventPropRepoTypeForResponse(TypedDict):
+    """EventPropRepo"""
+
+    id: int
+    name: str
+    url: str
+
+
+class CreateEventType(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
+
+
+class CreateEventTypeForResponse(TypedDict):
+    """CreateEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    master_branch: str
+    description: NotRequired[Union[str, None]]
+    pusher_type: str
+
+
+class DeleteEventType(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class DeleteEventTypeForResponse(TypedDict):
+    """DeleteEvent"""
+
+    ref: str
+    ref_type: str
+    full_ref: str
+    pusher_type: str
+
+
+class PublicEventType(TypedDict):
+    """PublicEvent"""
+
+
+class PublicEventTypeForResponse(TypedDict):
+    """PublicEvent"""
+
+
+class PushEventType(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class PushEventTypeForResponse(TypedDict):
+    """PushEvent"""
+
+    repository_id: int
+    push_id: int
+    ref: str
+    head: str
+    before: str
+
+
+class WatchEventType(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class WatchEventTypeForResponse(TypedDict):
+    """WatchEvent"""
+
+    action: str
+
+
+class GollumEventType(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsType]
+
+
+class GollumEventTypeForResponse(TypedDict):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItemsTypeForResponse]
+
+
+class GollumEventPropPagesItemsType(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class GollumEventPropPagesItemsTypeForResponse(TypedDict):
+    """GollumEventPropPagesItems"""
+
+    page_name: NotRequired[Union[str, None]]
+    title: NotRequired[Union[str, None]]
+    summary: NotRequired[Union[str, None]]
+    action: NotRequired[str]
+    sha: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "GistHistoryPropChangeStatusType",
-    "GistHistoryPropChangeStatusTypeForResponse",
-    "GistHistoryType",
-    "GistHistoryTypeForResponse",
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "ActorType",
+    "ActorTypeForResponse",
+    "CreateEventType",
+    "CreateEventTypeForResponse",
+    "DeleteEventType",
+    "DeleteEventTypeForResponse",
+    "EventPropRepoType",
+    "EventPropRepoTypeForResponse",
+    "EventType",
+    "EventTypeForResponse",
+    "GollumEventPropPagesItemsType",
+    "GollumEventPropPagesItemsTypeForResponse",
+    "GollumEventType",
+    "GollumEventTypeForResponse",
+    "PublicEventType",
+    "PublicEventTypeForResponse",
+    "PushEventType",
+    "PushEventTypeForResponse",
+    "WatchEventType",
+    "WatchEventTypeForResponse",
 )

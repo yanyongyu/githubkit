@@ -9,54 +9,109 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationDependabotSecretType]
-
-
-class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationDependabotSecretTypeForResponse]
-
-
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
-    """
+class OrgsOrgCopilotSpacesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesPostBody"""
 
     name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    ]
 
 
-class OrganizationDependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
-    """
+class OrgsOrgCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesPostBody"""
 
     name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse]
+    ]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationDependabotSecretType",
-    "OrganizationDependabotSecretTypeForResponse",
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyType",
+    "OrgsOrgCopilotSpacesPostBodyTypeForResponse",
 )

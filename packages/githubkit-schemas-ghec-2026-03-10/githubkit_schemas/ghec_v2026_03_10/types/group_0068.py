@@ -9,43 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0063 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
+class ActionsPolicyEnterpriseConditionsOneof0Type(TypedDict):
+    """organization_name_and_repository_name
+
+    Conditions to target organizations by name and repositories by name
+    """
+
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+
+
+class ActionsPolicyEnterpriseConditionsOneof0TypeForResponse(TypedDict):
+    """organization_name_and_repository_name
+
+    Conditions to target organizations by name and repositories by name
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
-
-
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
-
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof0Type",
+    "ActionsPolicyEnterpriseConditionsOneof0TypeForResponse",
 )

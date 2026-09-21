@@ -18,44 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-    Custom property defined on an organization
-    """
-
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
-    )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Literal[
-        "string", "single_select", "multi_select", "true_false", "url"
-    ] = Field(description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
+        default=UNSET, description="Description of the issue field."
     )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
     )
-    values_editable_by: Missing[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
-    require_explicit_values: Missing[bool] = Field(
-        default=UNSET, description="Whether setting properties values is mandatory"
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
+        default=UNSET,
+        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
     )
 
 
-model_rebuild(CustomProperty)
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-__all__ = ("CustomProperty",)
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+    )
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
+)

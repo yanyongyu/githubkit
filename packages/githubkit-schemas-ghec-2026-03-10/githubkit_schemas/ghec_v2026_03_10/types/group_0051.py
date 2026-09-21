@@ -9,38 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
-
-    Runner Application
-    """
-
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+class ActionsPolicyRepoConditionsOneof0Type(TypedDict):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
-class RunnerApplicationTypeForResponse(TypedDict):
-    """Runner Application
-
-    Runner Application
-    """
-
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+class ActionsPolicyRepoConditionsOneof0TypeForResponse(TypedDict):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
 __all__ = (
-    "RunnerApplicationType",
-    "RunnerApplicationTypeForResponse",
+    "ActionsPolicyRepoConditionsOneof0Type",
+    "ActionsPolicyRepoConditionsOneof0TypeForResponse",
 )

@@ -11,26 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0204 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
+)
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

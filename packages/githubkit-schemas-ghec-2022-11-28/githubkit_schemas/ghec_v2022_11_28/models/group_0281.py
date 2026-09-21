@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,26 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class OrganizationActionsSecret(GitHubModel):
+    """Actions Secret for an Organization
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    Secrets for GitHub Actions for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+model_rebuild(OrganizationActionsSecret)
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+__all__ = ("OrganizationActionsSecret",)

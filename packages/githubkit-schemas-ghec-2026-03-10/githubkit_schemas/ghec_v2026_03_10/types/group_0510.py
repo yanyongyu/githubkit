@@ -9,53 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0475 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from .group_0491 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0493 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class IssueTypeAddedIssueEventType(TypedDict):
+    """Issue Type Added Issue Event
 
-    Timeline Assigned Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["assigned"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
+    issue_type: Union[IssueTypeWebhookType, None]
     intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class TimelineAssignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Assigned Issue Event
+class IssueTypeAddedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Added Issue Event
 
-    Timeline Assigned Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["assigned"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
+    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
     intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "TimelineAssignedIssueEventType",
-    "TimelineAssignedIssueEventTypeForResponse",
+    "IssueTypeAddedIssueEventType",
+    "IssueTypeAddedIssueEventTypeForResponse",
 )

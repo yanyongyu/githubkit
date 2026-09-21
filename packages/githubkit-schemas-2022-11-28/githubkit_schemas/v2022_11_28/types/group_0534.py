@@ -9,35 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class SshSigningKeyType(TypedDict):
-    """SSH Signing Key
+class ContentTrafficType(TypedDict):
+    """Content Traffic
 
-    A public SSH key used to sign Git commits
+    Content Traffic
     """
 
-    key: str
-    id: int
+    path: str
     title: str
-    created_at: _dt.datetime
+    count: int
+    uniques: int
 
 
-class SshSigningKeyTypeForResponse(TypedDict):
-    """SSH Signing Key
+class ContentTrafficTypeForResponse(TypedDict):
+    """Content Traffic
 
-    A public SSH key used to sign Git commits
+    Content Traffic
     """
 
-    key: str
-    id: int
+    path: str
     title: str
-    created_at: str
+    count: int
+    uniques: int
 
 
 __all__ = (
-    "SshSigningKeyType",
-    "SshSigningKeyTypeForResponse",
+    "ContentTrafficType",
+    "ContentTrafficTypeForResponse",
 )

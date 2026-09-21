@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_1035 import WebhookRegistryPackageUpdatedPropRegistryPackage
 
 
-class WebhookRepositoryPrivatized(GitHubModel):
-    """repository privatized event"""
+class WebhookRegistryPackageUpdated(GitHubModel):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["privatized"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,13 +44,15 @@ class WebhookRepositoryPrivatized(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryPrivatized)
+model_rebuild(WebhookRegistryPackageUpdated)
 
-__all__ = ("WebhookRepositoryPrivatized",)
+__all__ = ("WebhookRegistryPackageUpdated",)

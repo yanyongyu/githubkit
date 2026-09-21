@@ -9,57 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryRuleCreation(GitHubModel):
-    """creation
-
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"] = Field()
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class RepositoryRuleDeletion(GitHubModel):
-    """deletion
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"] = Field()
-
-
-class RepositoryRuleRequiredSignatures(GitHubModel):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"] = Field()
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[Repository, None] = Field()
+    sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-class RepositoryRuleNonFastForward(GitHubModel):
-    """non_fast_forward
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-    Prevent users with push access from force pushing to refs.
-    """
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
-    type: Literal["non_fast_forward"] = Field()
 
-
-model_rebuild(RepositoryRuleCreation)
-model_rebuild(RepositoryRuleDeletion)
-model_rebuild(RepositoryRuleRequiredSignatures)
-model_rebuild(RepositoryRuleNonFastForward)
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
 
 __all__ = (
-    "RepositoryRuleCreation",
-    "RepositoryRuleDeletion",
-    "RepositoryRuleNonFastForward",
-    "RepositoryRuleRequiredSignatures",
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
 )

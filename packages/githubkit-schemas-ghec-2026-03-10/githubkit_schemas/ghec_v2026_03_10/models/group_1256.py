@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,30 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    users: Missing[list[str]] = Field(
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: Missing[list[str]] = Field(
+        default=UNSET, description="The credential types to include."
+    )
+    authorization_state: Missing[
+        Literal["currently_authorized", "member_owned_only"]
+    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
+    owner: Missing[str] = Field(
         default=UNSET,
-        description="The usernames of the users to add to the cost center.",
+        description="Filter to credentials owned by this user, given as a login.",
     )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to add to the cost center."
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
     )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to add to the cost center."
-    )
-    enterprise_teams: Missing[list[str]] = Field(
-        default=UNSET, description="The enterprise teams to add to the cost center."
+    application: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
-)
+model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
-)
+__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)

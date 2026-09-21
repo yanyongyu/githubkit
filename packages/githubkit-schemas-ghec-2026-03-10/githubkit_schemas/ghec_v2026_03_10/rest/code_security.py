@@ -249,7 +249,9 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
-        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+        enforcement: Missing[
+            Literal["enforced", "unenforced", "enterprise_enforced"]
+        ] = UNSET,
     ) -> Response[
         CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
     ]: ...
@@ -383,7 +385,9 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
-        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+        enforcement: Missing[
+            Literal["enforced", "unenforced", "enterprise_enforced"]
+        ] = UNSET,
     ) -> Response[
         CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
     ]: ...
@@ -763,7 +767,9 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
-        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+        enforcement: Missing[
+            Literal["enforced", "unenforced", "enterprise_enforced"]
+        ] = UNSET,
     ) -> Response[
         CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
     ]: ...
@@ -903,7 +909,9 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
-        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
+        enforcement: Missing[
+            Literal["enforced", "unenforced", "enterprise_enforced"]
+        ] = UNSET,
     ) -> Response[
         CodeSecurityConfiguration, CodeSecurityConfigurationTypeForResponse
     ]: ...
@@ -1952,7 +1960,9 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Repositories with active enterprise-enforced attachments are skipped unless the authenticated user can manage the enterprise's code security settings; the rest are detached. Inactive enterprise-enforced attachments, such as failed attachments, are detached. The request still returns `204` if every repository is skipped.
+
+        OAuth app tokens and classic PATs require the `write:org` scope. Managing enterprise-enforced configurations also requires `admin:enterprise` and is not supported by fine-grained PATs or GitHub App access tokens.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#detach-configurations-from-repositories
         """
@@ -2030,7 +2040,9 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Repositories with active enterprise-enforced attachments are skipped unless the authenticated user can manage the enterprise's code security settings; the rest are detached. Inactive enterprise-enforced attachments, such as failed attachments, are detached. The request still returns `204` if every repository is skipped.
+
+        OAuth app tokens and classic PATs require the `write:org` scope. Managing enterprise-enforced configurations also requires `admin:enterprise` and is not supported by fine-grained PATs or GitHub App access tokens.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#detach-configurations-from-repositories
         """
@@ -2572,13 +2584,18 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Directly applying an enterprise-enforced configuration also requires permission to manage the enterprise's code security settings. Without it, the request returns `403` and no repositories change.
+
+        When applying a different configuration, repositories with active enterprise-enforced attachments are skipped unless the authenticated user can manage the enterprise's code security settings; the remaining repositories are updated. The request still returns `202` if every repository is skipped.
+
+        OAuth app tokens and classic PATs require the `write:org` scope. Directly applying an enterprise-enforced configuration also requires `admin:enterprise` and is not supported by fine-grained PATs or GitHub App access tokens.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#attach-a-configuration-to-repositories
         """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
         )
 
@@ -2604,6 +2621,9 @@ class CodeSecurityClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "403": BasicError,
+            },
         )
 
     @overload
@@ -2667,13 +2687,18 @@ class CodeSecurityClient:
 
         The authenticated user must be an administrator or security manager for the organization to use this endpoint.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        Directly applying an enterprise-enforced configuration also requires permission to manage the enterprise's code security settings. Without it, the request returns `403` and no repositories change.
+
+        When applying a different configuration, repositories with active enterprise-enforced attachments are skipped unless the authenticated user can manage the enterprise's code security settings; the remaining repositories are updated. The request still returns `202` if every repository is skipped.
+
+        OAuth app tokens and classic PATs require the `write:org` scope. Directly applying an enterprise-enforced configuration also requires `admin:enterprise` and is not supported by fine-grained PATs or GitHub App access tokens.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#attach-a-configuration-to-repositories
         """
 
         from ..models import (
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            BasicError,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
         )
 
@@ -2699,6 +2724,9 @@ class CodeSecurityClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+            error_models={
+                "403": BasicError,
+            },
         )
 
     @overload
@@ -2755,9 +2783,11 @@ class CodeSecurityClient:
 
         This configuration will be applied to the matching repository type (all, none, public, private and internal) by default when they are created.
 
-        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint. Setting an enterprise-enforced configuration as the default also requires permission to manage the enterprise's code security settings.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        A default set with this endpoint is an organization default, even if the configuration is owned or enforced by the enterprise. An enterprise-enforced configuration set as an enterprise-level default for the same repository visibility takes precedence.
+
+        OAuth app tokens and classic PATs require the `write:org` scope; setting an enterprise-enforced configuration as the default also requires `admin:enterprise`. Fine-grained PATs and GitHub App access tokens cannot perform that action.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
         """
@@ -2850,9 +2880,11 @@ class CodeSecurityClient:
 
         This configuration will be applied to the matching repository type (all, none, public, private and internal) by default when they are created.
 
-        The authenticated user must be an administrator or security manager for the organization to use this endpoint.
+        The authenticated user must be an administrator or security manager for the organization to use this endpoint. Setting an enterprise-enforced configuration as the default also requires permission to manage the enterprise's code security settings.
 
-        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+        A default set with this endpoint is an organization default, even if the configuration is owned or enforced by the enterprise. An enterprise-enforced configuration set as an enterprise-level default for the same repository visibility takes precedence.
+
+        OAuth app tokens and classic PATs require the `write:org` scope; setting an enterprise-enforced configuration as the default also requires `admin:enterprise`. Fine-grained PATs and GitHub App access tokens cannot perform that action.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#set-a-code-security-configuration-as-a-default-for-an-organization
         """

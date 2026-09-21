@@ -12,15 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoStargazersCountGetResponse200Type(TypedDict):
+    """ReposOwnerRepoStargazersCountGetResponse200"""
+
+    count: int
 
 
-class UserInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoStargazersCountGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStargazersCountGetResponse200"""
+
+    count: int
 
 
 __all__ = (
-    "UserInteractionLimitsGetResponse200Anyof1Type",
-    "UserInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "ReposOwnerRepoStargazersCountGetResponse200Type",
+    "ReposOwnerRepoStargazersCountGetResponse200TypeForResponse",
 )

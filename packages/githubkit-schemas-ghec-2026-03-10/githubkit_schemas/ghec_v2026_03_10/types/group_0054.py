@@ -9,34 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AnnouncementType(TypedDict):
-    """Enterprise Announcement
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    Enterprise global announcement
-    """
-
-    announcement: Union[str, None]
-    expires_at: NotRequired[Union[_dt.datetime, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
-class AnnouncementTypeForResponse(TypedDict):
-    """Enterprise Announcement
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    Enterprise global announcement
-    """
-
-    announcement: Union[str, None]
-    expires_at: NotRequired[Union[str, None]]
-    user_dismissible: NotRequired[Union[bool, None]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
 __all__ = (
-    "AnnouncementType",
-    "AnnouncementTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
 )

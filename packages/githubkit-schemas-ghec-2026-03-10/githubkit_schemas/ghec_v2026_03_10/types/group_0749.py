@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0209 import DiscussionType, DiscussionTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0651 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDiscussionLockedType(TypedDict):
-    """discussion locked event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["locked"]
-    discussion: DiscussionType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionLockedTypeForResponse(TypedDict):
-    """discussion locked event"""
+class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["locked"]
-    discussion: DiscussionTypeForResponse
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionLockedType",
-    "WebhookDiscussionLockedTypeForResponse",
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedTypeForResponse",
 )

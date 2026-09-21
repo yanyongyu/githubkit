@@ -9,51 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
+from .group_0109 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
 
-    Custom property defined on an organization
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
+
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    require_explicit_values: NotRequired[bool]
+    assignee: NotRequired[Union[SimpleUserType, None]]
+    organization: NotRequired[Union[OrganizationSimpleType, None]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
+    last_activity_at: NotRequired[Union[_dt.datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class CopilotSeatDetailsTypeForResponse(TypedDict):
+    """Copilot Business Seat Detail
 
-    Custom property defined on an organization
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    assignee: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    organization: NotRequired[Union[OrganizationSimpleTypeForResponse, None]]
+    assigning_team: NotRequired[
+        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
     ]
-    require_explicit_values: NotRequired[bool]
+    pending_cancellation_date: NotRequired[Union[str, None]]
+    last_activity_at: NotRequired[Union[str, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    last_authenticated_at: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: NotRequired[str]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "CopilotSeatDetailsType",
+    "CopilotSeatDetailsTypeForResponse",
 )

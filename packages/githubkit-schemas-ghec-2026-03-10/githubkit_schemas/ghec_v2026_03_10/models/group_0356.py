@@ -9,26 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class ActionsVariable(GitHubModel):
-    """Actions Variable"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
+
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
 
 
-model_rebuild(ActionsVariable)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = ("ActionsVariable",)
+__all__ = ("RepositoryAdvisoryCredit",)

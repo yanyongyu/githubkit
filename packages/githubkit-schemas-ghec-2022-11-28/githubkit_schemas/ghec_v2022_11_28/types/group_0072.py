@@ -9,121 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0067 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
 
 
-class SimpleRepositoryType(TypedDict):
-    """Simple Repository
+class ActionsPolicyEnterpriseConditionsOneof4Type(TypedDict):
+    """organization_property_and_repository_name
 
-    A GitHub repository.
+    Conditions to target organizations by property and repositories by name
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserType
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    hooks_url: str
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class SimpleRepositoryTypeForResponse(TypedDict):
-    """Simple Repository
+class ActionsPolicyEnterpriseConditionsOneof4TypeForResponse(TypedDict):
+    """organization_property_and_repository_name
 
-    A GitHub repository.
+    Conditions to target organizations by property and repositories by name
     """
 
-    id: int
-    node_id: str
-    name: str
-    full_name: str
-    owner: SimpleUserTypeForResponse
-    private: bool
-    html_url: str
-    description: Union[str, None]
-    fork: bool
-    url: str
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    downloads_url: str
-    events_url: str
-    forks_url: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    notifications_url: str
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    hooks_url: str
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "SimpleRepositoryType",
-    "SimpleRepositoryTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof4Type",
+    "ActionsPolicyEnterpriseConditionsOneof4TypeForResponse",
 )

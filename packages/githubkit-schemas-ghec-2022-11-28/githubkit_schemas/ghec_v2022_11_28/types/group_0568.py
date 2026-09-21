@@ -9,26 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
-
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+from .group_0164 import (
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
+)
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class RepositoryRuleDetailedOneof11Type(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof11TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof11"""
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
+    ]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+    "RepositoryRuleDetailedOneof11Type",
+    "RepositoryRuleDetailedOneof11TypeForResponse",
 )

@@ -12,18 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryFineGrainedPermission(GitHubModel):
-    """Repository Fine-Grained Permission
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    A fine-grained permission that protects repository resources.
+    The public key used for setting Codespaces secrets.
     """
 
-    name: str = Field()
-    description: str = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryFineGrainedPermission)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("RepositoryFineGrainedPermission",)
+__all__ = ("CodespacesPublicKey",)

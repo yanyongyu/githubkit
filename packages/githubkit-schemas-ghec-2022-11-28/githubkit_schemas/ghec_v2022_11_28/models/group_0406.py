@@ -9,26 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0108 import Team
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
-    )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
+    url: str = Field()
+    users_url: str = Field()
+    teams_url: str = Field()
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofix)
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-__all__ = ("CodeScanningAutofix",)
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
+model_rebuild(
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+)

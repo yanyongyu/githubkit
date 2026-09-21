@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
+    selected_usernames: list[str]
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

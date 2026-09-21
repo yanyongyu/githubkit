@@ -9,96 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PackageVersionType(TypedDict):
-    """Package Version
+class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    A version of a software package
-    """
-
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deleted_at: NotRequired[_dt.datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class PackageVersionTypeForResponse(TypedDict):
-    """Package Version
+class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    A version of a software package
-    """
-
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    package_html_url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
+
+
+class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
     html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: str
-    updated_at: str
-    deleted_at: NotRequired[str]
-    metadata: NotRequired[PackageVersionPropMetadataTypeForResponse]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataTypeForResponse(TypedDict):
-    """Package Version Metadata"""
-
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerTypeForResponse]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerTypeForResponse]
-
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropContainerTypeForResponse(TypedDict):
-    """Container Metadata"""
-
-    tags: list[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
-
-
-class PackageVersionPropMetadataPropDockerTypeForResponse(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[list[str]]
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
 __all__ = (
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropContainerTypeForResponse",
-    "PackageVersionPropMetadataPropDockerType",
-    "PackageVersionPropMetadataPropDockerTypeForResponse",
-    "PackageVersionPropMetadataType",
-    "PackageVersionPropMetadataTypeForResponse",
-    "PackageVersionType",
-    "PackageVersionTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Type",
+    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
+    "CopilotSpaceCollaboratorAnyof1Type",
+    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
 )

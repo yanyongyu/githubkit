@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0576 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0583 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
-    installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookMilestoneClosedTypeForResponse(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: WebhooksMilestoneTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestCancelledType",
-    "WebhookPersonalAccessTokenRequestCancelledTypeForResponse",
+    "WebhookMilestoneClosedType",
+    "WebhookMilestoneClosedTypeForResponse",
 )

@@ -9,58 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BypassResponseType(TypedDict):
-    """Bypass response
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType(TypedDict):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
 
-    A response made by a delegated bypasser to a bypass request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerType]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
+    organization_ids: NotRequired[list[int]]
 
 
-class BypassResponseTypeForResponse(TypedDict):
-    """Bypass response
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
 
-    A response made by a delegated bypasser to a bypass request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[BypassResponsePropReviewerTypeForResponse]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
-
-
-class BypassResponsePropReviewerType(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class BypassResponsePropReviewerTypeForResponse(TypedDict):
-    """BypassResponsePropReviewer
-
-    The user who reviewed the bypass request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    organization_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "BypassResponsePropReviewerType",
-    "BypassResponsePropReviewerTypeForResponse",
-    "BypassResponseType",
-    "BypassResponseTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse",
 )

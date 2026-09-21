@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202Type(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
-    action: Literal["revoke"]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
-    action: Literal["revoke"]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
-    "OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse",
 )

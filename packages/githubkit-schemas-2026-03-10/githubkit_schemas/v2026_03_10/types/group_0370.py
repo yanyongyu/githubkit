@@ -9,44 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0036 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
+from .group_0029 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
 )
 
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Details for the vulnerable dependency.
+    Code security configuration associated with a repository and attachment status
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class DependabotAlertPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertPropDependency
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Details for the vulnerable dependency.
+    Code security configuration associated with a repository and attachment status
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "DependabotAlertPropDependencyType",
-    "DependabotAlertPropDependencyTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
-
-    body: str = Field(max_length=65535, description="The comment text.")
+class EmojisGetResponse200(ExtraGitHubModel):
+    """EmojisGetResponse200"""
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(EmojisGetResponse200)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("EmojisGetResponse200",)

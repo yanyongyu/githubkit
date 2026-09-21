@@ -15,52 +15,24 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0019 import LicenseSimple
-from .group_0193 import CodeOfConductSimple
 
 
-class CommunityProfilePropFiles(GitHubModel):
-    """CommunityProfilePropFiles"""
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    code_of_conduct: Union[CodeOfConductSimple, None] = Field()
-    code_of_conduct_file: Union[CommunityHealthFile, None] = Field()
-    license_: Union[LicenseSimple, None] = Field(alias="license")
-    contributing: Union[CommunityHealthFile, None] = Field()
-    readme: Union[CommunityHealthFile, None] = Field()
-    issue_template: Union[CommunityHealthFile, None] = Field()
-    pull_request_template: Union[CommunityHealthFile, None] = Field()
-
-
-class CommunityHealthFile(GitHubModel):
-    """Community Health File"""
-
-    url: str = Field()
-    html_url: str = Field()
-
-
-class CommunityProfile(GitHubModel):
-    """Community Profile
-
-    Community Profile
+    Repository Identifier
     """
 
-    health_percentage: int = Field()
-    description: Union[str, None] = Field()
-    documentation: Union[str, None] = Field()
-    files: CommunityProfilePropFiles = Field()
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
+    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
     updated_at: Union[_dt.datetime, None] = Field()
-    content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CommunityProfilePropFiles)
-model_rebuild(CommunityHealthFile)
-model_rebuild(CommunityProfile)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = (
-    "CommunityHealthFile",
-    "CommunityProfile",
-    "CommunityProfilePropFiles",
-)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

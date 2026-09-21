@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
+class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
-    """
+    max_file_path_length: int = Field(
+        le=32767.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths.",
+    )
 
-    type: Literal["license_compliance_scanning"] = Field()
 
+model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
 
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
-
-__all__ = ("RepositoryRuleLicenseComplianceScanning",)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)

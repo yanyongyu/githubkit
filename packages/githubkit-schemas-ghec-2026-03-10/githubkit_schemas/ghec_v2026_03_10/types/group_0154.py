@@ -13,36 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0155 import (
-    RepositoryRuleMaxFilePathLengthPropParametersType,
-    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleMaxFilePathLengthType(TypedDict):
-    """max_file_path_length
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
-    """max_file_path_length
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["max_file_path_length"]
+    type: Literal["required_deployments"]
     parameters: NotRequired[
-        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleMaxFilePathLengthType",
-    "RepositoryRuleMaxFilePathLengthTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

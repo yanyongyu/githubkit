@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,31 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateAnyof2(GitHubModel):
-    """CodeQualitySetupUpdateAnyof2"""
+class GitUser(GitHubModel):
+    """Git User
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code quality setup."
-    )
-    runner_type: Missing[Literal["standard", "labeled"]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Union[str, None] = Field(
-        description="Runner label to be used if the runner type is labeled."
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
-        default=UNSET,
-        description="Whether AI findings run for Code Quality on this repository.",
-    )
+    Metaproperties for Git author/committer information.
+    """
+
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof2)
+model_rebuild(GitUser)
 
-__all__ = ("CodeQualitySetupUpdateAnyof2",)
+__all__ = ("GitUser",)

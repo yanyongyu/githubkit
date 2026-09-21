@@ -9,142 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0129 import TeamSimple
 
+class RuleSuitePullRequest(GitHubModel):
+    """Pull request rule suite metadata
 
-class TeamFull(GitHubModel):
-    """Full Team
-
-    Groups of organization members that gives permissions on specified repositories.
+    Metadata for a pull request rule evaluation result.
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    html_url: str = Field()
-    name: str = Field(description="Name of the team")
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[Literal["closed", "secret"]] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(default=UNSET, description="The notification setting the team has set")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Missing[Union[TeamSimple, None]] = Field(default=UNSET)
-    members_count: int = Field()
-    repos_count: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    organization: TeamOrganization = Field(
-        title="Team Organization", description="Team Organization"
-    )
-    ldap_dn: Missing[str] = Field(
+    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
         default=UNSET,
-        description="The [distinguished name](https://www.ldap.com/ldap-dns-and-rdns) (DN) of the LDAP entry to map to a team.",
-    )
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
-    )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
+        description="The pull request associated with the rule evaluation.",
     )
 
 
-class TeamOrganization(GitHubModel):
-    """Team Organization
+class RuleSuitePullRequestPropPullRequest(GitHubModel):
+    """RuleSuitePullRequestPropPullRequest
 
-    Team Organization
+    The pull request associated with the rule evaluation.
     """
 
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    is_verified: Missing[bool] = Field(default=UNSET)
-    has_organization_projects: bool = Field()
-    has_repository_projects: bool = Field()
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field()
-    type: str = Field()
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
-    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
-    collaborators: Missing[Union[int, None]] = Field(default=UNSET)
-    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    plan: Missing[TeamOrganizationPropPlan] = Field(default=UNSET)
-    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
-    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
-    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
-    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
-    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
-    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
-        default=UNSET
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the pull request."
     )
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    updated_at: _dt.datetime = Field()
-    archived_at: Union[_dt.datetime, None] = Field()
+    number: Missing[int] = Field(
+        default=UNSET, description="The number of the pull request."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
+        default=UNSET, description="The user who created the pull request."
+    )
+    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
+        default=UNSET, description="The reviews associated with the pull request."
+    )
 
 
-class TeamOrganizationPropPlan(GitHubModel):
-    """TeamOrganizationPropPlan"""
+class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropUser
 
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
+    The user who created the pull request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
 
 
-model_rebuild(TeamFull)
-model_rebuild(TeamOrganization)
-model_rebuild(TeamOrganizationPropPlan)
+class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the review."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
+        default=UNSET, description="The user who submitted the review."
+    )
+    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+model_rebuild(RuleSuitePullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
 
 __all__ = (
-    "TeamFull",
-    "TeamOrganization",
-    "TeamOrganizationPropPlan",
+    "RuleSuitePullRequest",
+    "RuleSuitePullRequestPropPullRequest",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+    "RuleSuitePullRequestPropPullRequestPropUser",
 )

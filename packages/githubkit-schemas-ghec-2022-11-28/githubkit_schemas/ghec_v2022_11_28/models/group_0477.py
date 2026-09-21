@@ -9,34 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueEventIntent(GitHubModel):
-    """Issue Event Intent
+class CustomDeploymentRuleApp(GitHubModel):
+    """Custom deployment protection rule app
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    rationale: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reasoning the agent provided for the change."
+    id: int = Field(
+        description="The unique identifier of the deployment protection rule integration."
     )
-    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
-        default=UNSET,
-        description="The confidence level the agent had when performing this action.",
+    slug: str = Field(
+        description="The slugified name of the deployment protection rule integration."
+    )
+    integration_url: str = Field(
+        description="The URL for the endpoint to get details about the app."
+    )
+    node_id: str = Field(
+        description="The node ID for the deployment protection rule integration."
     )
 
 
-model_rebuild(IssueEventIntent)
+model_rebuild(CustomDeploymentRuleApp)
 
-__all__ = ("IssueEventIntent",)
+__all__ = ("CustomDeploymentRuleApp",)

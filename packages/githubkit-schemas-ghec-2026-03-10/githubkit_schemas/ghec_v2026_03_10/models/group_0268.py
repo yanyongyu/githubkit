@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,19 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0266 import MarketplaceListingPlan
 
-class CodeScanningAiScanOrgEnablementUpdate(GitHubModel):
-    """Code scanning AI Scan organization settings update
 
-    The AI Scan organization setting to apply
-    """
+class MarketplacePurchasePropMarketplacePendingChange(GitHubModel):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
+    is_installed: Missing[bool] = Field(default=UNSET)
+    effective_date: Missing[str] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
         default=UNSET,
-        description="Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out.",
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
     )
 
 
-model_rebuild(CodeScanningAiScanOrgEnablementUpdate)
+class MarketplacePurchasePropMarketplacePurchase(GitHubModel):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-__all__ = ("CodeScanningAiScanOrgEnablementUpdate",)
+    billing_cycle: Missing[str] = Field(default=UNSET)
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    is_installed: Missing[bool] = Field(default=UNSET)
+    unit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    on_free_trial: Missing[bool] = Field(default=UNSET)
+    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    plan: Missing[MarketplaceListingPlan] = Field(
+        default=UNSET,
+        title="Marketplace Listing Plan",
+        description="Marketplace Listing Plan",
+    )
+
+
+model_rebuild(MarketplacePurchasePropMarketplacePendingChange)
+model_rebuild(MarketplacePurchasePropMarketplacePurchase)
+
+__all__ = (
+    "MarketplacePurchasePropMarketplacePendingChange",
+    "MarketplacePurchasePropMarketplacePurchase",
+)

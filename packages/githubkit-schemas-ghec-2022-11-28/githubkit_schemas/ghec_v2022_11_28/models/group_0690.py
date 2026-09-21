@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,50 +18,95 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
-from .group_0630 import ExemptionResponse
-from .group_0631 import ExemptionRequest
+
+class WebhooksReview(GitHubModel):
+    """WebhooksReview
+
+    The review that was affected.
+    """
+
+    links: WebhooksReviewPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: Union[str, None] = Field(description="The text of the review.")
+    commit_id: str = Field(description="A commit SHA for the review.")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    pull_request_url: str = Field()
+    state: str = Field()
+    submitted_at: Union[_dt.datetime, None] = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
 
 
-class WebhookExemptionRequestResponseSubmitted(GitHubModel):
-    """Exemption response submitted event"""
+class WebhooksReviewPropUser(GitHubModel):
+    """User"""
 
-    action: Literal["response_submitted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    exemption_request: ExemptionRequest = Field(
-        title="Exemption Request",
-        description="A request from a user to be exempted from a set of rules.",
-    )
-    exemption_response: ExemptionResponse = Field(
-        title="Exemption response",
-        description="A response to an exemption request by a delegated bypasser.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookExemptionRequestResponseSubmitted)
+class WebhooksReviewPropLinks(GitHubModel):
+    """WebhooksReviewPropLinks"""
 
-__all__ = ("WebhookExemptionRequestResponseSubmitted",)
+    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
+    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
+
+
+class WebhooksReviewPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhooksReview)
+model_rebuild(WebhooksReviewPropUser)
+model_rebuild(WebhooksReviewPropLinks)
+model_rebuild(WebhooksReviewPropLinksPropHtml)
+model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "WebhooksReview",
+    "WebhooksReviewPropLinks",
+    "WebhooksReviewPropLinksPropHtml",
+    "WebhooksReviewPropLinksPropPullRequest",
+    "WebhooksReviewPropUser",
+)

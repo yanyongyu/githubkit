@@ -10,72 +10,89 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0514 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
+class PullRequestStackMinimalType(TypedDict):
+    """Pull Request Stack Minimal"""
 
     id: int
+    number: int
     node_id: str
     url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[_dt.datetime, None]
-    archived_by: None
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    base: PullRequestStackMinimalPropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
 
 
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
+class PullRequestStackMinimalTypeForResponse(TypedDict):
+    """Pull Request Stack Minimal"""
 
     id: int
+    number: int
     node_id: str
     url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[str, None]
-    archived_by: None
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    base: PullRequestStackMinimalPropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class PullRequestStackMinimalPropBaseType(TypedDict):
+    """PullRequestStackMinimalPropBase"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
+    ref: str
 
 
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
+class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropBase"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    ref: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int
+    state: Literal["open", "closed"]
+    draft: bool
+    merged_at: Union[_dt.datetime, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
+
+
+class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int
+    state: Literal["open", "closed"]
+    draft: bool
+    merged_at: Union[str, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "PullRequestStackMinimalPropBaseType",
+    "PullRequestStackMinimalPropBaseTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsType",
+    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
+    "PullRequestStackMinimalType",
+    "PullRequestStackMinimalTypeForResponse",
 )

@@ -9,34 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateResponseType(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class GitUserType(TypedDict):
+    """Git User
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Metaproperties for Git author/committer information.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Metaproperties for Git author/committer information.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateResponseType",
-    "CodeQualitySetupUpdateResponseTypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UserEmailVisibilityPatchBody(GitHubModel):
-    """UserEmailVisibilityPatchBody"""
+class ReposOwnerRepoStacksPostBody(GitHubModel):
+    """ReposOwnerRepoStacksPostBody"""
 
-    visibility: Literal["public", "private"] = Field(
-        description="Denotes whether an email is publicly visible."
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=2 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers forming the stack from bottom to top.",
     )
 
 
-model_rebuild(UserEmailVisibilityPatchBody)
+model_rebuild(ReposOwnerRepoStacksPostBody)
 
-__all__ = ("UserEmailVisibilityPatchBody",)
+__all__ = ("ReposOwnerRepoStacksPostBody",)

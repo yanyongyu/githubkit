@@ -17,52 +17,51 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
+from .group_0055 import Issue
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
 
-class AgentsReposOwnerRepoTasksGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse400
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
+class WebhookSubIssuesSubIssueRemoved(GitHubModel):
+    """sub-issue removed event"""
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    action: Literal["sub_issue_removed"] = Field()
+    sub_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the sub-issue."
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    sub_issue: Missing[Issue] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
+    sub_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    parent_issue_id: float = Field(description="The ID of the parent issue.")
+    parent_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse400)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems)
+model_rebuild(WebhookSubIssuesSubIssueRemoved)
 
-__all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse400",
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems",
-)
+__all__ = ("WebhookSubIssuesSubIssueRemoved",)

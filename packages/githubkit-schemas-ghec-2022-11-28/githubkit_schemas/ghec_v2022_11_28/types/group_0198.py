@@ -9,99 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GetAllCostCentersType(TypedDict):
-    """GetAllCostCenters"""
+class RulesetVersionWithStateAllof1PropStateType(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
-
-
-class GetAllCostCentersTypeForResponse(TypedDict):
-    """GetAllCostCenters"""
-
-    cost_centers: NotRequired[
-        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
-    ]
-
-
-class GetAllCostCentersPropCostCentersItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
-
-    id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType
-    ]
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
-
-
-class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
-    """GetAllCostCentersPropCostCentersItems"""
-
-    id: str
-    name: str
-    state: NotRequired[Literal["active", "deleted"]]
-    azure_subscription: NotRequired[Union[str, None]]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse
-    ]
-    resources: list[
-        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
-    ]
-
-
-class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    The state of the ruleset version
     """
 
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
 
+class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse(
-    TypedDict
-):
-    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    The state of the ruleset version
     """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
-
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
-
-    type: str
-    name: str
 
 
 __all__ = (
-    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType",
-    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
-    "GetAllCostCentersPropCostCentersItemsType",
-    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
-    "GetAllCostCentersType",
-    "GetAllCostCentersTypeForResponse",
+    "RulesetVersionWithStateAllof1PropStateType",
+    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
 )

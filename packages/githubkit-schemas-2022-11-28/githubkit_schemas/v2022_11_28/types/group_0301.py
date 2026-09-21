@@ -9,30 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Dependabot security updates
+class ConcurrencyGroupListType(TypedDict):
+    """Concurrency Group List
 
-    Check Dependabot security updates
+    A list of active concurrency groups for a repository.
     """
 
-    enabled: bool
-    paused: bool
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
 
 
-class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
-    """Check Dependabot security updates
+class ConcurrencyGroupListTypeForResponse(TypedDict):
+    """Concurrency Group List
 
-    Check Dependabot security updates
+    A list of active concurrency groups for a repository.
     """
 
-    enabled: bool
-    paused: bool
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[_dt.datetime, None]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[str, None]
 
 
 __all__ = (
-    "CheckAutomatedSecurityFixesType",
-    "CheckAutomatedSecurityFixesTypeForResponse",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupListType",
+    "ConcurrencyGroupListTypeForResponse",
 )

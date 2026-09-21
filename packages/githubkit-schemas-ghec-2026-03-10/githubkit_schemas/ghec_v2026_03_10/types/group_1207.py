@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    The total number of seats created for the specified user(s).
-    """
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
 
-    seats_created: int
 
-
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
+    client_id: str
+    repository_selection: Literal["all", "selected", "none"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
-    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBodyTypeForResponse",
 )

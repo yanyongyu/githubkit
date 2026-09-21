@@ -9,58 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0074 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningAutofixType(TypedDict):
+    """CodeScanningAutofix"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: _dt.datetime
 
 
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningAutofixTypeForResponse(TypedDict):
+    """CodeScanningAutofix"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: str
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeScanningAutofixType",
+    "CodeScanningAutofixTypeForResponse",
 )

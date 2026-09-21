@@ -9,33 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class BranchShort(GitHubModel):
-    """Branch Short
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    Branch Short
+    Repository Identifier
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
+    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
-
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

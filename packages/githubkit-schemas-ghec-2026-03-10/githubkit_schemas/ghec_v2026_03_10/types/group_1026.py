@@ -13,41 +13,49 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0339 import RepositoryAdvisoryType, RepositoryAdvisoryTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0658 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_1027 import (
+    WebhookPullRequestUnlabeledPropPullRequestType,
+    WebhookPullRequestUnlabeledPropPullRequestTypeForResponse,
+)
 
 
-class WebhookRepositoryAdvisoryPublishedType(TypedDict):
-    """Repository advisory published event"""
+class WebhookPullRequestUnlabeledType(TypedDict):
+    """pull_request unlabeled event"""
 
-    action: Literal["published"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: NotRequired[WebhooksLabelType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestUnlabeledPropPullRequestType
     repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookRepositoryAdvisoryPublishedTypeForResponse(TypedDict):
-    """Repository advisory published event"""
+class WebhookPullRequestUnlabeledTypeForResponse(TypedDict):
+    """pull_request unlabeled event"""
 
-    action: Literal["published"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: NotRequired[WebhooksLabelTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestUnlabeledPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    repository_advisory: RepositoryAdvisoryTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryAdvisoryPublishedType",
-    "WebhookRepositoryAdvisoryPublishedTypeForResponse",
+    "WebhookPullRequestUnlabeledType",
+    "WebhookPullRequestUnlabeledTypeForResponse",
 )

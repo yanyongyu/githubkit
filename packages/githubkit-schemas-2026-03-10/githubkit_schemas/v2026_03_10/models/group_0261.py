@@ -9,37 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0262 import RepositoryRuleMaxFilePathLengthPropParameters
 
-class SecretScanningCustomPatternToCreate(GitHubModel):
-    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to create in a bulk operation.
+class RepositoryRuleMaxFilePathLength(GitHubModel):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    name: str = Field(description="The name of the custom pattern.")
-    pattern: str = Field(description="The regular expression of the custom pattern.")
-    start_delimiter: Missing[str] = Field(
-        default=UNSET,
-        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
-    )
-    end_delimiter: Missing[str] = Field(
-        default=UNSET,
-        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
-    )
-    must_match: Missing[list[str]] = Field(
-        default=UNSET, description="List of regexes that the secret must match."
-    )
-    must_not_match: Missing[list[str]] = Field(
-        default=UNSET, description="List of regexes that the secret must not match."
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(SecretScanningCustomPatternToCreate)
+model_rebuild(RepositoryRuleMaxFilePathLength)
 
-__all__ = ("SecretScanningCustomPatternToCreate",)
+__all__ = ("RepositoryRuleMaxFilePathLength",)

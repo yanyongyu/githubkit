@@ -9,43 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueTypeType(TypedDict):
-    """OrganizationCreateIssueType"""
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
-    """OrganizationCreateIssueType"""
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
+    """CodeScanningAlertLocation
 
-    name: str
-    is_enabled: bool
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationCreateIssueTypeType",
-    "OrganizationCreateIssueTypeTypeForResponse",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
 )

@@ -9,49 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0124 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterpriseRulesetConditionsOneof4Type(TypedDict):
-    """organization_property_and_repository_name
+class ExternalVulnerabilitySyncStatusType(TypedDict):
+    """External Vulnerability Sync Status
 
-    Conditions to target organizations by property and all repositories
+    Status of an in-progress external vulnerability sync operation
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    id: str
+    status: Literal["processing"]
 
 
-class EnterpriseRulesetConditionsOneof4TypeForResponse(TypedDict):
-    """organization_property_and_repository_name
+class ExternalVulnerabilitySyncStatusTypeForResponse(TypedDict):
+    """External Vulnerability Sync Status
 
-    Conditions to target organizations by property and all repositories
+    Status of an in-progress external vulnerability sync operation
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    id: str
+    status: Literal["processing"]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof4Type",
-    "EnterpriseRulesetConditionsOneof4TypeForResponse",
+    "ExternalVulnerabilitySyncStatusType",
+    "ExternalVulnerabilitySyncStatusTypeForResponse",
 )

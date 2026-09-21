@@ -19,13 +19,14 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0477 import IssueEventIntent
+from .group_0493 import IssueTypeWebhook
+from .group_0495 import IssueEventIntent
 
 
-class StateChangeIssueEvent(GitHubModel):
-    """State Change Issue Event
+class IssueTypeChangedIssueEvent(GitHubModel):
+    """Issue Type Changed Issue Event
 
-    State Change Issue Event
+    Issue Type Changed Issue Event
     """
 
     id: int = Field()
@@ -37,10 +38,15 @@ class StateChangeIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
+    prev_issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
     intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(StateChangeIssueEvent)
+model_rebuild(IssueTypeChangedIssueEvent)
 
-__all__ = ("StateChangeIssueEvent",)
+__all__ = ("IssueTypeChangedIssueEvent",)

@@ -12,149 +12,108 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0030 import (
-    CodeScanningDefaultSetupOptionsType,
-    CodeScanningDefaultSetupOptionsTypeForResponse,
-    CodeScanningOptionsType,
-    CodeScanningOptionsTypeForResponse,
-)
 
+class AgentsTasksTaskIdGetResponse200Allof0PropOwnerType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropOwner
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeScanningDefaultSetupOptionsType, None]
-    ]
-    code_scanning_options: NotRequired[Union[CodeScanningOptionsType, None]]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_extended_metadata: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    code_security: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeScanningDefaultSetupOptionsTypeForResponse, None]
-    ]
-    code_scanning_options: NotRequired[Union[CodeScanningOptionsTypeForResponse, None]]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_protection: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_extended_metadata: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-
-
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
+    The owner of the repository
     """
 
-    labeled_runners: NotRequired[bool]
+    id: NotRequired[int]
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
+class AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropOwner
 
-    Feature options for Automatic dependency submission
+    The owner of the repository
     """
 
-    labeled_runners: NotRequired[bool]
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"]
+    type: Literal["pull", "branch"]
+    data: Union[
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type,
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type,
+    ]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"]
+    type: Literal["pull", "branch"]
+    data: Union[
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0TypeForResponse,
+        AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1TypeForResponse,
+    ]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int
+    global_id: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0TypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int
+    global_id: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1
+
+    A Git branch reference
+    """
+
+    head_ref: str
+    base_ref: str
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1TypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1
+
+    A Git branch reference
+    """
+
+    head_ref: str
+    base_ref: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0Type",
+    "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1Type",
+    "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropOwnerType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse",
 )

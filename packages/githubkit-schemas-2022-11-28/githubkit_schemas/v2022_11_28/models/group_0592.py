@@ -9,108 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0001 import CvssSeverities
 
 
-class WebhooksSecurityAdvisory(GitHubModel):
-    """WebhooksSecurityAdvisory
+class WebhooksMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
 
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItems] = Field()
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
-    published_at: str = Field()
-    references: list[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
-    withdrawn_at: Union[str, None] = Field()
+    account: WebhooksMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Union[str, None] = Field()
+    on_free_trial: bool = Field()
+    plan: WebhooksMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
 
-class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCvss"""
+class WebhooksMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksMarketplacePurchasePropAccount"""
 
-    score: float = Field()
-    vector_string: Union[str, None] = Field()
-
-
-class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
-    name: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
     type: str = Field()
-    value: str = Field()
 
 
-class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
+class WebhooksMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksMarketplacePurchasePropPlan"""
 
-    url: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
-    ] = Field()
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str = Field()
+    bullets: list[Union[str, None]] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
     name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
 
 
-model_rebuild(WebhooksSecurityAdvisory)
-model_rebuild(WebhooksSecurityAdvisoryPropCvss)
-model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
+model_rebuild(WebhooksMarketplacePurchase)
+model_rebuild(WebhooksMarketplacePurchasePropAccount)
+model_rebuild(WebhooksMarketplacePurchasePropPlan)
 
 __all__ = (
-    "WebhooksSecurityAdvisory",
-    "WebhooksSecurityAdvisoryPropCvss",
-    "WebhooksSecurityAdvisoryPropCwesItems",
-    "WebhooksSecurityAdvisoryPropIdentifiersItems",
-    "WebhooksSecurityAdvisoryPropReferencesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "WebhooksMarketplacePurchase",
+    "WebhooksMarketplacePurchasePropAccount",
+    "WebhooksMarketplacePurchasePropPlan",
 )

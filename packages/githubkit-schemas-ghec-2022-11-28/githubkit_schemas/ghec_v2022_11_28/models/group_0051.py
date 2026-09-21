@@ -9,30 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RunnerApplication(GitHubModel):
-    """Runner Application
-
-    Runner Application
-    """
-
-    os: str = Field()
-    architecture: str = Field()
-    download_url: str = Field()
-    filename: str = Field()
-    temp_download_token: Missing[str] = Field(
-        default=UNSET,
-        description="A short lived bearer token used to download the runner, if needed.",
-    )
-    sha256_checksum: Missing[str] = Field(default=UNSET)
+class ActionsPolicyRepoConditionsOneof0(GitHubModel):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
-model_rebuild(RunnerApplication)
+model_rebuild(ActionsPolicyRepoConditionsOneof0)
 
-__all__ = ("RunnerApplication",)
+__all__ = ("ActionsPolicyRepoConditionsOneof0",)

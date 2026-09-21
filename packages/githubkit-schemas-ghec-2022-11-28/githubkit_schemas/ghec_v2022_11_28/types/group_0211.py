@@ -10,59 +10,93 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class CreateBudgetType(TypedDict):
+    """CreateBudget"""
 
-    The type assigned to the issue. This is only present for issues in repositories
-    where issue types are supported.
-    """
+    message: str
+    budget: CreateBudgetPropBudgetType
 
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
+
+class CreateBudgetTypeForResponse(TypedDict):
+    """CreateBudget"""
+
+    message: str
+    budget: CreateBudgetPropBudgetTypeForResponse
+
+
+class CreateBudgetPropBudgetType(TypedDict):
+    """CreateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
         ]
     ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    is_enabled: NotRequired[bool]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
+    expires_at: NotRequired[_dt.date]
 
 
-class IssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class CreateBudgetPropBudgetTypeForResponse(TypedDict):
+    """CreateBudgetPropBudget"""
 
-    The type assigned to the issue. This is only present for issues in repositories
-    where issue types are supported.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
         ]
     ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    is_enabled: NotRequired[bool]
+    budget_entity_name: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[
+        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+    expires_at: NotRequired[str]
+
+
+class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "IssueTypeType",
-    "IssueTypeTypeForResponse",
+    "CreateBudgetPropBudgetPropBudgetAlertingType",
+    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "CreateBudgetPropBudgetType",
+    "CreateBudgetPropBudgetTypeForResponse",
+    "CreateBudgetType",
+    "CreateBudgetTypeForResponse",
 )

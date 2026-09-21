@@ -9,24 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
+    state: Missing[Literal["open", "dismissed"]] = Field(
+        default=UNSET,
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
     )
-    message: str = Field(
-        max_length=2048, description="A message to include with the review."
+    dismissed_reason: Missing[
+        Union[
+            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+        ]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    create_request: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, attempt to create an alert dismissal request.",
+    )
+    assignees: list[str] = Field(
+        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
     )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)

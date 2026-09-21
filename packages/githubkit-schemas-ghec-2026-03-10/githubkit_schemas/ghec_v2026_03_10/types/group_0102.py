@@ -9,42 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class CodeScanningOptionsType(TypedDict):
+    """CodeScanningOptions
 
-    A hosted compute network configuration.
+    Security Configuration feature options for code scanning
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
+    allow_advanced: NotRequired[Union[bool, None]]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class CodeScanningOptionsTypeForResponse(TypedDict):
+    """CodeScanningOptions
 
-    A hosted compute network configuration.
+    Security Configuration feature options for code scanning
     """
 
-    id: str
-    name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    allow_advanced: NotRequired[Union[bool, None]]
+
+
+class CodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
+    runner_label: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
+    "CodeScanningDefaultSetupOptionsType",
+    "CodeScanningDefaultSetupOptionsTypeForResponse",
+    "CodeScanningOptionsType",
+    "CodeScanningOptionsTypeForResponse",
 )

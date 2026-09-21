@@ -14,30 +14,34 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
 
 
-model_rebuild(ActionsRepositoryPermissions)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = ("ActionsRepositoryPermissions",)
+__all__ = ("RepositoryAdvisoryCredit",)

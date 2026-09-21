@@ -9,67 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class MigrationType(TypedDict):
-    """Migration
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    A migration.
+    A description of the machine powering a codespace.
     """
 
-    id: int
-    owner: Union[SimpleUserType, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryType]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
-class MigrationTypeForResponse(TypedDict):
-    """Migration
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    A migration.
+    A description of the machine powering a codespace.
     """
 
-    id: int
-    owner: Union[SimpleUserTypeForResponse, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[RepositoryTypeForResponse]
-    url: str
-    created_at: str
-    updated_at: str
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 __all__ = (
-    "MigrationType",
-    "MigrationTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

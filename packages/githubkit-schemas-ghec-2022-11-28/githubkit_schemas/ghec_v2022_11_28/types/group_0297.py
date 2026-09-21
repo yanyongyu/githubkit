@@ -10,33 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-    Interaction limit settings.
+    Credential Authorization
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: _dt.datetime
+    login: str
+    credential_id: int
+    credential_type: Literal[
+        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
+    ]
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: _dt.datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[_dt.datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class InteractionLimitResponseTypeForResponse(TypedDict):
-    """Interaction Limits
+class CredentialAuthorizationTypeForResponse(TypedDict):
+    """Credential Authorization
 
-    Interaction limit settings.
+    Credential Authorization
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: str
+    login: str
+    credential_id: int
+    credential_type: Literal[
+        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
+    ]
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: str
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[str, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "InteractionLimitResponseType",
-    "InteractionLimitResponseTypeForResponse",
+    "CredentialAuthorizationType",
+    "CredentialAuthorizationTypeForResponse",
 )

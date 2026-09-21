@@ -9,69 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupType(TypedDict):
-    """Concurrency Group
+class RuleSuiteRequiredStatusChecksType(TypedDict):
+    """Required status checks rule suite metadata
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
+    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
 
 
-class ConcurrencyGroupTypeForResponse(TypedDict):
-    """Concurrency Group
+class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
+    """Required status checks rule suite metadata
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+    checks: NotRequired[
+        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
+    ]
 
 
-class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
+    ]
 
 
-class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupPropGroupMembersItemsType",
-    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupType",
-    "ConcurrencyGroupTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
+    "RuleSuiteRequiredStatusChecksType",
+    "RuleSuiteRequiredStatusChecksTypeForResponse",
 )

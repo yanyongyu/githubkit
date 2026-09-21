@@ -10,39 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0234 import (
-    RepositoryRuleCodeScanningPropParametersType,
-    RepositoryRuleCodeScanningPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
-    """
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
-    """code_scanning
-
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
-    """
-
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningType",
-    "RepositoryRuleCodeScanningTypeForResponse",
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
 )

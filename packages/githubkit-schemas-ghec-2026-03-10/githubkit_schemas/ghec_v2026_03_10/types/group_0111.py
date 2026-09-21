@@ -9,45 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+CopilotEnterpriseContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Enterprise Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an enterprise.
+"""
 
 
-class CustomPropertySetPayloadType(TypedDict):
-    """Custom Property Set Payload
+CopilotEnterpriseContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Enterprise Content Exclusion Details
 
-    Custom property set payload
-    """
-
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    require_explicit_values: NotRequired[bool]
-
-
-class CustomPropertySetPayloadTypeForResponse(TypedDict):
-    """Custom Property Set Payload
-
-    Custom property set payload
-    """
-
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    require_explicit_values: NotRequired[bool]
+List all Copilot Content Exclusion rules for an enterprise.
+"""
 
 
 __all__ = (
-    "CustomPropertySetPayloadType",
-    "CustomPropertySetPayloadTypeForResponse",
+    "CopilotEnterpriseContentExclusionDetailsType",
+    "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
 )

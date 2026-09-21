@@ -9,35 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0168 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+    RepositoryRuleBranchNamePatternPropParametersType,
+    RepositoryRuleBranchNamePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
 
-    Parameters for a repository ID condition
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository IDs
+class RepositoryRuleBranchNamePatternTypeForResponse(TypedDict):
+    """branch_name_pattern
 
-    Parameters for a repository ID condition
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    repository_id: (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
-    )
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleBranchNamePatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryIdTargetType",
-    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
+    "RepositoryRuleBranchNamePatternType",
+    "RepositoryRuleBranchNamePatternTypeForResponse",
 )

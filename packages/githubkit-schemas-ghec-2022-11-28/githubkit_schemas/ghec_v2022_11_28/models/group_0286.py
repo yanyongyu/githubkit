@@ -9,40 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0253 import MinimalRepository
 
 
-class Package(GitHubModel):
-    """Package
+class CodeScanningAiScanOrgSettings(GitHubModel):
+    """Code scanning AI Scan organization settings
 
-    A software package
+    The AI Scan organization setting
     """
 
-    id: int = Field(description="Unique identifier of the package.")
-    name: str = Field(description="The name of the package.")
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    version_count: int = Field(description="The number of versions of the package.")
-    visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    repository: Missing[Union[MinimalRepository, None]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out."
+    )
 
 
-model_rebuild(Package)
+model_rebuild(CodeScanningAiScanOrgSettings)
 
-__all__ = ("Package",)
+__all__ = ("CodeScanningAiScanOrgSettings",)

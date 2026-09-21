@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0149 import RepositoryRuleBranchNamePatternPropParameters
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0067 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+)
+from .group_0143 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRuleBranchNamePattern(GitHubModel):
-    """branch_name_pattern
+class EnterpriseRulesetConditionsOneof4(GitHubModel):
+    """organization_property_and_repository_name
 
-    Parameters to be used for the branch_name_pattern rule
+    Conditions to target organizations by property and all repositories
     """
 
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
-    )
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleBranchNamePattern)
+model_rebuild(EnterpriseRulesetConditionsOneof4)
 
-__all__ = ("RepositoryRuleBranchNamePattern",)
+__all__ = ("EnterpriseRulesetConditionsOneof4",)

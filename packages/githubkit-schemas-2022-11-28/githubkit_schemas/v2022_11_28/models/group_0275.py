@@ -12,31 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0273 import RateLimit
+from .group_0276 import RulesetVersionWithStateAllof1PropState
 
 
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
+class RulesetVersionWithStateAllof1(GitHubModel):
+    """RulesetVersionWithStateAllof1"""
 
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    copilot_usage_records: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(RulesetVersionWithStateAllof1)
 
-__all__ = ("RateLimitOverviewPropResources",)
+__all__ = ("RulesetVersionWithStateAllof1",)

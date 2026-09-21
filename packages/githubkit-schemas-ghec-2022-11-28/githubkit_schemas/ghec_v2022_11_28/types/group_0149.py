@@ -9,29 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0067 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class RepositoryRuleBranchNamePatternPropParametersType(TypedDict):
-    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+class EnterpriseRulesetConditionsOneof5Type(TypedDict):
+    """organization_property_and_repository_property
+
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class RepositoryRuleBranchNamePatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleBranchNamePatternPropParameters"""
+class EnterpriseRulesetConditionsOneof5TypeForResponse(TypedDict):
+    """organization_property_and_repository_property
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleBranchNamePatternPropParametersType",
-    "RepositoryRuleBranchNamePatternPropParametersTypeForResponse",
+    "EnterpriseRulesetConditionsOneof5Type",
+    "EnterpriseRulesetConditionsOneof5TypeForResponse",
 )

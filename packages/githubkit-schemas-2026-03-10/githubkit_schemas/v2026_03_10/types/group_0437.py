@@ -14,48 +14,71 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0402 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class TimelineAssignedIssueEventType(TypedDict):
-    """Timeline Assigned Issue Event
+class MovedColumnInProjectIssueEventType(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Timeline Assigned Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["assigned"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
 
 
-class TimelineAssignedIssueEventTypeForResponse(TypedDict):
-    """Timeline Assigned Issue Event
+class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Timeline Assigned Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["assigned"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    project_card: NotRequired[
+        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
+    ]
+
+
+class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "TimelineAssignedIssueEventType",
-    "TimelineAssignedIssueEventTypeForResponse",
+    "MovedColumnInProjectIssueEventPropProjectCardType",
+    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
+    "MovedColumnInProjectIssueEventType",
+    "MovedColumnInProjectIssueEventTypeForResponse",
 )

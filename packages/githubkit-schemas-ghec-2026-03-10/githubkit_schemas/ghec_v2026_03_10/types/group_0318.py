@@ -9,28 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class LinkType(TypedDict):
-    """Link
+class OrganizationCreateIssueFieldType(TypedDict):
+    """OrganizationCreateIssueField"""
 
-    Hypermedia Link
-    """
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+    ]
 
-    href: str
+
+class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationCreateIssueField"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    ]
 
 
-class LinkTypeForResponse(TypedDict):
-    """Link
+class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-    Hypermedia Link
-    """
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
-    href: str
+
+class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "LinkType",
-    "LinkTypeForResponse",
+    "OrganizationCreateIssueFieldPropOptionsItemsType",
+    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationCreateIssueFieldType",
+    "OrganizationCreateIssueFieldTypeForResponse",
 )

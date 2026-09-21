@@ -9,48 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0547 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+
+class WebhooksProjectColumnType(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: _dt.datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: _dt.datetime
+    url: str
 
 
-class WebhookCheckRunCompletedType(TypedDict):
-    """Check Run Completed Event"""
+class WebhooksProjectColumnTypeForResponse(TypedDict):
+    """Project Column"""
 
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookCheckRunCompletedTypeForResponse(TypedDict):
-    """Check Run Completed Event"""
-
-    action: Literal["completed"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: str
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: str
+    url: str
 
 
 __all__ = (
-    "WebhookCheckRunCompletedType",
-    "WebhookCheckRunCompletedTypeForResponse",
+    "WebhooksProjectColumnType",
+    "WebhooksProjectColumnTypeForResponse",
 )

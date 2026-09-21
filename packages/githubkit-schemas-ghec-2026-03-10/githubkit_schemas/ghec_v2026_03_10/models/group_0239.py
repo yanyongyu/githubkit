@@ -12,17 +12,48 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReleaseEventPropReleaseAllof1(GitHubModel):
-    """ReleaseEventPropReleaseAllof1"""
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
 
-    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
-    short_description_html: Missing[str] = Field(default=UNSET)
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
 
 
-model_rebuild(ReleaseEventPropReleaseAllof1)
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
 
-__all__ = ("ReleaseEventPropReleaseAllof1",)
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
+
+__all__ = (
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
+)

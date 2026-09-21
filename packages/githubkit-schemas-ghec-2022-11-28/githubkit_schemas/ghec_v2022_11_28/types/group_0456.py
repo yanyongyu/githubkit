@@ -12,27 +12,70 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0081 import TeamType, TeamTypeForResponse
+
+class ContentFileType(TypedDict):
+    """Content File
+
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

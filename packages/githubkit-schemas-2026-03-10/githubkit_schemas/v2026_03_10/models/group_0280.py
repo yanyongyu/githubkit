@@ -18,93 +18,160 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class Job(GitHubModel):
-    """Job
-
-    Information of a job execution in a workflow run
-    """
-
-    id: int = Field(description="The id of the job.")
-    run_id: int = Field(description="The id of the associated workflow run.")
-    run_url: str = Field()
-    run_attempt: Missing[int] = Field(
-        default=UNSET,
-        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
-    )
-    node_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being run.")
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ] = Field(description="The phase of the lifecycle that the job is currently in.")
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ] = Field(description="The outcome of the job.")
-    created_at: _dt.datetime = Field(
-        description="The time that the job created, in ISO 8601 format."
-    )
-    started_at: _dt.datetime = Field(
-        description="The time that the job started, in ISO 8601 format."
-    )
-    completed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the job finished, in ISO 8601 format."
-    )
-    name: str = Field(description="The name of the job.")
-    steps: Missing[list[JobPropStepsItems]] = Field(
-        default=UNSET, description="Steps in this job."
-    )
-    check_run_url: str = Field()
-    labels: list[str] = Field(
-        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
-    )
-    runner_id: Union[int, None] = Field(
-        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_name: Union[str, None] = Field(
-        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_id: Union[int, None] = Field(
-        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_name: Union[str, None] = Field(
-        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-
-
-class JobPropStepsItems(GitHubModel):
-    """JobPropStepsItems"""
-
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The phase of the lifecycle that the job is currently in."
-    )
-    conclusion: Union[str, None] = Field(description="The outcome of the job.")
-    name: str = Field(description="The name of the job.")
-    number: int = Field()
-    started_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="The time that the step started, in ISO 8601 format."
-    )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="The time that the job finished, in ISO 8601 format."
-    )
-
-
-model_rebuild(Job)
-model_rebuild(JobPropStepsItems)
-
-__all__ = (
-    "Job",
-    "JobPropStepsItems",
+from .group_0003 import SimpleUser
+from .group_0032 import SimpleRepository
+from .group_0277 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
 )
+from .group_0278 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0279 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+
+
+class OrganizationSecretScanningAlert(GitHubModel):
+    """OrganizationSecretScanningAlert"""
+
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL of the code locations for this alert.",
+    )
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    provider: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The provider of the secret that was detected."
+    )
+    provider_slug: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The slug identifier for the provider of the secret that was detected. Use this value for filtering by provider with the `providers` or `exclude_providers` parameters.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    push_protection_bypass_request_reviewer: Missing[Union[SimpleUser, None]] = Field(
+        default=UNSET
+    )
+    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when reviewing a push protection bypass.",
+    )
+    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when requesting a push protection bypass.",
+    )
+    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The URL to a push protection bypass request."
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment that was optionally added when this alert was closed",
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    publicly_leaked: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether the secret was publicly leaked."
+    )
+    multi_repo: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
+    )
+    is_base64_encoded: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not alert is base64 encoded",
+    )
+    first_location_detected: Missing[
+        Union[
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    has_more_locations: Missing[bool] = Field(
+        default=UNSET,
+        description="A boolean value representing whether or not the token in the alert was detected in more than one location.",
+    )
+    assigned_to: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    closure_request_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment from the closure request author.",
+    )
+    closure_request_reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment from the closure request reviewer.",
+    )
+    closure_request_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+
+
+model_rebuild(OrganizationSecretScanningAlert)
+
+__all__ = ("OrganizationSecretScanningAlert",)

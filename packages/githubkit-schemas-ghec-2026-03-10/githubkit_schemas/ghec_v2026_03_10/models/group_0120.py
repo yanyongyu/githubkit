@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,42 +18,76 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
-    )
+from .group_0003 import SimpleUser
+from .group_0099 import SimpleRepository
+from .group_0117 import DependabotAlertSecurityVulnerability
+from .group_0118 import DependabotAlertSecurityAdvisory
+from .group_0119 import DependabotAlertDismissalRequestSimple
+from .group_0121 import DependabotAlertWithRepositoryPropDependency
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+class DependabotAlertWithRepository(GitHubModel):
+    """DependabotAlertWithRepository
 
-    Parameters for a targeting a repository property
+    A Dependabot alert.
     """
 
-    name: str = Field(description="The name of the repository property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the repository property"
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
     )
-    source: Missing[Literal["custom", "system"]] = Field(
+    dependency: DependabotAlertWithRepositoryPropDependency = Field(
+        description="Details for the vulnerable dependency."
+    )
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
+    )
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[SimpleUser, None] = Field()
+    dismissed_reason: Union[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+        None,
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The source of the repository property. Defaults to 'custom' if not specified.",
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
+        Field(
+            default=UNSET,
+            title="Dependabot alert dismissal request",
+            description="Information about an active dismissal request for this Dependabot alert.",
+        )
+    )
+    assignees: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The users assigned to this alert."
+    )
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+model_rebuild(DependabotAlertWithRepository)
 
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-)
+__all__ = ("DependabotAlertWithRepository",)

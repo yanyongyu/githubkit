@@ -14,19 +14,39 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0464 import Metadata
 
 
-class RepositoryHashAlgorithm(GitHubModel):
-    """Repository hash algorithm
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    Repository hash algorithm
-    """
-
-    hash_algorithm: Literal["sha1", "sha256"] = Field(
-        description="The Git hash algorithm used by this repository."
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
+        default=UNSET,
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
+    )
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
+        default=UNSET,
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    )
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    )
+    dependencies: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
     )
 
 
-model_rebuild(RepositoryHashAlgorithm)
+model_rebuild(Dependency)
 
-__all__ = ("RepositoryHashAlgorithm",)
+__all__ = ("Dependency",)

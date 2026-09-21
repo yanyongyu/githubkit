@@ -12,42 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserNameResponse(GitHubModel):
-    """UserNameResponse"""
+class StargazerHistory(GitHubModel):
+    """Stargazer History
 
-    formatted: Missing[str] = Field(
-        default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    Stargazer History
+    """
+
+    days: list[int] = Field(
+        description="The number of stars created on each day of the week, starting on Sunday."
     )
-    family_name: Missing[str] = Field(
-        default=UNSET, alias="familyName", description="The family name of the user."
-    )
-    given_name: Missing[str] = Field(
-        default=UNSET, alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
-    )
+    total: int = Field(description="The number of stars created during the week.")
+    week: int = Field(description="The start of the week, given as a Unix timestamp.")
 
 
-class UserEmailsResponseItems(GitHubModel):
-    """UserEmailsResponseItems"""
+model_rebuild(StargazerHistory)
 
-    value: str = Field(description="The email address.")
-    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Whether this email address is the primary address."
-    )
-
-
-model_rebuild(UserNameResponse)
-model_rebuild(UserEmailsResponseItems)
-
-__all__ = (
-    "UserEmailsResponseItems",
-    "UserNameResponse",
-)
+__all__ = ("StargazerHistory",)

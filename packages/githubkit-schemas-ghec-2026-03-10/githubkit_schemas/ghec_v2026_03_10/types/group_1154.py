@@ -11,32 +11,88 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: NotRequired[str]
 
 
 __all__ = (
-    "ApplicationsClientIdTokenScopedPostBodyType",
-    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
 )

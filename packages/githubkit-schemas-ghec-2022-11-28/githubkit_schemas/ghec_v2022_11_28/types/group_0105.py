@@ -9,53 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomPropertyType(TypedDict):
-    """Custom Property for Organization
+class EnterpriseSecurityAnalysisSettingsType(TypedDict):
+    """Enterprise Security Analysis Settings"""
 
-    Custom property defined for an organization
-    """
-
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
     ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
+
+
+class EnterpriseSecurityAnalysisSettingsTypeForResponse(TypedDict):
+    """Enterprise Security Analysis Settings"""
+
+    advanced_security_enabled_for_new_repositories: bool
+    advanced_security_enabled_for_new_user_namespace_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: bool
+    secret_scanning_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_enabled_for_new_repositories: bool
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        bool
     ]
-
-
-class OrganizationCustomPropertyTypeForResponse(TypedDict):
-    """Custom Property for Organization
-
-    Custom property defined for an organization
-    """
-
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
-    ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
-    ]
+    secret_scanning_validity_checks_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "OrganizationCustomPropertyType",
-    "OrganizationCustomPropertyTypeForResponse",
+    "EnterpriseSecurityAnalysisSettingsType",
+    "EnterpriseSecurityAnalysisSettingsTypeForResponse",
 )

@@ -9,29 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class IssueCommentMinimizedType(TypedDict):
-    """Minimized Issue Comment
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    Details about why an issue comment was minimized.
-    """
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
 
-    reason: Union[str, None]
+
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
+
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
 
 
-class IssueCommentMinimizedTypeForResponse(TypedDict):
-    """Minimized Issue Comment
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    Details about why an issue comment was minimized.
-    """
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
-    reason: Union[str, None]
+
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "IssueCommentMinimizedType",
-    "IssueCommentMinimizedTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

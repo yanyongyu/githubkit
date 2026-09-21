@@ -9,32 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
-from .group_0118 import RepositoryRulesetConditionsPropRefName
-from .group_0122 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
-)
 
 
-class EnterpriseRulesetConditionsOneof2(GitHubModel):
-    """organization_id_and_repository_name
+class ExternalVulnerabilitySyncAccepted(GitHubModel):
+    """External Vulnerability Sync Accepted
 
-    Conditions to target organizations by id and all repositories
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    id: str = Field(description="Job status ID for polling")
+    url: str = Field(description="URL to poll for sync results")
+    status: Literal["queued"] = Field(description="Initial job status")
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof2)
+model_rebuild(ExternalVulnerabilitySyncAccepted)
 
-__all__ = ("EnterpriseRulesetConditionsOneof2",)
+__all__ = ("ExternalVulnerabilitySyncAccepted",)

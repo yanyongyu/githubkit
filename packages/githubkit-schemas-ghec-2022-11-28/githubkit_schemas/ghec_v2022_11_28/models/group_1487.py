@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,38 +18,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsGetResponse200"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    total_count: int = Field()
-    workflows: list[Workflow] = Field()
-
-
-class Workflow(GitHubModel):
-    """Workflow
-
-    A GitHub Actions workflow
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    path: str = Field()
-    state: Literal[
-        "active", "deleted", "disabled_fork", "disabled_inactivity", "disabled_manually"
-    ] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-    html_url: str = Field()
-    badge_url: str = Field()
-    deleted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsWorkflowsGetResponse200)
-model_rebuild(Workflow)
+model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
 
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsGetResponse200",
-    "Workflow",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)

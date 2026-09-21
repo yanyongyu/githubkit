@@ -9,38 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0252 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
-)
-from .group_0255 import (
-    RulesetVersionWithStateAllof1PropStateType,
-    RulesetVersionWithStateAllof1PropStateTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleWorkflowsPropParametersType(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
-    state: RulesetVersionWithStateAllof1PropStateType
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
 
 
-class RulesetVersionWithStateTypeForResponse(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
-    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
+    do_not_enforce_on_create: NotRequired[bool]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
+    """
+
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
+
+
+class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
+    """WorkflowFileReference
+
+    A workflow that must run for this rule to pass
+    """
+
+    path: str
+    ref: NotRequired[str]
+    repository_id: int
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "RulesetVersionWithStateType",
-    "RulesetVersionWithStateTypeForResponse",
+    "RepositoryRuleParamsWorkflowFileReferenceType",
+    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
+    "RepositoryRuleWorkflowsPropParametersType",
+    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
 )

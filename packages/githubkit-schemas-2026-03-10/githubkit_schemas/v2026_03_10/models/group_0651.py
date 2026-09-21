@@ -18,19 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0046 import Discussion
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
+from .group_0216 import CustomProperty
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionClosed(GitHubModel):
-    """discussion closed event"""
+class WebhookCustomPropertyUpdated(GitHubModel):
+    """custom property updated event"""
 
-    action: Literal["closed"] = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
+    action: Literal["updated"] = Field()
+    definition: CustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -47,13 +47,11 @@ class WebhookDiscussionClosed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionClosed)
+model_rebuild(WebhookCustomPropertyUpdated)
 
-__all__ = ("WebhookDiscussionClosed",)
+__all__ = ("WebhookCustomPropertyUpdated",)

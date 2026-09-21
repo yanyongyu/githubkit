@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,38 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
+class CodeScanningAutofixCommits(GitHubModel):
+    """CodeScanningAutofixCommits
 
-    A list of errors found in a repo's CODEOWNERS file
+    Commit an autofix for a code scanning alert
     """
 
-    errors: list[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
-    )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
+    target_ref: Missing[str] = Field(
         default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    message: Missing[str] = Field(
+        default=UNSET, description="Commit message to be used."
     )
-    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeScanningAutofixCommits)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeScanningAutofixCommits",)

@@ -14,119 +14,91 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class JobType(TypedDict):
-    """Job
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-    Information of a job execution in a workflow run
+    Response
     """
 
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ]
-    created_at: _dt.datetime
-    started_at: _dt.datetime
-    completed_at: Union[_dt.datetime, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsType]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class JobTypeForResponse(TypedDict):
-    """Job
+class RuleSuiteTypeForResponse(TypedDict):
+    """Rule Suite
 
-    Information of a job execution in a workflow run
+    Response
     """
 
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
+    rule_evaluations: NotRequired[
+        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
     ]
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
+
+
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
+
+
+class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[
+        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
     ]
-    created_at: str
-    started_at: str
-    completed_at: Union[str, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[Union[str, None]]
 
 
-class JobPropStepsItemsType(TypedDict):
-    """JobPropStepsItems"""
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[_dt.datetime, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
-class JobPropStepsItemsTypeForResponse(TypedDict):
-    """JobPropStepsItems"""
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "JobPropStepsItemsType",
-    "JobPropStepsItemsTypeForResponse",
-    "JobType",
-    "JobTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
+    "RuleSuiteType",
+    "RuleSuiteTypeForResponse",
 )

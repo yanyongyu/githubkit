@@ -9,29 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanEnablementUpdateType(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-    AI Scan enablement update for a repository.
+    Diff Entry
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class DiffEntryTypeForResponse(TypedDict):
+    """Diff Entry
 
-    AI Scan enablement update for a repository.
+    Diff Entry
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementUpdateType",
-    "CodeScanningAiScanEnablementUpdateTypeForResponse",
+    "DiffEntryType",
+    "DiffEntryTypeForResponse",
 )

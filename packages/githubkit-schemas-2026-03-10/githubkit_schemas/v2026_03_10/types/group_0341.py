@@ -9,40 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0338 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
 
+class CodeQualitySetupType(TypedDict):
+    """CodeQualitySetup
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+    Configuration for code quality setup.
+    """
 
-    repository: CodeScanningVariantAnalysisRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
     ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeQualitySetupTypeForResponse(TypedDict):
+    """CodeQualitySetup
 
-    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    Configuration for code quality setup.
+    """
+
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
     ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
-    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
+    "CodeQualitySetupType",
+    "CodeQualitySetupTypeForResponse",
 )

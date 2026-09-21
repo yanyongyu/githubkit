@@ -10,55 +10,105 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0468 import HookResponseType, HookResponseTypeForResponse
+from .group_0466 import MetadataType, MetadataTypeForResponse
 
 
-class HookType(TypedDict):
-    """Webhook
+class SnapshotType(TypedDict):
+    """snapshot
 
-    Webhooks for repositories.
+    Create a new snapshot of a repository's dependencies.
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: _dt.datetime
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class SnapshotTypeForResponse(TypedDict):
+    """snapshot
 
-    Webhooks for repositories.
+    Create a new snapshot of a repository's dependencies.
     """
 
-    type: str
-    id: int
+    version: int
+    job: SnapshotPropJobTypeForResponse
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorTypeForResponse
+    metadata: NotRequired[MetadataTypeForResponse]
+    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
+    scanned: str
+
+
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropJobTypeForResponse(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
     name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
+    version: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+
+
+class SnapshotPropDetectorTypeForResponse(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
+    url: str
+
+
+SnapshotPropManifestsType: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
+
+
+SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
+"""SnapshotPropManifests
+
+A collection of package manifests, which are a collection of related
+dependencies declared in a file or representing a logical group of dependencies.
+"""
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "SnapshotPropDetectorType",
+    "SnapshotPropDetectorTypeForResponse",
+    "SnapshotPropJobType",
+    "SnapshotPropJobTypeForResponse",
+    "SnapshotPropManifestsType",
+    "SnapshotPropManifestsTypeForResponse",
+    "SnapshotType",
+    "SnapshotTypeForResponse",
 )

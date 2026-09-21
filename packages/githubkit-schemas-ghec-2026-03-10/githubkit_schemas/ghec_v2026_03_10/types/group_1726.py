@@ -13,107 +13,53 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesPostBody"""
+class UserCodespacesPostBodyOneof1Type(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
-    ]
-
-
-class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesPostBody"""
-
-    name: str
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
-        ]
-    ]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
 
 
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
-    ]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
 
 
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
+    Pull request number for this codespace
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    pull_request_number: int
+    repository_id: int
 
 
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-    Metadata specific to the resource type.
+    Pull request number for this codespace
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    pull_request_number: int
+    repository_id: int
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesPostBodyType",
-    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
+    "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
+    "UserCodespacesPostBodyOneof1Type",
+    "UserCodespacesPostBodyOneof1TypeForResponse",
 )

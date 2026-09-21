@@ -17,23 +17,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0074 import CodeSecurityConfiguration
 
+class RunnerLabel(GitHubModel):
+    """Self hosted runner label
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+    A label for a self hosted runner
+    """
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
-        Field(
-            default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
-        )
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the label."
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    name: str = Field(description="Name of the label.")
+    type: Missing[Literal["read-only", "custom"]] = Field(
+        default=UNSET,
+        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
     )
 
 
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
+model_rebuild(RunnerLabel)
 
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("RunnerLabel",)

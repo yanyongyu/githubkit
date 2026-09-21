@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +19,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0587 import WebhooksRelease
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0928 import WebhookPullRequestReviewThreadUnresolvedPropPullRequest
 
 
-class WebhookReleaseEdited(GitHubModel):
-    """release edited event"""
+class WebhookPullRequestReviewThreadUnresolved(GitHubModel):
+    """pull_request_review_thread unresolved event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookReleaseEditedPropChanges = Field()
+    action: Literal["unresolved"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,9 +45,8 @@ class WebhookReleaseEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhooksRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequest = Field(
+        title="Simple Pull Request"
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -56,66 +55,224 @@ class WebhookReleaseEdited(GitHubModel):
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
+    thread: WebhookPullRequestReviewThreadUnresolvedPropThread = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-class WebhookReleaseEditedPropChanges(GitHubModel):
-    """WebhookReleaseEditedPropChanges"""
+class WebhookPullRequestReviewThreadUnresolvedPropThread(GitHubModel):
+    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
 
-    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
-    tag_name: Missing[WebhookReleaseEditedPropChangesPropTagName] = Field(default=UNSET)
-    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
-        default=UNSET
+    comments: list[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems
+    ] = Field()
+    node_id: str = Field()
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems(GitHubModel):
+    """Pull Request Review Comment
+
+    The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-
+    for-a-pull-request) itself.
+    """
+
+    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks = Field(
+        alias="_links"
+    )
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="The text of the comment.")
+    commit_id: str = Field(
+        description="The SHA of the commit to which the comment applies."
+    )
+    created_at: _dt.datetime = Field()
+    diff_hunk: str = Field(
+        description="The diff of the line that the comment refers to."
+    )
+    html_url: str = Field(description="HTML URL for the pull request review comment.")
+    id: int = Field(description="The ID of the pull request review comment.")
+    in_reply_to_id: Missing[int] = Field(
+        default=UNSET, description="The comment ID to reply to."
+    )
+    line: Union[int, None] = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    node_id: str = Field(description="The node ID of the pull request review comment.")
+    original_commit_id: str = Field(
+        description="The SHA of the original commit to which the comment applies."
+    )
+    original_line: int = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    original_position: int = Field(
+        description="The index of the original line in the diff to which the comment applies."
+    )
+    original_start_line: Union[int, None] = Field(
+        description="The first line of the range for a multi-line comment."
+    )
+    path: str = Field(
+        description="The relative path of the file to which the comment applies."
+    )
+    position: Union[int, None] = Field(
+        description="The line index in the diff to which the comment applies."
+    )
+    pull_request_review_id: Union[int, None] = Field(
+        description="The ID of the pull request review to which the comment belongs."
+    )
+    pull_request_url: str = Field(
+        description="URL for the pull request that the review comment belongs to."
+    )
+    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions = Field(
+        title="Reactions"
+    )
+    side: Literal["LEFT", "RIGHT"] = Field(
+        description="The side of the first line of the range for a multi-line comment."
+    )
+    start_line: Union[int, None] = Field(
+        description="The first line of the range for a multi-line comment."
+    )
+    start_side: Union[Literal["LEFT", "RIGHT"], None] = Field(
+        default="RIGHT",
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+    )
+    updated_at: _dt.datetime = Field()
+    url: str = Field(description="URL for the pull request review comment")
+    user: Union[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser,
+        None,
+    ] = Field(title="User")
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions(
+    GitHubModel
+):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser(
+    GitHubModel
+):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks(
+    GitHubModel
+):
+    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
+
+    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml = Field(
+        title="Link"
+    )
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest = Field(
+        title="Link"
+    )
+    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf = Field(
+        alias="self", title="Link"
     )
 
 
-class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropBody"""
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml(
+    GitHubModel
+):
+    """Link"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
+    href: str = Field()
 
 
-class WebhookReleaseEditedPropChangesPropTagName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropTagName"""
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest(
+    GitHubModel
+):
+    """Link"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the tag_name if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool = Field(
-        description="Whether this release was explicitly `edited` to be the latest."
-    )
+    href: str = Field()
 
 
-model_rebuild(WebhookReleaseEdited)
-model_rebuild(WebhookReleaseEditedPropChanges)
-model_rebuild(WebhookReleaseEditedPropChangesPropBody)
-model_rebuild(WebhookReleaseEditedPropChangesPropName)
-model_rebuild(WebhookReleaseEditedPropChangesPropTagName)
-model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf(
+    GitHubModel
+):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhookPullRequestReviewThreadUnresolved)
+model_rebuild(WebhookPullRequestReviewThreadUnresolvedPropThread)
+model_rebuild(WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems)
+model_rebuild(
+    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions
+)
+model_rebuild(
+    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser
+)
+model_rebuild(
+    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks
+)
+model_rebuild(
+    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml
+)
+model_rebuild(
+    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest
+)
+model_rebuild(
+    WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf
+)
 
 __all__ = (
-    "WebhookReleaseEdited",
-    "WebhookReleaseEditedPropChanges",
-    "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropMakeLatest",
-    "WebhookReleaseEditedPropChangesPropName",
-    "WebhookReleaseEditedPropChangesPropTagName",
+    "WebhookPullRequestReviewThreadUnresolved",
+    "WebhookPullRequestReviewThreadUnresolvedPropThread",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser",
 )

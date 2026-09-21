@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,39 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseTeam(GitHubModel):
-    """Enterprise Team
+class InstallableOrganization(GitHubModel):
+    """Installable Organization
 
-    Group of enterprise owners and/or members
+    A GitHub organization on which a GitHub App can be installed.
     """
 
     id: int = Field()
-    name: str = Field()
-    description: Missing[str] = Field(default=UNSET)
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: Missing[str] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
-    )
-    organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Union[str, None] = Field()
-    group_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
-    )
-    html_url: str = Field()
-    members_url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when the team is mentioned.",
-    )
+    login: str = Field()
+    accessible_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterpriseTeam)
+model_rebuild(InstallableOrganization)
 
-__all__ = ("EnterpriseTeam",)
+__all__ = ("InstallableOrganization",)

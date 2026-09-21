@@ -9,40 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0020 import Repository
+from .group_0045 import OrganizationSimple
 
 
-class PullRequestSimplePropHead(GitHubModel):
-    """PullRequestSimplePropHead"""
+class OrgMembership(GitHubModel):
+    """Org Membership
 
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[Repository, None] = Field()
-    sha: str = Field()
+    Org Membership
+    """
+
+    url: str = Field()
+    state: Literal["active", "pending"] = Field(
+        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
+    )
+    role: Literal["admin", "member", "billing_manager"] = Field(
+        description="The user's membership type in the organization."
+    )
+    direct_membership: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user has direct membership in the organization.",
+    )
+    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+    )
+    organization_url: str = Field()
+    organization: OrganizationSimple = Field(
+        title="Organization Simple", description="A GitHub organization."
+    )
     user: Union[SimpleUser, None] = Field()
+    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class PullRequestSimplePropBase(GitHubModel):
-    """PullRequestSimplePropBase"""
+class OrgMembershipPropPermissions(GitHubModel):
+    """OrgMembershipPropPermissions"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: Union[SimpleUser, None] = Field()
+    can_create_repository: bool = Field()
 
 
-model_rebuild(PullRequestSimplePropHead)
-model_rebuild(PullRequestSimplePropBase)
+model_rebuild(OrgMembership)
+model_rebuild(OrgMembershipPropPermissions)
 
 __all__ = (
-    "PullRequestSimplePropBase",
-    "PullRequestSimplePropHead",
+    "OrgMembership",
+    "OrgMembershipPropPermissions",
 )

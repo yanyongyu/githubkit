@@ -9,53 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0056 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class SecretScanningCustomPatternValidationErrorType(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
 
-    A validation error for a custom pattern in a batch operation.
+class OrgRulesetConditionsOneof1Type(TypedDict):
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
     """
 
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ]
-    message: NotRequired[str]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class OrgRulesetConditionsOneof1TypeForResponse(TypedDict):
+    """repository_id_and_ref_name
 
-    A validation error for a custom pattern in a batch operation.
+    Conditions to target repositories by id and refs by name
     """
 
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ]
-    message: NotRequired[str]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "SecretScanningCustomPatternValidationErrorType",
-    "SecretScanningCustomPatternValidationErrorTypeForResponse",
+    "OrgRulesetConditionsOneof1Type",
+    "OrgRulesetConditionsOneof1TypeForResponse",
 )

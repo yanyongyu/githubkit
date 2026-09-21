@@ -11,26 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0139 import CustomProperty
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    user_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The handle for the GitHub user account or a verified email associated with their account.",
+    properties: list[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody
-)
+model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody",
-)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)

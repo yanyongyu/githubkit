@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,39 +19,66 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="List of repository IDs that can access the runner group.",
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
     )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
-    )
-    allows_public_repositories: Missing[bool] = Field(
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["organization", "repository", "multi_user_customer", "user"]
+    ] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.\n\n`user` and `multi_user_customer` scopes are only supported when\n`budget_product_sku` is `ai_credits` or `premium_requests`.",
     )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET, description="The name of the entity to apply the budget to"
     )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
     )
-    network_configuration_id: Missing[str] = Field(
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
+    )
+    expires_at: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+
+__all__ = (
+    "OrganizationsOrgSettingsBillingBudgetsPostBody",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+)

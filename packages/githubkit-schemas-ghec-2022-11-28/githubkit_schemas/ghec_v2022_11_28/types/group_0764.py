@@ -10,26 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0227 import DiscussionType, DiscussionTypeForResponse
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookGithubAppAuthorizationRevokedType(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookDiscussionCreatedType(TypedDict):
+    """discussion created event"""
 
-    action: Literal["revoked"]
+    action: Literal["created"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
-    """github_app_authorization revoked event"""
+class WebhookDiscussionCreatedTypeForResponse(TypedDict):
+    """discussion created event"""
 
-    action: Literal["revoked"]
+    action: Literal["created"]
+    discussion: DiscussionTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookGithubAppAuthorizationRevokedType",
-    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
+    "WebhookDiscussionCreatedType",
+    "WebhookDiscussionCreatedTypeForResponse",
 )

@@ -10,163 +10,68 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import MilestoneType, MilestoneTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
-from .group_0177 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0178 import PullRequestStackType, PullRequestStackTypeForResponse
-from .group_0180 import (
-    PullRequestSimplePropBaseType,
-    PullRequestSimplePropBaseTypeForResponse,
-    PullRequestSimplePropHeadType,
-    PullRequestSimplePropHeadTypeForResponse,
-)
-from .group_0181 import (
-    PullRequestSimplePropLinksType,
-    PullRequestSimplePropLinksTypeForResponse,
-)
 
+class OrgHookType(TypedDict):
+    """Org Hook
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
-
-    Pull Request Simple
+    Org Hook
     """
 
-    url: str
     id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[SimpleUserType, None]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[MilestoneType, None]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: _dt.datetime
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigType
     updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[SimpleUserType, None]
-    assignees: NotRequired[list[SimpleUserType]]
-    requested_reviewers: NotRequired[list[SimpleUserType]]
-    requested_teams: NotRequired[list[TeamType]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    stack: NotRequired[Union[PullRequestStackType, None]]
-    draft: NotRequired[bool]
+    created_at: _dt.datetime
+    type: str
 
 
-class PullRequestSimpleTypeForResponse(TypedDict):
-    """Pull Request Simple
+class OrgHookTypeForResponse(TypedDict):
+    """Org Hook
 
-    Pull Request Simple
+    Org Hook
     """
 
-    url: str
     id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
-    user: Union[SimpleUserTypeForResponse, None]
-    body: Union[str, None]
-    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
-    milestone: Union[MilestoneTypeForResponse, None]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: str
+    url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    name: str
+    events: list[str]
+    active: bool
+    config: OrgHookPropConfigTypeForResponse
     updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[SimpleUserTypeForResponse, None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_teams: NotRequired[list[TeamTypeForResponse]]
-    head: PullRequestSimplePropHeadTypeForResponse
-    base: PullRequestSimplePropBaseTypeForResponse
-    links: PullRequestSimplePropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
-    draft: NotRequired[bool]
+    created_at: str
+    type: str
 
 
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
+class OrgHookPropConfigType(TypedDict):
+    """OrgHookPropConfig"""
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_by: None
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
 
 
-class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
+class OrgHookPropConfigTypeForResponse(TypedDict):
+    """OrgHookPropConfig"""
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_by: None
+    url: NotRequired[str]
+    insecure_ssl: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestSimplePropLabelsItemsType",
-    "PullRequestSimplePropLabelsItemsTypeForResponse",
-    "PullRequestSimpleType",
-    "PullRequestSimpleTypeForResponse",
+    "OrgHookPropConfigType",
+    "OrgHookPropConfigTypeForResponse",
+    "OrgHookType",
+    "OrgHookTypeForResponse",
 )

@@ -9,43 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class RepositoryCollaboratorPermission(GitHubModel):
+    """Repository Collaborator Permission
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
-    )
+    Repository Collaborator Permission
+    """
+
+    permission: str = Field()
+    role_name: str = Field()
+    user: Union[Collaborator, None] = Field()
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class Collaborator(GitHubModel):
+    """Collaborator
 
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
+    Collaborator
+    """
+
+    login: str = Field()
+    id: int = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
+    role_name: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+class CollaboratorPropPermissions(GitHubModel):
+    """CollaboratorPropPermissions"""
+
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    admin: bool = Field()
+
+
+model_rebuild(RepositoryCollaboratorPermission)
+model_rebuild(Collaborator)
+model_rebuild(CollaboratorPropPermissions)
 
 __all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+    "Collaborator",
+    "CollaboratorPropPermissions",
+    "RepositoryCollaboratorPermission",
 )

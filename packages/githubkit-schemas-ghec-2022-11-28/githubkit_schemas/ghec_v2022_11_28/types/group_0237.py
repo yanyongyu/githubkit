@@ -9,29 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0238 import (
-    ReleaseEventPropReleaseType,
-    ReleaseEventPropReleaseTypeForResponse,
-)
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseEventType(TypedDict):
-    """ReleaseEvent"""
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    action: str
-    release: ReleaseEventPropReleaseType
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[None]
 
 
-class ReleaseEventTypeForResponse(TypedDict):
-    """ReleaseEvent"""
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    action: str
-    release: ReleaseEventPropReleaseTypeForResponse
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[None]
+
+
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "ReleaseEventType",
-    "ReleaseEventTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
 )

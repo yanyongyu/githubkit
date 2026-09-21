@@ -10,80 +10,91 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0061 import (
-    AmazonS3AccessKeysConfigType,
-    AmazonS3AccessKeysConfigTypeForResponse,
-    AzureBlobConfigType,
-    AzureBlobConfigTypeForResponse,
-    AzureHubConfigType,
-    AzureHubConfigTypeForResponse,
-    DatadogConfigType,
-    DatadogConfigTypeForResponse,
-    HecConfigType,
-    HecConfigTypeForResponse,
+from .group_0068 import (
+    ActionsPolicyEnterpriseConditionsOneof0Type,
+    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
 )
-from .group_0062 import (
-    AmazonS3OidcConfigType,
-    AmazonS3OidcConfigTypeForResponse,
-    SplunkConfigType,
-    SplunkConfigTypeForResponse,
+from .group_0069 import (
+    ActionsPolicyEnterpriseConditionsOneof1Type,
+    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
 )
-from .group_0063 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
+from .group_0070 import (
+    ActionsPolicyEnterpriseConditionsOneof2Type,
+    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+)
+from .group_0071 import (
+    ActionsPolicyEnterpriseConditionsOneof3Type,
+    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+)
+from .group_0072 import (
+    ActionsPolicyEnterpriseConditionsOneof4Type,
+    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+)
+from .group_0073 import (
+    ActionsPolicyEnterpriseConditionsOneof5Type,
+    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsPoliciesPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesPostBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyEnterpriseConditionsOneof0Type,
+            ActionsPolicyEnterpriseConditionsOneof1Type,
+            ActionsPolicyEnterpriseConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof3Type,
+            ActionsPolicyEnterpriseConditionsOneof4Type,
+            ActionsPolicyEnterpriseConditionsOneof5Type,
+        ]
     ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
     ]
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesPostBody"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+        ]
     ]
-    vendor_specific: Union[
-        AzureBlobConfigTypeForResponse,
-        AzureHubConfigTypeForResponse,
-        AmazonS3OidcConfigTypeForResponse,
-        AmazonS3AccessKeysConfigTypeForResponse,
-        SplunkConfigTypeForResponse,
-        HecConfigTypeForResponse,
-        GoogleCloudConfigTypeForResponse,
-        DatadogConfigTypeForResponse,
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
     ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPoliciesPostBodyType",
+    "EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse",
 )

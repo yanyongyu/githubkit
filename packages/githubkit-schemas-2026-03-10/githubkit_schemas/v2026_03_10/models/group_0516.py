@@ -17,59 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0090 import MinimalRepository
-from .group_0305 import GitUser
-from .group_0514 import SearchResultTextMatchesItems
-from .group_0517 import CommitSearchResultItemPropCommit
 
+class RepositoryAdvisoryDescriptionValidationError(GitHubModel):
+    """Repository Advisory Description Validation Error
 
-class CommitSearchResultItem(GitHubModel):
-    """Commit Search Result Item
-
-    Commit Search Result Item
+    The description does not answer the repository's report template.
     """
 
-    url: str = Field()
-    sha: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitSearchResultItemPropCommit = Field()
-    author: Union[SimpleUser, None] = Field()
-    committer: Union[GitUser, None] = Field()
-    parents: list[CommitSearchResultItemPropParentsItems] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems]
+    ] = Field(default=UNSET)
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field(
+        description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
     )
-    score: float = Field()
-    node_id: str = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
+    section: Missing[str] = Field(
+        default=UNSET, description="The report template section the violation concerns."
+    )
+    option: Missing[str] = Field(
+        default=UNSET,
+        description="The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.",
     )
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class SearchCommitsGetResponse200(GitHubModel):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CommitSearchResultItem] = Field()
-
-
-model_rebuild(CommitSearchResultItem)
-model_rebuild(CommitSearchResultItemPropParentsItems)
-model_rebuild(SearchCommitsGetResponse200)
+model_rebuild(RepositoryAdvisoryDescriptionValidationError)
+model_rebuild(RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems)
 
 __all__ = (
-    "CommitSearchResultItem",
-    "CommitSearchResultItemPropParentsItems",
-    "SearchCommitsGetResponse200",
+    "RepositoryAdvisoryDescriptionValidationError",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
 )

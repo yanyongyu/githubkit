@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,36 +17,65 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0373 import Metadata
+
+class RepositoryCollaboratorPermission(GitHubModel):
+    """Repository Collaborator Permission
+
+    Repository Collaborator Permission
+    """
+
+    permission: str = Field()
+    role_name: str = Field()
+    user: Union[Collaborator, None] = Field()
 
 
-class Dependency(GitHubModel):
-    """Dependency"""
+class Collaborator(GitHubModel):
+    """Collaborator
 
-    package_url: Missing[str] = Field(
-        pattern="^pkg",
-        default=UNSET,
-        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
-    )
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    relationship: Missing[Literal["direct", "indirect"]] = Field(
-        default=UNSET,
-        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
-    )
-    scope: Missing[Literal["runtime", "development"]] = Field(
-        default=UNSET,
-        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
-    )
-    dependencies: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of package-url (PURLs) of direct child dependencies.",
-    )
+    Collaborator
+    """
+
+    login: str = Field()
+    id: int = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
+    role_name: str = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Dependency)
+class CollaboratorPropPermissions(GitHubModel):
+    """CollaboratorPropPermissions"""
 
-__all__ = ("Dependency",)
+    pull: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    admin: bool = Field()
+
+
+model_rebuild(RepositoryCollaboratorPermission)
+model_rebuild(Collaborator)
+model_rebuild(CollaboratorPropPermissions)
+
+__all__ = (
+    "Collaborator",
+    "CollaboratorPropPermissions",
+    "RepositoryCollaboratorPermission",
+)

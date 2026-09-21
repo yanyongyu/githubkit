@@ -11,68 +11,53 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0394 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
+)
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class ProtectedBranchPullRequestReviewType(TypedDict):
+    """Protected Branch Pull Request Review
 
-    Check suite configuration preferences for a repository.
+    Protected Branch Pull Request Review
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
+    ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
+    ]
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
-class CheckSuitePreferenceTypeForResponse(TypedDict):
-    """Check Suite Preference
+class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
+    """Protected Branch Pull Request Review
 
-    Check suite configuration preferences for a repository.
+    Protected Branch Pull Request Review
     """
 
-    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    url: NotRequired[str]
+    dismissal_restrictions: NotRequired[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
     ]
-
-
-class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
-        ]
+    bypass_pull_request_allowances: NotRequired[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
     ]
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    dismiss_stale_reviews: bool
+    require_code_owner_reviews: bool
+    required_approving_review_count: NotRequired[int]
+    require_last_push_approval: NotRequired[bool]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesTypeForResponse",
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferenceTypeForResponse",
+    "ProtectedBranchPullRequestReviewType",
+    "ProtectedBranchPullRequestReviewTypeForResponse",
 )

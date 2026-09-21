@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0176 import LinkType, LinkTypeForResponse
-
-
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
+class ApiInsightsSubjectStatsItemsType(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
+
+
+class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
+
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "ApiInsightsSubjectStatsItemsType",
+    "ApiInsightsSubjectStatsItemsTypeForResponse",
 )

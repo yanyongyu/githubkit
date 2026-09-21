@@ -9,67 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0072 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-class MigrationType(TypedDict):
-    """Migration
-
-    A migration.
+    Information about an external group's usage and its members
     """
 
-    id: int
-    owner: Union[SimpleUserType, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[SimpleRepositoryType]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
-class MigrationTypeForResponse(TypedDict):
-    """Migration
+class ExternalGroupTypeForResponse(TypedDict):
+    """ExternalGroup
 
-    A migration.
+    Information about an external group's usage and its members
     """
 
-    id: int
-    owner: Union[SimpleUserTypeForResponse, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[SimpleRepositoryTypeForResponse]
-    url: str
-    created_at: str
-    updated_at: str
-    node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
+    members: list[ExternalGroupPropMembersItemsTypeForResponse]
+
+
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
+
+
+class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "MigrationType",
-    "MigrationTypeForResponse",
+    "ExternalGroupPropMembersItemsType",
+    "ExternalGroupPropMembersItemsTypeForResponse",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropTeamsItemsTypeForResponse",
+    "ExternalGroupType",
+    "ExternalGroupTypeForResponse",
 )

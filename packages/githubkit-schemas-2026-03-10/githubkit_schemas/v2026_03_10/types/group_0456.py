@@ -9,32 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    Pull Request Merge Result
+    Timeline Reviewed Event
     """
 
-    sha: str
-    merged: bool
-    message: str
+    event: Literal["reviewed"]
+    id: int
+    node_id: str
+    user: SimpleUserType
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class PullRequestMergeResultTypeForResponse(TypedDict):
-    """Pull Request Merge Result
+class TimelineReviewedEventTypeForResponse(TypedDict):
+    """Timeline Reviewed Event
 
-    Pull Request Merge Result
+    Timeline Reviewed Event
     """
 
-    sha: str
-    merged: bool
-    message: str
+    event: Literal["reviewed"]
+    id: int
+    node_id: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    state: str
+    html_url: str
+    pull_request_url: str
+    links: TimelineReviewedEventPropLinksTypeForResponse
+    submitted_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+
+
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
+
+
+class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinks"""
+
+    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
+
+
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str
 
 
 __all__ = (
-    "PullRequestMergeResultType",
-    "PullRequestMergeResultTypeForResponse",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
+    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksTypeForResponse",
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventTypeForResponse",
 )

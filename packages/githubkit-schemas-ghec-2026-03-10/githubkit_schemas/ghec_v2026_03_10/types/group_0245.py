@@ -9,58 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-
-
-class GistCommitType(TypedDict):
-    """Gist Commit
-
-    Gist Commit
-    """
-
-    url: str
-    version: str
-    user: Union[SimpleUserType, None]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: _dt.datetime
+from .group_0234 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0236 import IssueType, IssueTypeForResponse
 
 
-class GistCommitTypeForResponse(TypedDict):
-    """Gist Commit
+class IssueCommentEventType(TypedDict):
+    """IssueCommentEvent"""
 
-    Gist Commit
-    """
-
-    url: str
-    version: str
-    user: Union[SimpleUserTypeForResponse, None]
-    change_status: GistCommitPropChangeStatusTypeForResponse
-    committed_at: str
+    action: str
+    issue: IssueType
+    comment: IssueCommentType
 
 
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
+class IssueCommentEventTypeForResponse(TypedDict):
+    """IssueCommentEvent"""
 
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistCommitPropChangeStatusTypeForResponse(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    action: str
+    issue: IssueTypeForResponse
+    comment: IssueCommentTypeForResponse
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitPropChangeStatusTypeForResponse",
-    "GistCommitType",
-    "GistCommitTypeForResponse",
+    "IssueCommentEventType",
+    "IssueCommentEventTypeForResponse",
 )

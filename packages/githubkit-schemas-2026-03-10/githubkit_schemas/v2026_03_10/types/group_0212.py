@@ -10,34 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleMergeQueuePropParametersType(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
-class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleMergeQueuePropParametersType",
-    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
 )

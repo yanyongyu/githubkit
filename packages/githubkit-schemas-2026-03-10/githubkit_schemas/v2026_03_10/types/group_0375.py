@@ -9,61 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0373 import MetadataType, MetadataTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class CommitCommentType(TypedDict):
+    """Commit Comment
 
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    Commit Comment
+    """
 
-
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
+class CommitCommentTypeForResponse(TypedDict):
+    """Commit Comment
 
-A collection of resolved package dependencies.
-"""
+    Commit Comment
+    """
+
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
+
+
+class TimelineCommitCommentedEventTypeForResponse(TypedDict):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentTypeForResponse]]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "CommitCommentType",
+    "CommitCommentTypeForResponse",
+    "TimelineCommitCommentedEventType",
+    "TimelineCommitCommentedEventTypeForResponse",
 )

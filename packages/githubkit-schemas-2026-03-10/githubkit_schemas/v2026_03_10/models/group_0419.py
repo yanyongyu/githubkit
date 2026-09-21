@@ -9,41 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0400 import IssueTypeWebhook
-from .group_0402 import IssueEventIntent
 
 
-class IssueTypeAddedIssueEvent(GitHubModel):
-    """Issue Type Added Issue Event
+class PorterLargeFile(GitHubModel):
+    """Porter Large File
 
-    Issue Type Added Issue Event
+    Porter Large File
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
-    )
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    ref_name: str = Field()
+    path: str = Field()
+    oid: str = Field()
+    size: int = Field()
 
 
-model_rebuild(IssueTypeAddedIssueEvent)
+model_rebuild(PorterLargeFile)
 
-__all__ = ("IssueTypeAddedIssueEvent",)
+__all__ = ("PorterLargeFile",)

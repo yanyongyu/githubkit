@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,26 +18,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class GroupMapping(GitHubModel):
+    """GroupMapping
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+    External Groups to be mapped to a team for membership
+    """
+
+    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
+        default=UNSET, description="Array of groups to be mapped to this team"
     )
 
 
-model_rebuild(ActionsRepositoryPermissions)
+class GroupMappingPropGroupsItems(GitHubModel):
+    """GroupMappingPropGroupsItems"""
 
-__all__ = ("ActionsRepositoryPermissions",)
+    group_id: str = Field(description="The ID of the group")
+    group_name: str = Field(description="The name of the group")
+    group_description: str = Field(description="a description of the group")
+    status: Missing[str] = Field(
+        default=UNSET, description="synchronization status for this group mapping"
+    )
+    synced_at: Missing[Union[str, None]] = Field(
+        default=UNSET, description="the time of the last sync for this group-mapping"
+    )
+
+
+model_rebuild(GroupMapping)
+model_rebuild(GroupMappingPropGroupsItems)
+
+__all__ = (
+    "GroupMapping",
+    "GroupMappingPropGroupsItems",
+)

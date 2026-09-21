@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0663 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0679 import (
+    PersonalAccessTokenRequestType,
+    PersonalAccessTokenRequestTypeForResponse,
+)
 
 
-class WebhookProjectDeletedType(TypedDict):
-    """project deleted event"""
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[Union[RepositoryWebhooksType, None]]
-    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectDeletedTypeForResponse(TypedDict):
-    """project deleted event"""
+class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
+    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project: WebhooksProjectTypeForResponse
-    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
-    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookProjectDeletedType",
-    "WebhookProjectDeletedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestCreatedType",
+    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
 )

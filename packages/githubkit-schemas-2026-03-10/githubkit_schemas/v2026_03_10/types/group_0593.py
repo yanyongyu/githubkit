@@ -9,76 +9,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChanges8Type(TypedDict):
-    """WebhooksChanges8"""
+class WebhooksTeamType(TypedDict):
+    """Team
 
-    tier: WebhooksChanges8PropTierType
-
-
-class WebhooksChanges8TypeForResponse(TypedDict):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTierTypeForResponse
-
-
-class WebhooksChanges8PropTierType(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromType
-
-
-class WebhooksChanges8PropTierTypeForResponse(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromTypeForResponse
-
-
-class WebhooksChanges8PropTierPropFromType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    id: int
+    members_url: NotRequired[str]
     name: str
-    node_id: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
-    """Sponsorship Tier
+class WebhooksTeamTypeForResponse(TypedDict):
+    """Team
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    id: int
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhooksTeamPropParentTypeForResponse, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+    type: NotRequired[Literal["enterprise", "organization"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeamPropParentType(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
     name: str
     node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class WebhooksTeamPropParentTypeForResponse(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
 __all__ = (
-    "WebhooksChanges8PropTierPropFromType",
-    "WebhooksChanges8PropTierPropFromTypeForResponse",
-    "WebhooksChanges8PropTierType",
-    "WebhooksChanges8PropTierTypeForResponse",
-    "WebhooksChanges8Type",
-    "WebhooksChanges8TypeForResponse",
+    "WebhooksTeamPropParentType",
+    "WebhooksTeamPropParentTypeForResponse",
+    "WebhooksTeamType",
+    "WebhooksTeamTypeForResponse",
 )

@@ -9,57 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse]
-    ]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0117 import (
+    DependabotAlertSecurityVulnerabilityType,
+    DependabotAlertSecurityVulnerabilityTypeForResponse,
+)
+from .group_0118 import (
+    DependabotAlertSecurityAdvisoryType,
+    DependabotAlertSecurityAdvisoryTypeForResponse,
+)
+from .group_0119 import (
+    DependabotAlertDismissalRequestSimpleType,
+    DependabotAlertDismissalRequestSimpleTypeForResponse,
+)
+from .group_0121 import (
+    DependabotAlertWithRepositoryPropDependencyType,
+    DependabotAlertWithRepositoryPropDependencyTypeForResponse,
+)
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
+class DependabotAlertWithRepositoryType(TypedDict):
+    """DependabotAlertWithRepository
 
-    Parameters for a targeting a repository property
+    A Dependabot alert.
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[SimpleUserType, None]
+    dismissed_reason: Union[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+        None,
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[_dt.datetime, None]
+    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleType, None]
+    ]
+    assignees: NotRequired[list[SimpleUserType]]
+    repository: SimpleRepositoryType
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
+    """DependabotAlertWithRepository
 
-    Parameters for a targeting a repository property
+    A Dependabot alert.
     """
 
-    name: str
-    property_values: list[str]
-    source: NotRequired[Literal["custom", "system"]]
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertWithRepositoryPropDependencyTypeForResponse
+    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
+    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[SimpleUserTypeForResponse, None]
+    dismissed_reason: Union[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+        None,
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[str, None]
+    auto_dismissed_at: NotRequired[Union[str, None]]
+    dismissal_request: NotRequired[
+        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
+    ]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    repository: SimpleRepositoryTypeForResponse
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-    "RepositoryRulesetConditionsRepositoryPropertySpecTypeForResponse",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse",
+    "DependabotAlertWithRepositoryType",
+    "DependabotAlertWithRepositoryTypeForResponse",
 )

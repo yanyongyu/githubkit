@@ -9,62 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
+
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    Custom repository roles created by organization owners
-    """
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
-    """
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
-
-
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
-
-
-class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleType",
-    "OrganizationCustomRepositoryRoleTypeForResponse",
-    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
-    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

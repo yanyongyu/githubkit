@@ -9,57 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2FieldIterationConfigurationType(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-    The configuration for iteration fields.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    start_date: _dt.date
-    duration: int
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
 
 
-class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    The configuration for iteration fields.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    start_date: str
-    duration: int
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
-
-
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
-
-    title: str
-    start_date: _dt.date
-    duration: int
-
-
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
-
-    title: str
-    start_date: str
-    duration: int
 
 
 __all__ = (
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
-    "ProjectsV2FieldIterationConfigurationType",
-    "ProjectsV2FieldIterationConfigurationTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

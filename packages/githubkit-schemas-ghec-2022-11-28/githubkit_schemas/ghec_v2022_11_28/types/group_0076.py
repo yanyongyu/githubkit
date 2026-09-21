@@ -12,27 +12,30 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0074 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
+
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
 
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    A label for a self hosted runner
+    """
 
-
-class CodeSecurityDefaultConfigurationsItemsTypeForResponse(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
-
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
 __all__ = (
-    "CodeSecurityDefaultConfigurationsItemsType",
-    "CodeSecurityDefaultConfigurationsItemsTypeForResponse",
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
 )

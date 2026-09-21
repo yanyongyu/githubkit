@@ -9,78 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class CodeScanningAnalysisDeletionType(TypedDict):
+    """Analysis deletion
 
-    Combined Commit Status
+    Successful deletion of a code scanning analysis
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
-class CombinedCommitStatusTypeForResponse(TypedDict):
-    """Combined Commit Status
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
 
-    Combined Commit Status
+    Successful deletion of a code scanning analysis
     """
 
-    state: str
-    statuses: list[SimpleCommitStatusTypeForResponse]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryTypeForResponse
-    commit_url: str
-    url: str
-
-
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class SimpleCommitStatusTypeForResponse(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: str
-    updated_at: str
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "CombinedCommitStatusTypeForResponse",
-    "SimpleCommitStatusType",
-    "SimpleCommitStatusTypeForResponse",
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
 )

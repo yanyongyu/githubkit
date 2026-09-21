@@ -9,49 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0315 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse,
-)
+
+class ReviewCustomGatesStateRequiredType(TypedDict):
+    """ReviewCustomGatesStateRequired"""
+
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesStateRequired"""
 
-    url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
-    ]
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
-
-    url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse
-    ]
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsTypeForResponse",
+    "ReviewCustomGatesStateRequiredType",
+    "ReviewCustomGatesStateRequiredTypeForResponse",
 )

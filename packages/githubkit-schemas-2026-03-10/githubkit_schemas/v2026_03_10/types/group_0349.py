@@ -12,55 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0029 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
 
+class CodeScanningAiScanEnablementUpdateType(TypedDict):
+    """CodeScanningAiScanEnablementUpdate
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
-
-    Code security configuration associated with a repository and attachment status
+    AI Scan enablement update for a repository.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablementUpdate
 
-    Code security configuration associated with a repository and attachment status
+    AI Scan enablement update for a repository.
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeScanningAiScanEnablementUpdateType",
+    "CodeScanningAiScanEnablementUpdateTypeForResponse",
 )

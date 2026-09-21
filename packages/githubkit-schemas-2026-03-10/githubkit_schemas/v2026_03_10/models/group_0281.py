@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,28 +19,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class SecretScanningCustomPattern(GitHubModel):
+    """Secret Scanning Custom Pattern
 
-    Actions OIDC subject customization for a repository
+    A custom pattern for secret scanning.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    id: int = Field(description="The ID of the custom pattern.")
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    slug: str = Field(
+        description="A URL-friendly identifier for the custom pattern, derived from its name."
     )
-    include_claim_keys: Missing[list[str]] = Field(
+    state: Literal["published", "unpublished"] = Field(
+        description="The state of the custom pattern."
+    )
+    push_protection_enabled: bool = Field(
+        description="Whether push protection is enabled for this custom pattern."
+    )
+    start_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start delimiter regex for the custom pattern."
+    )
+    end_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The end delimiter regex for the custom pattern."
+    )
+    must_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    use_immutable_subject: Missing[bool] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="Whether the repository has opted in to the immutable OIDC subject claim format. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim. If not set at the repository level, falls back to the organization-level setting.",
+        description="The date and time the custom pattern was created in ISO 8601 format.",
     )
-    sub_claim_prefix: Missing[str] = Field(
-        default=UNSET, description="The current `sub` claim prefix for this repository."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was last updated in ISO 8601 format.",
     )
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(SecretScanningCustomPattern)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("SecretScanningCustomPattern",)

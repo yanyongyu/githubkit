@@ -9,162 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0065 import BypassResponseType, BypassResponseTypeForResponse
+
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+
+    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
 
 
-class SecretScanningBypassRequestType(TypedDict):
-    """Secret scanning bypass request
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
-    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
-    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
-        ]
+    include: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
     ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class SecretScanningBypassRequestTypeForResponse(TypedDict):
-    """Secret scanning bypass request
-
-    A bypass request made by a user asking to be exempted from push protection in
-    this repository.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[SecretScanningBypassRequestPropRepositoryTypeForResponse]
-    organization: NotRequired[
-        SecretScanningBypassRequestPropOrganizationTypeForResponse
+    exclude: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
     ]
-    requester: NotRequired[SecretScanningBypassRequestPropRequesterTypeForResponse]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[SecretScanningBypassRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
-        ]
-    ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[BypassResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
 
 
-class SecretScanningBypassRequestPropRepositoryType(TypedDict):
-    """SecretScanningBypassRequestPropRepository
+class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
 
-    The repository the bypass request is for.
+    Parameters for a targeting a organization property
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    name: str
+    property_values: list[str]
 
 
-class SecretScanningBypassRequestPropRepositoryTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropRepository
+class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
 
-    The repository the bypass request is for.
+    Parameters for a targeting a organization property
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropOrganizationType(TypedDict):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropOrganizationTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropRequesterType(TypedDict):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropRequesterTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropDataItemsType(TypedDict):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: NotRequired[str]
-    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
-    path: NotRequired[str]
-    branch: NotRequired[str]
-
-
-class SecretScanningBypassRequestPropDataItemsTypeForResponse(TypedDict):
-    """SecretScanningBypassRequestPropDataItems"""
-
-    secret_type: NotRequired[str]
-    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
-    path: NotRequired[str]
-    branch: NotRequired[str]
+    name: str
+    property_values: list[str]
 
 
 __all__ = (
-    "SecretScanningBypassRequestPropDataItemsType",
-    "SecretScanningBypassRequestPropDataItemsTypeForResponse",
-    "SecretScanningBypassRequestPropOrganizationType",
-    "SecretScanningBypassRequestPropOrganizationTypeForResponse",
-    "SecretScanningBypassRequestPropRepositoryType",
-    "SecretScanningBypassRequestPropRepositoryTypeForResponse",
-    "SecretScanningBypassRequestPropRequesterType",
-    "SecretScanningBypassRequestPropRequesterTypeForResponse",
-    "SecretScanningBypassRequestType",
-    "SecretScanningBypassRequestTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
 )

@@ -9,155 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0210 import MilestoneType, MilestoneTypeForResponse
-from .group_0211 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0212 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0213 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0216 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0217 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0219 import (
-    IssuePropLabelsItemsOneof1Type,
-    IssuePropLabelsItemsOneof1TypeForResponse,
-    IssuePropPullRequestType,
-    IssuePropPullRequestTypeForResponse,
-)
+
+class UpdateCostCenterType(TypedDict):
+    """UpdateCostCenter"""
+
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsType]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[UpdateCostCenterPropAiCreditPoolStateType]
 
 
-class IssueType(TypedDict):
-    """Issue
+class UpdateCostCenterTypeForResponse(TypedDict):
+    """UpdateCostCenter"""
 
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        UpdateCostCenterPropAiCreditPoolStateTypeForResponse
+    ]
+
+
+class UpdateCostCenterPropResourcesItemsType(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    id: int
-    node_id: str
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    number: int
-    state: str
-    state_reason: NotRequired[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserType, None]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
-    assignees: NotRequired[list[SimpleUserType]]
-    milestone: Union[MilestoneType, None]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestType]
-    closed_at: Union[_dt.datetime, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[SimpleUserType, None]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    reactions: NotRequired[ReactionRollupType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[IssueCommentType, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
-class IssueTypeForResponse(TypedDict):
-    """Issue
+class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """UpdateCostCenterPropAiCreditPoolState
 
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    id: int
-    node_id: str
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    number: int
-    state: str
-    state_reason: NotRequired[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserTypeForResponse, None]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    milestone: Union[MilestoneTypeForResponse, None]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestTypeForResponse]
-    closed_at: Union[str, None]
-    created_at: str
-    updated_at: str
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    repository: NotRequired[RepositoryTypeForResponse]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "IssueType",
-    "IssueTypeForResponse",
+    "UpdateCostCenterPropAiCreditPoolStateType",
+    "UpdateCostCenterPropAiCreditPoolStateTypeForResponse",
+    "UpdateCostCenterPropResourcesItemsType",
+    "UpdateCostCenterPropResourcesItemsTypeForResponse",
+    "UpdateCostCenterType",
+    "UpdateCostCenterTypeForResponse",
 )

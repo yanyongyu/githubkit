@@ -9,54 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0402 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
-from .group_0404 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from typing_extensions import TypedDict
 
 
-class IssueTypeRemovedIssueEventType(TypedDict):
-    """Issue Type Removed Issue Event
+class InteractionLimitPullRequestBypassListType(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    Issue Type Removed Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    prev_issue_type: Union[IssueTypeWebhookType, None]
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    users: list[str]
 
 
-class IssueTypeRemovedIssueEventTypeForResponse(TypedDict):
-    """Issue Type Removed Issue Event
+class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
+    """Interaction Limits Pull Request Bypass List
 
-    Issue Type Removed Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    users: list[str]
 
 
 __all__ = (
-    "IssueTypeRemovedIssueEventType",
-    "IssueTypeRemovedIssueEventTypeForResponse",
+    "InteractionLimitPullRequestBypassListType",
+    "InteractionLimitPullRequestBypassListTypeForResponse",
 )

@@ -13,74 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0968 import (
-    WebhookPullRequestDequeuedPropPullRequestType,
-    WebhookPullRequestDequeuedPropPullRequestTypeForResponse,
-)
+from .group_0685 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookPullRequestDequeuedType(TypedDict):
-    """pull_request dequeued event"""
+class WebhookProjectsV2ItemDeletedType(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["dequeued"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestType
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookPullRequestDequeuedTypeForResponse(TypedDict):
-    """pull_request dequeued event"""
+class WebhookProjectsV2ItemDeletedTypeForResponse(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["dequeued"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestTypeForResponse
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestDequeuedType",
-    "WebhookPullRequestDequeuedTypeForResponse",
+    "WebhookProjectsV2ItemDeletedType",
+    "WebhookProjectsV2ItemDeletedTypeForResponse",
 )

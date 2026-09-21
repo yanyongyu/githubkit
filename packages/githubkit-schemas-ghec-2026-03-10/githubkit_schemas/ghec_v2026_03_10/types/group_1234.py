@@ -9,33 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
 )

@@ -9,123 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0288 import SimpleCommitType, SimpleCommitTypeForResponse
 
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-class CheckSuiteType(TypedDict):
-    """CheckSuite
-
-    A suite of checks performed on the code of a given code change
+    Workflow Usage
     """
 
-    id: int
-    node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-        None,
-    ]
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-        None,
-    ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[list[PullRequestMinimalType], None]
-    app: Union[None, IntegrationType, None]
-    repository: MinimalRepositoryType
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    head_commit: SimpleCommitType
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
+    billable: WorkflowUsagePropBillableType
 
 
-class CheckSuiteTypeForResponse(TypedDict):
-    """CheckSuite
+class WorkflowUsageTypeForResponse(TypedDict):
+    """Workflow Usage
 
-    A suite of checks performed on the code of a given code change
+    Workflow Usage
     """
 
-    id: int
-    node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-        None,
-    ]
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-        None,
-    ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
-    app: Union[None, IntegrationTypeForResponse, None]
-    repository: MinimalRepositoryTypeForResponse
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    head_commit: SimpleCommitTypeForResponse
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
+    billable: WorkflowUsagePropBillableTypeForResponse
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
 
-    total_count: int
-    check_suites: list[CheckSuiteType]
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class WorkflowUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillable"""
 
-    total_count: int
-    check_suites: list[CheckSuiteTypeForResponse]
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
 
 
 __all__ = (
-    "CheckSuiteType",
-    "CheckSuiteTypeForResponse",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200TypeForResponse",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropMacosTypeForResponse",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillableTypeForResponse",
+    "WorkflowUsageType",
+    "WorkflowUsageTypeForResponse",
 )

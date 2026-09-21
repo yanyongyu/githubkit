@@ -9,25 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    A comment made to a gist.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
-    """SelfHostedRunnersSettings"""
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    A comment made to a gist.
+    """
+
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "SelfHostedRunnersSettingsType",
-    "SelfHostedRunnersSettingsTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

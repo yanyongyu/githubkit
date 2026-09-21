@@ -9,63 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
+from .group_0157 import TeamType, TeamTypeForResponse
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    url: str
-    users_url: str
-    teams_url: str
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
+    Details of a deployment that is waiting for protection rules to pass
+    """
+
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[_dt.datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class PendingDeploymentTypeForResponse(TypedDict):
+    """Pending Deployment
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    Details of a deployment that is waiting for protection rules to pass
+    """
+
+    environment: PendingDeploymentPropEnvironmentTypeForResponse
+    wait_timer: int
+    wait_timer_started_at: Union[str, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
+
+
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+
+
+class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropEnvironmentTypeForResponse",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentPropReviewersItemsTypeForResponse",
+    "PendingDeploymentType",
+    "PendingDeploymentTypeForResponse",
 )

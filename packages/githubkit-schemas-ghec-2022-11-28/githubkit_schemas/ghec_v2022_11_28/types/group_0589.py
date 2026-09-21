@@ -13,53 +13,116 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GroupResponseType(TypedDict):
-    """GroupResponse"""
+class PrivateVulnerabilityReportCreateType(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
+
+
+class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
+
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[
+            list[
+                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
+            ],
+            None,
         ]
     ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsType]]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class GroupResponseTypeForResponse(TypedDict):
-    """GroupResponse"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
     ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+    name: NotRequired[Union[str, None]]
 
 
-class GroupResponsePropMembersItemsType(TypedDict):
-    """GroupResponsePropMembersItems"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
 
-    value: str
-    ref: str
-    display: NotRequired[str]
+    The name of the package affected by the vulnerability.
+    """
 
-
-class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "GroupResponsePropMembersItemsType",
-    "GroupResponsePropMembersItemsTypeForResponse",
-    "GroupResponseType",
-    "GroupResponseTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
+    "PrivateVulnerabilityReportCreateType",
+    "PrivateVulnerabilityReportCreateTypeForResponse",
 )

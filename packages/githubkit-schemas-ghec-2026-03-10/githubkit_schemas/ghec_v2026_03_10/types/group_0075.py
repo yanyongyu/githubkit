@@ -9,51 +9,191 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0051 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+)
+from .group_0052 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0059 import (
+    ActionsPolicyOrgConditionsOneof0Type,
+    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+)
+from .group_0060 import (
+    ActionsPolicyOrgConditionsOneof1Type,
+    ActionsPolicyOrgConditionsOneof1TypeForResponse,
+)
+from .group_0061 import (
+    ActionsPolicyOrgConditionsOneof2Type,
+    ActionsPolicyOrgConditionsOneof2TypeForResponse,
+)
+from .group_0068 import (
+    ActionsPolicyEnterpriseConditionsOneof0Type,
+    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+)
+from .group_0069 import (
+    ActionsPolicyEnterpriseConditionsOneof1Type,
+    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+)
+from .group_0070 import (
+    ActionsPolicyEnterpriseConditionsOneof2Type,
+    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+)
+from .group_0071 import (
+    ActionsPolicyEnterpriseConditionsOneof3Type,
+    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+)
+from .group_0072 import (
+    ActionsPolicyEnterpriseConditionsOneof4Type,
+    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+)
+from .group_0073 import (
+    ActionsPolicyEnterpriseConditionsOneof5Type,
+    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
-class CodeScanningOptionsType(TypedDict):
-    """CodeScanningOptions
 
-    Security Configuration feature options for code scanning
+class ActionsPolicyType(TypedDict):
+    """Actions Policy
+
+    An Actions policy defines rules for workflow execution protection.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    id: int
+    name: str
+    target: Literal["actions"]
+    source_type: Literal["Repository", "Organization", "Enterprise"]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type,
+            ActionsPolicyRepoConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof0Type,
+            ActionsPolicyOrgConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof0Type,
+            ActionsPolicyEnterpriseConditionsOneof1Type,
+            ActionsPolicyEnterpriseConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof3Type,
+            ActionsPolicyEnterpriseConditionsOneof4Type,
+            ActionsPolicyEnterpriseConditionsOneof5Type,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[ActionsPolicyPropLinksType]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class CodeScanningOptionsTypeForResponse(TypedDict):
-    """CodeScanningOptions
+class ActionsPolicyTypeForResponse(TypedDict):
+    """Actions Policy
 
-    Security Configuration feature options for code scanning
+    An Actions policy defines rules for workflow execution protection.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    id: int
+    name: str
+    target: Literal["actions"]
+    source_type: Literal["Repository", "Organization", "Enterprise"]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof0TypeForResponse,
+            ActionsPolicyOrgConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[ActionsPolicyPropLinksTypeForResponse]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class CodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeScanningDefaultSetupOptions
+class ActionsPolicyPropLinksType(TypedDict):
+    """ActionsPolicyPropLinks"""
 
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
+    self_: NotRequired[ActionsPolicyPropLinksPropSelfType]
+    html: NotRequired[ActionsPolicyPropLinksPropHtmlType]
 
 
-class CodeScanningDefaultSetupOptionsTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupOptions
+class ActionsPolicyPropLinksTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinks"""
 
-    Feature options for code scanning default setup
-    """
+    self_: NotRequired[ActionsPolicyPropLinksPropSelfTypeForResponse]
+    html: NotRequired[ActionsPolicyPropLinksPropHtmlTypeForResponse]
 
-    runner_type: NotRequired[Literal["standard", "labeled", "not_set"]]
-    runner_label: NotRequired[Union[str, None]]
+
+class ActionsPolicyPropLinksPropSelfType(TypedDict):
+    """ActionsPolicyPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropSelfTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropHtmlType(TypedDict):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropHtmlTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupOptionsType",
-    "CodeScanningDefaultSetupOptionsTypeForResponse",
-    "CodeScanningOptionsType",
-    "CodeScanningOptionsTypeForResponse",
+    "ActionsPolicyPropLinksPropHtmlType",
+    "ActionsPolicyPropLinksPropHtmlTypeForResponse",
+    "ActionsPolicyPropLinksPropSelfType",
+    "ActionsPolicyPropLinksPropSelfTypeForResponse",
+    "ActionsPolicyPropLinksType",
+    "ActionsPolicyPropLinksTypeForResponse",
+    "ActionsPolicyType",
+    "ActionsPolicyTypeForResponse",
 )

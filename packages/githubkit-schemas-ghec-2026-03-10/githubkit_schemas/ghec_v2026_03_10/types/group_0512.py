@@ -14,13 +14,14 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0475 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from .group_0491 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0493 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class IssueTypeChangedIssueEventType(TypedDict):
+    """Issue Type Changed Issue Event
 
-    State Change Issue Event
+    Issue Type Changed Issue Event
     """
 
     id: int
@@ -32,14 +33,15 @@ class StateChangeIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
+    issue_type: Union[IssueTypeWebhookType, None]
+    prev_issue_type: Union[IssueTypeWebhookType, None]
     intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class StateChangeIssueEventTypeForResponse(TypedDict):
-    """State Change Issue Event
+class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Changed Issue Event
 
-    State Change Issue Event
+    Issue Type Changed Issue Event
     """
 
     id: int
@@ -51,11 +53,12 @@ class StateChangeIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    state_reason: NotRequired[Union[str, None]]
+    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
+    prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
     intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "StateChangeIssueEventType",
-    "StateChangeIssueEventTypeForResponse",
+    "IssueTypeChangedIssueEventType",
+    "IssueTypeChangedIssueEventTypeForResponse",
 )

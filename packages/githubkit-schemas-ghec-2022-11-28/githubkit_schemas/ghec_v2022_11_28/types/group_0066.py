@@ -9,174 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0065 import BypassResponseType, BypassResponseTypeForResponse
+from .group_0067 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
 
 
-class PushRuleBypassRequestType(TypedDict):
-    """Push rule bypass request
+class EnterpriseRulesetConditionsOrganizationPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-    A bypass request made by a user asking to be exempted from a push rule in this
-    repository.
+    Parameters for a organization property condition
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[PushRuleBypassRequestPropRepositoryType]
-    organization: NotRequired[PushRuleBypassRequestPropOrganizationType]
-    requester: NotRequired[PushRuleBypassRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[Union[list[PushRuleBypassRequestPropDataItemsType], None]]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending",
-            "denied",
-            "approved",
-            "cancelled",
-            "completed",
-            "expired",
-            "deleted",
-            "open",
-        ]
-    ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[BypassResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
 
 
-class PushRuleBypassRequestTypeForResponse(TypedDict):
-    """Push rule bypass request
+class EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization properties
 
-    A bypass request made by a user asking to be exempted from a push rule in this
-    repository.
+    Parameters for a organization property condition
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[PushRuleBypassRequestPropRepositoryTypeForResponse]
-    organization: NotRequired[PushRuleBypassRequestPropOrganizationTypeForResponse]
-    requester: NotRequired[PushRuleBypassRequestPropRequesterTypeForResponse]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[PushRuleBypassRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[
-        Literal[
-            "pending",
-            "denied",
-            "approved",
-            "cancelled",
-            "completed",
-            "expired",
-            "deleted",
-            "open",
-        ]
-    ]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[BypassResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class PushRuleBypassRequestPropRepositoryType(TypedDict):
-    """PushRuleBypassRequestPropRepository
-
-    The repository the bypass request is for.
-    """
-
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-    full_name: NotRequired[Union[str, None]]
-
-
-class PushRuleBypassRequestPropRepositoryTypeForResponse(TypedDict):
-    """PushRuleBypassRequestPropRepository
-
-    The repository the bypass request is for.
-    """
-
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-    full_name: NotRequired[Union[str, None]]
-
-
-class PushRuleBypassRequestPropOrganizationType(TypedDict):
-    """PushRuleBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-
-
-class PushRuleBypassRequestPropOrganizationTypeForResponse(TypedDict):
-    """PushRuleBypassRequestPropOrganization
-
-    The organization associated with the repository the bypass request is for.
-    """
-
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-
-
-class PushRuleBypassRequestPropRequesterType(TypedDict):
-    """PushRuleBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class PushRuleBypassRequestPropRequesterTypeForResponse(TypedDict):
-    """PushRuleBypassRequestPropRequester
-
-    The user who requested the bypass.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class PushRuleBypassRequestPropDataItemsType(TypedDict):
-    """PushRuleBypassRequestPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
-class PushRuleBypassRequestPropDataItemsTypeForResponse(TypedDict):
-    """PushRuleBypassRequestPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
 
 
 __all__ = (
-    "PushRuleBypassRequestPropDataItemsType",
-    "PushRuleBypassRequestPropDataItemsTypeForResponse",
-    "PushRuleBypassRequestPropOrganizationType",
-    "PushRuleBypassRequestPropOrganizationTypeForResponse",
-    "PushRuleBypassRequestPropRepositoryType",
-    "PushRuleBypassRequestPropRepositoryTypeForResponse",
-    "PushRuleBypassRequestPropRequesterType",
-    "PushRuleBypassRequestPropRequesterTypeForResponse",
-    "PushRuleBypassRequestType",
-    "PushRuleBypassRequestTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetTypeForResponse",
 )

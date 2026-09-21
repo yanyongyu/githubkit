@@ -9,59 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class DependabotAlertDismissalRequestSimple(GitHubModel):
-    """Dependabot alert dismissal request
+class GoogleCloudConfig(GitHubModel):
+    """GoogleCloudConfig
 
-    Information about an active dismissal request for this Dependabot alert.
+    Google Cloud Config for audit log streaming configuration.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+    bucket: str = Field(description="Google Cloud Bucket Name")
+    key_id: str = Field(
+        description="Key ID obtained from the audit log stream key endpoint used to encrypt secrets."
     )
-    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
-        default=UNSET, description="The current status of the dismissal request."
-    )
-    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time when the dismissal request was created.",
-    )
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to get more information about this dismissal request.",
-    )
+    encrypted_json_credentials: str = Field()
 
 
-class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
-    """DependabotAlertDismissalRequestSimplePropRequester
+model_rebuild(GoogleCloudConfig)
 
-    The user who requested the dismissal.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The login name of the user."
-    )
-
-
-model_rebuild(DependabotAlertDismissalRequestSimple)
-model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
-
-__all__ = (
-    "DependabotAlertDismissalRequestSimple",
-    "DependabotAlertDismissalRequestSimplePropRequester",
-)
+__all__ = ("GoogleCloudConfig",)

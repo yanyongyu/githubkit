@@ -10,115 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMilestoneType(TypedDict):
-    """Milestone
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    A collection of related issues and pull requests.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
     """
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[WebhooksMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
+    description: NotRequired[Union[str, None]]
     html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    labels_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
+    name: str
+    slug: str
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    avatar_url: str
 
 
-class WebhooksMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class EnterpriseWebhooksTypeForResponse(TypedDict):
+    """Enterprise
 
-    A collection of related issues and pull requests.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
     """
 
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[WebhooksMilestonePropCreatorTypeForResponse, None]
-    description: Union[str, None]
-    due_on: Union[str, None]
+    description: NotRequired[Union[str, None]]
     html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
-    labels_url: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
-
-
-class WebhooksMilestonePropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    slug: str
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+    avatar_url: str
 
 
 __all__ = (
-    "WebhooksMilestonePropCreatorType",
-    "WebhooksMilestonePropCreatorTypeForResponse",
-    "WebhooksMilestoneType",
-    "WebhooksMilestoneTypeForResponse",
+    "EnterpriseWebhooksType",
+    "EnterpriseWebhooksTypeForResponse",
 )

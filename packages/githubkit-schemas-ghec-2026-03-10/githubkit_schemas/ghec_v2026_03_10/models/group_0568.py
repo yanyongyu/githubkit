@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,44 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryAdvisoryDescriptionValidationError(GitHubModel):
-    """Repository Advisory Description Validation Error
-
-    The description does not answer the repository's report template.
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems]
-    ] = Field(default=UNSET)
+from .group_0168 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+class RepositoryRuleDetailedOneof13(GitHubModel):
+    """RepositoryRuleDetailedOneof13"""
 
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field(
-        description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
     )
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
-    section: Missing[str] = Field(
-        default=UNSET, description="The report template section the violation concerns."
-    )
-    option: Missing[str] = Field(
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        description="The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.",
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-model_rebuild(RepositoryAdvisoryDescriptionValidationError)
-model_rebuild(RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems)
+model_rebuild(RepositoryRuleDetailedOneof13)
 
-__all__ = (
-    "RepositoryAdvisoryDescriptionValidationError",
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
-)
+__all__ = ("RepositoryRuleDetailedOneof13",)

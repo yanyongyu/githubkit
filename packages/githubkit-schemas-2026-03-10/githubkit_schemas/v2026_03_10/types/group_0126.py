@@ -12,35 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    The public key used for setting Actions Secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    The public key used for setting Actions Secrets.
-    """
-
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
+    protected: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
 )

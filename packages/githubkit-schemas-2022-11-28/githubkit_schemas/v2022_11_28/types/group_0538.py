@@ -9,82 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingAiCreditUsageReportUserType(TypedDict):
-    """BillingAiCreditUsageReportUser"""
-
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0537 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
 
-class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUser"""
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
+    Code Search Result Item
+    """
 
-
-class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[_dt.datetime]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class CodeSearchResultItemTypeForResponse(TypedDict):
+    """Code Search Result Item
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    Code Search Result Item
+    """
+
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[str]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemType]
+
+
+class SearchCodeGetResponse200TypeForResponse(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CodeSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportUserPropTimePeriodType",
-    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportUserType",
-    "BillingAiCreditUsageReportUserTypeForResponse",
+    "CodeSearchResultItemType",
+    "CodeSearchResultItemTypeForResponse",
+    "SearchCodeGetResponse200Type",
+    "SearchCodeGetResponse200TypeForResponse",
 )

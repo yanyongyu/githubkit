@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,49 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    job_id: int = Field(description="The ID of the job.")
-    status: Literal["pending", "processing", "completed", "failed"] = Field(
-        description="The current status of the job."
-    )
-    started_at: Missing[_dt.datetime] = Field(
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="When the job started processing (only present when processing, completed, or failed).",
+        description="The date after which this runner version can no longer register. Null if no schedule is set.",
     )
-    total_count: Missing[int] = Field(
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The number of records successfully mutated (only present when completed).",
-    )
-    errors: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Processing errors (only present when completed or failed).",
+        description="The date after which jobs will no longer be dispatched to runners on this version.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
-    pErrorsItems
-    """
+model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
 
-
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
-)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems",
-)
+__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)

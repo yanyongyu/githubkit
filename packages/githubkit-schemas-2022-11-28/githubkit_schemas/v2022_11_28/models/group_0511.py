@@ -9,21 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class SecretScanningAlertMetadataItems(GitHubModel):
+    """SecretScanningAlertMetadataItems"""
 
-    timestamp: _dt.datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    key: str = Field(description="The metadata key.")
+    value: str = Field(description="The metadata value.")
 
 
-model_rebuild(Traffic)
+model_rebuild(SecretScanningAlertMetadataItems)
 
-__all__ = ("Traffic",)
+__all__ = ("SecretScanningAlertMetadataItems",)

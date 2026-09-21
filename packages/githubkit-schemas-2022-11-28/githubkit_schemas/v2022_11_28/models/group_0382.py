@@ -9,33 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0383 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
+from .group_0019 import LicenseSimple
+from .group_0220 import CodeOfConductSimple
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
 
-    id: int = Field()
-    node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
-    )
-    type: str = Field()
-    reviewers: Missing[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
-    )
+    code_of_conduct: Union[CodeOfConductSimple, None] = Field()
+    code_of_conduct_file: Union[CommunityHealthFile, None] = Field()
+    license_: Union[LicenseSimple, None] = Field(alias="license")
+    contributing: Union[CommunityHealthFile, None] = Field()
+    readme: Union[CommunityHealthFile, None] = Field()
+    issue_template: Union[CommunityHealthFile, None] = Field()
+    pull_request_template: Union[CommunityHealthFile, None] = Field()
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+    url: str = Field()
+    html_url: str = Field()
+
+
+class CommunityProfile(GitHubModel):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
+
+__all__ = (
+    "CommunityHealthFile",
+    "CommunityProfile",
+    "CommunityProfilePropFiles",
+)

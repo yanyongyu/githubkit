@@ -9,93 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0230 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0232 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0233 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class PullRequestReviewEventPropReviewType(TypedDict):
-    """PullRequestReviewEventPropReview"""
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserType, None]]
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int
+    node_id: str
+    url: str
     body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
-    updated_at: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReview"""
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    Comments provide a way for people to collaborate on an issue.
+    """
+
+    id: int
+    node_id: str
+    url: str
     body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
-    updated_at: NotRequired[str]
-
-
-class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
-
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
-
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
-    pull_request: (
-        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
-    )
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksType",
-    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
-    "PullRequestReviewEventPropReviewType",
-    "PullRequestReviewEventPropReviewTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

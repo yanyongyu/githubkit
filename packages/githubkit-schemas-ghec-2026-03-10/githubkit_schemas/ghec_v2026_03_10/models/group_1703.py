@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0590 import PullRequestStackPullRequest
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoStacksPostResponse201(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksPostResponse201)
+model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksPostResponse201",
+    "ReposOwnerRepoStacksPostResponse201PropBase",
+)

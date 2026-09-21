@@ -9,70 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
+from .group_0003 import SimpleUser
+from .group_0386 import Deployment
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class WebhookWorkflowJobWaiting(GitHubModel):
+    """workflow_job waiting event"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: Missing[str] = Field(
+    action: Literal["waiting"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent)
+class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[str] = Field()
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field()
+    runner_group_name: Union[str, None] = Field()
+    runner_id: Union[int, None] = Field()
+    runner_name: Union[str, None] = Field()
+    started_at: _dt.datetime = Field()
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
+    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
+        Field()
+    )
+
+
+model_rebuild(WebhookWorkflowJobWaiting)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "WebhookWorkflowJobWaiting",
+    "WebhookWorkflowJobWaitingPropWorkflowJob",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
 )

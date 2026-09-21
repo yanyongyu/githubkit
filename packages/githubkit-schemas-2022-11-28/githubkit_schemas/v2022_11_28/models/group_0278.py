@@ -16,18 +16,79 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheStorageLimitForRepository(GitHubModel):
-    """Actions cache storage limit for a repository
+class SecretScanningLocationIssueTitle(GitHubModel):
+    """SecretScanningLocationIssueTitle
 
-    GitHub Actions cache storage policy for a repository.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    max_cache_size_gb: Missing[int] = Field(
+    issue_title_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
         default=UNSET,
-        description="The maximum total cache size for this repository, in gigabytes.",
+        description="The GitHub URL for the issue where the secret was detected.",
     )
 
 
-model_rebuild(ActionsCacheStorageLimitForRepository)
+class SecretScanningLocationIssueComment(GitHubModel):
+    """SecretScanningLocationIssueComment
 
-__all__ = ("ActionsCacheStorageLimitForRepository",)
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue comment where the secret was detected.",
+    )
+
+
+class SecretScanningLocationPullRequestTitle(GitHubModel):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request where the secret was detected.",
+    )
+
+
+class SecretScanningLocationPullRequestReviewComment(GitHubModel):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str = Field(
+        description="The API URL to get the pull request review comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request review comment where the secret was detected.",
+    )
+
+
+model_rebuild(SecretScanningLocationIssueTitle)
+model_rebuild(SecretScanningLocationIssueComment)
+model_rebuild(SecretScanningLocationPullRequestTitle)
+model_rebuild(SecretScanningLocationPullRequestReviewComment)
+
+__all__ = (
+    "SecretScanningLocationIssueComment",
+    "SecretScanningLocationIssueTitle",
+    "SecretScanningLocationPullRequestReviewComment",
+    "SecretScanningLocationPullRequestTitle",
+)

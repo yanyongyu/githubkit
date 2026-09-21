@@ -9,27 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0082 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
+
+    Describe a region within a file for the alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
-class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
-    """EnterpriseUserRoleAssignmentAllof1"""
+class CodeScanningAlertLocationTypeForResponse(TypedDict):
+    """CodeScanningAlertLocation
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamType]]
+    Describe a region within a file for the alert.
+    """
 
-
-class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
-    """EnterpriseUserRoleAssignmentAllof1"""
-
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
 
 
 __all__ = (
-    "EnterpriseUserRoleAssignmentAllof1Type",
-    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertLocationTypeForResponse",
 )

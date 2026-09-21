@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0175 import RepositoryRuleset
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
+from .group_0691 import WebhooksRelease
 
 
-class WebhookRepositoryRulesetDeleted(GitHubModel):
-    """repository ruleset deleted event"""
+class WebhookReleaseDeleted(GitHubModel):
+    """release deleted event"""
 
     action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -44,18 +44,17 @@ class WebhookRepositoryRulesetDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest/rest/releases/releases/#get-a-release) object.",
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryRulesetDeleted)
+model_rebuild(WebhookReleaseDeleted)
 
-__all__ = ("WebhookRepositoryRulesetDeleted",)
+__all__ = ("WebhookReleaseDeleted",)

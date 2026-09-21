@@ -10,37 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Secrets for GitHub Actions for an organization.
+    A comment made to a gist.
     """
 
-    name: str
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Secrets for GitHub Actions for an organization.
+    A comment made to a gist.
     """
 
-    name: str
+    id: int
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

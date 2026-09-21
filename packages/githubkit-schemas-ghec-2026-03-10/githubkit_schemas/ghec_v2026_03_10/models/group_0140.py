@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0141 import RepositoryRuleRequiredStatusChecksPropParameters
 
+class CustomPropertySetPayload(GitHubModel):
+    """Custom Property Set Payload
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Custom property set payload
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    require_explicit_values: Missing[bool] = Field(
+        default=UNSET, description="Whether setting properties values is mandatory"
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+model_rebuild(CustomPropertySetPayload)
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+__all__ = ("CustomPropertySetPayload",)

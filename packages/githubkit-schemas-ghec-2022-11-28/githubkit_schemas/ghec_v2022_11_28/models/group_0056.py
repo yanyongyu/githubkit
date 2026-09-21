@@ -12,19 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AccessibleRepository(GitHubModel):
-    """Accessible Repository
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    A repository that may be made accessible to a GitHub App.
-    """
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field()
+    repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+    )
 
 
-model_rebuild(AccessibleRepository)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
 
-__all__ = ("AccessibleRepository",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)

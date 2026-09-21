@@ -9,44 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import TypedDict
 
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
+class OrganizationFineGrainedPermissionType(TypedDict):
+    """Organization Fine-Grained Permission
 
-    A draft issue in a project
+    A fine-grained permission that protects organization resources.
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    name: str
+    description: str
 
 
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
+class OrganizationFineGrainedPermissionTypeForResponse(TypedDict):
+    """Organization Fine-Grained Permission
 
-    A draft issue in a project
+    A fine-grained permission that protects organization resources.
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
+    name: str
+    description: str
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "OrganizationFineGrainedPermissionType",
+    "OrganizationFineGrainedPermissionTypeForResponse",
 )

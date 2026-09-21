@@ -36,6 +36,7 @@ class CodeSecurityConfigurationRepositories(GitHubModel):
             "failed",
             "updating",
             "removed_by_enterprise",
+            "enterprise_enforced",
         ]
     ] = Field(
         default=UNSET,

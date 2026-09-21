@@ -9,44 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0226 import Label
+from .group_0236 import Issue
 
 
-class GistComment(GitHubModel):
-    """Gist Comment
+class IssuesEvent(GitHubModel):
+    """IssuesEvent"""
 
-    A comment made to a gist.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    body: str = Field(max_length=65535, description="The comment text.")
-    user: Union[SimpleUser, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
 
-model_rebuild(GistComment)
+model_rebuild(IssuesEvent)
 
-__all__ = ("GistComment",)
+__all__ = ("IssuesEvent",)

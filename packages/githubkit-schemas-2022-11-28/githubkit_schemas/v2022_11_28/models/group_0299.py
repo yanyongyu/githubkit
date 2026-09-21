@@ -9,41 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class ActionsCacheStorageLimitForRepository(GitHubModel):
+    """Actions cache storage limit for a repository
 
-class Activity(GitHubModel):
-    """Activity
-
-    Activity
+    GitHub Actions cache storage policy for a repository.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    max_cache_size_gb: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum total cache size for this repository, in gigabytes.",
     )
-    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(Activity)
+model_rebuild(ActionsCacheStorageLimitForRepository)
 
-__all__ = ("Activity",)
+__all__ = ("ActionsCacheStorageLimitForRepository",)

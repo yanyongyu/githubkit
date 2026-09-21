@@ -9,22 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class OrganizationCustomPropertyPayloadType(TypedDict):
+    """Organization Custom Property Payload
 
-    required_deployment_environments: list[str]
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
-class RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
+class OrganizationCustomPropertyPayloadTypeForResponse(TypedDict):
+    """Organization Custom Property Payload
 
-    required_deployment_environments: list[str]
+    Payload for creating or updating an organization custom property definition on
+    an enterprise.
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsPropParametersType",
-    "RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse",
+    "OrganizationCustomPropertyPayloadType",
+    "OrganizationCustomPropertyPayloadTypeForResponse",
 )

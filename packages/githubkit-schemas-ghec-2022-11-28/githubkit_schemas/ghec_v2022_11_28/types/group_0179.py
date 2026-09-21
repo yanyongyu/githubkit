@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0180 import (
-    RulesetVersionWithStateAllof1PropStateType,
-    RulesetVersionWithStateAllof1PropStateTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateAllof1Type(TypedDict):
-    """RulesetVersionWithStateAllof1"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    state: RulesetVersionWithStateAllof1PropStateType
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
-class RulesetVersionWithStateAllof1TypeForResponse(TypedDict):
-    """RulesetVersionWithStateAllof1"""
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
+    Restricted commit
+    """
+
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "RulesetVersionWithStateAllof1Type",
-    "RulesetVersionWithStateAllof1TypeForResponse",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

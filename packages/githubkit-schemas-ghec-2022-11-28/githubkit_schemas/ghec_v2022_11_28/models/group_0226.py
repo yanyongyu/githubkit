@@ -9,37 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0208 import Label
-from .group_0218 import Issue
 
 
-class IssuesEvent(GitHubModel):
-    """IssuesEvent"""
+class Label(GitHubModel):
+    """Label
 
-    action: str = Field()
-    issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int = Field(description="Unique identifier for the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
     )
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
     )
-    labels: Missing[list[Label]] = Field(default=UNSET)
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: None = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
 
 
-model_rebuild(IssuesEvent)
+model_rebuild(Label)
 
-__all__ = ("IssuesEvent",)
+__all__ = ("Label",)

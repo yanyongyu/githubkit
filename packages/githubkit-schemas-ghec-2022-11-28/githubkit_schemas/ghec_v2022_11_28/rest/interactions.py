@@ -469,6 +469,7 @@ class InteractionsClient:
         stream: bool = False,
         enabled: bool,
         max_open_pull_requests: Missing[int] = UNSET,
+        include_drafts: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
         OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
@@ -559,6 +560,7 @@ class InteractionsClient:
         stream: bool = False,
         enabled: bool,
         max_open_pull_requests: Missing[int] = UNSET,
+        include_drafts: Missing[bool] = UNSET,
     ) -> Response[
         OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
         OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
@@ -1437,6 +1439,7 @@ class InteractionsClient:
         stream: bool = False,
         enabled: bool,
         max_open_pull_requests: Missing[int] = UNSET,
+        include_drafts: Missing[bool] = UNSET,
     ) -> Response[
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,
@@ -1531,6 +1534,7 @@ class InteractionsClient:
         stream: bool = False,
         enabled: bool,
         max_open_pull_requests: Missing[int] = UNSET,
+        include_drafts: Missing[bool] = UNSET,
     ) -> Response[
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse,

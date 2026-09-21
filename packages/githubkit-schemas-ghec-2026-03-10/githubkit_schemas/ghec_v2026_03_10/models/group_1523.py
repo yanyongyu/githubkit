@@ -12,37 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0374 import ActionsVariable
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoAgentsVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoAgentsVariablesGetResponse200"""
 
-    auto_trigger_checks: Missing[
-        list[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
-    ] = Field(
-        default=UNSET,
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
-    )
+    total_count: int = Field()
+    variables: list[ActionsVariable] = Field()
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+model_rebuild(ReposOwnerRepoAgentsVariablesGetResponse200)
 
-    app_id: int = Field(description="The `id` of the GitHub App.")
-    setting: bool = Field(
-        default=True,
-        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
-
-__all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
-)
+__all__ = ("ReposOwnerRepoAgentsVariablesGetResponse200",)

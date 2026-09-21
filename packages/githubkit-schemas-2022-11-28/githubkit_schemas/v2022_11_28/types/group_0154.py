@@ -9,35 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSubjectStatsItemsType(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsSubjectStatsItems"""
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
 
-    subject_type: NotRequired[str]
-    subject_name: NotRequired[str]
-    subject_id: NotRequired[int]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Organization variable for GitHub Actions.
+    """
+
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ApiInsightsSubjectStatsItemsType",
-    "ApiInsightsSubjectStatsItemsTypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
 )

@@ -13,49 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0334 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0640 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0972 import (
-    WebhookPullRequestLabeledPropPullRequestType,
-    WebhookPullRequestLabeledPropPullRequestTypeForResponse,
-)
 
 
-class WebhookPullRequestLabeledType(TypedDict):
-    """pull_request labeled event"""
+class WebhookProjectsV2StatusUpdateCreatedType(TypedDict):
+    """Projects v2 Status Update Created Event"""
 
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationType]
-    label: NotRequired[WebhooksLabelType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestLabeledPropPullRequestType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
     sender: SimpleUserType
 
 
-class WebhookPullRequestLabeledTypeForResponse(TypedDict):
-    """pull_request labeled event"""
+class WebhookProjectsV2StatusUpdateCreatedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Created Event"""
 
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["created"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: NotRequired[WebhooksLabelTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestLabeledPropPullRequestTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestLabeledType",
-    "WebhookPullRequestLabeledTypeForResponse",
+    "WebhookProjectsV2StatusUpdateCreatedType",
+    "WebhookProjectsV2StatusUpdateCreatedTypeForResponse",
 )

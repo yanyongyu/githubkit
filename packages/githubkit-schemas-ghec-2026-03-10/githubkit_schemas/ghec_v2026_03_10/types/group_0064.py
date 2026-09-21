@@ -9,42 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
 
-class GetAuditLogStreamConfigType(TypedDict):
-    """Get an audit log streaming configuration
+class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Get an audit log streaming configuration for an enterprise.
+    Parameters for an organization ID condition
     """
 
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    paused_at: NotRequired[Union[_dt.datetime, None]]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
 
 
-class GetAuditLogStreamConfigTypeForResponse(TypedDict):
-    """Get an audit log streaming configuration
+class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Get an audit log streaming configuration for an enterprise.
+    Parameters for an organization ID condition
     """
 
-    id: int
-    stream_type: str
-    stream_details: str
-    enabled: bool
-    created_at: str
-    updated_at: str
-    paused_at: NotRequired[Union[str, None]]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
 
 
 __all__ = (
-    "GetAuditLogStreamConfigType",
-    "GetAuditLogStreamConfigTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
 )

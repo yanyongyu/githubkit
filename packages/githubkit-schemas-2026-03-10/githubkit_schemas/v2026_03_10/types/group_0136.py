@@ -9,36 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0137 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
 
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
+class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Describe a region within a file for the alert.
+    Parameters for an organization ID condition
     """
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
 
 
-class CodeScanningAlertLocationTypeForResponse(TypedDict):
-    """CodeScanningAlertLocation
+class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    Describe a region within a file for the alert.
+    Parameters for an organization ID condition
     """
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
 
 
 __all__ = (
-    "CodeScanningAlertLocationType",
-    "CodeScanningAlertLocationTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
 )

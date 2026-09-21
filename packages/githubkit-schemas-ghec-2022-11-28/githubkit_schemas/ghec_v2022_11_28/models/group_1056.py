@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
-from .group_0676 import SecretScanningAlertWebhook
+from .group_0193 import RepositoryRuleset
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
 
 
-class WebhookSecretScanningAlertMetadataCreated(GitHubModel):
-    """secret_scanning_alert metadata created event"""
+class WebhookRepositoryRulesetCreated(GitHubModel):
+    """repository ruleset created event"""
 
-    action: Literal["metadata_created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,15 +44,18 @@ class WebhookSecretScanningAlertMetadataCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
     )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningAlertMetadataCreated)
+model_rebuild(WebhookRepositoryRulesetCreated)
 
-__all__ = ("WebhookSecretScanningAlertMetadataCreated",)
+__all__ = ("WebhookRepositoryRulesetCreated",)

@@ -9,129 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0451 import (
-    DeploymentBranchPolicySettingsType,
-    DeploymentBranchPolicySettingsTypeForResponse,
-)
-from .group_0453 import (
-    EnvironmentPropProtectionRulesItemsAnyof1Type,
-    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-)
 
+class ContentTreeType(TypedDict):
+    """Content Tree
 
-class EnvironmentType(TypedDict):
-    """Environment
-
-    Details of a deployment environment
+    Content Tree
     """
 
-    id: int
-    node_id: str
+    type: str
+    size: int
     name: str
+    path: str
+    sha: str
+    content: NotRequired[str]
     url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
-    ]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksType
 
 
-class EnvironmentTypeForResponse(TypedDict):
-    """Environment
+class ContentTreeTypeForResponse(TypedDict):
+    """Content Tree
 
-    Details of a deployment environment
+    Content Tree
     """
 
-    id: int
-    node_id: str
+    type: str
+    size: int
     name: str
+    path: str
+    sha: str
+    content: NotRequired[str]
     url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    protection_rules: NotRequired[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
-                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
-    ]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
+    encoding: NotRequired[str]
+    links: ContentTreePropLinksTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ContentTreePropLinksType(TypedDict):
+    """ContentTreePropLinks"""
 
-    id: int
-    node_id: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropLinksTypeForResponse(TypedDict):
+    """ContentTreePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentTreePropEntriesItemsType(TypedDict):
+    """ContentTreePropEntriesItems"""
+
     type: str
-    wait_timer: NotRequired[int]
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksType
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItems"""
 
-    id: int
-    node_id: str
     type: str
-    wait_timer: NotRequired[int]
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
+class ContentTreePropEntriesItemsPropLinksType(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
 
-    id: int
-    node_id: str
-    type: str
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
+class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
+    """ContentTreePropEntriesItemsPropLinks"""
 
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentType]]
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[list[EnvironmentTypeForResponse]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
-    "EnvironmentType",
-    "EnvironmentTypeForResponse",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
+    "ContentTreePropEntriesItemsPropLinksType",
+    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
+    "ContentTreePropEntriesItemsType",
+    "ContentTreePropEntriesItemsTypeForResponse",
+    "ContentTreePropLinksType",
+    "ContentTreePropLinksTypeForResponse",
+    "ContentTreeType",
+    "ContentTreeTypeForResponse",
 )

@@ -10,54 +10,60 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0514 import SearchResultTextMatchesItems
 
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
+class PullRequestStackMinimal(GitHubModel):
+    """Pull Request Stack Minimal"""
 
     id: int = Field()
+    number: int = Field()
     node_id: str = Field()
     url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    base: PullRequestStackMinimalPropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
 
 
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
+class PullRequestStackMinimalPropBase(GitHubModel):
+    """PullRequestStackMinimalPropBase"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
+    ref: str = Field()
 
 
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
+class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int = Field()
+    state: Literal["open", "closed"] = Field()
+    draft: bool = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestStackMinimal)
+model_rebuild(PullRequestStackMinimalPropBase)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
 
 __all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
+    "PullRequestStackMinimal",
+    "PullRequestStackMinimalPropBase",
+    "PullRequestStackMinimalPropPullRequestsItems",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
 )

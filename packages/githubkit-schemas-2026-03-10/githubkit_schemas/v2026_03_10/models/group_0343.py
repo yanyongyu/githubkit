@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0032 import SimpleRepository
 
+class CodeQualitySetupUpdateAnyof1(GitHubModel):
+    """CodeQualitySetupUpdateAnyof1"""
 
-class CodeScanningVariantAnalysisRepoTask(GitHubModel):
-    """CodeScanningVariantAnalysisRepoTask"""
-
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="Runner type to be used."
     )
-    artifact_size_in_bytes: Missing[int] = Field(
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
+        description="Runner label to be used if the runner type is labeled.",
     )
-    result_count: Missing[int] = Field(
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
         default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
-    )
-    database_commit_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
-    )
-    source_location_prefix: Missing[str] = Field(
-        default=UNSET,
-        description="The source location prefix to use. This is only available for successful analyses.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of the artifact. This is only available for successful analyses.",
+        description="Whether AI findings run for Code Quality on this repository.",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisRepoTask)
+model_rebuild(CodeQualitySetupUpdateAnyof1)
 
-__all__ = ("CodeScanningVariantAnalysisRepoTask",)
+__all__ = ("CodeQualitySetupUpdateAnyof1",)

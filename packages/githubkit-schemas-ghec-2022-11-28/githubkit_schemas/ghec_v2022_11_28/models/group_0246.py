@@ -13,17 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GitignoreTemplate(GitHubModel):
-    """Gitignore Template
-
-    Gitignore Template
-    """
-
-    name: str = Field()
-    source: str = Field()
+from .group_0247 import ForkEventPropForkee
 
 
-model_rebuild(GitignoreTemplate)
+class ForkEvent(GitHubModel):
+    """ForkEvent"""
 
-__all__ = ("GitignoreTemplate",)
+    action: str = Field()
+    forkee: ForkEventPropForkee = Field()
+
+
+model_rebuild(ForkEvent)
+
+__all__ = ("ForkEvent",)

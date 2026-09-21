@@ -9,30 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportRequestType(TypedDict):
-    """UsageReportExportRequest"""
+class SecretScanningCustomPatternToCreateType(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: NotRequired[_dt.date]
-    send_email: NotRequired[bool]
+    A custom pattern to create in a bulk operation.
+    """
+
+    name: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
-class UsageReportExportRequestTypeForResponse(TypedDict):
-    """UsageReportExportRequest"""
+class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: NotRequired[str]
-    send_email: NotRequired[bool]
+    A custom pattern to create in a bulk operation.
+    """
+
+    name: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "UsageReportExportRequestType",
-    "UsageReportExportRequestTypeForResponse",
+    "SecretScanningCustomPatternToCreateType",
+    "SecretScanningCustomPatternToCreateTypeForResponse",
 )

@@ -9,156 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0230 import ReactionRollupType, ReactionRollupTypeForResponse
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+class CommitCommentType(TypedDict):
+    """Commit Comment
+
+    Commit Comment
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomType
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class DependencyGraphSpdxSbomTypeForResponse(TypedDict):
-    """Dependency Graph SPDX SBOM
+class CommitCommentTypeForResponse(TypedDict):
+    """Commit Comment
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+    Commit Comment
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomTypeForResponse
-
-
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
-    name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    html_url: str
+    url: str
+    id: int
+    node_id: str
+    body: str
+    path: Union[str, None]
+    position: Union[int, None]
+    line: Union[int, None]
+    commit_id: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
-class DependencyGraphSpdxSbomPropSbomTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
+class TimelineCommitCommentedEventType(TypedDict):
+    """Timeline Commit Commented Event
 
-    spdxid: str
-    spdx_version: str
-    comment: NotRequired[str]
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse
-    name: str
-    data_license: str
-    document_namespace: str
-    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse]
-    relationships: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse]
-    ]
+    Timeline Commit Commented Event
+    """
+
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentType]]
 
 
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+class TimelineCommitCommentedEventTypeForResponse(TypedDict):
+    """Timeline Commit Commented Event
 
-    created: str
-    creators: list[str]
+    Timeline Commit Commented Event
+    """
 
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: list[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
-
-    relationship_type: NotRequired[str]
-    spdx_element_id: NotRequired[str]
-    related_spdx_element: NotRequired[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        list[
-            DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse
-        ]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
+    event: NotRequired[Literal["commit_commented"]]
+    node_id: NotRequired[str]
+    commit_id: NotRequired[str]
+    comments: NotRequired[list[CommitCommentTypeForResponse]]
 
 
 __all__ = (
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomPropSbomTypeForResponse",
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomTypeForResponse",
+    "CommitCommentType",
+    "CommitCommentTypeForResponse",
+    "TimelineCommitCommentedEventType",
+    "TimelineCommitCommentedEventTypeForResponse",
 )

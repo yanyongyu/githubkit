@@ -11,34 +11,53 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
 
-    Describe a region within a file for the alert.
+class ActionsPolicyEnterpriseConditionsOneof2Type(TypedDict):
+    """organization_id_and_repository_name
+
+    Conditions to target organizations by id and repositories by name
     """
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CodeScanningAlertLocationTypeForResponse(TypedDict):
-    """CodeScanningAlertLocation
+class ActionsPolicyEnterpriseConditionsOneof2TypeForResponse(TypedDict):
+    """organization_id_and_repository_name
 
-    Describe a region within a file for the alert.
+    Conditions to target organizations by id and repositories by name
     """
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "CodeScanningAlertLocationType",
-    "CodeScanningAlertLocationTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof2Type",
+    "ActionsPolicyEnterpriseConditionsOneof2TypeForResponse",
 )

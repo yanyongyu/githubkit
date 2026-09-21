@@ -9,42 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0317 import ProjectsV2
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ProjectCreated(GitHubModel):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPingFormEncoded(GitHubModel):
+    """WebhookPingFormEncoded
 
-    A project was created
+    The webhooks ping payload encoded with URL encoding.
     """
 
-    action: Literal["created"] = Field()
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    payload: str = Field(
+        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object."
     )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2ProjectCreated)
+model_rebuild(WebhookPingFormEncoded)
 
-__all__ = ("WebhookProjectsV2ProjectCreated",)
+__all__ = ("WebhookPingFormEncoded",)

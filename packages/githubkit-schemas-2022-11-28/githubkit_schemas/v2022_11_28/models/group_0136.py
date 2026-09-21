@@ -12,23 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0137 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+)
 
 
-class CodeScanningAlertLocation(GitHubModel):
-    """CodeScanningAlertLocation
+class EnterpriseRulesetConditionsOrganizationIdTarget(GitHubModel):
+    """Repository ruleset conditions for organization IDs
 
-    Describe a region within a file for the alert.
+    Parameters for an organization ID condition
     """
 
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
+    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
 
 
-model_rebuild(CodeScanningAlertLocation)
+model_rebuild(EnterpriseRulesetConditionsOrganizationIdTarget)
 
-__all__ = ("CodeScanningAlertLocation",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationIdTarget",)

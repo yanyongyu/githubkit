@@ -9,31 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[
+            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+        ]
     ]
-    dismissed_comment: NotRequired[str]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[
+            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+        ]
     ]
-    dismissed_comment: NotRequired[str]
+    dismissed_comment: NotRequired[Union[str, None]]
+    create_request: NotRequired[bool]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

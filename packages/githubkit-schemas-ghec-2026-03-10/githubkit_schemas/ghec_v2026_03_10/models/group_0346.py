@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,49 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    Rate Limit Overview
+    The configuration for iteration fields.
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-
-
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    start_date: _dt.date = Field(description="The start date of the first iteration.")
+    duration: int = Field(
+        description="The default duration for iterations in days. Individual iterations can override this value."
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    copilot_usage_records: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+    title: str = Field(description="The title of the iteration.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
 
 
-model_rebuild(RateLimitOverview)
-model_rebuild(RateLimitOverviewPropResources)
-model_rebuild(RateLimit)
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
 
 __all__ = (
-    "RateLimit",
-    "RateLimitOverview",
-    "RateLimitOverviewPropResources",
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
 )

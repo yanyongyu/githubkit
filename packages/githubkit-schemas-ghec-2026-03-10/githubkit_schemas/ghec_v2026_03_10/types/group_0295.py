@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-
-
-class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsTimeStatsItems"""
-
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
 __all__ = (
-    "ApiInsightsTimeStatsItemsType",
-    "ApiInsightsTimeStatsItemsTypeForResponse",
+    "CopilotOrganizationContentExclusionDetailsType",
+    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
 )

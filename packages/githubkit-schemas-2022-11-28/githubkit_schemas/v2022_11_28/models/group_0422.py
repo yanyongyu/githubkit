@@ -9,41 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0402 import IssueTypeWebhook
-from .group_0404 import IssueEventIntent
 
 
-class IssueTypeRemovedIssueEvent(GitHubModel):
-    """Issue Type Removed Issue Event
+class InteractionLimitPullRequestBypassList(GitHubModel):
+    """Interaction Limits Pull Request Bypass List
 
-    Issue Type Removed Issue Event
+    A list of user logins to add or remove from the pull request creation cap bypass
+    list.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    prev_issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
+    users: list[str] = Field(
+        description="A list of user logins to add or remove from the bypass list."
     )
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(IssueTypeRemovedIssueEvent)
+model_rebuild(InteractionLimitPullRequestBypassList)
 
-__all__ = ("IssueTypeRemovedIssueEvent",)
+__all__ = ("InteractionLimitPullRequestBypassList",)

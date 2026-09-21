@@ -9,56 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class SecretScanningCustomPatternValidationErrorType(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
+    A validation error for a custom pattern in a batch operation.
+    """
 
-
-class BillingUsageReportTypeForResponse(TypedDict):
-    """BillingUsageReport"""
-
-    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
-
-
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
-class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    A validation error for a custom pattern in a batch operation.
+    """
+
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "BillingUsageReportPropUsageItemsItemsType",
-    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
-    "BillingUsageReportType",
-    "BillingUsageReportTypeForResponse",
+    "SecretScanningCustomPatternValidationErrorType",
+    "SecretScanningCustomPatternValidationErrorTypeForResponse",
 )

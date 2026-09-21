@@ -9,40 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0136 import (
-    RepositoryRuleRequiredDeploymentsPropParametersType,
-    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
-)
+
+class OrganizationCustomPropertyAllof1Type(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
+
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ]
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class OrganizationCustomPropertyAllof1TypeForResponse(TypedDict):
+    """OrganizationCustomPropertyAllof1"""
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
-
-
-class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
-    """required_deployments
-
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
+    values_editable_by: NotRequired[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
     ]
 
 
 __all__ = (
-    "RepositoryRuleRequiredDeploymentsType",
-    "RepositoryRuleRequiredDeploymentsTypeForResponse",
+    "OrganizationCustomPropertyAllof1Type",
+    "OrganizationCustomPropertyAllof1TypeForResponse",
 )

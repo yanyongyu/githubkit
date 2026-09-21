@@ -13,28 +13,28 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0065 import BypassResponseType, BypassResponseTypeForResponse
+from .group_0092 import BypassResponseType, BypassResponseTypeForResponse
 
 
-class SecretScanningDismissalRequestType(TypedDict):
-    """Secret scanning alert dismissal request
+class SecretScanningBypassRequestType(TypedDict):
+    """Secret scanning bypass request
 
-    A dismissal request made by a user asking to close a secret scanning alert in
+    A bypass request made by a user asking to be exempted from push protection in
     this repository.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
-    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryType]
-    organization: NotRequired[SecretScanningDismissalRequestPropOrganizationType]
-    requester: NotRequired[SecretScanningDismissalRequestPropRequesterType]
+    repository: NotRequired[SecretScanningBypassRequestPropRepositoryType]
+    organization: NotRequired[SecretScanningBypassRequestPropOrganizationType]
+    requester: NotRequired[SecretScanningBypassRequestPropRequesterType]
     request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[SecretScanningDismissalRequestPropDataItemsType], None]
-    ]
+    data: NotRequired[Union[list[SecretScanningBypassRequestPropDataItemsType], None]]
     resource_identifier: NotRequired[str]
     status: NotRequired[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
     ]
     requester_comment: NotRequired[Union[str, None]]
     expires_at: NotRequired[_dt.datetime]
@@ -44,27 +44,29 @@ class SecretScanningDismissalRequestType(TypedDict):
     html_url: NotRequired[str]
 
 
-class SecretScanningDismissalRequestTypeForResponse(TypedDict):
-    """Secret scanning alert dismissal request
+class SecretScanningBypassRequestTypeForResponse(TypedDict):
+    """Secret scanning bypass request
 
-    A dismissal request made by a user asking to close a secret scanning alert in
+    A bypass request made by a user asking to be exempted from push protection in
     this repository.
     """
 
     id: NotRequired[int]
     number: NotRequired[int]
-    repository: NotRequired[SecretScanningDismissalRequestPropRepositoryTypeForResponse]
+    repository: NotRequired[SecretScanningBypassRequestPropRepositoryTypeForResponse]
     organization: NotRequired[
-        SecretScanningDismissalRequestPropOrganizationTypeForResponse
+        SecretScanningBypassRequestPropOrganizationTypeForResponse
     ]
-    requester: NotRequired[SecretScanningDismissalRequestPropRequesterTypeForResponse]
+    requester: NotRequired[SecretScanningBypassRequestPropRequesterTypeForResponse]
     request_type: NotRequired[str]
     data: NotRequired[
-        Union[list[SecretScanningDismissalRequestPropDataItemsTypeForResponse], None]
+        Union[list[SecretScanningBypassRequestPropDataItemsTypeForResponse], None]
     ]
     resource_identifier: NotRequired[str]
     status: NotRequired[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
     ]
     requester_comment: NotRequired[Union[str, None]]
     expires_at: NotRequired[str]
@@ -74,10 +76,10 @@ class SecretScanningDismissalRequestTypeForResponse(TypedDict):
     html_url: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
-    """SecretScanningDismissalRequestPropRepository
+class SecretScanningBypassRequestPropRepositoryType(TypedDict):
+    """SecretScanningBypassRequestPropRepository
 
-    The repository the dismissal request is for.
+    The repository the bypass request is for.
     """
 
     id: NotRequired[int]
@@ -85,10 +87,10 @@ class SecretScanningDismissalRequestPropRepositoryType(TypedDict):
     full_name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """SecretScanningDismissalRequestPropRepository
+class SecretScanningBypassRequestPropRepositoryTypeForResponse(TypedDict):
+    """SecretScanningBypassRequestPropRepository
 
-    The repository the dismissal request is for.
+    The repository the bypass request is for.
     """
 
     id: NotRequired[int]
@@ -96,71 +98,73 @@ class SecretScanningDismissalRequestPropRepositoryTypeForResponse(TypedDict):
     full_name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropOrganizationType(TypedDict):
-    """SecretScanningDismissalRequestPropOrganization
+class SecretScanningBypassRequestPropOrganizationType(TypedDict):
+    """SecretScanningBypassRequestPropOrganization
 
-    The organization associated with the repository the dismissal request is for.
+    The organization associated with the repository the bypass request is for.
     """
 
     id: NotRequired[int]
     name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """SecretScanningDismissalRequestPropOrganization
+class SecretScanningBypassRequestPropOrganizationTypeForResponse(TypedDict):
+    """SecretScanningBypassRequestPropOrganization
 
-    The organization associated with the repository the dismissal request is for.
+    The organization associated with the repository the bypass request is for.
     """
 
     id: NotRequired[int]
     name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropRequesterType(TypedDict):
-    """SecretScanningDismissalRequestPropRequester
+class SecretScanningBypassRequestPropRequesterType(TypedDict):
+    """SecretScanningBypassRequestPropRequester
 
-    The user who requested the dismissal.
+    The user who requested the bypass.
     """
 
     actor_id: NotRequired[int]
     actor_name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """SecretScanningDismissalRequestPropRequester
+class SecretScanningBypassRequestPropRequesterTypeForResponse(TypedDict):
+    """SecretScanningBypassRequestPropRequester
 
-    The user who requested the dismissal.
+    The user who requested the bypass.
     """
 
     actor_id: NotRequired[int]
     actor_name: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropDataItemsType(TypedDict):
-    """SecretScanningDismissalRequestPropDataItems"""
+class SecretScanningBypassRequestPropDataItemsType(TypedDict):
+    """SecretScanningBypassRequestPropDataItems"""
 
     secret_type: NotRequired[str]
-    alert_number: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
+    path: NotRequired[str]
+    branch: NotRequired[str]
 
 
-class SecretScanningDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """SecretScanningDismissalRequestPropDataItems"""
+class SecretScanningBypassRequestPropDataItemsTypeForResponse(TypedDict):
+    """SecretScanningBypassRequestPropDataItems"""
 
     secret_type: NotRequired[str]
-    alert_number: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests", "revoked"]]
+    bypass_reason: NotRequired[Literal["used_in_tests", "false_positive", "fix_later"]]
+    path: NotRequired[str]
+    branch: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningDismissalRequestPropDataItemsType",
-    "SecretScanningDismissalRequestPropDataItemsTypeForResponse",
-    "SecretScanningDismissalRequestPropOrganizationType",
-    "SecretScanningDismissalRequestPropOrganizationTypeForResponse",
-    "SecretScanningDismissalRequestPropRepositoryType",
-    "SecretScanningDismissalRequestPropRepositoryTypeForResponse",
-    "SecretScanningDismissalRequestPropRequesterType",
-    "SecretScanningDismissalRequestPropRequesterTypeForResponse",
-    "SecretScanningDismissalRequestType",
-    "SecretScanningDismissalRequestTypeForResponse",
+    "SecretScanningBypassRequestPropDataItemsType",
+    "SecretScanningBypassRequestPropDataItemsTypeForResponse",
+    "SecretScanningBypassRequestPropOrganizationType",
+    "SecretScanningBypassRequestPropOrganizationTypeForResponse",
+    "SecretScanningBypassRequestPropRepositoryType",
+    "SecretScanningBypassRequestPropRepositoryTypeForResponse",
+    "SecretScanningBypassRequestPropRequesterType",
+    "SecretScanningBypassRequestPropRequesterTypeForResponse",
+    "SecretScanningBypassRequestType",
+    "SecretScanningBypassRequestTypeForResponse",
 )

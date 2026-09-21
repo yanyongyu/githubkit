@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,60 +17,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0129 import TeamSimple
+
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
+    GitHubModel
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
+    )
 
 
-class Team(GitHubModel):
-    """Team
+class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
 
-    Groups of organization members that gives permissions on specified repositories.
+    Parameters for a targeting a repository property
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    type: Literal["enterprise", "organization"] = Field(
-        description="The ownership type of the team"
+    name: str = Field(description="The name of the repository property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the repository property"
     )
-    access_source: Missing[Literal["direct", "organization", "enterprise"]] = Field(
+    source: Missing[Literal["custom", "system"]] = Field(
         default=UNSET,
-        description="How the team's access to the repository was granted. This property is only\npresent when the team is returned in a repository context, such as\n`GET /repos/{owner}/{repo}/teams`.",
+        description="The source of the repository property. Defaults to 'custom' if not specified.",
     )
-    organization_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the organization to which this team belongs",
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET,
-        description="Unique identifier of the enterprise to which this team belongs",
-    )
-    parent: Union[TeamSimple, None] = Field()
 
 
-class TeamPropPermissions(GitHubModel):
-    """TeamPropPermissions"""
-
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(Team)
-model_rebuild(TeamPropPermissions)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
 
 __all__ = (
-    "Team",
-    "TeamPropPermissions",
+    "RepositoryRulesetConditionsRepositoryPropertySpec",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
 )

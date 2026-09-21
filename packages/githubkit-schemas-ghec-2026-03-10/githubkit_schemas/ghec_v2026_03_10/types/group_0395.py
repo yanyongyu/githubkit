@@ -9,43 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeQualitySetupUpdateAnyof1Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof1"""
-
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: Literal["standard", "labeled"]
-    runner_label: NotRequired[Union[str, None]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+from .group_0394 import BranchProtectionType, BranchProtectionTypeForResponse
 
 
-class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof1"""
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: Literal["standard", "labeled"]
-    runner_label: NotRequired[Union[str, None]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchTypeForResponse(TypedDict):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitTypeForResponse
+    protected: bool
+    protection: NotRequired[BranchProtectionTypeForResponse]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
+
+
+class ShortBranchPropCommitTypeForResponse(TypedDict):
+    """ShortBranchPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof1Type",
-    "CodeQualitySetupUpdateAnyof1TypeForResponse",
+    "ShortBranchPropCommitType",
+    "ShortBranchPropCommitTypeForResponse",
+    "ShortBranchType",
+    "ShortBranchTypeForResponse",
 )

@@ -9,30 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
+from .group_0328 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0329 import CommitType, CommitTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+    Commit Comparison
+    """
+
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
-    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
 )

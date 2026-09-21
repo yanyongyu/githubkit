@@ -9,64 +9,152 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class GitCommitType(TypedDict):
+    """Git Commit
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
-
-    Demilestoned Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: list[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-class DemilestonedIssueEventTypeForResponse(TypedDict):
-    """Demilestoned Issue Event
+class GitCommitTypeForResponse(TypedDict):
+    """Git Commit
 
-    Demilestoned Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int
+    sha: str
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+    author: GitCommitPropAuthorTypeForResponse
+    committer: GitCommitPropCommitterTypeForResponse
+    message: str
+    tree: GitCommitPropTreeTypeForResponse
+    parents: list[GitCommitPropParentsItemsTypeForResponse]
+    verification: GitCommitPropVerificationTypeForResponse
+    html_url: str
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
 
-    title: str
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
 
 
-class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class GitCommitPropAuthorTypeForResponse(TypedDict):
+    """GitCommitPropAuthor
 
-    title: str
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterTypeForResponse(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: str
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropTreeTypeForResponse(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropParentsItemsTypeForResponse(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
+
+
+class GitCommitPropVerificationTypeForResponse(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+    verified_at: Union[str, None]
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventPropMilestoneTypeForResponse",
-    "DemilestonedIssueEventType",
-    "DemilestonedIssueEventTypeForResponse",
+    "GitCommitPropAuthorType",
+    "GitCommitPropAuthorTypeForResponse",
+    "GitCommitPropCommitterType",
+    "GitCommitPropCommitterTypeForResponse",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropParentsItemsTypeForResponse",
+    "GitCommitPropTreeType",
+    "GitCommitPropTreeTypeForResponse",
+    "GitCommitPropVerificationType",
+    "GitCommitPropVerificationTypeForResponse",
+    "GitCommitType",
+    "GitCommitTypeForResponse",
 )

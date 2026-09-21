@@ -9,55 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0301 import (
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse,
-)
 
+class ConcurrencyGroupType(TypedDict):
+    """Concurrency Group
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
-
-    Protected Branch Pull Request Review
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
 
 
-class ProtectedBranchPullRequestReviewTypeForResponse(TypedDict):
-    """Protected Branch Pull Request Review
+class ConcurrencyGroupTypeForResponse(TypedDict):
+    """Concurrency Group
 
-    Protected Branch Pull Request Review
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+
+
+class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
+
+
+class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewType",
-    "ProtectedBranchPullRequestReviewTypeForResponse",
+    "ConcurrencyGroupPropGroupMembersItemsType",
+    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupType",
+    "ConcurrencyGroupTypeForResponse",
 )

@@ -9,55 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0293 import DeploymentType, DeploymentTypeForResponse
-from .group_0452 import PullRequestType, PullRequestTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0645 import (
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertType,
+    WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse,
+)
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookCodeScanningAlertUpdatedAssignmentType(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    sha: NotRequired[str]
-    ref: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[Union[DeploymentType, None]]
-    pull_requests: NotRequired[list[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-class WebhookDeploymentProtectionRuleRequestedTypeForResponse(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse(TypedDict):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    sha: NotRequired[str]
-    ref: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[Union[DeploymentTypeForResponse, None]]
-    pull_requests: NotRequired[list[PullRequestTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    action: Literal["updated_assignment"]
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeploymentProtectionRuleRequestedType",
-    "WebhookDeploymentProtectionRuleRequestedTypeForResponse",
+    "WebhookCodeScanningAlertUpdatedAssignmentType",
+    "WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse",
 )

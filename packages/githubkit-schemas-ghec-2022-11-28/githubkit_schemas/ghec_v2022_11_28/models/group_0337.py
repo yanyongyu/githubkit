@@ -9,100 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class RuleSuite(GitHubModel):
-    """Rule Suite
+class AutoMerge(GitHubModel):
+    """Auto merge
 
-    Response
+    The status of auto merging a pull request.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
+    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
     )
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The number that identifies the user."
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
     )
-    actor_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The previous commit SHA of the ref."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The new commit SHA of the ref."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository without the `.git` extension.",
-    )
-    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
-    )
-    evaluation_result: Missing[Union[Literal["pass", "fail", "bypass"], None]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
-    )
-    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
-        default=UNSET, description="Details on the evaluated rules."
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
     )
 
 
-class RuleSuitePropRuleEvaluationsItems(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItems"""
+model_rebuild(AutoMerge)
 
-    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
-        default=UNSET
-    )
-    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
-        default=UNSET, description="The enforcement level of this rule source."
-    )
-    result: Missing[Literal["pass", "fail"]] = Field(
-        default=UNSET,
-        description="The result of the evaluation of the individual rule.",
-    )
-    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
-    details: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The detailed failure message for the rule. Null if the rule passed.",
-    )
-
-
-class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
-
-    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
-    id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the rule source."
-    )
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the rule source."
-    )
-
-
-model_rebuild(RuleSuite)
-model_rebuild(RuleSuitePropRuleEvaluationsItems)
-model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
-
-__all__ = (
-    "RuleSuite",
-    "RuleSuitePropRuleEvaluationsItems",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
-)
+__all__ = ("AutoMerge",)

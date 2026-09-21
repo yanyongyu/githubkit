@@ -9,32 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
 )

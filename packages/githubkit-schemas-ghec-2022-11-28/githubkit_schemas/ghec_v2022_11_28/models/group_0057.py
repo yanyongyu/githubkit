@@ -9,40 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class EnterpriseOrganizationInstallation(GitHubModel):
-    """Enterprise Organization Installation
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-    A GitHub App Installation on an enterprise-owned organization
+    Parameters for a repository property condition
     """
 
-    id: int = Field(description="The ID of the installation.")
-    app_slug: Missing[str] = Field(default=UNSET)
-    client_id: str = Field()
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    repositories_url: str = Field()
-    permissions: AppPermissions = Field(
-        title="App Permissions",
-        description="The permissions granted to the fine-grained access token.",
-    )
-    events: Missing[list[str]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(EnterpriseOrganizationInstallation)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
 
-__all__ = ("EnterpriseOrganizationInstallation",)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

@@ -9,64 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class DemilestonedIssueEventType(TypedDict):
-    """Demilestoned Issue Event
+class GitTreeType(TypedDict):
+    """Git Tree
 
-    Demilestoned Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: DemilestonedIssueEventPropMilestoneType
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsType]
 
 
-class DemilestonedIssueEventTypeForResponse(TypedDict):
-    """Demilestoned Issue Event
+class GitTreeTypeForResponse(TypedDict):
+    """Git Tree
 
-    Demilestoned Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["demilestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: DemilestonedIssueEventPropMilestoneTypeForResponse
+    sha: str
+    url: NotRequired[str]
+    truncated: bool
+    tree: list[GitTreePropTreeItemsTypeForResponse]
 
 
-class DemilestonedIssueEventPropMilestoneType(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class GitTreePropTreeItemsType(TypedDict):
+    """GitTreePropTreeItems"""
 
-    title: str
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
-class DemilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """DemilestonedIssueEventPropMilestone"""
+class GitTreePropTreeItemsTypeForResponse(TypedDict):
+    """GitTreePropTreeItems"""
 
-    title: str
+    path: str
+    mode: str
+    type: str
+    sha: str
+    size: NotRequired[int]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "DemilestonedIssueEventPropMilestoneType",
-    "DemilestonedIssueEventPropMilestoneTypeForResponse",
-    "DemilestonedIssueEventType",
-    "DemilestonedIssueEventTypeForResponse",
+    "GitTreePropTreeItemsType",
+    "GitTreePropTreeItemsTypeForResponse",
+    "GitTreeType",
+    "GitTreeTypeForResponse",
 )

@@ -13,16 +13,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
+
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-class MemberEvent(GitHubModel):
-    """MemberEvent"""
+model_rebuild(ReactionRollup)
 
-    action: str = Field()
-    member: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-model_rebuild(MemberEvent)
-
-__all__ = ("MemberEvent",)
+__all__ = ("ReactionRollup",)

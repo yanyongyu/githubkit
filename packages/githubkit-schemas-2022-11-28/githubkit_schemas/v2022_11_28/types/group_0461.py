@@ -9,118 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class TimelineUnassignedIssueEventType(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    Pull Request Reviews are reviews on pull requests.
+    Timeline Unassigned Issue Event
     """
 
     id: int
     node_id: str
-    user: Union[SimpleUserType, None]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
+    url: str
+    actor: SimpleUserType
+    event: Literal["unassigned"]
     commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class TimelineUnassignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Unassigned Issue Event
 
-    Pull Request Reviews are reviews on pull requests.
+    Timeline Unassigned Issue Event
     """
 
     id: int
     node_id: str
-    user: Union[SimpleUserTypeForResponse, None]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["unassigned"]
     commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-
-
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "TimelineUnassignedIssueEventType",
+    "TimelineUnassignedIssueEventTypeForResponse",
 )

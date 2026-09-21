@@ -12,36 +12,27 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class IssueEventIntentType(TypedDict):
-    """Issue Event Intent
-
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
-    """
-
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0157 import TeamType, TeamTypeForResponse
 
 
-class IssueEventIntentTypeForResponse(TypedDict):
-    """Issue Event Intent
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
-    """
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
 
 
 __all__ = (
-    "IssueEventIntentType",
-    "IssueEventIntentTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
 )

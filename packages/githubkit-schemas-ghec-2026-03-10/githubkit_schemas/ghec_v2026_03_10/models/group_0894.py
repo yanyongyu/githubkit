@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0647 import WebhooksMilestone
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_0668 import WebhooksLabelArchived
 
 
-class WebhookMilestoneClosed(GitHubModel):
-    """milestone closed event"""
+class WebhookLabelArchived(GitHubModel):
+    """label archived event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["archived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,10 +39,7 @@ class WebhookMilestoneClosed(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
+    label: WebhooksLabelArchived = Field(title="Archived label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -55,6 +52,6 @@ class WebhookMilestoneClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneClosed)
+model_rebuild(WebhookLabelArchived)
 
-__all__ = ("WebhookMilestoneClosed",)
+__all__ = ("WebhookLabelArchived",)

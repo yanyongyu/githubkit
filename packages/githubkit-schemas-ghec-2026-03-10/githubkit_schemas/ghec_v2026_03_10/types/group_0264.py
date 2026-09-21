@@ -9,40 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
+class GitignoreTemplateType(TypedDict):
+    """Gitignore Template
 
-    Organization variable for GitHub Actions.
+    Gitignore Template
     """
 
     name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    source: str
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class GitignoreTemplateTypeForResponse(TypedDict):
+    """Gitignore Template
 
-    Organization variable for GitHub Actions.
+    Gitignore Template
     """
 
     name: str
-    value: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    source: str
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
+    "GitignoreTemplateType",
+    "GitignoreTemplateTypeForResponse",
 )

@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0221 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRuleCommitMessagePattern(GitHubModel):
-    """commit_message_pattern
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    Parameters to be used for the commit_message_pattern rule
+    Code of Conduct Simple
     """
 
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
-        default=UNSET
-    )
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-model_rebuild(RepositoryRuleCommitMessagePattern)
+model_rebuild(CodeOfConductSimple)
 
-__all__ = ("RepositoryRuleCommitMessagePattern",)
+__all__ = ("CodeOfConductSimple",)

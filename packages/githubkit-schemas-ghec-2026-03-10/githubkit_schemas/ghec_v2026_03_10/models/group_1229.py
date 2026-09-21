@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke for the user.")
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credential of this type owned by the\nuser. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, the credential of the given type owned\nby the user will be destroyed in addition to the credential authorizations.\nNote that `oauth_app_token` credentials cannot be destroyed; for that type\nonly the credential authorizations are revoked.",
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members for which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody",)

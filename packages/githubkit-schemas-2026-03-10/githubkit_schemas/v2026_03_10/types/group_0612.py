@@ -9,267 +9,165 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertType(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlert
+class WebhooksSecurityAdvisoryType(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    The code scanning alert involved in the event.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    assignees: NotRequired[list[SimpleUserType]]
-    created_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType, None
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
+    withdrawn_at: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisory
+
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
+    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
+    description: str
+    ghsa_id: str
+    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
+    published_at: str
+    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: list[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-    ]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    html_url: str
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType,
-            None,
-        ]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType
+    withdrawn_at: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
+    name: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
     url: str
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlert
+class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
 
-    The code scanning alert involved in the event.
-    """
+    url: str
 
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    created_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse,
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
         None,
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
+        None,
     ]
-    fixed_at: NotRequired[Union[str, None]]
-    html_url: str
-    most_recent_instance: NotRequired[
-        Union[
-            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse,
-            None,
-        ]
-    ]
-    number: int
-    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse
-    url: str
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
+    severity: str
+    vulnerable_version_range: str
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse(
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
     TypedDict
 ):
-    """User"""
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    identifier: str
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType(
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
     TypedDict
 ):
-    """Alert Instance"""
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
+    identifier: str
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse(
-    TypedDict
-):
-    """Alert Instance"""
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
-    analysis_key: str
-    category: NotRequired[str]
-    classifications: NotRequired[list[str]]
-    commit_sha: NotRequired[str]
-    environment: str
-    location: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse
-    ]
-    message: NotRequired[
-        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse
-    ]
-    ref: str
-    state: Literal["open", "dismissed", "fixed"]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
-    ion
-    """
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
-    ion
-    """
-
-    end_column: NotRequired[int]
-    end_line: NotRequired[int]
-    path: NotRequired[str]
-    start_column: NotRequired[int]
-    start_line: NotRequired[int]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
-    ge
-    """
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
-    ge
-    """
-
-    text: NotRequired[str]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
-
-    description: str
-    id: str
-    severity: Union[Literal["none", "note", "warning", "error"], None]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse(
-    TypedDict
-):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
-
-    description: str
-    id: str
-    severity: Union[Literal["none", "note", "warning", "error"], None]
-
-
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType(TypedDict):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
-
+    ecosystem: str
     name: str
-    version: Union[str, None]
 
 
-class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse(
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
     TypedDict
 ):
-    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
 
+    ecosystem: str
     name: str
-    version: Union[str, None]
 
 
 __all__ = (
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertType",
-    "WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse",
+    "WebhooksSecurityAdvisoryPropCwesItemsType",
+    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropReferencesItemsType",
+    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
+    "WebhooksSecurityAdvisoryType",
+    "WebhooksSecurityAdvisoryTypeForResponse",
 )

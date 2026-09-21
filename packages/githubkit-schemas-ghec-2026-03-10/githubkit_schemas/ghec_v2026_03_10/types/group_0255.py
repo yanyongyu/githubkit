@@ -9,42 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0256 import (
+    ReleaseEventPropReleaseType,
+    ReleaseEventPropReleaseTypeForResponse,
+)
 
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
+class ReleaseEventType(TypedDict):
+    """ReleaseEvent"""
 
-    Thread Subscription
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[_dt.datetime, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    action: str
+    release: ReleaseEventPropReleaseType
 
 
-class ThreadSubscriptionTypeForResponse(TypedDict):
-    """Thread Subscription
+class ReleaseEventTypeForResponse(TypedDict):
+    """ReleaseEvent"""
 
-    Thread Subscription
-    """
-
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[str, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    action: str
+    release: ReleaseEventPropReleaseTypeForResponse
 
 
 __all__ = (
-    "ThreadSubscriptionType",
-    "ThreadSubscriptionTypeForResponse",
+    "ReleaseEventType",
+    "ReleaseEventTypeForResponse",
 )

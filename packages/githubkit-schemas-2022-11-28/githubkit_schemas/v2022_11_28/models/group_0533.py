@@ -13,17 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0532 import Traffic
 
-class SocialAccount(GitHubModel):
-    """Social account
 
-    Social media account
+class CloneTraffic(GitHubModel):
+    """Clone Traffic
+
+    Clone Traffic
     """
 
-    provider: str = Field()
-    url: str = Field()
+    count: int = Field()
+    uniques: int = Field()
+    clones: list[Traffic] = Field()
 
 
-model_rebuild(SocialAccount)
+model_rebuild(CloneTraffic)
 
-__all__ = ("SocialAccount",)
+__all__ = ("CloneTraffic",)

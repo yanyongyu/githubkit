@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0601 import SearchResultTextMatchesItems
 
+class Meta(GitHubModel):
+    """Meta
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
-
-    Label Search Result Item
+    The metadata associated with the creation/updates to the user.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
     )
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
     )
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    last_modified: Missing[str] = Field(
+        default=UNSET,
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
     )
 
 
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
+model_rebuild(Meta)
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
-
-
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
-
-__all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
-)
+__all__ = ("Meta",)

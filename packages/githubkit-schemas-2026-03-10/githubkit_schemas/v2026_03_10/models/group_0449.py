@@ -14,28 +14,30 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0422 import IssueReference
 
 
-class PageDeployment(GitHubModel):
-    """GitHub Pages
+class BlockingAddedIssueEvent(GitHubModel):
+    """Blocking Added Issue Event
 
-    The GitHub Pages deployment status.
+    Blocking Added Issue Event
     """
 
-    id: Union[int, str] = Field(
-        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
-    )
-    status_url: str = Field(
-        description="The URI to monitor GitHub Pages deployment status."
-    )
-    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
-    preview_url: Missing[str] = Field(
-        default=UNSET, description="The URI to the deployed GitHub Pages preview."
-    )
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    blocking: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(PageDeployment)
+model_rebuild(BlockingAddedIssueEvent)
 
-__all__ = ("PageDeployment",)
+__all__ = ("BlockingAddedIssueEvent",)

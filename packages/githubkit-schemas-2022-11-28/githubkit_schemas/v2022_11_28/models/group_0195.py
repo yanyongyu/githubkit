@@ -17,31 +17,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0156 import TeamSimple
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
 
-    An actor that can bypass rules in a ruleset
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
+
+    The Relationship a Team has with a role.
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
         default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.",
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
     )
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "User",
-    ] = Field(description="The type of actor that can bypass a ruleset.")
-    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[TeamSimple, None] = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
         default=UNSET,
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-__all__ = ("RepositoryRulesetBypassActor",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
+
+__all__ = (
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
+)

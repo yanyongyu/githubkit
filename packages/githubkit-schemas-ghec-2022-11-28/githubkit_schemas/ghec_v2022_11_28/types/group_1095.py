@@ -9,58 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowDispatchType(TypedDict):
-    """workflow_dispatch event"""
+class WebhookStarCreatedType(TypedDict):
+    """star created event"""
 
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow: str
+    starred_at: Union[str, None]
 
 
-class WebhookWorkflowDispatchTypeForResponse(TypedDict):
-    """workflow_dispatch event"""
+class WebhookStarCreatedTypeForResponse(TypedDict):
+    """star created event"""
 
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    inputs: Union[WebhookWorkflowDispatchPropInputsTypeForResponse, None]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow: str
-
-
-WebhookWorkflowDispatchPropInputsType: TypeAlias = dict[str, Any]
-"""WebhookWorkflowDispatchPropInputs
-"""
-
-
-WebhookWorkflowDispatchPropInputsTypeForResponse: TypeAlias = dict[str, Any]
-"""WebhookWorkflowDispatchPropInputs
-"""
+    starred_at: Union[str, None]
 
 
 __all__ = (
-    "WebhookWorkflowDispatchPropInputsType",
-    "WebhookWorkflowDispatchPropInputsTypeForResponse",
-    "WebhookWorkflowDispatchType",
-    "WebhookWorkflowDispatchTypeForResponse",
+    "WebhookStarCreatedType",
+    "WebhookStarCreatedTypeForResponse",
 )

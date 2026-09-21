@@ -9,58 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleCommit(GitHubModel):
-    """Simple Commit
+class TeamMember(GitHubModel):
+    """Team Member
 
-    A commit.
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
-    id: str = Field(description="SHA for the commit")
-    tree_id: str = Field(description="SHA for the commit's tree")
-    message: str = Field(description="Message describing the purpose of the commit")
-    timestamp: _dt.datetime = Field(description="Timestamp of the commit")
-    author: Union[SimpleCommitPropAuthor, None] = Field(
-        description="Information about the Git author"
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET,
+        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
-    committer: Union[SimpleCommitPropCommitter, None] = Field(
-        description="Information about the Git committer"
+    inherited: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
 
 
-class SimpleCommitPropAuthor(GitHubModel):
-    """SimpleCommitPropAuthor
+model_rebuild(TeamMember)
 
-    Information about the Git author
-    """
-
-    name: str = Field(description="Name of the commit's author")
-    email: str = Field(description="Git email address of the commit's author")
-
-
-class SimpleCommitPropCommitter(GitHubModel):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str = Field(description="Name of the commit's committer")
-    email: str = Field(description="Git email address of the commit's committer")
-
-
-model_rebuild(SimpleCommit)
-model_rebuild(SimpleCommitPropAuthor)
-model_rebuild(SimpleCommitPropCommitter)
-
-__all__ = (
-    "SimpleCommit",
-    "SimpleCommitPropAuthor",
-    "SimpleCommitPropCommitter",
-)
+__all__ = ("TeamMember",)

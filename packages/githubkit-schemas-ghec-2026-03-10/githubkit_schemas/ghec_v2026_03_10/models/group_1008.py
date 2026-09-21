@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0640 import WebhooksLabel
-from .group_1009 import WebhookPullRequestUnlabeledPropPullRequest
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_1009 import WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest
 
 
-class WebhookPullRequestUnlabeled(GitHubModel):
-    """pull_request unlabeled event"""
+class WebhookPullRequestReviewRequestRemovedOneof1(GitHubModel):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["review_request_removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,23 +39,80 @@ class WebhookPullRequestUnlabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestUnlabeledPropPullRequest = Field(
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest = Field(
         title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestUnlabeled)
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam(GitHubModel):
+    """Team
 
-__all__ = ("WebhookPullRequestUnlabeled",)
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    deleted: Missing[bool] = Field(default=UNSET)
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    parent: Missing[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Literal["open", "closed", "secret"] = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+
+
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent(
+    GitHubModel
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Literal["open", "closed", "secret"] = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+
+
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent)
+
+__all__ = (
+    "WebhookPullRequestReviewRequestRemovedOneof1",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent",
+)

@@ -9,57 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleCreation(GitHubModel):
-    """creation
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
 
-    Only allow users with bypass permission to create matching refs.
+    A hosted compute network configuration.
     """
 
-    type: Literal["creation"] = Field()
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
+        default=UNSET,
+        description="The hosted compute service the network configuration supports.",
+    )
+    network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each network settings in the configuration.",
+    )
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each failover network settings in the configuration.",
+    )
+    failover_network_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the failover network resource is enabled.",
+    )
+    created_on: Union[_dt.datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
+    )
 
 
-class RepositoryRuleDeletion(GitHubModel):
-    """deletion
+model_rebuild(NetworkConfiguration)
 
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"] = Field()
-
-
-class RepositoryRuleRequiredSignatures(GitHubModel):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"] = Field()
-
-
-class RepositoryRuleNonFastForward(GitHubModel):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"] = Field()
-
-
-model_rebuild(RepositoryRuleCreation)
-model_rebuild(RepositoryRuleDeletion)
-model_rebuild(RepositoryRuleRequiredSignatures)
-model_rebuild(RepositoryRuleNonFastForward)
-
-__all__ = (
-    "RepositoryRuleCreation",
-    "RepositoryRuleDeletion",
-    "RepositoryRuleNonFastForward",
-    "RepositoryRuleRequiredSignatures",
-)
+__all__ = ("NetworkConfiguration",)

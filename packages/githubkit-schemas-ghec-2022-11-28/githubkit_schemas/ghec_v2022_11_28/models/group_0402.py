@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0398 import GitUser
+from .group_0399 import Verification
 
 
-class CodeScanningAiScanEnablement(GitHubModel):
-    """CodeScanningAiScanEnablement
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
-    AI Scan enablement for a repository.
-    """
+    url: str = Field()
+    author: Union[GitUser, None] = Field()
+    committer: Union[GitUser, None] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan is enabled for the repository."
-    )
+
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(CodeScanningAiScanEnablement)
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
 
-__all__ = ("CodeScanningAiScanEnablement",)
+__all__ = (
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
+)

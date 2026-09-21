@@ -9,34 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    Actions OIDC subject customization for a repository
+    A custom pattern for secret scanning.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
-    sub_claim_prefix: NotRequired[str]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class OidcCustomSubRepoTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    Actions OIDC subject customization for a repository
+    A custom pattern for secret scanning.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
-    sub_claim_prefix: NotRequired[str]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OidcCustomSubRepoType",
-    "OidcCustomSubRepoTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

@@ -9,48 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0081 import Team
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class WorkflowDispatchResponse(GitHubModel):
+    """Workflow Dispatch Response
 
-    url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+    Response containing the workflow run ID and URLs.
+    """
 
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
-    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
+    workflow_run_id: int = Field(
+        title="Workflow Run ID", description="The ID of the workflow run."
+    )
+    run_url: str = Field(description="The URL to the workflow run.")
+    html_url: str = Field()
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
+model_rebuild(WorkflowDispatchResponse)
 
-__all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
-)
+__all__ = ("WorkflowDispatchResponse",)

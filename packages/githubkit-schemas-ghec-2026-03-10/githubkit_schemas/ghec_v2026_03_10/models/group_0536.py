@@ -18,26 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRulesetInfo(GitHubModel):
-    """repository ruleset data for rule
+class MergedUpstream(GitHubModel):
+    """Merged upstream
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Results of a successful merge upstream request
     """
 
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
+    base_branch: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRulesetInfo)
+model_rebuild(MergedUpstream)
 
-__all__ = ("RepositoryRuleRulesetInfo",)
+__all__ = ("MergedUpstream",)

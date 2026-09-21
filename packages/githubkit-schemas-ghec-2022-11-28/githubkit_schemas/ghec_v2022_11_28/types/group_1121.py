@@ -9,100 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0386 import DeploymentType, DeploymentTypeForResponse
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class WebhookWorkflowJobWaitingType(TypedDict):
+    """workflow_job waiting event"""
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
+    action: Literal["waiting"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+class WebhookWorkflowJobWaitingTypeForResponse(TypedDict):
+    """workflow_job waiting event"""
 
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
+    action: Literal["waiting"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse
+    deployment: NotRequired[DeploymentTypeForResponse]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
+class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
 
-    Custom agent metadata associated with this task
-    """
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: _dt.datetime
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType]
+    url: str
 
-    id: NotRequired[str]
+
+class WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse(TypedDict):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse]
+    url: str
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
+    """Workflow Step"""
 
-    Custom agent metadata associated with this task
-    """
+    completed_at: Union[str, None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
 
-    id: NotRequired[str]
+
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobWaitingPropWorkflowJobType",
+    "WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse",
+    "WebhookWorkflowJobWaitingType",
+    "WebhookWorkflowJobWaitingTypeForResponse",
 )

@@ -9,31 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class VerificationType(TypedDict):
-    """Verification"""
+class ActionsWorkflowAccessToRepositoryType(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    access_level: Literal["none", "user", "organization"]
 
 
-class VerificationTypeForResponse(TypedDict):
-    """Verification"""
+class ActionsWorkflowAccessToRepositoryTypeForResponse(TypedDict):
+    """ActionsWorkflowAccessToRepository"""
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
-    verified_at: NotRequired[Union[str, None]]
+    access_level: Literal["none", "user", "organization"]
 
 
 __all__ = (
-    "VerificationType",
-    "VerificationTypeForResponse",
+    "ActionsWorkflowAccessToRepositoryType",
+    "ActionsWorkflowAccessToRepositoryTypeForResponse",
 )

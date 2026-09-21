@@ -9,73 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0360 import (
+    CodeScanningVariantAnalysisSkippedRepoGroupType,
+    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
+)
 
 
-class ContentFileType(TypedDict):
-    """Content File
+class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Content File
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksType
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    not_found_repos: (
+        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
+    )
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
 
 
-class ContentFileTypeForResponse(TypedDict):
-    """Content File
+class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
 
-    Content File
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    type: Literal["file"]
-    encoding: str
-    size: int
-    name: str
-    path: str
-    content: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentFilePropLinksTypeForResponse
-    target: NotRequired[str]
-    submodule_git_url: NotRequired[str]
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
 
 
-class ContentFilePropLinksType(TypedDict):
-    """ContentFilePropLinks"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    repository_count: int
+    repository_full_names: list[str]
 
 
-class ContentFilePropLinksTypeForResponse(TypedDict):
-    """ContentFilePropLinks"""
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
+    TypedDict
+):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    repository_count: int
+    repository_full_names: list[str]
 
 
 __all__ = (
-    "ContentFilePropLinksType",
-    "ContentFilePropLinksTypeForResponse",
-    "ContentFileType",
-    "ContentFileTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
 )

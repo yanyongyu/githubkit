@@ -18,45 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueField(GitHubModel):
-    """OrganizationCreateIssueField"""
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-    name: str = Field(description="Name of the issue field.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue field."
-    )
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
-        Field(description="The data type of the issue field.")
-    )
-    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+    id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    options: Missing[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
-    ] = Field(
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
+    )
+    severity: Missing[Union[Literal["none", "note", "warning", "error"], None]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+        description="A short description of the rule used to detect the alert.",
+    )
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 
-class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+model_rebuild(CodeScanningAlertRuleSummary)
 
-    name: str = Field(description="Name of the option.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the option."
-    )
-    color: Literal[
-        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-    ] = Field(description="Color for the option.")
-    priority: int = Field(description="Priority of the option for ordering.")
-
-
-model_rebuild(OrganizationCreateIssueField)
-model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
-
-__all__ = (
-    "OrganizationCreateIssueField",
-    "OrganizationCreateIssueFieldPropOptionsItems",
-)
+__all__ = ("CodeScanningAlertRuleSummary",)

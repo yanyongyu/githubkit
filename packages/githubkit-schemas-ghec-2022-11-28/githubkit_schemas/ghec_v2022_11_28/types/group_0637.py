@@ -9,36 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0266 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class UserMarketplacePurchaseType(TypedDict):
+    """User Marketplace Purchase
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    User Marketplace Purchase
+    """
+
+    billing_cycle: str
+    next_billing_date: Union[_dt.datetime, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    account: MarketplaceAccountType
+    plan: MarketplaceListingPlanType
+
+
+class UserMarketplacePurchaseTypeForResponse(TypedDict):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
+    """
+
+    billing_cycle: str
+    next_billing_date: Union[str, None]
+    unit_count: Union[int, None]
+    on_free_trial: bool
+    free_trial_ends_on: Union[str, None]
+    updated_at: Union[str, None]
+    account: MarketplaceAccountTypeForResponse
+    plan: MarketplaceListingPlanTypeForResponse
+
+
+class MarketplaceAccountType(TypedDict):
+    """Marketplace Account"""
+
+    url: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
-class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class MarketplaceAccountTypeForResponse(TypedDict):
+    """Marketplace Account"""
 
-    conclusion: None
-    created_at: str
-    environment: str
-    html_url: str
+    url: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    type: str
+    node_id: NotRequired[str]
+    login: str
+    email: NotRequired[Union[str, None]]
+    organization_billing_email: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhooksWorkflowJobRunType",
-    "WebhooksWorkflowJobRunTypeForResponse",
+    "MarketplaceAccountType",
+    "MarketplaceAccountTypeForResponse",
+    "UserMarketplacePurchaseType",
+    "UserMarketplacePurchaseTypeForResponse",
 )

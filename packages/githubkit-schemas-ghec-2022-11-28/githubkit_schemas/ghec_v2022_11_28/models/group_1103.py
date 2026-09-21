@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,21 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0368 import Deployment
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
+from .group_0020 import Repository
+from .group_0236 import Issue
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
 
 
-class WebhookWorkflowJobWaiting(GitHubModel):
-    """workflow_job waiting event"""
+class WebhookSubIssuesParentIssueRemoved(GitHubModel):
+    """parent issue removed event"""
 
-    action: Literal["waiting"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["parent_issue_removed"] = Field()
+    parent_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the parent issue."
+    )
+    parent_issue: Missing[Issue] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    parent_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    sub_issue_id: float = Field(description="The ID of the sub-issue.")
+    sub_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -50,63 +60,8 @@ class WebhookWorkflowJobWaiting(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
-    )
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+model_rebuild(WebhookSubIssuesParentIssueRemoved)
 
-    check_run_url: str = Field()
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: list[str] = Field()
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[int, None] = Field()
-    runner_group_name: Union[str, None] = Field()
-    runner_id: Union[int, None] = Field()
-    runner_name: Union[str, None] = Field()
-    started_at: _dt.datetime = Field()
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
-    """Workflow Step"""
-
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
-        Field()
-    )
-
-
-model_rebuild(WebhookWorkflowJobWaiting)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
-
-__all__ = (
-    "WebhookWorkflowJobWaiting",
-    "WebhookWorkflowJobWaitingPropWorkflowJob",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
-)
+__all__ = ("WebhookSubIssuesParentIssueRemoved",)

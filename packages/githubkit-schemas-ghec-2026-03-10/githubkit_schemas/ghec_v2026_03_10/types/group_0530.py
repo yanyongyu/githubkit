@@ -9,109 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0493 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class PullRequestMergeAsyncResultType(TypedDict):
-    """Pull Request Merge Async Result
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Pull Request Merge Async Result
+    State Change Issue Event
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0Type,
-        PullRequestMergeAsyncResultPropDetailsOneof1Type,
-        PullRequestMergeAsyncResultPropDetailsOneof2Type,
-    ]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
-    """Pull Request Merge Async Result
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
 
-    Pull Request Merge Async Result
+    State Change Issue Event
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse,
-    ]
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof0Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
-
-    When an asynchronous merge request was created or already existed
-    """
-
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
-
-    When an asynchronous merge request was created or already existed
-    """
-
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof2Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
-
-    When the pull request is already merged
-    """
-
-    message: str
-    sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
-
-    When the pull request is already merged
-    """
-
-    message: str
-    sha: str
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "PullRequestMergeAsyncResultPropDetailsOneof0Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof1Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof2Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse",
-    "PullRequestMergeAsyncResultType",
-    "PullRequestMergeAsyncResultTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

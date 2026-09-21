@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,22 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
 
-    Secrets for GitHub Actions for an organization.
+class GistCommit(GitHubModel):
+    """Gist Commit
+
+    Gist Commit
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    version: str = Field()
+    user: Union[SimpleUser, None] = Field()
+    change_status: GistCommitPropChangeStatus = Field()
+    committed_at: _dt.datetime = Field()
 
 
-model_rebuild(OrganizationActionsSecret)
+class GistCommitPropChangeStatus(GitHubModel):
+    """GistCommitPropChangeStatus"""
 
-__all__ = ("OrganizationActionsSecret",)
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(GistCommit)
+model_rebuild(GistCommitPropChangeStatus)
+
+__all__ = (
+    "GistCommit",
+    "GistCommitPropChangeStatus",
+)

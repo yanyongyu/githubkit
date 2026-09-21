@@ -13,66 +13,84 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0316 import (
-    ProjectsV2StatusUpdateType,
-    ProjectsV2StatusUpdateTypeForResponse,
-)
 
+class IssueFieldType(TypedDict):
+    """Issue Field
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
-
-    A projects v2 project
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    id: float
+    id: int
     node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[_dt.datetime, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[_dt.datetime, None]
-    deleted_by: Union[SimpleUserType, None]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[Union[ProjectsV2StatusUpdateType, None]]
-    is_template: NotRequired[bool]
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class ProjectsV2TypeForResponse(TypedDict):
-    """Projects v2 Project
+class IssueFieldTypeForResponse(TypedDict):
+    """Issue Field
 
-    A projects v2 project
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    id: float
+    id: int
     node_id: str
-    owner: SimpleUserTypeForResponse
-    creator: SimpleUserTypeForResponse
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[str, None]
-    created_at: str
-    updated_at: str
-    number: int
-    short_description: Union[str, None]
-    deleted_at: Union[str, None]
-    deleted_by: Union[SimpleUserTypeForResponse, None]
-    state: NotRequired[Literal["open", "closed"]]
-    latest_status_update: NotRequired[
-        Union[ProjectsV2StatusUpdateTypeForResponse, None]
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class IssueFieldPropOptionsItemsType(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
     ]
-    is_template: NotRequired[bool]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2Type",
-    "ProjectsV2TypeForResponse",
+    "IssueFieldPropOptionsItemsType",
+    "IssueFieldPropOptionsItemsTypeForResponse",
+    "IssueFieldType",
+    "IssueFieldTypeForResponse",
 )

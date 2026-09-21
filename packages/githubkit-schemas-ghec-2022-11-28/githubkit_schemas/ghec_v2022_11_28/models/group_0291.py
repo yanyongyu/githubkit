@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,39 +18,120 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0045 import OrganizationSimple
 
-class OrgHook(GitHubModel):
-    """Org Hook
 
-    Org Hook
+class CopilotSpace(GitHubModel):
+    """Space
+
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    type: str = Field()
+    id: int = Field(description="The unique identifier of the space.")
+    number: int = Field(
+        description="The number that identifies the space within its owner."
+    )
+    name: str = Field(description="The display name of the space.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the space."
+    )
+    general_instructions: Missing[
+        Union[Annotated[str, Field(max_length=4000)], None]
+    ] = Field(default=UNSET, description="General instructions for the Copilot Space.")
+    base_role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The base role that determines default permissions.\n- `no_access`: No default access\n- `reader`: Default read permissions\n- `writer`: Default write permissions (organization spaces only)\n- `admin`: Default admin permissions (organization spaces only)"
+    )
+    owner: Union[SimpleUser, OrganizationSimple] = Field(
+        description="The user or organization that owns this space."
+    )
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field(
+        description="The date and time the space was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the space was last updated."
+    )
+    html_url: str = Field(description="The HTML URL of the space.")
+    api_url: str = Field(description="The API URL of the space.")
+    resources_attributes: Missing[list[CopilotSpacePropResourcesAttributesItems]] = (
+        Field(default=UNSET, description="Resources attached to the space.")
+    )
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+class CopilotSpacePropResourcesAttributesItems(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItems"""
 
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the resource."
+    )
+    resource_type: Missing[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ] = Field(default=UNSET, description="The type of resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The unique identifier of the chat attachment for uploaded files or media content.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was last updated."
+    )
+    metadata: Missing[CopilotSpacePropResourcesAttributesItemsPropMetadata] = Field(
+        default=UNSET, description="Metadata specific to the resource type."
+    )
 
 
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
+class CopilotSpacePropResourcesAttributesItemsPropMetadata(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: Missing[int] = Field(
+        default=UNSET, description="Repository ID for repository or file resources."
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="File path for file resources."
+    )
+    text: Missing[str] = Field(
+        default=UNSET, description="Text content for free text resources."
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
+    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    copilot_chat_attachment_id: Missing[int] = Field(
+        default=UNSET, description="Chat attachment ID for uploaded files or media."
+    )
+    media_type: Missing[str] = Field(
+        default=UNSET, description="Media type for media content resources."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="URL for media content resources."
+    )
+    height: Missing[int] = Field(
+        default=UNSET, description="Height for media content resources."
+    )
+    width: Missing[int] = Field(
+        default=UNSET, description="Width for media content resources."
+    )
+
+
+model_rebuild(CopilotSpace)
+model_rebuild(CopilotSpacePropResourcesAttributesItems)
+model_rebuild(CopilotSpacePropResourcesAttributesItemsPropMetadata)
 
 __all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
+    "CopilotSpace",
+    "CopilotSpacePropResourcesAttributesItems",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadata",
 )

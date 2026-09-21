@@ -9,63 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
-from .group_0009 import (
-    IntegrationPropPermissionsType,
-    IntegrationPropPermissionsTypeForResponse,
-)
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
 
 
-class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserType, EnterpriseType]
-    name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    permissions: IntegrationPropPermissionsType
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
 
 
-class AppManifestsCodeConversionsPostResponse201TypeForResponse(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
 
-    id: int
-    slug: NotRequired[str]
-    node_id: str
-    client_id: str
-    owner: Union[SimpleUserTypeForResponse, EnterpriseTypeForResponse]
-    name: str
-    description: Union[str, None]
-    external_url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    permissions: IntegrationPropPermissionsTypeForResponse
-    events: list[str]
-    installations_count: NotRequired[int]
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AppManifestsCodeConversionsPostResponse201Type",
-    "AppManifestsCodeConversionsPostResponse201TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse",
 )

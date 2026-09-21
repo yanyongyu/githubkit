@@ -9,52 +9,126 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupListType(TypedDict):
-    """Concurrency Group List
+class RuleSuitePullRequestType(TypedDict):
+    """Pull request rule suite metadata
 
-    A list of active concurrency groups for a repository.
+    Metadata for a pull request rule evaluation result.
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
 
 
-class ConcurrencyGroupListTypeForResponse(TypedDict):
-    """Concurrency Group List
+class RuleSuitePullRequestTypeForResponse(TypedDict):
+    """Pull request rule suite metadata
 
-    A list of active concurrency groups for a repository.
+    Metadata for a pull request rule evaluation result.
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
+
+
+class RuleSuitePullRequestPropPullRequestType(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
+    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
+
+
+class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
+    reviews: NotRequired[
+        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
     ]
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
 
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[_dt.datetime, None]
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
 
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[str, None]
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
+    ]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupListType",
-    "ConcurrencyGroupListTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestType",
+    "RuleSuitePullRequestPropPullRequestTypeForResponse",
+    "RuleSuitePullRequestType",
+    "RuleSuitePullRequestTypeForResponse",
 )

@@ -12,19 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
-    """Codespaces Permissions Check
+class CodeScanningAutofixCommitsResponse(GitHubModel):
+    """CodeScanningAutofixCommitsResponse"""
 
-    Permission check result for a given devcontainer config.
-    """
-
-    accepted: bool = Field(
-        description="Whether the user has accepted the permissions defined by the devcontainer config"
+    target_ref: Missing[str] = Field(
+        default=UNSET,
+        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
+    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
 
 
-model_rebuild(CodespacesPermissionsCheckForDevcontainer)
+model_rebuild(CodeScanningAutofixCommitsResponse)
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainer",)
+__all__ = ("CodeScanningAutofixCommitsResponse",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleCommitMessagePatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitMessagePatternPropParameters"""
+class RepositoryRulesetConditionsPropRefName(GitHubModel):
+    """RepositoryRulesetConditionsPropRefName"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule appears when configuring it."
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleCommitMessagePatternPropParameters)
+model_rebuild(RepositoryRulesetConditionsPropRefName)
 
-__all__ = ("RepositoryRuleCommitMessagePatternPropParameters",)
+__all__ = ("RepositoryRulesetConditionsPropRefName",)

@@ -9,48 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    Branch Short
+    Repository Identifier
     """
 
+    id: int
     name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[_dt.datetime, None]
 
 
-class BranchShortTypeForResponse(TypedDict):
-    """Branch Short
+class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
+    """Repository Identifier
 
-    Branch Short
+    Repository Identifier
     """
 
+    id: int
     name: str
-    commit: BranchShortPropCommitTypeForResponse
-    protected: bool
-
-
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-class BranchShortPropCommitTypeForResponse(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[str, None]
 
 
 __all__ = (
-    "BranchShortPropCommitType",
-    "BranchShortPropCommitTypeForResponse",
-    "BranchShortType",
-    "BranchShortTypeForResponse",
+    "CodeScanningVariantAnalysisRepositoryType",
+    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
 )

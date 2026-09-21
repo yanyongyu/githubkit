@@ -16,14 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
-    )
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke across the organization.")
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody",)

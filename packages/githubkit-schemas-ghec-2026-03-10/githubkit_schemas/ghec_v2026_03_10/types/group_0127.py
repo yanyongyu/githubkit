@@ -9,53 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0122 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterpriseRulesetConditionsOneof2Type(TypedDict):
-    """organization_id_and_repository_name
+class ExternalVulnerabilitySyncAcceptedType(TypedDict):
+    """External Vulnerability Sync Accepted
 
-    Conditions to target organizations by id and all repositories
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    id: str
+    url: str
+    status: Literal["queued"]
 
 
-class EnterpriseRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """organization_id_and_repository_name
+class ExternalVulnerabilitySyncAcceptedTypeForResponse(TypedDict):
+    """External Vulnerability Sync Accepted
 
-    Conditions to target organizations by id and all repositories
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    id: str
+    url: str
+    status: Literal["queued"]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof2Type",
-    "EnterpriseRulesetConditionsOneof2TypeForResponse",
+    "ExternalVulnerabilitySyncAcceptedType",
+    "ExternalVulnerabilitySyncAcceptedTypeForResponse",
 )

@@ -9,29 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0059 import (
+    ActionsPolicyOrgConditionsOneof0Type,
+    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+)
+from .group_0060 import (
+    ActionsPolicyOrgConditionsOneof1Type,
+    ActionsPolicyOrgConditionsOneof1TypeForResponse,
+)
+from .group_0061 import (
+    ActionsPolicyOrgConditionsOneof2Type,
+    ActionsPolicyOrgConditionsOneof2TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
-class OrgsOrgAgentsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+
+class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
 
     name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyOrgConditionsOneof0Type,
+            ActionsPolicyOrgConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof2Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-class OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
 
     name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyOrgConditionsOneof0TypeForResponse,
+            ActionsPolicyOrgConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof2TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNamePatchBodyType",
-    "OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse",
+    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
+    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
 )

@@ -9,39 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
-from .group_1504 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+from .group_0520 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
 )
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
     TypedDict
 ):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
-
-
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
-
-    custom_properties: NotRequired[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    ref: str
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
 )

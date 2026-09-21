@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0105 import OrganizationCustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseOrgPropertiesSchemaPatchBody(GitHubModel):
-    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    properties: list[OrganizationCustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of organization custom properties to create or update.",
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ] = Field(
+        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
     )
 
 
-model_rebuild(EnterprisesEnterpriseOrgPropertiesSchemaPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
 
-__all__ = ("EnterprisesEnterpriseOrgPropertiesSchemaPatchBody",)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)

@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0099 import SimpleRepository
 
-class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId(GitHubModel):
-    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
 
-    organization_ids: Missing[list[int]] = Field(
+class DependabotRepositoryAccessDetails(GitHubModel):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: Missing[Union[Literal["public", "internal"], None]] = Field(
         default=UNSET,
-        description="The organization IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+        description="The default repository access level for Dependabot updates.",
+    )
+    accessible_repositories: Missing[list[Union[SimpleRepository, None]]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId)
+model_rebuild(DependabotRepositoryAccessDetails)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId",)
+__all__ = ("DependabotRepositoryAccessDetails",)

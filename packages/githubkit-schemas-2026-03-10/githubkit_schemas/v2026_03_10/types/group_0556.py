@@ -9,71 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksLabelPropArchivedByType(TypedDict):
-    """WebhooksLabelPropArchivedBy
+class HovercardType(TypedDict):
+    """Hovercard
 
-    The user who archived the label, or `null` if it has not been archived.
+    Hovercard
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class WebhooksLabelPropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelPropArchivedBy
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    The user who archived the label, or `null` if it has not been archived.
+    Hovercard
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
+
+
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "WebhooksLabelPropArchivedByType",
-    "WebhooksLabelPropArchivedByTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

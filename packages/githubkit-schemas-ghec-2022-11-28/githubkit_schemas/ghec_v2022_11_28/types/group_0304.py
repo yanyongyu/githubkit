@@ -9,62 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0271 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
+class PackageType(TypedDict):
+    """Package
 
-    Org Membership
+    A software package
     """
 
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
     url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[SimpleUserType, None]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[SimpleUserType, None]]
+    repository: NotRequired[Union[MinimalRepositoryType, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrgMembershipTypeForResponse(TypedDict):
-    """Org Membership
+class PackageTypeForResponse(TypedDict):
+    """Package
 
-    Org Membership
+    A software package
     """
 
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
     url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleTypeForResponse
-    user: Union[SimpleUserTypeForResponse, None]
-    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
-
-
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
-
-
-class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    repository: NotRequired[Union[MinimalRepositoryTypeForResponse, None]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipPropPermissionsTypeForResponse",
-    "OrgMembershipType",
-    "OrgMembershipTypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

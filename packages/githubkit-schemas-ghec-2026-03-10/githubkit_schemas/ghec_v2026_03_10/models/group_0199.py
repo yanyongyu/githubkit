@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,63 +16,152 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class SecretScanningLocationCommit(GitHubModel):
+    """SecretScanningLocationCommit
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    azure_subscription: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
-    )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: list[GetCostCenterPropResourcesItems] = Field()
-    has_next_page: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
-    )
-    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
-        default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
-    )
-
-
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-class GetCostCenterPropAiCreditPoolState(GitHubModel):
-    """GetCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    path: str = Field(description="The file path in the repository")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
     )
-    current_amount: Missing[Union[float, None]] = Field(
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
+    )
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
+    )
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
+    )
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    blob_url: str = Field(description="The API URL to get the associated blob resource")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The API URL to get the associated commit resource"
+    )
+    html_url: Missing[str] = Field(
         default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+        description="The GitHub URL to get the associated commit resource.",
     )
 
 
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
-model_rebuild(GetCostCenterPropAiCreditPoolState)
+class SecretScanningLocationWikiCommit(GitHubModel):
+    """SecretScanningLocationWikiCommit
+
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str = Field(description="The file path of the wiki page")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
+    )
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
+    )
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
+    )
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
+    )
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The GitHub URL to get the associated wiki commit"
+    )
+
+
+class SecretScanningLocationIssueBody(GitHubModel):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue where the secret was detected.",
+    )
+
+
+class SecretScanningLocationDiscussionTitle(GitHubModel):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionComment(GitHubModel):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str = Field(
+        description="The API URL to get the discussion comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestBody(GitHubModel):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request where the secret was detected.",
+    )
+
+
+class SecretScanningLocationPullRequestReview(GitHubModel):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str = Field(
+        description="The API URL to get the pull request review where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request review where the secret was detected.",
+    )
+
+
+model_rebuild(SecretScanningLocationCommit)
+model_rebuild(SecretScanningLocationWikiCommit)
+model_rebuild(SecretScanningLocationIssueBody)
+model_rebuild(SecretScanningLocationDiscussionTitle)
+model_rebuild(SecretScanningLocationDiscussionComment)
+model_rebuild(SecretScanningLocationPullRequestBody)
+model_rebuild(SecretScanningLocationPullRequestReview)
 
 __all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropAiCreditPoolState",
-    "GetCostCenterPropResourcesItems",
+    "SecretScanningLocationCommit",
+    "SecretScanningLocationDiscussionComment",
+    "SecretScanningLocationDiscussionTitle",
+    "SecretScanningLocationIssueBody",
+    "SecretScanningLocationPullRequestBody",
+    "SecretScanningLocationPullRequestReview",
+    "SecretScanningLocationWikiCommit",
 )

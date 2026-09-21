@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,25 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportRequest(GitHubModel):
-    """UsageReportExportRequest"""
+class SecretScanningCustomPatternToCreate(GitHubModel):
+    """Secret Scanning Custom Pattern To Create
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
-        Field(description="The type of usage report to generate")
-    )
-    start_date: _dt.date = Field(
-        description="The start date for the report in YYYY-MM-DD format"
-    )
-    end_date: Missing[_dt.date] = Field(
+    A custom pattern to create in a bulk operation.
+    """
+
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    start_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
     )
-    send_email: Missing[bool] = Field(
+    end_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
+        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
+    )
+    must_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
     )
 
 
-model_rebuild(UsageReportExportRequest)
+model_rebuild(SecretScanningCustomPatternToCreate)
 
-__all__ = ("UsageReportExportRequest",)
+__all__ = ("SecretScanningCustomPatternToCreate",)

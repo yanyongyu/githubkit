@@ -9,88 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksLabelUnarchivedAllof1Type(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksDeployKeyType(TypedDict):
+    """WebhooksDeployKey
 
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
-
-
-class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
-
-    archived_at: Union[str, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    verified: bool
+    enabled: NotRequired[bool]
 
 
-class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+class WebhooksDeployKeyTypeForResponse(TypedDict):
+    """WebhooksDeployKey
 
-    The user who archived the label. This is `null` after the label is unarchived.
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    verified: bool
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
-    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
-    "WebhooksLabelUnarchivedAllof1Type",
-    "WebhooksLabelUnarchivedAllof1TypeForResponse",
+    "WebhooksDeployKeyType",
+    "WebhooksDeployKeyTypeForResponse",
 )

@@ -9,36 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-    A description of the machine powering a codespace.
+    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+        default=UNSET,
+        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
+    )
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
     """
 
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
-    )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
-    )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
-    )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
+    name: str = Field(description="The name of the organization property to target")
+    property_values: list[str] = Field(
+        description="The values to match for the organization property"
     )
 
 
-model_rebuild(CodespaceMachine)
+model_rebuild(
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
+)
+model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
 
-__all__ = ("CodespaceMachine",)
+__all__ = (
+    "EnterpriseRulesetConditionsOrganizationPropertySpec",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
+)

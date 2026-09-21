@@ -14,16 +14,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-    The public key used for setting user Codespaces' Secrets.
+    Commit Activity
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    days: list[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-model_rebuild(CodespacesUserPublicKey)
+model_rebuild(CommitActivity)
 
-__all__ = ("CodespacesUserPublicKey",)
+__all__ = ("CommitActivity",)

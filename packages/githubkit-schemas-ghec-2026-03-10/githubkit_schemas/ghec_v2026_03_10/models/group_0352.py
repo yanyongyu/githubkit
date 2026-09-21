@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,48 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ConcurrencyGroup(GitHubModel):
-    """Concurrency Group
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
-    """
-
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    total_count: int = Field()
-    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
-
-
-class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    job_id: Missing[int] = Field(
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
+    )
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The first commit sha before the push evaluation."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The last commit sha in the push evaluation."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
         default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The ID of the repository associated with the rule evaluation.",
     )
-    job_name: Missing[str] = Field(
+    repository_name: Missing[str] = Field(
         default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The name of the repository without the `.git` extension.",
     )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
     )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
+    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
     )
-    status: Literal["in_progress", "pending"] = Field()
 
 
-model_rebuild(ConcurrencyGroup)
-model_rebuild(ConcurrencyGroupPropGroupMembersItems)
+model_rebuild(RuleSuitesItems)
 
-__all__ = (
-    "ConcurrencyGroup",
-    "ConcurrencyGroupPropGroupMembersItems",
-)
+__all__ = ("RuleSuitesItems",)

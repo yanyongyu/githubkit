@@ -9,31 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0271 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
 
-    Successful deletion of a code scanning analysis
+    Check suite configuration preferences for a repository.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
-    """Analysis deletion
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
 
-    Successful deletion of a code scanning analysis
+    Check suite configuration preferences for a repository.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeScanningAnalysisDeletionType",
-    "CodeScanningAnalysisDeletionTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

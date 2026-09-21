@@ -18,75 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesPostBody"""
+class UserCodespacesPostBodyOneof1(GitHubModel):
+    """UserCodespacesPostBodyOneof1"""
 
-    name: str = Field(description="The name of the Copilot Space.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
+        description="Pull request number for this codespace"
     )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    location: Missing[str] = Field(
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    base_role: Missing[Literal["reader", "no_access"]] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for the space.\n- `no_access`: No default access (default)\n- `reader`: Makes the space publicly readable\nNote: User spaces do not support writer or admin base roles.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
     )
-    resources_attributes: Missing[
-        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
 
 
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems(GitHubModel):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
+    Pull request number for this codespace
     """
 
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    pull_request_number: int = Field(description="Pull request number")
+    repository_id: int = Field(description="Repository id for this codespace")
 
 
-model_rebuild(UsersUsernameCopilotSpacesPostBody)
-model_rebuild(UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems)
-model_rebuild(
-    UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-)
+model_rebuild(UserCodespacesPostBodyOneof1)
+model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
 
 __all__ = (
-    "UsersUsernameCopilotSpacesPostBody",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
+    "UserCodespacesPostBodyOneof1",
+    "UserCodespacesPostBodyOneof1PropPullRequest",
 )

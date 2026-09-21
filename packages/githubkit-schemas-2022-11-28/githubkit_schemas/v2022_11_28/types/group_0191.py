@@ -9,31 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class OrganizationUpdateIssueTypeType(TypedDict):
+    """OrganizationUpdateIssueType"""
 
-    Custom property name and associated value
-    """
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
-    property_name: str
-    value: Union[str, list[str], None]
 
+class OrganizationUpdateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueType"""
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
-
-    Custom property name and associated value
-    """
-
-    property_name: str
-    value: Union[str, list[str], None]
+    name: str
+    is_enabled: bool
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "OrganizationUpdateIssueTypeType",
+    "OrganizationUpdateIssueTypeTypeForResponse",
 )

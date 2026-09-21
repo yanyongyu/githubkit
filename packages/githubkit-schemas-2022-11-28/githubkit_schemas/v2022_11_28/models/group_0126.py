@@ -16,20 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    The public key used for setting Actions Secrets.
-    """
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
+    )
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
 
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-model_rebuild(ActionsPublicKey)
-
-__all__ = ("ActionsPublicKey",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

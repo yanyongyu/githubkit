@@ -14,161 +14,179 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0253 import MinimalRepository
-from .group_0270 import CodespaceMachine
+from .group_0270 import SecurityAndAnalysis
 
 
-class Codespace(GitHubModel):
-    """Codespace
+class MinimalRepository(GitHubModel):
+    """Minimal Repository
 
-    A codespace.
+    Minimal Repository
     """
 
     id: int = Field()
-    name: str = Field(description="Automatically generated name of this codespace.")
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Display name for this codespace."
-    )
-    environment_id: Union[str, None] = Field(
-        description="UUID identifying this codespace's environment."
-    )
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
     owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    billable_owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    machine: Union[CodespaceMachine, None] = Field()
-    devcontainer_path: Missing[Union[str, None]] = Field(
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: Missing[str] = Field(default=UNSET)
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: Missing[str] = Field(default=UNSET)
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: Missing[str] = Field(default=UNSET)
+    mirror_url: Missing[Union[str, None]] = Field(default=UNSET)
+    hooks_url: str = Field()
+    svn_url: Missing[str] = Field(default=UNSET)
+    homepage: Missing[Union[str, None]] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    forks_count: Missing[int] = Field(default=UNSET)
+    stargazers_count: Missing[int] = Field(default=UNSET)
+    watchers_count: Missing[int] = Field(default=UNSET)
+    size: Missing[int] = Field(
         default=UNSET,
-        description="Path to devcontainer.json from repo root used to create Codespace.",
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
     )
-    prebuild: Union[bool, None] = Field(
-        description="Whether the codespace was created from a prebuild."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    last_used_at: _dt.datetime = Field(
-        description="Last known time this codespace was started."
-    )
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ] = Field(description="State of this codespace.")
-    url: str = Field(description="API URL for this codespace.")
-    git_status: CodespacePropGitStatus = Field(
-        description="Details about the codespace's git repository."
-    )
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The initally assigned location of a new codespace."
-    )
-    idle_timeout_minutes: Union[int, None] = Field(
-        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
-    )
-    web_url: str = Field(description="URL to access this codespace on the web.")
-    machines_url: str = Field(
-        description="API URL to access available alternate machine types for this codespace."
-    )
-    start_url: str = Field(description="API URL to start this codespace.")
-    stop_url: str = Field(description="API URL to stop this codespace.")
-    publish_url: Missing[Union[str, None]] = Field(
+    default_branch: Missing[str] = Field(default=UNSET)
+    open_issues_count: Missing[int] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: Missing[bool] = Field(default=UNSET)
+    has_projects: Missing[bool] = Field(default=UNSET)
+    has_wiki: Missing[bool] = Field(default=UNSET)
+    has_pages: Missing[bool] = Field(default=UNSET)
+    has_downloads: Missing[bool] = Field(default=UNSET)
+    has_discussions: Missing[bool] = Field(default=UNSET)
+    has_pull_requests: Missing[bool] = Field(default=UNSET)
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
         default=UNSET,
-        description="API URL to publish this codespace to a new repository.",
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    pulls_url: Union[str, None] = Field(
-        description="API URL for the Pull Request associated with this codespace, if any."
+    archived: Missing[bool] = Field(default=UNSET)
+    disabled: Missing[bool] = Field(default=UNSET)
+    visibility: Missing[str] = Field(default=UNSET)
+    pushed_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
+    role_name: Missing[str] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    subscribers_count: Missing[int] = Field(default=UNSET)
+    network_count: Missing[int] = Field(default=UNSET)
+    code_of_conduct: Missing[CodeOfConduct] = Field(
+        default=UNSET, title="Code Of Conduct", description="Code Of Conduct"
     )
-    recent_folders: list[str] = Field()
-    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
-    pending_operation: Missing[Union[bool, None]] = Field(
+    license_: Missing[Union[MinimalRepositoryPropLicense, None]] = Field(
+        default=UNSET, alias="license"
+    )
+    forks: Missing[int] = Field(default=UNSET)
+    open_issues: Missing[int] = Field(default=UNSET)
+    watchers: Missing[int] = Field(default=UNSET)
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
+    )
+    custom_properties: Missing[MinimalRepositoryPropCustomProperties] = Field(
         default=UNSET,
-        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
-    )
-    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace is disabled by a pending operation",
-    )
-    idle_timeout_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
-    )
-    retention_period_minutes: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
-    retention_expires_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
-    )
-    last_known_stop_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
 
 
-class CodespacePropGitStatus(GitHubModel):
-    """CodespacePropGitStatus
+class CodeOfConduct(GitHubModel):
+    """Code Of Conduct
 
-    Details about the codespace's git repository.
+    Code Of Conduct
     """
 
-    ahead: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is ahead of the remote.",
-    )
-    behind: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is behind the remote.",
-    )
-    has_unpushed_changes: Missing[bool] = Field(
-        default=UNSET, description="Whether the local repository has unpushed changes."
-    )
-    has_uncommitted_changes: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the local repository has uncommitted changes.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
-    )
+    key: str = Field()
+    name: str = Field()
+    url: str = Field()
+    body: Missing[str] = Field(default=UNSET)
+    html_url: Union[str, None] = Field()
 
 
-class CodespacePropRuntimeConstraints(GitHubModel):
-    """CodespacePropRuntimeConstraints"""
+class MinimalRepositoryPropPermissions(GitHubModel):
+    """MinimalRepositoryPropPermissions"""
 
-    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
-        default=UNSET,
-        description="The privacy settings a user can select from when forwarding a port.",
-    )
+    admin: Missing[bool] = Field(default=UNSET)
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: Missing[bool] = Field(default=UNSET)
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(Codespace)
-model_rebuild(CodespacePropGitStatus)
-model_rebuild(CodespacePropRuntimeConstraints)
+class MinimalRepositoryPropLicense(GitHubModel):
+    """MinimalRepositoryPropLicense"""
+
+    key: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    spdx_id: Missing[str] = Field(default=UNSET)
+    url: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+
+
+class MinimalRepositoryPropCustomProperties(ExtraGitHubModel):
+    """MinimalRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
+model_rebuild(MinimalRepository)
+model_rebuild(CodeOfConduct)
+model_rebuild(MinimalRepositoryPropPermissions)
+model_rebuild(MinimalRepositoryPropLicense)
+model_rebuild(MinimalRepositoryPropCustomProperties)
 
 __all__ = (
-    "Codespace",
-    "CodespacePropGitStatus",
-    "CodespacePropRuntimeConstraints",
+    "CodeOfConduct",
+    "MinimalRepository",
+    "MinimalRepositoryPropCustomProperties",
+    "MinimalRepositoryPropLicense",
+    "MinimalRepositoryPropPermissions",
 )

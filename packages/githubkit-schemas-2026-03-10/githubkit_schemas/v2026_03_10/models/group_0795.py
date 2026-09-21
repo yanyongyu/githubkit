@@ -18,19 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0570 import WebhooksMarketplacePurchase
-from .group_0571 import WebhooksPreviousMarketplacePurchase
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0796 import WebhookIssuesReopenedPropIssue
 
 
-class WebhookMarketplacePurchasePurchased(GitHubModel):
-    """marketplace_purchase purchased event"""
+class WebhookIssuesReopened(GitHubModel):
+    """issues reopened event"""
 
-    action: Literal["purchased"] = Field()
-    effective_date: str = Field()
+    action: Literal["reopened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,25 +39,22 @@ class WebhookMarketplacePurchasePurchased(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhooksMarketplacePurchase = Field(
-        title="Marketplace Purchase"
+    issue: WebhookIssuesReopenedPropIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    previous_marketplace_purchase: Missing[WebhooksPreviousMarketplacePurchase] = Field(
-        default=UNSET, title="Marketplace Purchase"
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMarketplacePurchasePurchased)
+model_rebuild(WebhookIssuesReopened)
 
-__all__ = ("WebhookMarketplacePurchasePurchased",)
+__all__ = ("WebhookIssuesReopened",)

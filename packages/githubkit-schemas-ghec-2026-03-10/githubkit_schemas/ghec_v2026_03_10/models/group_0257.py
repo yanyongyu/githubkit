@@ -16,18 +16,13 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheStorageLimitForOrganization(GitHubModel):
-    """Actions cache storage limit for an organization
+class ReleaseEventPropReleaseAllof1(GitHubModel):
+    """ReleaseEventPropReleaseAllof1"""
 
-    GitHub Actions cache storage policy for an organization.
-    """
-
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
-    )
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsCacheStorageLimitForOrganization)
+model_rebuild(ReleaseEventPropReleaseAllof1)
 
-__all__ = ("ActionsCacheStorageLimitForOrganization",)
+__all__ = ("ReleaseEventPropReleaseAllof1",)

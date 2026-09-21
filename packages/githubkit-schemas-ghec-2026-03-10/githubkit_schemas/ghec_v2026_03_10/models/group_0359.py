@@ -9,58 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleCommit(GitHubModel):
-    """Simple Commit
+class GroupMapping(GitHubModel):
+    """GroupMapping
 
-    A commit.
+    External Groups to be mapped to a team for membership
     """
 
-    id: str = Field(description="SHA for the commit")
-    tree_id: str = Field(description="SHA for the commit's tree")
-    message: str = Field(description="Message describing the purpose of the commit")
-    timestamp: _dt.datetime = Field(description="Timestamp of the commit")
-    author: Union[SimpleCommitPropAuthor, None] = Field(
-        description="Information about the Git author"
-    )
-    committer: Union[SimpleCommitPropCommitter, None] = Field(
-        description="Information about the Git committer"
+    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
+        default=UNSET, description="Array of groups to be mapped to this team"
     )
 
 
-class SimpleCommitPropAuthor(GitHubModel):
-    """SimpleCommitPropAuthor
+class GroupMappingPropGroupsItems(GitHubModel):
+    """GroupMappingPropGroupsItems"""
 
-    Information about the Git author
-    """
-
-    name: str = Field(description="Name of the commit's author")
-    email: str = Field(description="Git email address of the commit's author")
-
-
-class SimpleCommitPropCommitter(GitHubModel):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str = Field(description="Name of the commit's committer")
-    email: str = Field(description="Git email address of the commit's committer")
+    group_id: str = Field(description="The ID of the group")
+    group_name: str = Field(description="The name of the group")
+    group_description: str = Field(description="a description of the group")
+    status: Missing[str] = Field(
+        default=UNSET, description="synchronization status for this group mapping"
+    )
+    synced_at: Missing[Union[str, None]] = Field(
+        default=UNSET, description="the time of the last sync for this group-mapping"
+    )
 
 
-model_rebuild(SimpleCommit)
-model_rebuild(SimpleCommitPropAuthor)
-model_rebuild(SimpleCommitPropCommitter)
+model_rebuild(GroupMapping)
+model_rebuild(GroupMappingPropGroupsItems)
 
 __all__ = (
-    "SimpleCommit",
-    "SimpleCommitPropAuthor",
-    "SimpleCommitPropCommitter",
+    "GroupMapping",
+    "GroupMappingPropGroupsItems",
 )

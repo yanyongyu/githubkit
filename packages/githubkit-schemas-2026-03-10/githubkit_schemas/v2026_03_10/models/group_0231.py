@@ -14,23 +14,17 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0232 import RepositoryRuleWorkflowsPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRuleWorkflows)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)

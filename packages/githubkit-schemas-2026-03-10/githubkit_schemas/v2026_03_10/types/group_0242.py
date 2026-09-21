@@ -12,37 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0243 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
-)
+
+class RepositoryRuleCommitMessagePatternPropParametersType(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
+
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleFileExtensionRestrictionType(TypedDict):
-    """file_extension_restriction
+class RepositoryRuleCommitMessagePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCommitMessagePatternPropParameters"""
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
-
-
-class RepositoryRuleFileExtensionRestrictionTypeForResponse(TypedDict):
-    """file_extension_restriction
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
-    ]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionType",
-    "RepositoryRuleFileExtensionRestrictionTypeForResponse",
+    "RepositoryRuleCommitMessagePatternPropParametersType",
+    "RepositoryRuleCommitMessagePatternPropParametersTypeForResponse",
 )

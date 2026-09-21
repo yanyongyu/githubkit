@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +18,120 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0129 import TeamSimple
+from .group_0003 import SimpleUser
+from .group_0043 import OrganizationSimple
 
 
-class UserRoleAssignment(GitHubModel):
-    """A Role Assignment for a User
+class CopilotSpace(GitHubModel):
+    """Space
 
-    The Relationship a User has with a role.
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+    id: int = Field(description="The unique identifier of the space.")
+    number: int = Field(
+        description="The number that identifies the space within its owner."
+    )
+    name: str = Field(description="The display name of the space.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the space."
+    )
+    general_instructions: Missing[
+        Union[Annotated[str, Field(max_length=4000)], None]
+    ] = Field(default=UNSET, description="General instructions for the Copilot Space.")
+    base_role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The base role that determines default permissions.\n- `no_access`: No default access\n- `reader`: Default read permissions\n- `writer`: Default write permissions (organization spaces only)\n- `admin`: Default admin permissions (organization spaces only)"
+    )
+    owner: Union[SimpleUser, OrganizationSimple] = Field(
+        description="The user or organization that owns this space."
+    )
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field(
+        description="The date and time the space was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the space was last updated."
+    )
+    html_url: str = Field(description="The HTML URL of the space.")
+    api_url: str = Field(description="The API URL of the space.")
+    resources_attributes: Missing[list[CopilotSpacePropResourcesAttributesItems]] = (
+        Field(default=UNSET, description="Resources attached to the space.")
+    )
+
+
+class CopilotSpacePropResourcesAttributesItems(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the resource."
+    )
+    resource_type: Missing[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ] = Field(default=UNSET, description="The type of resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+        description="The unique identifier of the chat attachment for uploaded files or media content.",
     )
-    inherited_from: Missing[list[TeamSimple]] = Field(
-        default=UNSET, description="Team the user has gotten the role through"
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was created."
     )
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was last updated."
+    )
+    metadata: Missing[CopilotSpacePropResourcesAttributesItemsPropMetadata] = Field(
+        default=UNSET, description="Metadata specific to the resource type."
+    )
 
 
-model_rebuild(UserRoleAssignment)
+class CopilotSpacePropResourcesAttributesItemsPropMetadata(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
 
-__all__ = ("UserRoleAssignment",)
+    Metadata specific to the resource type.
+    """
+
+    repository_id: Missing[int] = Field(
+        default=UNSET, description="Repository ID for repository or file resources."
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="File path for file resources."
+    )
+    text: Missing[str] = Field(
+        default=UNSET, description="Text content for free text resources."
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
+    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    copilot_chat_attachment_id: Missing[int] = Field(
+        default=UNSET, description="Chat attachment ID for uploaded files or media."
+    )
+    media_type: Missing[str] = Field(
+        default=UNSET, description="Media type for media content resources."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="URL for media content resources."
+    )
+    height: Missing[int] = Field(
+        default=UNSET, description="Height for media content resources."
+    )
+    width: Missing[int] = Field(
+        default=UNSET, description="Width for media content resources."
+    )
+
+
+model_rebuild(CopilotSpace)
+model_rebuild(CopilotSpacePropResourcesAttributesItems)
+model_rebuild(CopilotSpacePropResourcesAttributesItemsPropMetadata)
+
+__all__ = (
+    "CopilotSpace",
+    "CopilotSpacePropResourcesAttributesItems",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadata",
+)

@@ -18,72 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupRunList(GitHubModel):
-    """Concurrency Group Run List
+class TeamMember(GitHubModel):
+    """Team Member
 
-    A list of concurrency groups associated with a workflow run.
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
-    total_count: int = Field(
-        description="The total number of concurrency groups this workflow run participates in,\nderived from the run's configuration. This count is not filtered by\nwhether the run currently holds or is waiting in each group, so it can\ninclude groups whose `group_members` array is empty (for example, when\nthe run has already released its lease in that group)."
-    )
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItems] = (
-        Field()
-    )
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(
-        description="API URL for this concurrency group. May return 404 if the group\nhas no active items at the time it is requested, since the\nget-by-name endpoint reports the live repo-wide state of a group\nwhile this endpoint lists groups associated with a run by\nconfiguration."
-    )
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems
-    ] = Field(
-        description="Items belonging to this workflow run that are either currently holding or\nwaiting for the concurrency group lease. May be empty if the run no\nlonger has any active or queued items in this group."
-    )
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems(
-    GitHubModel
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
-
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    position: int = Field(
-        description="Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending)."
-    )
-    position_url: str = Field(
-        description="API URL to get items ahead of this item in the concurrency group."
-    )
-    job_id: Missing[Union[int, None]] = Field(
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
         default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
-    job_name: Missing[Union[str, None]] = Field(
+    inherited: Missing[bool] = Field(
         default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
-    )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
-    )
-    status: Literal["in_progress", "pending"] = Field()
 
 
-model_rebuild(ConcurrencyGroupRunList)
-model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItems)
-model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems)
+model_rebuild(TeamMember)
 
-__all__ = (
-    "ConcurrencyGroupRunList",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
-)
+__all__ = ("TeamMember",)

@@ -9,35 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class EmailType(TypedDict):
-    """Email
+class TagType(TypedDict):
+    """Tag
 
-    Email
+    Tag
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class EmailTypeForResponse(TypedDict):
-    """Email
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    Email
+    Tag
     """
 
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "EmailType",
-    "EmailTypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

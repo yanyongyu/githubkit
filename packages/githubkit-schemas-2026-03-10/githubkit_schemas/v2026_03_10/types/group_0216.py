@@ -9,38 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0217 import (
-    RepositoryRulePullRequestPropParametersType,
-    RepositoryRulePullRequestPropParametersTypeForResponse,
-)
 
+class CustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
-
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Custom property defined on an organization
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
-class RepositoryRulePullRequestTypeForResponse(TypedDict):
-    """pull_request
+class CustomPropertyTypeForResponse(TypedDict):
+    """Organization Custom Property
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Custom property defined on an organization
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
+    property_name: str
+    url: NotRequired[str]
+    source_type: NotRequired[Literal["organization", "enterprise"]]
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRulePullRequestType",
-    "RepositoryRulePullRequestTypeForResponse",
+    "CustomPropertyType",
+    "CustomPropertyTypeForResponse",
 )

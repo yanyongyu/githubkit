@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0276 import (
+    RulesetVersionWithStateAllof1PropStateType,
+    RulesetVersionWithStateAllof1PropStateTypeForResponse,
+)
 
 
-class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
-    """Actions cache retention limit for a repository
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    GitHub Actions cache retention policy for a repository.
-    """
-
-    max_cache_retention_days: NotRequired[int]
+    state: RulesetVersionWithStateAllof1PropStateType
 
 
-class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache retention limit for a repository
+class RulesetVersionWithStateAllof1TypeForResponse(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    GitHub Actions cache retention policy for a repository.
-    """
-
-    max_cache_retention_days: NotRequired[int]
+    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForRepositoryType",
-    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
+    "RulesetVersionWithStateAllof1Type",
+    "RulesetVersionWithStateAllof1TypeForResponse",
 )

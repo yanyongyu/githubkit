@@ -9,43 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+from .group_0170 import (
+    RepositoryRuleTagNamePatternPropParametersType,
+    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    Conditions to target repositories by name and refs by name
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRuleTagNamePatternTypeForResponse(TypedDict):
+    """tag_name_pattern
 
-    Conditions to target repositories by name and refs by name
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof0Type",
-    "OrgRulesetConditionsOneof0TypeForResponse",
+    "RepositoryRuleTagNamePatternType",
+    "RepositoryRuleTagNamePatternTypeForResponse",
 )

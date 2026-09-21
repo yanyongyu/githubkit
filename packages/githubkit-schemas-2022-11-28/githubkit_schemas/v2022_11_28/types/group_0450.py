@@ -9,30 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0424 import IssueReferenceType, IssueReferenceTypeForResponse
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
 
-    Page Build Status
+class BlockedByRemovedIssueEventType(TypedDict):
+    """Blocked-by Removed Issue Event
+
+    Blocked-by Removed Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    blocked_by: Union[None, IssueReferenceType, None]
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class BlockedByRemovedIssueEventTypeForResponse(TypedDict):
+    """Blocked-by Removed Issue Event
 
-    Page Build Status
+    Blocked-by Removed Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    blocked_by: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "BlockedByRemovedIssueEventType",
+    "BlockedByRemovedIssueEventTypeForResponse",
 )

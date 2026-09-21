@@ -9,52 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class ContributorType(TypedDict):
+    """Contributor
 
-    Git references within a repository
+    Contributor
     """
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class ContributorTypeForResponse(TypedDict):
+    """Contributor
 
-    Git references within a repository
+    Contributor
     """
 
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
     type: str
-    sha: str
-    url: str
-
-
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "ContributorType",
+    "ContributorTypeForResponse",
 )

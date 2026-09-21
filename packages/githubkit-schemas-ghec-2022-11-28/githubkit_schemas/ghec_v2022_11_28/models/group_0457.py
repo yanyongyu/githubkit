@@ -9,26 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
-    """Deployment branch and tag policy name pattern"""
+class ContentSymlink(GitHubModel):
+    """Symlink Content
 
-    name: str = Field(
-        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag"
-    )
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"] = Field()
+    target: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSymlinkPropLinks = Field(alias="_links")
 
 
-model_rebuild(DeploymentBranchPolicyNamePatternWithType)
+class ContentSymlinkPropLinks(GitHubModel):
+    """ContentSymlinkPropLinks"""
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithType",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentSymlink)
+model_rebuild(ContentSymlinkPropLinks)
+
+__all__ = (
+    "ContentSymlink",
+    "ContentSymlinkPropLinks",
+)

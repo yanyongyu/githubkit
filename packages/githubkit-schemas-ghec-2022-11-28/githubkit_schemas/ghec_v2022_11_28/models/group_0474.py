@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0108 import Team
 
 
-class InteractionLimitPullRequestBypassList(GitHubModel):
-    """Interaction Limits Pull Request Bypass List
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
-    """
-
-    users: list[str] = Field(
-        description="A list of user logins to add or remove from the bypass list."
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
     )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
 
 
-model_rebuild(InteractionLimitPullRequestBypassList)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
 
-__all__ = ("InteractionLimitPullRequestBypassList",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)

@@ -9,60 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class WorkflowUsageType(TypedDict):
+    """Workflow Usage
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
-
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Workflow Usage
     """
 
-    url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    billable: WorkflowUsagePropBillableType
 
 
-class DeploymentSimpleTypeForResponse(TypedDict):
-    """Deployment
+class WorkflowUsageTypeForResponse(TypedDict):
+    """Workflow Usage
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Workflow Usage
     """
 
-    url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: str
-    updated_at: str
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    billable: WorkflowUsagePropBillableTypeForResponse
+
+
+class WorkflowUsagePropBillableType(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
+
+
+class WorkflowUsagePropBillableTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
+    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
+    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+
+
+class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropUbuntu"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosType(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsType(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
+
+
+class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: NotRequired[int]
 
 
 __all__ = (
-    "DeploymentSimpleType",
-    "DeploymentSimpleTypeForResponse",
+    "WorkflowUsagePropBillablePropMacosType",
+    "WorkflowUsagePropBillablePropMacosTypeForResponse",
+    "WorkflowUsagePropBillablePropUbuntuType",
+    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
+    "WorkflowUsagePropBillablePropWindowsType",
+    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
+    "WorkflowUsagePropBillableType",
+    "WorkflowUsagePropBillableTypeForResponse",
+    "WorkflowUsageType",
+    "WorkflowUsageTypeForResponse",
 )

@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoStargazersCountGetResponse200(GitHubModel):
+    """ReposOwnerRepoStargazersCountGetResponse200"""
+
+    count: int = Field()
 
 
-model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
+model_rebuild(ReposOwnerRepoStargazersCountGetResponse200)
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("ReposOwnerRepoStargazersCountGetResponse200",)

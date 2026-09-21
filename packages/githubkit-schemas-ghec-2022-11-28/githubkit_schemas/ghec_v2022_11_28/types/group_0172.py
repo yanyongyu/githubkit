@@ -9,36 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0173 import (
-    RepositoryRuleMergeQueuePropParametersType,
-    RepositoryRuleMergeQueuePropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleMergeQueueType(TypedDict):
-    """merge_queue
+class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    Merges must be performed via a merge queue.
-    """
-
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
+    restricted_file_paths: list[str]
 
 
-class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
-    """merge_queue
+class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    Merges must be performed via a merge queue.
-    """
-
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
+    restricted_file_paths: list[str]
 
 
 __all__ = (
-    "RepositoryRuleMergeQueueType",
-    "RepositoryRuleMergeQueueTypeForResponse",
+    "RepositoryRuleFilePathRestrictionPropParametersType",
+    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
 )

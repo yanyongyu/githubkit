@@ -12,32 +12,29 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0208 import Label
-from .group_0220 import PullRequestMinimal
 
 
-class PullRequestEvent(GitHubModel):
-    """PullRequestEvent"""
+class SubIssuesSummary(GitHubModel):
+    """Sub-issues Summary"""
 
-    action: str = Field()
-    number: int = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
-    )
-    labels: Missing[list[Label]] = Field(default=UNSET)
+    total: int = Field()
+    completed: int = Field()
+    percent_completed: int = Field()
 
 
-model_rebuild(PullRequestEvent)
+class IssueDependenciesSummary(GitHubModel):
+    """Issue Dependencies Summary"""
 
-__all__ = ("PullRequestEvent",)
+    blocked_by: int = Field()
+    blocking: int = Field()
+    total_blocked_by: int = Field()
+    total_blocking: int = Field()
+
+
+model_rebuild(SubIssuesSummary)
+model_rebuild(IssueDependenciesSummary)
+
+__all__ = (
+    "IssueDependenciesSummary",
+    "SubIssuesSummary",
+)

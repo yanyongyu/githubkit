@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,89 +17,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0195 import RepositoryRulesetBypassActor
-from .group_0204 import OrgRulesetConditionsOneof0
-from .group_0205 import OrgRulesetConditionsOneof1
-from .group_0206 import OrgRulesetConditionsOneof2
-from .group_0207 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0208 import RepositoryRuleUpdate
-from .group_0210 import RepositoryRuleRequiredLinearHistory
-from .group_0213 import RepositoryRuleRequiredDeployments
-from .group_0216 import RepositoryRulePullRequest
-from .group_0218 import RepositoryRuleRequiredStatusChecks
-from .group_0220 import RepositoryRuleCommitMessagePattern
-from .group_0222 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0224 import RepositoryRuleCommitterEmailPattern
-from .group_0226 import RepositoryRuleBranchNamePattern
-from .group_0228 import RepositoryRuleTagNamePattern
-from .group_0231 import RepositoryRuleWorkflows
-from .group_0233 import RepositoryRuleCodeScanning
-from .group_0235 import RepositoryRuleCopilotCodeReview
-from .group_0238 import RepositoryRuleFilePathRestriction
-from .group_0240 import RepositoryRuleMaxFilePathLength
-from .group_0242 import RepositoryRuleFileExtensionRestriction
-from .group_0244 import RepositoryRuleMaxFileSize
 
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    repositories: list[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
     )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
+    )
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+    )
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgMigrationsPostBody",)

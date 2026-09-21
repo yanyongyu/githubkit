@@ -9,103 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0212 import ReactionRollupType, ReactionRollupTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
+class CodeScanningAnalysisDeletionType(TypedDict):
+    """Analysis deletion
 
-    Commit Comment
+    Successful deletion of a code scanning analysis
     """
 
-    html_url: str
-    url: str
-    id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupType]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
-class CommitCommentTypeForResponse(TypedDict):
-    """Commit Comment
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
 
-    Commit Comment
+    Successful deletion of a code scanning analysis
     """
 
-    html_url: str
-    url: str
-    id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-
-
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentType]]
-
-
-class TimelineCommitCommentedEventTypeForResponse(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[list[CommitCommentTypeForResponse]]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
 __all__ = (
-    "CommitCommentType",
-    "CommitCommentTypeForResponse",
-    "TimelineCommitCommentedEventType",
-    "TimelineCommitCommentedEventTypeForResponse",
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
 )

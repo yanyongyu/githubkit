@@ -9,28 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookCheckRunCompletedFormEncodedType(TypedDict):
-    """Check Run Completed Event
+class WebhooksProjectChangesType(TypedDict):
+    """WebhooksProjectChanges"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
-
-    payload: str
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
 
 
-class WebhookCheckRunCompletedFormEncodedTypeForResponse(TypedDict):
-    """Check Run Completed Event
+class WebhooksProjectChangesTypeForResponse(TypedDict):
+    """WebhooksProjectChanges"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
 
-    payload: str
+
+class WebhooksProjectChangesPropArchivedAtType(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[_dt.datetime, None]]
+    to: NotRequired[Union[_dt.datetime, None]]
+
+
+class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookCheckRunCompletedFormEncodedType",
-    "WebhookCheckRunCompletedFormEncodedTypeForResponse",
+    "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
+    "WebhooksProjectChangesType",
+    "WebhooksProjectChangesTypeForResponse",
 )

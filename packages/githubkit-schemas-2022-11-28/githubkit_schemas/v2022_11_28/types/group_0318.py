@@ -9,47 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class WorkflowDispatchResponseType(TypedDict):
+    """Workflow Dispatch Response
 
-    Check Annotation
+    Response containing the workflow run ID and URLs.
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
-class CheckAnnotationTypeForResponse(TypedDict):
-    """Check Annotation
+class WorkflowDispatchResponseTypeForResponse(TypedDict):
+    """Workflow Dispatch Response
 
-    Check Annotation
+    Response containing the workflow run ID and URLs.
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
 __all__ = (
-    "CheckAnnotationType",
-    "CheckAnnotationTypeForResponse",
+    "WorkflowDispatchResponseType",
+    "WorkflowDispatchResponseTypeForResponse",
 )

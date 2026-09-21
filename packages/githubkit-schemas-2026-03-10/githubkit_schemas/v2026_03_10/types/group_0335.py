@@ -10,55 +10,59 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0135 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class DeploymentSimpleType(TypedDict):
+    """Deployment
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
+    """
+
+    url: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
     environment: str
-    category: NotRequired[str]
-    error: str
+    description: Union[str, None]
     created_at: _dt.datetime
-    results_count: int
-    rules_count: int
-    id: int
+    updated_at: _dt.datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+
+
+class DeploymentSimpleTypeForResponse(TypedDict):
+    """Deployment
+
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
+    """
+
     url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
-
-
-class CodeScanningAnalysisTypeForResponse(TypedDict):
-    """CodeScanningAnalysis"""
-
-    ref: str
-    commit_sha: str
-    analysis_key: str
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
     environment: str
-    category: NotRequired[str]
-    error: str
+    description: Union[str, None]
     created_at: str
-    results_count: int
-    rules_count: int
-    id: int
-    url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolTypeForResponse
-    deletable: bool
-    warning: str
+    updated_at: str
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
 __all__ = (
-    "CodeScanningAnalysisType",
-    "CodeScanningAnalysisTypeForResponse",
+    "DeploymentSimpleType",
+    "DeploymentSimpleTypeForResponse",
 )

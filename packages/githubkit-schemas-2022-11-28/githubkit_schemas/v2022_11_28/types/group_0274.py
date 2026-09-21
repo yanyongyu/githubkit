@@ -9,36 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
-from .group_0273 import RateLimitType, RateLimitTypeForResponse
-from .group_0275 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
+from .group_0273 import (
+    RulesetVersionPropActorType,
+    RulesetVersionPropActorTypeForResponse,
+)
+from .group_0276 import (
+    RulesetVersionWithStateAllof1PropStateType,
+    RulesetVersionWithStateAllof1PropStateTypeForResponse,
 )
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class RulesetVersionWithStateType(TypedDict):
+    """RulesetVersionWithState"""
 
-    Rate Limit Overview
-    """
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: _dt.datetime
+    state: RulesetVersionWithStateAllof1PropStateType
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
 
+class RulesetVersionWithStateTypeForResponse(TypedDict):
+    """RulesetVersionWithState"""
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
-
-    Rate Limit Overview
-    """
-
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    version_id: int
+    actor: RulesetVersionPropActorTypeForResponse
+    updated_at: str
+    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "RulesetVersionWithStateType",
+    "RulesetVersionWithStateTypeForResponse",
 )

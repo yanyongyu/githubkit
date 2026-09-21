@@ -9,53 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0638 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0959 import (
-    WebhookPullRequestAssignedPropPullRequestType,
-    WebhookPullRequestAssignedPropPullRequestTypeForResponse,
-)
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0682 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookPullRequestAssignedType(TypedDict):
-    """pull_request assigned event"""
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
-    action: Literal["assigned"]
-    assignee: Union[WebhooksUserType, None]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestAssignedPropPullRequestType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPullRequestAssignedTypeForResponse(TypedDict):
-    """pull_request assigned event"""
+class WebhookProjectEditedTypeForResponse(TypedDict):
+    """project edited event"""
 
-    action: Literal["assigned"]
-    assignee: Union[WebhooksUserTypeForResponse, None]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestAssignedPropPullRequestTypeForResponse
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
+
+
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
+
+
+class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
+
+
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookPullRequestAssignedType",
-    "WebhookPullRequestAssignedTypeForResponse",
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
+    "WebhookProjectEditedPropChangesPropNameType",
+    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedPropChangesTypeForResponse",
+    "WebhookProjectEditedType",
+    "WebhookProjectEditedTypeForResponse",
 )

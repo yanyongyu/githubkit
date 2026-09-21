@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
-class RunnerLabel(GitHubModel):
-    """Self hosted runner label
 
-    A label for a self hosted runner
+class ActionsPolicyWorkflowPathCondition(GitHubModel):
+    """Actions policy workflow path condition
+
+    Parameters for an Actions policy workflow path condition. Omitting
+    `workflow_path` when creating
+    a policy targets all workflows without storing an explicit condition. Omitting
+    it when updating a
+    policy preserves the existing workflow targeting. For new or changed workflow
+    conditions, the API
+    requires at least one included or excluded pattern. This is validated server-
+    side rather than by
+    this schema, which can also describe existing stored conditions.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="Unique identifier of the label."
-    )
-    name: str = Field(description="Name of the label.")
-    type: Missing[Literal["read-only", "custom"]] = Field(
-        default=UNSET,
-        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RunnerLabel)
+model_rebuild(ActionsPolicyWorkflowPathCondition)
 
-__all__ = ("RunnerLabel",)
+__all__ = ("ActionsPolicyWorkflowPathCondition",)

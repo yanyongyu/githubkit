@@ -9,25 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0107 import TeamSimple
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class Team(GitHubModel):
+    """Team
 
-    Custom property name and associated value
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
+    access_source: Missing[Literal["direct", "organization", "enterprise"]] = Field(
+        default=UNSET,
+        description="How the team's access to the repository was granted. This property is only\npresent when the team is returned in a repository context, such as\n`GET /repos/{owner}/{repo}/teams`.",
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
+    parent: Union[TeamSimple, None] = Field()
 
 
-model_rebuild(CustomPropertyValue)
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-__all__ = ("CustomPropertyValue",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
+
+__all__ = (
+    "Team",
+    "TeamPropPermissions",
+)

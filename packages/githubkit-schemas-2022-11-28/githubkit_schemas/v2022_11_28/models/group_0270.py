@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,45 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamMember(GitHubModel):
-    """Team Member
+class RuleSuiteRequiredStatusChecks(GitHubModel):
+    """Required status checks rule suite metadata
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    role: Missing[Literal["member", "maintainer"]] = Field(
+    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
         default=UNSET,
-        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
-    )
-    inherited: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+        description="The status checks associated with the rule evaluation.",
     )
 
 
-model_rebuild(TeamMember)
+class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
 
-__all__ = ("TeamMember",)
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the status check."
+    )
+    context: Missing[str] = Field(
+        default=UNSET, description="The context name of the status check."
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the status check."
+    )
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of the status check."
+    )
+    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
+        Field(
+            default=UNSET,
+            description="The GitHub App associated with the status check.",
+        )
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the GitHub App."
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+
+
+model_rebuild(RuleSuiteRequiredStatusChecks)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
+
+__all__ = (
+    "RuleSuiteRequiredStatusChecks",
+    "RuleSuiteRequiredStatusChecksPropChecksItems",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
+)

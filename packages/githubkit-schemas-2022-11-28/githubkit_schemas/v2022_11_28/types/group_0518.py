@@ -12,96 +12,64 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0307 import GitUserType, GitUserTypeForResponse
-from .group_0516 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
-from .group_0519 import (
-    CommitSearchResultItemPropCommitType,
-    CommitSearchResultItemPropCommitTypeForResponse,
-)
 
+class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
+    """Repository Advisory Description Validation Error
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
-
-    Commit Search Result Item
+    The description does not answer the repository's report template.
     """
 
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[SimpleUserType, None]
-    committer: Union[GitUserType, None]
-    parents: list[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
+    ]
 
 
-class CommitSearchResultItemTypeForResponse(TypedDict):
-    """Commit Search Result Item
+class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    Commit Search Result Item
+    The description does not answer the repository's report template.
     """
 
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, None]
-    committer: Union[GitUserTypeForResponse, None]
-    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
+    ]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
 
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
 
 
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemType]
-
-
-class SearchCommitsGetResponse200TypeForResponse(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemTypeForResponse]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
 
 
 __all__ = (
-    "CommitSearchResultItemPropParentsItemsType",
-    "CommitSearchResultItemPropParentsItemsTypeForResponse",
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemTypeForResponse",
-    "SearchCommitsGetResponse200Type",
-    "SearchCommitsGetResponse200TypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorType",
+    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
 )

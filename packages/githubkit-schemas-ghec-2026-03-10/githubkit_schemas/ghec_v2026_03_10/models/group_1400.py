@@ -14,30 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (user or team)."
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
+    actor_identifier: str = Field(
+        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBody",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)

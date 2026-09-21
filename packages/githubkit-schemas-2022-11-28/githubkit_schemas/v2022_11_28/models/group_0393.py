@@ -9,42 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0036 import DependabotAlertPackage
 
-class GitTree(GitHubModel):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class DependabotAlertPropDependency(GitHubModel):
+    """DependabotAlertPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
+    )
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
+model_rebuild(DependabotAlertPropDependency)
 
-    path: str = Field()
-    mode: str = Field()
-    type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
-
-__all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
-)
+__all__ = ("DependabotAlertPropDependency",)

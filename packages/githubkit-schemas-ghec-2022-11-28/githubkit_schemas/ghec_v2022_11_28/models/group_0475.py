@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,24 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueTypeWebhook(GitHubModel):
-    """Issue Type
+class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
+    """Deployment branch and tag policy name pattern"""
 
-    The type of issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
+    name: str = Field(
+        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
+    )
+    type: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="Whether this rule targets a branch or tag"
+    )
 
 
-model_rebuild(IssueTypeWebhook)
+model_rebuild(DeploymentBranchPolicyNamePatternWithType)
 
-__all__ = ("IssueTypeWebhook",)
+__all__ = ("DeploymentBranchPolicyNamePatternWithType",)

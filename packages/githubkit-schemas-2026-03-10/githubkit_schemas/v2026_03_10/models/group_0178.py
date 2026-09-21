@@ -9,52 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class PullRequestStack(GitHubModel):
-    """Pull Request Stack
 
-    The stack information associated with a pull request.
+class OrganizationInvitation(GitHubModel):
+    """Organization Invitation
+
+    Organization Invitation
     """
 
-    base: PullRequestStackPropBase = Field()
-    size: Missing[int] = Field(
-        default=UNSET, description="The total number of pull requests in the stack."
-    )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
-    )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the stack that this pull request belongs to.",
-    )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number of the stack that this pull request belongs to.",
-    )
+    id: int = Field()
+    login: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    role: str = Field()
+    created_at: str = Field()
+    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team_count: int = Field()
+    node_id: str = Field()
+    invitation_teams_url: str = Field()
+    invitation_source: Missing[str] = Field(default=UNSET)
 
 
-class PullRequestStackPropBase(GitHubModel):
-    """PullRequestStackPropBase"""
+model_rebuild(OrganizationInvitation)
 
-    ref: str = Field(
-        description="The base ref of the stack this pull request belongs to."
-    )
-    sha: str = Field(
-        description="The base SHA of the stack this pull request belongs to."
-    )
-
-
-model_rebuild(PullRequestStack)
-model_rebuild(PullRequestStackPropBase)
-
-__all__ = (
-    "PullRequestStack",
-    "PullRequestStackPropBase",
-)
+__all__ = ("OrganizationInvitation",)

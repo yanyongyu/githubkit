@@ -208,6 +208,8 @@ if TYPE_CHECKING:
         RepositoryHashAlgorithmTypeForResponse,
         RepositoryInvitationTypeForResponse,
         RepositoryRuleBranchNamePatternType,
+        RepositoryRuleCodeCoverageType,
+        RepositoryRuleCodeQualityType,
         RepositoryRuleCodeScanningType,
         RepositoryRuleCommitAuthorEmailPatternType,
         RepositoryRuleCommitMessagePatternType,
@@ -7400,7 +7402,7 @@ class ReposClient:
         *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         permission: Missing[
-            Literal["pull", "triage", "push", "maintain", "admin"]
+            Literal["pull", "triage", "triage_plus", "push", "maintain", "admin"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
@@ -7455,7 +7457,7 @@ class ReposClient:
         *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         permission: Missing[
-            Literal["pull", "triage", "push", "maintain", "admin"]
+            Literal["pull", "triage", "triage_plus", "push", "maintain", "admin"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
@@ -8446,7 +8448,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#list-commits
         """
 
-        from ..models import BasicError, Commit
+        from ..models import BasicError, Commit, ValidationError
 
         url = f"/repos/{owner}/{repo}/commits"
 
@@ -8475,6 +8477,8 @@ class ReposClient:
                 "400": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "429": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -8531,7 +8535,7 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#list-commits
         """
 
-        from ..models import BasicError, Commit
+        from ..models import BasicError, Commit, ValidationError
 
         url = f"/repos/{owner}/{repo}/commits"
 
@@ -8560,6 +8564,8 @@ class ReposClient:
                 "400": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "429": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -9091,6 +9097,7 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "429": BasicError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
                 "409": BasicError,
@@ -9177,6 +9184,7 @@ class ReposClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "429": BasicError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
                 "409": BasicError,
@@ -9519,7 +9527,12 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#compare-two-commits
         """
 
-        from ..models import BasicError, CommitComparison, EventsGetResponse503
+        from ..models import (
+            BasicError,
+            CommitComparison,
+            EventsGetResponse503,
+            ValidationError,
+        )
 
         url = f"/repos/{owner}/{repo}/compare/{basehead}"
 
@@ -9539,6 +9552,7 @@ class ReposClient:
             response_model=CommitComparison,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
             },
@@ -9614,7 +9628,12 @@ class ReposClient:
         See also: https://docs.github.com/rest/commits/commits#compare-two-commits
         """
 
-        from ..models import BasicError, CommitComparison, EventsGetResponse503
+        from ..models import (
+            BasicError,
+            CommitComparison,
+            EventsGetResponse503,
+            ValidationError,
+        )
 
         url = f"/repos/{owner}/{repo}/compare/{basehead}"
 
@@ -9634,6 +9653,7 @@ class ReposClient:
             response_model=CommitComparison,
             error_models={
                 "404": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
             },
@@ -19410,6 +19430,8 @@ class ReposClient:
                     RepositoryRuleTagNamePatternType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCodeQualityType,
+                    RepositoryRuleCodeCoverageType,
                     RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
@@ -19519,6 +19541,8 @@ class ReposClient:
                     RepositoryRuleTagNamePatternType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCodeQualityType,
+                    RepositoryRuleCodeCoverageType,
                     RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
@@ -19902,6 +19926,8 @@ class ReposClient:
                     RepositoryRuleTagNamePatternType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCodeQualityType,
+                    RepositoryRuleCodeCoverageType,
                     RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,
@@ -20014,6 +20040,8 @@ class ReposClient:
                     RepositoryRuleTagNamePatternType,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
+                    RepositoryRuleCodeQualityType,
+                    RepositoryRuleCodeCoverageType,
                     RepositoryRuleCopilotCodeReviewType,
                     RepositoryRuleLicenseComplianceScanningType,
                     RepositoryRuleFilePathRestrictionType,

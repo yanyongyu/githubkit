@@ -9,33 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0197 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
+from .group_0156 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
+class UserRoleAssignmentType(TypedDict):
+    """A Role Assignment for a User
 
-    Parameters for a repository ruleset ref name condition
+    The Relationship a User has with a role.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleType]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class RepositoryRulesetConditionsTypeForResponse(TypedDict):
-    """Repository ruleset conditions for ref names
+class UserRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a User
 
-    Parameters for a repository ruleset ref name condition
+    The Relationship a User has with a role.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[TeamSimpleTypeForResponse]]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsType",
-    "RepositoryRulesetConditionsTypeForResponse",
+    "UserRoleAssignmentType",
+    "UserRoleAssignmentTypeForResponse",
 )

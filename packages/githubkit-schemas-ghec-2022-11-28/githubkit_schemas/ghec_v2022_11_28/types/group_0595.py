@@ -9,46 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class StargazerHistoryType(TypedDict):
+    """Stargazer History
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    Stargazer History
+    """
 
-
-class UserNameResponseTypeForResponse(TypedDict):
-    """UserNameResponse"""
-
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    days: list[int]
+    total: int
+    week: int
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class StargazerHistoryTypeForResponse(TypedDict):
+    """Stargazer History
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    Stargazer History
+    """
 
-
-class UserEmailsResponseItemsTypeForResponse(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserEmailsResponseItemsTypeForResponse",
-    "UserNameResponseType",
-    "UserNameResponseTypeForResponse",
+    "StargazerHistoryType",
+    "StargazerHistoryTypeForResponse",
 )

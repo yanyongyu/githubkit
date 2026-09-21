@@ -11,28 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
-
-    repositories: list[str]
+from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
-    """
+class EnterprisesEnterpriseActionsPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
 
-    repositories: list[str]
+    total_count: int
+    policies: list[ActionsPolicyType]
+
+
+class EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
+
+    total_count: int
+    policies: list[ActionsPolicyTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse",
 )

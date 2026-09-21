@@ -9,34 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0108 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
-    """Enterprise Organization Custom Property Values
-
-    List of custom property values for an organization
+    Group of enterprise owners and/or members
     """
 
-    organization_id: int
-    organization_login: str
-    properties: list[CustomPropertyValueType]
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse(TypedDict):
-    """Enterprise Organization Custom Property Values
+class EnterpriseTeamTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    List of custom property values for an organization
+    Group of enterprise owners and/or members
     """
 
-    organization_id: int
-    organization_login: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    created_at: str
+    updated_at: str
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
-    "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
+    "EnterpriseTeamType",
+    "EnterpriseTeamTypeForResponse",
 )

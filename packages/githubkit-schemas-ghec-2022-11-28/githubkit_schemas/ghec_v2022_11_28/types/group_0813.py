@@ -13,23 +13,20 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0812 import (
-    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType,
-    WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+from .group_0808 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
 )
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
     closed_at: Union[_dt.datetime, None]
     closed_issues: int
     created_at: _dt.datetime
     creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorType, None
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
     description: Union[str, None]
     due_on: Union[_dt.datetime, None]
@@ -45,17 +42,14 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueMergedMilestone"""
 
     closed_at: Union[str, None]
     closed_issues: int
     created_at: str
     creator: Union[
-        WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse,
         None,
     ]
     description: Union[str, None]
@@ -73,6 +67,6 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse(Typed
 
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneType",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropMilestoneTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueMergedMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueMergedMilestoneTypeForResponse",
 )

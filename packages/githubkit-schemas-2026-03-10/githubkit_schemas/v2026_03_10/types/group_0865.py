@@ -9,52 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0866 import (
-    WebhookPullRequestAutoMergeDisabledPropPullRequestType,
-    WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse,
-)
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0599 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookPullRequestAutoMergeDisabledType(TypedDict):
-    """pull_request auto_merge_disabled event"""
+class WebhookProjectDeletedType(TypedDict):
+    """project deleted event"""
 
-    action: Literal["auto_merge_disabled"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestType
-    reason: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    project: WebhooksProjectType
+    repository: NotRequired[Union[RepositoryWebhooksType, None]]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookPullRequestAutoMergeDisabledTypeForResponse(TypedDict):
-    """pull_request auto_merge_disabled event"""
+class WebhookProjectDeletedTypeForResponse(TypedDict):
+    """project deleted event"""
 
-    action: Literal["auto_merge_disabled"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse
-    reason: str
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookPullRequestAutoMergeDisabledType",
-    "WebhookPullRequestAutoMergeDisabledTypeForResponse",
+    "WebhookProjectDeletedType",
+    "WebhookProjectDeletedTypeForResponse",
 )

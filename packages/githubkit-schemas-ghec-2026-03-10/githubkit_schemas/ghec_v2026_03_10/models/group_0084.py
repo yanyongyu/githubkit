@@ -9,16 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+import datetime as _dt
+from typing import Literal
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0017 import AppPermissions
 
 
-class CopilotEnterpriseContentExclusionDetails(ExtraGitHubModel):
-    """Copilot Enterprise Content Exclusion Details
+class EnterpriseOrganizationInstallation(GitHubModel):
+    """Enterprise Organization Installation
 
-    List all Copilot Content Exclusion rules for an enterprise.
+    A GitHub App Installation on an enterprise-owned organization
     """
 
+    id: int = Field(description="The ID of the installation.")
+    app_slug: Missing[str] = Field(default=UNSET)
+    client_id: str = Field()
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    repositories_url: str = Field()
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
+    )
+    events: Missing[list[str]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
-model_rebuild(CopilotEnterpriseContentExclusionDetails)
 
-__all__ = ("CopilotEnterpriseContentExclusionDetails",)
+model_rebuild(EnterpriseOrganizationInstallation)
+
+__all__ = ("EnterpriseOrganizationInstallation",)

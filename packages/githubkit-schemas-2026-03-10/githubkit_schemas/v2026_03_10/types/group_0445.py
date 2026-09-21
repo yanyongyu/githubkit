@@ -9,33 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0422 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
+class ParentIssueAddedIssueEventType(TypedDict):
+    """Parent-issue Added Issue Event
 
-    Results of a successful merge upstream request
+    Parent-issue Added Issue Event
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    parent_issue: Union[None, IssueReferenceType, None]
 
 
-class MergedUpstreamTypeForResponse(TypedDict):
-    """Merged upstream
+class ParentIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Parent-issue Added Issue Event
 
-    Results of a successful merge upstream request
+    Parent-issue Added Issue Event
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "MergedUpstreamType",
-    "MergedUpstreamTypeForResponse",
+    "ParentIssueAddedIssueEventType",
+    "ParentIssueAddedIssueEventTypeForResponse",
 )

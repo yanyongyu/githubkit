@@ -9,114 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2ViewType(TypedDict):
-    """Projects v2 View
+class OrganizationCreateIssueFieldType(TypedDict):
+    """OrganizationCreateIssueField"""
 
-    A view inside a projects v2 project
-    """
-
-    id: int
-    number: int
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
-    project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+    ]
 
 
-class ProjectsV2ViewTypeForResponse(TypedDict):
-    """Projects v2 View
+class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationCreateIssueField"""
 
-    A view inside a projects v2 project
-    """
-
-    id: int
-    number: int
     name: str
-    layout: Literal["table", "board", "roadmap"]
-    node_id: str
-    project_url: str
-    html_url: str
-    creator: ProjectsV2ViewPropCreatorTypeForResponse
-    created_at: str
-    updated_at: str
-    filter_: NotRequired[Union[str, None]]
-    visible_fields: list[int]
-    sort_by: list[list[Union[int, str]]]
-    group_by: list[int]
-    vertical_group_by: list[int]
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    ]
 
 
-class ProjectsV2ViewPropCreatorType(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
-class ProjectsV2ViewPropCreatorTypeForResponse(TypedDict):
-    """ProjectsV2ViewPropCreator"""
+class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "ProjectsV2ViewPropCreatorType",
-    "ProjectsV2ViewPropCreatorTypeForResponse",
-    "ProjectsV2ViewType",
-    "ProjectsV2ViewTypeForResponse",
+    "OrganizationCreateIssueFieldPropOptionsItemsType",
+    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationCreateIssueFieldType",
+    "OrganizationCreateIssueFieldTypeForResponse",
 )

@@ -10,22 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsWorkflowAccessToRepositoryType(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    access_level: Literal["none", "user", "organization", "enterprise"]
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ActionsWorkflowAccessToRepositoryTypeForResponse(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    access_level: Literal["none", "user", "organization", "enterprise"]
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsWorkflowAccessToRepositoryType",
-    "ActionsWorkflowAccessToRepositoryTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

@@ -15,31 +15,98 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0386 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
-)
+
+class WorkflowRunUsage(GitHubModel):
+    """Workflow Run Usage
+
+    Workflow Run Usage
+    """
+
+    billable: WorkflowRunUsagePropBillable = Field()
+    run_duration_ms: Missing[int] = Field(default=UNSET)
 
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class WorkflowRunUsagePropBillable(GitHubModel):
+    """WorkflowRunUsagePropBillable"""
 
-    url: str = Field()
-    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
-    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    dismissal_restrictions: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(default=UNSET)
+    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
+    )
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+model_rebuild(WorkflowRunUsage)
+model_rebuild(WorkflowRunUsagePropBillable)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropMacos)
+model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropWindows)
+model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+
+__all__ = (
+    "WorkflowRunUsage",
+    "WorkflowRunUsagePropBillable",
+    "WorkflowRunUsagePropBillablePropMacos",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropUbuntu",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropWindows",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+)

@@ -9,88 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0590 import Meta
 
 
-class ScimEnterpriseGroupResponse(GitHubModel):
-    """ScimEnterpriseGroupResponse"""
+class PullRequestStackMinimal(GitHubModel):
+    """Pull Request Stack Minimal"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: PullRequestStackMinimalPropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    external_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
-    )
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
-    )
-    members: Missing[list[ScimEnterpriseGroupResponseMergedMembers]] = Field(
-        default=UNSET, description="The group members."
-    )
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
-    )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
 
 
-class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class PullRequestStackMinimalPropBase(GitHubModel):
+    """PullRequestStackMinimalPropBase"""
 
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
-    )
+    ref: str = Field()
 
 
-class ScimEnterpriseGroupList(GitHubModel):
-    """ScimEnterpriseGroupList"""
+class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
-        Field(
-            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
-        )
-    )
-    total_results: int = Field(
-        alias="totalResults", description="Number of results found"
-    )
-    resources: list[ScimEnterpriseGroupResponse] = Field(
-        alias="Resources", description="Information about each provisioned group."
-    )
-    start_index: int = Field(
-        alias="startIndex", description="A starting index for the returned page"
-    )
-    items_per_page: int = Field(
-        alias="itemsPerPage", description="Number of objects per page"
-    )
+    number: int = Field()
+    state: Literal["open", "closed"] = Field()
+    draft: bool = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
 
 
-model_rebuild(ScimEnterpriseGroupResponse)
-model_rebuild(ScimEnterpriseGroupResponseMergedMembers)
-model_rebuild(ScimEnterpriseGroupList)
+class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestStackMinimal)
+model_rebuild(PullRequestStackMinimalPropBase)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
 
 __all__ = (
-    "ScimEnterpriseGroupList",
-    "ScimEnterpriseGroupResponse",
-    "ScimEnterpriseGroupResponseMergedMembers",
+    "PullRequestStackMinimal",
+    "PullRequestStackMinimalPropBase",
+    "PullRequestStackMinimalPropPullRequestsItems",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
 )

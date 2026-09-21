@@ -9,54 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class SecretScanningLocationDiscussionBodyType(TypedDict):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
+
+
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
+
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    discussion_body_url: str
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
-class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
+    """CodeScanningTool
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    discussion_body_url: str
-
-
-class SecretScanningLocationPullRequestCommentType(TypedDict):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str
-    html_url: NotRequired[str]
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
 __all__ = (
-    "SecretScanningLocationDiscussionBodyType",
-    "SecretScanningLocationDiscussionBodyTypeForResponse",
-    "SecretScanningLocationPullRequestCommentType",
-    "SecretScanningLocationPullRequestCommentTypeForResponse",
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
+    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
 )

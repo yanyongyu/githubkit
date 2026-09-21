@@ -12,19 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0128 import ArtifactDeploymentRecord
+from .group_0149 import Runner
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    total_count: int = Field(description="The number of deployment records created")
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    runner: Runner = Field(
+        title="Self hosted runners", description="A self hosted runner"
+    )
+    encoded_jit_config: str = Field(
+        description="The base64 encoded runner configuration."
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200)
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
 
-__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)

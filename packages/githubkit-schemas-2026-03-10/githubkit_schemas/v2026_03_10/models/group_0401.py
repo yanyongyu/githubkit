@@ -9,56 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0032 import SimpleRepository
+from .group_0402 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class IssueReference(GitHubModel):
-    """Issue Reference
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
-    """
-
-    number: int = Field(description="The number of the referenced issue.")
-    title: str = Field(description="The title of the referenced issue.")
-    state: str = Field(description="The state of the referenced issue.")
-    state_reason: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reason for the referenced issue's state."
+    id: int = Field()
+    node_id: str = Field()
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
     )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
-    )
-    issue_type: Union[IssueReferencePropIssueType, None] = Field(
-        title="Issue Type", description="The type of the referenced issue."
+    type: str = Field()
+    reviewers: Missing[
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
 
 
-class IssueReferencePropIssueType(GitHubModel):
-    """Issue Type
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-    The type of the referenced issue.
-    """
-
-    id: int = Field(description="The unique identifier of the issue type.")
-    node_id: str = Field(description="The node identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The color of the issue type."
-    )
-
-
-model_rebuild(IssueReference)
-model_rebuild(IssueReferencePropIssueType)
-
-__all__ = (
-    "IssueReference",
-    "IssueReferencePropIssueType",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

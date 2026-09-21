@@ -9,51 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0474 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class BlockingAddedIssueEventType(TypedDict):
-    """Blocking Added Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Blocking Added Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    blocking: Union[None, IssueReferenceType, None]
+    rename: RenamedIssueEventPropRenameType
 
 
-class BlockingAddedIssueEventTypeForResponse(TypedDict):
-    """Blocking Added Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Blocking Added Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    blocking: Union[None, IssueReferenceTypeForResponse, None]
+    rename: RenamedIssueEventPropRenameTypeForResponse
+
+
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
 
 
 __all__ = (
-    "BlockingAddedIssueEventType",
-    "BlockingAddedIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

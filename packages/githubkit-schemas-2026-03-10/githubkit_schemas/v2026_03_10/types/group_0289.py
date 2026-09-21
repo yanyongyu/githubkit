@@ -9,93 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupRunListType(TypedDict):
-    """Concurrency Group Run List
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-    A list of concurrency groups associated with a workflow run.
+    A hosted compute network settings resource.
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-class ConcurrencyGroupRunListTypeForResponse(TypedDict):
-    """Concurrency Group Run List
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    A list of concurrency groups associated with a workflow run.
+    A hosted compute network settings resource.
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
-    ]
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
-    ]
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
-    ]
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupRunListType",
-    "ConcurrencyGroupRunListTypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

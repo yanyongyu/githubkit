@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
+    name: str = Field(
+        description="The name of the cost center (max length 255 characters)"
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
-    )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
 
 
-model_rebuild(NotificationsPutBody)
+model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
 
-__all__ = ("NotificationsPutBody",)
+__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)

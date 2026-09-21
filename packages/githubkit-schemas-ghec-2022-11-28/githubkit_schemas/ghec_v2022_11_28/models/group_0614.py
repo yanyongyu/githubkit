@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,34 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespaceExportDetails(GitHubModel):
-    """Fetches information about an export of a codespace.
+class UserRoleItems(GitHubModel):
+    """UserRoleItems"""
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
-    """
-
-    state: Missing[Union[str, None]] = Field(
-        default=UNSET, description="State of the latest export"
-    )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Completion time of the last export operation"
-    )
-    branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Name of the exported branch"
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Git commit SHA of the exported branch"
-    )
-    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
-    export_url: Missing[str] = Field(
-        default=UNSET, description="Url for fetching export details"
-    )
-    html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web url for the exported branch"
+    display: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ] = Field(description="The role value representing a user role in GitHub.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Is the role a primary role for the user."
     )
 
 
-model_rebuild(CodespaceExportDetails)
+model_rebuild(UserRoleItems)
 
-__all__ = ("CodespaceExportDetails",)
+__all__ = ("UserRoleItems",)

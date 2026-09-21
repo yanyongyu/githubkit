@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,77 +18,39 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
-        default=UNSET,
-        description="General instructions for the Copilot Space.",
-    )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
-        default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
-    )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
+    total_count: int = Field()
+    storage_records: Missing[
+        list[
+            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
         ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
+    ] = Field(default=UNSET)
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
+class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
     GitHubModel
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
 
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    digest: Missing[str] = Field(default=UNSET)
+    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
+    registry_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Union[str, None]] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
 model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
 )
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
+    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
 )

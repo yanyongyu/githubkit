@@ -9,174 +9,285 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0269 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
+class SecurityAndAnalysisType(TypedDict):
+    """SecurityAndAnalysis"""
 
-class CodespaceType(TypedDict):
-    """Codespace
-
-    A codespace.
-    """
-
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: MinimalRepositoryType
-    machine: Union[CodespaceMachineType, None]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityType]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesType
     ]
-    url: str
-    git_status: CodespacePropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
-    last_known_stop_notice: NotRequired[Union[str, None]]
-
-
-class CodespaceTypeForResponse(TypedDict):
-    """Codespace
-
-    A codespace.
-    """
-
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-    machine: Union[CodespaceMachineTypeForResponse, None]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: str
-    updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionType
     ]
-    url: str
-    git_status: CodespacePropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsTypeForResponse]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
-    last_known_stop_notice: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        SecurityAndAnalysisPropSecretScanningValidityChecksType
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassType
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType
+    ]
 
 
-class CodespacePropGitStatusType(TypedDict):
-    """CodespacePropGitStatus
+class SecurityAndAnalysisTypeForResponse(TypedDict):
+    """SecurityAndAnalysis"""
 
-    Details about the codespace's git repository.
+    advanced_security: NotRequired[
+        SecurityAndAnalysisPropAdvancedSecurityTypeForResponse
+    ]
+    code_security: NotRequired[SecurityAndAnalysisPropCodeSecurityTypeForResponse]
+    dependabot_security_updates: NotRequired[
+        SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse
+    ]
+    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningTypeForResponse]
+    secret_scanning_push_protection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse
+    ]
+    secret_scanning_ai_detection: NotRequired[
+        SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse
+    ]
+
+
+class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
+
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodespacePropGitStatusTypeForResponse(TypedDict):
-    """CodespacePropGitStatus
+class SecurityAndAnalysisPropAdvancedSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropAdvancedSecurity
 
-    Details about the codespace's git repository.
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodespacePropRuntimeConstraintsType(TypedDict):
-    """CodespacePropRuntimeConstraints"""
+class SecurityAndAnalysisPropCodeSecurityType(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    status: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodespacePropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespacePropRuntimeConstraints"""
+class SecurityAndAnalysisPropCodeSecurityTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
+    """
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanning"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
+
+    status: NotRequired[Literal["enabled", "disabled"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType(TypedDict):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
+
+    reviewers: NotRequired[
+        list[
+            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+        ]
+    ]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
+
+    reviewers: NotRequired[
+        list[
+            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
+        ]
+    ]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
 
 
 __all__ = (
-    "CodespacePropGitStatusType",
-    "CodespacePropGitStatusTypeForResponse",
-    "CodespacePropRuntimeConstraintsType",
-    "CodespacePropRuntimeConstraintsTypeForResponse",
-    "CodespaceType",
-    "CodespaceTypeForResponse",
+    "SecurityAndAnalysisPropAdvancedSecurityType",
+    "SecurityAndAnalysisPropAdvancedSecurityTypeForResponse",
+    "SecurityAndAnalysisPropCodeSecurityType",
+    "SecurityAndAnalysisPropCodeSecurityTypeForResponse",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
+    "SecurityAndAnalysisPropDependabotSecurityUpdatesTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionType",
+    "SecurityAndAnalysisPropSecretScanningAiDetectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissalTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassType",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+    "SecurityAndAnalysisPropSecretScanningPushProtectionTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningType",
+    "SecurityAndAnalysisPropSecretScanningTypeForResponse",
+    "SecurityAndAnalysisPropSecretScanningValidityChecksType",
+    "SecurityAndAnalysisPropSecretScanningValidityChecksTypeForResponse",
+    "SecurityAndAnalysisType",
+    "SecurityAndAnalysisTypeForResponse",
 )

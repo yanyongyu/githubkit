@@ -15,26 +15,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0118 import RepositoryRulesetConditionsPropRefName
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
-from .group_0124 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
-)
 
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-class EnterpriseRulesetConditionsOneof5(GitHubModel):
-    """organization_property_and_repository_property
-
-    Conditions to target organizations by property and repositories by property
+    Information about the status of a license sync job for an enterprise.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
+    )
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof5)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-__all__ = ("EnterpriseRulesetConditionsOneof5",)
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
+
+__all__ = (
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
+)

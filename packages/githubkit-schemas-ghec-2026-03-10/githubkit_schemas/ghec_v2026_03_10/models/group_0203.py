@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,42 +19,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportList(GitHubModel):
-    """UsageReportExportList"""
+class SecretScanningCustomPattern(GitHubModel):
+    """Secret Scanning Custom Pattern
 
-    usage_report_exports: list[UsageReportExport] = Field(
-        description="List of usage report exports"
+    A custom pattern for secret scanning.
+    """
+
+    id: int = Field(description="The ID of the custom pattern.")
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    slug: str = Field(
+        description="A URL-friendly identifier for the custom pattern, derived from its name."
     )
-
-
-class UsageReportExport(GitHubModel):
-    """UsageReportExport"""
-
-    id: str = Field(description="Unique identifier for the usage report export")
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
-        Field(description="The type of usage report")
+    state: Literal["published", "unpublished"] = Field(
+        description="The state of the custom pattern."
     )
-    start_date: _dt.date = Field(description="The start date for the report")
-    end_date: _dt.date = Field(description="The end date for the report")
-    status: Literal["processing", "completed", "failed"] = Field(
-        description="The current status of the report export"
+    push_protection_enabled: bool = Field(
+        description="Whether push protection is enabled for this custom pattern."
     )
-    download_urls: Missing[list[str]] = Field(
+    start_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start delimiter regex for the custom pattern."
+    )
+    end_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The end delimiter regex for the custom pattern."
+    )
+    must_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="URLs to download the completed report. Only present when the report status is `completed`.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
     created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the report export was created"
+        default=UNSET,
+        description="The date and time the custom pattern was created in ISO 8601 format.",
     )
-    actor: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the export"
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was last updated in ISO 8601 format.",
     )
 
 
-model_rebuild(UsageReportExportList)
-model_rebuild(UsageReportExport)
+model_rebuild(SecretScanningCustomPattern)
 
-__all__ = (
-    "UsageReportExport",
-    "UsageReportExportList",
-)
+__all__ = ("SecretScanningCustomPattern",)

@@ -9,52 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0135 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
 
 
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
+class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
+    """Repository ruleset conditions for organization names
 
-    id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
-    )
-    severity: Missing[Union[Literal["none", "note", "warning", "error"], None]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the rule used to detect the alert.",
-    )
-    full_description: Missing[str] = Field(
-        default=UNSET, description="A description of the rule used to detect the alert."
-    )
-    tags: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
-    help_: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="help",
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
-    )
-    help_uri: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
-    )
+    Parameters for an organization name condition
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)

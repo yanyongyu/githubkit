@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,56 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0134 import CodeScanningAlertRuleSummary
-from .group_0135 import CodeScanningAnalysisTool
-from .group_0137 import CodeScanningAlertInstance
+from .group_0330 import DiffEntry
+from .group_0332 import CommitPropCommit
 
 
-class CodeScanningAlertItems(GitHubModel):
-    """CodeScanningAlertItems"""
+class Commit(GitHubModel):
+    """Commit
 
-    number: int = Field(description="The security alert number.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert."
-    )
-    state: Union[Literal["open", "dismissed", "fixed"], None] = Field(
-        description="State of a code scanning alert."
-    )
-    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissed_by: Union[SimpleUser, None] = Field()
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-    ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    rule: CodeScanningAlertRuleSummary = Field()
-    tool: CodeScanningAnalysisTool = Field()
-    most_recent_instance: CodeScanningAlertInstance = Field()
-    dismissal_approved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    Commit
+    """
+
+    url: str = Field()
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[SimpleUser, EmptyObject, None] = Field()
+    committer: Union[SimpleUser, EmptyObject, None] = Field()
+    parents: list[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAlertItems)
+class EmptyObject(GitHubModel):
+    """Empty Object
 
-__all__ = ("CodeScanningAlertItems",)
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
+
+    sha: str = Field()
+    url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(EmptyObject)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
+
+__all__ = (
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
+    "EmptyObject",
+)

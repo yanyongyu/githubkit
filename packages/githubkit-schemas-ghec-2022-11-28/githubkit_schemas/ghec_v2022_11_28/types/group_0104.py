@@ -9,41 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
-class CustomPropertyBaseType(TypedDict):
-    """CustomPropertyBase"""
 
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
+class CodeSecurityConfigurationRepositoriesType(TypedDict):
+    """CodeSecurityConfigurationRepositories
+
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
+    repository: NotRequired[SimpleRepositoryType]
 
 
-class CustomPropertyBaseTypeForResponse(TypedDict):
-    """CustomPropertyBase"""
+class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationRepositories
 
-    property_name: NotRequired[str]
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: NotRequired[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
+    Repositories associated with a code security configuration and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
+    repository: NotRequired[SimpleRepositoryTypeForResponse]
 
 
 __all__ = (
-    "CustomPropertyBaseType",
-    "CustomPropertyBaseTypeForResponse",
+    "CodeSecurityConfigurationRepositoriesType",
+    "CodeSecurityConfigurationRepositoriesTypeForResponse",
 )

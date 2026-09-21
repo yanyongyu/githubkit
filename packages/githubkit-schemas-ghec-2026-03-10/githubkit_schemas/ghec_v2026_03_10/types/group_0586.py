@@ -9,34 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0582 import TrafficType, TrafficTypeForResponse
 
+class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
+    """Repository Advisory Description Validation Error
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
-
-    View Traffic
+    The description does not answer the repository's report template.
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficType]
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
+    ]
 
 
-class ViewTrafficTypeForResponse(TypedDict):
-    """View Traffic
+class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    View Traffic
+    The description does not answer the repository's report template.
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficTypeForResponse]
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
+    ]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
 
 
 __all__ = (
-    "ViewTrafficType",
-    "ViewTrafficTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorType",
+    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
 )

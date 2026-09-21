@@ -9,79 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningPatternConfigurationType(TypedDict):
-    """Secret scanning pattern configuration
+class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
-    """
-
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
-    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    restricted_file_extensions: list[str]
 
 
-class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
-    """Secret scanning pattern configuration
+class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
-    """
-
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-    custom_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-
-
-class SecretScanningPatternOverrideType(TypedDict):
-    """SecretScanningPatternOverride"""
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[Literal["not-set", "disabled", "enabled"], None]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class SecretScanningPatternOverrideTypeForResponse(TypedDict):
-    """SecretScanningPatternOverride"""
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[Literal["not-set", "disabled", "enabled"], None]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+    restricted_file_extensions: list[str]
 
 
 __all__ = (
-    "SecretScanningPatternConfigurationType",
-    "SecretScanningPatternConfigurationTypeForResponse",
-    "SecretScanningPatternOverrideType",
-    "SecretScanningPatternOverrideTypeForResponse",
+    "RepositoryRuleFileExtensionRestrictionPropParametersType",
+    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
 )

@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0020 import Repository
 
+class ReferrerTraffic(GitHubModel):
+    """Referrer Traffic
 
-class StarredRepository(GitHubModel):
-    """Starred Repository
-
-    Starred Repository
+    Referrer Traffic
     """
 
-    starred_at: _dt.datetime = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    referrer: str = Field()
+    count: int = Field()
+    uniques: int = Field()
 
 
-model_rebuild(StarredRepository)
+model_rebuild(ReferrerTraffic)
 
-__all__ = ("StarredRepository",)
+__all__ = ("ReferrerTraffic",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,17 +18,66 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class DeploymentBranchPolicyNamePatternWithType(GitHubModel):
-    """Deployment branch and tag policy name pattern"""
+class ContentTree(GitHubModel):
+    """Content Tree
 
-    name: str = Field(
-        description="The name pattern that branches or tags must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag"
-    )
+    Content Tree
+    """
+
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    content: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    encoding: Missing[str] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
 
-model_rebuild(DeploymentBranchPolicyNamePatternWithType)
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithType",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
+
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
+
+
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
+
+__all__ = (
+    "ContentTree",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
+    "ContentTreePropLinks",
+)

@@ -9,24 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryHashAlgorithm(GitHubModel):
-    """Repository hash algorithm
+class DependencyGraphDiffItems(GitHubModel):
+    """DependencyGraphDiffItems"""
 
-    Repository hash algorithm
-    """
-
-    hash_algorithm: Literal["sha1", "sha256"] = Field(
-        description="The Git hash algorithm used by this repository."
+    change_type: Literal["added", "removed"] = Field()
+    manifest: str = Field()
+    ecosystem: str = Field()
+    name: str = Field()
+    version: str = Field()
+    package_url: Union[str, None] = Field()
+    license_: Union[str, None] = Field(alias="license")
+    source_repository_url: Union[str, None] = Field()
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
     )
 
 
-model_rebuild(RepositoryHashAlgorithm)
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-__all__ = ("RepositoryHashAlgorithm",)
+    severity: str = Field()
+    advisory_ghsa_id: str = Field()
+    advisory_summary: str = Field()
+    advisory_url: str = Field()
+
+
+model_rebuild(DependencyGraphDiffItems)
+model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+
+__all__ = (
+    "DependencyGraphDiffItems",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+)

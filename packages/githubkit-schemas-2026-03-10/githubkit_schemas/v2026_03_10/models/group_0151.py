@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,29 +18,40 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
 
-    Organization Invitation
+    Authentication Token
     """
 
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
+    token: str = Field(description="The token used for authentication")
+    expires_at: _dt.datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
+    )
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
+        default=UNSET,
+        description="Describe whether all repositories have been selected or there's a selection involved",
+    )
 
 
-model_rebuild(OrganizationInvitation)
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
 
-__all__ = ("OrganizationInvitation",)
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

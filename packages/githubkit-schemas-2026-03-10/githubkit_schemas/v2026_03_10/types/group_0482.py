@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0203 import LinkType, LinkTypeForResponse
 
 
-class RepositoryRuleDetailedOneof18Type(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
+class ReviewCommentPropLinksType(TypedDict):
+    """ReviewCommentPropLinks"""
 
-    type: Literal["license_compliance_scanning"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    self_: LinkType
+    html: LinkType
+    pull_request: LinkType
 
 
-class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof18"""
+class ReviewCommentPropLinksTypeForResponse(TypedDict):
+    """ReviewCommentPropLinks"""
 
-    type: Literal["license_compliance_scanning"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    self_: LinkTypeForResponse
+    html: LinkTypeForResponse
+    pull_request: LinkTypeForResponse
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof18Type",
-    "RepositoryRuleDetailedOneof18TypeForResponse",
+    "ReviewCommentPropLinksType",
+    "ReviewCommentPropLinksTypeForResponse",
 )

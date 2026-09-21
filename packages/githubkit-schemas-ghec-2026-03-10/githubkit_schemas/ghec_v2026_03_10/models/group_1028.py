@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_1029 import WebhookPullRequestUnlockedPropPullRequest
 
 
-class WebhookRepositoryArchived(GitHubModel):
-    """repository archived event"""
+class WebhookPullRequestUnlocked(GitHubModel):
+    """pull_request unlocked event"""
 
-    action: Literal["archived"] = Field()
+    action: Literal["unlocked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,10 +39,14 @@ class WebhookRepositoryArchived(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    pull_request: WebhookPullRequestUnlockedPropPullRequest = Field(
+        title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -50,6 +55,6 @@ class WebhookRepositoryArchived(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryArchived)
+model_rebuild(WebhookPullRequestUnlocked)
 
-__all__ = ("WebhookRepositoryArchived",)
+__all__ = ("WebhookPullRequestUnlocked",)

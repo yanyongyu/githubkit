@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,47 +18,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class RuleSuitesItems(GitHubModel):
-    """RuleSuitesItems"""
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
-    )
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The number that identifies the user."
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The first commit sha before the push evaluation."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The last commit sha in the push evaluation."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
+
+    An status update belonging to a project
+    """
+
+    id: float = Field(description="The unique identifier of the status update.")
+    node_id: str = Field(description="The node ID of the status update.")
+    project_node_id: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
+        description="The node ID of the project that this status update belongs to.",
     )
-    repository_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository without the `.git` extension.",
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    created_at: _dt.datetime = Field(
+        description="The time when the status update was created."
     )
-    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
+    updated_at: _dt.datetime = Field(
+        description="The time when the status update was last updated."
+    )
+    status: Missing[
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
+    ] = Field(default=UNSET, description="The current status.")
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the period covered by the update."
+    )
+    target_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The target date associated with the update."
+    )
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
     )
 
 
-model_rebuild(RuleSuitesItems)
+model_rebuild(ProjectsV2StatusUpdate)
 
-__all__ = ("RuleSuitesItems",)
+__all__ = ("ProjectsV2StatusUpdate",)

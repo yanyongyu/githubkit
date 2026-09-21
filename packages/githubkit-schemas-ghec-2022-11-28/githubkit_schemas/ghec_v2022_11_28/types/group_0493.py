@@ -12,73 +12,44 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class IssueTypeWebhookType(TypedDict):
+    """Issue Type
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
-
-    Converted Note to Issue Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
-
-
-class ConvertedNoteToIssueIssueEventTypeForResponse(TypedDict):
-    """Converted Note to Issue Issue Event
-
-    Converted Note to Issue Issue Event
-    """
-
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse
+    name: str
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
     ]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class IssueTypeWebhookTypeForResponse(TypedDict):
+    """Issue Type
+
+    The type of issue.
+    """
 
     id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-class ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    name: str
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardTypeForResponse",
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventTypeForResponse",
+    "IssueTypeWebhookType",
+    "IssueTypeWebhookTypeForResponse",
 )

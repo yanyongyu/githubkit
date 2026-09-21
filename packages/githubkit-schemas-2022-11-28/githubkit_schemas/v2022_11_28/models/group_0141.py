@@ -15,21 +15,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
+from .group_0135 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+)
 
-class CodespacesPublicKey(GitHubModel):
-    """CodespacesPublicKey
 
-    The public key used for setting Codespaces secrets.
+class ActionsPolicyEnterpriseConditionsOneof1(GitHubModel):
+    """organization_name_and_repository_property
+
+    Conditions to target organizations by name and repositories by property
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(CodespacesPublicKey)
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof1)
 
-__all__ = ("CodespacesPublicKey",)
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof1",)

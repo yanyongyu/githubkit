@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,28 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class RuleSuiteRequiredStatusChecks(GitHubModel):
+    """Required status checks rule suite metadata
 
-    Actions OIDC subject customization for a repository
+    Metadata for a required status checks rule evaluation result.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[list[str]] = Field(
+    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
         default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the repository has opted in to the immutable OIDC subject claim format. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim. If not set at the repository level, falls back to the organization-level setting.",
-    )
-    sub_claim_prefix: Missing[str] = Field(
-        default=UNSET, description="The current `sub` claim prefix for this repository."
+        description="The status checks associated with the rule evaluation.",
     )
 
 
-model_rebuild(OidcCustomSubRepo)
+class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
 
-__all__ = ("OidcCustomSubRepo",)
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the status check."
+    )
+    context: Missing[str] = Field(
+        default=UNSET, description="The context name of the status check."
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the status check."
+    )
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of the status check."
+    )
+    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
+        Field(
+            default=UNSET,
+            description="The GitHub App associated with the status check.",
+        )
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the GitHub App."
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+
+
+model_rebuild(RuleSuiteRequiredStatusChecks)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
+
+__all__ = (
+    "RuleSuiteRequiredStatusChecks",
+    "RuleSuiteRequiredStatusChecksPropChecksItems",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
+)

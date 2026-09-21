@@ -9,46 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
-
-    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
-    )
+from .group_0008 import Enterprise
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+class EnterpriseRole(GitHubModel):
+    """Enterprise Role
 
-    Parameters for a targeting a organization property
+    Enterprise custom roles
     """
 
-    name: str = Field(description="The name of the organization property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the organization property"
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
+    )
+    source: Missing[Union[Literal["Enterprise", "Predefined"], None]] = Field(
+        default=UNSET,
+        description='Source answers the question, "where did this role come from?"',
+    )
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    enterprise: Union[Enterprise, None] = Field()
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the role was last updated."
     )
 
 
-model_rebuild(
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
-)
-model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of enterprise roles available to the enterprise.",
+    )
+    roles: Missing[list[EnterpriseRole]] = Field(
+        default=UNSET,
+        description="The list of enterprise roles available to the enterprise.",
+    )
+
+
+model_rebuild(EnterpriseRole)
+model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpec",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
+    "EnterpriseRole",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
 )

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,84 +17,67 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0451 import DeploymentBranchPolicySettings
-from .group_0453 import EnvironmentPropProtectionRulesItemsAnyof1
 
+class ContentTree(GitHubModel):
+    """Content Tree
 
-class Environment(GitHubModel):
-    """Environment
-
-    Details of a deployment environment
+    Content Tree
     """
 
-    id: int = Field(description="The id of the environment.")
-    node_id: str = Field()
-    name: str = Field(description="The name of the environment.")
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    content: Missing[str] = Field(default=UNSET)
     url: str = Field()
-    html_url: str = Field()
-    created_at: _dt.datetime = Field(
-        description="The time that the environment was created, in ISO 8601 format."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the environment was last updated, in ISO 8601 format."
-    )
-    protection_rules: Missing[
-        list[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0,
-                EnvironmentPropProtectionRulesItemsAnyof1,
-                EnvironmentPropProtectionRulesItemsAnyof2,
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Built-in deployment protection rules for the environment.",
-    )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
-    )
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    encoding: Missing[str] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
 
-    id: int = Field()
-    node_id: str = Field()
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
+
     type: str = Field()
-    wait_timer: Missing[int] = Field(
-        default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
-    )
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
 
 
-class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
 
-    id: int = Field()
-    node_id: str = Field()
-    type: str = Field()
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of environments in this repository"
-    )
-    environments: Missing[list[Environment]] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(Environment)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof0)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof2)
-model_rebuild(ReposOwnerRepoEnvironmentsGetResponse200)
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
 
 __all__ = (
-    "Environment",
-    "EnvironmentPropProtectionRulesItemsAnyof0",
-    "EnvironmentPropProtectionRulesItemsAnyof2",
-    "ReposOwnerRepoEnvironmentsGetResponse200",
+    "ContentTree",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
+    "ContentTreePropLinks",
 )

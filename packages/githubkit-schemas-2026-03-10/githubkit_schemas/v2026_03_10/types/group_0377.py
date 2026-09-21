@@ -9,65 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing_extensions import TypedDict
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class BranchShortType(TypedDict):
+    """Branch Short
 
-    The status of a deployment.
+    Branch Short
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[SimpleUserType, None]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class BranchShortTypeForResponse(TypedDict):
+    """Branch Short
 
-    The status of a deployment.
+    Branch Short
     """
 
+    name: str
+    commit: BranchShortPropCommitTypeForResponse
+    protected: bool
+
+
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
     url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[SimpleUserTypeForResponse, None]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+
+
+class BranchShortPropCommitTypeForResponse(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "BranchShortPropCommitType",
+    "BranchShortPropCommitTypeForResponse",
+    "BranchShortType",
+    "BranchShortTypeForResponse",
 )

@@ -9,29 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleDetailedOneof3Type(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    type: Literal["required_linear_history"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-class RepositoryRuleDetailedOneof3TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
+class PageDeploymentTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    type: Literal["required_linear_history"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof3Type",
-    "RepositoryRuleDetailedOneof3TypeForResponse",
+    "PageDeploymentType",
+    "PageDeploymentTypeForResponse",
 )

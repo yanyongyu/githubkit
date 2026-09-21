@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,152 +18,73 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningLocationCommit(GitHubModel):
-    """SecretScanningLocationCommit
+class RepositoryRuleCodeQuality(GitHubModel):
+    """code_quality
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    path: str = Field(description="The file path in the repository")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
+    type: Literal["code_quality"] = Field()
+    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleCodeQualityPropParameters(GitHubModel):
+    """RepositoryRuleCodeQualityPropParameters"""
+
+    severity: Literal["errors", "warnings", "notes", "all"] = Field(
+        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
     )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    blob_url: str = Field(description="The API URL to get the associated blob resource")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The API URL to get the associated commit resource"
-    )
-    html_url: Missing[str] = Field(
+
+
+class RepositoryRuleCodeCoverage(GitHubModel):
+    """code_coverage
+
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
+
+    type: Literal["code_coverage"] = Field()
+    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: Missing[float] = Field(
+        le=100.0,
         default=UNSET,
-        description="The GitHub URL to get the associated commit resource.",
+        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
     )
-
-
-class SecretScanningLocationWikiCommit(GitHubModel):
-    """SecretScanningLocationWikiCommit
-
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
-    """
-
-    path: str = Field(description="The file path of the wiki page")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
-    )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The GitHub URL to get the associated wiki commit"
-    )
-
-
-class SecretScanningLocationIssueBody(GitHubModel):
-    """SecretScanningLocationIssueBody
-
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
+    minimum_coverage: Missing[float] = Field(
+        le=100.0,
         default=UNSET,
-        description="The GitHub URL for the issue where the secret was detected.",
+        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
     )
 
 
-class SecretScanningLocationDiscussionTitle(GitHubModel):
-    """SecretScanningLocationDiscussionTitle
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
 
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    discussion_title_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
-    )
+    type: Literal["license_compliance_scanning"] = Field()
 
 
-class SecretScanningLocationDiscussionComment(GitHubModel):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str = Field(
-        description="The API URL to get the discussion comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestBody(GitHubModel):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the pull request where the secret was detected.",
-    )
-
-
-class SecretScanningLocationPullRequestReview(GitHubModel):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str = Field(
-        description="The API URL to get the pull request review where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the pull request review where the secret was detected.",
-    )
-
-
-model_rebuild(SecretScanningLocationCommit)
-model_rebuild(SecretScanningLocationWikiCommit)
-model_rebuild(SecretScanningLocationIssueBody)
-model_rebuild(SecretScanningLocationDiscussionTitle)
-model_rebuild(SecretScanningLocationDiscussionComment)
-model_rebuild(SecretScanningLocationPullRequestBody)
-model_rebuild(SecretScanningLocationPullRequestReview)
+model_rebuild(RepositoryRuleCodeQuality)
+model_rebuild(RepositoryRuleCodeQualityPropParameters)
+model_rebuild(RepositoryRuleCodeCoverage)
+model_rebuild(RepositoryRuleCodeCoveragePropParameters)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
 
 __all__ = (
-    "SecretScanningLocationCommit",
-    "SecretScanningLocationDiscussionComment",
-    "SecretScanningLocationDiscussionTitle",
-    "SecretScanningLocationIssueBody",
-    "SecretScanningLocationPullRequestBody",
-    "SecretScanningLocationPullRequestReview",
-    "SecretScanningLocationWikiCommit",
+    "RepositoryRuleCodeCoverage",
+    "RepositoryRuleCodeCoveragePropParameters",
+    "RepositoryRuleCodeQuality",
+    "RepositoryRuleCodeQualityPropParameters",
+    "RepositoryRuleLicenseComplianceScanning",
 )

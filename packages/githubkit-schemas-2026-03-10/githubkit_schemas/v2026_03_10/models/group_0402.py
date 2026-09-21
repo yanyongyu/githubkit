@@ -17,26 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0157 import Team
 
-class IssueEventIntent(GitHubModel):
-    """Issue Event Intent
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    rationale: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reasoning the agent provided for the change."
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
     )
-    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
-        default=UNSET,
-        description="The confidence level the agent had when performing this action.",
-    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
 
 
-model_rebuild(IssueEventIntent)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
 
-__all__ = ("IssueEventIntent",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)

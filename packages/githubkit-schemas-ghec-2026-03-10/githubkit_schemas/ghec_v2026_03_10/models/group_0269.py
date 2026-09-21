@@ -9,36 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class ApiOverview(GitHubModel):
+    """Api Overview
 
-    A description of the machine powering a codespace.
+    Api Overview
     """
 
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
+    verifiable_password_authentication: bool = Field()
+    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
+        default=UNSET
     )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
+    ssh_keys: Missing[list[str]] = Field(default=UNSET)
+    hooks: Missing[list[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
+    web: Missing[list[str]] = Field(default=UNSET)
+    api: Missing[list[str]] = Field(default=UNSET)
+    git: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    pages: Missing[list[str]] = Field(default=UNSET)
+    importer: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_macos: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    dependabot: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    commit_signing_keys: Missing[list[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+
+
+class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+    """ApiOverviewPropSshKeyFingerprints"""
+
+    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
+    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
+    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
+    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
+
+
+class ApiOverviewPropDomains(GitHubModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    storage: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
+        default=UNSET
     )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
-    )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
+    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
+        Field(default=UNSET)
     )
 
 
-model_rebuild(CodespaceMachine)
+class ApiOverviewPropDomainsPropActionsInbound(GitHubModel):
+    """ApiOverviewPropDomainsPropActionsInbound"""
 
-__all__ = ("CodespaceMachine",)
+    full_domains: Missing[list[str]] = Field(default=UNSET)
+    wildcard_domains: Missing[list[str]] = Field(default=UNSET)
+
+
+class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: Missing[str] = Field(default=UNSET)
+    services: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(ApiOverview)
+model_rebuild(ApiOverviewPropSshKeyFingerprints)
+model_rebuild(ApiOverviewPropDomains)
+model_rebuild(ApiOverviewPropDomainsPropActionsInbound)
+model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
+
+__all__ = (
+    "ApiOverview",
+    "ApiOverviewPropDomains",
+    "ApiOverviewPropDomainsPropActionsInbound",
+    "ApiOverviewPropDomainsPropArtifactAttestations",
+    "ApiOverviewPropSshKeyFingerprints",
+)

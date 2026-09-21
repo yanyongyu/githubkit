@@ -9,151 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody(GitHubModel):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    vulnerabilities: list[OsvVulnerability] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Array of vulnerabilities in OSV format to synchronize",
-    )
-
-
-class OsvVulnerability(GitHubModel):
-    """OSV Vulnerability
-
-    A vulnerability in OSV (Open Source Vulnerability) format
-    """
-
-    id: str = Field(
-        description="Unique identifier for the vulnerability from the external system"
-    )
-    schema_version: Missing[str] = Field(
-        default=UNSET, description="The OSV schema version"
-    )
-    summary: Missing[str] = Field(
-        default=UNSET, description="A short summary of the vulnerability"
-    )
-    details: Missing[str] = Field(
-        default=UNSET, description="Detailed description of the vulnerability"
-    )
-    aliases: Missing[list[str]] = Field(
+    custom_agents: Missing[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+            ],
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="IDs for the same vulnerability in other databases. Only CVE IDs are used (to populate the vulnerability's CVE identifier); other aliases are ignored.",
+        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
     )
-    severity: Missing[list[OsvVulnerabilityPropSeverityItems]] = Field(
-        default=UNSET, description="Severity information for the vulnerability"
-    )
-    affected: Missing[list[OsvVulnerabilityPropAffectedItems]] = Field(
-        default=UNSET, description="Packages and versions affected by the vulnerability"
-    )
-    references: Missing[list[OsvVulnerabilityPropReferencesItems]] = Field(
-        default=UNSET, description="URLs for more information about the vulnerability"
-    )
-    published: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the vulnerability was first published"
-    )
-    modified: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the vulnerability was last modified"
-    )
-    withdrawn: Missing[_dt.datetime] = Field(
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+
+    name: Missing[str] = Field(
         default=UNSET,
-        description="When the vulnerability was withdrawn. If present, the vulnerability will be marked as withdrawn.",
+        description="The display name of the custom agent (derived from filename).",
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="The path to the agent definition file."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the agent definition file."
     )
 
 
-class OsvVulnerabilityPropSeverityItems(GitHubModel):
-    """OsvVulnerabilityPropSeverityItems"""
-
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of severity scoring (e.g., CVSS_V3)"
-    )
-    score: Missing[str] = Field(
-        default=UNSET, description="The severity score or vector string"
-    )
-
-
-class OsvVulnerabilityPropReferencesItems(GitHubModel):
-    """OsvVulnerabilityPropReferencesItems"""
-
-    type: Missing[str] = Field(
-        default=UNSET,
-        description="The type of reference. Supported values: PACKAGE, ADVISORY, WEB, FIX, ARTICLE, REPORT, EVIDENCE. References with other types are ignored.",
-    )
-    url: Missing[str] = Field(default=UNSET, description="The reference URL")
-
-
-class OsvVulnerabilityPropAffectedItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItems"""
-
-    package: Missing[OsvVulnerabilityPropAffectedItemsPropPackage] = Field(
-        default=UNSET
-    )
-    ranges: Missing[list[OsvVulnerabilityPropAffectedItemsPropRangesItems]] = Field(
-        default=UNSET
-    )
-
-
-class OsvVulnerabilityPropAffectedItemsPropPackage(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropPackage"""
-
-    ecosystem: Missing[str] = Field(
-        default=UNSET, description="The package ecosystem (e.g., npm, pip, maven)"
-    )
-    name: Missing[str] = Field(default=UNSET, description="The package name")
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
-
-    type: Missing[str] = Field(default=UNSET)
-    events: Missing[
-        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems]
-    ] = Field(default=UNSET)
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
-
-    introduced: Missing[str] = Field(
-        default=UNSET, description="The version that introduced the vulnerability"
-    )
-    fixed: Missing[str] = Field(
-        default=UNSET, description="The version that fixed the vulnerability"
-    )
-    last_affected: Missing[str] = Field(
-        default=UNSET, description="The last affected version"
-    )
-    limit: Missing[str] = Field(
-        default=UNSET, description="The upper limit of the affected range"
-    )
-
-
-model_rebuild(EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody)
-model_rebuild(OsvVulnerability)
-model_rebuild(OsvVulnerabilityPropSeverityItems)
-model_rebuild(OsvVulnerabilityPropReferencesItems)
-model_rebuild(OsvVulnerabilityPropAffectedItems)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropPackage)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItems)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+)
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody",
-    "OsvVulnerability",
-    "OsvVulnerabilityPropAffectedItems",
-    "OsvVulnerabilityPropAffectedItemsPropPackage",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItems",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems",
-    "OsvVulnerabilityPropReferencesItems",
-    "OsvVulnerabilityPropSeverityItems",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
 )

@@ -9,103 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class PagesHealthCheck(GitHubModel):
-    """Pages Health Check Status
+class IssueSuggestion(GitHubModel):
+    """Issue Suggestion
 
-    Pages Health Check Status
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    domain: Missing[PagesHealthCheckPropDomain] = Field(default=UNSET)
-    alt_domain: Missing[Union[PagesHealthCheckPropAltDomain, None]] = Field(
-        default=UNSET
+    id: int = Field(description="The unique identifier of the suggestion.")
+    issue_id: int = Field(
+        description="The unique identifier of the issue the suggestion applies to."
+    )
+    action: Literal[
+        "set_type", "add_label", "add_field", "add_assignee", "close_issue"
+    ] = Field(description="The kind of change proposed.")
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ] = Field(description="The suggestion's lifecycle state.")
+    target_id: Union[int, None] = Field(
+        description="The identifier of the target the change applies to (issue type, label, field, assignee, or duplicate issue), when applicable."
+    )
+    target_value: Union[str, float, bool, list[str], None] = Field(
+        description="The proposed value, when applicable. An array for multi-select field suggestions."
+    )
+    rationale: Union[str, None] = Field(
+        description="The rationale the actor provided for the suggestion."
+    )
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None] = Field(
+        description="The actor's confidence level in the suggestion."
+    )
+    actor_id: Union[int, None] = Field(
+        description="The unique identifier of the actor that proposed the suggestion."
+    )
+    issue_event_id: Union[int, None] = Field(
+        description="The identifier of the timeline event created when the suggestion was approved, when applicable."
+    )
+    resolved_by: Union[int, None] = Field(
+        description="The unique identifier of the user who approved or dismissed the suggestion."
+    )
+    created_at: _dt.datetime = Field(description="The time the suggestion was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time the suggestion was last updated."
     )
 
 
-class PagesHealthCheckPropDomain(GitHubModel):
-    """PagesHealthCheckPropDomain"""
+model_rebuild(IssueSuggestion)
 
-    host: Missing[str] = Field(default=UNSET)
-    uri: Missing[str] = Field(default=UNSET)
-    nameservers: Missing[str] = Field(default=UNSET)
-    dns_resolves: Missing[bool] = Field(default=UNSET)
-    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid_domain: Missing[bool] = Field(default=UNSET)
-    is_apex_domain: Missing[bool] = Field(default=UNSET)
-    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
-        default=UNSET
-    )
-    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pages_domain: Missing[bool] = Field(default=UNSET)
-    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid: Missing[bool] = Field(default=UNSET)
-    reason: Missing[Union[str, None]] = Field(default=UNSET)
-    responds_to_https: Missing[bool] = Field(default=UNSET)
-    enforces_https: Missing[bool] = Field(default=UNSET)
-    https_error: Missing[Union[str, None]] = Field(default=UNSET)
-    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
-    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class PagesHealthCheckPropAltDomain(GitHubModel):
-    """PagesHealthCheckPropAltDomain"""
-
-    host: Missing[str] = Field(default=UNSET)
-    uri: Missing[str] = Field(default=UNSET)
-    nameservers: Missing[str] = Field(default=UNSET)
-    dns_resolves: Missing[bool] = Field(default=UNSET)
-    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid_domain: Missing[bool] = Field(default=UNSET)
-    is_apex_domain: Missing[bool] = Field(default=UNSET)
-    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
-        default=UNSET
-    )
-    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_pages_domain: Missing[bool] = Field(default=UNSET)
-    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
-    is_valid: Missing[bool] = Field(default=UNSET)
-    reason: Missing[Union[str, None]] = Field(default=UNSET)
-    responds_to_https: Missing[bool] = Field(default=UNSET)
-    enforces_https: Missing[bool] = Field(default=UNSET)
-    https_error: Missing[Union[str, None]] = Field(default=UNSET)
-    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
-    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(PagesHealthCheck)
-model_rebuild(PagesHealthCheckPropDomain)
-model_rebuild(PagesHealthCheckPropAltDomain)
-
-__all__ = (
-    "PagesHealthCheck",
-    "PagesHealthCheckPropAltDomain",
-    "PagesHealthCheckPropDomain",
-)
+__all__ = ("IssueSuggestion",)

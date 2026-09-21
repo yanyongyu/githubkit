@@ -9,67 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class CodeScanningDefaultSetupType(TypedDict):
+    """CodeScanningDefaultSetup
 
-    An object describing a submodule
+    Configuration for code scanning default setup.
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
 
 
-class ContentSubmoduleTypeForResponse(TypedDict):
-    """Submodule Content
+class CodeScanningDefaultSetupTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetup
 
-    An object describing a submodule
+    Configuration for code scanning default setup.
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSubmodulePropLinksTypeForResponse
-
-
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentSubmodulePropLinksTypeForResponse(TypedDict):
-    """ContentSubmodulePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmodulePropLinksTypeForResponse",
-    "ContentSubmoduleType",
-    "ContentSubmoduleTypeForResponse",
+    "CodeScanningDefaultSetupType",
+    "CodeScanningDefaultSetupTypeForResponse",
 )

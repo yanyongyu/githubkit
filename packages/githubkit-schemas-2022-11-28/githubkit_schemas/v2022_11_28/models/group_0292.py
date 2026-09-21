@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReviewCustomGatesCommentRequired(GitHubModel):
-    """ReviewCustomGatesCommentRequired"""
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
+    Team Membership
+    """
+
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
     )
-    comment: str = Field(
-        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
     )
 
 
-model_rebuild(ReviewCustomGatesCommentRequired)
+model_rebuild(TeamMembership)
 
-__all__ = ("ReviewCustomGatesCommentRequired",)
+__all__ = ("TeamMembership",)

@@ -9,97 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0334 import ProjectsV2StatusUpdate
 
-class RuleSuitePullRequest(GitHubModel):
-    """Pull request rule suite metadata
 
-    Metadata for a pull request rule evaluation result.
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
-        default=UNSET,
-        description="The pull request associated with the rule evaluation.",
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
+    )
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
+    )
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was closed."
+    )
+    created_at: _dt.datetime = Field(
+        description="The time when the project was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time when the project was last updated."
+    )
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
+    )
+    deleted_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was deleted."
+    )
+    deleted_by: Union[SimpleUser, None] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
+    )
+    latest_status_update: Missing[Union[ProjectsV2StatusUpdate, None]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
 
 
-class RuleSuitePullRequestPropPullRequest(GitHubModel):
-    """RuleSuitePullRequestPropPullRequest
+model_rebuild(ProjectsV2)
 
-    The pull request associated with the rule evaluation.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the pull request."
-    )
-    number: Missing[int] = Field(
-        default=UNSET, description="The number of the pull request."
-    )
-    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
-        default=UNSET, description="The user who created the pull request."
-    )
-    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
-        default=UNSET, description="The reviews associated with the pull request."
-    )
-
-
-class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the review."
-    )
-    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
-        default=UNSET, description="The user who submitted the review."
-    )
-    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
-
-
-model_rebuild(RuleSuitePullRequest)
-model_rebuild(RuleSuitePullRequestPropPullRequest)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
-
-__all__ = (
-    "RuleSuitePullRequest",
-    "RuleSuitePullRequestPropPullRequest",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
-    "RuleSuitePullRequestPropPullRequestPropUser",
-)
+__all__ = ("ProjectsV2",)

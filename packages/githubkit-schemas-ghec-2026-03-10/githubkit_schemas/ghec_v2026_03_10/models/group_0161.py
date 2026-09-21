@@ -17,20 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0162 import RepositoryRuleWorkflowsPropParameters
+from .group_0162 import RepositoryRuleCommitMessagePatternPropParameters
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+class RepositoryRuleCommitMessagePattern(GitHubModel):
+    """commit_message_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    type: Literal["commit_message_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleWorkflows)
+model_rebuild(RepositoryRuleCommitMessagePattern)
 
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleCommitMessagePattern",)

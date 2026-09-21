@@ -9,88 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0057 import PullRequestMinimal
-from .group_0314 import DeploymentSimple
 
+class WorkflowRunUsage(GitHubModel):
+    """Workflow Run Usage
 
-class CheckRun(GitHubModel):
-    """CheckRun
-
-    A check performed on the code of a given code change
+    Workflow Run Usage
     """
 
-    id: int = Field(description="The id of the check.")
-    head_sha: str = Field(description="The SHA of the commit that is being checked.")
-    node_id: str = Field()
-    external_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    details_url: Union[str, None] = Field()
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ] = Field(
-        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
+    billable: WorkflowRunUsagePropBillable = Field()
+    run_duration_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillable(GitHubModel):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ] = Field()
-    started_at: Union[_dt.datetime, None] = Field()
-    completed_at: Union[_dt.datetime, None] = Field()
-    output: CheckRunPropOutput = Field()
-    name: str = Field(description="The name of the check.")
-    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
-    app: Union[None, Integration, None] = Field()
-    pull_requests: list[PullRequestMinimal] = Field(
-        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
+    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
     )
-    deployment: Missing[DeploymentSimple] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-class CheckRunPropOutput(GitHubModel):
-    """CheckRunPropOutput"""
+class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
 
-    title: Union[str, None] = Field()
-    summary: Union[str, None] = Field()
-    text: Union[str, None] = Field()
-    annotations_count: int = Field()
-    annotations_url: str = Field()
-
-
-class CheckRunPropCheckSuite(GitHubModel):
-    """CheckRunPropCheckSuite"""
-
-    id: int = Field()
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
 
 
-model_rebuild(CheckRun)
-model_rebuild(CheckRunPropOutput)
-model_rebuild(CheckRunPropCheckSuite)
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+model_rebuild(WorkflowRunUsage)
+model_rebuild(WorkflowRunUsagePropBillable)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropMacos)
+model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropWindows)
+model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
 
 __all__ = (
-    "CheckRun",
-    "CheckRunPropCheckSuite",
-    "CheckRunPropOutput",
+    "WorkflowRunUsage",
+    "WorkflowRunUsagePropBillable",
+    "WorkflowRunUsagePropBillablePropMacos",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropUbuntu",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropWindows",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
 )

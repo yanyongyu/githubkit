@@ -9,47 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0121 import RunnerLabelType, RunnerLabelTypeForResponse
+from typing_extensions import TypedDict
 
 
-class RunnerType(TypedDict):
-    """Self hosted runners
+class ActionsPolicyWorkflowPathConditionPropWorkflowPathType(TypedDict):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    A self hosted runner
-    """
-
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    include: list[str]
+    exclude: list[str]
 
 
-class RunnerTypeForResponse(TypedDict):
-    """Self hosted runners
+class ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse(TypedDict):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    A self hosted runner
-    """
-
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelTypeForResponse]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    include: list[str]
+    exclude: list[str]
 
 
 __all__ = (
-    "RunnerType",
-    "RunnerTypeForResponse",
+    "ActionsPolicyWorkflowPathConditionPropWorkflowPathType",
+    "ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse",
 )

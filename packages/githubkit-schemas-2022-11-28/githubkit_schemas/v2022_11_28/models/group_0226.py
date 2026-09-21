@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0227 import RepositoryRuleBranchNamePatternPropParameters
+from .group_0128 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
+from .group_0224 import RepositoryRulesetConditionsPropRefName
 
 
-class RepositoryRuleBranchNamePattern(GitHubModel):
-    """branch_name_pattern
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
 
-    Parameters to be used for the branch_name_pattern rule
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["branch_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
-        default=UNSET
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
 
 
-model_rebuild(RepositoryRuleBranchNamePattern)
+model_rebuild(OrgRulesetConditionsOneof1)
 
-__all__ = ("RepositoryRuleBranchNamePattern",)
+__all__ = ("OrgRulesetConditionsOneof1",)

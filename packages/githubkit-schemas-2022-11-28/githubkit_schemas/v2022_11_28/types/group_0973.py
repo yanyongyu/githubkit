@@ -9,221 +9,203 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
+class WebhookRepositoryTransferredType(TypedDict):
+    """repository transferred event"""
 
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
+    action: Literal["transferred"]
+    changes: WebhookRepositoryTransferredPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
-    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
+
+class WebhookRepositoryTransferredTypeForResponse(TypedDict):
+    """repository transferred event"""
+
+    action: Literal["transferred"]
+    changes: WebhookRepositoryTransferredPropChangesTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+
+
+class WebhookRepositoryTransferredPropChangesType(TypedDict):
+    """WebhookRepositoryTransferredPropChanges"""
+
+    owner: WebhookRepositoryTransferredPropChangesPropOwnerType
+
+
+class WebhookRepositoryTransferredPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryTransferredPropChanges"""
+
+    owner: WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerType(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromType
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromType(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
+
+    organization: NotRequired[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType
     ]
-    published_at: str
-    references: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
+    user: NotRequired[
+        Union[
+            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType, None
+        ]
     ]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
-    ]
-    withdrawn_at: str
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory
-
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse
-    ]
-    description: str
-    ghsa_id: str
-    identifiers: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse
-    ]
-    published_at: str
-    references: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse
-    ]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
-    ]
-    withdrawn_at: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse(
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss"""
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
 
-    score: float
-    vector_string: Union[str, None]
+    organization: NotRequired[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse
+    ]
+    user: NotRequired[
+        Union[
+            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse,
+            None,
+        ]
+    ]
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse(
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems"""
+    """Organization"""
 
-    cwe_id: str
-    name: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
-
+    avatar_url: str
+    description: Union[str, None]
+    events_url: str
+    hooks_url: str
+    html_url: NotRequired[str]
+    id: int
+    issues_url: str
+    login: str
+    members_url: str
+    node_id: str
+    public_members_url: str
+    repos_url: str
     url: str
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse(
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems"""
+    """Organization"""
 
+    avatar_url: str
+    description: Union[str, None]
+    events_url: str
+    hooks_url: str
+    html_url: NotRequired[str]
+    id: int
+    issues_url: str
+    login: str
+    members_url: str
+    node_id: str
+    public_members_url: str
+    repos_url: str
     url: str
 
 
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType(
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
+    """User"""
 
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
-    ]
-    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
-        None,
-    ]
-    package: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    FirstPatchedVersion
-    """
-
-    identifier: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    FirstPatchedVersion
-    """
-
-    identifier: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    Package
-    """
-
-    ecosystem: str
-    name: str
-
-
-class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    Package
-    """
-
-    ecosystem: str
-    name: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType",
-    "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesPropOwnerType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerTypeForResponse",
+    "WebhookRepositoryTransferredPropChangesType",
+    "WebhookRepositoryTransferredPropChangesTypeForResponse",
+    "WebhookRepositoryTransferredType",
+    "WebhookRepositoryTransferredTypeForResponse",
 )

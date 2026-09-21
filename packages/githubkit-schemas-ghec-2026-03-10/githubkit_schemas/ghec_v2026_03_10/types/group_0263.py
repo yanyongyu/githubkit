@@ -9,38 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
 
-    The public key used for setting Actions Secrets.
+class GistCommitType(TypedDict):
+    """Gist Commit
+
+    Gist Commit
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    url: str
+    version: str
+    user: Union[SimpleUserType, None]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    The public key used for setting Actions Secrets.
+    Gist Commit
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    url: str
+    version: str
+    user: Union[SimpleUserTypeForResponse, None]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
+
+
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

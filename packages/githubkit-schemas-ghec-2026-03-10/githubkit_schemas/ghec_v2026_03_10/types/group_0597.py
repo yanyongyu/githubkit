@@ -9,34 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0588 import MetaType, MetaTypeForResponse
-from .group_0598 import (
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
-    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
-)
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseUserResponseAllof1Type(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    id: str
-    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    id: str
-    groups: NotRequired[
-        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
-    ]
-    meta: MetaTypeForResponse
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
+    url: str
+    repository_url: str
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseAllof1Type",
-    "ScimEnterpriseUserResponseAllof1TypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

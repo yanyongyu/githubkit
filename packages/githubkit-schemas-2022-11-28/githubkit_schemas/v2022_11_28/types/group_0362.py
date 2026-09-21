@@ -9,56 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0309 import DiffEntryType, DiffEntryTypeForResponse
-from .group_0310 import CommitType, CommitTypeForResponse
-
-
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
-
-    Commit Comparison
-    """
-
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitType]
-    files: NotRequired[list[DiffEntryType]]
+from .group_0361 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CommitComparisonTypeForResponse(TypedDict):
-    """Commit Comparison
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Commit Comparison
-    """
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryType]
 
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitTypeForResponse
-    merge_base_commit: CommitTypeForResponse
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: list[CommitTypeForResponse]
-    files: NotRequired[list[DiffEntryTypeForResponse]]
+
+class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
 
 
 __all__ = (
-    "CommitComparisonType",
-    "CommitComparisonTypeForResponse",
+    "CodeScanningVariantAnalysisSkippedRepoGroupType",
+    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
 )

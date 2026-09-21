@@ -9,29 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
+
+    Secrets for GitHub Actions for an organization.
+    """
 
     name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class OrganizationActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret for an Organization
+
+    Secrets for GitHub Actions for an organization.
+    """
 
     name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleCreateSchemaType",
-    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
+    "OrganizationActionsSecretType",
+    "OrganizationActionsSecretTypeForResponse",
 )

@@ -9,88 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class ConcurrencyGroupListType(TypedDict):
+    """Concurrency Group List
 
-    Workflow Usage
+    A list of active concurrency groups for a repository.
     """
 
-    billable: WorkflowUsagePropBillableType
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
 
 
-class WorkflowUsageTypeForResponse(TypedDict):
-    """Workflow Usage
+class ConcurrencyGroupListTypeForResponse(TypedDict):
+    """Concurrency Group List
 
-    Workflow Usage
+    A list of active concurrency groups for a repository.
     """
 
-    billable: WorkflowUsagePropBillableTypeForResponse
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
+    ]
 
 
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
+class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[_dt.datetime, None]
 
 
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
+class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[str, None]
 
 
 __all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillableTypeForResponse",
-    "WorkflowUsageType",
-    "WorkflowUsageTypeForResponse",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupListType",
+    "ConcurrencyGroupListTypeForResponse",
 )

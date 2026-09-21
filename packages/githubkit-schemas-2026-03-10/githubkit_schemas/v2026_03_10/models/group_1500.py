@@ -11,20 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoStacksStackNumberAddPostBody(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers to append to the stack, from the current top upward.",
     )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostBody)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("ReposOwnerRepoStacksStackNumberAddPostBody",)

@@ -9,73 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0601 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
 
+class MetaType(TypedDict):
+    """Meta
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
-
-    Label Search Result Item
+    The metadata associated with the creation/updates to the user.
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[_dt.datetime, None]
-    archived_by: None
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
+class MetaTypeForResponse(TypedDict):
+    """Meta
 
-    Label Search Result Item
+    The metadata associated with the creation/updates to the user.
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[str, None]
-    archived_by: None
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "MetaType",
+    "MetaTypeForResponse",
 )

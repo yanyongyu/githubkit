@@ -13,17 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0186 import SecretScanningCustomPatternToCreate
 
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        description="The list of custom patterns to create."
+    enabled: bool = Field(
+        description="Whether or not private vulnerability reporting is enabled for the repository."
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)
+__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)

@@ -9,95 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class GitCommit(GitHubModel):
-    """Git Commit
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
 
-    Low-level Git commit operations within a repository
+    Repository rule violation was detected
     """
 
-    sha: str = Field(description="SHA for the commit")
-    node_id: str = Field()
-    url: str = Field()
-    author: GitCommitPropAuthor = Field(
-        description="Identifying information for the git-user"
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
+    GitHubModel
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
     )
-    committer: GitCommitPropCommitter = Field(
-        description="Identifying information for the git-user"
-    )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: GitCommitPropTree = Field()
-    parents: list[GitCommitPropParentsItems] = Field()
-    verification: GitCommitPropVerification = Field()
-    html_url: str = Field()
+    token_type: Missing[str] = Field(default=UNSET)
 
 
-class GitCommitPropAuthor(GitHubModel):
-    """GitCommitPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropCommitter(GitHubModel):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
-
-
-class GitCommitPropTree(GitHubModel):
-    """GitCommitPropTree"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class GitCommitPropParentsItems(GitHubModel):
-    """GitCommitPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
-
-
-class GitCommitPropVerification(GitHubModel):
-    """GitCommitPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-    verified_at: Union[str, None] = Field()
-
-
-model_rebuild(GitCommit)
-model_rebuild(GitCommitPropAuthor)
-model_rebuild(GitCommitPropCommitter)
-model_rebuild(GitCommitPropTree)
-model_rebuild(GitCommitPropParentsItems)
-model_rebuild(GitCommitPropVerification)
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
+model_rebuild(
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+)
 
 __all__ = (
-    "GitCommit",
-    "GitCommitPropAuthor",
-    "GitCommitPropCommitter",
-    "GitCommitPropParentsItems",
-    "GitCommitPropTree",
-    "GitCommitPropVerification",
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
 )

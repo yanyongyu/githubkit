@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,39 +18,58 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    total_count: int = Field()
-    secrets: list[CodespacesOrgSecret] = Field()
-
-
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
     )
-    selected_repositories_url: Missing[str] = Field(
+    artifact_url: Missing[str] = Field(
+        max_length=152,
+        pattern="^https://",
         default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        description="The URL where the artifact is stored.",
+    )
+    path: Missing[str] = Field(
+        max_length=512, default=UNSET, description="The path of the artifact."
+    )
+    registry_url: str = Field(
+        min_length=1,
+        max_length=256,
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
+    )
+    repository: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The repository name within the registry.",
+    )
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+        default=UNSET,
+        description="The status of the artifact (e.g., active, inactive).",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the created record in the response body.\n",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = (
-    "CodespacesOrgSecret",
-    "OrgsOrgCodespacesSecretsGetResponse200",
-)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

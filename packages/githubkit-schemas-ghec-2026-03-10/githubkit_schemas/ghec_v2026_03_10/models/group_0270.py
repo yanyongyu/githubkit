@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,157 +17,176 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0253 import MinimalRepository
-from .group_0269 import CodespaceMachine
+
+class SecurityAndAnalysis(GitHubModel):
+    """SecurityAndAnalysis"""
+
+    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
+        default=UNSET,
+        description="Enable or disable GitHub Advanced Security for the repository.\n\nFor standalone Code Scanning or Secret Protection products, this parameter cannot be used.\n",
+    )
+    code_security: Missing[SecurityAndAnalysisPropCodeSecurity] = Field(default=UNSET)
+    dependabot_security_updates: Missing[
+        SecurityAndAnalysisPropDependabotSecurityUpdates
+    ] = Field(
+        default=UNSET,
+        description="Enable or disable Dependabot security updates for the repository.",
+    )
+    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
+        default=UNSET
+    )
+    secret_scanning_push_protection: Missing[
+        SecurityAndAnalysisPropSecretScanningPushProtection
+    ] = Field(default=UNSET)
+    secret_scanning_non_provider_patterns: Missing[
+        SecurityAndAnalysisPropSecretScanningNonProviderPatterns
+    ] = Field(default=UNSET)
+    secret_scanning_ai_detection: Missing[
+        SecurityAndAnalysisPropSecretScanningAiDetection
+    ] = Field(default=UNSET)
+    secret_scanning_validity_checks: Missing[
+        SecurityAndAnalysisPropSecretScanningValidityChecks
+    ] = Field(default=UNSET)
+    secret_scanning_delegated_alert_dismissal: Missing[
+        SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal
+    ] = Field(default=UNSET)
+    secret_scanning_delegated_bypass: Missing[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypass
+    ] = Field(default=UNSET)
+    secret_scanning_delegated_bypass_options: Missing[
+        SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions
+    ] = Field(default=UNSET)
 
 
-class Codespace(GitHubModel):
-    """Codespace
+class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
+    """SecurityAndAnalysisPropAdvancedSecurity
 
-    A codespace.
+    Enable or disable GitHub Advanced Security for the repository.
+
+    For standalone Code Scanning or Secret Protection products, this parameter
+    cannot be used.
     """
 
-    id: int = Field()
-    name: str = Field(description="Automatically generated name of this codespace.")
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Display name for this codespace."
-    )
-    environment_id: Union[str, None] = Field(
-        description="UUID identifying this codespace's environment."
-    )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    billable_owner: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    machine: Union[CodespaceMachine, None] = Field()
-    devcontainer_path: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json from repo root used to create Codespace.",
-    )
-    prebuild: Union[bool, None] = Field(
-        description="Whether the codespace was created from a prebuild."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    last_used_at: _dt.datetime = Field(
-        description="Last known time this codespace was started."
-    )
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ] = Field(description="State of this codespace.")
-    url: str = Field(description="API URL for this codespace.")
-    git_status: CodespacePropGitStatus = Field(
-        description="Details about the codespace's git repository."
-    )
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
-        description="The initally assigned location of a new codespace."
-    )
-    idle_timeout_minutes: Union[int, None] = Field(
-        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
-    )
-    web_url: str = Field(description="URL to access this codespace on the web.")
-    machines_url: str = Field(
-        description="API URL to access available alternate machine types for this codespace."
-    )
-    start_url: str = Field(description="API URL to start this codespace.")
-    stop_url: str = Field(description="API URL to stop this codespace.")
-    publish_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="API URL to publish this codespace to a new repository.",
-    )
-    pulls_url: Union[str, None] = Field(
-        description="API URL for the Pull Request associated with this codespace, if any."
-    )
-    recent_folders: list[str] = Field()
-    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
-    pending_operation: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
-    )
-    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace is disabled by a pending operation",
-    )
-    idle_timeout_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
-    )
-    retention_period_minutes: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
-    retention_expires_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
-    )
-    last_known_stop_notice: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
-    )
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
 
 
-class CodespacePropGitStatus(GitHubModel):
-    """CodespacePropGitStatus
+class SecurityAndAnalysisPropCodeSecurity(GitHubModel):
+    """SecurityAndAnalysisPropCodeSecurity"""
 
-    Details about the codespace's git repository.
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
+    """SecurityAndAnalysisPropDependabotSecurityUpdates
+
+    Enable or disable Dependabot security updates for the repository.
     """
 
-    ahead: Missing[int] = Field(
+    status: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="The number of commits the local repository is ahead of the remote.",
-    )
-    behind: Missing[int] = Field(
-        default=UNSET,
-        description="The number of commits the local repository is behind the remote.",
-    )
-    has_unpushed_changes: Missing[bool] = Field(
-        default=UNSET, description="Whether the local repository has unpushed changes."
-    )
-    has_uncommitted_changes: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the local repository has uncommitted changes.",
-    )
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
+        description="The enablement status of Dependabot security updates for the repository.",
     )
 
 
-class CodespacePropRuntimeConstraints(GitHubModel):
-    """CodespacePropRuntimeConstraints"""
+class SecurityAndAnalysisPropSecretScanning(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanning"""
 
-    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningPushProtection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningNonProviderPatterns(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningAiDetection(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningAiDetection"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypass(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypass"""
+
+    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
+
+
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions(GitHubModel):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions"""
+
+    reviewers: Missing[
+        list[
+            SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+        ]
+    ] = Field(
         default=UNSET,
-        description="The privacy settings a user can select from when forwarding a port.",
+        description="The bypass reviewers for secret scanning delegated bypass",
     )
 
 
-model_rebuild(Codespace)
-model_rebuild(CodespacePropGitStatus)
-model_rebuild(CodespacePropRuntimeConstraints)
+class SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
+    GitHubModel
+):
+    """SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems"""
+
+    reviewer_id: int = Field(
+        description="The ID of the team or role selected as a bypass reviewer"
+    )
+    reviewer_type: Literal["TEAM", "ROLE"] = Field(
+        description="The type of the bypass reviewer"
+    )
+    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
+        default=UNSET, description="The bypass mode for the reviewer"
+    )
+
+
+model_rebuild(SecurityAndAnalysis)
+model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
+model_rebuild(SecurityAndAnalysisPropCodeSecurity)
+model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
+model_rebuild(SecurityAndAnalysisPropSecretScanning)
+model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningNonProviderPatterns)
+model_rebuild(SecurityAndAnalysisPropSecretScanningAiDetection)
+model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
+model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal)
+model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypass)
+model_rebuild(SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions)
+model_rebuild(
+    SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+)
 
 __all__ = (
-    "Codespace",
-    "CodespacePropGitStatus",
-    "CodespacePropRuntimeConstraints",
+    "SecurityAndAnalysis",
+    "SecurityAndAnalysisPropAdvancedSecurity",
+    "SecurityAndAnalysisPropCodeSecurity",
+    "SecurityAndAnalysisPropDependabotSecurityUpdates",
+    "SecurityAndAnalysisPropSecretScanning",
+    "SecurityAndAnalysisPropSecretScanningAiDetection",
+    "SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypass",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions",
+    "SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
+    "SecurityAndAnalysisPropSecretScanningPushProtection",
+    "SecurityAndAnalysisPropSecretScanningValidityChecks",
 )

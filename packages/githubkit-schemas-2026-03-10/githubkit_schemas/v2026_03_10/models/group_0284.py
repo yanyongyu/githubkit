@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,26 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class SecretScanningCustomPatternToDelete(GitHubModel):
+    """Secret Scanning Custom Pattern To Delete
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    A custom pattern to delete in a bulk operation.
+    """
+
+    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
+    custom_pattern_version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
 
 
-model_rebuild(ActionsRepositoryPermissions)
+model_rebuild(SecretScanningCustomPatternToDelete)
 
-__all__ = ("ActionsRepositoryPermissions",)
+__all__ = ("SecretScanningCustomPatternToDelete",)

@@ -9,84 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
 
-    A commit.
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
+
+    A credit given to a user for a repository security advisory.
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: _dt.datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-class SimpleCommitTypeForResponse(TypedDict):
-    """Simple Commit
+class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    A commit.
+    A credit given to a user for a repository security advisory.
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: str
-    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
-    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
-
-
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropAuthorTypeForResponse(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterTypeForResponse(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
+    user: SimpleUserTypeForResponse
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
 __all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropAuthorTypeForResponse",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitPropCommitterTypeForResponse",
-    "SimpleCommitType",
-    "SimpleCommitTypeForResponse",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryCreditTypeForResponse",
 )

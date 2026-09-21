@@ -9,35 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1189 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgCampaignsPostBodyOneof0(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof0"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
-        description="Resource-specific metadata."
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
+    )
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
+    )
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Union[
+        Annotated[
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+            Field(min_length=1 if PYDANTIC_V2 else None),
+        ],
+        None,
+    ] = Field(description="The code scanning alerts to include in this campaign")
+    generate_issues: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+model_rebuild(OrgsOrgCampaignsPostBodyOneof0)
 
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
-
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof0",)

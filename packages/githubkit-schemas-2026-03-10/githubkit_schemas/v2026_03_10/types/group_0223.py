@@ -9,29 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleCommitAuthorEmailPatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0224 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
 
-class RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
+class RepositoryRulesetConditionsType(TypedDict):
+    """Repository ruleset conditions for ref names
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Parameters for a repository ruleset ref name condition
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+
+
+class RepositoryRulesetConditionsTypeForResponse(TypedDict):
+    """Repository ruleset conditions for ref names
+
+    Parameters for a repository ruleset ref name condition
+    """
+
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCommitAuthorEmailPatternPropParametersType",
-    "RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse",
+    "RepositoryRulesetConditionsType",
+    "RepositoryRulesetConditionsTypeForResponse",
 )

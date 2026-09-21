@@ -13,155 +13,71 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0283 import (
-    DismissalRequestResponseType,
-    DismissalRequestResponseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class CodeScanningAlertDismissalRequestType(TypedDict):
-    """Code scanning alert dismissal request
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    The campaign metadata and alert stats.
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[CodeScanningAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[CodeScanningAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[CodeScanningAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsType], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestTypeForResponse(TypedDict):
-    """Code scanning alert dismissal request
-
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse
-    ]
-    organization: NotRequired[
-        CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[
-        CodeScanningAlertDismissalRequestPropRequesterTypeForResponse
-    ]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRepositoryType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
+    number: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     name: NotRequired[str]
-    full_name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRepository
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
 
-    The repository the dismissal request is for.
+    The campaign metadata and alert stats.
     """
 
-    id: NotRequired[int]
+    number: int
+    created_at: str
+    updated_at: str
     name: NotRequired[str]
-    full_name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
 
 
-class CodeScanningAlertDismissalRequestPropOrganizationType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
-class CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropOrganization
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsType(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
-
-
-class CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    pr_review_thread_id: NotRequired[str]
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "CodeScanningAlertDismissalRequestPropDataItemsType",
-    "CodeScanningAlertDismissalRequestPropDataItemsTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropOrganizationType",
-    "CodeScanningAlertDismissalRequestPropOrganizationTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRepositoryType",
-    "CodeScanningAlertDismissalRequestPropRepositoryTypeForResponse",
-    "CodeScanningAlertDismissalRequestPropRequesterType",
-    "CodeScanningAlertDismissalRequestPropRequesterTypeForResponse",
-    "CodeScanningAlertDismissalRequestType",
-    "CodeScanningAlertDismissalRequestTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

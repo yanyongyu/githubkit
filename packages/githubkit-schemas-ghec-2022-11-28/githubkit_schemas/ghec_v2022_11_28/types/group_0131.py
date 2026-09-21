@@ -9,89 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class NetworkConfigurationType(TypedDict):
+    """Hosted compute network configuration
 
-    Only allow users with bypass permission to create matching refs.
+    A hosted compute network configuration.
     """
 
-    type: Literal["creation"]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[_dt.datetime, None]
 
 
-class RepositoryRuleCreationTypeForResponse(TypedDict):
-    """creation
+class NetworkConfigurationTypeForResponse(TypedDict):
+    """Hosted compute network configuration
 
-    Only allow users with bypass permission to create matching refs.
+    A hosted compute network configuration.
     """
 
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleDeletionTypeForResponse(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
+    id: str
+    name: str
+    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
+    network_settings_ids: NotRequired[list[str]]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+    created_on: Union[str, None]
 
 
 __all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleCreationTypeForResponse",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleDeletionTypeForResponse",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleNonFastForwardTypeForResponse",
-    "RepositoryRuleRequiredSignaturesType",
-    "RepositoryRuleRequiredSignaturesTypeForResponse",
+    "NetworkConfigurationType",
+    "NetworkConfigurationTypeForResponse",
 )

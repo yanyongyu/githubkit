@@ -11,62 +11,31 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
-
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgType]
+from .group_1303 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    total_count: float
-    runner_groups: list[RunnerGroupsOrgTypeForResponse]
-
-
-class RunnerGroupsOrgType(TypedDict):
-    """RunnerGroupsOrg"""
-
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
 
 
-class RunnerGroupsOrgTypeForResponse(TypedDict):
-    """RunnerGroupsOrg"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    id: float
-    name: str
-    visibility: str
-    default: bool
-    selected_repositories_url: NotRequired[str]
-    runners_url: str
-    hosted_runners_url: NotRequired[str]
-    network_configuration_id: NotRequired[str]
-    inherited: bool
-    inherited_allows_public_repositories: NotRequired[bool]
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse",
-    "RunnerGroupsOrgType",
-    "RunnerGroupsOrgTypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

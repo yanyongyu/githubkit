@@ -10,11 +10,11 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Literal, overload
+from typing import TYPE_CHECKING, Annotated, Literal, overload
 from typing_extensions import deprecated
 from weakref import ref
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.typing import Missing, UnsetType
@@ -26,7 +26,7 @@ if TYPE_CHECKING:
 
     from githubkit import GitHubCore
     from githubkit.response import Response
-    from githubkit.typing import Missing
+    from githubkit.typing import Missing, UniqueList
     from githubkit.utils import UNSET
 
     from ..models import (
@@ -53,6 +53,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
+        EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+        EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202,
@@ -62,6 +64,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
         EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
         EnterpriseTeam,
+        EnterpriseTokenInventoryExport,
+        EnterpriseTokenInventoryItem,
         EnterpriseUserRoleAssignment,
         ExternalVulnerabilitySyncAccepted,
         ExternalVulnerabilitySyncResult,
@@ -133,6 +137,10 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse,
+        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
+        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
+        EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+        EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType,
@@ -141,6 +149,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse,
+        EnterprisesEnterpriseCredentialsExportsPostBodyType,
         EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse,
         EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType,
         EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse,
@@ -153,6 +162,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse,
         EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType,
         EnterpriseTeamTypeForResponse,
+        EnterpriseTokenInventoryExportTypeForResponse,
+        EnterpriseTokenInventoryItemTypeForResponse,
         EnterpriseUserRoleAssignmentTypeForResponse,
         ExternalVulnerabilitySyncAcceptedTypeForResponse,
         ExternalVulnerabilitySyncResultTypeForResponse,
@@ -5886,6 +5897,350 @@ class EnterpriseAdminClient:
             response_model=GetConsumedLicenses,
         )
 
+    @overload
+    def grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
+        ],
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]: ...
+
+    @overload
+    def grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_id: int,
+        credential_type: Literal["classic_pat"],
+        organizations: UniqueList[str],
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]: ...
+
+    @overload
+    def grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_id: str,
+        credential_type: Literal["ssh_key"],
+        organizations: UniqueList[str],
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]: ...
+
+    def grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
+                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]:
+        """enterprise-admin/grant-credential-authorizations
+
+        POST /enterprises/{enterprise}/credential-authorizations
+
+        Authorizes an existing user credential for selected organizations in an enterprise. Currently supports personal access tokens (classic)
+        and user-owned SSH authentication keys.
+        The authenticated GitHub App must be owned by the enterprise or an organization in the enterprise. The credential
+        owner must be a member of every selected organization, and the enterprise must be configured with
+        an enterprise-level SSO provider.
+
+        Credential authorizations remain active if the GitHub App is uninstalled or loses permission. They
+        remain active until explicitly revoked, the credential is revoked or deleted, or the credential
+        owner loses organization membership.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#grant-credential-authorizations-for-enterprise-organizations
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Annotated[
+                    Union[
+                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
+                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
+                    ],
+                    Field(discriminator="credential_type"),
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Annotated[
+                Union[
+                    EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                    EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+                ],
+                Field(discriminator="credential_type"),
+            ],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
+        ],
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]: ...
+
+    @overload
+    async def async_grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_id: int,
+        credential_type: Literal["classic_pat"],
+        organizations: UniqueList[str],
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]: ...
+
+    @overload
+    async def async_grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        credential_id: str,
+        credential_type: Literal["ssh_key"],
+        organizations: UniqueList[str],
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]: ...
+
+    async def async_grant_credential_authorizations(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
+                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        Annotated[
+            Union[
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ],
+            Field(discriminator="credential_type"),
+        ],
+        Union[
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
+        ],
+    ]:
+        """enterprise-admin/grant-credential-authorizations
+
+        POST /enterprises/{enterprise}/credential-authorizations
+
+        Authorizes an existing user credential for selected organizations in an enterprise. Currently supports personal access tokens (classic)
+        and user-owned SSH authentication keys.
+        The authenticated GitHub App must be owned by the enterprise or an organization in the enterprise. The credential
+        owner must be a member of every selected organization, and the enterprise must be configured with
+        an enterprise-level SSO provider.
+
+        Credential authorizations remain active if the GitHub App is uninstalled or loses permission. They
+        remain active until explicitly revoked, the credential is revoked or deleted, or the credential
+        owner loses organization membership.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/credential-authorizations#grant-credential-authorizations-for-enterprise-organizations
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/credential-authorizations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Annotated[
+                    Union[
+                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
+                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
+                    ],
+                    Field(discriminator="credential_type"),
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Annotated[
+                Union[
+                    EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
+                    EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
+                ],
+                Field(discriminator="credential_type"),
+            ],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationError,
+            },
+        )
+
     def revoke_delegated_credential_authorizations(
         self,
         enterprise: str,
@@ -6836,6 +7191,448 @@ class EnterpriseAdminClient:
                 "404": BasicError,
                 "422": BasicError,
             },
+        )
+
+    def list_enterprise_token_inventory(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        token_types: Missing[str] = UNSET,
+        authorization_state: Missing[
+            Literal["currently_authorized", "member_owned_only"]
+        ] = UNSET,
+        owner: Missing[str] = UNSET,
+        organization: Missing[str] = UNSET,
+        application: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseTokenInventoryItem],
+        list[EnterpriseTokenInventoryItemTypeForResponse],
+    ]:
+        """enterprise-admin/list-enterprise-token-inventory
+
+        GET /enterprises/{enterprise}/credentials
+
+        Lists an enterprise's credential inventory: both credentials currently authorized to access the enterprise and credentials owned by enterprise members that have no current enterprise authorization. Covers personal access tokens (classic and fine-grained), OAuth App and GitHub App user tokens, SSH keys, GitHub App installations, and federated credentials, assembled on demand from the canonical sources. Results are paginated with an opaque cursor via the `Link` header; there is no total count.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#list-enterprise-token-inventory
+        """
+
+        from ..models import EnterpriseTokenInventoryItem
+
+        url = f"/enterprises/{enterprise}/credentials"
+
+        params = {
+            "per_page": per_page,
+            "after": after,
+            "token_types": token_types,
+            "authorization_state": authorization_state,
+            "owner": owner,
+            "organization": organization,
+            "application": application,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTokenInventoryItem],
+            error_models={},
+        )
+
+    async def async_list_enterprise_token_inventory(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        token_types: Missing[str] = UNSET,
+        authorization_state: Missing[
+            Literal["currently_authorized", "member_owned_only"]
+        ] = UNSET,
+        owner: Missing[str] = UNSET,
+        organization: Missing[str] = UNSET,
+        application: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[EnterpriseTokenInventoryItem],
+        list[EnterpriseTokenInventoryItemTypeForResponse],
+    ]:
+        """enterprise-admin/list-enterprise-token-inventory
+
+        GET /enterprises/{enterprise}/credentials
+
+        Lists an enterprise's credential inventory: both credentials currently authorized to access the enterprise and credentials owned by enterprise members that have no current enterprise authorization. Covers personal access tokens (classic and fine-grained), OAuth App and GitHub App user tokens, SSH keys, GitHub App installations, and federated credentials, assembled on demand from the canonical sources. Results are paginated with an opaque cursor via the `Link` header; there is no total count.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#list-enterprise-token-inventory
+        """
+
+        from ..models import EnterpriseTokenInventoryItem
+
+        url = f"/enterprises/{enterprise}/credentials"
+
+        params = {
+            "per_page": per_page,
+            "after": after,
+            "token_types": token_types,
+            "authorization_state": authorization_state,
+            "owner": owner,
+            "organization": organization,
+            "application": application,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[EnterpriseTokenInventoryItem],
+            error_models={},
+        )
+
+    @overload
+    def create_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCredentialsExportsPostBodyType] = UNSET,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]: ...
+
+    @overload
+    def create_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        token_types: Missing[list[str]] = UNSET,
+        authorization_state: Missing[
+            Literal["currently_authorized", "member_owned_only"]
+        ] = UNSET,
+        owner: Missing[str] = UNSET,
+        organization: Missing[str] = UNSET,
+        application: Missing[str] = UNSET,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]: ...
+
+    def create_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCredentialsExportsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]:
+        """enterprise-admin/create-enterprise-token-inventory-export
+
+        POST /enterprises/{enterprise}/credentials/exports
+
+        Starts an asynchronous CSV export of the enterprise token inventory and returns an opaque export id to poll. Limited to a small number of exports per enterprise per day.
+
+        The generated file is UTF-8 CSV with a header row, using RFC 4180 field quoting and escaping and LF (`\n`) line endings. Timestamps are ISO-8601 in UTC (for example, `2026-09-15T12:00:00Z`). An empty cell means the value is null or unknown, never `false`. Multi-value cells join their entries with `; ` — this includes `scopes` and `permissions`, where each permission is encoded as a `resource:action` pair (for example, `contents:write; issues:read`). The file has one row per (credential, authorizing organization); the credential columns repeat while `organization_id` and `organization` vary, and a credential with no organization grant appears once with empty organization columns. `authorization_count` is the credential's total number of organization authorizations across the enterprise, plus one when `enterprise_authorized` is true, independent of any filters applied to the export. `credential_id` is a raw source-table id that can collide across credential types, so it is unique only together with `credential_type`, and only for the types that populate it (classic and fine-grained PATs, OAuth and GitHub App user tokens); SSH keys are keyed by `fingerprint`, while GitHub App installations and federated JTIs have no unique per-row column. `owner_type` (`user`, `oauth_application`, or `github_app`) disambiguates the id space of `owner_id`. `expiry_status` is `expires`, `never`, or `unknown` — `unknown` marks a credential whose expiration could not be determined, so a blank `expires_at` is never mistaken for one that never expires.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#create-an-enterprise-token-inventory-export
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseCredentialsExportsPostBody,
+            EnterpriseTokenInventoryExport,
+        )
+
+        url = f"/enterprises/{enterprise}/credentials/exports"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialsExportsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseTokenInventoryExport,
+            error_models={},
+        )
+
+    @overload
+    async def async_create_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCredentialsExportsPostBodyType] = UNSET,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_create_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        token_types: Missing[list[str]] = UNSET,
+        authorization_state: Missing[
+            Literal["currently_authorized", "member_owned_only"]
+        ] = UNSET,
+        owner: Missing[str] = UNSET,
+        organization: Missing[str] = UNSET,
+        application: Missing[str] = UNSET,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]: ...
+
+    async def async_create_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCredentialsExportsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]:
+        """enterprise-admin/create-enterprise-token-inventory-export
+
+        POST /enterprises/{enterprise}/credentials/exports
+
+        Starts an asynchronous CSV export of the enterprise token inventory and returns an opaque export id to poll. Limited to a small number of exports per enterprise per day.
+
+        The generated file is UTF-8 CSV with a header row, using RFC 4180 field quoting and escaping and LF (`\n`) line endings. Timestamps are ISO-8601 in UTC (for example, `2026-09-15T12:00:00Z`). An empty cell means the value is null or unknown, never `false`. Multi-value cells join their entries with `; ` — this includes `scopes` and `permissions`, where each permission is encoded as a `resource:action` pair (for example, `contents:write; issues:read`). The file has one row per (credential, authorizing organization); the credential columns repeat while `organization_id` and `organization` vary, and a credential with no organization grant appears once with empty organization columns. `authorization_count` is the credential's total number of organization authorizations across the enterprise, plus one when `enterprise_authorized` is true, independent of any filters applied to the export. `credential_id` is a raw source-table id that can collide across credential types, so it is unique only together with `credential_type`, and only for the types that populate it (classic and fine-grained PATs, OAuth and GitHub App user tokens); SSH keys are keyed by `fingerprint`, while GitHub App installations and federated JTIs have no unique per-row column. `owner_type` (`user`, `oauth_application`, or `github_app`) disambiguates the id space of `owner_id`. `expiry_status` is `expires`, `never`, or `unknown` — `unknown` marks a credential whose expiration could not be determined, so a blank `expires_at` is never mistaken for one that never expires.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#create-an-enterprise-token-inventory-export
+        """
+
+        from ..models import (
+            EnterprisesEnterpriseCredentialsExportsPostBody,
+            EnterpriseTokenInventoryExport,
+        )
+
+        url = f"/enterprises/{enterprise}/credentials/exports"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCredentialsExportsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseTokenInventoryExport,
+            error_models={},
+        )
+
+    def get_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        export_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]:
+        """enterprise-admin/get-enterprise-token-inventory-export
+
+        GET /enterprises/{enterprise}/credentials/exports/{export_id}
+
+        Returns the status of an enterprise token inventory export. Once the export is ready this redirects to a short-lived URL to download the CSV.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-export
+        """
+
+        from ..models import EnterpriseTokenInventoryExport
+
+        url = f"/enterprises/{enterprise}/credentials/exports/{export_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseTokenInventoryExport,
+            error_models={},
+        )
+
+    async def async_get_enterprise_token_inventory_export(
+        self,
+        enterprise: str,
+        export_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseTokenInventoryExport, EnterpriseTokenInventoryExportTypeForResponse
+    ]:
+        """enterprise-admin/get-enterprise-token-inventory-export
+
+        GET /enterprises/{enterprise}/credentials/exports/{export_id}
+
+        Returns the status of an enterprise token inventory export. Once the export is ready this redirects to a short-lived URL to download the CSV.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-export
+        """
+
+        from ..models import EnterpriseTokenInventoryExport
+
+        url = f"/enterprises/{enterprise}/credentials/exports/{export_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseTokenInventoryExport,
+            error_models={},
+        )
+
+    def get_enterprise_token_inventory_item(
+        self,
+        enterprise: str,
+        inventory_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseTokenInventoryItem, EnterpriseTokenInventoryItemTypeForResponse
+    ]:
+        """enterprise-admin/get-enterprise-token-inventory-item
+
+        GET /enterprises/{enterprise}/credentials/{inventory_id}
+
+        Returns a single credential from the enterprise token inventory. Use the opaque `inventory_id` returned by the list endpoint for the same enterprise.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-item
+        """
+
+        from ..models import EnterpriseTokenInventoryItem
+
+        url = f"/enterprises/{enterprise}/credentials/{inventory_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseTokenInventoryItem,
+            error_models={},
+        )
+
+    async def async_get_enterprise_token_inventory_item(
+        self,
+        enterprise: str,
+        inventory_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseTokenInventoryItem, EnterpriseTokenInventoryItemTypeForResponse
+    ]:
+        """enterprise-admin/get-enterprise-token-inventory-item
+
+        GET /enterprises/{enterprise}/credentials/{inventory_id}
+
+        Returns a single credential from the enterprise token inventory. Use the opaque `inventory_id` returned by the list endpoint for the same enterprise.
+
+        You must be an enterprise owner (or hold a role with the "View enterprise credentials" permission) to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) require the `read:enterprise` scope to access this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-item
+        """
+
+        from ..models import EnterpriseTokenInventoryItem
+
+        url = f"/enterprises/{enterprise}/credentials/{inventory_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseTokenInventoryItem,
+            error_models={},
         )
 
     def list_enterprise_roles(

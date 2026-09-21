@@ -9,48 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all organizations or select individual organization.",
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    selected_organization_ids: Missing[list[int]] = Field(
+    target: Missing[str] = Field(
         default=UNSET,
-        description="List of organization IDs that can access the runner group.",
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
     )
-    runners: Missing[list[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
-    )
-    allows_public_repositories: Missing[bool] = Field(
+    target_id: Missing[int] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
     )
-    restricted_to_workflows: Missing[bool] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
     )
-    selected_workflows: Missing[list[str]] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
     )
-    network_configuration_id: Missing[str] = Field(
+    permissions: Missing[AppPermissions] = Field(
         default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

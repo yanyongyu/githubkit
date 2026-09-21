@@ -9,47 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CheckAnnotationType(TypedDict):
-    """Check Annotation
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    Check Annotation
+    An autolink reference.
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CheckAnnotationTypeForResponse(TypedDict):
-    """Check Annotation
+class AutolinkTypeForResponse(TypedDict):
+    """Autolink reference
 
-    Check Annotation
+    An autolink reference.
     """
 
-    path: str
-    start_line: int
-    end_line: int
-    start_column: Union[int, None]
-    end_column: Union[int, None]
-    annotation_level: Union[str, None]
-    title: Union[str, None]
-    message: Union[str, None]
-    raw_details: Union[str, None]
-    blob_href: str
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
+    updated_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CheckAnnotationType",
-    "CheckAnnotationTypeForResponse",
+    "AutolinkType",
+    "AutolinkTypeForResponse",
 )

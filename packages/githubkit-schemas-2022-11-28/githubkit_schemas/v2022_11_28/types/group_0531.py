@@ -9,44 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class KeyType(TypedDict):
-    """Key
+class TopicType(TypedDict):
+    """Topic
 
-    Key
+    A topic aggregates entities that are related to a subject.
     """
 
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    names: list[str]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class TopicTypeForResponse(TypedDict):
+    """Topic
 
-    Key
+    A topic aggregates entities that are related to a subject.
     """
 
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+    names: list[str]
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "TopicType",
+    "TopicTypeForResponse",
 )

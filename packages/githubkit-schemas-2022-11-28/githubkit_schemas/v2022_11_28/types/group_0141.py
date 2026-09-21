@@ -11,36 +11,49 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0122 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0135 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
 
-    The public key used for setting Codespaces secrets.
+class ActionsPolicyEnterpriseConditionsOneof1Type(TypedDict):
+    """organization_name_and_repository_property
+
+    Conditions to target organizations by name and repositories by property
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CodespacesPublicKeyTypeForResponse(TypedDict):
-    """CodespacesPublicKey
+class ActionsPolicyEnterpriseConditionsOneof1TypeForResponse(TypedDict):
+    """organization_name_and_repository_property
 
-    The public key used for setting Codespaces secrets.
+    Conditions to target organizations by name and repositories by property
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "CodespacesPublicKeyType",
-    "CodespacesPublicKeyTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof1Type",
+    "ActionsPolicyEnterpriseConditionsOneof1TypeForResponse",
 )

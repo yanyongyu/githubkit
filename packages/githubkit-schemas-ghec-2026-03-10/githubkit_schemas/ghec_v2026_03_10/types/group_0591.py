@@ -9,45 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GroupType(TypedDict):
-    """Group"""
+class PullRequestStackPullRequestAllof1Type(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsType]]
-
-
-class GroupTypeForResponse(TypedDict):
-    """Group"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserType, None]
 
 
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
+class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    value: str
-    display_name: str
-
-
-class GroupPropMembersItemsTypeForResponse(TypedDict):
-    """GroupPropMembersItems"""
-
-    value: str
-    display_name: str
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "GroupPropMembersItemsType",
-    "GroupPropMembersItemsTypeForResponse",
-    "GroupType",
-    "GroupTypeForResponse",
+    "PullRequestStackPullRequestAllof1Type",
+    "PullRequestStackPullRequestAllof1TypeForResponse",
 )

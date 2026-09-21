@@ -9,38 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0359 import SimpleCommitType, SimpleCommitTypeForResponse
+from .group_0659 import (
+    WebhooksLabelPropArchivedByType,
+    WebhooksLabelPropArchivedByTypeForResponse,
+)
 
 
-class MergeGroupType(TypedDict):
-    """Merge Group
+class WebhooksLabelType(TypedDict):
+    """Label"""
 
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: Union[_dt.datetime, None]
+    archived_by: Union[WebhooksLabelPropArchivedByType, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
 
+class WebhooksLabelTypeForResponse(TypedDict):
+    """Label"""
 
-class MergeGroupTypeForResponse(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitTypeForResponse
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: Union[str, None]
+    archived_by: Union[WebhooksLabelPropArchivedByTypeForResponse, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
 __all__ = (
-    "MergeGroupType",
-    "MergeGroupTypeForResponse",
+    "WebhooksLabelType",
+    "WebhooksLabelTypeForResponse",
 )

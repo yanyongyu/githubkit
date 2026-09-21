@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,33 +18,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0087 import DependabotAlertPackage
+from .group_0003 import SimpleUser
+from .group_0271 import MinimalRepository
 
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    Details for the vulnerable dependency.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    id: int = Field(description="Unique identifier of the repository invitation.")
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    invitee: Union[SimpleUser, None] = Field()
+    inviter: Union[SimpleUser, None] = Field()
+    permissions: Literal[
+        "read", "write", "admin", "triage", "triage_plus", "maintain"
+    ] = Field(description="The permission associated with the invitation.")
+    created_at: _dt.datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
     )
-    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ] = Field(
-        default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
-    )
+    url: str = Field(description="URL for the repository invitation")
+    html_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(DependabotAlertPropDependency)
+model_rebuild(RepositoryInvitation)
 
-__all__ = ("DependabotAlertPropDependency",)
+__all__ = ("RepositoryInvitation",)

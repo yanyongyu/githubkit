@@ -14,35 +14,29 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestSimplePropHead(GitHubModel):
-    """PullRequestSimplePropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[Repository, None] = Field()
-    sha: str = Field()
-    user: Union[SimpleUser, None] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestSimplePropBase(GitHubModel):
-    """PullRequestSimplePropBase"""
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: Union[SimpleUser, None] = Field()
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
+    )
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestSimplePropHead)
-model_rebuild(PullRequestSimplePropBase)
+model_rebuild(ApiInsightsRouteStatsItems)
 
-__all__ = (
-    "PullRequestSimplePropBase",
-    "PullRequestSimplePropHead",
-)
+__all__ = ("ApiInsightsRouteStatsItems",)

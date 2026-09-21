@@ -13,99 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0236 import IssueType, IssueTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0641 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0851 import (
-    WebhookIssuesEditedPropIssueType,
-    WebhookIssuesEditedPropIssueTypeForResponse,
-)
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssuesEditedType(TypedDict):
-    """issues edited event"""
+class WebhookIssueDependenciesBlockingAddedType(TypedDict):
+    """blocking issue added event"""
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocking_added"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueType]
+    blocked_issue_repo: NotRequired[RepositoryType]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesEditedPropIssueType
-    label: NotRequired[WebhooksLabelType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesEditedTypeForResponse(TypedDict):
-    """issues edited event"""
+class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
+    """blocking issue added event"""
 
-    action: Literal["edited"]
-    changes: WebhookIssuesEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["blocking_added"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueTypeForResponse]
+    blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesEditedPropIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookIssuesEditedPropChangesType(TypedDict):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
-
-
-class WebhookIssuesEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChanges
-
-    The changes to the issue.
-    """
-
-    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyTypeForResponse]
-    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleTypeForResponse]
-
-
-class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-class WebhookIssuesEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookIssuesEditedPropChangesPropTitle"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookIssuesEditedPropChangesPropBodyType",
-    "WebhookIssuesEditedPropChangesPropBodyTypeForResponse",
-    "WebhookIssuesEditedPropChangesPropTitleType",
-    "WebhookIssuesEditedPropChangesPropTitleTypeForResponse",
-    "WebhookIssuesEditedPropChangesType",
-    "WebhookIssuesEditedPropChangesTypeForResponse",
-    "WebhookIssuesEditedType",
-    "WebhookIssuesEditedTypeForResponse",
+    "WebhookIssueDependenciesBlockingAddedType",
+    "WebhookIssueDependenciesBlockingAddedTypeForResponse",
 )

@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ImmutableReleasesOrganizationSettingsType(TypedDict):
+    """Check immutable releases organization settings
 
-    name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class ActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable"""
+class ImmutableReleasesOrganizationSettingsTypeForResponse(TypedDict):
+    """Check immutable releases organization settings
 
-    name: str
-    value: str
-    created_at: str
-    updated_at: str
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsVariableType",
-    "ActionsVariableTypeForResponse",
+    "ImmutableReleasesOrganizationSettingsType",
+    "ImmutableReleasesOrganizationSettingsTypeForResponse",
 )

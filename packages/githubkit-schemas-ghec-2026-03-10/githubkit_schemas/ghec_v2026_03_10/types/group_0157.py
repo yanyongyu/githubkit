@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0158 import (
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    restricted_file_extensions: list[str]
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
+    """
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRulePullRequestTypeForResponse(TypedDict):
+    """pull_request
 
-    restricted_file_extensions: list[str]
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
+    """
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionPropParametersType",
-    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestTypeForResponse",
 )

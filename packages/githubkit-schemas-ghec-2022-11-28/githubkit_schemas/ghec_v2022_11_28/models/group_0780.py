@@ -9,44 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0779 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
-)
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
+class WebhookForkPropForkeeAllof0PropPermissions(GitHubModel):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[_dt.datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropMilestone)
+model_rebuild(WebhookForkPropForkeeAllof0PropPermissions)
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestone",)
+__all__ = ("WebhookForkPropForkeeAllof0PropPermissions",)

@@ -12,18 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+class Tag(GitHubModel):
+    """Tag
 
-    value: Missing[str] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET, alias="$ref")
-    display: Missing[str] = Field(default=UNSET)
+    Tag
+    """
+
+    name: str = Field()
+    commit: TagPropCommit = Field()
+    zipball_url: str = Field()
+    tarball_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
+class TagPropCommit(GitHubModel):
+    """TagPropCommit"""
 
-__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Tag)
+model_rebuild(TagPropCommit)
+
+__all__ = (
+    "Tag",
+    "TagPropCommit",
+)

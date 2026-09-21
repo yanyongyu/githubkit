@@ -9,24 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
-
-    total_count: int
-    platforms: list[str]
-
-
-class OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersPlatformsGetResponse200"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
     total_count: int
-    platforms: list[str]
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
+
+
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+
+
+class VisualStudioSubscriptionAssignmentType(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
+
+
+class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersPlatformsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
+    "VisualStudioSubscriptionAssignmentType",
+    "VisualStudioSubscriptionAssignmentTypeForResponse",
 )

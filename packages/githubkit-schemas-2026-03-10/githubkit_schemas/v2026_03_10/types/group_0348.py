@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningAiScanEnablementType(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    AI Scan enablement for a repository.
+    """
+
+    pr_scan: Literal["enabled", "disabled"]
 
 
-class CodeScanningSarifsStatusTypeForResponse(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[list[str], None]]
+    AI Scan enablement for a repository.
+    """
+
+    pr_scan: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "CodeScanningSarifsStatusType",
-    "CodeScanningSarifsStatusTypeForResponse",
+    "CodeScanningAiScanEnablementType",
+    "CodeScanningAiScanEnablementTypeForResponse",
 )

@@ -18,46 +18,92 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GroupResponse(GitHubModel):
-    """GroupResponse"""
+class PrivateVulnerabilityReportCreate(GitHubModel):
+    """PrivateVulnerabilityReportCreate"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
+    )
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    vulnerabilities: Missing[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]
     ] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        description="An array of products affected by the vulnerability detailed in a repository security advisory.",
     )
-    display_name: Missing[Union[str, None]] = Field(
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    severity: Missing[Union[Literal["critical", "high", "medium", "low"], None]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="displayName",
-        description="A human-readable name for a security group.",
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
     )
-    members: Missing[list[GroupResponsePropMembersItems]] = Field(
-        default=UNSET, description="The group members."
-    )
-
-
-class GroupResponsePropMembersItems(GitHubModel):
-    """GroupResponsePropMembersItems"""
-
-    value: str = Field(description="The local unique identifier for the member")
-    ref: str = Field(alias="$ref")
-    display: Missing[str] = Field(
-        default=UNSET, description="The display name associated with the member"
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
     )
 
 
-model_rebuild(GroupResponse)
-model_rebuild(GroupResponsePropMembersItems)
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage = (
+        Field(description="The name of the package affected by the vulnerability.")
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(PrivateVulnerabilityReportCreate)
+model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItems)
+model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "GroupResponse",
-    "GroupResponsePropMembersItems",
+    "PrivateVulnerabilityReportCreate",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
 )

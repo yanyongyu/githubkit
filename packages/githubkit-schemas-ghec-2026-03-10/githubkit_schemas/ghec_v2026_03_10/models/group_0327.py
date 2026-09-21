@@ -18,20 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldSingleSelectOption(GitHubModel):
-    """ProjectsV2FieldSingleSelectOption"""
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
     name: Missing[str] = Field(
-        default=UNSET, description="The display name of the option."
+        default=UNSET, description="The name of the custom role."
     )
-    color: Missing[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ] = Field(default=UNSET, description="The color associated with the option.")
     description: Missing[str] = Field(
-        default=UNSET, description="The description of the option."
+        default=UNSET,
+        description="A short description about the intended use of this role or the permissions it grants.",
+    )
+    permissions: Missing[list[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
     )
 
 
-model_rebuild(ProjectsV2FieldSingleSelectOption)
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-__all__ = ("ProjectsV2FieldSingleSelectOption",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)

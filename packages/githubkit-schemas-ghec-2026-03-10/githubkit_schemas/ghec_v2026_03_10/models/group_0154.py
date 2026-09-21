@@ -17,22 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0155 import RepositoryRuleMaxFilePathLengthPropParameters
+from .group_0155 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleMaxFilePathLength(GitHubModel):
-    """max_file_path_length
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
 
-    Prevent commits that include file paths that exceed the specified character
-    limit from being pushed to the commit graph.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleMaxFilePathLength)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRuleMaxFilePathLength",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

@@ -18,138 +18,62 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0283 import DismissalRequestResponse
+from .group_0003 import SimpleUser
+from .group_0108 import Team
 
 
-class CodeScanningAlertDismissalRequest(GitHubModel):
-    """Code scanning alert dismissal request
+class CampaignSummary(GitHubModel):
+    """Campaign summary
 
-    Alert dismisal request made by a user asking to dismiss a code scanning alert.
+    The campaign metadata and alert stats.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+    number: int = Field(description="The number of the newly created campaign")
+    created_at: _dt.datetime = Field(
+        description="The date and time the campaign was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    number: Missing[int] = Field(
+    updated_at: _dt.datetime = Field(
+        description="The date and time the campaign was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The campaign name")
+    description: str = Field(description="The campaign description")
+    managers: list[SimpleUser] = Field(description="The campaign managers")
+    team_managers: Missing[list[Team]] = Field(
+        default=UNSET, description="The campaign team managers"
+    )
+    published_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
+        description="The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    repository: Missing[CodeScanningAlertDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
+    ends_at: _dt.datetime = Field(
+        description="The date and time the campaign has ended, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    organization: Missing[CodeScanningAlertDismissalRequestPropOrganization] = Field(
+    closed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
+        description="The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
     )
-    requester: Missing[CodeScanningAlertDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal request."
+    state: Literal["open", "closed"] = Field(
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
     )
-    request_type: Missing[str] = Field(
-        default=UNSET, description="The type of request."
+    contact_link: Union[str, None] = Field(
+        description="The contact link of the campaign."
     )
-    data: Missing[Union[list[CodeScanningAlertDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET, description="Data describing the dismissal request metadata."
-        )
-    )
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the dismissal request.",
-    )
-    status: Missing[Literal["pending", "denied", "approved", "expired"]] = Field(
-        default=UNSET, description="The status of the dismissal request."
-    )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
-    )
-    expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request was created.",
-    )
-    responses: Missing[Union[list[DismissalRequestResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
-    )
+    alert_stats: Missing[CampaignSummaryPropAlertStats] = Field(default=UNSET)
 
 
-class CodeScanningAlertDismissalRequestPropRepository(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRepository
+class CampaignSummaryPropAlertStats(GitHubModel):
+    """CampaignSummaryPropAlertStats"""
 
-    The repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the repository the dismissal request is for.",
-    )
-    full_name: Missing[str] = Field(
-        default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
-    )
+    open_count: int = Field(description="The number of open alerts")
+    closed_count: int = Field(description="The number of closed alerts")
+    in_progress_count: int = Field(description="The number of in-progress alerts")
 
 
-class CodeScanningAlertDismissalRequestPropOrganization(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the organization."
-    )
-
-
-class CodeScanningAlertDismissalRequestPropRequester(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who requested the dismissal request.",
-    )
-
-
-class CodeScanningAlertDismissalRequestPropDataItems(GitHubModel):
-    """CodeScanningAlertDismissalRequestPropDataItems"""
-
-    reason: Missing[str] = Field(
-        default=UNSET, description="The reason for the dismissal request."
-    )
-    alert_number: Missing[str] = Field(default=UNSET, description="alert number.")
-    pr_review_thread_id: Missing[str] = Field(
-        default=UNSET, description="The ID of the pull request review thread."
-    )
-
-
-model_rebuild(CodeScanningAlertDismissalRequest)
-model_rebuild(CodeScanningAlertDismissalRequestPropRepository)
-model_rebuild(CodeScanningAlertDismissalRequestPropOrganization)
-model_rebuild(CodeScanningAlertDismissalRequestPropRequester)
-model_rebuild(CodeScanningAlertDismissalRequestPropDataItems)
+model_rebuild(CampaignSummary)
+model_rebuild(CampaignSummaryPropAlertStats)
 
 __all__ = (
-    "CodeScanningAlertDismissalRequest",
-    "CodeScanningAlertDismissalRequestPropDataItems",
-    "CodeScanningAlertDismissalRequestPropOrganization",
-    "CodeScanningAlertDismissalRequestPropRepository",
-    "CodeScanningAlertDismissalRequestPropRequester",
+    "CampaignSummary",
+    "CampaignSummaryPropAlertStats",
 )

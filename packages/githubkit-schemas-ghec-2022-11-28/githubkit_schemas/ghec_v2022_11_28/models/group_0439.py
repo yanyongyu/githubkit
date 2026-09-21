@@ -9,44 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSymlink(GitHubModel):
-    """Symlink Content
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    An object describing a symlink
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    type: Literal["symlink"] = Field()
-    target: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSymlinkPropLinks = Field(alias="_links")
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
+    )
 
 
-class ContentSymlinkPropLinks(GitHubModel):
-    """ContentSymlinkPropLinks"""
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSymlink)
-model_rebuild(ContentSymlinkPropLinks)
-
-__all__ = (
-    "ContentSymlink",
-    "ContentSymlinkPropLinks",
-)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

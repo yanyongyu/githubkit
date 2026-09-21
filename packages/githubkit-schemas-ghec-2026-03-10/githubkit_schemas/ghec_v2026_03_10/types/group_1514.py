@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    status: Literal["approve", "reject"]
-    message: str
+    name: str
+    value: str
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+class ReposOwnerRepoActionsVariablesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    status: Literal["approve", "reject"]
-    message: str
+    name: str
+    value: str
 
 
 __all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType",
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsVariablesPostBodyType",
+    "ReposOwnerRepoActionsVariablesPostBodyTypeForResponse",
 )

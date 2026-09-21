@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,19 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0542 import EnterpriseWebhooks
-from .group_0543 import SimpleInstallation
-from .group_0544 import OrganizationSimpleWebhooks
-from .group_0545 import RepositoryWebhooks
-from .group_0553 import WebhooksUser
-from .group_0865 import WebhookPullRequestAssignedPropPullRequest
+from .group_0563 import EnterpriseWebhooks
+from .group_0564 import SimpleInstallation
+from .group_0565 import OrganizationSimpleWebhooks
+from .group_0566 import RepositoryWebhooks
+from .group_0601 import WebhooksProjectColumn
 
 
-class WebhookPullRequestAssigned(GitHubModel):
-    """pull_request assigned event"""
+class WebhookProjectColumnMoved(GitHubModel):
+    """project_column moved event"""
 
-    action: Literal["assigned"] = Field()
-    assignee: Union[WebhooksUser, None] = Field(title="User")
+    action: Literal["moved"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,22 +39,20 @@ class WebhookPullRequestAssigned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestAssignedPropPullRequest = Field(
-        title="Pull Request"
-    )
-    repository: RepositoryWebhooks = Field(
+    project_column: WebhooksProjectColumn = Field(title="Project Column")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestAssigned)
+model_rebuild(WebhookProjectColumnMoved)
 
-__all__ = ("WebhookPullRequestAssigned",)
+__all__ = ("WebhookProjectColumnMoved",)

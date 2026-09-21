@@ -9,35 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0097 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class ExternalVulnerabilitySyncAcceptedType(TypedDict):
-    """External Vulnerability Sync Accepted
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
-    """
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
 
-    id: str
-    url: str
-    status: Literal["queued"]
+
+class CodeScanningAlertInstanceTypeForResponse(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
 
 
-class ExternalVulnerabilitySyncAcceptedTypeForResponse(TypedDict):
-    """External Vulnerability Sync Accepted
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
-    """
+    text: NotRequired[str]
+    markdown: NotRequired[str]
 
-    id: str
-    url: str
-    status: Literal["queued"]
+
+class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
 __all__ = (
-    "ExternalVulnerabilitySyncAcceptedType",
-    "ExternalVulnerabilitySyncAcceptedTypeForResponse",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstancePropMessageTypeForResponse",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstanceTypeForResponse",
 )

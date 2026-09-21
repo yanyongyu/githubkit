@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    A custom pattern to delete in a bulk operation.
+    """
+
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
-    """ActionsRepositoryPermissions"""
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    A custom pattern to delete in a bulk operation.
+    """
+
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ActionsRepositoryPermissionsType",
-    "ActionsRepositoryPermissionsTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

@@ -9,41 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
+    pat_request_ids: Missing[list[int]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+    )
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the requests."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the requests. Max 1024 characters.",
     )
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
-
-__all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)

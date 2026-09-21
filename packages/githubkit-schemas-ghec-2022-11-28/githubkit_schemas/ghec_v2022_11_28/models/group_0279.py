@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,53 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CredentialAuthorization(GitHubModel):
-    """Credential Authorization
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    Credential Authorization
-    """
-
-    login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(
-        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    credential_type: Literal[
-        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
-    ] = Field(description="Human-readable description of the credential type.")
-    token_last_eight: Missing[str] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="Last eight characters of the credential. Only included in responses with a credential_type of personal access token, OAuth app token, or GitHub app token.",
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
     )
-    credential_authorized_at: _dt.datetime = Field(
-        description="Date when the credential was authorized for use."
-    )
-    scopes: Missing[list[str]] = Field(
-        default=UNSET, description="List of OAuth scopes the token has been granted."
-    )
-    fingerprint: Missing[str] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="Unique string to distinguish the credential. Only included in responses with a credential_type of SSH key.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    credential_accessed_at: Union[_dt.datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed"
-    )
-    authorized_credential_id: Union[int, None] = Field(
-        description="The ID of the underlying token or key that was authorized by the user. This will remain unchanged across authorizations of the token or key."
-    )
-    authorized_credential_title: Missing[Union[str, None]] = Field(
+    selected_actions_url: Missing[str] = Field(
         default=UNSET,
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
-    authorized_credential_note: Missing[Union[str, None]] = Field(
+    sha_pinning_required: Missing[bool] = Field(
         default=UNSET,
-        description="The note given to the token. This will only be present when the credential is a token.",
-    )
-    authorized_credential_expires_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The expiry for the token. This will only be present when the credential is a token.",
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(CredentialAuthorization)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = ("CredentialAuthorization",)
+__all__ = ("ActionsOrganizationPermissions",)

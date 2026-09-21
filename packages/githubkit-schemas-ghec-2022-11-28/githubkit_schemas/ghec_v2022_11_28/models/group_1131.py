@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,49 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksGetResponse400(GitHubModel):
-    """AgentsTasksGetResponse400
+class AgentsReposOwnerRepoTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[list[AgentsTasksGetResponse400PropErrorsItems]] = Field(
+    prompt: str = Field(description="The user's prompt for the agent")
+    model: Missing[str] = Field(
         default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="The model to use for this task. The allowed models may change over time and depend on the user's GitHub Copilot plan and organization policies. Currently supported values: `claude-sonnet-4.6`, `claude-opus-4.6`, `gpt-5.2-codex`, `gpt-5.3-codex`, `gpt-5.4`, `claude-sonnet-4.5`, `claude-opus-4.5`",
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsTasksGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    custom_agent: Missing[str] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="Optional identifier for a custom agent to use for this task. Use the custom agent's filename without the extension - for example, for a `.github/agents/performance-optimizer.agent.md` custom agent, use `performance-optimizer`.",
+    )
+    create_pull_request: Missing[bool] = Field(
+        default=UNSET, description="Whether to create a PR."
+    )
+    base_ref: Missing[str] = Field(
+        default=UNSET, description="Base ref for new branch/PR"
+    )
+    head_ref: Missing[str] = Field(
+        default=UNSET,
+        description="Head ref for existing branch/PR. If provided with `base_ref`, the agent looks up open PR context for `head_ref` targeting `base_ref` and commits to `head_ref` instead of creating a new branch.",
     )
 
 
-model_rebuild(AgentsTasksGetResponse400)
-model_rebuild(AgentsTasksGetResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoTasksPostBody)
 
-__all__ = (
-    "AgentsTasksGetResponse400",
-    "AgentsTasksGetResponse400PropErrorsItems",
-)
+__all__ = ("AgentsReposOwnerRepoTasksPostBody",)

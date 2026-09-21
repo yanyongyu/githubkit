@@ -14,13 +14,12 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0474 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class ParentIssueRemovedIssueEventType(TypedDict):
-    """Parent-issue Removed Issue Event
+class UnassignedIssueEventType(TypedDict):
+    """Unassigned Issue Event
 
-    Parent-issue Removed Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -32,13 +31,14 @@ class ParentIssueRemovedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    parent_issue: Union[None, IssueReferenceType, None]
+    assignee: SimpleUserType
+    assigner: SimpleUserType
 
 
-class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Parent-issue Removed Issue Event
+class UnassignedIssueEventTypeForResponse(TypedDict):
+    """Unassigned Issue Event
 
-    Parent-issue Removed Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -50,10 +50,11 @@ class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    assigner: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "ParentIssueRemovedIssueEventType",
-    "ParentIssueRemovedIssueEventTypeForResponse",
+    "UnassignedIssueEventType",
+    "UnassignedIssueEventTypeForResponse",
 )

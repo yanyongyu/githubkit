@@ -12,51 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningLocationDiscussionBodyType(TypedDict):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
-    """
-
-    discussion_body_url: str
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
-    """
-
-    discussion_body_url: str
-
-
-class SecretScanningLocationPullRequestCommentType(TypedDict):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str
-    html_url: NotRequired[str]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "SecretScanningLocationDiscussionBodyType",
-    "SecretScanningLocationDiscussionBodyTypeForResponse",
-    "SecretScanningLocationPullRequestCommentType",
-    "SecretScanningLocationPullRequestCommentTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

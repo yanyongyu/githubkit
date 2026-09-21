@@ -9,35 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
+class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
+    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
 
 
-class InteractionLimitTypeForResponse(TypedDict):
-    """Interaction Restrictions
+class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
 
 
 __all__ = (
-    "InteractionLimitType",
-    "InteractionLimitTypeForResponse",
+    "OrganizationCustomRepositoryRoleCreateSchemaType",
+    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
 )

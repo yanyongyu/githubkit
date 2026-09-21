@@ -9,42 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0477 import IssueEventIntent
 
 
-class AssignedIssueEvent(GitHubModel):
-    """Assigned Issue Event
+class GitCommit(GitHubModel):
+    """Git Commit
 
-    Assigned Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int = Field()
+    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    author: GitCommitPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    committer: GitCommitPropCommitter = Field(
+        description="Identifying information for the git-user"
+    )
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: GitCommitPropTree = Field()
+    parents: list[GitCommitPropParentsItems] = Field()
+    verification: GitCommitPropVerification = Field()
+    html_url: str = Field()
 
 
-model_rebuild(AssignedIssueEvent)
+class GitCommitPropAuthor(GitHubModel):
+    """GitCommitPropAuthor
 
-__all__ = ("AssignedIssueEvent",)
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropCommitter(GitHubModel):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: _dt.datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
+
+
+class GitCommitPropTree(GitHubModel):
+    """GitCommitPropTree"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+
+
+class GitCommitPropParentsItems(GitHubModel):
+    """GitCommitPropParentsItems"""
+
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
+
+
+class GitCommitPropVerification(GitHubModel):
+    """GitCommitPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+    verified_at: Union[str, None] = Field()
+
+
+model_rebuild(GitCommit)
+model_rebuild(GitCommitPropAuthor)
+model_rebuild(GitCommitPropCommitter)
+model_rebuild(GitCommitPropTree)
+model_rebuild(GitCommitPropParentsItems)
+model_rebuild(GitCommitPropVerification)
+
+__all__ = (
+    "GitCommit",
+    "GitCommitPropAuthor",
+    "GitCommitPropCommitter",
+    "GitCommitPropParentsItems",
+    "GitCommitPropTree",
+    "GitCommitPropVerification",
+)

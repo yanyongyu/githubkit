@@ -13,25 +13,29 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleDetailedOneof2Type(TypedDict):
-    """RepositoryRuleDetailedOneof2"""
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    type: Literal["deletion"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Results of a successful merge upstream request
+    """
+
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class RepositoryRuleDetailedOneof2TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof2"""
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    type: Literal["deletion"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Results of a successful merge upstream request
+    """
+
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof2Type",
-    "RepositoryRuleDetailedOneof2TypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )

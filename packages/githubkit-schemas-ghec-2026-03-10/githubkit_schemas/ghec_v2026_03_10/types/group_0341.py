@@ -9,51 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0336 import LinkType, LinkTypeForResponse
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    External Groups to be mapped to a team for membership
-    """
-
-    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
-
-
-class GroupMappingTypeForResponse(TypedDict):
-    """GroupMapping
-
-    External Groups to be mapped to a team for membership
-    """
-
-    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
 
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
+class PullRequestSimplePropLinksTypeForResponse(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
-
-
-class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "GroupMappingPropGroupsItemsType",
-    "GroupMappingPropGroupsItemsTypeForResponse",
-    "GroupMappingType",
-    "GroupMappingTypeForResponse",
+    "PullRequestSimplePropLinksType",
+    "PullRequestSimplePropLinksTypeForResponse",
 )

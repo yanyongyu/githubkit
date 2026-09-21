@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class GetAuditLogStreamConfigsItems(GitHubModel):
+    """GetAuditLogStreamConfigsItems"""
 
-    Details for the vulnerable package.
-    """
+    id: Missing[int] = Field(default=UNSET)
+    stream_type: Missing[str] = Field(default=UNSET)
+    stream_details: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
-    )
-    name: str = Field(description="The unique package name within its ecosystem.")
 
+model_rebuild(GetAuditLogStreamConfigsItems)
 
-model_rebuild(DependabotAlertPackage)
-
-__all__ = ("DependabotAlertPackage",)
+__all__ = ("GetAuditLogStreamConfigsItems",)

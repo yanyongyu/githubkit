@@ -15,22 +15,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0197 import RepositoryRulesetConditionsPropRefName
-from .group_0201 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
+class PullRequestStack(GitHubModel):
+    """Pull Request Stack
 
-class OrgRulesetConditionsOneof1(GitHubModel):
-    """repository_id_and_ref_name
-
-    Conditions to target repositories by id and refs by name
+    The stack information associated with a pull request.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
+    base: PullRequestStackPropBase = Field()
+    size: Missing[int] = Field(
+        default=UNSET, description="The total number of pull requests in the stack."
+    )
+    position: Missing[int] = Field(
+        default=UNSET,
+        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
+    )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the stack that this pull request belongs to.",
+    )
+    number: Missing[int] = Field(
+        default=UNSET,
+        description="The number of the stack that this pull request belongs to.",
     )
 
 
-model_rebuild(OrgRulesetConditionsOneof1)
+class PullRequestStackPropBase(GitHubModel):
+    """PullRequestStackPropBase"""
 
-__all__ = ("OrgRulesetConditionsOneof1",)
+    ref: str = Field(
+        description="The base ref of the stack this pull request belongs to."
+    )
+    sha: str = Field(
+        description="The base SHA of the stack this pull request belongs to."
+    )
+
+
+model_rebuild(PullRequestStack)
+model_rebuild(PullRequestStackPropBase)
+
+__all__ = (
+    "PullRequestStack",
+    "PullRequestStackPropBase",
+)

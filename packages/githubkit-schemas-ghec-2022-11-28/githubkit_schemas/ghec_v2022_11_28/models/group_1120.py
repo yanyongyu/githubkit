@@ -18,80 +18,93 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1121 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_1122 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
+from .group_0003 import SimpleUser
+from .group_0386 import Deployment
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
+class WebhookWorkflowJobQueued(GitHubModel):
+    """workflow_job queued event"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
+    action: Literal["queued"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-    ] = Field(
-        default=UNSET, description="Custom agent metadata associated with this task"
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJob = Field()
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0)
+class WebhookWorkflowJobQueuedPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobQueuedPropWorkflowJob"""
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0",)
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[str] = Field()
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field()
+    runner_group_name: Union[str, None] = Field()
+    runner_id: Union[int, None] = Field()
+    runner_name: Union[str, None] = Field()
+    started_at: _dt.datetime = Field()
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    steps: list[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems] = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["completed", "in_progress", "queued", "pending"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobQueued)
+model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobQueued",
+    "WebhookWorkflowJobQueuedPropWorkflowJob",
+    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
+)

@@ -9,40 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0141 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
-)
 
+class CustomPropertySetPayloadType(TypedDict):
+    """Custom Property Set Payload
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Custom property set payload
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
-
-
-class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
-    """
-
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
+    require_explicit_values: NotRequired[bool]
+
+
+class CustomPropertySetPayloadTypeForResponse(TypedDict):
+    """Custom Property Set Payload
+
+    Custom property set payload
+    """
+
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksType",
-    "RepositoryRuleRequiredStatusChecksTypeForResponse",
+    "CustomPropertySetPayloadType",
+    "CustomPropertySetPayloadTypeForResponse",
 )

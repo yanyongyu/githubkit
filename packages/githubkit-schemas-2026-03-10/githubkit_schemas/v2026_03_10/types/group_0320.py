@@ -9,66 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeQualitySetupType(TypedDict):
-    """CodeQualitySetup
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Dependabot security updates
 
-    Configuration for code quality setup.
+    Check Dependabot security updates
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[Literal["weekly"], None]]
-    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
+    enabled: bool
+    paused: bool
 
 
-class CodeQualitySetupTypeForResponse(TypedDict):
-    """CodeQualitySetup
+class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
+    """Check Dependabot security updates
 
-    Configuration for code quality setup.
+    Check Dependabot security updates
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[Literal["weekly"], None]]
-    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
+    enabled: bool
+    paused: bool
 
 
 __all__ = (
-    "CodeQualitySetupType",
-    "CodeQualitySetupTypeForResponse",
+    "CheckAutomatedSecurityFixesType",
+    "CheckAutomatedSecurityFixesTypeForResponse",
 )

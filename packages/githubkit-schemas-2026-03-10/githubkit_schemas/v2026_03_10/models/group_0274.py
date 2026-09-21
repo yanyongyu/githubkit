@@ -10,52 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0273 import RulesetVersionPropActor
+from .group_0276 import RulesetVersionWithStateAllof1PropState
 
 
-class Artifact(GitHubModel):
-    """Artifact
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
 
-    An artifact
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The name of the artifact.")
-    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
-    url: str = Field()
-    archive_download_url: str = Field()
-    expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[_dt.datetime, None] = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    digest: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
+    updated_at: _dt.datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
+    )
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
-    """ArtifactPropWorkflowRun"""
+model_rebuild(RulesetVersionWithState)
 
-    id: Missing[int] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    head_branch: Missing[str] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Artifact)
-model_rebuild(ArtifactPropWorkflowRun)
-
-__all__ = (
-    "Artifact",
-    "ArtifactPropWorkflowRun",
-)
+__all__ = ("RulesetVersionWithState",)

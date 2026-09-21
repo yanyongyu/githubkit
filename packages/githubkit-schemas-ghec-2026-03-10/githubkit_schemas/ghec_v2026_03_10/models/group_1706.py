@@ -11,18 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UserInstallationsGetResponse200(GitHubModel):
-    """UserInstallationsGetResponse200"""
+class ReposOwnerRepoStacksStackNumberAddPostBody(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers to append to the stack, from the current top upward.",
+    )
 
 
-model_rebuild(UserInstallationsGetResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostBody)
 
-__all__ = ("UserInstallationsGetResponse200",)
+__all__ = ("ReposOwnerRepoStacksStackNumberAddPostBody",)

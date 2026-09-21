@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,34 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheList(GitHubModel):
-    """Repository actions caches
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
-    Repository actions caches
-    """
-
-    total_count: int = Field(description="Total number of caches")
-    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
-        description="Array of caches"
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
+    )
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The first commit sha before the push evaluation."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The last commit sha in the push evaluation."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
     )
 
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
-    """ActionsCacheListPropActionsCachesItems"""
+model_rebuild(RuleSuitesItems)
 
-    id: Missing[int] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET)
-    key: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    size_in_bytes: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ActionsCacheList)
-model_rebuild(ActionsCacheListPropActionsCachesItems)
-
-__all__ = (
-    "ActionsCacheList",
-    "ActionsCacheListPropActionsCachesItems",
-)
+__all__ = ("RuleSuitesItems",)

@@ -9,32 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
-from .group_0118 import RepositoryRulesetConditionsPropRefName
-from .group_0124 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
-)
 
 
-class EnterpriseRulesetConditionsOneof4(GitHubModel):
-    """organization_property_and_repository_name
+class ExternalVulnerabilitySyncStatus(GitHubModel):
+    """External Vulnerability Sync Status
 
-    Conditions to target organizations by property and all repositories
+    Status of an in-progress external vulnerability sync operation
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    id: str = Field(description="Job status ID")
+    status: Literal["processing"] = Field(description="Current processing status")
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof4)
+model_rebuild(ExternalVulnerabilitySyncStatus)
 
-__all__ = ("EnterpriseRulesetConditionsOneof4",)
+__all__ = ("ExternalVulnerabilitySyncStatus",)

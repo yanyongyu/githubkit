@@ -9,70 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
-
-
-class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserType
-    ]
-
-
-class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserTypeForResponse
-    ]
-
-
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
-
-
-class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersTypeForResponse",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersUserTypeForResponse",
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
 )

@@ -9,40 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPatternValidationError(GitHubModel):
-    """Secret Scanning Custom Pattern Validation Error
+class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    A validation error for a custom pattern in a batch operation.
-    """
-
-    code: Missing[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ] = Field(
-        default=UNSET, description="A machine-readable code describing the error."
-    )
-    message: Missing[str] = Field(
-        default=UNSET, description="A human-readable description of the error."
+    max_file_path_length: int = Field(
+        le=32767.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths.",
     )
 
 
-model_rebuild(SecretScanningCustomPatternValidationError)
+model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
 
-__all__ = ("SecretScanningCustomPatternValidationError",)
+__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)

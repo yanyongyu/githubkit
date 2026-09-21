@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleParamsProofOfPresence(GitHubModel):
-    """ProofOfPresence
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    Require a fresh authentication before a pull request can be merged.
+    Custom property name and associated value
     """
 
-    required_authentication_level: Literal["reauth", "mfa"] = Field(
-        description="The level of authentication required before a pull request can be merged."
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
     )
 
 
-model_rebuild(RepositoryRuleParamsProofOfPresence)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("RepositoryRuleParamsProofOfPresence",)
+__all__ = ("CustomPropertyValue",)

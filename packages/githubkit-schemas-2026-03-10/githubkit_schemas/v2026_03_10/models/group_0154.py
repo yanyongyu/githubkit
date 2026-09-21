@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +19,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsSubjectStatsItems(GitHubModel):
-    """ApiInsightsSubjectStatsItems"""
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-    subject_type: Missing[str] = Field(default=UNSET)
-    subject_name: Missing[str] = Field(default=UNSET)
-    subject_id: Missing[int] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    Organization variable for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsSubjectStatsItems)
+model_rebuild(OrganizationActionsVariable)
 
-__all__ = ("ApiInsightsSubjectStatsItems",)
+__all__ = ("OrganizationActionsVariable",)

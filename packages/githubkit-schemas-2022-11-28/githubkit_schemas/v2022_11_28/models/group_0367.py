@@ -9,44 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSubmodule(GitHubModel):
-    """Submodule Content
+class CodeScanningDefaultSetup(GitHubModel):
+    """CodeScanningDefaultSetup
 
-    An object describing a submodule
+    Configuration for code scanning default setup.
     """
 
-    type: Literal["submodule"] = Field()
-    submodule_git_url: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSubmodulePropLinks = Field(alias="_links")
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET,
+        description="Code scanning default setup has been configured or not.",
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "javascript",
+                "python",
+                "ruby",
+                "typescript",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    runner_type: Missing[Union[Literal["standard", "labeled"], None]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
+    )
+    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
+        default=UNSET,
+        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
+    )
+    schedule: Missing[Union[Literal["weekly"], None]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
+    )
 
 
-class ContentSubmodulePropLinks(GitHubModel):
-    """ContentSubmodulePropLinks"""
+model_rebuild(CodeScanningDefaultSetup)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSubmodule)
-model_rebuild(ContentSubmodulePropLinks)
-
-__all__ = (
-    "ContentSubmodule",
-    "ContentSubmodulePropLinks",
-)
+__all__ = ("CodeScanningDefaultSetup",)

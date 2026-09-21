@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Allof1Type",
-    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

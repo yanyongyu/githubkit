@@ -9,39 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class CredentialAuthorizationType(TypedDict):
+    """Credential Authorization
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: Literal[
+        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
+    ]
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: _dt.datetime
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[_dt.datetime, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class CredentialAuthorizationTypeForResponse(TypedDict):
+    """Credential Authorization
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Credential Authorization
+    """
+
+    login: str
+    credential_id: int
+    credential_type: Literal[
+        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
+    ]
+    token_last_eight: NotRequired[str]
+    credential_authorized_at: str
+    scopes: NotRequired[list[str]]
+    fingerprint: NotRequired[str]
+    credential_accessed_at: Union[str, None]
+    authorized_credential_id: Union[int, None]
+    authorized_credential_title: NotRequired[Union[str, None]]
+    authorized_credential_note: NotRequired[Union[str, None]]
+    authorized_credential_expires_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ApiInsightsUserStatsItemsType",
-    "ApiInsightsUserStatsItemsTypeForResponse",
+    "CredentialAuthorizationType",
+    "CredentialAuthorizationTypeForResponse",
 )

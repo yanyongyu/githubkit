@@ -11,19 +11,39 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
+class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
+
+__all__ = (
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

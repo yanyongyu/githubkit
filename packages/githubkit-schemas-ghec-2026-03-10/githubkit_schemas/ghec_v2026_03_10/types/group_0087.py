@@ -9,30 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class GetAuditLogStreamConfigsItemsType(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-    Details for the vulnerable package.
-    """
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    paused_at: NotRequired[Union[_dt.datetime, None]]
 
-    ecosystem: str
-    name: str
 
+class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
+    """GetAuditLogStreamConfigsItems"""
 
-class DependabotAlertPackageTypeForResponse(TypedDict):
-    """DependabotAlertPackage
-
-    Details for the vulnerable package.
-    """
-
-    ecosystem: str
-    name: str
+    id: NotRequired[int]
+    stream_type: NotRequired[str]
+    stream_details: NotRequired[str]
+    enabled: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    paused_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependabotAlertPackageType",
-    "DependabotAlertPackageTypeForResponse",
+    "GetAuditLogStreamConfigsItemsType",
+    "GetAuditLogStreamConfigsItemsTypeForResponse",
 )

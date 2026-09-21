@@ -12,26 +12,33 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
-    """RepositoryRuleTagNamePatternPropParameters"""
-
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+from .group_0152 import (
+    RepositoryRuleUpdatePropParametersType,
+    RepositoryRuleUpdatePropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleTagNamePatternPropParameters"""
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Only allow users with bypass permission to update matching refs.
+    """
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+
+
+class RepositoryRuleUpdateTypeForResponse(TypedDict):
+    """update
+
+    Only allow users with bypass permission to update matching refs.
+    """
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleTagNamePatternPropParametersType",
-    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
+    "RepositoryRuleUpdateType",
+    "RepositoryRuleUpdateTypeForResponse",
 )

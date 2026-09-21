@@ -9,24 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0268 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
+)
 
 
-class CodeScanningAiScanOrgSettings(GitHubModel):
-    """Code scanning AI Scan organization settings
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    The AI Scan organization setting
+    Marketplace Purchase
     """
 
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out."
-    )
+    url: str = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-model_rebuild(CodeScanningAiScanOrgSettings)
+model_rebuild(MarketplacePurchase)
 
-__all__ = ("CodeScanningAiScanOrgSettings",)
+__all__ = ("MarketplacePurchase",)

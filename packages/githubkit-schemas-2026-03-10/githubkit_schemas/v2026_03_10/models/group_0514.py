@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,29 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SearchResultTextMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItems"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    object_url: Missing[str] = Field(default=UNSET)
-    object_type: Missing[Union[str, None]] = Field(default=UNSET)
-    property_: Missing[str] = Field(default=UNSET, alias="property")
-    fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
-        default=UNSET
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
     )
 
 
-class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-    text: Missing[str] = Field(default=UNSET)
-    indices: Missing[list[int]] = Field(default=UNSET)
-
-
-model_rebuild(SearchResultTextMatchesItems)
-model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
-
-__all__ = (
-    "SearchResultTextMatchesItems",
-    "SearchResultTextMatchesItemsPropMatchesItems",
-)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

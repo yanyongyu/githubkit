@@ -9,38 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-
-
-class PullRequestStackPullRequestAllof1Type(TypedDict):
-    """PullRequestStackPullRequestAllof1"""
-
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[_dt.datetime, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserType, None]
+from .group_0253 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
 
-class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
-    """PullRequestStackPullRequestAllof1"""
+class RepositoryRuleDetailedOneof15Type(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[str, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof15TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
+
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "PullRequestStackPullRequestAllof1Type",
-    "PullRequestStackPullRequestAllof1TypeForResponse",
+    "RepositoryRuleDetailedOneof15Type",
+    "RepositoryRuleDetailedOneof15TypeForResponse",
 )

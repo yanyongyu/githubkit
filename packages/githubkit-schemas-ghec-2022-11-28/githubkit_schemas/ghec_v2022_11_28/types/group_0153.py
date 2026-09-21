@@ -9,22 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleFilePathRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    restricted_file_paths: list[str]
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
-class RepositoryRuleFilePathRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFilePathRestrictionPropParameters"""
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    restricted_file_paths: list[str]
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "RepositoryRuleFilePathRestrictionPropParametersType",
-    "RepositoryRuleFilePathRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

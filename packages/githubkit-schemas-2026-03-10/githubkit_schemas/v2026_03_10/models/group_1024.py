@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,86 +17,61 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1026 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-)
-from .group_1027 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-)
-from .group_1029 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
 
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
-
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
-    )
-    creator: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-        ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[str] = Field(default=UNSET)
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
         "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[Union[str, None]]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
-    ] = Field(
-        default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
-    )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-    ] = Field(
-        default=UNSET, description="Custom agent metadata associated with this task"
-    )
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
+    steps: Missing[
+        list[
+            Union[WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems, None]
+        ]
+    ] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200)
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200",)
+
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
+)

@@ -10,44 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0556 import (
-    WebhooksLabelPropArchivedByType,
-    WebhooksLabelPropArchivedByTypeForResponse,
-)
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class WebhooksLabelType(TypedDict):
-    """Label"""
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[WebhooksLabelPropArchivedByType, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    Starred Repository
+    """
+
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class WebhooksLabelTypeForResponse(TypedDict):
-    """Label"""
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[str, None]
-    archived_by: Union[WebhooksLabelPropArchivedByTypeForResponse, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    Starred Repository
+    """
+
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "WebhooksLabelType",
-    "WebhooksLabelTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

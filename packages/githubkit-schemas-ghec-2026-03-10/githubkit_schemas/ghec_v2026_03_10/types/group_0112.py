@@ -9,51 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CopilotUsageMetrics1DayReportType(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    An actor that can bypass rules in a ruleset
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    download_links: list[str]
+    report_day: _dt.date
 
 
-class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CopilotUsageMetrics1DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 1 Day Report
 
-    An actor that can bypass rules in a ruleset
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    download_links: list[str]
+    report_day: str
 
 
 __all__ = (
-    "RepositoryRulesetBypassActorType",
-    "RepositoryRulesetBypassActorTypeForResponse",
+    "CopilotUsageMetrics1DayReportType",
+    "CopilotUsageMetrics1DayReportTypeForResponse",
 )

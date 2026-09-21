@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleParamsProofOfPresenceType(TypedDict):
+    """ProofOfPresence
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    Require a fresh authentication before a pull request can be merged.
+    """
+
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleParamsProofOfPresenceTypeForResponse(TypedDict):
+    """ProofOfPresence
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    Require a fresh authentication before a pull request can be merged.
+    """
+
+    required_authentication_level: Literal["reauth", "mfa"]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewPropParametersType",
-    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
+    "RepositoryRuleParamsProofOfPresenceType",
+    "RepositoryRuleParamsProofOfPresenceTypeForResponse",
 )

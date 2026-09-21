@@ -9,202 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningLocationCommitType(TypedDict):
-    """SecretScanningLocationCommit
+class RepositoryRuleCodeQualityType(TypedDict):
+    """code_quality
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    blob_url: str
-    commit_sha: str
-    commit_url: str
-    html_url: NotRequired[str]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
 
 
-class SecretScanningLocationCommitTypeForResponse(TypedDict):
-    """SecretScanningLocationCommit
+class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
+    """code_quality
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    blob_url: str
-    commit_sha: str
-    commit_url: str
-    html_url: NotRequired[str]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
 
 
-class SecretScanningLocationWikiCommitType(TypedDict):
-    """SecretScanningLocationWikiCommit
+class RepositoryRuleCodeQualityPropParametersType(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
+    severity: Literal["errors", "warnings", "notes", "all"]
+
+
+class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
+
+    severity: Literal["errors", "warnings", "notes", "all"]
+
+
+class RepositoryRuleCodeCoverageType(TypedDict):
+    """code_coverage
+
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    page_url: str
-    commit_sha: str
-    commit_url: str
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
 
 
-class SecretScanningLocationWikiCommitTypeForResponse(TypedDict):
-    """SecretScanningLocationWikiCommit
+class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
+    """code_coverage
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
     """
 
-    path: str
-    start_line: float
-    end_line: float
-    start_column: float
-    end_column: float
-    blob_sha: str
-    page_url: str
-    commit_sha: str
-    commit_url: str
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
 
 
-class SecretScanningLocationIssueBodyType(TypedDict):
-    """SecretScanningLocationIssueBody
+class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
+
+
+class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
+
+
+class RepositoryRuleLicenseComplianceScanningType(TypedDict):
+    """license_compliance_scanning
+
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    issue_body_url: str
-    html_url: NotRequired[str]
+    type: Literal["license_compliance_scanning"]
 
 
-class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueBody
+class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
+    """license_compliance_scanning
 
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
-    issue_body_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationDiscussionTitleType(TypedDict):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str
-
-
-class SecretScanningLocationDiscussionTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str
-
-
-class SecretScanningLocationDiscussionCommentType(TypedDict):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str
-
-
-class SecretScanningLocationDiscussionCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str
-
-
-class SecretScanningLocationPullRequestBodyType(TypedDict):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestReviewType(TypedDict):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str
-    html_url: NotRequired[str]
+    type: Literal["license_compliance_scanning"]
 
 
 __all__ = (
-    "SecretScanningLocationCommitType",
-    "SecretScanningLocationCommitTypeForResponse",
-    "SecretScanningLocationDiscussionCommentType",
-    "SecretScanningLocationDiscussionCommentTypeForResponse",
-    "SecretScanningLocationDiscussionTitleType",
-    "SecretScanningLocationDiscussionTitleTypeForResponse",
-    "SecretScanningLocationIssueBodyType",
-    "SecretScanningLocationIssueBodyTypeForResponse",
-    "SecretScanningLocationPullRequestBodyType",
-    "SecretScanningLocationPullRequestBodyTypeForResponse",
-    "SecretScanningLocationPullRequestReviewType",
-    "SecretScanningLocationPullRequestReviewTypeForResponse",
-    "SecretScanningLocationWikiCommitType",
-    "SecretScanningLocationWikiCommitTypeForResponse",
+    "RepositoryRuleCodeCoveragePropParametersType",
+    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
+    "RepositoryRuleCodeCoverageType",
+    "RepositoryRuleCodeCoverageTypeForResponse",
+    "RepositoryRuleCodeQualityPropParametersType",
+    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
+    "RepositoryRuleCodeQualityType",
+    "RepositoryRuleCodeQualityTypeForResponse",
+    "RepositoryRuleLicenseComplianceScanningType",
+    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,25 +18,64 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsRouteStatsItems(GitHubModel):
-    """ApiInsightsRouteStatsItems"""
+class CopilotSpaceCollaboratorAnyof0(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
-    api_route: Missing[str] = Field(
-        default=UNSET, description="The API path's route template"
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
     )
-    total_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests within the queried time period",
+
+
+class CopilotSpaceCollaboratorAnyof1(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
     )
-    rate_limited_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
-    )
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    type: Literal["Team"] = Field()
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    organization_id: Missing[int] = Field(default=UNSET)
+    parent: Missing[None] = Field(default=UNSET)
 
 
-model_rebuild(ApiInsightsRouteStatsItems)
+model_rebuild(CopilotSpaceCollaboratorAnyof0)
+model_rebuild(CopilotSpaceCollaboratorAnyof1)
 
-__all__ = ("ApiInsightsRouteStatsItems",)
+__all__ = (
+    "CopilotSpaceCollaboratorAnyof0",
+    "CopilotSpaceCollaboratorAnyof1",
+)

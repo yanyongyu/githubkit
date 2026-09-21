@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,22 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Key(GitHubModel):
-    """Key
+class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    Key
-    """
-
-    key: str = Field()
-    id: int = Field()
-    url: str = Field()
-    title: str = Field()
-    created_at: _dt.datetime = Field()
-    verified: bool = Field()
-    read_only: bool = Field()
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Key)
+model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
 
-__all__ = ("Key",)
+__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)

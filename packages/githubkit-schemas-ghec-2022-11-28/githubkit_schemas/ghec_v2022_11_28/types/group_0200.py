@@ -9,77 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UpdateCostCenterType(TypedDict):
-    """UpdateCostCenter"""
+class SecretScanningLocationIssueTitleType(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsType]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[UpdateCostCenterPropAiCreditPoolStateType]
-
-
-class UpdateCostCenterTypeForResponse(TypedDict):
-    """UpdateCostCenter"""
-
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        UpdateCostCenterPropAiCreditPoolStateTypeForResponse
-    ]
-
-
-class UpdateCostCenterPropResourcesItemsType(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
-    """UpdateCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    issue_title_url: str
+    html_url: NotRequired[str]
 
 
-class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
-    """UpdateCostCenterPropAiCreditPoolState
+class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    issue_title_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationIssueCommentType(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestTitleType(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "UpdateCostCenterPropAiCreditPoolStateType",
-    "UpdateCostCenterPropAiCreditPoolStateTypeForResponse",
-    "UpdateCostCenterPropResourcesItemsType",
-    "UpdateCostCenterPropResourcesItemsTypeForResponse",
-    "UpdateCostCenterType",
-    "UpdateCostCenterTypeForResponse",
+    "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationIssueCommentTypeForResponse",
+    "SecretScanningLocationIssueTitleType",
+    "SecretScanningLocationIssueTitleTypeForResponse",
+    "SecretScanningLocationPullRequestReviewCommentType",
+    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
+    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationPullRequestTitleTypeForResponse",
 )

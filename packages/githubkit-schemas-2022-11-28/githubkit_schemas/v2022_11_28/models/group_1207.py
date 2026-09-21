@@ -12,25 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
-    )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)

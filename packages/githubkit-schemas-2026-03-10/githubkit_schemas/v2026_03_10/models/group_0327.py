@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanEnablement(GitHubModel):
-    """CodeScanningAiScanEnablement
+class Verification(GitHubModel):
+    """Verification"""
 
-    AI Scan enablement for a repository.
-    """
+    verified: bool = Field()
+    reason: str = Field()
+    payload: Union[str, None] = Field()
+    signature: Union[str, None] = Field()
+    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
 
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan is enabled for the repository."
-    )
 
+model_rebuild(Verification)
 
-model_rebuild(CodeScanningAiScanEnablement)
-
-__all__ = ("CodeScanningAiScanEnablement",)
+__all__ = ("Verification",)

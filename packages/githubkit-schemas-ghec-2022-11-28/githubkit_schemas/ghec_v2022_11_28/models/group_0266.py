@@ -13,54 +13,30 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ArtifactDeploymentRecord(GitHubModel):
-    """Artifact Deployment Record
+class MarketplaceListingPlan(GitHubModel):
+    """Marketplace Listing Plan
 
-    Artifact Metadata Deployment Record
+    Marketplace Listing Plan
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    logical_environment: Missing[str] = Field(default=UNSET)
-    physical_environment: Missing[str] = Field(default=UNSET)
-    cluster: Missing[str] = Field(default=UNSET)
-    deployment_name: Missing[str] = Field(default=UNSET)
-    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
-    )
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    attestation_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the provenance attestation associated with the deployment record.",
-    )
+    url: str = Field()
+    accounts_url: str = Field()
+    id: int = Field()
+    number: int = Field()
+    name: str = Field()
+    description: str = Field()
+    monthly_price_in_cents: int = Field()
+    yearly_price_in_cents: int = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    has_free_trial: bool = Field()
+    unit_name: Union[str, None] = Field()
+    state: str = Field()
+    bullets: list[str] = Field()
 
 
-class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
-    """ArtifactDeploymentRecordPropTags"""
+model_rebuild(MarketplaceListingPlan)
 
-
-model_rebuild(ArtifactDeploymentRecord)
-model_rebuild(ArtifactDeploymentRecordPropTags)
-
-__all__ = (
-    "ArtifactDeploymentRecord",
-    "ArtifactDeploymentRecordPropTags",
-)
+__all__ = ("MarketplaceListingPlan",)

@@ -12,28 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0290 import CopilotSpace
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
-    GitHubModel
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
     )
 
 
-model_rebuild(
-    OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
-)
+model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
 
-__all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
-)
+__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)

@@ -9,38 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0208 import LabelType, LabelTypeForResponse
-from .group_0220 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from typing_extensions import TypedDict
 
 
-class PullRequestEventType(TypedDict):
-    """PullRequestEvent"""
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    action: str
-    number: int
-    pull_request: PullRequestMinimalType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class PullRequestEventTypeForResponse(TypedDict):
-    """PullRequestEvent"""
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
 
-    action: str
-    number: int
-    pull_request: PullRequestMinimalTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    total: int
+    completed: int
+    percent_completed: int
+
+
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
+
+
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "PullRequestEventType",
-    "PullRequestEventTypeForResponse",
+    "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
+    "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

@@ -10,50 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0235 import (
+    RepositoryRuleRequiredDeploymentsPropParametersType,
+    RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
-
-
-class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
-
-    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
-
-
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
-    """CodeScanningTool
+class RepositoryRuleRequiredDeploymentsTypeForResponse(TypedDict):
+    """required_deployments
 
-    A tool that must provide code scanning results for this rule to pass.
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    type: Literal["required_deployments"]
+    parameters: NotRequired[
+        RepositoryRuleRequiredDeploymentsPropParametersTypeForResponse
     ]
-    tool: str
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
-    "RepositoryRuleParamsCodeScanningToolType",
-    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
+    "RepositoryRuleRequiredDeploymentsType",
+    "RepositoryRuleRequiredDeploymentsTypeForResponse",
 )

@@ -9,20 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0229 import ForkEventPropForkee
+from .group_0003 import SimpleUser
 
 
-class ForkEvent(GitHubModel):
-    """ForkEvent"""
+class Milestone(GitHubModel):
+    """Milestone
 
-    action: str = Field()
-    forkee: ForkEventPropForkee = Field()
+    A collection of related issues and pull requests.
+    """
+
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
+    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[SimpleUser, None] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(ForkEvent)
+model_rebuild(Milestone)
 
-__all__ = ("ForkEvent",)
+__all__ = ("Milestone",)

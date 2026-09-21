@@ -9,36 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class GetAuditLogStreamConfigsItemsType(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
-
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    paused_at: NotRequired[Union[_dt.datetime, None]]
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0056 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+)
 
 
-class GetAuditLogStreamConfigsItemsTypeForResponse(TypedDict):
-    """GetAuditLogStreamConfigsItems"""
+class ActionsPolicyOrgConditionsOneof1Type(TypedDict):
+    """ActionsPolicyOrgConditionsOneof1"""
 
-    id: NotRequired[int]
-    stream_type: NotRequired[str]
-    stream_details: NotRequired[str]
-    enabled: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    paused_at: NotRequired[Union[str, None]]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+
+
+class ActionsPolicyOrgConditionsOneof1TypeForResponse(TypedDict):
+    """ActionsPolicyOrgConditionsOneof1"""
+
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "GetAuditLogStreamConfigsItemsType",
-    "GetAuditLogStreamConfigsItemsTypeForResponse",
+    "ActionsPolicyOrgConditionsOneof1Type",
+    "ActionsPolicyOrgConditionsOneof1TypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,22 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsPutBody"""
+class GistsGistIdGetResponse403(GitHubModel):
+    """GistsGistIdGetResponse403"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsPermissionsPutBody)
+class GistsGistIdGetResponse403PropBlock(GitHubModel):
+    """GistsGistIdGetResponse403PropBlock"""
 
-__all__ = ("OrgsOrgActionsPermissionsPutBody",)
+    reason: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(GistsGistIdGetResponse403)
+model_rebuild(GistsGistIdGetResponse403PropBlock)
+
+__all__ = (
+    "GistsGistIdGetResponse403",
+    "GistsGistIdGetResponse403PropBlock",
+)

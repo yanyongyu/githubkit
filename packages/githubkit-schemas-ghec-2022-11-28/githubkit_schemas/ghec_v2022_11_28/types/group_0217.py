@@ -13,87 +13,73 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class GetCostCenterType(TypedDict):
+    """GetCostCenter"""
 
-    A value assigned to an issue field
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetCostCenterPropResourcesItemsType]
+    has_next_page: NotRequired[bool]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateType]
+
+
+class GetCostCenterTypeForResponse(TypedDict):
+    """GetCostCenter"""
+
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
+    has_next_page: NotRequired[bool]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateTypeForResponse]
+
+
+class GetCostCenterPropResourcesItemsType(TypedDict):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetCostCenterPropAiCreditPoolStateType(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
-    ]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
+class GetCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
 
-    A value assigned to an issue field
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
-    ]
-
-
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int
-    name: str
-    color: str
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "IssueFieldValuePropMultiSelectOptionsItemsType",
-    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "GetCostCenterPropAiCreditPoolStateType",
+    "GetCostCenterPropAiCreditPoolStateTypeForResponse",
+    "GetCostCenterPropResourcesItemsType",
+    "GetCostCenterPropResourcesItemsTypeForResponse",
+    "GetCostCenterType",
+    "GetCostCenterTypeForResponse",
 )

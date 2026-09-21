@@ -9,135 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class CopilotSpaceResourceType(TypedDict):
+    """Copilot Space Resource
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
-
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    A resource attached to a Copilot Space.
     """
 
     id: int
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class OrganizationProgrammaticAccessGrantTypeForResponse(TypedDict):
-    """Organization Programmatic Access Grant
+class CopilotSpaceResourceTypeForResponse(TypedDict):
+    """Copilot Space Resource
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    A resource attached to a Copilot Space.
     """
 
     id: int
-    owner: SimpleUserTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse
-    access_granted_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
     ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
+    created_at: str
+    updated_at: str
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
+CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse
-    ]
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+Resource-specific metadata. The keys and values depend on the resource type.
 """
 
 
-OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
-"""
+CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
 
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
-"""
-
-
-OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantPropPermissionsPropOther
+Resource-specific metadata. The keys and values depend on the resource type.
 """
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryTypeForResponse",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsTypeForResponse",
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantTypeForResponse",
+    "CopilotSpaceResourcePropMetadataType",
+    "CopilotSpaceResourcePropMetadataTypeForResponse",
+    "CopilotSpaceResourceType",
+    "CopilotSpaceResourceTypeForResponse",
 )

@@ -9,39 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0383 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
-)
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0220 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    code_of_conduct: Union[CodeOfConductSimpleType, None]
+    code_of_conduct_file: Union[CommunityHealthFileType, None]
+    license_: Union[LicenseSimpleType, None]
+    contributing: Union[CommunityHealthFileType, None]
+    readme: Union[CommunityHealthFileType, None]
+    issue_template: Union[CommunityHealthFileType, None]
+    pull_request_template: Union[CommunityHealthFileType, None]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class CommunityProfilePropFilesTypeForResponse(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
-    ]
+    code_of_conduct: Union[CodeOfConductSimpleTypeForResponse, None]
+    code_of_conduct_file: Union[CommunityHealthFileTypeForResponse, None]
+    license_: Union[LicenseSimpleTypeForResponse, None]
+    contributing: Union[CommunityHealthFileTypeForResponse, None]
+    readme: Union[CommunityHealthFileTypeForResponse, None]
+    issue_template: Union[CommunityHealthFileTypeForResponse, None]
+    pull_request_template: Union[CommunityHealthFileTypeForResponse, None]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityHealthFileTypeForResponse(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[_dt.datetime, None]
+    content_reports_enabled: NotRequired[bool]
+
+
+class CommunityProfileTypeForResponse(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesTypeForResponse
+    updated_at: Union[str, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "CommunityHealthFileType",
+    "CommunityHealthFileTypeForResponse",
+    "CommunityProfilePropFilesType",
+    "CommunityProfilePropFilesTypeForResponse",
+    "CommunityProfileType",
+    "CommunityProfileTypeForResponse",
 )

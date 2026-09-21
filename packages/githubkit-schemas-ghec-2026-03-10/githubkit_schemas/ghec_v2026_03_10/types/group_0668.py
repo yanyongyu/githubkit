@@ -9,41 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0670 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
+)
 
 
-class PullRequestWebhookAllof1Type(TypedDict):
-    """PullRequestWebhookAllof1"""
+class WebhooksLabelArchivedType(TypedDict):
+    """Archived label"""
 
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
-class PullRequestWebhookAllof1TypeForResponse(TypedDict):
-    """PullRequestWebhookAllof1"""
+class WebhooksLabelArchivedTypeForResponse(TypedDict):
+    """Archived label"""
 
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
+    id: int
+    name: str
+    node_id: str
+    url: str
 
 
 __all__ = (
-    "PullRequestWebhookAllof1Type",
-    "PullRequestWebhookAllof1TypeForResponse",
+    "WebhooksLabelArchivedType",
+    "WebhooksLabelArchivedTypeForResponse",
 )

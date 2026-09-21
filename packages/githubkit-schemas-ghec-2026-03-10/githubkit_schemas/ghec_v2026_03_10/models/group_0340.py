@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    Check immutable releases settings for an organization.
-    """
-
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
-    )
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[Repository, None] = Field()
+    sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
+
+
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
+
+__all__ = (
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
+)

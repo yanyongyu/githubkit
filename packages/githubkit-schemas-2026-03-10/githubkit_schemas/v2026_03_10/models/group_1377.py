@@ -9,54 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitTreesPostBody(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
-        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+        None,
+    ] = Field(
+        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
     )
-    base_tree: Missing[str] = Field(
-        default=UNSET,
-        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
+        description="The enabled review tools for Copilot cloud agent."
     )
-
-
-class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
-
-    path: Missing[str] = Field(
-        default=UNSET, description="The file referenced in the tree."
+    require_actions_workflow_approval: bool = Field(
+        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
     )
-    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
-        default=UNSET,
-        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
+    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
+    is_firewall_recommended_allowlist_enabled: bool = Field(
+        description="Whether the firewall recommended allowlist is enabled."
     )
-    type: Missing[Literal["blob", "tree", "commit"]] = Field(
-        default=UNSET, description="Either `blob`, `tree`, or `commit`."
+    custom_allowlist: list[str] = Field(
+        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
     )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    is_automations_enabled: bool = Field(
+        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
     )
-    content: Missing[str] = Field(
-        default=UNSET,
-        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    require_write_access_for_automation_triggers: bool = Field(
+        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
     )
 
 
-model_rebuild(ReposOwnerRepoGitTreesPostBody)
-model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+    The user-supplied MCP server configuration for the repository, as a free-form
+    JSON object. This will be set to `null` if no configuration has been set.
+
+    The shape of a valid MCP configuration may evolve over time, so this property is
+    intentionally not strictly typed. Clients should not assume a fixed schema.
+    """
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+    GitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool = Field(
+        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    )
+    copilot_code_review: bool = Field(
+        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    )
+    secret_scanning: bool = Field(
+        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    )
+    dependency_vulnerability_checks: bool = Field(
+        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
+    )
+
+
+model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+)
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBody",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
 )

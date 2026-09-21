@@ -10,93 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0220 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
-
-    A suite of checks performed on the code of a given code change
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-            None,
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[_dt.datetime]
-    url: NotRequired[str]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class SimpleCheckSuiteTypeForResponse(TypedDict):
-    """SimpleCheckSuite
+class CodespaceExportDetailsTypeForResponse(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    A suite of checks performed on the code of a given code change
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-            None,
-        ]
-    ]
-    created_at: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
-    repository: NotRequired[MinimalRepositoryTypeForResponse]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SimpleCheckSuiteType",
-    "SimpleCheckSuiteTypeForResponse",
+    "CodespaceExportDetailsType",
+    "CodespaceExportDetailsTypeForResponse",
 )

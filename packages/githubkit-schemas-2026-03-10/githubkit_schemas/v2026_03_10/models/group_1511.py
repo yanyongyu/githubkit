@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

@@ -9,53 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBody"""
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    tag: str = Field(
-        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+        None,
+    ] = Field(
+        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
     )
-    message: str = Field(description="The tag message.")
-    object_: str = Field(
-        alias="object", description="The SHA of the git object this is tagging."
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
+        description="The enabled review tools for Copilot cloud agent."
     )
-    type: Literal["commit", "tree", "blob"] = Field(
-        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
+    require_actions_workflow_approval: bool = Field(
+        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
     )
-    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
-        default=UNSET,
-        description="An object with information about the individual creating the tag.",
+    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
+    is_firewall_recommended_allowlist_enabled: bool = Field(
+        description="Whether the firewall recommended allowlist is enabled."
+    )
+    custom_allowlist: list[str] = Field(
+        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+    )
+    is_automations_enabled: bool = Field(
+        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
+    )
+    require_write_access_for_automation_triggers: bool = Field(
+        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
     )
 
 
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 
-    An object with information about the individual creating the tag.
+    The user-supplied MCP server configuration for the repository, as a free-form
+    JSON object. This will be set to `null` if no configuration has been set.
+
+    The shape of a valid MCP configuration may evolve over time, so this property is
+    intentionally not strictly typed. Clients should not assume a fixed schema.
     """
 
-    name: str = Field(description="The name of the author of the tag")
-    email: str = Field(description="The email of the author of the tag")
-    date: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+    GitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool = Field(
+        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    )
+    copilot_code_review: bool = Field(
+        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    )
+    secret_scanning: bool = Field(
+        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    )
+    dependency_vulnerability_checks: bool = Field(
+        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
     )
 
 
-model_rebuild(ReposOwnerRepoGitTagsPostBody)
-model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+)
+model_rebuild(
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+)
 
 __all__ = (
-    "ReposOwnerRepoGitTagsPostBody",
-    "ReposOwnerRepoGitTagsPostBodyPropTagger",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
 )

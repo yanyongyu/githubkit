@@ -10,81 +10,87 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Literal, TypeAlias, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class IssueFieldType(TypedDict):
+    """Issue Field
 
-class ProjectsV2ItemWithContentType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
-    """Projects v2 Item
+class IssueFieldTypeForResponse(TypedDict):
+    """Issue Field
 
-    An item belonging to a project
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    id: float
-    node_id: NotRequired[str]
-    project_url: NotRequired[str]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    content: NotRequired[
-        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
+    id: int
+    node_id: str
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class IssueFieldPropOptionsItemsType(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
     ]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
-    item_url: NotRequired[Union[str, None]]
-    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
+class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldPropOptionsItems"""
 
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropContent
-
-The content of the item, which varies by content type.
-"""
-
-
-ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
-
-
-ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
-"""ProjectsV2ItemWithContentPropFieldsItems
-"""
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsV2ItemWithContentPropContentType",
-    "ProjectsV2ItemWithContentPropContentTypeForResponse",
-    "ProjectsV2ItemWithContentPropFieldsItemsType",
-    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
-    "ProjectsV2ItemWithContentType",
-    "ProjectsV2ItemWithContentTypeForResponse",
+    "IssueFieldPropOptionsItemsType",
+    "IssueFieldPropOptionsItemsTypeForResponse",
+    "IssueFieldType",
+    "IssueFieldTypeForResponse",
 )

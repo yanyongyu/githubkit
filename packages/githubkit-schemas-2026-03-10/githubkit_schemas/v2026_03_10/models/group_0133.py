@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
-class CodeScanningAiScanOrgEnablementUpdate(GitHubModel):
-    """Code scanning AI Scan organization settings update
 
-    The AI Scan organization setting to apply
-    """
+class ActionsPolicyOrgConditionsOneof2(GitHubModel):
+    """ActionsPolicyOrgConditionsOneof2"""
 
-    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out.",
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(CodeScanningAiScanOrgEnablementUpdate)
+model_rebuild(ActionsPolicyOrgConditionsOneof2)
 
-__all__ = ("CodeScanningAiScanOrgEnablementUpdate",)
+__all__ = ("ActionsPolicyOrgConditionsOneof2",)

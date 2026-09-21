@@ -9,45 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0376 import BranchProtection
-from .group_0381 import Commit
+from .group_0003 import SimpleUser
+from .group_0108 import Team
 
 
-class BranchWithProtection(GitHubModel):
-    """Branch With Protection
+class PendingDeploymentPropReviewersItems(GitHubModel):
+    """PendingDeploymentPropReviewersItems"""
 
-    Branch With Protection
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+
+
+class PendingDeployment(GitHubModel):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    name: str = Field()
-    commit: Commit = Field(title="Commit", description="Commit")
-    links: BranchWithProtectionPropLinks = Field(alias="_links")
-    protected: bool = Field()
-    protection: BranchProtection = Field(
-        title="Branch Protection", description="Branch Protection"
+    environment: PendingDeploymentPropEnvironment = Field()
+    wait_timer: int = Field(description="The set duration of the wait timer")
+    wait_timer_started_at: Union[_dt.datetime, None] = Field(
+        description="The time that the wait timer began."
     )
-    protection_url: str = Field()
-    pattern: Missing[str] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
+    current_user_can_approve: bool = Field(
+        description="Whether the currently authenticated user can approve the deployment"
+    )
+    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    )
 
 
-class BranchWithProtectionPropLinks(GitHubModel):
-    """BranchWithProtectionPropLinks"""
+class PendingDeploymentPropEnvironment(GitHubModel):
+    """PendingDeploymentPropEnvironment"""
 
-    html: str = Field()
-    self_: str = Field(alias="self")
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(BranchWithProtection)
-model_rebuild(BranchWithProtectionPropLinks)
+model_rebuild(PendingDeploymentPropReviewersItems)
+model_rebuild(PendingDeployment)
+model_rebuild(PendingDeploymentPropEnvironment)
 
 __all__ = (
-    "BranchWithProtection",
-    "BranchWithProtectionPropLinks",
+    "PendingDeployment",
+    "PendingDeploymentPropEnvironment",
+    "PendingDeploymentPropReviewersItems",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,33 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0087 import DependabotAlertPackage
 
+class BypassResponse(GitHubModel):
+    """Bypass response
 
-class DependabotAlertWithRepositoryPropDependency(GitHubModel):
-    """DependabotAlertWithRepositoryPropDependency
-
-    Details for the vulnerable dependency.
+    A response made by a delegated bypasser to a bypass request.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the bypass request."
     )
-    manifest_path: Missing[str] = Field(
+    reviewer: Missing[BypassResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the bypass request."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="The response status to the bypass request until dismissed.",
     )
-    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        description="The date and time the response to the bypass request was created.",
     )
 
 
-model_rebuild(DependabotAlertWithRepositoryPropDependency)
+class BypassResponsePropReviewer(GitHubModel):
+    """BypassResponsePropReviewer
 
-__all__ = ("DependabotAlertWithRepositoryPropDependency",)
+    The user who reviewed the bypass request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who reviewed the bypass request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the bypass request.",
+    )
+
+
+model_rebuild(BypassResponse)
+model_rebuild(BypassResponsePropReviewer)
+
+__all__ = (
+    "BypassResponse",
+    "BypassResponsePropReviewer",
+)

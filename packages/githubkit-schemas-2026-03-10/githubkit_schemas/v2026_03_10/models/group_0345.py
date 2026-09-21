@@ -18,14 +18,11 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningDefaultSetupUpdate(GitHubModel):
-    """CodeScanningDefaultSetupUpdate
-
-    Configuration for code scanning default setup.
-    """
+class CodeQualitySetupUpdateAnyof3(GitHubModel):
+    """CodeQualitySetupUpdateAnyof3"""
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code scanning default setup."
+        default=UNSET, description="The desired state of code quality setup."
     )
     runner_type: Missing[Literal["standard", "labeled"]] = Field(
         default=UNSET, description="Runner type to be used."
@@ -34,30 +31,17 @@ class CodeScanningDefaultSetupUpdate(GitHubModel):
         default=UNSET,
         description="Runner label to be used if the runner type is labeled.",
     )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    threat_model: Missing[Literal["remote", "remote_and_local"]] = Field(
-        default=UNSET,
-        description="Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "actions",
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
+    languages: list[
+        Literal[
+            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
         ]
-    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
+    ] = Field(description="Languages to be analyzed.")
+    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+        default=UNSET,
+        description="Whether AI findings run for Code Quality on this repository.",
+    )
 
 
-model_rebuild(CodeScanningDefaultSetupUpdate)
+model_rebuild(CodeQualitySetupUpdateAnyof3)
 
-__all__ = ("CodeScanningDefaultSetupUpdate",)
+__all__ = ("CodeQualitySetupUpdateAnyof3",)

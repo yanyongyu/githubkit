@@ -46,6 +46,7 @@ if TYPE_CHECKING:
         ActionsHostedRunnerCustomImageVersion,
         ActionsHostedRunnerLimits,
         ActionsOrganizationPermissions,
+        ActionsPolicy,
         ActionsPublicKey,
         ActionsRepositoryPermissions,
         ActionsSecret,
@@ -65,6 +66,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsHostedRunnersImagesPartnerGetResponse200,
         EnterprisesEnterpriseActionsHostedRunnersMachineSizesGetResponse200,
         EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200,
+        EnterprisesEnterpriseActionsPoliciesGetResponse200,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
@@ -83,6 +85,7 @@ if TYPE_CHECKING:
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
         OrgsOrgActionsPermissionsRepositoriesGetResponse200,
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
+        OrgsOrgActionsPoliciesGetResponse200,
         OrgsOrgActionsRunnerGroupsGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
@@ -97,6 +100,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsArtifactsGetResponse200,
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
+        ReposOwnerRepoActionsPoliciesGetResponse200,
         ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200,
@@ -148,8 +152,22 @@ if TYPE_CHECKING:
         ActionsHostedRunnerTypeForResponse,
         ActionsOidcCustomIssuerPolicyForEnterpriseType,
         ActionsOrganizationPermissionsTypeForResponse,
+        ActionsPolicyEnterpriseConditionsOneof0Type,
+        ActionsPolicyEnterpriseConditionsOneof1Type,
+        ActionsPolicyEnterpriseConditionsOneof2Type,
+        ActionsPolicyEnterpriseConditionsOneof3Type,
+        ActionsPolicyEnterpriseConditionsOneof4Type,
+        ActionsPolicyEnterpriseConditionsOneof5Type,
+        ActionsPolicyOrgConditionsOneof0Type,
+        ActionsPolicyOrgConditionsOneof1Type,
+        ActionsPolicyOrgConditionsOneof2Type,
+        ActionsPolicyRepoConditionsOneof0Type,
+        ActionsPolicyRepoConditionsOneof1Type,
+        ActionsPolicyTypeForResponse,
         ActionsPublicKeyTypeForResponse,
         ActionsRepositoryPermissionsTypeForResponse,
+        ActionsRuleRestrictActionEventsType,
+        ActionsRuleRestrictActionsActorsType,
         ActionsSecretTypeForResponse,
         ActionsSetDefaultWorkflowPermissionsType,
         ActionsVariableTypeForResponse,
@@ -172,6 +190,9 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsHostedRunnersPlatformsGetResponse200TypeForResponse,
         EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImageType,
         EnterprisesEnterpriseActionsHostedRunnersPostBodyType,
+        EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType,
+        EnterprisesEnterpriseActionsPoliciesPostBodyType,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201TypeForResponse,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse,
@@ -198,6 +219,9 @@ if TYPE_CHECKING:
         OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType,
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200TypeForResponse,
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
+        OrgsOrgActionsPoliciesGetResponse200TypeForResponse,
+        OrgsOrgActionsPoliciesPolicyIdPutBodyType,
+        OrgsOrgActionsPoliciesPostBodyType,
         OrgsOrgActionsRunnerGroupsGetResponse200TypeForResponse,
         OrgsOrgActionsRunnerGroupsPostBodyType,
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse,
@@ -227,6 +251,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200TypeForResponse,
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200TypeForResponse,
         ReposOwnerRepoActionsPermissionsPutBodyType,
+        ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse,
+        ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType,
+        ReposOwnerRepoActionsPoliciesPostBodyType,
         ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse,
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
         ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse,
@@ -2415,6 +2442,626 @@ class ActionsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
+        )
+
+    def get_enterprise_actions_policies(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseActionsPoliciesGetResponse200,
+        EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse,
+    ]:
+        """actions/get-enterprise-actions-policies
+
+        GET /enterprises/{enterprise}/actions/policies
+
+        List all Actions policies for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-enterprise-actions-policies
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseActionsPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseActionsPoliciesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_actions_policies(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseActionsPoliciesGetResponse200,
+        EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse,
+    ]:
+        """actions/get-enterprise-actions-policies
+
+        GET /enterprises/{enterprise}/actions/policies
+
+        List all Actions policies for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-enterprise-actions-policies
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseActionsPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseActionsPoliciesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseActionsPoliciesPostBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    def create_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        conditions: Missing[
+            Union[
+                ActionsPolicyEnterpriseConditionsOneof0Type,
+                ActionsPolicyEnterpriseConditionsOneof1Type,
+                ActionsPolicyEnterpriseConditionsOneof2Type,
+                ActionsPolicyEnterpriseConditionsOneof3Type,
+                ActionsPolicyEnterpriseConditionsOneof4Type,
+                ActionsPolicyEnterpriseConditionsOneof5Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    def create_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseActionsPoliciesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/create-enterprise-actions-policy
+
+        POST /enterprises/{enterprise}/actions/policies
+
+        Create an Actions policy for an enterprise.
+        Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-an-enterprise-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            EnterprisesEnterpriseActionsPoliciesPostBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsPoliciesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseActionsPoliciesPostBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    async def async_create_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        conditions: Missing[
+            Union[
+                ActionsPolicyEnterpriseConditionsOneof0Type,
+                ActionsPolicyEnterpriseConditionsOneof1Type,
+                ActionsPolicyEnterpriseConditionsOneof2Type,
+                ActionsPolicyEnterpriseConditionsOneof3Type,
+                ActionsPolicyEnterpriseConditionsOneof4Type,
+                ActionsPolicyEnterpriseConditionsOneof5Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    async def async_create_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseActionsPoliciesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/create-enterprise-actions-policy
+
+        POST /enterprises/{enterprise}/actions/policies
+
+        Create an Actions policy for an enterprise.
+        Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-an-enterprise-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            EnterprisesEnterpriseActionsPoliciesPostBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsPoliciesPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def get_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/get-enterprise-actions-policy
+
+        GET /enterprises/{enterprise}/actions/policies/{policy_id}
+
+        Get a specific Actions policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-an-enterprise-actions-policy
+        """
+
+        from ..models import ActionsPolicy, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/get-enterprise-actions-policy
+
+        GET /enterprises/{enterprise}/actions/policies/{policy_id}
+
+        Get a specific Actions policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-an-enterprise-actions-policy
+        """
+
+        from ..models import ActionsPolicy, BasicError
+
+        url = f"/enterprises/{enterprise}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def update_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    def update_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        conditions: Missing[
+            Union[
+                ActionsPolicyEnterpriseConditionsOneof0Type,
+                ActionsPolicyEnterpriseConditionsOneof1Type,
+                ActionsPolicyEnterpriseConditionsOneof2Type,
+                ActionsPolicyEnterpriseConditionsOneof3Type,
+                ActionsPolicyEnterpriseConditionsOneof4Type,
+                ActionsPolicyEnterpriseConditionsOneof5Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    def update_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/update-enterprise-actions-policy
+
+        PUT /enterprises/{enterprise}/actions/policies/{policy_id}
+
+        Update an Actions policy for an enterprise.
+        Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-an-enterprise-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    async def async_update_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        conditions: Missing[
+            Union[
+                ActionsPolicyEnterpriseConditionsOneof0Type,
+                ActionsPolicyEnterpriseConditionsOneof1Type,
+                ActionsPolicyEnterpriseConditionsOneof2Type,
+                ActionsPolicyEnterpriseConditionsOneof3Type,
+                ActionsPolicyEnterpriseConditionsOneof4Type,
+                ActionsPolicyEnterpriseConditionsOneof5Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    async def async_update_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/update-enterprise-actions-policy
+
+        PUT /enterprises/{enterprise}/actions/policies/{policy_id}
+
+        Update an Actions policy for an enterprise.
+        Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-an-enterprise-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/actions/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def delete_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-enterprise-actions-policy
+
+        DELETE /enterprises/{enterprise}/actions/policies/{policy_id}
+
+        Delete an Actions policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-an-enterprise-actions-policy
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_delete_enterprise_actions_policy(
+        self,
+        enterprise: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-enterprise-actions-policy
+
+        DELETE /enterprises/{enterprise}/actions/policies/{policy_id}
+
+        Delete an Actions policy for an enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-an-enterprise-actions-policy
+        """
+
+        from ..models import BasicError
+
+        url = f"/enterprises/{enterprise}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     @overload
@@ -6701,6 +7348,604 @@ class ActionsClient:
             headers=exclude_unset(headers),
             stream=stream,
             error_models={},
+        )
+
+    def get_org_actions_policies(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        has_parents: Missing[bool] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsPoliciesGetResponse200,
+        OrgsOrgActionsPoliciesGetResponse200TypeForResponse,
+    ]:
+        """actions/get-org-actions-policies
+
+        GET /orgs/{org}/actions/policies
+
+        List all Actions policies for an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-organization-actions-policies
+        """
+
+        from ..models import BasicError, OrgsOrgActionsPoliciesGetResponse200
+
+        url = f"/orgs/{org}/actions/policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "has_parents": has_parents,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsPoliciesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_actions_policies(
+        self,
+        org: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        has_parents: Missing[bool] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgActionsPoliciesGetResponse200,
+        OrgsOrgActionsPoliciesGetResponse200TypeForResponse,
+    ]:
+        """actions/get-org-actions-policies
+
+        GET /orgs/{org}/actions/policies
+
+        List all Actions policies for an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-organization-actions-policies
+        """
+
+        from ..models import BasicError, OrgsOrgActionsPoliciesGetResponse200
+
+        url = f"/orgs/{org}/actions/policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "has_parents": has_parents,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgActionsPoliciesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_org_actions_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPoliciesPostBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    def create_org_actions_policy(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        conditions: Missing[
+            Union[
+                ActionsPolicyOrgConditionsOneof0Type,
+                ActionsPolicyOrgConditionsOneof1Type,
+                ActionsPolicyOrgConditionsOneof2Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    def create_org_actions_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgActionsPoliciesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/create-org-actions-policy
+
+        POST /orgs/{org}/actions/policies
+
+        Create an Actions policy for an organization.
+        Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-an-organization-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            OrgsOrgActionsPoliciesPostBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsPoliciesPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_org_actions_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPoliciesPostBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    async def async_create_org_actions_policy(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        conditions: Missing[
+            Union[
+                ActionsPolicyOrgConditionsOneof0Type,
+                ActionsPolicyOrgConditionsOneof1Type,
+                ActionsPolicyOrgConditionsOneof2Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    async def async_create_org_actions_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgActionsPoliciesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/create-org-actions-policy
+
+        POST /orgs/{org}/actions/policies
+
+        Create an Actions policy for an organization.
+        Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-an-organization-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            OrgsOrgActionsPoliciesPostBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsPoliciesPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def get_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/get-org-actions-policy
+
+        GET /orgs/{org}/actions/policies/{policy_id}
+
+        Get a specific Actions policy for an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-an-organization-actions-policy
+        """
+
+        from ..models import ActionsPolicy, BasicError
+
+        url = f"/orgs/{org}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/get-org-actions-policy
+
+        GET /orgs/{org}/actions/policies/{policy_id}
+
+        Get a specific Actions policy for an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-an-organization-actions-policy
+        """
+
+        from ..models import ActionsPolicy, BasicError
+
+        url = f"/orgs/{org}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def update_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPoliciesPolicyIdPutBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    def update_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        conditions: Missing[
+            Union[
+                ActionsPolicyOrgConditionsOneof0Type,
+                ActionsPolicyOrgConditionsOneof1Type,
+                ActionsPolicyOrgConditionsOneof2Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    def update_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgActionsPoliciesPolicyIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/update-org-actions-policy
+
+        PUT /orgs/{org}/actions/policies/{policy_id}
+
+        Update an Actions policy for an organization.
+        Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-an-organization-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            OrgsOrgActionsPoliciesPolicyIdPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsPoliciesPolicyIdPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgActionsPoliciesPolicyIdPutBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    async def async_update_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        conditions: Missing[
+            Union[
+                ActionsPolicyOrgConditionsOneof0Type,
+                ActionsPolicyOrgConditionsOneof1Type,
+                ActionsPolicyOrgConditionsOneof2Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    async def async_update_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgActionsPoliciesPolicyIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/update-org-actions-policy
+
+        PUT /orgs/{org}/actions/policies/{policy_id}
+
+        Update an Actions policy for an organization.
+        Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-an-organization-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            OrgsOrgActionsPoliciesPolicyIdPutBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/actions/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsPoliciesPolicyIdPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def delete_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-org-actions-policy
+
+        DELETE /orgs/{org}/actions/policies/{policy_id}
+
+        Delete an Actions policy for an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-an-organization-actions-policy
+        """
+
+        from ..models import BasicError
+
+        url = f"/orgs/{org}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_delete_org_actions_policy(
+        self,
+        org: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-org-actions-policy
+
+        DELETE /orgs/{org}/actions/policies/{policy_id}
+
+        Delete an Actions policy for an organization.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-an-organization-actions-policy
+        """
+
+        from ..models import BasicError
+
+        url = f"/orgs/{org}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def list_self_hosted_runner_groups_for_org(
@@ -14703,6 +15948,622 @@ class ActionsClient:
             headers=exclude_unset(headers),
             stream=stream,
             error_models={},
+        )
+
+    def get_repo_actions_policies(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        has_parents: Missing[bool] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoActionsPoliciesGetResponse200,
+        ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse,
+    ]:
+        """actions/get-repo-actions-policies
+
+        GET /repos/{owner}/{repo}/actions/policies
+
+        List all Actions policies for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-repository-actions-policies
+        """
+
+        from ..models import BasicError, ReposOwnerRepoActionsPoliciesGetResponse200
+
+        url = f"/repos/{owner}/{repo}/actions/policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "has_parents": has_parents,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoActionsPoliciesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_actions_policies(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        has_parents: Missing[bool] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        ReposOwnerRepoActionsPoliciesGetResponse200,
+        ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse,
+    ]:
+        """actions/get-repo-actions-policies
+
+        GET /repos/{owner}/{repo}/actions/policies
+
+        List all Actions policies for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-repository-actions-policies
+        """
+
+        from ..models import BasicError, ReposOwnerRepoActionsPoliciesGetResponse200
+
+        url = f"/repos/{owner}/{repo}/actions/policies"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "has_parents": has_parents,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoActionsPoliciesGetResponse200,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def create_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoActionsPoliciesPostBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    def create_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        conditions: Missing[
+            Union[
+                ActionsPolicyRepoConditionsOneof0Type,
+                ActionsPolicyRepoConditionsOneof1Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    def create_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoActionsPoliciesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/create-repo-actions-policy
+
+        POST /repos/{owner}/{repo}/actions/policies
+
+        Create an Actions policy for a repository.
+        Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-a-repository-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            ReposOwnerRepoActionsPoliciesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ReposOwnerRepoActionsPoliciesPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_create_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoActionsPoliciesPostBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    async def async_create_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        enforcement: Literal["disabled", "active", "evaluate"],
+        conditions: Missing[
+            Union[
+                ActionsPolicyRepoConditionsOneof0Type,
+                ActionsPolicyRepoConditionsOneof1Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    async def async_create_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoActionsPoliciesPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/create-repo-actions-policy
+
+        POST /repos/{owner}/{repo}/actions/policies
+
+        Create an Actions policy for a repository.
+        Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-a-repository-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            ReposOwnerRepoActionsPoliciesPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(ReposOwnerRepoActionsPoliciesPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def get_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/get-repo-actions-policy
+
+        GET /repos/{owner}/{repo}/actions/policies/{policy_id}
+
+        Get a specific Actions policy for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-a-repository-actions-policy
+        """
+
+        from ..models import ActionsPolicy, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_get_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/get-repo-actions-policy
+
+        GET /repos/{owner}/{repo}/actions/policies/{policy_id}
+
+        Get a specific Actions policy for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-a-repository-actions-policy
+        """
+
+        from ..models import ActionsPolicy, BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    def update_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    def update_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        conditions: Missing[
+            Union[
+                ActionsPolicyRepoConditionsOneof0Type,
+                ActionsPolicyRepoConditionsOneof1Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    def update_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/update-repo-actions-policy
+
+        PUT /repos/{owner}/{repo}/actions/policies/{policy_id}
+
+        Update an Actions policy for a repository.
+        Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-a-repository-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            ReposOwnerRepoActionsPoliciesPolicyIdPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoActionsPoliciesPolicyIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    @overload
+    async def async_update_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    @overload
+    async def async_update_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
+        conditions: Missing[
+            Union[
+                ActionsPolicyRepoConditionsOneof0Type,
+                ActionsPolicyRepoConditionsOneof1Type,
+            ]
+        ] = UNSET,
+        rules: Missing[
+            list[
+                Union[
+                    ActionsRuleRestrictActionsActorsType,
+                    ActionsRuleRestrictActionEventsType,
+                ]
+            ]
+        ] = UNSET,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]: ...
+
+    async def async_update_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ActionsPolicy, ActionsPolicyTypeForResponse]:
+        """actions/update-repo-actions-policy
+
+        PUT /repos/{owner}/{repo}/actions/policies/{policy_id}
+
+        Update an Actions policy for a repository.
+        Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-a-repository-actions-policy
+        """
+
+        from ..models import (
+            ActionsPolicy,
+            BasicError,
+            ReposOwnerRepoActionsPoliciesPolicyIdPutBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/actions/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoActionsPoliciesPolicyIdPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ActionsPolicy,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "500": BasicError,
+            },
+        )
+
+    def delete_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-repo-actions-policy
+
+        DELETE /repos/{owner}/{repo}/actions/policies/{policy_id}
+
+        Delete an Actions policy for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-a-repository-actions-policy
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
+        )
+
+    async def async_delete_repo_actions_policy(
+        self,
+        owner: str,
+        repo: str,
+        policy_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/delete-repo-actions-policy
+
+        DELETE /repos/{owner}/{repo}/actions/policies/{policy_id}
+
+        Delete an Actions policy for a repository.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-a-repository-actions-policy
+        """
+
+        from ..models import BasicError
+
+        url = f"/repos/{owner}/{repo}/actions/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "500": BasicError,
+            },
         )
 
     def list_self_hosted_runners_for_repo(

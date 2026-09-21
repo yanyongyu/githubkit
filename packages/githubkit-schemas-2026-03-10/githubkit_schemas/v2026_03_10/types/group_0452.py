@@ -14,63 +14,31 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import MilestoneType, MilestoneTypeForResponse
-from .group_0129 import TeamSimpleType, TeamSimpleTypeForResponse
-from .group_0177 import AutoMergeType, AutoMergeTypeForResponse
-from .group_0178 import PullRequestStackType, PullRequestStackTypeForResponse
-from .group_0453 import (
-    PullRequestPropLabelsItemsType,
-    PullRequestPropLabelsItemsTypeForResponse,
-)
-from .group_0454 import (
-    PullRequestPropBaseType,
-    PullRequestPropBaseTypeForResponse,
-    PullRequestPropHeadType,
-    PullRequestPropHeadTypeForResponse,
-)
-from .group_0455 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0051 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0052 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class PullRequestType(TypedDict):
-    """Pull Request
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    Timeline Comment Event
     """
 
-    url: str
+    event: Literal["commented"]
+    actor: SimpleUserType
     id: int
     node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
     user: SimpleUserType
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsType]
-    milestone: Union[MilestoneType, None]
-    active_lock_reason: NotRequired[Union[str, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    merged_at: Union[_dt.datetime, None]
-    assignees: NotRequired[list[SimpleUserType]]
-    requested_reviewers: NotRequired[list[SimpleUserType]]
-    requested_teams: NotRequired[list[TeamSimpleType]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
+    issue_url: str
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -81,63 +49,31 @@ class PullRequestType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    auto_merge: Union[AutoMergeType, None]
-    stack: NotRequired[Union[PullRequestStackType, None]]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[SimpleUserType, None]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class PullRequestTypeForResponse(TypedDict):
-    """Pull Request
+class TimelineCommentEventTypeForResponse(TypedDict):
+    """Timeline Comment Event
 
-    Pull requests let you tell others about changes you've pushed to a repository on
-    GitHub. Once a pull request is sent, interested parties can review the set of
-    changes, discuss potential modifications, and even push follow-up commits if
-    necessary.
+    Timeline Comment Event
     """
 
-    url: str
+    event: Literal["commented"]
+    actor: SimpleUserTypeForResponse
     id: int
     node_id: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
     user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    labels: list[PullRequestPropLabelsItemsTypeForResponse]
-    milestone: Union[MilestoneTypeForResponse, None]
-    active_lock_reason: NotRequired[Union[str, None]]
     created_at: str
     updated_at: str
-    closed_at: Union[str, None]
-    merged_at: Union[str, None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
-    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
-    head: PullRequestPropHeadTypeForResponse
-    base: PullRequestPropBaseTypeForResponse
-    links: PullRequestPropLinksTypeForResponse
+    issue_url: str
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -148,24 +84,13 @@ class PullRequestTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-    auto_merge: Union[AutoMergeTypeForResponse, None]
-    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[SimpleUserTypeForResponse, None]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "PullRequestType",
-    "PullRequestTypeForResponse",
+    "TimelineCommentEventType",
+    "TimelineCommentEventTypeForResponse",
 )

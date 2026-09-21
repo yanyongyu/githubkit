@@ -10,56 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0266 import (
+    RepositoryRuleMaxFileSizePropParametersType,
+    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+)
 
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
+class RepositoryRuleMaxFileSizeType(TypedDict):
+    """max_file_size
 
-    A credit given to a user for a repository security advisory.
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
 
 
-class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
-    """RepositoryAdvisoryCredit
+class RepositoryRuleMaxFileSizeTypeForResponse(TypedDict):
+    """max_file_size
 
-    A credit given to a user for a repository security advisory.
+    Prevent commits with individual files that exceed the specified limit from being
+    pushed to the commit graph.
     """
 
-    user: SimpleUserTypeForResponse
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryAdvisoryCreditType",
-    "RepositoryAdvisoryCreditTypeForResponse",
+    "RepositoryRuleMaxFileSizeType",
+    "RepositoryRuleMaxFileSizeTypeForResponse",
 )

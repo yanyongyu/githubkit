@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,44 +17,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
-
-    An status update belonging to a project
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: float = Field(description="The unique identifier of the status update.")
-    node_id: str = Field(description="The node ID of the status update.")
-    project_node_id: Missing[str] = Field(
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    )
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ] = Field(
         default=UNSET,
-        description="The node ID of the project that this status update belongs to.",
-    )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: _dt.datetime = Field(
-        description="The time when the status update was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time when the status update was last updated."
-    )
-    status: Missing[
-        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
-    ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the period covered by the update."
-    )
-    target_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The target date associated with the update."
-    )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
+        description="The duration of the interaction restriction. Default: `one_day`.",
     )
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+model_rebuild(InteractionLimit)
 
-__all__ = ("ProjectsV2StatusUpdate",)
+__all__ = ("InteractionLimit",)

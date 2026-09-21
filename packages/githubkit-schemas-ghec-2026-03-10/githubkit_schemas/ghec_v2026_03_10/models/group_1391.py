@@ -11,23 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
+    selected_usernames: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members and outside collaborators whose codespaces should not be billed to the organization.",
     )
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202)
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)

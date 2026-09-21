@@ -9,106 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0183 import (
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
+)
 
-class SecretScanningLocationIssueTitleType(TypedDict):
-    """SecretScanningLocationIssueTitle
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
+
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    issue_title_url: str
-    html_url: NotRequired[str]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueTitle
+class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
+    """code_scanning
 
-    Represents an 'issue_title' secret scanning location type. This location type
-    shows that a secret was detected in the title of an issue.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    issue_title_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationIssueCommentType(TypedDict):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationIssueComment
-
-    Represents an 'issue_comment' secret scanning location type. This location type
-    shows that a secret was detected in a comment on an issue.
-    """
-
-    issue_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestTitleType(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestTitle
-
-    Represents a 'pull_request_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a pull request.
-    """
-
-    pull_request_title_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
-    html_url: NotRequired[str]
-
-
-class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
-    """SecretScanningLocationPullRequestReviewComment
-
-    Represents a 'pull_request_review_comment' secret scanning location type. This
-    location type shows that a secret was detected in a review comment on a pull
-    request.
-    """
-
-    pull_request_review_comment_url: str
-    html_url: NotRequired[str]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
 
 
 __all__ = (
-    "SecretScanningLocationIssueCommentType",
-    "SecretScanningLocationIssueCommentTypeForResponse",
-    "SecretScanningLocationIssueTitleType",
-    "SecretScanningLocationIssueTitleTypeForResponse",
-    "SecretScanningLocationPullRequestReviewCommentType",
-    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
-    "SecretScanningLocationPullRequestTitleType",
-    "SecretScanningLocationPullRequestTitleTypeForResponse",
+    "RepositoryRuleCodeScanningType",
+    "RepositoryRuleCodeScanningTypeForResponse",
 )

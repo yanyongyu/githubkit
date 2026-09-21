@@ -9,77 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0068 import (
-    CodeScanningAlertRuleSummaryType,
-    CodeScanningAlertRuleSummaryTypeForResponse,
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
 )
-from .group_0069 import (
-    CodeScanningAnalysisToolType,
-    CodeScanningAnalysisToolTypeForResponse,
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
-from .group_0071 import (
-    CodeScanningAlertInstanceType,
-    CodeScanningAlertInstanceTypeForResponse,
+from .group_0067 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
 )
-from .group_0072 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeScanningOrganizationAlertItemsType(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
+class ActionsPolicyEnterpriseConditionsOneof5Type(TypedDict):
+    """organization_property_and_repository_property
 
-    number: int
-    created_at: _dt.datetime
-    updated_at: NotRequired[_dt.datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+
+
+class ActionsPolicyEnterpriseConditionsOneof5TypeForResponse(TypedDict):
+    """organization_property_and_repository_property
+
+    Conditions to target organizations by property and repositories by property
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
-    repository: SimpleRepositoryType
-    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
-    assignees: NotRequired[list[SimpleUserType]]
-
-
-class CodeScanningOrganizationAlertItemsTypeForResponse(TypedDict):
-    """CodeScanningOrganizationAlertItems"""
-
-    number: int
-    created_at: str
-    updated_at: NotRequired[str]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Union[Literal["open", "dismissed", "fixed"], None]
-    fixed_at: NotRequired[Union[str, None]]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_at: Union[str, None]
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryTypeForResponse
-    tool: CodeScanningAnalysisToolTypeForResponse
-    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
-    repository: SimpleRepositoryTypeForResponse
-    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
 
 
 __all__ = (
-    "CodeScanningOrganizationAlertItemsType",
-    "CodeScanningOrganizationAlertItemsTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof5Type",
+    "ActionsPolicyEnterpriseConditionsOneof5TypeForResponse",
 )

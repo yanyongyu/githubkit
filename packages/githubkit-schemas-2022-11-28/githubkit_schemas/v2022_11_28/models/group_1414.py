@@ -16,17 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoKeysPostBody(GitHubModel):
-    """ReposOwnerRepoKeysPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
-    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
-    key: str = Field(description="The contents of the key.")
-    read_only: Missing[bool] = Field(
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
         default=UNSET,
-        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/articles/permission-levels-for-a-user-account-repository/)."',
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(ReposOwnerRepoKeysPostBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
 
-__all__ = ("ReposOwnerRepoKeysPostBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)

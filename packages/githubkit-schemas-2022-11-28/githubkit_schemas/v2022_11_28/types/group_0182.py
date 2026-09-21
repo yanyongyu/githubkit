@@ -9,44 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class ApiInsightsSummaryStatsType(TypedDict):
+    """Summary Stats
 
-class ProjectsV2DraftIssueType(TypedDict):
-    """Draft Issue
-
-    A draft issue in a project
+    API Insights usage summary stats for an organization
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
-class ProjectsV2DraftIssueTypeForResponse(TypedDict):
-    """Draft Issue
+class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
+    """Summary Stats
 
-    A draft issue in a project
+    API Insights usage summary stats for an organization
     """
 
-    id: float
-    node_id: str
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
 
 
 __all__ = (
-    "ProjectsV2DraftIssueType",
-    "ProjectsV2DraftIssueTypeForResponse",
+    "ApiInsightsSummaryStatsType",
+    "ApiInsightsSummaryStatsTypeForResponse",
 )

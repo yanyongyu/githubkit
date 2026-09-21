@@ -9,29 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0394 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0399 import CommitType, CommitTypeForResponse
 
-class CodeScanningAiScanEnablementUpdateType(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
 
-    AI Scan enablement update for a repository.
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
+
+    Branch With Protection
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
 
-    AI Scan enablement update for a repository.
+    Branch With Protection
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
+
+
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementUpdateType",
-    "CodeScanningAiScanEnablementUpdateTypeForResponse",
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
+    "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
 )

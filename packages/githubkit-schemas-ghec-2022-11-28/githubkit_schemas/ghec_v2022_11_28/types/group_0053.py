@@ -9,34 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
 
-class AnnouncementBannerType(TypedDict):
-    """Announcement Banner
 
-    Announcement at either the repository, organization, or enterprise level
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
+
+    Parameters for a repository name condition
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[_dt.datetime, None]
-    user_dismissible: Union[bool, None]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class AnnouncementBannerTypeForResponse(TypedDict):
-    """Announcement Banner
+class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    Announcement at either the repository, organization, or enterprise level
+    Parameters for a repository name condition
     """
 
-    announcement: Union[str, None]
-    expires_at: Union[str, None]
-    user_dismissible: Union[bool, None]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "AnnouncementBannerType",
-    "AnnouncementBannerTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetType",
+    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
 )

@@ -9,77 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsTasksTaskIdGetResponse400Type(TypedDict):
-    """AgentsTasksTaskIdGetResponse400
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[list[AgentsTasksTaskIdGetResponse400PropErrorsItemsType]]
-    documentation_url: str
+from .group_1141 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
+)
 
 
-class AgentsTasksTaskIdGetResponse400TypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse400
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse]
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
     ]
-    documentation_url: str
 
 
-class AgentsTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsTasksTaskIdGetResponse400PropErrorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    sessions: NotRequired[
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
+        ]
     ]
-    message: NotRequired[str]
-
-
-class AgentsTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsTasksTaskIdGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse400PropErrorsItemsType",
-    "AgentsTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsTasksTaskIdGetResponse400Type",
-    "AgentsTasksTaskIdGetResponse400TypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

@@ -9,60 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from githubkit.typing import UniqueList
 
-class DismissalRequestResponseType(TypedDict):
-    """Dismissal request response
 
-    A response made by a requester to dismiss the request.
+class ArtifactDeploymentRecordType(TypedDict):
+    """Artifact Deployment Record
+
+    Artifact Metadata Deployment Record
     """
 
     id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
-
-
-class DismissalRequestResponseTypeForResponse(TypedDict):
-    """Dismissal request response
-
-    A response made by a requester to dismiss the request.
-    """
-
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
     created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class DismissalRequestResponsePropReviewerType(TypedDict):
-    """DismissalRequestResponsePropReviewer
+class ArtifactDeploymentRecordTypeForResponse(TypedDict):
+    """Artifact Deployment Record
 
-    The user who reviewed the dismissal request.
+    Artifact Metadata Deployment Record
     """
 
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    id: NotRequired[int]
+    digest: NotRequired[str]
+    logical_environment: NotRequired[str]
+    physical_environment: NotRequired[str]
+    cluster: NotRequired[str]
+    deployment_name: NotRequired[str]
+    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
+    runtime_risks: NotRequired[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    attestation_id: NotRequired[Union[int, None]]
 
 
-class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
-    """DismissalRequestResponsePropReviewer
+ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
-    The user who reviewed the dismissal request.
-    """
 
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
+"""ArtifactDeploymentRecordPropTags
+"""
 
 
 __all__ = (
-    "DismissalRequestResponsePropReviewerType",
-    "DismissalRequestResponsePropReviewerTypeForResponse",
-    "DismissalRequestResponseType",
-    "DismissalRequestResponseTypeForResponse",
+    "ArtifactDeploymentRecordPropTagsType",
+    "ArtifactDeploymentRecordPropTagsTypeForResponse",
+    "ArtifactDeploymentRecordType",
+    "ArtifactDeploymentRecordTypeForResponse",
 )

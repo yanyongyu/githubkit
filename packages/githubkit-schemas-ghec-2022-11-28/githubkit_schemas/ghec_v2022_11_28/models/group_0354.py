@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,48 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ConcurrencyGroup(GitHubModel):
-    """Concurrency Group
+class RuleSuiteRequiredStatusChecks(GitHubModel):
+    """Required status checks rule suite metadata
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Metadata for a required status checks rule evaluation result.
     """
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    total_count: int = Field()
-    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
-
-
-class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    job_id: Missing[int] = Field(
+    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
         default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The status checks associated with the rule evaluation.",
     )
-    job_name: Missing[str] = Field(
-        default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
-    )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
-    )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
-    )
-    status: Literal["in_progress", "pending"] = Field()
 
 
-model_rebuild(ConcurrencyGroup)
-model_rebuild(ConcurrencyGroupPropGroupMembersItems)
+class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the status check."
+    )
+    context: Missing[str] = Field(
+        default=UNSET, description="The context name of the status check."
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the status check."
+    )
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of the status check."
+    )
+    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
+        Field(
+            default=UNSET,
+            description="The GitHub App associated with the status check.",
+        )
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the GitHub App."
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+
+
+model_rebuild(RuleSuiteRequiredStatusChecks)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
 
 __all__ = (
-    "ConcurrencyGroup",
-    "ConcurrencyGroupPropGroupMembersItems",
+    "RuleSuiteRequiredStatusChecks",
+    "RuleSuiteRequiredStatusChecksPropChecksItems",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
 )

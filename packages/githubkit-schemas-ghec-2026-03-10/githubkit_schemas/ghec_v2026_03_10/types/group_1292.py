@@ -9,39 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    name: NotRequired[str]
-    runner_group_id: NotRequired[int]
-    maximum_runners: NotRequired[int]
-    enable_static_ip: NotRequired[bool]
-    size: NotRequired[str]
-    image_source: NotRequired[Literal["github", "partner", "custom"]]
-    image_id: NotRequired[str]
-    image_version: NotRequired[Union[str, None]]
-    image_gen: NotRequired[bool]
+    total_count: int
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+
+
+class VisualStudioSubscriptionAssignmentType(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
+
+
+class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: NotRequired[str]
+    subscription_id: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    manual_match: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyType",
-    "OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
+    "VisualStudioSubscriptionAssignmentType",
+    "VisualStudioSubscriptionAssignmentTypeForResponse",
 )

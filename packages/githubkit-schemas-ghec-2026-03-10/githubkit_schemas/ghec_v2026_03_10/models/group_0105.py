@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,43 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomProperty(GitHubModel):
-    """Custom Property for Organization
+class EnterpriseSecurityAnalysisSettings(GitHubModel):
+    """Enterprise Security Analysis Settings"""
 
-    Custom property defined for an organization
-    """
-
-    property_name: Missing[str] = Field(
-        default=UNSET, description="The name of the property"
+    advanced_security_enabled_for_new_repositories: bool = Field(
+        description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
     )
-    url: Missing[str] = Field(
+    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
+        Field(
+            default=UNSET,
+            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
+        )
+    )
+    dependabot_alerts_enabled_for_new_repositories: bool = Field(
+        description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."
+    )
+    secret_scanning_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\nenterprise."
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: bool = Field(
+        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this enterprise."
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+        description="An optional URL string to display to contributors who are blocked from pushing a secret.",
     )
-    source_type: Missing[Literal["organization", "enterprise"]] = Field(
-        default=UNSET, description="The source type of the property"
-    )
-    value_type: Missing[
-        Literal["string", "single_select", "multi_select", "true_false", "url"]
-    ] = Field(default=UNSET, description="The type of the value for the property")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        bool
+    ] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
-    values_editable_by: Missing[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
+    )
 
 
-model_rebuild(OrganizationCustomProperty)
+model_rebuild(EnterpriseSecurityAnalysisSettings)
 
-__all__ = ("OrganizationCustomProperty",)
+__all__ = ("EnterpriseSecurityAnalysisSettings",)

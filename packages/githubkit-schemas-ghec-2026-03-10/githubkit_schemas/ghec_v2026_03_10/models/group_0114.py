@@ -9,28 +9,155 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class EnterpriseTokenInventoryItem(GitHubModel):
+    """Enterprise Token Inventory Item
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
+    A credential or GitHub App installation in an enterprise's token inventory.
+    """
+
+    inventory_id: str = Field(
+        description="Opaque identifier for retrieving this item within the enterprise. Its value can differ between responses for the same credential."
     )
-    exclude: Missing[list[str]] = Field(
+    credential_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
+        description="The credential's ID for audit-log correlation, unique only within its `credential_type`. Null for SSH keys, GitHub App installations, and federated credentials.",
+    )
+    hashed_token: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Base64-encoded SHA-256 hash of the token, matching `hashed_token` in audit events. Null when not reported.",
+    )
+    fingerprint: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SSH key's SHA-256 fingerprint, matching audit events. Null for other credential types.",
+    )
+    item_type: Literal["credential", "token_issuer_principal"] = Field()
+    credential_type: Literal[
+        "classic_pat",
+        "oauth_app_user_token",
+        "github_app_user_token",
+        "fine_grained_pat",
+        "ssh_key",
+        "github_app_installation",
+        "federated_jti",
+    ] = Field()
+    display_name: Missing[Union[str, None]] = Field(default=UNSET)
+    owner: Missing[Union[EnterpriseTokenInventoryItemPropOwner, None]] = Field(
+        default=UNSET
+    )
+    owner_type: Missing[
+        Union[Literal["user", "oauth_application", "github_app"], None]
+    ] = Field(default=UNSET, description="The type of credential owner.")
+    application: Missing[Union[EnterpriseTokenInventoryItemPropApplication, None]] = (
+        Field(default=UNSET)
+    )
+    credential_state: Literal["active", "expired", "revoked", "deleted"] = Field()
+    authorization_state: Literal["currently_authorized", "member_owned_only"] = Field()
+    effective_access_state: Literal["effective", "not_effective", "unknown"] = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    last_used_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    expires_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    next_expires_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    credential_instance_count: Missing[Union[int, None]] = Field(default=UNSET)
+    enterprise_authorized: bool = Field(
+        description="Whether the item is authorized directly at the enterprise level."
+    )
+    authorization_count: int = Field(
+        description="Number of authorizing organizations, plus one when `enterprise_authorized` is true."
+    )
+    authorized_organizations: list[
+        EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems
+    ] = Field()
+    age_days: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="Age of the credential in whole days at assembly time.",
+    )
+    never_expires: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this is an active credential with no expiration. False for GitHub App installations and credentials with unknown expiration.",
+    )
+    past_expiration_policy: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether the credential exceeds a configured lifetime limit or an advisory age baseline. Null when not evaluated.",
+    )
+    past_expiration_policy_basis: Missing[
+        Union[Literal["enforced_limit", "proposed_baseline"], None]
+    ] = Field(
+        default=UNSET,
+        description="The basis for `past_expiration_policy`: an enforced PAT lifetime limit or an advisory age baseline.",
+    )
+    expiry_unknown: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the credential's expiration could not be determined.",
+    )
+    scopes: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="OAuth scopes recorded for the token. Null when not reported for the credential type.",
+    )
+    permissions: Missing[Union[EnterpriseTokenInventoryItemPropPermissions, None]] = (
+        Field(
+            default=UNSET,
+            description="Permissions by resource for fine-grained PATs and GitHub App installations. Null when not reported; an empty object means no recorded permissions.",
+        )
+    )
+    repository_selection: Missing[Union[Literal["all", "subset", "none"], None]] = (
+        Field(
+            default=UNSET,
+            description="Repository selection for the credential. Null when not reported; `none` means no repositories are selected.",
+        )
     )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
+class EnterpriseTokenInventoryItemPropOwner(GitHubModel):
+    """EnterpriseTokenInventoryItemPropOwner"""
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class EnterpriseTokenInventoryItemPropApplication(GitHubModel):
+    """EnterpriseTokenInventoryItemPropApplication"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems(GitHubModel):
+    """EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+
+
+class EnterpriseTokenInventoryItemPropPermissions(ExtraGitHubModel):
+    """EnterpriseTokenInventoryItemPropPermissions
+
+    Permissions by resource for fine-grained PATs and GitHub App installations. Null
+    when not reported; an empty object means no recorded permissions.
+    """
+
+
+model_rebuild(EnterpriseTokenInventoryItem)
+model_rebuild(EnterpriseTokenInventoryItemPropOwner)
+model_rebuild(EnterpriseTokenInventoryItemPropApplication)
+model_rebuild(EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems)
+model_rebuild(EnterpriseTokenInventoryItemPropPermissions)
+
+__all__ = (
+    "EnterpriseTokenInventoryItem",
+    "EnterpriseTokenInventoryItemPropApplication",
+    "EnterpriseTokenInventoryItemPropAuthorizedOrganizationsItems",
+    "EnterpriseTokenInventoryItemPropOwner",
+    "EnterpriseTokenInventoryItemPropPermissions",
+)

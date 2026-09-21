@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import ActionsHostedRunnerCuratedImage
+
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+
+    organization_slugs: list[str] = Field(
+        description="Organization slug to unassign the team from."
+    )
 
 
-class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCuratedImage] = Field()
-
-
-model_rebuild(OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200)
-
-__all__ = ("OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200",)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)

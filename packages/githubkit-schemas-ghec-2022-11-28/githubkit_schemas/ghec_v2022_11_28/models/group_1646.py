@@ -12,17 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)

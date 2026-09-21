@@ -16,18 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostBody(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
 
-    name: str = Field(
-        description="The name of the cost center (max length 255 characters)"
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
+    revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostBody)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
 
-__all__ = ("EnterprisesEnterpriseSettingsBillingCostCentersPostBody",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)

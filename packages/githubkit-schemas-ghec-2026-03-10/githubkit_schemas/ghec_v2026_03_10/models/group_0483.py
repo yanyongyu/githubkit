@@ -9,45 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class RepositoryHashAlgorithm(GitHubModel):
+    """Repository hash algorithm
 
-class RenamedIssueEvent(GitHubModel):
-    """Renamed Issue Event
-
-    Renamed Issue Event
+    Repository hash algorithm
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["renamed"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    rename: RenamedIssueEventPropRename = Field()
+    hash_algorithm: Literal["sha1", "sha256"] = Field(
+        description="The Git hash algorithm used by this repository."
+    )
 
 
-class RenamedIssueEventPropRename(GitHubModel):
-    """RenamedIssueEventPropRename"""
+model_rebuild(RepositoryHashAlgorithm)
 
-    from_: str = Field(alias="from")
-    to: str = Field()
-
-
-model_rebuild(RenamedIssueEvent)
-model_rebuild(RenamedIssueEventPropRename)
-
-__all__ = (
-    "RenamedIssueEvent",
-    "RenamedIssueEventPropRename",
-)
+__all__ = ("RepositoryHashAlgorithm",)

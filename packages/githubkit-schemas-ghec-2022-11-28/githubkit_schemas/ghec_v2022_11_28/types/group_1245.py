@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0186 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    credential_id: str
+    credential_type: Literal["ssh_key"]
+    organizations: UniqueList[str]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    credential_id: str
+    credential_type: Literal["ssh_key"]
+    organizations: UniqueList[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1TypeForResponse",
 )

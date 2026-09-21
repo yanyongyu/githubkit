@@ -13,15 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0293 import CopilotSpaceResource
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+class OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200"""
+
+    resources: list[CopilotSpaceResource] = Field(
+        description="The list of resources attached to this Copilot Space."
     )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200)
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200",)

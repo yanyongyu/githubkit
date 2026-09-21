@@ -9,37 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class AutoMergeType(TypedDict):
-    """Auto merge
+class PackageType(TypedDict):
+    """Package
 
-    The status of auto merging a pull request.
+    A software package
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[SimpleUserType, None]]
+    repository: NotRequired[Union[MinimalRepositoryType, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class AutoMergeTypeForResponse(TypedDict):
-    """Auto merge
+class PackageTypeForResponse(TypedDict):
+    """Package
 
-    The status of auto merging a pull request.
+    A software package
     """
 
-    enabled_by: SimpleUserTypeForResponse
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    repository: NotRequired[Union[MinimalRepositoryTypeForResponse, None]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "AutoMergeType",
-    "AutoMergeTypeForResponse",
+    "PackageType",
+    "PackageTypeForResponse",
 )

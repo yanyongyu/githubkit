@@ -9,76 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChanges8Type(TypedDict):
-    """WebhooksChanges8"""
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-    tier: WebhooksChanges8PropTierType
-
-
-class WebhooksChanges8TypeForResponse(TypedDict):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTierTypeForResponse
-
-
-class WebhooksChanges8PropTierType(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromType
-
-
-class WebhooksChanges8PropTierTypeForResponse(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromTypeForResponse
-
-
-class WebhooksChanges8PropTierPropFromType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
+    url: str
+    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
-    """Sponsorship Tier
+class WebhooksMembershipTypeForResponse(TypedDict):
+    """Membership
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
+    url: str
+    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
+
+
+class WebhooksMembershipPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksMembershipPropUserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksChanges8PropTierPropFromType",
-    "WebhooksChanges8PropTierPropFromTypeForResponse",
-    "WebhooksChanges8PropTierType",
-    "WebhooksChanges8PropTierTypeForResponse",
-    "WebhooksChanges8Type",
-    "WebhooksChanges8TypeForResponse",
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipPropUserTypeForResponse",
+    "WebhooksMembershipType",
+    "WebhooksMembershipTypeForResponse",
 )

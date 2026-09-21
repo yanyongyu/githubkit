@@ -9,61 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+    body: Missing[str] = Field(
+        default=UNSET, description="The body text of the pull request review"
     )
-    display_name: Missing[str] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
     )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
-    )
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)

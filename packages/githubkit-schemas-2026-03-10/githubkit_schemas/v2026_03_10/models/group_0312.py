@@ -9,37 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0313 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
-)
 
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-class ProtectedBranchPropRequiredPullRequestReviews(GitHubModel):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
-
-    url: str = Field()
-    dismiss_stale_reviews: Missing[bool] = Field(default=UNSET)
-    require_code_owner_reviews: Missing[bool] = Field(default=UNSET)
-    required_approving_review_count: Missing[int] = Field(default=UNSET)
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    dismissal_restrictions: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(default=UNSET)
-    bypass_pull_request_allowances: Missing[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(default=UNSET)
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
+    )
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviews)
+model_rebuild(ReviewCustomGatesStateRequired)
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviews",)
+__all__ = ("ReviewCustomGatesStateRequired",)

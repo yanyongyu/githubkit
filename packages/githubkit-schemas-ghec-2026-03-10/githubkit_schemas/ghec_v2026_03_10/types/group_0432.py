@@ -9,85 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
-from .group_0332 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
+from .group_0429 import (
+    CodeScanningVariantAnalysisRepositoryType,
+    CodeScanningVariantAnalysisRepositoryTypeForResponse,
+)
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    code_of_conduct: Union[CodeOfConductSimpleType, None]
-    code_of_conduct_file: Union[CommunityHealthFileType, None]
-    license_: Union[LicenseSimpleType, None]
-    contributing: Union[CommunityHealthFileType, None]
-    readme: Union[CommunityHealthFileType, None]
-    issue_template: Union[CommunityHealthFileType, None]
-    pull_request_template: Union[CommunityHealthFileType, None]
-
-
-class CommunityProfilePropFilesTypeForResponse(TypedDict):
-    """CommunityProfilePropFiles"""
-
-    code_of_conduct: Union[CodeOfConductSimpleTypeForResponse, None]
-    code_of_conduct_file: Union[CommunityHealthFileTypeForResponse, None]
-    license_: Union[LicenseSimpleTypeForResponse, None]
-    contributing: Union[CommunityHealthFileTypeForResponse, None]
-    readme: Union[CommunityHealthFileTypeForResponse, None]
-    issue_template: Union[CommunityHealthFileTypeForResponse, None]
-    pull_request_template: Union[CommunityHealthFileTypeForResponse, None]
+    repository: CodeScanningVariantAnalysisRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    url: str
-    html_url: str
-
-
-class CommunityHealthFileTypeForResponse(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
-    """
-
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[_dt.datetime, None]
-    content_reports_enabled: NotRequired[bool]
-
-
-class CommunityProfileTypeForResponse(TypedDict):
-    """Community Profile
-
-    Community Profile
-    """
-
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesTypeForResponse
-    updated_at: Union[str, None]
-    content_reports_enabled: NotRequired[bool]
+    repository: CodeScanningVariantAnalysisRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
+    failure_message: NotRequired[str]
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityHealthFileTypeForResponse",
-    "CommunityProfilePropFilesType",
-    "CommunityProfilePropFilesTypeForResponse",
-    "CommunityProfileType",
-    "CommunityProfileTypeForResponse",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",
+    "CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse",
 )

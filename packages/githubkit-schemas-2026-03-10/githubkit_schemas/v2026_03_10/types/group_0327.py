@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanEnablementType(TypedDict):
-    """CodeScanningAiScanEnablement
+class VerificationType(TypedDict):
+    """Verification"""
 
-    AI Scan enablement for a repository.
-    """
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
-    pr_scan: Literal["enabled", "disabled"]
 
+class VerificationTypeForResponse(TypedDict):
+    """Verification"""
 
-class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablement
-
-    AI Scan enablement for a repository.
-    """
-
-    pr_scan: Literal["enabled", "disabled"]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementType",
-    "CodeScanningAiScanEnablementTypeForResponse",
+    "VerificationType",
+    "VerificationTypeForResponse",
 )

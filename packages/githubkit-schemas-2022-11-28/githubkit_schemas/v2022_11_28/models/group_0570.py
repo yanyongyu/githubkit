@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,51 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksLabelUnarchivedAllof1(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksDeployKey(GitHubModel):
+    """WebhooksDeployKey
 
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived. This is `null` after the label is unarchived."
-    )
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedBy, None] = Field(
-        description="The user who archived the label. This is `null` after the label is unarchived."
-    )
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedBy(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
     id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    verified: bool = Field()
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksLabelUnarchivedAllof1)
-model_rebuild(WebhooksLabelUnarchivedAllof1PropArchivedBy)
+model_rebuild(WebhooksDeployKey)
 
-__all__ = (
-    "WebhooksLabelUnarchivedAllof1",
-    "WebhooksLabelUnarchivedAllof1PropArchivedBy",
-)
+__all__ = ("WebhooksDeployKey",)

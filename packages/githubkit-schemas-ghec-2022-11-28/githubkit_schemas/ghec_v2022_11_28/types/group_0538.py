@@ -13,31 +13,29 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Results of a successful merge upstream request
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
+class MergedUpstreamTypeForResponse(TypedDict):
+    """Merged upstream
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Results of a successful merge upstream request
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "MergedUpstreamType",
+    "MergedUpstreamTypeForResponse",
 )

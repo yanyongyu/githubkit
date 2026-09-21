@@ -9,51 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
-from .group_0122 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
-)
 
+class ExternalVulnerabilitySyncResultType(TypedDict):
+    """External Vulnerability Sync Result
 
-class EnterpriseRulesetConditionsOneof3Type(TypedDict):
-    """organization_id_and_repository_property
-
-    Conditions to target organization by id and repositories by property
+    Result of an external vulnerability synchronization operation
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsType]
 
 
-class EnterpriseRulesetConditionsOneof3TypeForResponse(TypedDict):
-    """organization_id_and_repository_property
+class ExternalVulnerabilitySyncResultTypeForResponse(TypedDict):
+    """External Vulnerability Sync Result
 
-    Conditions to target organization by id and repositories by property
+    Result of an external vulnerability synchronization operation
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
-    )
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse]
+
+
+class ExternalVulnerabilitySyncResultPropResultsItemsType(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
+
+
+class ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof3Type",
-    "EnterpriseRulesetConditionsOneof3TypeForResponse",
+    "ExternalVulnerabilitySyncResultPropResultsItemsType",
+    "ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse",
+    "ExternalVulnerabilitySyncResultType",
+    "ExternalVulnerabilitySyncResultTypeForResponse",
 )

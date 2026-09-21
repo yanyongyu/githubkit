@@ -9,53 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-class PackageType(TypedDict):
-    """Package
-
-    A software package
+    Runner Application
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[SimpleUserType, None]]
-    repository: NotRequired[Union[MinimalRepositoryType, None]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class RunnerApplicationTypeForResponse(TypedDict):
+    """Runner Application
 
-    A software package
+    Runner Application
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    repository: NotRequired[Union[MinimalRepositoryTypeForResponse, None]]
-    created_at: str
-    updated_at: str
+    os: str
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "RunnerApplicationType",
+    "RunnerApplicationTypeForResponse",
 )

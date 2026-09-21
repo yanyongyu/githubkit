@@ -9,55 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
+    credential_id: int
+    credential_type: Literal["ssh_key"]
+    fingerprint: str
+    organizations: list[str]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    credential_id: int
+    credential_type: Literal["ssh_key"]
+    fingerprint: str
+    organizations: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse",
 )

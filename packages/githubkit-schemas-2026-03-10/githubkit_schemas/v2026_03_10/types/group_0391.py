@@ -9,58 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0036 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
-class GitTreeType(TypedDict):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class GitTreeTypeForResponse(TypedDict):
-    """Git Tree
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    The hierarchy between files in a Git repository.
+    Details for the vulnerable dependency.
     """
 
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsTypeForResponse]
-
-
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-class GitTreePropTreeItemsTypeForResponse(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreePropTreeItemsTypeForResponse",
-    "GitTreeType",
-    "GitTreeTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

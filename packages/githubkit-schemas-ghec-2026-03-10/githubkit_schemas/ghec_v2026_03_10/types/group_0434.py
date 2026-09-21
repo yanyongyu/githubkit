@@ -9,121 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ContentTreeType(TypedDict):
-    """Content Tree
-
-    Content Tree
-    """
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksType
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class ContentTreeTypeForResponse(TypedDict):
-    """Content Tree
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Content Tree
-    """
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    content: NotRequired[str]
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[list[ContentTreePropEntriesItemsTypeForResponse]]
-    encoding: NotRequired[str]
-    links: ContentTreePropLinksTypeForResponse
+    repository: SimpleRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
+class CodeScanningVariantAnalysisRepoTaskTypeForResponse(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropLinksTypeForResponse(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
-
-
-class ContentTreePropEntriesItemsTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksTypeForResponse
-
-
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsPropLinksTypeForResponse(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    repository: SimpleRepositoryTypeForResponse
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
 __all__ = (
-    "ContentTreePropEntriesItemsPropLinksType",
-    "ContentTreePropEntriesItemsPropLinksTypeForResponse",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropEntriesItemsTypeForResponse",
-    "ContentTreePropLinksType",
-    "ContentTreePropLinksTypeForResponse",
-    "ContentTreeType",
-    "ContentTreeTypeForResponse",
+    "CodeScanningVariantAnalysisRepoTaskType",
+    "CodeScanningVariantAnalysisRepoTaskTypeForResponse",
 )

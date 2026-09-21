@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,51 +19,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class DismissalRequestResponse(GitHubModel):
-    """Dismissal request response
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-    A response made by a requester to dismiss the request.
+    Organization variable for GitHub Actions.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the response to the dismissal request."
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: _dt.datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
-        default=UNSET, description="The user who reviewed the dismissal request."
+    updated_at: _dt.datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    message: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The response comment of the reviewer."
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
     )
-    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
-        default=UNSET,
-        description="The response status to the dismissal request until dismissed.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the response to the dismissal request was created.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-class DismissalRequestResponsePropReviewer(GitHubModel):
-    """DismissalRequestResponsePropReviewer
+model_rebuild(OrganizationActionsVariable)
 
-    The user who reviewed the dismissal request.
-    """
-
-    actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who reviewed the dismissal request.",
-    )
-    actor_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the GitHub user who reviewed the dismissal request.",
-    )
-
-
-model_rebuild(DismissalRequestResponse)
-model_rebuild(DismissalRequestResponsePropReviewer)
-
-__all__ = (
-    "DismissalRequestResponse",
-    "DismissalRequestResponsePropReviewer",
-)
+__all__ = ("OrganizationActionsVariable",)

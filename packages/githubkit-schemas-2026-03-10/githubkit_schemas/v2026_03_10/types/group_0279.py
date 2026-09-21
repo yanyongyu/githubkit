@@ -9,69 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupType(TypedDict):
-    """Concurrency Group
+class SecretScanningLocationDiscussionBodyType(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
+    discussion_body_url: str
 
 
-class ConcurrencyGroupTypeForResponse(TypedDict):
-    """Concurrency Group
+class SecretScanningLocationDiscussionBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionBody
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+    discussion_body_url: str
 
 
-class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class SecretScanningLocationPullRequestCommentType(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
-class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class SecretScanningLocationPullRequestCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestComment
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupPropGroupMembersItemsType",
-    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupType",
-    "ConcurrencyGroupTypeForResponse",
+    "SecretScanningLocationDiscussionBodyType",
+    "SecretScanningLocationDiscussionBodyTypeForResponse",
+    "SecretScanningLocationPullRequestCommentType",
+    "SecretScanningLocationPullRequestCommentTypeForResponse",
 )

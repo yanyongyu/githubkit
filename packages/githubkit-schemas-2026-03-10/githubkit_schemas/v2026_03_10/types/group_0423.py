@@ -9,51 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0401 import IssueReferenceType, IssueReferenceTypeForResponse
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SubIssueRemovedIssueEventType(TypedDict):
-    """Sub-issue Removed Issue Event
+class IssueEventIntentType(TypedDict):
+    """Issue Event Intent
 
-    Sub-issue Removed Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    sub_issue: Union[None, IssueReferenceType, None]
+    rationale: NotRequired[Union[str, None]]
+    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
 
 
-class SubIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Sub-issue Removed Issue Event
+class IssueEventIntentTypeForResponse(TypedDict):
+    """Issue Event Intent
 
-    Sub-issue Removed Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    sub_issue: Union[None, IssueReferenceTypeForResponse, None]
+    rationale: NotRequired[Union[str, None]]
+    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
 
 
 __all__ = (
-    "SubIssueRemovedIssueEventType",
-    "SubIssueRemovedIssueEventTypeForResponse",
+    "IssueEventIntentType",
+    "IssueEventIntentTypeForResponse",
 )

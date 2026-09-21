@@ -9,52 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0375 import Metadata
+from .group_0003 import SimpleUser
+from .group_0049 import ReactionRollup
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class CommitComment(GitHubModel):
+    """Commit Comment
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
-
-
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    Commit Comment
     """
 
+    html_url: str = Field()
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[SimpleUser, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
+
+
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
 __all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
 )

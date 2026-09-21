@@ -12,44 +12,84 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0156 import TeamSimpleType, TeamSimpleTypeForResponse
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
 
-    An actor that can bypass rules in a ruleset
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
+
+    The Relationship a Team has with a role.
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "User",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[TeamSimpleType, None]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
-    """Repository Ruleset Bypass Actor
+class TeamRoleAssignmentTypeForResponse(TypedDict):
+    """A Role Assignment for a Team
 
-    An actor that can bypass rules in a ruleset
+    The Relationship a Team has with a role.
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "User",
-    ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[TeamSimpleTypeForResponse, None]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+
+
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "RepositoryRulesetBypassActorType",
-    "RepositoryRulesetBypassActorTypeForResponse",
+    "TeamRoleAssignmentPropPermissionsType",
+    "TeamRoleAssignmentPropPermissionsTypeForResponse",
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,106 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
-from .group_0668 import PullRequestWebhook
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0685 import ProjectsV2Item
 
 
-class WebhookPullRequestEdited(GitHubModel):
-    """pull_request edited event"""
+class WebhookProjectsV2ItemReordered(GitHubModel):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookPullRequestEditedPropChanges = Field(
-        description="The changes to the comment if the action was `edited`."
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
-    )
+    action: Literal["reordered"] = Field()
+    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    number: int = Field(description="The pull request number.")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookPullRequestEditedPropChanges(GitHubModel):
-    """WebhookPullRequestEditedPropChanges
+class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
 
-    The changes to the comment if the action was `edited`.
-    """
-
-    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
-    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
+    previous_projects_v2_item_node_id: Missing[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
+    ] = Field(default=UNSET)
 
 
-class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBody"""
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
+    GitHubModel
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropTitle"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
-    )
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBase"""
-
-    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
-    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookPullRequestEdited)
-model_rebuild(WebhookPullRequestEditedPropChanges)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
-model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
+model_rebuild(WebhookProjectsV2ItemReordered)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
 
 __all__ = (
-    "WebhookPullRequestEdited",
-    "WebhookPullRequestEditedPropChanges",
-    "WebhookPullRequestEditedPropChangesPropBase",
-    "WebhookPullRequestEditedPropChangesPropBasePropRef",
-    "WebhookPullRequestEditedPropChangesPropBasePropSha",
-    "WebhookPullRequestEditedPropChangesPropBody",
-    "WebhookPullRequestEditedPropChangesPropTitle",
+    "WebhookProjectsV2ItemReordered",
+    "WebhookProjectsV2ItemReorderedPropChanges",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
 )

@@ -9,40 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
-
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
-
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str]
+from .group_0520 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class ReposOwnerRepoStacksStackNumberGetResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
 
-    emails: list[str]
+class ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "UserEmailsDeleteBodyOneof0Type",
-    "UserEmailsDeleteBodyOneof0TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberGetResponse200Type",
+    "ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse",
 )

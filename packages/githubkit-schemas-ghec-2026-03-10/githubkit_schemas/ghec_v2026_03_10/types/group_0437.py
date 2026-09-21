@@ -9,67 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    An object describing a symlink
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class ContentSymlinkTypeForResponse(TypedDict):
-    """Symlink Content
+class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    An object describing a symlink
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksTypeForResponse
-
-
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentSymlinkPropLinksTypeForResponse(TypedDict):
-    """ContentSymlinkPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "ContentSymlinkPropLinksType",
-    "ContentSymlinkPropLinksTypeForResponse",
-    "ContentSymlinkType",
-    "ContentSymlinkTypeForResponse",
+    "CodeScanningDefaultSetupUpdateResponseType",
+    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
 )

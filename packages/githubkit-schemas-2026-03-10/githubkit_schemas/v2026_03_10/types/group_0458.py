@@ -9,33 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0423 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class TimelineAssignedIssueEventType(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Pull Request Review Request
+    Timeline Assigned Issue Event
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    assignee: SimpleUserType
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class PullRequestReviewRequestTypeForResponse(TypedDict):
-    """Pull Request Review Request
+class TimelineAssignedIssueEventTypeForResponse(TypedDict):
+    """Timeline Assigned Issue Event
 
-    Pull Request Review Request
+    Timeline Assigned Issue Event
     """
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["assigned"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "PullRequestReviewRequestType",
-    "PullRequestReviewRequestTypeForResponse",
+    "TimelineAssignedIssueEventType",
+    "TimelineAssignedIssueEventTypeForResponse",
 )

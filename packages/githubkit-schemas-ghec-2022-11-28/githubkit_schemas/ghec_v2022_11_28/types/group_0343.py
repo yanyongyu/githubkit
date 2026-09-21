@@ -9,77 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0236 import IssueType, IssueTypeForResponse
+from .group_0339 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0342 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
-class TeamMemberType(TypedDict):
-    """Team Member
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+class ProjectsV2ItemSimpleType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    role: NotRequired[Literal["member", "maintainer"]]
-    inherited: NotRequired[bool]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
-class TeamMemberTypeForResponse(TypedDict):
-    """Team Member
+class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    An item belonging to a project
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    role: NotRequired[Literal["member", "maintainer"]]
-    inherited: NotRequired[bool]
+    id: float
+    node_id: NotRequired[str]
+    content: NotRequired[
+        Union[
+            IssueTypeForResponse,
+            PullRequestSimpleTypeForResponse,
+            ProjectsV2DraftIssueTypeForResponse,
+        ]
+    ]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    project_url: NotRequired[str]
+    item_url: NotRequired[str]
 
 
 __all__ = (
-    "TeamMemberType",
-    "TeamMemberTypeForResponse",
+    "ProjectsV2ItemSimpleType",
+    "ProjectsV2ItemSimpleTypeForResponse",
 )

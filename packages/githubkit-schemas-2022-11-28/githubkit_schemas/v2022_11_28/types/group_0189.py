@@ -13,47 +13,49 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class OrganizationUpdateIssueFieldType(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    Custom property defined on an organization
-    """
-
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    require_explicit_values: NotRequired[bool]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueField"""
 
-    Custom property defined on an organization
-    """
-
-    property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
+    name: NotRequired[str]
     description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[
+        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
     ]
-    require_explicit_values: NotRequired[bool]
+
+
+class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "OrganizationUpdateIssueFieldPropOptionsItemsType",
+    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "OrganizationUpdateIssueFieldType",
+    "OrganizationUpdateIssueFieldTypeForResponse",
 )

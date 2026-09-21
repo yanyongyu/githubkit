@@ -9,40 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
+class LicenseType(TypedDict):
+    """License
 
-    Organization variable for GitHub Actions.
+    License
     """
 
+    key: str
     name: str
-    value: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class LicenseTypeForResponse(TypedDict):
+    """License
 
-    Organization variable for GitHub Actions.
+    License
     """
 
+    key: str
     name: str
-    value: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
+    description: str
+    implementation: str
+    permissions: list[str]
+    conditions: list[str]
+    limitations: list[str]
+    body: str
+    featured: bool
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
+    "LicenseType",
+    "LicenseTypeForResponse",
 )

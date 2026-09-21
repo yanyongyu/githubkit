@@ -9,48 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
 
 
-class EnterpriseOrganizationInstallationType(TypedDict):
-    """Enterprise Organization Installation
+class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    A GitHub App Installation on an enterprise-owned organization
+    Parameters for a repository property condition
     """
 
-    id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsType
-    events: NotRequired[list[str]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
-    """Enterprise Organization Installation
+class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository properties
 
-    A GitHub App Installation on an enterprise-owned organization
+    Parameters for a repository property condition
     """
 
-    id: int
-    app_slug: NotRequired[str]
-    client_id: str
-    repository_selection: Literal["all", "selected"]
-    repositories_url: str
-    permissions: AppPermissionsTypeForResponse
-    events: NotRequired[list[str]]
-    created_at: str
-    updated_at: str
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "EnterpriseOrganizationInstallationType",
-    "EnterpriseOrganizationInstallationTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
 )

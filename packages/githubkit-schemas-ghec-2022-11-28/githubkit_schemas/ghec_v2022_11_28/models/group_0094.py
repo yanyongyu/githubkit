@@ -18,94 +18,91 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0065 import BypassResponse
+from .group_0092 import BypassResponse
 
 
-class SecretScanningDismissalRequest(GitHubModel):
-    """Secret scanning alert dismissal request
+class SecretScanningBypassRequest(GitHubModel):
+    """Secret scanning bypass request
 
-    A dismissal request made by a user asking to close a secret scanning alert in
+    A bypass request made by a user asking to be exempted from push protection in
     this repository.
     """
 
     id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the dismissal request."
+        default=UNSET, description="The unique identifier of the bypass request."
     )
     number: Missing[int] = Field(
         default=UNSET,
-        description="The number uniquely identifying the dismissal request within its repository.",
+        description="The number uniquely identifying the bypass request within its repository.",
     )
-    repository: Missing[SecretScanningDismissalRequestPropRepository] = Field(
-        default=UNSET, description="The repository the dismissal request is for."
+    repository: Missing[SecretScanningBypassRequestPropRepository] = Field(
+        default=UNSET, description="The repository the bypass request is for."
     )
-    organization: Missing[SecretScanningDismissalRequestPropOrganization] = Field(
+    organization: Missing[SecretScanningBypassRequestPropOrganization] = Field(
         default=UNSET,
-        description="The organization associated with the repository the dismissal request is for.",
+        description="The organization associated with the repository the bypass request is for.",
     )
-    requester: Missing[SecretScanningDismissalRequestPropRequester] = Field(
-        default=UNSET, description="The user who requested the dismissal."
+    requester: Missing[SecretScanningBypassRequestPropRequester] = Field(
+        default=UNSET, description="The user who requested the bypass."
     )
     request_type: Missing[str] = Field(
         default=UNSET, description="The type of request."
     )
-    data: Missing[Union[list[SecretScanningDismissalRequestPropDataItems], None]] = (
-        Field(
-            default=UNSET,
-            description="Data describing the secret alert that is being requested to be dismissed.",
-        )
+    data: Missing[Union[list[SecretScanningBypassRequestPropDataItems], None]] = Field(
+        default=UNSET,
+        description="Data describing the push rules that are being requested to be bypassed.",
     )
     resource_identifier: Missing[str] = Field(
         default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
+        description="The unique identifier for the request type of the bypass request. For example, a commit SHA.",
     )
     status: Missing[
-        Literal["pending", "denied", "approved", "cancelled", "expired"]
-    ] = Field(default=UNSET, description="The status of the dismissal request.")
+        Literal[
+            "pending", "denied", "approved", "cancelled", "completed", "expired", "open"
+        ]
+    ] = Field(default=UNSET, description="The status of the bypass request.")
     requester_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The comment the requester provided when creating the dismissal request.",
+        description="The comment the requester provided when creating the bypass request.",
     )
     expires_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request will expire.",
+        default=UNSET, description="The date and time the bypass request will expire."
     )
     created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the dismissal request was created.",
+        default=UNSET, description="The date and time the bypass request was created."
     )
     responses: Missing[Union[list[BypassResponse], None]] = Field(
-        default=UNSET, description="The responses to the dismissal request."
+        default=UNSET, description="The responses to the bypass request."
     )
     url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the dismissal request in a browser."
+        default=UNSET, description="The URL to view the bypass request in a browser."
     )
 
 
-class SecretScanningDismissalRequestPropRepository(GitHubModel):
-    """SecretScanningDismissalRequestPropRepository
+class SecretScanningBypassRequestPropRepository(GitHubModel):
+    """SecretScanningBypassRequestPropRepository
 
-    The repository the dismissal request is for.
+    The repository the bypass request is for.
     """
 
     id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the dismissal request is for.",
+        default=UNSET, description="The ID of the repository the bypass request is for."
     )
     name: Missing[str] = Field(
         default=UNSET,
-        description="The name of the repository the dismissal request is for.",
+        description="The name of the repository the bypass request is for.",
     )
     full_name: Missing[str] = Field(
         default=UNSET,
-        description="The full name of the repository the dismissal request is for.",
+        description="The full name of the repository the bypass request is for.",
     )
 
 
-class SecretScanningDismissalRequestPropOrganization(GitHubModel):
-    """SecretScanningDismissalRequestPropOrganization
+class SecretScanningBypassRequestPropOrganization(GitHubModel):
+    """SecretScanningBypassRequestPropOrganization
 
-    The organization associated with the repository the dismissal request is for.
+    The organization associated with the repository the bypass request is for.
     """
 
     id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
@@ -114,50 +111,50 @@ class SecretScanningDismissalRequestPropOrganization(GitHubModel):
     )
 
 
-class SecretScanningDismissalRequestPropRequester(GitHubModel):
-    """SecretScanningDismissalRequestPropRequester
+class SecretScanningBypassRequestPropRequester(GitHubModel):
+    """SecretScanningBypassRequestPropRequester
 
-    The user who requested the dismissal.
+    The user who requested the bypass.
     """
 
     actor_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub user who requested the dismissal.",
+        default=UNSET, description="The ID of the GitHub user who requested the bypass."
     )
     actor_name: Missing[str] = Field(
         default=UNSET,
-        description="The name of the GitHub user who requested the dismissal.",
+        description="The name of the GitHub user who requested the bypass.",
     )
 
 
-class SecretScanningDismissalRequestPropDataItems(GitHubModel):
-    """SecretScanningDismissalRequestPropDataItems"""
+class SecretScanningBypassRequestPropDataItems(GitHubModel):
+    """SecretScanningBypassRequestPropDataItems"""
 
     secret_type: Missing[str] = Field(
         default=UNSET, description="The type of secret that secret scanning detected."
     )
-    alert_number: Missing[str] = Field(
+    bypass_reason: Missing[Literal["used_in_tests", "false_positive", "fix_later"]] = (
+        Field(default=UNSET, description="The reason the bypass was requested.")
+    )
+    path: Missing[str] = Field(
         default=UNSET,
-        description="The number of the secret scanning alert that was detected.",
+        description="The path in the repo where the secret was located during the request.",
     )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests", "revoked"]] = (
-        Field(
-            default=UNSET,
-            description="The reason the user provided for requesting the dismissal.",
-        )
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch in the repo where the secret was located during the request.",
     )
 
 
-model_rebuild(SecretScanningDismissalRequest)
-model_rebuild(SecretScanningDismissalRequestPropRepository)
-model_rebuild(SecretScanningDismissalRequestPropOrganization)
-model_rebuild(SecretScanningDismissalRequestPropRequester)
-model_rebuild(SecretScanningDismissalRequestPropDataItems)
+model_rebuild(SecretScanningBypassRequest)
+model_rebuild(SecretScanningBypassRequestPropRepository)
+model_rebuild(SecretScanningBypassRequestPropOrganization)
+model_rebuild(SecretScanningBypassRequestPropRequester)
+model_rebuild(SecretScanningBypassRequestPropDataItems)
 
 __all__ = (
-    "SecretScanningDismissalRequest",
-    "SecretScanningDismissalRequestPropDataItems",
-    "SecretScanningDismissalRequestPropOrganization",
-    "SecretScanningDismissalRequestPropRepository",
-    "SecretScanningDismissalRequestPropRequester",
+    "SecretScanningBypassRequest",
+    "SecretScanningBypassRequestPropDataItems",
+    "SecretScanningBypassRequestPropOrganization",
+    "SecretScanningBypassRequestPropRepository",
+    "SecretScanningBypassRequestPropRequester",
 )

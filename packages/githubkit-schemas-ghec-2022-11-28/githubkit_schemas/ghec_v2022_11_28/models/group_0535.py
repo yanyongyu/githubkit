@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,81 +18,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0212 import ReactionRollup
-from .group_0536 import ReviewCommentPropLinks
 
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
-
-    Legacy Review Comment
+    An SSH key granting access to a single repository.
     """
 
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
     id: int = Field()
-    node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[SimpleUser, None] = Field()
-    body: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
+    key: str = Field()
+    url: str = Field()
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(ReviewComment)
+model_rebuild(DeployKey)
 
-__all__ = ("ReviewComment",)
+__all__ = ("DeployKey",)

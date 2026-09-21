@@ -13,41 +13,39 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CustomPropertySetPayloadType(TypedDict):
-    """Custom Property Set Payload
+class OrganizationCreateIssueTypeType(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    Custom property set payload
-    """
-
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
+    name: str
+    is_enabled: bool
     description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
     ]
-    require_explicit_values: NotRequired[bool]
 
 
-class CustomPropertySetPayloadTypeForResponse(TypedDict):
-    """Custom Property Set Payload
+class OrganizationCreateIssueTypeTypeForResponse(TypedDict):
+    """OrganizationCreateIssueType"""
 
-    Custom property set payload
-    """
-
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
+    name: str
+    is_enabled: bool
     description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
     ]
-    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "CustomPropertySetPayloadType",
-    "CustomPropertySetPayloadTypeForResponse",
+    "OrganizationCreateIssueTypeType",
+    "OrganizationCreateIssueTypeTypeForResponse",
 )

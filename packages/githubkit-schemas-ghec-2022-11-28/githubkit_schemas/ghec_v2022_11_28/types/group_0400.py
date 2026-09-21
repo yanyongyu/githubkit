@@ -13,39 +13,49 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof4Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof4"""
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
+    Diff Entry
+    """
+
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
     ]
-    ai_findings_option: Literal["disabled", "on_push"]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof4"""
+class DiffEntryTypeForResponse(TypedDict):
+    """Diff Entry
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
+    Diff Entry
+    """
+
+    sha: Union[str, None]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
     ]
-    ai_findings_option: Literal["disabled", "on_push"]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof4Type",
-    "CodeQualitySetupUpdateAnyof4TypeForResponse",
+    "DiffEntryType",
+    "DiffEntryTypeForResponse",
 )

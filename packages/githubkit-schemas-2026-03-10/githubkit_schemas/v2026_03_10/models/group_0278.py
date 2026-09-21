@@ -9,36 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupList(GitHubModel):
-    """Concurrency Group List
+class SecretScanningLocationIssueTitle(GitHubModel):
+    """SecretScanningLocationIssueTitle
 
-    A list of active concurrency groups for a repository.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    total_count: int = Field()
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
+    issue_title_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue where the secret was detected.",
+    )
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class SecretScanningLocationIssueComment(GitHubModel):
+    """SecretScanningLocationIssueComment
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    last_acquired_at: Union[_dt.datetime, None] = Field()
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the issue comment where the secret was detected.",
+    )
 
 
-model_rebuild(ConcurrencyGroupList)
-model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+class SecretScanningLocationPullRequestTitle(GitHubModel):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request where the secret was detected.",
+    )
+
+
+class SecretScanningLocationPullRequestReviewComment(GitHubModel):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str = Field(
+        description="The API URL to get the pull request review comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request review comment where the secret was detected.",
+    )
+
+
+model_rebuild(SecretScanningLocationIssueTitle)
+model_rebuild(SecretScanningLocationIssueComment)
+model_rebuild(SecretScanningLocationPullRequestTitle)
+model_rebuild(SecretScanningLocationPullRequestReviewComment)
 
 __all__ = (
-    "ConcurrencyGroupList",
-    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+    "SecretScanningLocationIssueComment",
+    "SecretScanningLocationIssueTitle",
+    "SecretScanningLocationPullRequestReviewComment",
+    "SecretScanningLocationPullRequestTitle",
 )

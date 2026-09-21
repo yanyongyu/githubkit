@@ -9,35 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitRef(GitHubModel):
-    """Git Reference
+class DependencyGraphDiffItems(GitHubModel):
+    """DependencyGraphDiffItems"""
 
-    Git references within a repository
-    """
-
-    ref: str = Field()
-    node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
-
-
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
-
-    type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
+    change_type: Literal["added", "removed"] = Field()
+    manifest: str = Field()
+    ecosystem: str = Field()
+    name: str = Field()
+    version: str = Field()
+    package_url: Union[str, None] = Field()
+    license_: Union[str, None] = Field(alias="license")
+    source_repository_url: Union[str, None] = Field()
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    )
 
 
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str = Field()
+    advisory_ghsa_id: str = Field()
+    advisory_summary: str = Field()
+    advisory_url: str = Field()
+
+
+model_rebuild(DependencyGraphDiffItems)
+model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
 
 __all__ = (
-    "GitRef",
-    "GitRefPropObject",
+    "DependencyGraphDiffItems",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
 )

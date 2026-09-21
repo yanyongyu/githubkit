@@ -9,152 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class RepositoryRuleViolationErrorType(TypedDict):
+    """RepositoryRuleViolationError
 
-    Low-level Git commit operations within a repository
+    Repository rule violation was detected
     """
 
-    sha: str
-    node_id: str
-    url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: list[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
 
 
-class GitCommitTypeForResponse(TypedDict):
-    """Git Commit
+class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
+    """RepositoryRuleViolationError
 
-    Low-level Git commit operations within a repository
+    Repository rule violation was detected
     """
 
-    sha: str
-    node_id: str
-    url: str
-    author: GitCommitPropAuthorTypeForResponse
-    committer: GitCommitPropCommitterTypeForResponse
-    message: str
-    tree: GitCommitPropTreeTypeForResponse
-    parents: list[GitCommitPropParentsItemsTypeForResponse]
-    verification: GitCommitPropVerificationTypeForResponse
-    html_url: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
 
 
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
+class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
 
-    Identifying information for the git-user
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: NotRequired[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: NotRequired[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+        ]
+    ]
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
     """
 
-    date: _dt.datetime
-    email: str
-    name: str
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
-class GitCommitPropAuthorTypeForResponse(TypedDict):
-    """GitCommitPropAuthor
-
-    Identifying information for the git-user
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
     """
 
-    date: str
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterTypeForResponse(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class GitCommitPropTreeTypeForResponse(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropParentsItemsTypeForResponse(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class GitCommitPropVerificationTypeForResponse(TypedDict):
-    """GitCommitPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    placeholder_id: NotRequired[str]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "GitCommitPropAuthorType",
-    "GitCommitPropAuthorTypeForResponse",
-    "GitCommitPropCommitterType",
-    "GitCommitPropCommitterTypeForResponse",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropParentsItemsTypeForResponse",
-    "GitCommitPropTreeType",
-    "GitCommitPropTreeTypeForResponse",
-    "GitCommitPropVerificationType",
-    "GitCommitPropVerificationTypeForResponse",
-    "GitCommitType",
-    "GitCommitTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
+    "RepositoryRuleViolationErrorPropMetadataType",
+    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
+    "RepositoryRuleViolationErrorType",
+    "RepositoryRuleViolationErrorTypeForResponse",
 )

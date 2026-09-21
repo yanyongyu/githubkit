@@ -9,168 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0051 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0052 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+
+class BillingPremiumRequestUsageReportUserType(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
+
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItemsType]
 
 
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
+class BillingPremiumRequestUsageReportUserTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUser"""
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    time_period: BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[
+        BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse
     ]
-    body: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: _dt.datetime
-    url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class WebhooksIssueCommentTypeForResponse(TypedDict):
-    """issue comment
+class BillingPremiumRequestUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: str
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
-    updated_at: str
-    url: str
-    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class WebhooksIssueCommentPropReactionsType(TypedDict):
-    """Reactions"""
+class BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksIssueCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
-    """User"""
+class BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropReactionsTypeForResponse",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentPropUserTypeForResponse",
-    "WebhooksIssueCommentType",
-    "WebhooksIssueCommentTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodType",
+    "BillingPremiumRequestUsageReportUserPropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportUserType",
+    "BillingPremiumRequestUsageReportUserTypeForResponse",
 )

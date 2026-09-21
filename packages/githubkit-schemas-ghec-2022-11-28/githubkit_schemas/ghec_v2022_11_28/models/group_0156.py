@@ -14,25 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0157 import RepositoryRuleFileExtensionRestrictionPropParameters
 
 
-class RepositoryRuleFileExtensionRestriction(GitHubModel):
-    """file_extension_restriction
+class RepositoryRuleParamsProofOfPresence(GitHubModel):
+    """ProofOfPresence
 
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
-        default=UNSET
+    required_authentication_level: Literal["reauth", "mfa"] = Field(
+        description="The level of authentication required before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleFileExtensionRestriction)
+model_rebuild(RepositoryRuleParamsProofOfPresence)
 
-__all__ = ("RepositoryRuleFileExtensionRestriction",)
+__all__ = ("RepositoryRuleParamsProofOfPresence",)

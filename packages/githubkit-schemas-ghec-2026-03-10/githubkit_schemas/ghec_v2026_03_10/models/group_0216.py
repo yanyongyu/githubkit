@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,56 +17,72 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0212 import ReactionRollup
-from .group_0214 import PinnedIssueComment
-from .group_0215 import IssueCommentMinimized
 
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
 
-class IssueComment(GitHubModel):
-    """Issue Comment
-
-    Comments provide a way for people to collaborate on an issue.
-    """
-
-    id: int = Field(description="Unique identifier of the issue comment")
-    node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
     )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    issue_url: str = Field()
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
+
+
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
+
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+    )
+    ai_credit_pool_state: Missing[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
     ] = Field(
         default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
-    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
 
 
-model_rebuild(IssueComment)
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
 
-__all__ = ("IssueComment",)
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+
+__all__ = (
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+)

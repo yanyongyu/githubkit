@@ -16,60 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleViolationError(GitHubModel):
-    """RepositoryRuleViolationError
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Repository rule violation was detected
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: Missing[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: Missing[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
-    GitHubModel
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
     )
-    token_type: Missing[str] = Field(default=UNSET)
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
+    )
 
 
-model_rebuild(RepositoryRuleViolationError)
-model_rebuild(RepositoryRuleViolationErrorPropMetadata)
-model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
-model_rebuild(
-    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-)
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-__all__ = (
-    "RepositoryRuleViolationError",
-    "RepositoryRuleViolationErrorPropMetadata",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
-)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

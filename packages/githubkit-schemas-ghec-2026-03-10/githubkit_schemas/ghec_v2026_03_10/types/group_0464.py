@@ -9,58 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
+
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+MetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""metadata
 
-    The hierarchy between files in a Git repository.
-    """
-
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsType]
-
-
-class GitTreeTypeForResponse(TypedDict):
-    """Git Tree
-
-    The hierarchy between files in a Git repository.
-    """
-
-    sha: str
-    url: NotRequired[str]
-    truncated: bool
-    tree: list[GitTreePropTreeItemsTypeForResponse]
-
-
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-class GitTreePropTreeItemsTypeForResponse(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: str
-    mode: str
-    type: str
-    sha: str
-    size: NotRequired[int]
-    url: NotRequired[str]
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
 __all__ = (
-    "GitTreePropTreeItemsType",
-    "GitTreePropTreeItemsTypeForResponse",
-    "GitTreeType",
-    "GitTreeTypeForResponse",
+    "MetadataType",
+    "MetadataTypeForResponse",
 )

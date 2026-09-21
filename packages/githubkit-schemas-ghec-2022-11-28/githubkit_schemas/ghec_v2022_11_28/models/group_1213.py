@@ -9,54 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0088 import (
+    AmazonS3AccessKeysConfig,
+    AzureBlobConfig,
+    AzureHubConfig,
+    DatadogConfig,
+    HecConfig,
+)
+from .group_0089 import AmazonS3OidcConfig, SplunkConfig
+from .group_0090 import GoogleCloudConfig
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    custom_agents: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-            ],
-            None,
-        ]
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
     ] = Field(
-        default=UNSET,
-        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
+        description="The audit log streaming provider. The name is case sensitive."
     )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        HecConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+    ] = Field()
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The display name of the custom agent (derived from filename).",
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="The path to the agent definition file."
-    )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the agent definition file."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
-)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",)

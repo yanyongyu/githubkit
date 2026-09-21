@@ -11,20 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the enterprise members to be granted access to GitHub Copilot.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody",)

@@ -10,16 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0421 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0423 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class TimelineConnectedEventType(TypedDict):
-    """Timeline Connected Event
+class IssueTypeAddedIssueEventType(TypedDict):
+    """Issue Type Added Issue Event
 
-    Timeline Connected Event
+    Issue Type Added Issue Event
     """
 
     id: int
@@ -31,12 +33,14 @@ class TimelineConnectedEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
+    issue_type: Union[IssueTypeWebhookType, None]
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class TimelineConnectedEventTypeForResponse(TypedDict):
-    """Timeline Connected Event
+class IssueTypeAddedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Added Issue Event
 
-    Timeline Connected Event
+    Issue Type Added Issue Event
     """
 
     id: int
@@ -48,9 +52,11 @@ class TimelineConnectedEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "TimelineConnectedEventType",
-    "TimelineConnectedEventTypeForResponse",
+    "IssueTypeAddedIssueEventType",
+    "IssueTypeAddedIssueEventTypeForResponse",
 )

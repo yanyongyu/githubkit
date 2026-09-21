@@ -13,74 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0873 import (
-    WebhookPullRequestDequeuedPropPullRequestType,
-    WebhookPullRequestDequeuedPropPullRequestTypeForResponse,
+from .group_0601 import (
+    WebhooksProjectChangesType,
+    WebhooksProjectChangesTypeForResponse,
 )
+from .group_0602 import ProjectsV2ItemType, ProjectsV2ItemTypeForResponse
 
 
-class WebhookPullRequestDequeuedType(TypedDict):
-    """pull_request dequeued event"""
+class WebhookProjectsV2ItemArchivedType(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["dequeued"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestType
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserType
 
 
-class WebhookPullRequestDequeuedTypeForResponse(TypedDict):
-    """pull_request dequeued event"""
+class WebhookProjectsV2ItemArchivedTypeForResponse(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["dequeued"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestTypeForResponse
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_item: ProjectsV2ItemTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestDequeuedType",
-    "WebhookPullRequestDequeuedTypeForResponse",
+    "WebhookProjectsV2ItemArchivedType",
+    "WebhookProjectsV2ItemArchivedTypeForResponse",
 )

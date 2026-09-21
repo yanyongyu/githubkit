@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,47 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ExternalGroup(GitHubModel):
-    """ExternalGroup
+class CodeScanningAiScanOrgEnablementUpdate(GitHubModel):
+    """Code scanning AI Scan organization settings update
 
-    Information about an external group's usage and its members
+    The AI Scan organization setting to apply
     """
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name for the group")
-    updated_at: Missing[str] = Field(
-        default=UNSET, description="The date when the group was last updated_at"
-    )
-    teams: list[ExternalGroupPropTeamsItems] = Field(
-        description="An array of teams linked to this group"
-    )
-    members: list[ExternalGroupPropMembersItems] = Field(
-        description="An array of external members linked to this group"
+    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out.",
     )
 
 
-class ExternalGroupPropTeamsItems(GitHubModel):
-    """ExternalGroupPropTeamsItems"""
+model_rebuild(CodeScanningAiScanOrgEnablementUpdate)
 
-    team_id: int = Field(description="The id for a team")
-    team_name: str = Field(description="The name of the team")
-
-
-class ExternalGroupPropMembersItems(GitHubModel):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int = Field(description="The internal user ID of the identity")
-    member_login: str = Field(description="The handle/login for the user")
-    member_name: str = Field(description="The user display name/profile name")
-    member_email: str = Field(description="An email attached to a user")
-
-
-model_rebuild(ExternalGroup)
-model_rebuild(ExternalGroupPropTeamsItems)
-model_rebuild(ExternalGroupPropMembersItems)
-
-__all__ = (
-    "ExternalGroup",
-    "ExternalGroupPropMembersItems",
-    "ExternalGroupPropTeamsItems",
-)
+__all__ = ("CodeScanningAiScanOrgEnablementUpdate",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,34 +17,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0107 import TeamSimple
 
-class ProjectsV2FieldIterationConfiguration(GitHubModel):
-    """ProjectsV2FieldIterationConfiguration
 
-    The configuration for iteration fields.
+class TeamRoleAssignment(GitHubModel):
+    """A Role Assignment for a Team
+
+    The Relationship a Team has with a role.
     """
 
-    start_date: _dt.date = Field(description="The start date of the first iteration.")
-    duration: int = Field(
-        description="The default duration for iterations in days. Individual iterations can override this value."
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the team has a direct, indirect, or mixed relationship to a role",
     )
-    iterations: Missing[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
-    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[TeamSimple, None] = Field()
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+class TeamRoleAssignmentPropPermissions(GitHubModel):
+    """TeamRoleAssignmentPropPermissions"""
 
-    title: str = Field(description="The title of the iteration.")
-    start_date: _dt.date = Field(description="The start date of the iteration.")
-    duration: int = Field(description="The duration of the iteration in days.")
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
 
 
-model_rebuild(ProjectsV2FieldIterationConfiguration)
-model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+model_rebuild(TeamRoleAssignment)
+model_rebuild(TeamRoleAssignmentPropPermissions)
 
 __all__ = (
-    "ProjectsV2FieldIterationConfiguration",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+    "TeamRoleAssignment",
+    "TeamRoleAssignmentPropPermissions",
 )

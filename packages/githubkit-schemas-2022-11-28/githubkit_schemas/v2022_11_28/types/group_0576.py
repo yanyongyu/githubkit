@@ -13,39 +13,91 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
+class WebhooksCommentType(TypedDict):
+    """WebhooksComment"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsType
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserType, None]
 
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
+
+class WebhooksCommentTypeForResponse(TypedDict):
+    """WebhooksComment"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsTypeForResponse
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserTypeForResponse, None]
+
+
+class WebhooksCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
-    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksMembershipTypeForResponse(TypedDict):
-    """Membership
+class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
-    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
 
 
-class WebhooksMembershipPropUserType(TypedDict):
+class WebhooksCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -72,7 +124,7 @@ class WebhooksMembershipPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksMembershipPropUserTypeForResponse(TypedDict):
+class WebhooksCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -100,8 +152,10 @@ class WebhooksMembershipPropUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipPropUserTypeForResponse",
-    "WebhooksMembershipType",
-    "WebhooksMembershipTypeForResponse",
+    "WebhooksCommentPropReactionsType",
+    "WebhooksCommentPropReactionsTypeForResponse",
+    "WebhooksCommentPropUserType",
+    "WebhooksCommentPropUserTypeForResponse",
+    "WebhooksCommentType",
+    "WebhooksCommentTypeForResponse",
 )

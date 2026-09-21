@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
+from .group_0143 import RepositoryRulesetConditionsPropRefName
 
-class SecretScanningCustomPatternToDelete(GitHubModel):
-    """Secret Scanning Custom Pattern To Delete
 
-    A custom pattern to delete in a bulk operation.
+class OrgRulesetConditionsOneof2(GitHubModel):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
     """
 
-    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(SecretScanningCustomPatternToDelete)
+model_rebuild(OrgRulesetConditionsOneof2)
 
-__all__ = ("SecretScanningCustomPatternToDelete",)
+__all__ = ("OrgRulesetConditionsOneof2",)

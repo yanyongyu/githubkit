@@ -9,32 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowDispatchResponseType(TypedDict):
-    """Workflow Dispatch Response
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    Response containing the workflow run ID and URLs.
+    Repository actions caches
     """
 
-    workflow_run_id: int
-    run_url: str
-    html_url: str
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-class WorkflowDispatchResponseTypeForResponse(TypedDict):
-    """Workflow Dispatch Response
+class ActionsCacheListTypeForResponse(TypedDict):
+    """Repository actions caches
 
-    Response containing the workflow run ID and URLs.
+    Repository actions caches
     """
 
-    workflow_run_id: int
-    run_url: str
-    html_url: str
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+
+
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    size_in_bytes: NotRequired[int]
+
+
+class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    size_in_bytes: NotRequired[int]
 
 
 __all__ = (
-    "WorkflowDispatchResponseType",
-    "WorkflowDispatchResponseTypeForResponse",
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
+    "ActionsCacheListType",
+    "ActionsCacheListTypeForResponse",
 )

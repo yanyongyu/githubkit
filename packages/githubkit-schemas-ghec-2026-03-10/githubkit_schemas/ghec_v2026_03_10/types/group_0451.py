@@ -9,32 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0398 import DiffEntryType, DiffEntryTypeForResponse
+from .group_0399 import CommitType, CommitTypeForResponse
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Commit Comparison
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
-class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
-    """DeploymentBranchPolicySettings
+class CommitComparisonTypeForResponse(TypedDict):
+    """Commit Comparison
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Commit Comparison
     """
 
-    protected_branches: bool
-    custom_branch_policies: bool
+    url: str
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitTypeForResponse
+    merge_base_commit: CommitTypeForResponse
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: list[CommitTypeForResponse]
+    files: NotRequired[list[DiffEntryTypeForResponse]]
 
 
 __all__ = (
-    "DeploymentBranchPolicySettingsType",
-    "DeploymentBranchPolicySettingsTypeForResponse",
+    "CommitComparisonType",
+    "CommitComparisonTypeForResponse",
 )

@@ -9,63 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0294 import RateLimit
+from .group_0296 import RateLimitOverviewPropResources
 
 
-class Deployment(GitHubModel):
-    """Deployment
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    Rate Limit Overview
     """
 
-    url: str = Field()
-    id: int = Field(description="Unique identifier of the deployment")
-    node_id: str = Field()
-    sha: str = Field()
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or sha."
-    )
-    task: str = Field(description="Parameter to specify a task to execute")
-    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
-    original_environment: Missing[str] = Field(default=UNSET)
-    environment: str = Field(description="Name for the target deployment environment.")
-    description: Union[str, None] = Field()
-    creator: Union[SimpleUser, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    statuses_url: str = Field()
-    repository_url: str = Field()
-    transient_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
-    )
-    production_environment: Missing[bool] = Field(
-        default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-class DeploymentPropPayloadOneof0(ExtraGitHubModel):
-    """DeploymentPropPayloadOneof0"""
+model_rebuild(RateLimitOverview)
 
-
-model_rebuild(Deployment)
-model_rebuild(DeploymentPropPayloadOneof0)
-
-__all__ = (
-    "Deployment",
-    "DeploymentPropPayloadOneof0",
-)
+__all__ = ("RateLimitOverview",)

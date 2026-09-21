@@ -11,24 +11,38 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0145 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+
+class UserEmailsDeleteBodyOneof0Type(TypedDict):
+    """UserEmailsDeleteBodyOneof0
+
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: list[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
+    """UserEmailsDeleteBodyOneof0
 
-    resources: list[CopilotSpaceResourceType]
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
 
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    emails: list[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "UserEmailsDeleteBodyOneof0Type",
+    "UserEmailsDeleteBodyOneof0TypeForResponse",
 )

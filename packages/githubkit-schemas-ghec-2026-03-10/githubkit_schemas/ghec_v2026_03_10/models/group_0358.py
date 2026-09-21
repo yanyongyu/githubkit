@@ -14,16 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
+class ImmutableReleasesOrganizationSettings(GitHubModel):
+    """Check immutable releases organization settings
 
-    access_level: Literal["none", "user", "organization", "enterprise"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization. `enterprise` level access allows sharing across the enterprise."
+    Check immutable releases settings for an organization.
+    """
+
+    enforced_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls how immutable releases are enforced in the organization."
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
     )
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(ImmutableReleasesOrganizationSettings)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("ImmutableReleasesOrganizationSettings",)

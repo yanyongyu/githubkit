@@ -9,53 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningCustomPatternValidationErrorType(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class RepositoryRuleMaxFilePathLengthPropParametersType(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    A validation error for a custom pattern in a batch operation.
-    """
-
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ]
-    message: NotRequired[str]
+    max_file_path_length: int
 
 
-class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern Validation Error
+class RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMaxFilePathLengthPropParameters"""
 
-    A validation error for a custom pattern in a batch operation.
-    """
-
-    code: NotRequired[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ]
-    message: NotRequired[str]
+    max_file_path_length: int
 
 
 __all__ = (
-    "SecretScanningCustomPatternValidationErrorType",
-    "SecretScanningCustomPatternValidationErrorTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthPropParametersType",
+    "RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse",
 )

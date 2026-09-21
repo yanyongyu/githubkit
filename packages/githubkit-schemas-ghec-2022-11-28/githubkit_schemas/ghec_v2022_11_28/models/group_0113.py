@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0114 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-)
 
+class CopilotUsageMetrics28DayReport(GitHubModel):
+    """Copilot Metrics 28 Day Report
 
-class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
-    """Repository ruleset conditions for organization names
-
-    Parameters for an organization name condition
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+    download_links: list[str] = Field(
+        description="The URLs to download the latest Copilot usage metrics report for the enterprise/organization."
+    )
+    report_start_day: _dt.date = Field(
+        description="The start date of the report period in `YYYY-MM-DD` format."
+    )
+    report_end_day: _dt.date = Field(
+        description="The end date of the report period in `YYYY-MM-DD` format."
+    )
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
+model_rebuild(CopilotUsageMetrics28DayReport)
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)
+__all__ = ("CopilotUsageMetrics28DayReport",)

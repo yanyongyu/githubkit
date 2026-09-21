@@ -17,23 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0166 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0166 import RepositoryRuleCommitterEmailPatternPropParameters
 
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
+class RepositoryRuleCommitterEmailPattern(GitHubModel):
+    """committer_email_pattern
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
+    type: Literal["committer_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(RepositoryRuleCommitterEmailPattern)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("RepositoryRuleCommitterEmailPattern",)

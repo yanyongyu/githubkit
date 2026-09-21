@@ -9,67 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class CodeScanningSarifsReceiptType(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    An object describing a submodule
-    """
-
-    type: Literal["submodule"]
-    submodule_git_url: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
-class ContentSubmoduleTypeForResponse(TypedDict):
-    """Submodule Content
+class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    An object describing a submodule
-    """
-
-    type: Literal["submodule"]
-    submodule_git_url: str
-    size: int
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSubmodulePropLinksTypeForResponse
-
-
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentSubmodulePropLinksTypeForResponse(TypedDict):
-    """ContentSubmodulePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "ContentSubmodulePropLinksType",
-    "ContentSubmodulePropLinksTypeForResponse",
-    "ContentSubmoduleType",
-    "ContentSubmoduleTypeForResponse",
+    "CodeScanningSarifsReceiptType",
+    "CodeScanningSarifsReceiptTypeForResponse",
 )

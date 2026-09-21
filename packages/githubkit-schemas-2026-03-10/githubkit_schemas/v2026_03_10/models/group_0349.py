@@ -17,35 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0029 import CodeSecurityConfiguration
 
+class CodeScanningAiScanEnablementUpdate(GitHubModel):
+    """CodeScanningAiScanEnablementUpdate
 
-class CodeSecurityConfigurationForRepository(GitHubModel):
-    """CodeSecurityConfigurationForRepository
-
-    Code security configuration associated with a repository and attachment status
+    AI Scan enablement update for a repository.
     """
 
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
+    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
-    )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+        description="Whether to enable or disable AI Scan for the repository.",
     )
 
 
-model_rebuild(CodeSecurityConfigurationForRepository)
+model_rebuild(CodeScanningAiScanEnablementUpdate)
 
-__all__ = ("CodeSecurityConfigurationForRepository",)
+__all__ = ("CodeScanningAiScanEnablementUpdate",)

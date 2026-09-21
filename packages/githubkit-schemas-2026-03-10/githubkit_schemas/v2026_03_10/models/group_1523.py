@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0143 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
-
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
-
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
-    ] = Field(description="The list of collaborators for this Copilot Space.")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
+    )
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
+    )
+
+
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

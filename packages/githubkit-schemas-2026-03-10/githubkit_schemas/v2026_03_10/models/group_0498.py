@@ -9,61 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0248 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class PullRequestStackMinimal(GitHubModel):
-    """Pull Request Stack Minimal"""
+class RepositoryRuleDetailedOneof13(GitHubModel):
+    """RepositoryRuleDetailedOneof13"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: PullRequestStackMinimalPropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
+        default=UNSET
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
 
-class PullRequestStackMinimalPropBase(GitHubModel):
-    """PullRequestStackMinimalPropBase"""
+model_rebuild(RepositoryRuleDetailedOneof13)
 
-    ref: str = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int = Field()
-    state: Literal["open", "closed"] = Field()
-    draft: bool = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-
-
-model_rebuild(PullRequestStackMinimal)
-model_rebuild(PullRequestStackMinimalPropBase)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
-
-__all__ = (
-    "PullRequestStackMinimal",
-    "PullRequestStackMinimalPropBase",
-    "PullRequestStackMinimalPropPullRequestsItems",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
-)
+__all__ = ("RepositoryRuleDetailedOneof13",)

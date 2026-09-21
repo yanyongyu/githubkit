@@ -9,30 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryRuleCommitterEmailPatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule appears when configuring it."
-    )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
-    )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
-    )
-    pattern: str = Field(description="The pattern to match with.")
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+)
+from .group_0143 import RepositoryRulesetConditionsPropRefName
 
 
-model_rebuild(RepositoryRuleCommitterEmailPatternPropParameters)
+class EnterpriseRulesetConditionsOneof3(GitHubModel):
+    """organization_id_and_repository_property
 
-__all__ = ("RepositoryRuleCommitterEmailPatternPropParameters",)
+    Conditions to target organization by id and repositories by property
+    """
+
+    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+
+
+model_rebuild(EnterpriseRulesetConditionsOneof3)
+
+__all__ = ("EnterpriseRulesetConditionsOneof3",)

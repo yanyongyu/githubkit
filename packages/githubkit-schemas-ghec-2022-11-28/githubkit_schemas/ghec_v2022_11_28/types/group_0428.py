@@ -9,119 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryCollaboratorPermissionType(TypedDict):
-    """Repository Collaborator Permission
-
-    Repository Collaborator Permission
-    """
-
-    permission: str
-    role_name: str
-    user: Union[CollaboratorType, None]
+from .group_0096 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
 
 
-class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
-    """Repository Collaborator Permission
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    Repository Collaborator Permission
-    """
-
-    permission: str
-    role_name: str
-    user: Union[CollaboratorTypeForResponse, None]
-
-
-class CollaboratorType(TypedDict):
-    """Collaborator
-
-    Collaborator
-    """
-
-    login: str
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: _dt.datetime
+    results_count: int
+    rules_count: int
     id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsType]
-    role_name: str
-    user_view_type: NotRequired[str]
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-class CollaboratorTypeForResponse(TypedDict):
-    """Collaborator
+class CodeScanningAnalysisTypeForResponse(TypedDict):
+    """CodeScanningAnalysis"""
 
-    Collaborator
-    """
-
-    login: str
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: str
+    results_count: int
+    rules_count: int
     id: int
-    email: NotRequired[Union[str, None]]
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
-    role_name: str
-    user_view_type: NotRequired[str]
-
-
-class CollaboratorPropPermissionsType(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
-
-
-class CollaboratorPropPermissionsTypeForResponse(TypedDict):
-    """CollaboratorPropPermissions"""
-
-    pull: bool
-    triage: NotRequired[bool]
-    push: bool
-    maintain: NotRequired[bool]
-    admin: bool
+    sarif_id: str
+    tool: CodeScanningAnalysisToolTypeForResponse
+    deletable: bool
+    warning: str
 
 
 __all__ = (
-    "CollaboratorPropPermissionsType",
-    "CollaboratorPropPermissionsTypeForResponse",
-    "CollaboratorType",
-    "CollaboratorTypeForResponse",
-    "RepositoryCollaboratorPermissionType",
-    "RepositoryCollaboratorPermissionTypeForResponse",
+    "CodeScanningAnalysisType",
+    "CodeScanningAnalysisTypeForResponse",
 )

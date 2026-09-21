@@ -9,42 +9,267 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0110 import CustomPropertyType, CustomPropertyTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlert
 
-    action: Literal["updated"]
-    definition: CustomPropertyType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    The code scanning alert involved in the event.
+    """
+
+    assignees: NotRequired[list[SimpleUserType]]
+    created_at: _dt.datetime
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_by: Union[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType, None
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: Union[
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    ]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    html_url: str
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType
+    state: Union[Literal["open", "dismissed", "fixed"], None]
+    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType
+    url: str
 
 
-class WebhookCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """custom property updated event"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlert
 
-    action: Literal["updated"]
-    definition: CustomPropertyTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    The code scanning alert involved in the event.
+    """
+
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    created_at: str
+    dismissed_at: Union[str, None]
+    dismissed_by: Union[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse,
+        None,
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: Union[
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    ]
+    fixed_at: NotRequired[Union[str, None]]
+    html_url: str
+    most_recent_instance: NotRequired[
+        Union[
+            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse,
+            None,
+        ]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse
+    state: Union[Literal["open", "dismissed", "fixed"], None]
+    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse
+    url: str
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType(
+    TypedDict
+):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse(
+    TypedDict
+):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[list[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
+    ion
+    """
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
+    ion
+    """
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
+    ge
+    """
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
+    ge
+    """
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
+
+    description: str
+    id: str
+    severity: Union[Literal["none", "note", "warning", "error"], None]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
+
+    description: str
+    id: str
+    severity: Union[Literal["none", "note", "warning", "error"], None]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
+
+    name: str
+    version: Union[str, None]
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse(
+    TypedDict
+):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
+
+    name: str
+    version: Union[str, None]
 
 
 __all__ = (
-    "WebhookCustomPropertyUpdatedType",
-    "WebhookCustomPropertyUpdatedTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedByTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstanceTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRuleTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropToolTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertType",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse",
 )

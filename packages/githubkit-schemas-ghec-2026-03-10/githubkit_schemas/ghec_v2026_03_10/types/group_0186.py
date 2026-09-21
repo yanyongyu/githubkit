@@ -11,36 +11,41 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class SecretScanningCustomPatternToCreateType(TypedDict):
-    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to create in a bulk operation.
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
+
+    Conditions to target repositories by name and refs by name
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
+    """repository_name_and_ref_name
 
-    A custom pattern to create in a bulk operation.
+    Conditions to target repositories by name and refs by name
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "SecretScanningCustomPatternToCreateType",
-    "SecretScanningCustomPatternToCreateTypeForResponse",
+    "OrgRulesetConditionsOneof0Type",
+    "OrgRulesetConditionsOneof0TypeForResponse",
 )

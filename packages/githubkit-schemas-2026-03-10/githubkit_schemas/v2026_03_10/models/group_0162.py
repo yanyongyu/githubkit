@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,44 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueField(GitHubModel):
-    """OrganizationUpdateIssueField"""
+class CodeScanningAnalysisTool(GitHubModel):
+    """CodeScanningAnalysisTool"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue field."
-    )
-    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
+        description="The name of the tool used to generate the code scanning analysis.",
     )
-    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
+    version: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
+        description="The version of the tool used to generate the code scanning analysis.",
     )
-
-
-class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
-
-    id: Missing[int] = Field(
+    guid: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
     )
-    name: str = Field(description="Name of the option.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the option."
-    )
-    color: Literal[
-        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-    ] = Field(description="Color for the option.")
-    priority: int = Field(description="Priority of the option for ordering.")
 
 
-model_rebuild(OrganizationUpdateIssueField)
-model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
+model_rebuild(CodeScanningAnalysisTool)
 
-__all__ = (
-    "OrganizationUpdateIssueField",
-    "OrganizationUpdateIssueFieldPropOptionsItems",
-)
+__all__ = ("CodeScanningAnalysisTool",)

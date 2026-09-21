@@ -9,49 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0020 import Repository
+from .group_0050 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
+class ActionsPolicyRepoConditionsOneof1(GitHubModel):
+    """ActionsPolicyRepoConditionsOneof1"""
 
-    Authentication Token
-    """
-
-    token: str = Field(description="The token used for authentication")
-    expires_at: _dt.datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[list[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
-    )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
-        default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+model_rebuild(ActionsPolicyRepoConditionsOneof1)
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
-
-__all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
-)
+__all__ = ("ActionsPolicyRepoConditionsOneof1",)

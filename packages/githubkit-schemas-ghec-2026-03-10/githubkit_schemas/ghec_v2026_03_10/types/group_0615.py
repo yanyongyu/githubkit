@@ -9,35 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0606 import MetaType, MetaTypeForResponse
+from .group_0616 import (
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
+)
 
 
-class EmailType(TypedDict):
-    """Email
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Email
-    """
-
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class EmailTypeForResponse(TypedDict):
-    """Email
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Email
-    """
-
-    email: str
-    primary: bool
-    verified: bool
-    visibility: Union[str, None]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "EmailType",
-    "EmailTypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

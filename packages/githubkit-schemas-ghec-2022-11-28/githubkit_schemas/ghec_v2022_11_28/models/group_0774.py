@@ -18,21 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0625 import EnterpriseWebhooks
-from .group_0626 import SimpleInstallation
-from .group_0627 import OrganizationSimpleWebhooks
-from .group_0628 import RepositoryWebhooks
-from .group_0775 import WebhookIssueCommentCreatedPropComment
-from .group_0776 import WebhookIssueCommentCreatedPropIssue
+from .group_0227 import Discussion
+from .group_0643 import EnterpriseWebhooks
+from .group_0644 import SimpleInstallation
+from .group_0645 import OrganizationSimpleWebhooks
+from .group_0646 import RepositoryWebhooks
+from .group_0659 import WebhooksLabel
 
 
-class WebhookIssueCommentCreated(GitHubModel):
-    """issue_comment created event"""
+class WebhookDiscussionUnlabeled(GitHubModel):
+    """discussion unlabeled event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhookIssueCommentCreatedPropComment = Field(
-        title="issue comment",
-        description="The [comment](https://docs.github.com/enterprise-cloud@latest/rest/issues/comments#get-an-issue-comment) itself.",
+    action: Literal["unlabeled"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -44,9 +43,7 @@ class WebhookIssueCommentCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssueCommentCreatedPropIssue = Field(
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) the comment belongs to."
-    )
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -59,6 +56,6 @@ class WebhookIssueCommentCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueCommentCreated)
+model_rebuild(WebhookDiscussionUnlabeled)
 
-__all__ = ("WebhookIssueCommentCreated",)
+__all__ = ("WebhookDiscussionUnlabeled",)

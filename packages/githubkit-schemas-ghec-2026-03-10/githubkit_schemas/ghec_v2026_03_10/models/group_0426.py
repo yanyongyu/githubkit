@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -17,65 +17,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class RepositoryCollaboratorPermission(GitHubModel):
-    """Repository Collaborator Permission
-
-    Repository Collaborator Permission
-    """
-
-    permission: str = Field()
-    role_name: str = Field()
-    user: Union[Collaborator, None] = Field()
+from .group_0096 import CodeScanningAnalysisTool
 
 
-class Collaborator(GitHubModel):
-    """Collaborator
+class CodeScanningAnalysis(GitHubModel):
+    """CodeScanningAnalysis"""
 
-    Collaborator
-    """
+    ref: str = Field(
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`."
+    )
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=64,
+        pattern="^([0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?)$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
+    )
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which this analysis was performed."
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    )
+    error: str = Field()
+    created_at: _dt.datetime = Field(
+        description="The time that the analysis was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    results_count: int = Field(
+        description="The total number of results in the analysis."
+    )
+    rules_count: int = Field(
+        description="The total number of rules used in the analysis."
+    )
+    id: int = Field(description="Unique identifier for this analysis.")
+    url: str = Field(description="The REST API URL of the analysis resource.")
+    sarif_id: str = Field(description="An identifier for the upload.")
+    tool: CodeScanningAnalysisTool = Field()
+    deletable: bool = Field()
+    warning: str = Field(description="Warning generated when processing the analysis")
 
-    login: str = Field()
-    id: int = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
-    role_name: str = Field()
-    user_view_type: Missing[str] = Field(default=UNSET)
 
+model_rebuild(CodeScanningAnalysis)
 
-class CollaboratorPropPermissions(GitHubModel):
-    """CollaboratorPropPermissions"""
-
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    admin: bool = Field()
-
-
-model_rebuild(RepositoryCollaboratorPermission)
-model_rebuild(Collaborator)
-model_rebuild(CollaboratorPropPermissions)
-
-__all__ = (
-    "Collaborator",
-    "CollaboratorPropPermissions",
-    "RepositoryCollaboratorPermission",
-)
+__all__ = ("CodeScanningAnalysis",)

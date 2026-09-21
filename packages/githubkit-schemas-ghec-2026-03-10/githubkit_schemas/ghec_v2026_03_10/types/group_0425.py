@@ -9,51 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0097 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeScanningAlertInstanceListType(TypedDict):
+    """CodeScanningAlertInstanceList"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
 
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[SimpleUserType, None]
-    inviter: Union[SimpleUserType, None]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: _dt.datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+
+class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceList"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CodeScanningAlertInstanceListPropMessageType(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
+    text: NotRequired[str]
 
-    id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[SimpleUserTypeForResponse, None]
-    inviter: Union[SimpleUserTypeForResponse, None]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+
+class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstanceListPropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeScanningAlertInstanceListPropMessageType",
+    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
+    "CodeScanningAlertInstanceListType",
+    "CodeScanningAlertInstanceListTypeForResponse",
 )

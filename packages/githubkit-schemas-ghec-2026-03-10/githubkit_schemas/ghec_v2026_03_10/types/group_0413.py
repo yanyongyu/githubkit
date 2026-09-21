@@ -9,99 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0072 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0414 import (
-    CodeScanningVariantAnalysisPropScannedRepositoriesItemsType,
-    CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse,
-)
-from .group_0415 import (
-    CodeScanningVariantAnalysisPropSkippedRepositoriesType,
-    CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse,
-)
+
+class CodeQualitySetupUpdateAnyof1Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
+
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
-class CodeScanningVariantAnalysisType(TypedDict):
-    """Variant Analysis
+class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
-    A run of a CodeQL query against one or more repositories.
-    """
-
-    id: int
-    controller_repo: SimpleRepositoryType
-    actor: SimpleUserType
-    query_language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
     ]
-    query_pack_url: str
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
-    ]
-    scanned_repositories: NotRequired[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesType
-    ]
-
-
-class CodeScanningVariantAnalysisTypeForResponse(TypedDict):
-    """Variant Analysis
-
-    A run of a CodeQL query against one or more repositories.
-    """
-
-    id: int
-    controller_repo: SimpleRepositoryTypeForResponse
-    actor: SimpleUserTypeForResponse
-    query_language: Literal[
-        "actions",
-        "cpp",
-        "csharp",
-        "go",
-        "java",
-        "javascript",
-        "python",
-        "ruby",
-        "rust",
-        "swift",
-    ]
-    query_pack_url: str
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
-    ]
-    scanned_repositories: NotRequired[
-        list[CodeScanningVariantAnalysisPropScannedRepositoriesItemsTypeForResponse]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse
-    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisType",
-    "CodeScanningVariantAnalysisTypeForResponse",
+    "CodeQualitySetupUpdateAnyof1Type",
+    "CodeQualitySetupUpdateAnyof1TypeForResponse",
 )

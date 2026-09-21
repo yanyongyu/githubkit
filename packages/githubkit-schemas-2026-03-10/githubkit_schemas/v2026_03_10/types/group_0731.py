@@ -9,12 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType(TypedDict):
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -41,7 +40,9 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -66,61 +67,9 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse(Type
     type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[str, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType",
+    "WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
 )

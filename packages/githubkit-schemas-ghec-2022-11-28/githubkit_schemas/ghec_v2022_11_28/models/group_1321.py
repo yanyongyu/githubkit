@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC Subject customization
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: Missing[list[str]] = Field(
         default=UNSET,
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    use_immutable_subject: Missing[bool] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
+model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)
+__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)

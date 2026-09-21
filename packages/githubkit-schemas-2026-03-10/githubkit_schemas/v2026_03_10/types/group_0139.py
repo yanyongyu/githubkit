@@ -9,41 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
 
-    A description of the machine powering a codespace.
+    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+
+
+class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+
+    include: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
+    ]
+    exclude: NotRequired[
+        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
+    ]
+
+
+class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a organization property
     """
 
     name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
+    property_values: list[str]
 
 
-class CodespaceMachineTypeForResponse(TypedDict):
-    """Codespace machine
+class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
+    """Repository ruleset property targeting definition
 
-    A description of the machine powering a codespace.
+    Parameters for a targeting a organization property
     """
 
     name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
+    property_values: list[str]
 
 
 __all__ = (
-    "CodespaceMachineType",
-    "CodespaceMachineTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
+    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
+    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
 )

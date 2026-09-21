@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0454 import TimelineCrossReferencedEventPropSource
 
 
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(TimelineCrossReferencedEvent)
 
-__all__ = ("PullRequestPropLabelsItems",)
+__all__ = ("TimelineCrossReferencedEvent",)

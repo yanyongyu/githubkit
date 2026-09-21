@@ -9,43 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1623 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_1629 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
+)
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    cname: Missing[Union[str, None]] = Field(
+    suggestions: Missing[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+    ] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
-    )
-    https_enforced: bool = Field(
-        description="Specify whether HTTPS should be enforced for the repository."
-    )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
-    )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
-    public: Missing[bool] = Field(
-        default=UNSET,
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)

@@ -9,71 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class WebhooksLabelArchivedAllof1PropArchivedByType(TypedDict):
-    """WebhooksLabelArchivedAllof1PropArchivedBy
 
-    The user who archived the label.
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+            None,
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelArchivedAllof1PropArchivedBy
+class SimpleCheckSuiteTypeForResponse(TypedDict):
+    """SimpleCheckSuite
 
-    The user who archived the label.
+    A suite of checks performed on the code of a given code change
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+            None,
+        ]
+    ]
+    created_at: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
+    repository: NotRequired[MinimalRepositoryTypeForResponse]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksLabelArchivedAllof1PropArchivedByType",
-    "WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse",
+    "SimpleCheckSuiteType",
+    "SimpleCheckSuiteTypeForResponse",
 )

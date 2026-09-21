@@ -11,25 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0186 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+
+    enabled: bool
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    enabled: bool
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyType",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
+    "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200TypeForResponse",
 )

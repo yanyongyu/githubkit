@@ -11,23 +11,59 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserSshSigningKeysPostBody(GitHubModel):
-    """UserSshSigningKeysPostBody"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
-        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[list[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
+    )
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="user emails"
     )
 
 
-model_rebuild(UserSshSigningKeysPostBody)
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
-__all__ = ("UserSshSigningKeysPostBody",)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: Missing[str] = Field(default=UNSET)
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
+)

@@ -9,104 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingAiCreditUsageReportGheType(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
+class RepositoryRuleCodeQualityType(TypedDict):
+    """code_quality
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
+    """
 
-
-class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
-
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
 
 
-class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
+class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
+    """code_quality
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
+    """
 
-
-class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
 
 
-class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
+class RepositoryRuleCodeQualityPropParametersType(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    id: str
-    name: str
-
-
-class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str
-    name: str
+    severity: Literal["errors", "warnings", "notes", "all"]
 
 
-class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
+class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    severity: Literal["errors", "warnings", "notes", "all"]
 
 
-class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
+class RepositoryRuleCodeCoverageType(TypedDict):
+    """code_coverage
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
+
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
+
+
+class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
+    """code_coverage
+
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
+
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
+
+
+class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
+
+
+class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportGhePropCostCenterType",
-    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
-    "BillingAiCreditUsageReportGhePropTimePeriodType",
-    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportGheType",
-    "BillingAiCreditUsageReportGheTypeForResponse",
+    "RepositoryRuleCodeCoveragePropParametersType",
+    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
+    "RepositoryRuleCodeCoverageType",
+    "RepositoryRuleCodeCoverageTypeForResponse",
+    "RepositoryRuleCodeQualityPropParametersType",
+    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
+    "RepositoryRuleCodeQualityType",
+    "RepositoryRuleCodeQualityTypeForResponse",
 )

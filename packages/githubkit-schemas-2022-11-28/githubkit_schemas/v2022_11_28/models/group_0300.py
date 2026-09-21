@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 
 from pydantic import Field
 
@@ -19,23 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class ActionsCacheList(GitHubModel):
+    """Repository actions caches
 
-    An autolink reference.
+    Repository actions caches
     """
 
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    total_count: int = Field(description="Total number of caches")
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
+        description="Array of caches"
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(Autolink)
+class ActionsCacheListPropActionsCachesItems(GitHubModel):
+    """ActionsCacheListPropActionsCachesItems"""
 
-__all__ = ("Autolink",)
+    id: Missing[int] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET)
+    key: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    last_accessed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    size_in_bytes: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ActionsCacheList)
+model_rebuild(ActionsCacheListPropActionsCachesItems)
+
+__all__ = (
+    "ActionsCacheList",
+    "ActionsCacheListPropActionsCachesItems",
+)

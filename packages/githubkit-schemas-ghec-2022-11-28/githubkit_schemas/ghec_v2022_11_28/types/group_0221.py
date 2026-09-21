@@ -9,80 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class UsageReportExportListType(TypedDict):
+    """UsageReportExportList"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+    usage_report_exports: list[UsageReportExportType]
 
 
-class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHead"""
+class UsageReportExportListTypeForResponse(TypedDict):
+    """UsageReportExportList"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+    usage_report_exports: list[UsageReportExportTypeForResponse]
 
 
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class UsageReportExportType(TypedDict):
+    """UsageReportExport"""
 
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int
-    url: str
-    name: str
+    id: str
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
+    start_date: _dt.date
+    end_date: _dt.date
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[_dt.datetime]
+    actor: NotRequired[str]
 
 
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
+class UsageReportExportTypeForResponse(TypedDict):
+    """UsageReportExport"""
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
+    id: str
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
+    start_date: str
+    end_date: str
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[str]
+    actor: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBasePropRepoTypeForResponse",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropBaseTypeForResponse",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalPropHeadTypeForResponse",
+    "UsageReportExportListType",
+    "UsageReportExportListTypeForResponse",
+    "UsageReportExportType",
+    "UsageReportExportTypeForResponse",
 )

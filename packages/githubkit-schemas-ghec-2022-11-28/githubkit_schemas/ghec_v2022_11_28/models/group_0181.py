@@ -16,152 +16,40 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningLocationCommit(GitHubModel):
-    """SecretScanningLocationCommit
+class RepositoryRuleWorkflowsPropParameters(GitHubModel):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    Represents a 'commit' secret scanning location type. This location type shows
-    that a secret was detected inside a commit to a repository.
-    """
-
-    path: str = Field(description="The file path in the repository")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
-    )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
-    )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    blob_url: str = Field(description="The API URL to get the associated blob resource")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The API URL to get the associated commit resource"
-    )
-    html_url: Missing[str] = Field(
+    do_not_enforce_on_create: Missing[bool] = Field(
         default=UNSET,
-        description="The GitHub URL to get the associated commit resource.",
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
+        description="Workflows that must pass for this rule to pass."
     )
 
 
-class SecretScanningLocationWikiCommit(GitHubModel):
-    """SecretScanningLocationWikiCommit
+class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
+    """WorkflowFileReference
 
-    Represents a 'wiki_commit' secret scanning location type. This location type
-    shows that a secret was detected inside a commit to a repository wiki.
+    A workflow that must run for this rule to pass
     """
 
-    path: str = Field(description="The file path of the wiki page")
-    start_line: float = Field(
-        description="Line number at which the secret starts in the file"
+    path: str = Field(description="The path to the workflow file")
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
     )
-    end_line: float = Field(
-        description="Line number at which the secret ends in the file"
+    repository_id: int = Field(
+        description="The ID of the repository where the workflow is defined"
     )
-    start_column: float = Field(
-        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
-    )
-    end_column: float = Field(
-        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
-    )
-    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
-    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
-    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
-    commit_url: str = Field(
-        description="The GitHub URL to get the associated wiki commit"
+    sha: Missing[str] = Field(
+        default=UNSET, description="The commit SHA of the workflow file to use"
     )
 
 
-class SecretScanningLocationIssueBody(GitHubModel):
-    """SecretScanningLocationIssueBody
-
-    Represents an 'issue_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of an issue.
-    """
-
-    issue_body_url: str = Field(
-        description="The API URL to get the issue where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the issue where the secret was detected.",
-    )
-
-
-class SecretScanningLocationDiscussionTitle(GitHubModel):
-    """SecretScanningLocationDiscussionTitle
-
-    Represents a 'discussion_title' secret scanning location type. This location
-    type shows that a secret was detected in the title of a discussion.
-    """
-
-    discussion_title_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
-    )
-
-
-class SecretScanningLocationDiscussionComment(GitHubModel):
-    """SecretScanningLocationDiscussionComment
-
-    Represents a 'discussion_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a discussion.
-    """
-
-    discussion_comment_url: str = Field(
-        description="The API URL to get the discussion comment where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestBody(GitHubModel):
-    """SecretScanningLocationPullRequestBody
-
-    Represents a 'pull_request_body' secret scanning location type. This location
-    type shows that a secret was detected in the body of a pull request.
-    """
-
-    pull_request_body_url: str = Field(
-        description="The API URL to get the pull request where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the pull request where the secret was detected.",
-    )
-
-
-class SecretScanningLocationPullRequestReview(GitHubModel):
-    """SecretScanningLocationPullRequestReview
-
-    Represents a 'pull_request_review' secret scanning location type. This location
-    type shows that a secret was detected in a review on a pull request.
-    """
-
-    pull_request_review_url: str = Field(
-        description="The API URL to get the pull request review where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the pull request review where the secret was detected.",
-    )
-
-
-model_rebuild(SecretScanningLocationCommit)
-model_rebuild(SecretScanningLocationWikiCommit)
-model_rebuild(SecretScanningLocationIssueBody)
-model_rebuild(SecretScanningLocationDiscussionTitle)
-model_rebuild(SecretScanningLocationDiscussionComment)
-model_rebuild(SecretScanningLocationPullRequestBody)
-model_rebuild(SecretScanningLocationPullRequestReview)
+model_rebuild(RepositoryRuleWorkflowsPropParameters)
+model_rebuild(RepositoryRuleParamsWorkflowFileReference)
 
 __all__ = (
-    "SecretScanningLocationCommit",
-    "SecretScanningLocationDiscussionComment",
-    "SecretScanningLocationDiscussionTitle",
-    "SecretScanningLocationIssueBody",
-    "SecretScanningLocationPullRequestBody",
-    "SecretScanningLocationPullRequestReview",
-    "SecretScanningLocationWikiCommit",
+    "RepositoryRuleParamsWorkflowFileReference",
+    "RepositoryRuleWorkflowsPropParameters",
 )

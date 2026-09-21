@@ -11,78 +11,154 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0381 import VerificationType, VerificationTypeForResponse
 
+class DependencyGraphSpdxSbomType(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-class GitTagType(TypedDict):
-    """Git Tag
-
-    Metadata for a Git tag
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    sbom: DependencyGraphSpdxSbomPropSbomType
 
 
-class GitTagTypeForResponse(TypedDict):
-    """Git Tag
+class DependencyGraphSpdxSbomTypeForResponse(TypedDict):
+    """Dependency Graph SPDX SBOM
 
-    Metadata for a Git tag
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerTypeForResponse
-    object_: GitTagPropObjectTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
+    sbom: DependencyGraphSpdxSbomPropSbomTypeForResponse
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class DependencyGraphSpdxSbomPropSbomType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
 
-    date: str
-    email: str
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
     name: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType]
+    ]
 
 
-class GitTagPropTaggerTypeForResponse(TypedDict):
-    """GitTagPropTagger"""
+class DependencyGraphSpdxSbomPropSbomTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbom"""
 
-    date: str
-    email: str
+    spdxid: str
+    spdx_version: str
+    comment: NotRequired[str]
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse
     name: str
+    data_license: str
+    document_namespace: str
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse]
+    relationships: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse]
+    ]
 
 
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
 
-    sha: str
-    type: str
-    url: str
+    created: str
+    creators: list[str]
 
 
-class GitTagPropObjectTypeForResponse(TypedDict):
-    """GitTagPropObject"""
+class DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
 
-    sha: str
-    type: str
-    url: str
+    created: str
+    creators: list[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropRelationshipsItems"""
+
+    relationship_type: NotRequired[str]
+    spdx_element_id: NotRequired[str]
+    related_spdx_element: NotRequired[str]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse(TypedDict):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: NotRequired[str]
+    name: NotRequired[str]
+    version_info: NotRequired[str]
+    download_location: NotRequired[str]
+    files_analyzed: NotRequired[bool]
+    license_concluded: NotRequired[str]
+    license_declared: NotRequired[str]
+    supplier: NotRequired[str]
+    copyright_text: NotRequired[str]
+    external_refs: NotRequired[
+        list[
+            DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse
+        ]
+    ]
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
+
+    reference_category: str
+    reference_locator: str
+    reference_type: str
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse(
+    TypedDict
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
+
+    reference_category: str
+    reference_locator: str
+    reference_type: str
 
 
 __all__ = (
-    "GitTagPropObjectType",
-    "GitTagPropObjectTypeForResponse",
-    "GitTagPropTaggerType",
-    "GitTagPropTaggerTypeForResponse",
-    "GitTagType",
-    "GitTagTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfoTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsType",
+    "DependencyGraphSpdxSbomPropSbomPropRelationshipsItemsTypeForResponse",
+    "DependencyGraphSpdxSbomPropSbomType",
+    "DependencyGraphSpdxSbomPropSbomTypeForResponse",
+    "DependencyGraphSpdxSbomType",
+    "DependencyGraphSpdxSbomTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0555 import WebhooksLabel
-from .group_0878 import WebhookPullRequestLabeledPropPullRequest
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0602 import ProjectsV2Item
 
 
-class WebhookPullRequestLabeled(GitHubModel):
-    """pull_request labeled event"""
+class WebhookProjectsV2ItemReordered(GitHubModel):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["labeled"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
+    action: Literal["reordered"] = Field()
+    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
-    number: int = Field(description="The pull request number.")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestLabeledPropPullRequest = Field(title="Pull Request")
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestLabeled)
+class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
 
-__all__ = ("WebhookPullRequestLabeled",)
+    previous_projects_v2_item_node_id: Missing[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
+    ] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
+    GitHubModel
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ItemReordered)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
+
+__all__ = (
+    "WebhookProjectsV2ItemReordered",
+    "WebhookProjectsV2ItemReorderedPropChanges",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
+)

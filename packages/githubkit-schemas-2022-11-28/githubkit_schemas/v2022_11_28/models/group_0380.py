@@ -9,26 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0090 import MinimalRepository
 
 
-class DeploymentBranchPolicySettings(GitHubModel):
-    """DeploymentBranchPolicySettings
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    Combined Commit Status
     """
 
-    protected_branches: bool = Field(
-        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
+    state: str = Field()
+    statuses: list[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    custom_branch_policies: bool = Field(
-        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
-    )
+    commit_url: str = Field()
+    url: str = Field()
 
 
-model_rebuild(DeploymentBranchPolicySettings)
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
 
-__all__ = ("DeploymentBranchPolicySettings",)
+    description: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
+
+__all__ = (
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
+)

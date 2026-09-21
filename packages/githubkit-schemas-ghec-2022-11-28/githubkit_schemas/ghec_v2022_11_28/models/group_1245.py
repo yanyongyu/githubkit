@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
-from .group_0186 import SecretScanningCustomPatternToCreate
 
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBody(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        description="The list of custom patterns to create."
+    credential_id: str = Field(
+        description="The SHA-256 fingerprint of the user-owned SSH authentication key to authorize."
+    )
+    credential_type: Literal["ssh_key"] = Field()
+    organizations: UniqueList[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostBody)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostBody",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1",)

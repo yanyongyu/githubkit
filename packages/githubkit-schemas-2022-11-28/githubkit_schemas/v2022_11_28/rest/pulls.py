@@ -891,7 +891,12 @@ class PullsClient:
         See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request
         """
 
-        from ..models import BasicError, EventsGetResponse503, PullRequest
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            PullRequest,
+            ValidationError,
+        )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
@@ -906,6 +911,7 @@ class PullsClient:
             error_models={
                 "404": BasicError,
                 "406": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
             },
@@ -951,7 +957,12 @@ class PullsClient:
         See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request
         """
 
-        from ..models import BasicError, EventsGetResponse503, PullRequest
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            PullRequest,
+            ValidationError,
+        )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
@@ -966,6 +977,7 @@ class PullsClient:
             error_models={
                 "404": BasicError,
                 "406": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EventsGetResponse503,
             },

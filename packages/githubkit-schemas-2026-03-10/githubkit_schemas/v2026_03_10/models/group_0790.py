@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0568 import WebhooksLabelUnarchived
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0791 import WebhookIssuesOpenedPropChanges
+from .group_0793 import WebhookIssuesOpenedPropIssue
 
 
-class WebhookLabelUnarchived(GitHubModel):
-    """label unarchived event"""
+class WebhookIssuesOpened(GitHubModel):
+    """issues opened event"""
 
-    action: Literal["unarchived"] = Field()
+    action: Literal["opened"] = Field()
+    changes: Missing[WebhookIssuesOpenedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +41,10 @@ class WebhookLabelUnarchived(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabelUnarchived = Field(title="Unarchived label")
+    issue: WebhookIssuesOpenedPropIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,6 +57,6 @@ class WebhookLabelUnarchived(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelUnarchived)
+model_rebuild(WebhookIssuesOpened)
 
-__all__ = ("WebhookLabelUnarchived",)
+__all__ = ("WebhookIssuesOpened",)

@@ -16,18 +16,79 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsCacheStorageLimitForOrganization(GitHubModel):
-    """Actions cache storage limit for an organization
+class Feed(GitHubModel):
+    """Feed
 
-    GitHub Actions cache storage policy for an organization.
+    Feed
     """
 
-    max_cache_size_gb: Missing[int] = Field(
+    timeline_url: str = Field()
+    user_url: str = Field()
+    current_user_public_url: Missing[str] = Field(default=UNSET)
+    current_user_url: Missing[str] = Field(default=UNSET)
+    current_user_actor_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
+    security_advisories_url: Missing[str] = Field(default=UNSET)
+    repository_discussions_url: Missing[str] = Field(
+        default=UNSET, description="A feed of discussions for a given repository."
+    )
+    repository_discussions_category_url: Missing[str] = Field(
         default=UNSET,
-        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
+        description="A feed of discussions for a given repository and category.",
+    )
+    links: FeedPropLinks = Field(alias="_links")
+
+
+class FeedPropLinks(GitHubModel):
+    """FeedPropLinks"""
+
+    timeline: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    user: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    security_advisories: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_public: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_actor: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organization: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
+    repository_discussions: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    repository_discussions_category: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
     )
 
 
-model_rebuild(ActionsCacheStorageLimitForOrganization)
+class LinkWithType(GitHubModel):
+    """Link With Type
 
-__all__ = ("ActionsCacheStorageLimitForOrganization",)
+    Hypermedia Link with Type
+    """
+
+    href: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Feed)
+model_rebuild(FeedPropLinks)
+model_rebuild(LinkWithType)
+
+__all__ = (
+    "Feed",
+    "FeedPropLinks",
+    "LinkWithType",
+)

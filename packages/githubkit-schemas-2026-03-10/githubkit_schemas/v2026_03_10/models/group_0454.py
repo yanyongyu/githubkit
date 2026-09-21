@@ -9,40 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[Repository, None] = Field()
-    sha: str = Field()
-    user: Union[SimpleUser, None] = Field()
+from .group_0055 import Issue
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+class TimelineCrossReferencedEventPropSource(GitHubModel):
+    """TimelineCrossReferencedEventPropSource"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+model_rebuild(TimelineCrossReferencedEventPropSource)
 
-__all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
-)
+__all__ = ("TimelineCrossReferencedEventPropSource",)

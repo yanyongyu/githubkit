@@ -13,81 +13,119 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
+class ActionsRuleRestrictActionsActors(GitHubModel):
+    """restrict_actions_actors
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Choose specific actors that are authorized to trigger Actions workflows.
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
-        title="Copilot Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
-    )
-    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
-        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
-    )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
-    )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
-    )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot CLI.",
-    )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    type: Literal["restrict_actions_actors"] = Field()
+    parameters: Missing[ActionsRuleRestrictActionsActorsPropParameters] = Field(
+        default=UNSET
     )
 
 
-class CopilotOrganizationSeatBreakdown(GitHubModel):
-    """Copilot Seat Breakdown
+class ActionsRuleRestrictActionsActorsPropParameters(GitHubModel):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
 
-    The breakdown of Copilot Business seats for the organization.
+    allowed_actors: list[ActionsRuleParamsActor] = Field(
+        description="Select the actors who can run Actions workflows."
+    )
+
+
+class ActionsRuleParamsActor(GitHubModel):
+    """Actor
+
+    An actor authorized to trigger Actions workflows
     """
 
-    total: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    id: int = Field(
+        description="ID of the actor authorized to trigger Actions workflows."
     )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
-    )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
-    )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who have been invited to receive a Copilot seat through this organization.",
-    )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
-    )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
+    ] = Field(description="The type of the actor")
+
+
+class ActionsRuleRestrictActionEvents(GitHubModel):
+    """restrict_action_events
+
+    Choose specific GitHub events that will trigger Actions workflows.
+    """
+
+    type: Literal["restrict_action_events"] = Field()
+    parameters: Missing[ActionsRuleRestrictActionEventsPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotOrganizationSeatBreakdown)
+class ActionsRuleRestrictActionEventsPropParameters(GitHubModel):
+    """ActionsRuleRestrictActionEventsPropParameters"""
+
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
+        ]
+    ] = Field(description="Select the events that can trigger Actions workflows.")
+
+
+model_rebuild(ActionsRuleRestrictActionsActors)
+model_rebuild(ActionsRuleRestrictActionsActorsPropParameters)
+model_rebuild(ActionsRuleParamsActor)
+model_rebuild(ActionsRuleRestrictActionEvents)
+model_rebuild(ActionsRuleRestrictActionEventsPropParameters)
 
 __all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotOrganizationSeatBreakdown",
+    "ActionsRuleParamsActor",
+    "ActionsRuleRestrictActionEvents",
+    "ActionsRuleRestrictActionEventsPropParameters",
+    "ActionsRuleRestrictActionsActors",
+    "ActionsRuleRestrictActionsActorsPropParameters",
 )

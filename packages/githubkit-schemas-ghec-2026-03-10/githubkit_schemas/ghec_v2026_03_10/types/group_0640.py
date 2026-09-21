@@ -9,45 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0641 import (
-    WebhooksLabelPropArchivedByType,
-    WebhooksLabelPropArchivedByTypeForResponse,
-)
+
+class HovercardType(TypedDict):
+    """Hovercard
+
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class WebhooksLabelType(TypedDict):
-    """Label"""
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[WebhooksLabelPropArchivedByType, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
 
 
-class WebhooksLabelTypeForResponse(TypedDict):
-    """Label"""
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[str, None]
-    archived_by: Union[WebhooksLabelPropArchivedByTypeForResponse, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "WebhooksLabelType",
-    "WebhooksLabelTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

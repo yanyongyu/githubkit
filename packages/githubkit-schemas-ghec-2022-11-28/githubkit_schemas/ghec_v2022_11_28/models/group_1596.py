@@ -9,23 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the issue comment."
+    dismissal_review_id: Missing[int] = Field(
+        default=UNSET, description="ID of the dismissal review."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200)
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200",)

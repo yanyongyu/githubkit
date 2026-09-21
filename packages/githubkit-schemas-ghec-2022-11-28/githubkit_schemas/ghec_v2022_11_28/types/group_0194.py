@@ -9,71 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0195 import (
+    RulesetVersionPropActorType,
+    RulesetVersionPropActorTypeForResponse,
+)
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class RulesetVersionType(TypedDict):
+    """Ruleset version
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: str
-    user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
+    The historical version of a ruleset
+    """
+
+    version_id: int
+    actor: RulesetVersionPropActorType
+    updated_at: _dt.datetime
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class RulesetVersionTypeForResponse(TypedDict):
+    """Ruleset version
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: str
-    user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    The historical version of a ruleset
+    """
 
-
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    version_id: int
+    actor: RulesetVersionPropActorTypeForResponse
+    updated_at: str
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "RulesetVersionType",
+    "RulesetVersionTypeForResponse",
 )

@@ -9,32 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class GoogleCloudConfigType(TypedDict):
-    """GoogleCloudConfig
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Google Cloud Config for audit log streaming configuration.
-    """
-
-    bucket: str
-    key_id: str
-    encrypted_json_credentials: str
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
-class GoogleCloudConfigTypeForResponse(TypedDict):
-    """GoogleCloudConfig
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    Google Cloud Config for audit log streaming configuration.
-    """
-
-    bucket: str
-    key_id: str
-    encrypted_json_credentials: str
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "GoogleCloudConfigType",
-    "GoogleCloudConfigTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
 )

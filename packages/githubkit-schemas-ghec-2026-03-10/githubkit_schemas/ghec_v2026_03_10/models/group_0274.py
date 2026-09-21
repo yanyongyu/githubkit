@@ -9,22 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class ActionsCacheRetentionLimitForOrganization(GitHubModel):
+    """Actions cache retention limit for an organization
 
-    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
+    GitHub Actions cache retention policy for an organization.
+    """
+
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories in this organization, the maximum duration, in days, for which caches in a repository may be retained.",
     )
 
 
-model_rebuild(CopilotSpaceCollaboratorAnyof0Allof1)
+model_rebuild(ActionsCacheRetentionLimitForOrganization)
 
-__all__ = ("CopilotSpaceCollaboratorAnyof0Allof1",)
+__all__ = ("ActionsCacheRetentionLimitForOrganization",)

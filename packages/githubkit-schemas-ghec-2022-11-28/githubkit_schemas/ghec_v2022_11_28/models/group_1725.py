@@ -11,19 +11,35 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests associated with the artifact attestations to delete.",
+    groups: list[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
     )
+    synced_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof0)
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof0",)
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+    id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+
+__all__ = (
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

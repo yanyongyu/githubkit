@@ -87,11 +87,75 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         ActionsOrganizationPermissions as ActionsOrganizationPermissions,
     )
+    from githubkit_schemas.v2026_03_10.models import ActionsPolicy as ActionsPolicy
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyEnterpriseConditionsOneof0 as ActionsPolicyEnterpriseConditionsOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyEnterpriseConditionsOneof1 as ActionsPolicyEnterpriseConditionsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyEnterpriseConditionsOneof2 as ActionsPolicyEnterpriseConditionsOneof2,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyEnterpriseConditionsOneof3 as ActionsPolicyEnterpriseConditionsOneof3,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyEnterpriseConditionsOneof4 as ActionsPolicyEnterpriseConditionsOneof4,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyEnterpriseConditionsOneof5 as ActionsPolicyEnterpriseConditionsOneof5,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyOrgConditionsOneof0 as ActionsPolicyOrgConditionsOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyOrgConditionsOneof1 as ActionsPolicyOrgConditionsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyOrgConditionsOneof2 as ActionsPolicyOrgConditionsOneof2,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyPropLinks as ActionsPolicyPropLinks,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyPropLinksPropHtml as ActionsPolicyPropLinksPropHtml,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyPropLinksPropSelf as ActionsPolicyPropLinksPropSelf,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyRepoConditionsOneof0 as ActionsPolicyRepoConditionsOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyRepoConditionsOneof1 as ActionsPolicyRepoConditionsOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyWorkflowPathCondition as ActionsPolicyWorkflowPathCondition,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicyWorkflowPathConditionPropWorkflowPath as ActionsPolicyWorkflowPathConditionPropWorkflowPath,
+    )
     from githubkit_schemas.v2026_03_10.models import (
         ActionsPublicKey as ActionsPublicKey,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ActionsRepositoryPermissions as ActionsRepositoryPermissions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsRuleParamsActor as ActionsRuleParamsActor,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsRuleRestrictActionEvents as ActionsRuleRestrictActionEvents,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsRuleRestrictActionEventsPropParameters as ActionsRuleRestrictActionEventsPropParameters,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsRuleRestrictActionsActors as ActionsRuleRestrictActionsActors,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ActionsRuleRestrictActionsActorsPropParameters as ActionsRuleRestrictActionsActorsPropParameters,
     )
     from githubkit_schemas.v2026_03_10.models import ActionsSecret as ActionsSecret
     from githubkit_schemas.v2026_03_10.models import (
@@ -1226,6 +1290,27 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import EmptyObject as EmptyObject
     from githubkit_schemas.v2026_03_10.models import Enterprise as Enterprise
     from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationIdTarget as EnterpriseRulesetConditionsOrganizationIdTarget,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationNameTarget as EnterpriseRulesetConditionsOrganizationNameTarget,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationPropertySpec as EnterpriseRulesetConditionsOrganizationPropertySpec,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationPropertyTarget as EnterpriseRulesetConditionsOrganizationPropertyTarget,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty as EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -1873,6 +1958,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgActionsPoliciesGetResponse200 as OrgsOrgActionsPoliciesGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgActionsPoliciesPolicyIdPutBody as OrgsOrgActionsPoliciesPolicyIdPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgActionsPoliciesPostBody as OrgsOrgActionsPoliciesPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsGetResponse200 as OrgsOrgActionsRunnerGroupsGetResponse200,
@@ -2959,6 +3053,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleBranchNamePatternPropParameters as RepositoryRuleBranchNamePatternPropParameters,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleCodeCoverage as RepositoryRuleCodeCoverage,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleCodeCoveragePropParameters as RepositoryRuleCodeCoveragePropParameters,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleCodeQuality as RepositoryRuleCodeQuality,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleCodeQualityPropParameters as RepositoryRuleCodeQualityPropParameters,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeScanning as RepositoryRuleCodeScanning,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -3263,6 +3369,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoActionsPoliciesGetResponse200 as ReposOwnerRepoActionsPoliciesGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoActionsPoliciesPolicyIdPutBody as ReposOwnerRepoActionsPoliciesPolicyIdPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoActionsPoliciesPostBody as ReposOwnerRepoActionsPoliciesPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200 as ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
@@ -11615,6 +11730,42 @@ else:
             "SelfHostedRunnersSettings",
             "ActionsGetDefaultWorkflowPermissions",
             "ActionsSetDefaultWorkflowPermissions",
+            "ActionsPolicyWorkflowPathCondition",
+            "ActionsPolicyWorkflowPathConditionPropWorkflowPath",
+            "ActionsPolicyRepoConditionsOneof0",
+            "ActionsPolicyRepoConditionsOneof1",
+            "RepositoryRulesetConditionsRepositoryNameTarget",
+            "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",
+            "RepositoryRulesetConditionsRepositoryIdTarget",
+            "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",
+            "RepositoryRulesetConditionsRepositoryPropertyTarget",
+            "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
+            "RepositoryRulesetConditionsRepositoryPropertySpec",
+            "ActionsPolicyOrgConditionsOneof0",
+            "ActionsPolicyOrgConditionsOneof1",
+            "ActionsPolicyOrgConditionsOneof2",
+            "EnterpriseRulesetConditionsOrganizationNameTarget",
+            "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",
+            "EnterpriseRulesetConditionsOrganizationIdTarget",
+            "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId",
+            "EnterpriseRulesetConditionsOrganizationPropertyTarget",
+            "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
+            "EnterpriseRulesetConditionsOrganizationPropertySpec",
+            "ActionsPolicyEnterpriseConditionsOneof0",
+            "ActionsPolicyEnterpriseConditionsOneof1",
+            "ActionsPolicyEnterpriseConditionsOneof2",
+            "ActionsPolicyEnterpriseConditionsOneof3",
+            "ActionsPolicyEnterpriseConditionsOneof4",
+            "ActionsPolicyEnterpriseConditionsOneof5",
+            "ActionsRuleRestrictActionsActors",
+            "ActionsRuleRestrictActionsActorsPropParameters",
+            "ActionsRuleParamsActor",
+            "ActionsRuleRestrictActionEvents",
+            "ActionsRuleRestrictActionEventsPropParameters",
+            "ActionsPolicy",
+            "ActionsPolicyPropLinks",
+            "ActionsPolicyPropLinksPropSelf",
+            "ActionsPolicyPropLinksPropHtml",
             "RunnerLabel",
             "Runner",
             "RunnerApplication",
@@ -11739,13 +11890,6 @@ else:
             "RepositoryRulesetBypassActor",
             "RepositoryRulesetConditions",
             "RepositoryRulesetConditionsPropRefName",
-            "RepositoryRulesetConditionsRepositoryNameTarget",
-            "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",
-            "RepositoryRulesetConditionsRepositoryIdTarget",
-            "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",
-            "RepositoryRulesetConditionsRepositoryPropertyTarget",
-            "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-            "RepositoryRulesetConditionsRepositoryPropertySpec",
             "OrgRulesetConditionsOneof0",
             "OrgRulesetConditionsOneof1",
             "OrgRulesetConditionsOneof2",
@@ -11787,9 +11931,13 @@ else:
             "RepositoryRuleCodeScanning",
             "RepositoryRuleCodeScanningPropParameters",
             "RepositoryRuleParamsCodeScanningTool",
+            "RepositoryRuleCodeQuality",
+            "RepositoryRuleCodeQualityPropParameters",
+            "RepositoryRuleCodeCoverage",
+            "RepositoryRuleCodeCoveragePropParameters",
+            "RepositoryRuleLicenseComplianceScanning",
             "RepositoryRuleCopilotCodeReview",
             "RepositoryRuleCopilotCodeReviewPropParameters",
-            "RepositoryRuleLicenseComplianceScanning",
             "RepositoryRuleFilePathRestriction",
             "RepositoryRuleFilePathRestrictionPropParameters",
             "RepositoryRuleMaxFilePathLength",
@@ -14771,6 +14919,9 @@ else:
             "OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",
             "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200",
             "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",
+            "OrgsOrgActionsPoliciesGetResponse200",
+            "OrgsOrgActionsPoliciesPostBody",
+            "OrgsOrgActionsPoliciesPolicyIdPutBody",
             "OrgsOrgActionsRunnerGroupsGetResponse200",
             "RunnerGroupsOrg",
             "OrgsOrgActionsRunnerGroupsPostBody",
@@ -14982,6 +15133,9 @@ else:
             "ReposOwnerRepoActionsOrganizationSecretsGetResponse200",
             "ReposOwnerRepoActionsOrganizationVariablesGetResponse200",
             "ReposOwnerRepoActionsPermissionsPutBody",
+            "ReposOwnerRepoActionsPoliciesGetResponse200",
+            "ReposOwnerRepoActionsPoliciesPostBody",
+            "ReposOwnerRepoActionsPoliciesPolicyIdPutBody",
             "ReposOwnerRepoActionsRunnersGetResponse200",
             "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",
             "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",

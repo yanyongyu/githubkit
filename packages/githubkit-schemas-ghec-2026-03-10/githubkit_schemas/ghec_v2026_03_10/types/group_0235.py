@@ -9,29 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0236 import (
-    CommitCommentEventPropCommentType,
-    CommitCommentEventPropCommentTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CommitCommentEventType(TypedDict):
-    """CommitCommentEvent"""
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-    action: str
-    comment: CommitCommentEventPropCommentType
+    A value assigned to an issue field
+    """
+
+    issue_field_id: int
+    issue_field_name: NotRequired[str]
+    node_id: str
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
+    ]
 
 
-class CommitCommentEventTypeForResponse(TypedDict):
-    """CommitCommentEvent"""
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    action: str
-    comment: CommitCommentEventPropCommentTypeForResponse
+    A value assigned to an issue field
+    """
+
+    issue_field_id: int
+    issue_field_name: NotRequired[str]
+    node_id: str
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
+    ]
+
+
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
+
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "CommitCommentEventType",
-    "CommitCommentEventTypeForResponse",
+    "IssueFieldValuePropMultiSelectOptionsItemsType",
+    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

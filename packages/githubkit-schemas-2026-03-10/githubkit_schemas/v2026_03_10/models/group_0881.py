@@ -18,47 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0047 import Milestone
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0584 import WebhooksPullRequest5
+from .group_0201 import ProjectsV2StatusUpdate
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestMilestoned(GitHubModel):
-    """pull_request milestoned event"""
+class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
+    """Projects v2 Status Update Deleted Event"""
 
-    action: Literal["milestoned"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
-    )
+    action: Literal["deleted"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: Missing[Milestone] = Field(
-        default=UNSET,
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
-    number: int = Field(description="The pull request number.")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhooksPullRequest5 = Field(title="Pull Request")
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_status_update: ProjectsV2StatusUpdate = Field(
+        title="Projects v2 Status Update",
+        description="An status update belonging to a project",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestMilestoned)
+model_rebuild(WebhookProjectsV2StatusUpdateDeleted)
 
-__all__ = ("WebhookPullRequestMilestoned",)
+__all__ = ("WebhookProjectsV2StatusUpdateDeleted",)

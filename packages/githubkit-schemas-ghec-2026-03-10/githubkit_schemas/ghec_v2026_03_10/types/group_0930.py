@@ -9,106 +9,138 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0931 import (
+    WebhookPackagePublishedPropPackagePropPackageVersionType,
+    WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse,
+)
 
-class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
-    """Project Card"""
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType, None]
+class WebhookPackagePublishedPropPackageType(TypedDict):
+    """WebhookPackagePublishedPropPackage
+
+    Information about the package.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
     id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse(TypedDict):
-    """Project Card"""
-
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: int
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: str
-    creator: Union[
-        WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse, None
+    name: str
+    namespace: str
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
+    package_type: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionType, None
     ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
+    updated_at: Union[str, None]
+
+
+class WebhookPackagePublishedPropPackageTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackage
+
+    Information about the package.
+    """
+
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
     id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
+    name: str
+    namespace: str
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerTypeForResponse, None]
+    package_type: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionTypeForResponse, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryTypeForResponse, None]
+    updated_at: Union[str, None]
+
+
+class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropOwnerTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
+
+    about_url: str
+    name: str
+    type: str
     url: str
+    vendor: str
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
-    """User"""
+class WebhookPackagePublishedPropPackagePropRegistryTypeForResponse(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    about_url: str
+    name: str
+    type: str
+    url: str
+    vendor: str
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType",
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorTypeForResponse",
-    "WebhookProjectCardMovedPropProjectCardAllof0Type",
-    "WebhookProjectCardMovedPropProjectCardAllof0TypeForResponse",
+    "WebhookPackagePublishedPropPackagePropOwnerType",
+    "WebhookPackagePublishedPropPackagePropOwnerTypeForResponse",
+    "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookPackagePublishedPropPackagePropRegistryTypeForResponse",
+    "WebhookPackagePublishedPropPackageType",
+    "WebhookPackagePublishedPropPackageTypeForResponse",
 )

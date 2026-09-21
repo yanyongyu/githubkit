@@ -9,60 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
 
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
+class ActionsPolicyRepoConditionsOneof1Type(TypedDict):
+    """ActionsPolicyRepoConditionsOneof1"""
 
-    Authentication Token
-    """
-
-    token: str
-    expires_at: _dt.datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class AuthenticationTokenTypeForResponse(TypedDict):
-    """Authentication Token
+class ActionsPolicyRepoConditionsOneof1TypeForResponse(TypedDict):
+    """ActionsPolicyRepoConditionsOneof1"""
 
-    Authentication Token
-    """
-
-    token: str
-    expires_at: str
-    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
-
-
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenPropPermissionsTypeForResponse",
-    "AuthenticationTokenType",
-    "AuthenticationTokenTypeForResponse",
+    "ActionsPolicyRepoConditionsOneof1Type",
+    "ActionsPolicyRepoConditionsOneof1TypeForResponse",
 )

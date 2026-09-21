@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,49 +18,49 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
+from .group_0019 import LicenseSimple
+from .group_0350 import CodeOfConductSimple
 
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
 
-    The status of a deployment.
-    """
+    code_of_conduct: Union[CodeOfConductSimple, None] = Field()
+    code_of_conduct_file: Union[CommunityHealthFile, None] = Field()
+    license_: Union[LicenseSimple, None] = Field(alias="license")
+    contributing: Union[CommunityHealthFile, None] = Field()
+    readme: Union[CommunityHealthFile, None] = Field()
+    issue_template: Union[CommunityHealthFile, None] = Field()
+    pull_request_template: Union[CommunityHealthFile, None] = Field()
+
+
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
 
     url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[SimpleUser, None] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The environment of the deployment that the status is for.",
-    )
-    target_url: str = Field(
-        default="",
-        description="Closing down notice: the URL to associate with this status.",
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    html_url: str = Field()
 
 
-model_rebuild(DeploymentStatus)
+class CommunityProfile(GitHubModel):
+    """Community Profile
 
-__all__ = ("DeploymentStatus",)
+    Community Profile
+    """
+
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
+
+__all__ = (
+    "CommunityHealthFile",
+    "CommunityProfile",
+    "CommunityProfilePropFiles",
+)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,31 +19,52 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0230 import ReactionRollup
+from .group_0240 import ReleaseAsset
 
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
+class ReleaseEventPropRelease(GitHubModel):
+    """ReleaseEventPropRelease"""
 
-    Custom repository roles created by organization owners
-    """
-
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    url: str = Field()
+    html_url: str = Field()
+    assets_url: str = Field()
+    upload_url: str = Field()
+    tarball_url: Union[str, None] = Field()
+    zipball_url: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    tag_name: str = Field(description="The name of the tag.")
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
+    name: Union[str, None] = Field()
+    body: Missing[Union[str, None]] = Field(default=UNSET)
+    draft: bool = Field(
+        description="true to create a draft (unpublished) release, false to create a published one."
     )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
+    prerelease: bool = Field(
+        description="Whether to identify the release as a prerelease or a full release."
     )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    immutable: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the release is immutable."
+    )
     created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    published_at: Union[_dt.datetime, None] = Field()
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assets: list[ReleaseAsset] = Field()
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    mentions_count: Missing[int] = Field(default=UNSET)
+    discussion_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the release discussion."
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
+    short_description_html: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
+model_rebuild(ReleaseEventPropRelease)
 
-__all__ = ("OrganizationCustomRepositoryRole",)
+__all__ = ("ReleaseEventPropRelease",)

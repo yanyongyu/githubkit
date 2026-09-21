@@ -9,65 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0081 import TeamType, TeamTypeForResponse
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class ActionsVariableType(TypedDict):
+    """Actions Variable"""
 
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class ActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable"""
 
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[list[SimpleUserType]]
-    teams: NotRequired[list[TeamType]]
-    apps: NotRequired[list[Union[IntegrationType, None]]]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
-    TypedDict
-):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: NotRequired[list[SimpleUserTypeForResponse]]
-    teams: NotRequired[list[TeamTypeForResponse]]
-    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
+    "ActionsVariableType",
+    "ActionsVariableTypeForResponse",
 )

@@ -13,73 +13,199 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Organization Details
+class ActionsRuleRestrictActionsActorsType(TypedDict):
+    """restrict_actions_actors
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    Choose specific actors that are authorized to trigger Actions workflows.
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    type: Literal["restrict_actions_actors"]
+    parameters: NotRequired[ActionsRuleRestrictActionsActorsPropParametersType]
+
+
+class ActionsRuleRestrictActionsActorsTypeForResponse(TypedDict):
+    """restrict_actions_actors
+
+    Choose specific actors that are authorized to trigger Actions workflows.
+    """
+
+    type: Literal["restrict_actions_actors"]
+    parameters: NotRequired[
+        ActionsRuleRestrictActionsActorsPropParametersTypeForResponse
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class CopilotOrganizationDetailsTypeForResponse(TypedDict):
-    """Copilot Organization Details
+class ActionsRuleRestrictActionsActorsPropParametersType(TypedDict):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+    allowed_actors: list[ActionsRuleParamsActorType]
+
+
+class ActionsRuleRestrictActionsActorsPropParametersTypeForResponse(TypedDict):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
+
+    allowed_actors: list[ActionsRuleParamsActorTypeForResponse]
+
+
+class ActionsRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor authorized to trigger Actions workflows
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
-    public_code_suggestions: Literal["allow", "block", "unconfigured"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    id: int
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class CopilotOrganizationSeatBreakdownType(TypedDict):
-    """Copilot Seat Breakdown
+class ActionsRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
 
-    The breakdown of Copilot Business seats for the organization.
+    An actor authorized to trigger Actions workflows
     """
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    id: int
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
+    ]
 
 
-class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
-    """Copilot Seat Breakdown
+class ActionsRuleRestrictActionEventsType(TypedDict):
+    """restrict_action_events
 
-    The breakdown of Copilot Business seats for the organization.
+    Choose specific GitHub events that will trigger Actions workflows.
     """
 
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    type: Literal["restrict_action_events"]
+    parameters: NotRequired[ActionsRuleRestrictActionEventsPropParametersType]
+
+
+class ActionsRuleRestrictActionEventsTypeForResponse(TypedDict):
+    """restrict_action_events
+
+    Choose specific GitHub events that will trigger Actions workflows.
+    """
+
+    type: Literal["restrict_action_events"]
+    parameters: NotRequired[
+        ActionsRuleRestrictActionEventsPropParametersTypeForResponse
+    ]
+
+
+class ActionsRuleRestrictActionEventsPropParametersType(TypedDict):
+    """ActionsRuleRestrictActionEventsPropParameters"""
+
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
+        ]
+    ]
+
+
+class ActionsRuleRestrictActionEventsPropParametersTypeForResponse(TypedDict):
+    """ActionsRuleRestrictActionEventsPropParameters"""
+
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
+        ]
+    ]
 
 
 __all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotOrganizationDetailsTypeForResponse",
-    "CopilotOrganizationSeatBreakdownType",
-    "CopilotOrganizationSeatBreakdownTypeForResponse",
+    "ActionsRuleParamsActorType",
+    "ActionsRuleParamsActorTypeForResponse",
+    "ActionsRuleRestrictActionEventsPropParametersType",
+    "ActionsRuleRestrictActionEventsPropParametersTypeForResponse",
+    "ActionsRuleRestrictActionEventsType",
+    "ActionsRuleRestrictActionEventsTypeForResponse",
+    "ActionsRuleRestrictActionsActorsPropParametersType",
+    "ActionsRuleRestrictActionsActorsPropParametersTypeForResponse",
+    "ActionsRuleRestrictActionsActorsType",
+    "ActionsRuleRestrictActionsActorsTypeForResponse",
 )

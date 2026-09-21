@@ -9,50 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
-
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
+from .group_0233 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleWorkflowsPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    do_not_enforce_on_create: NotRequired[bool]
-    workflows: list[RepositoryRuleParamsWorkflowFileReferenceTypeForResponse]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Merges must be performed via a merge queue.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleParamsWorkflowFileReferenceTypeForResponse(TypedDict):
-    """WorkflowFileReference
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    A workflow that must run for this rule to pass
+    Merges must be performed via a merge queue.
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-    "RepositoryRuleParamsWorkflowFileReferenceTypeForResponse",
-    "RepositoryRuleWorkflowsPropParametersType",
-    "RepositoryRuleWorkflowsPropParametersTypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

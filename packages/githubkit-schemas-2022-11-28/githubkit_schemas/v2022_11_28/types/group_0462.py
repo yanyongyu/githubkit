@@ -9,111 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0463 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0425 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Legacy Review Comment
+    State Change Issue Event
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserType, None]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
-
-
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
-
-    Legacy Review Comment
-    """
-
     url: str
-    pull_request_review_id: Union[int, None]
-    id: int
-    node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserTypeForResponse, None]
-    body: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+
+
+class StateChangeIssueEventTypeForResponse(TypedDict):
+    """State Change Issue Event
+
+    State Change Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    state_reason: NotRequired[Union[str, None]]
+    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "StateChangeIssueEventType",
+    "StateChangeIssueEventTypeForResponse",
 )

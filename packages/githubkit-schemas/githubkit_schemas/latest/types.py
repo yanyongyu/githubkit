@@ -88,10 +88,76 @@ if TYPE_CHECKING or is_lazy_disabled():
         ActionsOrganizationPermissionsType as ActionsOrganizationPermissionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyEnterpriseConditionsOneof0Type as ActionsPolicyEnterpriseConditionsOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyEnterpriseConditionsOneof1Type as ActionsPolicyEnterpriseConditionsOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyEnterpriseConditionsOneof2Type as ActionsPolicyEnterpriseConditionsOneof2Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyEnterpriseConditionsOneof3Type as ActionsPolicyEnterpriseConditionsOneof3Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyEnterpriseConditionsOneof4Type as ActionsPolicyEnterpriseConditionsOneof4Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyEnterpriseConditionsOneof5Type as ActionsPolicyEnterpriseConditionsOneof5Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyOrgConditionsOneof0Type as ActionsPolicyOrgConditionsOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyOrgConditionsOneof1Type as ActionsPolicyOrgConditionsOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyOrgConditionsOneof2Type as ActionsPolicyOrgConditionsOneof2Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyPropLinksPropHtmlType as ActionsPolicyPropLinksPropHtmlType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyPropLinksPropSelfType as ActionsPolicyPropLinksPropSelfType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyPropLinksType as ActionsPolicyPropLinksType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyRepoConditionsOneof0Type as ActionsPolicyRepoConditionsOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyRepoConditionsOneof1Type as ActionsPolicyRepoConditionsOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyType as ActionsPolicyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathType as ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsPolicyWorkflowPathConditionType as ActionsPolicyWorkflowPathConditionType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         ActionsPublicKeyType as ActionsPublicKeyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ActionsRepositoryPermissionsType as ActionsRepositoryPermissionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsRuleParamsActorType as ActionsRuleParamsActorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsRuleRestrictActionEventsPropParametersType as ActionsRuleRestrictActionEventsPropParametersType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsRuleRestrictActionEventsType as ActionsRuleRestrictActionEventsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsRuleRestrictActionsActorsPropParametersType as ActionsRuleRestrictActionsActorsPropParametersType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ActionsRuleRestrictActionsActorsType as ActionsRuleRestrictActionsActorsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ActionsSecretType as ActionsSecretType,
@@ -1257,6 +1323,27 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import EmptyObjectType as EmptyObjectType
     from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationIdTargetType as EnterpriseRulesetConditionsOrganizationIdTargetType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationNameTargetType as EnterpriseRulesetConditionsOrganizationNameTargetType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationPropertySpecType as EnterpriseRulesetConditionsOrganizationPropertySpecType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType as EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseRulesetConditionsOrganizationPropertyTargetType as EnterpriseRulesetConditionsOrganizationPropertyTargetType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -1939,6 +2026,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgActionsPoliciesGetResponse200Type as OrgsOrgActionsPoliciesGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgActionsPoliciesPolicyIdPutBodyType as OrgsOrgActionsPoliciesPolicyIdPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgActionsPoliciesPostBodyType as OrgsOrgActionsPoliciesPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgActionsRunnerGroupsGetResponse200Type as OrgsOrgActionsRunnerGroupsGetResponse200Type,
@@ -3046,6 +3142,18 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleBranchNamePatternType as RepositoryRuleBranchNamePatternType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleCodeCoveragePropParametersType as RepositoryRuleCodeCoveragePropParametersType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleCodeCoverageType as RepositoryRuleCodeCoverageType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleCodeQualityPropParametersType as RepositoryRuleCodeQualityPropParametersType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryRuleCodeQualityType as RepositoryRuleCodeQualityType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryRuleCodeScanningPropParametersType as RepositoryRuleCodeScanningPropParametersType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3351,6 +3459,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoActionsPermissionsPutBodyType as ReposOwnerRepoActionsPermissionsPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoActionsPoliciesGetResponse200Type as ReposOwnerRepoActionsPoliciesGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType as ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoActionsPoliciesPostBodyType as ReposOwnerRepoActionsPoliciesPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type as ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type,
@@ -11769,6 +11886,42 @@ else:
             "SelfHostedRunnersSettingsType",
             "ActionsGetDefaultWorkflowPermissionsType",
             "ActionsSetDefaultWorkflowPermissionsType",
+            "ActionsPolicyWorkflowPathConditionType",
+            "ActionsPolicyWorkflowPathConditionPropWorkflowPathType",
+            "ActionsPolicyRepoConditionsOneof0Type",
+            "ActionsPolicyRepoConditionsOneof1Type",
+            "RepositoryRulesetConditionsRepositoryNameTargetType",
+            "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
+            "RepositoryRulesetConditionsRepositoryIdTargetType",
+            "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
+            "RepositoryRulesetConditionsRepositoryPropertyTargetType",
+            "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+            "RepositoryRulesetConditionsRepositoryPropertySpecType",
+            "ActionsPolicyOrgConditionsOneof0Type",
+            "ActionsPolicyOrgConditionsOneof1Type",
+            "ActionsPolicyOrgConditionsOneof2Type",
+            "EnterpriseRulesetConditionsOrganizationNameTargetType",
+            "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
+            "EnterpriseRulesetConditionsOrganizationIdTargetType",
+            "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
+            "EnterpriseRulesetConditionsOrganizationPropertyTargetType",
+            "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
+            "EnterpriseRulesetConditionsOrganizationPropertySpecType",
+            "ActionsPolicyEnterpriseConditionsOneof0Type",
+            "ActionsPolicyEnterpriseConditionsOneof1Type",
+            "ActionsPolicyEnterpriseConditionsOneof2Type",
+            "ActionsPolicyEnterpriseConditionsOneof3Type",
+            "ActionsPolicyEnterpriseConditionsOneof4Type",
+            "ActionsPolicyEnterpriseConditionsOneof5Type",
+            "ActionsRuleRestrictActionsActorsType",
+            "ActionsRuleRestrictActionsActorsPropParametersType",
+            "ActionsRuleParamsActorType",
+            "ActionsRuleRestrictActionEventsType",
+            "ActionsRuleRestrictActionEventsPropParametersType",
+            "ActionsPolicyType",
+            "ActionsPolicyPropLinksType",
+            "ActionsPolicyPropLinksPropSelfType",
+            "ActionsPolicyPropLinksPropHtmlType",
             "RunnerLabelType",
             "RunnerType",
             "RunnerApplicationType",
@@ -11893,13 +12046,6 @@ else:
             "RepositoryRulesetBypassActorType",
             "RepositoryRulesetConditionsType",
             "RepositoryRulesetConditionsPropRefNameType",
-            "RepositoryRulesetConditionsRepositoryNameTargetType",
-            "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
-            "RepositoryRulesetConditionsRepositoryIdTargetType",
-            "RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",
-            "RepositoryRulesetConditionsRepositoryPropertyTargetType",
-            "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-            "RepositoryRulesetConditionsRepositoryPropertySpecType",
             "OrgRulesetConditionsOneof0Type",
             "OrgRulesetConditionsOneof1Type",
             "OrgRulesetConditionsOneof2Type",
@@ -11941,9 +12087,13 @@ else:
             "RepositoryRuleCodeScanningType",
             "RepositoryRuleCodeScanningPropParametersType",
             "RepositoryRuleParamsCodeScanningToolType",
+            "RepositoryRuleCodeQualityType",
+            "RepositoryRuleCodeQualityPropParametersType",
+            "RepositoryRuleCodeCoverageType",
+            "RepositoryRuleCodeCoveragePropParametersType",
+            "RepositoryRuleLicenseComplianceScanningType",
             "RepositoryRuleCopilotCodeReviewType",
             "RepositoryRuleCopilotCodeReviewPropParametersType",
-            "RepositoryRuleLicenseComplianceScanningType",
             "RepositoryRuleFilePathRestrictionType",
             "RepositoryRuleFilePathRestrictionPropParametersType",
             "RepositoryRuleMaxFilePathLengthType",
@@ -14925,6 +15075,9 @@ else:
             "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
             "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200Type",
             "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
+            "OrgsOrgActionsPoliciesGetResponse200Type",
+            "OrgsOrgActionsPoliciesPostBodyType",
+            "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
             "OrgsOrgActionsRunnerGroupsGetResponse200Type",
             "RunnerGroupsOrgType",
             "OrgsOrgActionsRunnerGroupsPostBodyType",
@@ -15136,6 +15289,9 @@ else:
             "ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",
             "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
             "ReposOwnerRepoActionsPermissionsPutBodyType",
+            "ReposOwnerRepoActionsPoliciesGetResponse200Type",
+            "ReposOwnerRepoActionsPoliciesPostBodyType",
+            "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
             "ReposOwnerRepoActionsRunnersGetResponse200Type",
             "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
             "ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",

@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0074 import CodeSecurityConfiguration
 
 
-class CodeSecurityConfigurationForRepository(GitHubModel):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningAutofix(GitHubModel):
+    """CodeScanningAutofix"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: Missing[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The attachment status of the code security configuration on the repository.",
+    status: Literal["pending", "error", "success", "outdated"] = Field(
+        description="The status of an autofix."
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    description: Union[str, None] = Field(description="The description of an autofix.")
+    started_at: _dt.datetime = Field(
+        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 
 
-model_rebuild(CodeSecurityConfigurationForRepository)
+model_rebuild(CodeScanningAutofix)
 
-__all__ = ("CodeSecurityConfigurationForRepository",)
+__all__ = ("CodeScanningAutofix",)

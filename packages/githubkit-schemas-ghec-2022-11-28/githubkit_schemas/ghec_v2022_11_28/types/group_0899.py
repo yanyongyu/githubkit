@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0660 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0672 import (
+    WebhooksLabelUnarchivedType,
+    WebhooksLabelUnarchivedTypeForResponse,
+)
 
 
-class WebhookMilestoneOpenedType(TypedDict):
-    """milestone opened event"""
+class WebhookLabelUnarchivedType(TypedDict):
+    """label unarchived event"""
 
-    action: Literal["opened"]
+    action: Literal["unarchived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
+    label: WebhooksLabelUnarchivedType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMilestoneOpenedTypeForResponse(TypedDict):
-    """milestone opened event"""
+class WebhookLabelUnarchivedTypeForResponse(TypedDict):
+    """label unarchived event"""
 
-    action: Literal["opened"]
+    action: Literal["unarchived"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestone3TypeForResponse
+    label: WebhooksLabelUnarchivedTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookMilestoneOpenedType",
-    "WebhookMilestoneOpenedTypeForResponse",
+    "WebhookLabelUnarchivedType",
+    "WebhookLabelUnarchivedTypeForResponse",
 )

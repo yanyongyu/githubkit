@@ -12,18 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0050 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
 
 
-class AuditLogStreamKey(GitHubModel):
-    """stream-key
+class ActionsPolicyOrgConditionsOneof0(GitHubModel):
+    """ActionsPolicyOrgConditionsOneof0"""
 
-    Audit Log Streaming Public Key
-    """
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
 
-    key_id: str = Field()
-    key: str = Field()
 
+model_rebuild(ActionsPolicyOrgConditionsOneof0)
 
-model_rebuild(AuditLogStreamKey)
-
-__all__ = ("AuditLogStreamKey",)
+__all__ = ("ActionsPolicyOrgConditionsOneof0",)

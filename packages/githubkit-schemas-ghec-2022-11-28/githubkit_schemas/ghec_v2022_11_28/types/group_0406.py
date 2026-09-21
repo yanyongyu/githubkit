@@ -9,28 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+    url: str
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    url: str
+    users_url: str
+    teams_url: str
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsTypeForResponse",
 )

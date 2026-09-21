@@ -9,89 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class RepositoryRuleCreationType(TypedDict):
-    """creation
-
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class RepositoryRuleCreationTypeForResponse(TypedDict):
-    """creation
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
+    label: Union[str, None]
+    ref: str
+    repo: Union[RepositoryType, None]
+    sha: str
+    user: Union[SimpleUserType, None]
 
 
-class RepositoryRuleDeletionTypeForResponse(TypedDict):
-    """deletion
+class PullRequestSimplePropHeadTypeForResponse(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
+    label: Union[str, None]
+    ref: str
+    repo: Union[RepositoryTypeForResponse, None]
+    sha: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
-class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
-    """required_signatures
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[SimpleUserType, None]
 
 
-class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
-    """non_fast_forward
+class PullRequestSimplePropBaseTypeForResponse(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleCreationTypeForResponse",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleDeletionTypeForResponse",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleNonFastForwardTypeForResponse",
-    "RepositoryRuleRequiredSignaturesType",
-    "RepositoryRuleRequiredSignaturesTypeForResponse",
+    "PullRequestSimplePropBaseType",
+    "PullRequestSimplePropBaseTypeForResponse",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropHeadTypeForResponse",
 )

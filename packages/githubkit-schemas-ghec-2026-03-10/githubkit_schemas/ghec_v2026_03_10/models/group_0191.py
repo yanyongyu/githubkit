@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,93 +18,61 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingAiCreditUsageReportGhe(GitHubModel):
-    """BillingAiCreditUsageReportGhe"""
+class RepositoryRuleCodeQuality(GitHubModel):
+    """code_quality
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(
-        description="The name of the enterprise for the usage report."
-    )
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    cost_center: Missing[BillingAiCreditUsageReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
+    """
+
+    type: Literal["code_quality"] = Field()
+    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleCodeQualityPropParameters(GitHubModel):
+    """RepositoryRuleCodeQualityPropParameters"""
+
+    severity: Literal["errors", "warnings", "notes", "all"] = Field(
+        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
     )
 
 
-class BillingAiCreditUsageReportGhePropTimePeriod(GitHubModel):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
+class RepositoryRuleCodeCoverage(GitHubModel):
+    """code_coverage
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
 
-
-class BillingAiCreditUsageReportGhePropCostCenter(GitHubModel):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
+    type: Literal["code_coverage"] = Field()
+    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
 
 
-class BillingAiCreditUsageReportGhePropUsageItemsItems(GitHubModel):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
+class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    max_coverage_drop: Missing[float] = Field(
+        le=100.0,
+        default=UNSET,
+        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    minimum_coverage: Missing[float] = Field(
+        le=100.0,
+        default=UNSET,
+        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
     )
 
 
-model_rebuild(BillingAiCreditUsageReportGhe)
-model_rebuild(BillingAiCreditUsageReportGhePropTimePeriod)
-model_rebuild(BillingAiCreditUsageReportGhePropCostCenter)
-model_rebuild(BillingAiCreditUsageReportGhePropUsageItemsItems)
+model_rebuild(RepositoryRuleCodeQuality)
+model_rebuild(RepositoryRuleCodeQualityPropParameters)
+model_rebuild(RepositoryRuleCodeCoverage)
+model_rebuild(RepositoryRuleCodeCoveragePropParameters)
 
 __all__ = (
-    "BillingAiCreditUsageReportGhe",
-    "BillingAiCreditUsageReportGhePropCostCenter",
-    "BillingAiCreditUsageReportGhePropTimePeriod",
-    "BillingAiCreditUsageReportGhePropUsageItemsItems",
+    "RepositoryRuleCodeCoverage",
+    "RepositoryRuleCodeCoveragePropParameters",
+    "RepositoryRuleCodeQuality",
+    "RepositoryRuleCodeQualityPropParameters",
 )

@@ -9,81 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameAttestationsBulkListPostResponse200Type(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
+class UserCodespacesPostBodyOneof1Type(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType
-    ]
-
-
-class UsersUsernameAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200"""
-
-    attestations_subject_digests: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
-    ]
-    page_info: NotRequired[
-        UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
-    ]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
 
 
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+class UserCodespacesPostBodyOneof1TypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-Mapping of subject digest to bundles.
-"""
-
-
-UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-
-Mapping of subject digest to bundles.
-"""
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
 
 
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-    Information about the current page.
+    Pull request number for this codespace
     """
 
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    pull_request_number: int
+    repository_id: int
 
 
-class UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameAttestationsBulkListPostResponse200PropPageInfo
+class UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-    Information about the current page.
+    Pull request number for this codespace
     """
 
-    has_next: NotRequired[bool]
-    has_previous: NotRequired[bool]
-    next_: NotRequired[str]
-    previous: NotRequired[str]
+    pull_request_number: int
+    repository_id: int
 
 
 __all__ = (
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoType",
-    "UsersUsernameAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
-    "UsersUsernameAttestationsBulkListPostResponse200Type",
-    "UsersUsernameAttestationsBulkListPostResponse200TypeForResponse",
+    "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesPostBodyOneof1PropPullRequestTypeForResponse",
+    "UserCodespacesPostBodyOneof1Type",
+    "UserCodespacesPostBodyOneof1TypeForResponse",
 )

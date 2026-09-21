@@ -9,27 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsSubjectStatsItems(GitHubModel):
-    """ApiInsightsSubjectStatsItems"""
+class CopilotSpaceResource(GitHubModel):
+    """Copilot Space Resource
 
-    subject_type: Missing[str] = Field(default=UNSET)
-    subject_name: Missing[str] = Field(default=UNSET)
-    subject_id: Missing[int] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    A resource attached to a Copilot Space.
+    """
+
+    id: int = Field(description="The unique identifier of the resource.")
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ] = Field(description="The type of the resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the associated chat attachment, if any."
+    )
+    metadata: CopilotSpaceResourcePropMetadata = Field(
+        description="Resource-specific metadata. The keys and values depend on the resource type."
+    )
+    created_at: _dt.datetime = Field(
+        description="The date and time the resource was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The date and time the resource was last updated."
+    )
 
 
-model_rebuild(ApiInsightsSubjectStatsItems)
+class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
+    """CopilotSpaceResourcePropMetadata
 
-__all__ = ("ApiInsightsSubjectStatsItems",)
+    Resource-specific metadata. The keys and values depend on the resource type.
+    """
+
+
+model_rebuild(CopilotSpaceResource)
+model_rebuild(CopilotSpaceResourcePropMetadata)
+
+__all__ = (
+    "CopilotSpaceResource",
+    "CopilotSpaceResourcePropMetadata",
+)

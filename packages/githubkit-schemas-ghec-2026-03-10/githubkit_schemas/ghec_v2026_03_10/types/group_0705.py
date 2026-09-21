@@ -13,48 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0706 import (
-    WebhookCodeScanningAlertCreatedPropAlertType,
-    WebhookCodeScanningAlertCreatedPropAlertTypeForResponse,
-)
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0648 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCodeScanningAlertCreatedType(TypedDict):
-    """code_scanning_alert created event"""
+class WebhookExemptionRequestCreatedType(TypedDict):
+    """Exemption request created event"""
 
     action: Literal["created"]
-    alert: WebhookCodeScanningAlertCreatedPropAlertType
-    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertCreatedTypeForResponse(TypedDict):
-    """code_scanning_alert created event"""
+class WebhookExemptionRequestCreatedTypeForResponse(TypedDict):
+    """Exemption request created event"""
 
     action: Literal["created"]
-    alert: WebhookCodeScanningAlertCreatedPropAlertTypeForResponse
-    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    ref: str
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertCreatedType",
-    "WebhookCodeScanningAlertCreatedTypeForResponse",
+    "WebhookExemptionRequestCreatedType",
+    "WebhookExemptionRequestCreatedTypeForResponse",
 )

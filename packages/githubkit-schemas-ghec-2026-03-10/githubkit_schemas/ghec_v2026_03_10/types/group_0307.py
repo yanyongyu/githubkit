@@ -9,72 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
 
-    Organization roles
+    Organization Invitation
     """
 
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
-    ]
-    source: NotRequired[
-        Union[Literal["Organization", "Enterprise", "Predefined"], None]
-    ]
-    permissions: list[str]
-    organization: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-
-
-class OrganizationRoleTypeForResponse(TypedDict):
-    """Organization Role
-
-    Organization roles
-    """
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[
-        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
-    ]
-    source: NotRequired[
-        Union[Literal["Organization", "Enterprise", "Predefined"], None]
-    ]
-    permissions: list[str]
-    organization: Union[SimpleUserTypeForResponse, None]
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
     created_at: str
-    updated_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+class OrganizationInvitationTypeForResponse(TypedDict):
+    """Organization Invitation
 
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleType]]
+    Organization Invitation
+    """
 
-
-class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserTypeForResponse
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationRoleType",
-    "OrganizationRoleTypeForResponse",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
-    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
+    "OrganizationInvitationType",
+    "OrganizationInvitationTypeForResponse",
 )

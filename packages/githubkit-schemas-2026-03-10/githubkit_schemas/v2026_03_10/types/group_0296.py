@@ -12,85 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
+    """Actions cache retention limit for a repository
 
-    Workflow Usage
+    GitHub Actions cache retention policy for a repository.
     """
 
-    billable: WorkflowUsagePropBillableType
+    max_cache_retention_days: NotRequired[int]
 
 
-class WorkflowUsageTypeForResponse(TypedDict):
-    """Workflow Usage
+class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache retention limit for a repository
 
-    Workflow Usage
+    GitHub Actions cache retention policy for a repository.
     """
 
-    billable: WorkflowUsagePropBillableTypeForResponse
-
-
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillableTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuTypeForResponse]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosTypeForResponse]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsTypeForResponse]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropUbuntuTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsTypeForResponse(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropMacosTypeForResponse",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropUbuntuTypeForResponse",
-    "WorkflowUsagePropBillablePropWindowsType",
-    "WorkflowUsagePropBillablePropWindowsTypeForResponse",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillableTypeForResponse",
-    "WorkflowUsageType",
-    "WorkflowUsageTypeForResponse",
+    "ActionsCacheRetentionLimitForRepositoryType",
+    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
 )

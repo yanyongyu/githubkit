@@ -9,29 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class RepositoryRuleCommitterEmailPatternPropParametersType(TypedDict):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+class EnterpriseRulesetConditionsOneof3Type(TypedDict):
+    """organization_id_and_repository_property
+
+    Conditions to target organization by id and repositories by property
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
 
 
-class RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCommitterEmailPatternPropParameters"""
+class EnterpriseRulesetConditionsOneof3TypeForResponse(TypedDict):
+    """organization_id_and_repository_property
 
-    name: NotRequired[str]
-    negate: NotRequired[bool]
-    operator: Literal["starts_with", "ends_with", "contains", "regex"]
-    pattern: str
+    Conditions to target organization by id and repositories by property
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCommitterEmailPatternPropParametersType",
-    "RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse",
+    "EnterpriseRulesetConditionsOneof3Type",
+    "EnterpriseRulesetConditionsOneof3TypeForResponse",
 )

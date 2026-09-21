@@ -14,16 +14,18 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0401 import IssueReference
+from .group_0423 import IssueEventIntent
 
 
-class BlockedByRemovedIssueEvent(GitHubModel):
-    """Blocked-by Removed Issue Event
+class AssignedIssueEvent(GitHubModel):
+    """Assigned Issue Event
 
-    Blocked-by Removed Issue Event
+    Assigned Issue Event
     """
 
     id: int = Field()
@@ -34,10 +36,15 @@ class BlockedByRemovedIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    blocked_by: Union[None, IssueReference, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(BlockedByRemovedIssueEvent)
+model_rebuild(AssignedIssueEvent)
 
-__all__ = ("BlockedByRemovedIssueEvent",)
+__all__ = ("AssignedIssueEvent",)

@@ -9,35 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for repository properties
+class DependabotAlertDismissalRequestSimpleType(TypedDict):
+    """Dependabot alert dismissal request
 
-    Parameters for a repository property condition
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[DependabotAlertDismissalRequestSimplePropRequesterType]
+    created_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository properties
+class DependabotAlertDismissalRequestSimpleTypeForResponse(TypedDict):
+    """Dependabot alert dismissal request
 
-    Parameters for a repository property condition
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    id: NotRequired[int]
+    status: NotRequired[Literal["pending", "approved", "rejected", "cancelled"]]
+    requester: NotRequired[
+        DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse
+    ]
+    created_at: NotRequired[str]
+    url: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterType(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+
+
+class DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse(TypedDict):
+    """DependabotAlertDismissalRequestSimplePropRequester
+
+    The user who requested the dismissal.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetType",
-    "RepositoryRulesetConditionsRepositoryPropertyTargetTypeForResponse",
+    "DependabotAlertDismissalRequestSimplePropRequesterType",
+    "DependabotAlertDismissalRequestSimplePropRequesterTypeForResponse",
+    "DependabotAlertDismissalRequestSimpleType",
+    "DependabotAlertDismissalRequestSimpleTypeForResponse",
 )

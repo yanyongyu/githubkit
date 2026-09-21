@@ -9,49 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0114 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
-)
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
+from .group_0109 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
-class EnterpriseRulesetConditionsOneof1Type(TypedDict):
-    """organization_name_and_repository_property
+class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Conditions to target organizations by name and repositories by property
-    """
-
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamType]]
 
 
-class EnterpriseRulesetConditionsOneof1TypeForResponse(TypedDict):
-    """organization_name_and_repository_property
+class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Conditions to target organizations by name and repositories by property
-    """
-
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof1Type",
-    "EnterpriseRulesetConditionsOneof1TypeForResponse",
+    "EnterpriseUserRoleAssignmentAllof1Type",
+    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,24 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
-    )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
-    )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
-    )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0",)
+__all__ = ("UserGpgKeysPostBody",)

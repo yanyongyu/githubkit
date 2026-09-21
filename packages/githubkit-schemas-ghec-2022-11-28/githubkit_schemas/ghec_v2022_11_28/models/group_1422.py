@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    warning: Missing[str] = Field(
         default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202",)

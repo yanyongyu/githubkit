@@ -10,37 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class ActionsCacheListType(TypedDict):
+    """Repository actions caches
 
-    An autolink reference.
+    Repository actions caches
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[_dt.datetime, None]]
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
 
 
-class AutolinkTypeForResponse(TypedDict):
-    """Autolink reference
+class ActionsCacheListTypeForResponse(TypedDict):
+    """Repository actions caches
 
-    An autolink reference.
+    Repository actions caches
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
-    updated_at: NotRequired[Union[str, None]]
+    total_count: int
+    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+
+
+class ActionsCacheListPropActionsCachesItemsType(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[_dt.datetime]
+    created_at: NotRequired[_dt.datetime]
+    size_in_bytes: NotRequired[int]
+
+
+class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
+    """ActionsCacheListPropActionsCachesItems"""
+
+    id: NotRequired[int]
+    ref: NotRequired[str]
+    key: NotRequired[str]
+    version: NotRequired[str]
+    last_accessed_at: NotRequired[str]
+    created_at: NotRequired[str]
+    size_in_bytes: NotRequired[int]
 
 
 __all__ = (
-    "AutolinkType",
-    "AutolinkTypeForResponse",
+    "ActionsCacheListPropActionsCachesItemsType",
+    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
+    "ActionsCacheListType",
+    "ActionsCacheListTypeForResponse",
 )

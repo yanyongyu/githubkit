@@ -9,37 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPutBody(GitHubModel):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
-        default=UNSET,
-        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
-    )
-    vcs_username: Missing[str] = Field(
-        default=UNSET,
-        description="If authentication is required, the username to provide to `vcs_url`.",
-    )
-    vcs_password: Missing[str] = Field(
-        default=UNSET,
-        description="If authentication is required, the password to provide to `vcs_url`.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
-    )
+    total_count: int = Field()
+    secrets: list[DependabotSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoImportPutBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("ReposOwnerRepoImportPutBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "DependabotSecret",
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+)

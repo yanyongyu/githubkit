@@ -14,56 +14,67 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0218 import IssueType, IssueTypeForResponse
-from .group_0321 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
-from .group_0324 import ProjectsV2DraftIssueType, ProjectsV2DraftIssueTypeForResponse
 
 
-class ProjectsV2ItemSimpleType(TypedDict):
-    """Projects v2 Item
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    An item belonging to a project
+    Organization roles
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[IssueType, PullRequestSimpleType, ProjectsV2DraftIssueType]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
     ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
+    source: NotRequired[
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
+    ]
+    permissions: list[str]
+    organization: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
 
 
-class ProjectsV2ItemSimpleTypeForResponse(TypedDict):
-    """Projects v2 Item
+class OrganizationRoleTypeForResponse(TypedDict):
+    """Organization Role
 
-    An item belonging to a project
+    Organization roles
     """
 
-    id: float
-    node_id: NotRequired[str]
-    content: NotRequired[
-        Union[
-            IssueTypeForResponse,
-            PullRequestSimpleTypeForResponse,
-            ProjectsV2DraftIssueTypeForResponse,
-        ]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: NotRequired[
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
     ]
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
+    source: NotRequired[
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
+    ]
+    permissions: list[str]
+    organization: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
-    archived_at: Union[str, None]
-    project_url: NotRequired[str]
-    item_url: NotRequired[str]
+
+
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleType]]
+
+
+class OrgsOrgOrganizationRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[OrganizationRoleTypeForResponse]]
 
 
 __all__ = (
-    "ProjectsV2ItemSimpleType",
-    "ProjectsV2ItemSimpleTypeForResponse",
+    "OrganizationRoleType",
+    "OrganizationRoleTypeForResponse",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "OrgsOrgOrganizationRolesGetResponse200TypeForResponse",
 )

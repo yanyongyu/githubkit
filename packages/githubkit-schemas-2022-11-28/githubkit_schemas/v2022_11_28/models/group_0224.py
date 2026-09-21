@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0225 import RepositoryRuleCommitterEmailPatternPropParameters
 
+class RepositoryRulesetConditionsPropRefName(GitHubModel):
+    """RepositoryRulesetConditionsPropRefName"""
 
-class RepositoryRuleCommitterEmailPattern(GitHubModel):
-    """committer_email_pattern
-
-    Parameters to be used for the committer_email_pattern rule
-    """
-
-    type: Literal["committer_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
-        default=UNSET
+    include: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
+    )
+    exclude: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
     )
 
 
-model_rebuild(RepositoryRuleCommitterEmailPattern)
+model_rebuild(RepositoryRulesetConditionsPropRefName)
 
-__all__ = ("RepositoryRuleCommitterEmailPattern",)
+__all__ = ("RepositoryRulesetConditionsPropRefName",)

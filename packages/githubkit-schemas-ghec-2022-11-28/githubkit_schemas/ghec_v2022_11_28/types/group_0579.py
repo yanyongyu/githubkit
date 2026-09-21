@@ -9,55 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0178 import (
+    RepositoryRuleMaxFileSizePropParametersType,
+    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+)
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class RepositoryRuleDetailedOneof22Type(TypedDict):
+    """RepositoryRuleDetailedOneof22"""
 
-    Contributor Activity
-    """
-
-    author: Union[SimpleUserType, None]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
-
-
-class ContributorActivityTypeForResponse(TypedDict):
-    """Contributor Activity
-
-    Contributor Activity
-    """
-
-    author: Union[SimpleUserTypeForResponse, None]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
+class RepositoryRuleDetailedOneof22TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof22"""
 
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityPropWeeksItemsTypeForResponse",
-    "ContributorActivityType",
-    "ContributorActivityTypeForResponse",
+    "RepositoryRuleDetailedOneof22Type",
+    "RepositoryRuleDetailedOneof22TypeForResponse",
 )

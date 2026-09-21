@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1066 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
 
-    scope: Literal["all", "all_without_configurations"] = Field(
-        description="The type of repositories to attach the configuration to."
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody
-)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
 
-__all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
-)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)

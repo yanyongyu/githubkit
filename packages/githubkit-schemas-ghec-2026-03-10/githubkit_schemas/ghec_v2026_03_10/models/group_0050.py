@@ -9,39 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0049 import RunnerLabel
 
 
-class Runner(GitHubModel):
-    """Self hosted runners
+class ActionsPolicyWorkflowPathConditionPropWorkflowPath(GitHubModel):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    A self hosted runner
-    """
-
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
+    include: list[str] = Field(
+        description="Array of workflow file paths or glob patterns to include. An empty array includes all\nworkflows not matched by an excluded pattern. Use `~ALL` by itself to include all workflows.\n`~ALL` cannot be combined with other included patterns."
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once.",
+    exclude: list[str] = Field(
+        description="Array of workflow file paths or glob patterns to exclude. The condition will not pass\nif any of these patterns match. `~ALL` is not allowed in this array."
     )
 
 
-model_rebuild(Runner)
+model_rebuild(ActionsPolicyWorkflowPathConditionPropWorkflowPath)
 
-__all__ = ("Runner",)
+__all__ = ("ActionsPolicyWorkflowPathConditionPropWorkflowPath",)

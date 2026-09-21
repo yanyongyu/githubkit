@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,20 +16,49 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReviewCustomGatesStateRequired(GitHubModel):
-    """ReviewCustomGatesStateRequired"""
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
+    Rate Limit Overview
+    """
+
+    resources: RateLimitOverviewPropResources = Field()
+
+
+class RateLimitOverviewPropResources(GitHubModel):
+    """RateLimitOverviewPropResources"""
+
+    core: RateLimit = Field(title="Rate Limit")
+    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    search: RateLimit = Field(title="Rate Limit")
+    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    actions_runner_registration: Missing[RateLimit] = Field(
+        default=UNSET, title="Rate Limit"
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
-    )
-    comment: Missing[str] = Field(
-        default=UNSET, description="Optional comment to include with the review."
-    )
+    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    copilot_usage_records: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
 
 
-model_rebuild(ReviewCustomGatesStateRequired)
+class RateLimit(GitHubModel):
+    """Rate Limit"""
 
-__all__ = ("ReviewCustomGatesStateRequired",)
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
+
+
+model_rebuild(RateLimitOverview)
+model_rebuild(RateLimitOverviewPropResources)
+model_rebuild(RateLimit)
+
+__all__ = (
+    "RateLimit",
+    "RateLimitOverview",
+    "RateLimitOverviewPropResources",
+)

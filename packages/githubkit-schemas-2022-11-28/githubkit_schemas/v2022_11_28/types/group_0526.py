@@ -12,27 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CodespacesUserPublicKeyType(TypedDict):
-    """CodespacesUserPublicKey
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    The public key used for setting user Codespaces' Secrets.
+    Commit Activity
     """
 
-    key_id: str
-    key: str
+    days: list[int]
+    total: int
+    week: int
 
 
-class CodespacesUserPublicKeyTypeForResponse(TypedDict):
-    """CodespacesUserPublicKey
+class CommitActivityTypeForResponse(TypedDict):
+    """Commit Activity
 
-    The public key used for setting user Codespaces' Secrets.
+    Commit Activity
     """
 
-    key_id: str
-    key: str
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "CodespacesUserPublicKeyType",
-    "CodespacesUserPublicKeyTypeForResponse",
+    "CommitActivityType",
+    "CommitActivityTypeForResponse",
 )

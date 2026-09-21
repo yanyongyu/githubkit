@@ -9,52 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
-
-
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
-
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
+class DependencyGraphDiffItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    type: str
-    sha: str
-    url: str
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: list[
+        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
+    ]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    type: str
-    sha: str
-    url: str
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
+
+
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsTypeForResponse",
 )

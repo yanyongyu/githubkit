@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class TrafficType(TypedDict):
-    """Traffic"""
+class SecretScanningAlertMetadataItemsType(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    timestamp: _dt.datetime
-    uniques: int
-    count: int
+    key: str
+    value: str
 
 
-class TrafficTypeForResponse(TypedDict):
-    """Traffic"""
+class SecretScanningAlertMetadataItemsTypeForResponse(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    timestamp: str
-    uniques: int
-    count: int
+    key: str
+    value: str
 
 
 __all__ = (
-    "TrafficType",
-    "TrafficTypeForResponse",
+    "SecretScanningAlertMetadataItemsType",
+    "SecretScanningAlertMetadataItemsTypeForResponse",
 )

@@ -11,42 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0532 import TrafficType, TrafficTypeForResponse
 
-class HovercardType(TypedDict):
-    """Hovercard
 
-    Hovercard
+class ViewTrafficType(TypedDict):
+    """View Traffic
+
+    View Traffic
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    count: int
+    uniques: int
+    views: list[TrafficType]
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class ViewTrafficTypeForResponse(TypedDict):
+    """View Traffic
 
-    Hovercard
+    View Traffic
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
-
-
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
+    count: int
+    uniques: int
+    views: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "ViewTrafficType",
+    "ViewTrafficTypeForResponse",
 )

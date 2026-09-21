@@ -11,45 +11,70 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
-from .group_0124 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
-)
 
+class GetLicenseSyncStatusType(TypedDict):
+    """License Sync Status
 
-class EnterpriseRulesetConditionsOneof5Type(TypedDict):
-    """organization_property_and_repository_property
-
-    Conditions to target organizations by property and repositories by property
+    Information about the status of a license sync job for an enterprise.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsType]
+    ]
 
 
-class EnterpriseRulesetConditionsOneof5TypeForResponse(TypedDict):
-    """organization_property_and_repository_property
+class GetLicenseSyncStatusTypeForResponse(TypedDict):
+    """License Sync Status
 
-    Conditions to target organizations by property and repositories by property
+    Information about the status of a license sync job for an enterprise.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    server_instances: NotRequired[
+        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
+    ]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[
+        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
+    ]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
+    TypedDict
+):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof5Type",
-    "EnterpriseRulesetConditionsOneof5TypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
+    "GetLicenseSyncStatusType",
+    "GetLicenseSyncStatusTypeForResponse",
 )

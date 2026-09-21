@@ -16,12 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    message: Missing[str] = Field(default=UNSET)
+    errors: Missing[list[str]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse404)
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsGetResponse404",)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422",)

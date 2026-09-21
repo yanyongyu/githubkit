@@ -9,28 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0137 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class ActionsCacheStorageLimitForRepositoryType(TypedDict):
-    """Actions cache storage limit for a repository
+class OrgRepoCustomPropertyValuesType(TypedDict):
+    """Organization Repository Custom Property Values
 
-    GitHub Actions cache storage policy for a repository.
+    List of custom property values for a repository
     """
 
-    max_cache_size_gb: NotRequired[int]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueType]
 
 
-class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache storage limit for a repository
+class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
+    """Organization Repository Custom Property Values
 
-    GitHub Actions cache storage policy for a repository.
+    List of custom property values for a repository
     """
 
-    max_cache_size_gb: NotRequired[int]
+    repository_id: int
+    repository_name: str
+    repository_full_name: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForRepositoryType",
-    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
+    "OrgRepoCustomPropertyValuesType",
+    "OrgRepoCustomPropertyValuesTypeForResponse",
 )

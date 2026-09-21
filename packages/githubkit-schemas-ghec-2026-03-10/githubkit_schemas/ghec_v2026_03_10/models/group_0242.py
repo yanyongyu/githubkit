@@ -9,58 +9,159 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0243 import GistSimplePropForkOf
+from .group_0243 import DiscussionEvent
+from .group_0244 import IssuesEvent
+from .group_0245 import IssueCommentEvent
+from .group_0246 import ForkEvent
+from .group_0248 import MemberEvent
+from .group_0249 import PullRequestEvent
+from .group_0250 import PullRequestReviewCommentEvent
+from .group_0251 import PullRequestReviewEvent
+from .group_0253 import CommitCommentEvent
+from .group_0255 import ReleaseEvent
 
 
-class GistSimple(GitHubModel):
-    """Gist Simple
+class Event(GitHubModel):
+    """Event
 
-    Gist Simple
+    Event
     """
 
-    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
-        default=UNSET, title="Gist", description="Gist"
-    )
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    id: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    git_pull_url: Missing[str] = Field(default=UNSET)
-    git_push_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    id: str = Field()
+    type: Union[str, None] = Field()
+    actor: Actor = Field(title="Actor", description="Actor")
+    repo: EventPropRepo = Field()
+    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
+    payload: Union[
+        CreateEvent,
+        DeleteEvent,
+        DiscussionEvent,
+        IssuesEvent,
+        IssueCommentEvent,
+        ForkEvent,
+        GollumEvent,
+        MemberEvent,
+        PublicEvent,
+        PushEvent,
+        PullRequestEvent,
+        PullRequestReviewCommentEvent,
+        PullRequestReviewEvent,
+        CommitCommentEvent,
+        ReleaseEvent,
+        WatchEvent,
+    ] = Field()
+    public: bool = Field()
+    created_at: Union[_dt.datetime, None] = Field()
+
+
+class Actor(GitHubModel):
+    """Actor
+
+    Actor
+    """
+
+    id: int = Field()
+    login: str = Field()
+    display_login: Missing[str] = Field(default=UNSET)
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    avatar_url: str = Field()
+
+
+class EventPropRepo(GitHubModel):
+    """EventPropRepo"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+class CreateEvent(GitHubModel):
+    """CreateEvent"""
+
+    ref: str = Field()
+    ref_type: str = Field()
+    full_ref: str = Field()
+    master_branch: str = Field()
     description: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    user: Missing[Union[str, None]] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    truncated: Missing[bool] = Field(default=UNSET)
+    pusher_type: str = Field()
 
 
-class GistSimplePropFiles(ExtraGitHubModel):
-    """GistSimplePropFiles"""
+class DeleteEvent(GitHubModel):
+    """DeleteEvent"""
+
+    ref: str = Field()
+    ref_type: str = Field()
+    full_ref: str = Field()
+    pusher_type: str = Field()
 
 
-model_rebuild(GistSimple)
-model_rebuild(GistSimplePropFiles)
+class PublicEvent(GitHubModel):
+    """PublicEvent"""
+
+
+class PushEvent(GitHubModel):
+    """PushEvent"""
+
+    repository_id: int = Field()
+    push_id: int = Field()
+    ref: str = Field()
+    head: str = Field()
+    before: str = Field()
+
+
+class WatchEvent(GitHubModel):
+    """WatchEvent"""
+
+    action: str = Field()
+
+
+class GollumEvent(GitHubModel):
+    """GollumEvent"""
+
+    pages: list[GollumEventPropPagesItems] = Field()
+
+
+class GollumEventPropPagesItems(GitHubModel):
+    """GollumEventPropPagesItems"""
+
+    page_name: Missing[Union[str, None]] = Field(default=UNSET)
+    title: Missing[Union[str, None]] = Field(default=UNSET)
+    summary: Missing[Union[str, None]] = Field(default=UNSET)
+    action: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(Event)
+model_rebuild(Actor)
+model_rebuild(EventPropRepo)
+model_rebuild(CreateEvent)
+model_rebuild(DeleteEvent)
+model_rebuild(PublicEvent)
+model_rebuild(PushEvent)
+model_rebuild(WatchEvent)
+model_rebuild(GollumEvent)
+model_rebuild(GollumEventPropPagesItems)
 
 __all__ = (
-    "GistSimple",
-    "GistSimplePropFiles",
+    "Actor",
+    "CreateEvent",
+    "DeleteEvent",
+    "Event",
+    "EventPropRepo",
+    "GollumEvent",
+    "GollumEventPropPagesItems",
+    "PublicEvent",
+    "PushEvent",
+    "WatchEvent",
 )

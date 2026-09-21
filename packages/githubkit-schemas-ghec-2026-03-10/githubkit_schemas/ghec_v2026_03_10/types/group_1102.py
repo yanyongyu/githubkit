@@ -9,130 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0366 import DeploymentType, DeploymentTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0236 import IssueType, IssueTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookWorkflowJobWaitingType(TypedDict):
-    """workflow_job waiting event"""
+class WebhookSubIssuesParentIssueRemovedType(TypedDict):
+    """parent issue removed event"""
 
-    action: Literal["waiting"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueType]
+    parent_issue_repo: NotRequired[RepositoryType]
+    sub_issue_id: float
+    sub_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobType
-    deployment: NotRequired[DeploymentType]
 
 
-class WebhookWorkflowJobWaitingTypeForResponse(TypedDict):
-    """workflow_job waiting event"""
+class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
+    """parent issue removed event"""
 
-    action: Literal["waiting"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueTypeForResponse]
+    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse
-    deployment: NotRequired[DeploymentTypeForResponse]
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobType(TypedDict):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: _dt.datetime
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType]
-    url: str
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse(TypedDict):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
-
-    check_run_url: str
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    created_at: str
-    head_sha: str
-    html_url: str
-    id: int
-    labels: list[str]
-    name: str
-    node_id: str
-    run_attempt: int
-    run_id: int
-    run_url: str
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    started_at: str
-    head_branch: Union[str, None]
-    workflow_name: Union[str, None]
-    status: Literal["queued", "in_progress", "completed", "waiting"]
-    steps: list[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse]
-    url: str
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType(TypedDict):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
-
-
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse(TypedDict):
-    """Workflow Step"""
-
-    completed_at: Union[str, None]
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["completed", "in_progress", "queued", "pending", "waiting"]
 
 
 __all__ = (
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItemsTypeForResponse",
-    "WebhookWorkflowJobWaitingPropWorkflowJobType",
-    "WebhookWorkflowJobWaitingPropWorkflowJobTypeForResponse",
-    "WebhookWorkflowJobWaitingType",
-    "WebhookWorkflowJobWaitingTypeForResponse",
+    "WebhookSubIssuesParentIssueRemovedType",
+    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
 )

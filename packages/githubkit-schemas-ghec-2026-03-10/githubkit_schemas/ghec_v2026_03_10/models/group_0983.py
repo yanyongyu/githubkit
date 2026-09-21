@@ -18,24 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0645 import WebhooksChanges
-from .group_0670 import WebhooksReviewComment
-from .group_0984 import WebhookPullRequestReviewCommentEditedPropPullRequest
+from .group_0228 import Milestone
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_0687 import WebhooksPullRequest5
 
 
-class WebhookPullRequestReviewCommentEdited(GitHubModel):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestDemilestoned(GitHubModel):
+    """pull_request demilestoned event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhooksChanges = Field(description="The changes to the comment.")
-    comment: WebhooksReviewComment = Field(
-        title="Pull Request Review Comment",
-        description="The [comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
-    )
+    action: Literal["demilestoned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,12 +40,18 @@ class WebhookPullRequestReviewCommentEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    milestone: Missing[Milestone] = Field(
+        default=UNSET,
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequest = Field()
+    pull_request: WebhooksPullRequest5 = Field(title="Pull Request")
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -59,6 +59,6 @@ class WebhookPullRequestReviewCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReviewCommentEdited)
+model_rebuild(WebhookPullRequestDemilestoned)
 
-__all__ = ("WebhookPullRequestReviewCommentEdited",)
+__all__ = ("WebhookPullRequestDemilestoned",)

@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0624 import (
-    WebhookCodeScanningAlertUpdatedAssignmentPropAlertType,
-    WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse,
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0568 import (
+    CheckRunWithSimpleCheckSuiteType,
+    CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentType(TypedDict):
-    """code_scanning_alert updated_assignment event"""
+class WebhookCheckRunCreatedType(TypedDict):
+    """Check Run Created Event"""
 
-    action: Literal["updated_assignment"]
-    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["created"]
+    check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse(TypedDict):
-    """code_scanning_alert updated_assignment event"""
+class WebhookCheckRunCreatedTypeForResponse(TypedDict):
+    """Check Run Created Event"""
 
-    action: Literal["updated_assignment"]
-    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlertTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["created"]
+    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCodeScanningAlertUpdatedAssignmentType",
-    "WebhookCodeScanningAlertUpdatedAssignmentTypeForResponse",
+    "WebhookCheckRunCreatedType",
+    "WebhookCheckRunCreatedTypeForResponse",
 )

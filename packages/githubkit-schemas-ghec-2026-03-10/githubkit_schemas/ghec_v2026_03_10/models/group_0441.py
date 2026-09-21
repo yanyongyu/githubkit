@@ -18,36 +18,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Contributor(GitHubModel):
-    """Contributor
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-    Contributor
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    login: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    avatar_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    type: str = Field()
-    site_admin: Missing[bool] = Field(default=UNSET)
-    contributions: int = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
-model_rebuild(Contributor)
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
 
-__all__ = ("Contributor",)
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
+    )
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
+
+
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
+
+__all__ = (
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
+)

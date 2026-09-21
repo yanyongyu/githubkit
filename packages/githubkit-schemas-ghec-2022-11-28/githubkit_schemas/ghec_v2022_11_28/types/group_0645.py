@@ -9,168 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0214 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0215 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
+class OrganizationSimpleWebhooksType(TypedDict):
+    """Organization Simple
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: _dt.datetime
-    html_url: str
+    login: str
     id: int
-    issue_url: str
     node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: _dt.datetime
     url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class WebhooksIssueCommentTypeForResponse(TypedDict):
-    """issue comment
+class OrganizationSimpleWebhooksTypeForResponse(TypedDict):
+    """Organization Simple
 
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: str
-    html_url: str
+    login: str
     id: int
-    issue_url: str
     node_id: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    reactions: WebhooksIssueCommentPropReactionsTypeForResponse
-    updated_at: str
     url: str
-    user: Union[WebhooksIssueCommentPropUserTypeForResponse, None]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
-
-
-class WebhooksIssueCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksIssueCommentPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksIssueCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksIssueCommentPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
 __all__ = (
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropReactionsTypeForResponse",
-    "WebhooksIssueCommentPropUserType",
-    "WebhooksIssueCommentPropUserTypeForResponse",
-    "WebhooksIssueCommentType",
-    "WebhooksIssueCommentTypeForResponse",
+    "OrganizationSimpleWebhooksType",
+    "OrganizationSimpleWebhooksTypeForResponse",
 )

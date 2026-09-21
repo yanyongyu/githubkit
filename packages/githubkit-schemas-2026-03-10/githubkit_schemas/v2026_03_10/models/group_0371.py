@@ -9,43 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
+
+
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
     )
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+    )
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
-
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
-
-
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
 __all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
 )

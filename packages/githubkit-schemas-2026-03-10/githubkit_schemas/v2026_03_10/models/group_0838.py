@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0578 import WebhooksProject
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0839 import WebhookPackagePublishedPropPackage
 
 
-class WebhookProjectClosed(GitHubModel):
-    """project closed event"""
+class WebhookPackagePublished(GitHubModel):
+    """package published event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +44,9 @@ class WebhookProjectClosed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhooksProject = Field(title="Project")
+    package: WebhookPackagePublishedPropPackage = Field(
+        description="Information about the package."
+    )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -53,6 +55,6 @@ class WebhookProjectClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectClosed)
+model_rebuild(WebhookPackagePublished)
 
-__all__ = ("WebhookProjectClosed",)
+__all__ = ("WebhookPackagePublished",)

@@ -9,116 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksPreviousMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["auto_dismissed", "open"]
+    account: WebhooksPreviousMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhooksAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["auto_dismissed", "open"]
+    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
 
 
-class WebhooksAlertPropDismisserType(TypedDict):
-    """User"""
+class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
-    """User"""
+class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: list[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhooksAlertPropDismisserType",
-    "WebhooksAlertPropDismisserTypeForResponse",
-    "WebhooksAlertType",
-    "WebhooksAlertTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropAccountType",
+    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksPreviousMarketplacePurchasePropPlanType",
+    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksPreviousMarketplacePurchaseType",
+    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
 )

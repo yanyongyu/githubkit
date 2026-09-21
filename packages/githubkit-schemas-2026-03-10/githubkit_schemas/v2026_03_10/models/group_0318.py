@@ -9,48 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0090 import MinimalRepository
+from .group_0003 import SimpleUser
 
 
-class CheckSuitePreference(GitHubModel):
-    """Check Suite Preference
+class Activity(GitHubModel):
+    """Activity
 
-    Check suite configuration preferences for a repository.
+    Activity
     """
 
-    preferences: CheckSuitePreferencePropPreferences = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    id: int = Field()
+    node_id: str = Field()
+    before: str = Field(description="The SHA of the commit before the activity.")
+    after: str = Field(description="The SHA of the commit after the activity.")
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
     )
+    timestamp: _dt.datetime = Field(description="The time when the activity occurred.")
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ] = Field(description="The type of the activity that was performed.")
+    actor: Union[SimpleUser, None] = Field()
 
 
-class CheckSuitePreferencePropPreferences(GitHubModel):
-    """CheckSuitePreferencePropPreferences"""
+model_rebuild(Activity)
 
-    auto_trigger_checks: Missing[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
-    ] = Field(default=UNSET)
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int = Field()
-    setting: bool = Field()
-
-
-model_rebuild(CheckSuitePreference)
-model_rebuild(CheckSuitePreferencePropPreferences)
-model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
-
-__all__ = (
-    "CheckSuitePreference",
-    "CheckSuitePreferencePropPreferences",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
-)
+__all__ = ("Activity",)

@@ -9,39 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
+
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
+CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
+"""Copilot Organization Content Exclusion Details
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
-
-
-class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsUserStatsItems"""
-
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+List all Copilot Content Exclusion rules for an organization.
+"""
 
 
 __all__ = (
-    "ApiInsightsUserStatsItemsType",
-    "ApiInsightsUserStatsItemsTypeForResponse",
+    "CopilotOrganizationContentExclusionDetailsType",
+    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
 )

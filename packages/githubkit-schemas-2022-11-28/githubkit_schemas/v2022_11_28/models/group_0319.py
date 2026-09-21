@@ -9,83 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0057 import PullRequestMinimal
-from .group_0090 import MinimalRepository
-from .group_0288 import SimpleCommit
 
+class WorkflowUsage(GitHubModel):
+    """Workflow Usage
 
-class CheckSuite(GitHubModel):
-    """CheckSuite
-
-    A suite of checks performed on the code of a given code change
+    Workflow Usage
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that is being checked."
+    billable: WorkflowUsagePropBillable = Field()
+
+
+class WorkflowUsagePropBillable(GitHubModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    status: Union[
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-        None,
-    ] = Field(
-        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
     )
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-        None,
-    ] = Field()
-    url: Union[str, None] = Field()
-    before: Union[str, None] = Field()
-    after: Union[str, None] = Field()
-    pull_requests: Union[list[PullRequestMinimal], None] = Field()
-    app: Union[None, Integration, None] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
-    latest_check_runs_count: int = Field()
-    check_runs_url: str = Field()
-    rerequestable: Missing[bool] = Field(default=UNSET)
-    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-    total_count: int = Field()
-    check_suites: list[CheckSuite] = Field()
+    total_ms: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CheckSuite)
-model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+class WorkflowUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowUsage)
+model_rebuild(WorkflowUsagePropBillable)
+model_rebuild(WorkflowUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowUsagePropBillablePropMacos)
+model_rebuild(WorkflowUsagePropBillablePropWindows)
 
 __all__ = (
-    "CheckSuite",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropWindows",
 )

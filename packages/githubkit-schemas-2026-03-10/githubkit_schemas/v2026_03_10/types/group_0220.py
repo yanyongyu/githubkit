@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0221 import (
-    RepositoryRuleCommitMessagePatternPropParametersType,
-    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
-)
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Parameters to be used for the commit_message_pattern rule
+    Code of Conduct Simple
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
-    """commit_message_pattern
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
-    Parameters to be used for the commit_message_pattern rule
+    Code of Conduct Simple
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
-    ]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "RepositoryRuleCommitMessagePatternType",
-    "RepositoryRuleCommitMessagePatternTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

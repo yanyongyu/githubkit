@@ -13,49 +13,89 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
+class ConcurrencyGroupRunListType(TypedDict):
+    """Concurrency Group Run List
 
-    Diff Entry
+    A list of concurrency groups associated with a workflow run.
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
 
 
-class DiffEntryTypeForResponse(TypedDict):
-    """Diff Entry
+class ConcurrencyGroupRunListTypeForResponse(TypedDict):
+    """Concurrency Group Run List
 
-    Diff Entry
+    A list of concurrency groups associated with a workflow run.
     """
 
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
     ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
+    ]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    group_members: list[
+        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
+
+
+class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
+    TypedDict
+):
+    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    position: int
+    position_url: str
+    job_id: NotRequired[Union[int, None]]
+    job_name: NotRequired[Union[str, None]]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "DiffEntryType",
-    "DiffEntryTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupRunListType",
+    "ConcurrencyGroupRunListTypeForResponse",
 )

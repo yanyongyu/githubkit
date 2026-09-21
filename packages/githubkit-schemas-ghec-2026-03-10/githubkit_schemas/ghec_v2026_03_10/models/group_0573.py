@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-
-
-class PullRequestStackPullRequestAllof1(GitHubModel):
-    """PullRequestStackPullRequestAllof1"""
-
-    node_id: str = Field()
-    title: str = Field()
-    state: Literal["open", "closed"] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    draft: bool = Field()
-    html_url: str = Field()
-    user: Union[SimpleUser, None] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestStackPullRequestAllof1)
+class RepositoryRuleDetailedOneof18(GitHubModel):
+    """RepositoryRuleDetailedOneof18"""
 
-__all__ = ("PullRequestStackPullRequestAllof1",)
+    type: Literal["license_compliance_scanning"] = Field()
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
+
+
+model_rebuild(RepositoryRuleDetailedOneof18)
+
+__all__ = ("RepositoryRuleDetailedOneof18",)

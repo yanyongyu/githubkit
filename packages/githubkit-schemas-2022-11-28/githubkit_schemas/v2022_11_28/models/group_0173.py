@@ -9,112 +9,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
-    """Organization private registry
+class CopilotOrganizationDetails(ExtraGitHubModel):
+    """Copilot Organization Details
 
-    Private registry configuration for an organization
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    auth_type: Missing[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ] = Field(
-        default=UNSET, description="The authentication type for the private registry."
+    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
+        title="Copilot Seat Breakdown",
+        description="The breakdown of Copilot Business seats for the organization.",
     )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
+        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
     )
-    username: Missing[str] = Field(
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
     )
-    replaces_base: Missing[bool] = Field(
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
-        description="An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`.",
+        description="The organization policy for allowing or disallowing Copilot CLI.",
     )
-    tenant_id: Missing[str] = Field(
-        default=UNSET, description="The tenant ID of the Azure AD application."
-    )
-    client_id: Missing[str] = Field(
-        default=UNSET, description="The client ID of the Azure AD application."
-    )
-    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
-    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
-    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
-    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
-    domain_owner: Missing[str] = Field(
-        default=UNSET, description="The CodeArtifact domain owner."
-    )
-    jfrog_oidc_provider_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog OIDC provider name."
-    )
-    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
-    identity_mapping_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog identity mapping name."
-    )
-    namespace: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith organization namespace."
-    )
-    service_slug: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith service account slug."
-    )
-    api_host: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith API host."
-    )
-    workload_identity_provider: Missing[str] = Field(
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise"]] = Field(
         default=UNSET,
-        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
-    service_account: Missing[str] = Field(
-        default=UNSET,
-        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgPrivateRegistryConfigurationWithSelectedRepositories)
+class CopilotOrganizationSeatBreakdown(GitHubModel):
+    """Copilot Seat Breakdown
 
-__all__ = ("OrgPrivateRegistryConfigurationWithSelectedRepositories",)
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    )
+    added_this_cycle: Missing[int] = Field(
+        default=UNSET, description="Seats added during the current billing cycle."
+    )
+    pending_cancellation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    )
+    pending_invitation: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    )
+    active_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have used Copilot during the current billing cycle.",
+    )
+    inactive_this_cycle: Missing[int] = Field(
+        default=UNSET,
+        description="The number of seats that have not used Copilot during the current billing cycle.",
+    )
+
+
+model_rebuild(CopilotOrganizationDetails)
+model_rebuild(CopilotOrganizationSeatBreakdown)
+
+__all__ = (
+    "CopilotOrganizationDetails",
+    "CopilotOrganizationSeatBreakdown",
+)

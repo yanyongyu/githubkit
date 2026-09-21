@@ -9,57 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0108 import Team
 
 
-class IssueSuggestion(GitHubModel):
-    """Issue Suggestion
+class ReviewRequestRemovedIssueEvent(GitHubModel):
+    """Review Request Removed Issue Event
 
-    An agent-proposed change to an issue that a maintainer can approve or dismiss.
+    Review Request Removed Issue Event
     """
 
-    id: int = Field(description="The unique identifier of the suggestion.")
-    issue_id: int = Field(
-        description="The unique identifier of the issue the suggestion applies to."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["review_request_removed"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
     )
-    action: Literal[
-        "set_type", "add_label", "add_field", "add_assignee", "close_issue"
-    ] = Field(description="The kind of change proposed.")
-    state: Literal[
-        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
-    ] = Field(description="The suggestion's lifecycle state.")
-    target_id: Union[int, None] = Field(
-        description="The identifier of the target the change applies to (issue type, label, field, assignee, or duplicate issue), when applicable."
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
     )
-    target_value: Union[str, float, bool, list[str], None] = Field(
-        description="The proposed value, when applicable. An array for multi-select field suggestions."
-    )
-    rationale: Union[str, None] = Field(
-        description="The rationale the actor provided for the suggestion."
-    )
-    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None] = Field(
-        description="The actor's confidence level in the suggestion."
-    )
-    actor_id: Union[int, None] = Field(
-        description="The unique identifier of the actor that proposed the suggestion."
-    )
-    issue_event_id: Union[int, None] = Field(
-        description="The identifier of the timeline event created when the suggestion was approved, when applicable."
-    )
-    resolved_by: Union[int, None] = Field(
-        description="The unique identifier of the user who approved or dismissed the suggestion."
-    )
-    created_at: _dt.datetime = Field(description="The time the suggestion was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time the suggestion was last updated."
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(IssueSuggestion)
+model_rebuild(ReviewRequestRemovedIssueEvent)
 
-__all__ = ("IssueSuggestion",)
+__all__ = ("ReviewRequestRemovedIssueEvent",)

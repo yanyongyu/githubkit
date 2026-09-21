@@ -9,43 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeQualitySetupUpdateAnyof1Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof1"""
-
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: Literal["standard", "labeled"]
-    runner_label: NotRequired[Union[str, None]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0157 import TeamType, TeamTypeForResponse
 
 
-class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof1"""
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: Literal["standard", "labeled"]
-    runner_label: NotRequired[Union[str, None]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof1Type",
-    "CodeQualitySetupUpdateAnyof1TypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

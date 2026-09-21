@@ -9,35 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0403 import IssueReference
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SubIssueRemovedIssueEvent(GitHubModel):
-    """Sub-issue Removed Issue Event
+class IssueEventIntent(GitHubModel):
+    """Issue Event Intent
 
-    Sub-issue Removed Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    sub_issue: Union[None, IssueReference, None] = Field()
+    rationale: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reasoning the agent provided for the change."
+    )
+    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
+        default=UNSET,
+        description="The confidence level the agent had when performing this action.",
+    )
 
 
-model_rebuild(SubIssueRemovedIssueEvent)
+model_rebuild(IssueEventIntent)
 
-__all__ = ("SubIssueRemovedIssueEvent",)
+__all__ = ("IssueEventIntent",)

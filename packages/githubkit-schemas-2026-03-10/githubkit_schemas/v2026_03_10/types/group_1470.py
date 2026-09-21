@@ -9,56 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0499 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse201PropBaseType",
-    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse201Type",
-    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
 )

@@ -9,37 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0229 import RepositoryRuleTagNamePatternPropParameters
 
 
-class RepositoryRuleDetailedOneof14(GitHubModel):
-    """RepositoryRuleDetailedOneof14"""
+class PullRequestMergeAsyncResult(GitHubModel):
+    """Pull Request Merge Async Result
 
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
-        default=UNSET
+    Pull Request Merge Async Result
+    """
+
+    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsOneof0,
+        PullRequestMergeAsyncResultPropDetailsOneof1,
+        PullRequestMergeAsyncResultPropDetailsOneof2,
+    ] = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof0(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsOneof0
+
+    When an asynchronous merge request was created or already existed
+    """
+
+    message: str = Field()
+    uuid: str = Field()
+    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
+    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
+    expected_head_sha: str = Field(
+        description="SHA that the pull request head must match for the enqueued merge to proceed."
     )
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
-    )
 
 
-model_rebuild(RepositoryRuleDetailedOneof14)
+class PullRequestMergeAsyncResultPropDetailsOneof1(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsOneof1
 
-__all__ = ("RepositoryRuleDetailedOneof14",)
+    When the pull request cannot be merged
+    """
+
+    message: str = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsOneof2(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsOneof2
+
+    When the pull request is already merged
+    """
+
+    message: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestMergeAsyncResult)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof0)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof1)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof2)
+
+__all__ = (
+    "PullRequestMergeAsyncResult",
+    "PullRequestMergeAsyncResultPropDetailsOneof0",
+    "PullRequestMergeAsyncResultPropDetailsOneof1",
+    "PullRequestMergeAsyncResultPropDetailsOneof2",
+)

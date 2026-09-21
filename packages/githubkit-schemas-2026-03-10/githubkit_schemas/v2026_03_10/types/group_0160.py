@@ -9,88 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldType(TypedDict):
-    """Issue Field
+class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    A custom attribute defined at the organization level for attaching structured
-    data to issues.
+    The AI Scan organization setting to apply
     """
 
-    id: int
-    node_id: str
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class IssueFieldTypeForResponse(TypedDict):
-    """Issue Field
+class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    A custom attribute defined at the organization level for attaching structured
-    data to issues.
+    The AI Scan organization setting to apply
     """
 
-    id: int
-    node_id: str
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class IssueFieldPropOptionsItemsType(TypedDict):
-    """IssueFieldPropOptionsItems"""
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-
-
-class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldPropOptionsItems"""
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "IssueFieldPropOptionsItemsType",
-    "IssueFieldPropOptionsItemsTypeForResponse",
-    "IssueFieldType",
-    "IssueFieldTypeForResponse",
+    "CodeScanningAiScanOrgEnablementUpdateType",
+    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
 )

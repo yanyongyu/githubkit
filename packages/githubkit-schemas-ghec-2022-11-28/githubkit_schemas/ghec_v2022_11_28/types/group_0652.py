@@ -9,30 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0653 import (
-    WebhooksLabelArchivedAllof1PropArchivedByType,
-    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
-)
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksLabelArchivedAllof1Type(TypedDict):
-    """WebhooksLabelArchivedAllof1"""
+class WebhooksDeployKeyType(TypedDict):
+    """WebhooksDeployKey
 
-    archived_at: _dt.datetime
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
+    """
+
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
 
 
-class WebhooksLabelArchivedAllof1TypeForResponse(TypedDict):
-    """WebhooksLabelArchivedAllof1"""
+class WebhooksDeployKeyTypeForResponse(TypedDict):
+    """WebhooksDeployKey
 
-    archived_at: str
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
+    """
+
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksLabelArchivedAllof1Type",
-    "WebhooksLabelArchivedAllof1TypeForResponse",
+    "WebhooksDeployKeyType",
+    "WebhooksDeployKeyTypeForResponse",
 )

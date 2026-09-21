@@ -9,67 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0101 import CodeSecurityConfiguration
 
-class RepositoryRuleViolationError(GitHubModel):
-    """RepositoryRuleViolationError
 
-    Repository rule violation was detected
+class CodeSecurityConfigurationForRepository(GitHubModel):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: Missing[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: Missing[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
         ]
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
-    GitHubModel
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: Missing[str] = Field(
+    ] = Field(
         default=UNSET,
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
+        description="The attachment status of the code security configuration on the repository.",
     )
-    token_type: Missing[str] = Field(default=UNSET)
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-model_rebuild(RepositoryRuleViolationError)
-model_rebuild(RepositoryRuleViolationErrorPropMetadata)
-model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
-model_rebuild(
-    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-)
+model_rebuild(CodeSecurityConfigurationForRepository)
 
-__all__ = (
-    "RepositoryRuleViolationError",
-    "RepositoryRuleViolationErrorPropMetadata",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
-)
+__all__ = ("CodeSecurityConfigurationForRepository",)

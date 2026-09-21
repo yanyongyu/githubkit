@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,48 +16,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ConcurrencyGroup(GitHubModel):
-    """Concurrency Group
+class SecretScanningLocationDiscussionBody(GitHubModel):
+    """SecretScanningLocationDiscussionBody
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    total_count: int = Field()
-    group_members: list[ConcurrencyGroupPropGroupMembersItems] = Field()
+    discussion_body_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
 
 
-class ConcurrencyGroupPropGroupMembersItems(GitHubModel):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class SecretScanningLocationPullRequestComment(GitHubModel):
+    """SecretScanningLocationPullRequestComment
 
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    job_id: Missing[int] = Field(
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str = Field(
+        description="The API URL to get the pull request comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
+        description="The GitHub URL for the pull request comment where the secret was detected.",
     )
-    job_name: Missing[str] = Field(
-        default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
-    )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
-    )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
-    )
-    status: Literal["in_progress", "pending"] = Field()
 
 
-model_rebuild(ConcurrencyGroup)
-model_rebuild(ConcurrencyGroupPropGroupMembersItems)
+model_rebuild(SecretScanningLocationDiscussionBody)
+model_rebuild(SecretScanningLocationPullRequestComment)
 
 __all__ = (
-    "ConcurrencyGroup",
-    "ConcurrencyGroupPropGroupMembersItems",
+    "SecretScanningLocationDiscussionBody",
+    "SecretScanningLocationPullRequestComment",
 )

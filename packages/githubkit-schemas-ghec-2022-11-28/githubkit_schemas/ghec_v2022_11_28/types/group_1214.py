@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    message: NotRequired[str]
+    errors: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
 
-    message: NotRequired[str]
+    errors: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
 )

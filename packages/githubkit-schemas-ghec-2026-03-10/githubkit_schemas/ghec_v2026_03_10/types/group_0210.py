@@ -10,61 +10,123 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    A collection of related issues and pull requests.
+    budgets: list[BudgetType]
+    user: NotRequired[str]
+    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetType]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
+
+
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
+
+    budgets: list[BudgetTypeForResponse]
+    user: NotRequired[str]
+    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
+
+
+class GetAllBudgetsPropEffectiveBudgetType(TypedDict):
+    """GetAllBudgetsPropEffectiveBudget
+
+    Effective user-level budget details returned when the response is scoped with
+    the `user` query parameter.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[SimpleUserType, None]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    id: str
+    budget_amount: int
+    consumed_amount: float
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class GetAllBudgetsPropEffectiveBudgetTypeForResponse(TypedDict):
+    """GetAllBudgetsPropEffectiveBudget
 
-    A collection of related issues and pull requests.
+    Effective user-level budget details returned when the response is scoped with
+    the `user` query parameter.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[SimpleUserTypeForResponse, None]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+    id: str
+    budget_amount: int
+    consumed_amount: float
+
+
+class BudgetType(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
+    expires_at: NotRequired[_dt.date]
+
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    expires_at: NotRequired[str]
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsPropEffectiveBudgetType",
+    "GetAllBudgetsPropEffectiveBudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

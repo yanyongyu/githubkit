@@ -9,21 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0148 import RunnerLabel
 
 
-class DependabotPublicKey(GitHubModel):
-    """DependabotPublicKey
+class Runner(GitHubModel):
+    """Self hosted runners
 
-    The public key used for setting Dependabot Secrets.
+    A self hosted runner
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    id: int = Field(description="The ID of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the runner group."
+    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: list[RunnerLabel] = Field()
+    ephemeral: Missing[bool] = Field(default=UNSET)
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once.",
+    )
 
 
-model_rebuild(DependabotPublicKey)
+model_rebuild(Runner)
 
-__all__ = ("DependabotPublicKey",)
+__all__ = ("Runner",)

@@ -9,34 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CustomDeploymentRuleAppType(TypedDict):
-    """Custom deployment protection rule app
+class ContentFileType(TypedDict):
+    """Content File
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Content File
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class CustomDeploymentRuleAppTypeForResponse(TypedDict):
-    """Custom deployment protection rule app
+class ContentFileTypeForResponse(TypedDict):
+    """Content File
 
-    A GitHub App that is providing a custom deployment protection rule.
+    Content File
     """
 
-    id: int
-    slug: str
-    integration_url: str
-    node_id: str
+    type: Literal["file"]
+    encoding: str
+    size: int
+    name: str
+    path: str
+    content: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentFilePropLinksTypeForResponse
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
+
+
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentFilePropLinksTypeForResponse(TypedDict):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "CustomDeploymentRuleAppType",
-    "CustomDeploymentRuleAppTypeForResponse",
+    "ContentFilePropLinksType",
+    "ContentFilePropLinksTypeForResponse",
+    "ContentFileType",
+    "ContentFileTypeForResponse",
 )

@@ -9,53 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0137 import CustomPropertyValue
 
 
-class Artifact(GitHubModel):
-    """Artifact
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    An artifact
+    List of custom property values for a repository
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The name of the artifact.")
-    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
-    url: str = Field()
-    archive_download_url: str = Field()
-    expired: bool = Field(description="Whether or not the artifact has expired.")
-    created_at: Union[_dt.datetime, None] = Field()
-    expires_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    digest: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
-    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-class ArtifactPropWorkflowRun(GitHubModel):
-    """ArtifactPropWorkflowRun"""
+model_rebuild(OrgRepoCustomPropertyValues)
 
-    id: Missing[int] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    head_branch: Missing[str] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Artifact)
-model_rebuild(ArtifactPropWorkflowRun)
-
-__all__ = (
-    "Artifact",
-    "ArtifactPropWorkflowRun",
-)
+__all__ = ("OrgRepoCustomPropertyValues",)

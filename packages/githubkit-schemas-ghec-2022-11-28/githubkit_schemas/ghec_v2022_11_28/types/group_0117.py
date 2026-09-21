@@ -9,33 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0118 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+from .group_0116 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
 )
 
 
-class RepositoryRulesetConditionsType(TypedDict):
-    """Repository ruleset conditions for ref names
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Parameters for a repository ruleset ref name condition
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
+    ]
 
 
-class RepositoryRulesetConditionsTypeForResponse(TypedDict):
-    """Repository ruleset conditions for ref names
+class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    Parameters for a repository ruleset ref name condition
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    package: DependabotAlertPackageTypeForResponse
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
+    ]
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
+    TypedDict
+):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
 
 
 __all__ = (
-    "RepositoryRulesetConditionsType",
-    "RepositoryRulesetConditionsTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityTypeForResponse",
 )

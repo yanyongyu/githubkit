@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRulesetConditionsRepositoryNameTarget(GitHubModel):
-    """Repository ruleset conditions for repository names
+class EnterpriseTokenInventoryExport(GitHubModel):
+    """Enterprise Token Inventory Export
 
-    Parameters for a repository name condition
+    The status of an asynchronous enterprise token inventory CSV export.
     """
 
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    export_id: str = Field(
+        description="Opaque id for the export, used to poll its status."
+    )
+    status: Literal["pending", "queued", "started", "success", "error"] = Field(
+        description="The state of the export job."
+    )
+    as_of: Missing[Union[str, None]] = Field(
+        default=UNSET, description="When the export was requested."
+    )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTarget)
+model_rebuild(EnterpriseTokenInventoryExport)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTarget",)
+__all__ = ("EnterpriseTokenInventoryExport",)

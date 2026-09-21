@@ -9,38 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0252 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionType(TypedDict):
-    """Ruleset version
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    The historical version of a ruleset
+    Restricted commit
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
+    oid: str
+    reason: NotRequired[str]
 
 
-class RulesetVersionTypeForResponse(TypedDict):
-    """Ruleset version
+class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
+    """RestrictedCommits
 
-    The historical version of a ruleset
+    Restricted commit
     """
 
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
+    oid: str
+    reason: NotRequired[str]
 
 
 __all__ = (
-    "RulesetVersionType",
-    "RulesetVersionTypeForResponse",
+    "RepositoryRuleParamsRestrictedCommitsType",
+    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
 )

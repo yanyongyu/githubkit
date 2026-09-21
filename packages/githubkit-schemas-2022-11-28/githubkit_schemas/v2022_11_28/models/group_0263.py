@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,20 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0264 import RepositoryRuleFileExtensionRestrictionPropParameters
 
-class SecretScanningCustomPatternToDelete(GitHubModel):
-    """Secret Scanning Custom Pattern To Delete
 
-    A custom pattern to delete in a bulk operation.
+class RepositoryRuleFileExtensionRestriction(GitHubModel):
+    """file_extension_restriction
+
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
     """
 
-    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(SecretScanningCustomPatternToDelete)
+model_rebuild(RepositoryRuleFileExtensionRestriction)
 
-__all__ = ("SecretScanningCustomPatternToDelete",)
+__all__ = ("RepositoryRuleFileExtensionRestriction",)

@@ -9,21 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0424 import IssueReference
 
-class PageBuildStatus(GitHubModel):
-    """Page Build Status
 
-    Page Build Status
+class BlockedByRemovedIssueEvent(GitHubModel):
+    """Blocked-by Removed Issue Event
+
+    Blocked-by Removed Issue Event
     """
 
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    status: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    blocked_by: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(PageBuildStatus)
+model_rebuild(BlockedByRemovedIssueEvent)
 
-__all__ = ("PageBuildStatus",)
+__all__ = ("BlockedByRemovedIssueEvent",)

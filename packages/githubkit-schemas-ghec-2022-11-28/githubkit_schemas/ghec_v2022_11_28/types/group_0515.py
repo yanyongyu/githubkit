@@ -14,12 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0494 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class TimelineConnectedEventType(TypedDict):
-    """Timeline Connected Event
+class SubIssueAddedIssueEventType(TypedDict):
+    """Sub-issue Added Issue Event
 
-    Timeline Connected Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -31,12 +32,13 @@ class TimelineConnectedEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
+    sub_issue: Union[None, IssueReferenceType, None]
 
 
-class TimelineConnectedEventTypeForResponse(TypedDict):
-    """Timeline Connected Event
+class SubIssueAddedIssueEventTypeForResponse(TypedDict):
+    """Sub-issue Added Issue Event
 
-    Timeline Connected Event
+    Sub-issue Added Issue Event
     """
 
     id: int
@@ -48,9 +50,10 @@ class TimelineConnectedEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    sub_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineConnectedEventType",
-    "TimelineConnectedEventTypeForResponse",
+    "SubIssueAddedIssueEventType",
+    "SubIssueAddedIssueEventTypeForResponse",
 )

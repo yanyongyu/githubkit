@@ -9,47 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueTypeWebhookType(TypedDict):
-    """Issue Type
+class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    The type of issue.
-    """
-
-    id: int
     name: str
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
-class IssueTypeWebhookTypeForResponse(TypedDict):
-    """Issue Type
+class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    The type of issue.
-    """
-
-    id: int
     name: str
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "IssueTypeWebhookType",
-    "IssueTypeWebhookTypeForResponse",
+    "DeploymentBranchPolicyNamePatternWithTypeType",
+    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
 )

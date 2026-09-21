@@ -9,55 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0404 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from .group_0407 import (
+    CustomDeploymentRuleAppType,
+    CustomDeploymentRuleAppTypeForResponse,
+)
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Assigned Issue Event
+    Deployment protection rule
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class AssignedIssueEventTypeForResponse(TypedDict):
-    """Assigned Issue Event
+class DeploymentProtectionRuleTypeForResponse(TypedDict):
+    """Deployment protection rule
 
-    Assigned Issue Event
+    Deployment protection rule
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    enabled: bool
+    app: CustomDeploymentRuleAppTypeForResponse
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[
+        list[DeploymentProtectionRuleTypeForResponse]
+    ]
 
 
 __all__ = (
-    "AssignedIssueEventType",
-    "AssignedIssueEventTypeForResponse",
+    "DeploymentProtectionRuleType",
+    "DeploymentProtectionRuleTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
 )

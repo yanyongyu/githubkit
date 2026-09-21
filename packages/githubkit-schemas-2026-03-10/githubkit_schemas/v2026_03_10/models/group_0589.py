@@ -10,72 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0577 import WebhooksLabelPropArchivedBy
 
 
-class WebhooksAlert(GitHubModel):
-    """Repository Vulnerability Alert Alert
+class WebhooksLabelUnarchived(GitHubModel):
+    """Unarchived label"""
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[Union[WebhooksAlertPropDismisser, None]] = Field(
-        default=UNSET, title="User"
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    archived_at: Union[Union[_dt.datetime, None], None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: Union[Union[None, WebhooksLabelPropArchivedBy], None] = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
     id: int = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["auto_dismissed", "open"] = Field()
+    url: str = Field(description="URL for the label")
 
 
-class WebhooksAlertPropDismisser(GitHubModel):
-    """User"""
+model_rebuild(WebhooksLabelUnarchived)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksAlert)
-model_rebuild(WebhooksAlertPropDismisser)
-
-__all__ = (
-    "WebhooksAlert",
-    "WebhooksAlertPropDismisser",
-)
+__all__ = ("WebhooksLabelUnarchived",)

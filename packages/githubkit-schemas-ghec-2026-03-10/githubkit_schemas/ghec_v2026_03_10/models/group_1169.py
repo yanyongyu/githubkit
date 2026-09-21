@@ -14,16 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+class ApplicationsClientIdTokenPostBody(GitHubModel):
+    """ApplicationsClientIdTokenPostBody"""
 
-    disable_self_hosted_runners_for_all_orgs: bool = Field(
-        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    access_token: str = Field(
+        description="The access_token of the OAuth or GitHub application."
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200)
+model_rebuild(ApplicationsClientIdTokenPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200",)
+__all__ = ("ApplicationsClientIdTokenPostBody",)

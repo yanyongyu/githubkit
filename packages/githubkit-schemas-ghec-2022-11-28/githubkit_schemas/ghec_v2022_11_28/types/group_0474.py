@@ -9,30 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class InteractionLimitPullRequestBypassListType(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
-    """
-
-    users: list[str]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
 
 
-class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
-    """
-
-    users: list[str]
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
 
 
 __all__ = (
-    "InteractionLimitPullRequestBypassListType",
-    "InteractionLimitPullRequestBypassListTypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",
+    "EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse",
 )

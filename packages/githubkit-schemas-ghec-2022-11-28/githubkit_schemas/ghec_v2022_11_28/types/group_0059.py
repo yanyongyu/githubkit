@@ -9,30 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+)
 
 
-class AuditLogStreamKeyType(TypedDict):
-    """stream-key
+class ActionsPolicyOrgConditionsOneof0Type(TypedDict):
+    """ActionsPolicyOrgConditionsOneof0"""
 
-    Audit Log Streaming Public Key
-    """
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
-    key_id: str
-    key: str
 
+class ActionsPolicyOrgConditionsOneof0TypeForResponse(TypedDict):
+    """ActionsPolicyOrgConditionsOneof0"""
 
-class AuditLogStreamKeyTypeForResponse(TypedDict):
-    """stream-key
-
-    Audit Log Streaming Public Key
-    """
-
-    key_id: str
-    key: str
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "AuditLogStreamKeyType",
-    "AuditLogStreamKeyTypeForResponse",
+    "ActionsPolicyOrgConditionsOneof0Type",
+    "ActionsPolicyOrgConditionsOneof0TypeForResponse",
 )

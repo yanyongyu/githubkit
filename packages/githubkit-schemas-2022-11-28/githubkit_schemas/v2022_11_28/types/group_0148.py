@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an organization.
-"""
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-List all Copilot Content Exclusion rules for an organization.
-"""
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
+
+
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
+
+    A label for a self hosted runner
+    """
+
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
 )

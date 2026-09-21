@@ -12,17 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    selected_repository_ids: list[int] = Field(
+        description="List of repository IDs to enable for Copilot cloud agent."
+    )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)

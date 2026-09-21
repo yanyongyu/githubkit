@@ -9,61 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0376 import BranchProtectionType, BranchProtectionTypeForResponse
-from .group_0381 import CommitType, CommitTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    Branch With Protection
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentPropReviewersItemsTypeForResponse(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserTypeForResponse, TeamTypeForResponse]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[_dt.datetime, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsType]
 
 
-class BranchWithProtectionTypeForResponse(TypedDict):
-    """Branch With Protection
+class PendingDeploymentTypeForResponse(TypedDict):
+    """Pending Deployment
 
-    Branch With Protection
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    name: str
-    commit: CommitTypeForResponse
-    links: BranchWithProtectionPropLinksTypeForResponse
-    protected: bool
-    protection: BranchProtectionTypeForResponse
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    environment: PendingDeploymentPropEnvironmentTypeForResponse
+    wait_timer: int
+    wait_timer_started_at: Union[str, None]
+    current_user_can_approve: bool
+    reviewers: list[PendingDeploymentPropReviewersItemsTypeForResponse]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
 
-    html: str
-    self_: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
-class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class PendingDeploymentPropEnvironmentTypeForResponse(TypedDict):
+    """PendingDeploymentPropEnvironment"""
 
-    html: str
-    self_: str
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "BranchWithProtectionPropLinksType",
-    "BranchWithProtectionPropLinksTypeForResponse",
-    "BranchWithProtectionType",
-    "BranchWithProtectionTypeForResponse",
+    "PendingDeploymentPropEnvironmentType",
+    "PendingDeploymentPropEnvironmentTypeForResponse",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentPropReviewersItemsTypeForResponse",
+    "PendingDeploymentType",
+    "PendingDeploymentTypeForResponse",
 )

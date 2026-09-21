@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,44 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    organizations: Missing[list[str]] = Field(
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
     )
-    custom_properties: Missing[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-        ]
+    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
+    )
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
+    )
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/about-secret-scanning)."',
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
+    )
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        Union[bool, None]
     ] = Field(
         default=UNSET,
-        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
+model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
 
-    property_name: str = Field(
-        description="The name of the custom property to filter by."
-    )
-    values: list[str] = Field(description="The values of the custom property to match.")
-
-
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
-model_rebuild(
-    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
-)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
-)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)

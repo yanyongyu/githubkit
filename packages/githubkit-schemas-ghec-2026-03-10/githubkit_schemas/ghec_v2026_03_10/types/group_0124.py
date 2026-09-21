@@ -9,54 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
-
-    include: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
-    exclude: NotRequired[list[EnterpriseRulesetConditionsOrganizationPropertySpecType]]
+from .group_0008 import EnterpriseType, EnterpriseTypeForResponse
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+class EnterpriseRoleType(TypedDict):
+    """Enterprise Role
 
-    include: NotRequired[
-        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
-    ]
-    exclude: NotRequired[
-        list[EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse]
-    ]
-
-
-class EnterpriseRulesetConditionsOrganizationPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a organization property
+    Enterprise custom roles
     """
 
+    id: int
     name: str
-    property_values: list[str]
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
+    permissions: list[str]
+    enterprise: Union[EnterpriseType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse(TypedDict):
-    """Repository ruleset property targeting definition
+class EnterpriseRoleTypeForResponse(TypedDict):
+    """Enterprise Role
 
-    Parameters for a targeting a organization property
+    Enterprise custom roles
     """
 
+    id: int
     name: str
-    property_values: list[str]
+    description: NotRequired[Union[str, None]]
+    source: NotRequired[Union[Literal["Enterprise", "Predefined"], None]]
+    permissions: list[str]
+    enterprise: Union[EnterpriseTypeForResponse, None]
+    created_at: str
+    updated_at: str
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleType]]
+
+
+class EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[list[EnterpriseRoleTypeForResponse]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpecType",
-    "EnterpriseRulesetConditionsOrganizationPropertySpecTypeForResponse",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse",
+    "EnterpriseRoleType",
+    "EnterpriseRoleTypeForResponse",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200Type",
+    "EnterprisesEnterpriseEnterpriseRolesGetResponse200TypeForResponse",
 )

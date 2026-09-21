@@ -9,21 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class ApiInsightsTimeStatsItems(GitHubModel):
-    """ApiInsightsTimeStatsItems"""
+class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
+    """Copilot Organization Content Exclusion Details
 
-    timestamp: Missing[str] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    List all Copilot Content Exclusion rules for an organization.
+    """
 
 
-model_rebuild(ApiInsightsTimeStatsItems)
+model_rebuild(CopilotOrganizationContentExclusionDetails)
 
-__all__ = ("ApiInsightsTimeStatsItems",)
+__all__ = ("CopilotOrganizationContentExclusionDetails",)

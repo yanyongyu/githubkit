@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanEnablementUpdate(GitHubModel):
-    """CodeScanningAiScanEnablementUpdate
+class DiffEntry(GitHubModel):
+    """Diff Entry
 
-    AI Scan enablement update for a repository.
+    Diff Entry
     """
 
-    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="Whether to enable or disable AI Scan for the repository.",
-    )
+    sha: Union[str, None] = Field()
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: Union[str, None] = Field()
+    raw_url: Union[str, None] = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAiScanEnablementUpdate)
+model_rebuild(DiffEntry)
 
-__all__ = ("CodeScanningAiScanEnablementUpdate",)
+__all__ = ("DiffEntry",)

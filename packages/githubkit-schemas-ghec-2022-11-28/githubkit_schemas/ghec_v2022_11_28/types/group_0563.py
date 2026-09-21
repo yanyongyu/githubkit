@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningAlertMetadataItemsType(TypedDict):
-    """SecretScanningAlertMetadataItems"""
+class RepositoryRuleDetailedOneof6Type(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
 
-    key: str
-    value: str
+    type: Literal["required_signatures"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class SecretScanningAlertMetadataItemsTypeForResponse(TypedDict):
-    """SecretScanningAlertMetadataItems"""
+class RepositoryRuleDetailedOneof6TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof6"""
 
-    key: str
-    value: str
+    type: Literal["required_signatures"]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningAlertMetadataItemsType",
-    "SecretScanningAlertMetadataItemsTypeForResponse",
+    "RepositoryRuleDetailedOneof6Type",
+    "RepositoryRuleDetailedOneof6TypeForResponse",
 )

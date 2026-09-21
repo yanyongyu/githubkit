@@ -9,56 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryType, None]
-    sha: str
+    Org Membership
+    """
+
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleType
     user: Union[SimpleUserType, None]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
+class OrgMembershipTypeForResponse(TypedDict):
+    """Org Membership
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryTypeForResponse, None]
-    sha: str
+    Org Membership
+    """
+
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleTypeForResponse
     user: Union[SimpleUserTypeForResponse, None]
+    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[SimpleUserType, None]
+    can_create_repository: bool
 
 
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
+class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
+    """OrgMembershipPropPermissions"""
 
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[SimpleUserTypeForResponse, None]
+    can_create_repository: bool
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipPropPermissionsTypeForResponse",
+    "OrgMembershipType",
+    "OrgMembershipTypeForResponse",
 )

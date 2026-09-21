@@ -11,24 +11,38 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
+
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
-class MemberEventType(TypedDict):
-    """MemberEvent"""
+class ReactionRollupTypeForResponse(TypedDict):
+    """Reaction Rollup"""
 
-    action: str
-    member: SimpleUserType
-
-
-class MemberEventTypeForResponse(TypedDict):
-    """MemberEvent"""
-
-    action: str
-    member: SimpleUserTypeForResponse
+    url: str
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
 __all__ = (
-    "MemberEventType",
-    "MemberEventTypeForResponse",
+    "ReactionRollupType",
+    "ReactionRollupTypeForResponse",
 )

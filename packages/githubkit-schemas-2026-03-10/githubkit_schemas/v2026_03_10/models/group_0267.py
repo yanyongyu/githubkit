@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +18,147 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0222 import RepositoryRulesetBypassActor
+from .group_0223 import RepositoryRulesetConditions
+from .group_0225 import OrgRulesetConditionsOneof0
+from .group_0226 import OrgRulesetConditionsOneof1
+from .group_0227 import OrgRulesetConditionsOneof2
+from .group_0228 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0229 import RepositoryRuleUpdate
+from .group_0231 import RepositoryRuleRequiredLinearHistory
+from .group_0232 import RepositoryRuleMergeQueue
+from .group_0234 import RepositoryRuleRequiredDeployments
+from .group_0237 import RepositoryRulePullRequest
+from .group_0239 import RepositoryRuleRequiredStatusChecks
+from .group_0241 import RepositoryRuleCommitMessagePattern
+from .group_0243 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0245 import RepositoryRuleCommitterEmailPattern
+from .group_0247 import RepositoryRuleBranchNamePattern
+from .group_0249 import RepositoryRuleTagNamePattern
+from .group_0252 import RepositoryRuleWorkflows
+from .group_0254 import RepositoryRuleCodeScanning
+from .group_0256 import (
+    RepositoryRuleCodeCoverage,
+    RepositoryRuleCodeQuality,
+    RepositoryRuleLicenseComplianceScanning,
+)
+from .group_0257 import RepositoryRuleCopilotCodeReview
+from .group_0259 import RepositoryRuleFilePathRestriction
+from .group_0261 import RepositoryRuleMaxFilePathLength
+from .group_0263 import RepositoryRuleFileExtensionRestriction
+from .group_0265 import RepositoryRuleMaxFileSize
 
-class ImmutableReleasesOrganizationSettings(GitHubModel):
-    """Check immutable releases organization settings
 
-    Check immutable releases settings for an organization.
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
     """
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    selected_repositories_url: Missing[str] = Field(
+    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
+    )
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ] = Field(
+        default=UNSET,
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCodeQuality,
+                RepositoryRuleCodeCoverage,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
+
+
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
+
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ImmutableReleasesOrganizationSettings)
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
 
-__all__ = ("ImmutableReleasesOrganizationSettings",)
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
+
+
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
+
+
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
+
+__all__ = (
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryRulesetPropLinksPropSelf",
+)

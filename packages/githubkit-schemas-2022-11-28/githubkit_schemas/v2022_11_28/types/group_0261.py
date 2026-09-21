@@ -9,38 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0262 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
-class SecretScanningCustomPatternToCreateType(TypedDict):
-    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to create in a bulk operation.
+class RepositoryRuleMaxFilePathLengthType(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
 
 
-class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class RepositoryRuleMaxFilePathLengthTypeForResponse(TypedDict):
+    """max_file_path_length
 
-    A custom pattern to create in a bulk operation.
+    Prevent commits that include file paths that exceed the specified character
+    limit from being pushed to the commit graph.
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "SecretScanningCustomPatternToCreateType",
-    "SecretScanningCustomPatternToCreateTypeForResponse",
+    "RepositoryRuleMaxFilePathLengthType",
+    "RepositoryRuleMaxFilePathLengthTypeForResponse",
 )

@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+class ApplicationsClientIdGrantDeleteBody(GitHubModel):
+    """ApplicationsClientIdGrantDeleteBody"""
 
-    organization_slugs: list[str] = Field(
-        description="Organization slug to unassign the team from."
+    access_token: str = Field(
+        description="The OAuth access token used to authenticate to the GitHub API."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody)
+model_rebuild(ApplicationsClientIdGrantDeleteBody)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",)
+__all__ = ("ApplicationsClientIdGrantDeleteBody",)

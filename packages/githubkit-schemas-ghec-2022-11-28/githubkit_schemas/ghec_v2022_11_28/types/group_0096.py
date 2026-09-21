@@ -9,77 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0082 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
+
+class CodeScanningAnalysisToolType(TypedDict):
+    """CodeScanningAnalysisTool"""
+
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
-class EnterpriseUserRoleAssignmentType(TypedDict):
-    """An Enterprise Role Assignment for a User
+class CodeScanningAnalysisToolTypeForResponse(TypedDict):
+    """CodeScanningAnalysisTool"""
 
-    The Relationship a User has with a role in an enterprise context.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamType]]
-
-
-class EnterpriseUserRoleAssignmentTypeForResponse(TypedDict):
-    """An Enterprise Role Assignment for a User
-
-    The Relationship a User has with a role in an enterprise context.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
+    name: NotRequired[str]
+    version: NotRequired[Union[str, None]]
+    guid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterpriseUserRoleAssignmentType",
-    "EnterpriseUserRoleAssignmentTypeForResponse",
+    "CodeScanningAnalysisToolType",
+    "CodeScanningAnalysisToolTypeForResponse",
 )

@@ -9,40 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0056 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
+from .group_0143 import RepositoryRulesetConditionsPropRefName
 
-class SecretScanningCustomPatternValidationError(GitHubModel):
-    """Secret Scanning Custom Pattern Validation Error
 
-    A validation error for a custom pattern in a batch operation.
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
     """
 
-    code: Missing[
-        Literal[
-            "invalid",
-            "unprocessable",
-            "start_delimiter",
-            "end_delimiter",
-            "name",
-            "must_match",
-            "must_not_match",
-            "custom_pattern_version_mismatch",
-        ]
-    ] = Field(
-        default=UNSET, description="A machine-readable code describing the error."
-    )
-    message: Missing[str] = Field(
-        default=UNSET, description="A human-readable description of the error."
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
 
 
-model_rebuild(SecretScanningCustomPatternValidationError)
+model_rebuild(OrgRulesetConditionsOneof1)
 
-__all__ = ("SecretScanningCustomPatternValidationError",)
+__all__ = ("OrgRulesetConditionsOneof1",)

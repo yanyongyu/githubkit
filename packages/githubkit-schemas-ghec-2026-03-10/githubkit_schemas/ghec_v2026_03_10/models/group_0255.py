@@ -9,31 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0256 import ReleaseEventPropRelease
 
 
-class ThreadSubscription(GitHubModel):
-    """Thread Subscription
+class ReleaseEvent(GitHubModel):
+    """ReleaseEvent"""
 
-    Thread Subscription
-    """
-
-    subscribed: bool = Field()
-    ignored: bool = Field()
-    reason: Union[str, None] = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-    url: str = Field()
-    thread_url: Missing[str] = Field(default=UNSET)
-    repository_url: Missing[str] = Field(default=UNSET)
+    action: str = Field()
+    release: ReleaseEventPropRelease = Field()
 
 
-model_rebuild(ThreadSubscription)
+model_rebuild(ReleaseEvent)
 
-__all__ = ("ThreadSubscription",)
+__all__ = ("ReleaseEvent",)

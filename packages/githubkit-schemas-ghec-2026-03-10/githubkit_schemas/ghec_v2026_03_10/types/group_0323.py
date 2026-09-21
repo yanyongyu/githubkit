@@ -9,38 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0318 import LinkType, LinkTypeForResponse
-
-
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class PullRequestSimplePropLinksTypeForResponse(TypedDict):
-    """PullRequestSimplePropLinks"""
+class MigrationType(TypedDict):
+    """Migration
 
-    comments: LinkTypeForResponse
-    commits: LinkTypeForResponse
-    statuses: LinkTypeForResponse
-    html: LinkTypeForResponse
-    issue: LinkTypeForResponse
-    review_comments: LinkTypeForResponse
-    review_comment: LinkTypeForResponse
-    self_: LinkTypeForResponse
+    A migration.
+    """
+
+    id: int
+    owner: Union[SimpleUserType, None]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[SimpleRepositoryType]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
+
+
+class MigrationTypeForResponse(TypedDict):
+    """Migration
+
+    A migration.
+    """
+
+    id: int
+    owner: Union[SimpleUserTypeForResponse, None]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[SimpleRepositoryTypeForResponse]
+    url: str
+    created_at: str
+    updated_at: str
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "PullRequestSimplePropLinksType",
-    "PullRequestSimplePropLinksTypeForResponse",
+    "MigrationType",
+    "MigrationTypeForResponse",
 )

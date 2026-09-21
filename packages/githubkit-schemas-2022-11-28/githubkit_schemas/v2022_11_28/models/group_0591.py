@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,119 +18,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0490 import SecretScanningAlertMetadataItems
 
+class WebhooksLabelUnarchivedAllof1(GitHubModel):
+    """WebhooksLabelUnarchivedAllof1"""
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
-
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="Timestamp indicating when the label was archived. This is `null` after the label is unarchived."
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
-    )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    resolution: Missing[
-        Union[
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    provider: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The provider of the secret that was detected."
-    )
-    provider_slug: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The slug identifier for the provider of the secret that was detected.",
-    )
-    secret_category: Missing[Literal["default", "generic"]] = Field(
-        default=UNSET,
-        description="The category of the detected secret. `default` covers specific provider patterns and custom patterns; `generic` covers non-specific patterns and AI-detected secrets.",
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    push_protection_bypass_request_reviewer: Missing[Union[SimpleUser, None]] = Field(
-        default=UNSET
-    )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the detected secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories in the same organization or business.",
-    )
-    assigned_to: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    closure_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment from the closure request author.",
-    )
-    closure_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment from the closure request reviewer.",
-    )
-    closure_request_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    metadata: Missing[list[SecretScanningAlertMetadataItems]] = Field(
-        default=UNSET,
-        description="A list of metadata key/value pairs associated with the secret scanning alert.",
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedBy, None] = Field(
+        description="The user who archived the label. This is `null` after the label is unarchived."
     )
 
 
-model_rebuild(SecretScanningAlertWebhook)
+class WebhooksLabelUnarchivedAllof1PropArchivedBy(GitHubModel):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
 
-__all__ = ("SecretScanningAlertWebhook",)
+    The user who archived the label. This is `null` after the label is unarchived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksLabelUnarchivedAllof1)
+model_rebuild(WebhooksLabelUnarchivedAllof1PropArchivedBy)
+
+__all__ = (
+    "WebhooksLabelUnarchivedAllof1",
+    "WebhooksLabelUnarchivedAllof1PropArchivedBy",
+)

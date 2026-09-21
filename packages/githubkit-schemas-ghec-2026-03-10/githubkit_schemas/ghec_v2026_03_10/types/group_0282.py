@@ -9,30 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
 
-    The public key used for setting Dependabot Secrets.
+    Organization variable for GitHub Actions.
     """
 
-    key_id: str
-    key: str
+    name: str
+    value: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
+class OrganizationActionsVariableTypeForResponse(TypedDict):
+    """Actions Variable for an Organization
 
-    The public key used for setting Dependabot Secrets.
+    Organization variable for GitHub Actions.
     """
 
-    key_id: str
-    key: str
+    name: str
+    value: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "OrganizationActionsVariableType",
+    "OrganizationActionsVariableTypeForResponse",
 )

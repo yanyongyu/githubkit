@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,36 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoAutolinksPostBody(GitHubModel):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-    state: Missing[Literal["open", "dismissed"]] = Field(
+    key_prefix: str = Field(
+        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
+    )
+    url_template: str = Field(
+        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
+    )
+    is_alphanumeric: Missing[bool] = Field(
         default=UNSET,
-        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
-    )
-    dismissed_reason: Missing[
-        Union[
-            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    create_request: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, attempt to create an alert dismissal request.",
-    )
-    assignees: list[str] = Field(
-        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
+        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoAutolinksPostBody)
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoAutolinksPostBody",)

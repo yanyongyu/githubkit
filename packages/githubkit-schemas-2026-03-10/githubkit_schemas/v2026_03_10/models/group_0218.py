@@ -9,30 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0219 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Custom property name and associated value
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, list[str], None] = Field(
+        description="The value assigned to the property"
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+__all__ = ("CustomPropertyValue",)

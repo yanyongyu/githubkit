@@ -9,36 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0208 import LabelType, LabelTypeForResponse
-from .group_0218 import IssueType, IssueTypeForResponse
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class IssuesEventType(TypedDict):
-    """IssuesEvent"""
+class LabelType(TypedDict):
+    """Label
 
-    action: str
-    issue: IssueType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[_dt.datetime, None]
+    archived_by: None
 
 
-class IssuesEventTypeForResponse(TypedDict):
-    """IssuesEvent"""
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    action: str
-    issue: IssueTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[str, None]
+    archived_by: None
 
 
 __all__ = (
-    "IssuesEventType",
-    "IssuesEventTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

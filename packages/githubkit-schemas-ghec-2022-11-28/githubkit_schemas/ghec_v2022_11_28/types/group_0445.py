@@ -9,44 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0087 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0271 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class DependabotAlertPropDependencyType(TypedDict):
-    """DependabotAlertPropDependency
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Details for the vulnerable dependency.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[SimpleUserType, None]
+    inviter: Union[SimpleUserType, None]
+    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class DependabotAlertPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertPropDependency
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    Details for the vulnerable dependency.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    package: NotRequired[DependabotAlertPackageTypeForResponse]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[Literal["development", "runtime"], None]]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[SimpleUserTypeForResponse, None]
+    inviter: Union[SimpleUserTypeForResponse, None]
+    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    created_at: str
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "DependabotAlertPropDependencyType",
-    "DependabotAlertPropDependencyTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )

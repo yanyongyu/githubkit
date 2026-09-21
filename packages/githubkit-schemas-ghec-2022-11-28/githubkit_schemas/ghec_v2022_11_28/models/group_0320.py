@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,45 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PullRequestStack(GitHubModel):
-    """Pull Request Stack
+class OrganizationCreateIssueType(GitHubModel):
+    """OrganizationCreateIssueType"""
 
-    The stack information associated with a pull request.
-    """
-
-    base: PullRequestStackPropBase = Field()
-    size: Missing[int] = Field(
-        default=UNSET, description="The total number of pull requests in the stack."
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
     )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue type."
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the stack that this pull request belongs to.",
-    )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number of the stack that this pull request belongs to.",
-    )
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-class PullRequestStackPropBase(GitHubModel):
-    """PullRequestStackPropBase"""
+model_rebuild(OrganizationCreateIssueType)
 
-    ref: str = Field(
-        description="The base ref of the stack this pull request belongs to."
-    )
-    sha: str = Field(
-        description="The base SHA of the stack this pull request belongs to."
-    )
-
-
-model_rebuild(PullRequestStack)
-model_rebuild(PullRequestStackPropBase)
-
-__all__ = (
-    "PullRequestStack",
-    "PullRequestStackPropBase",
-)
+__all__ = ("OrganizationCreateIssueType",)

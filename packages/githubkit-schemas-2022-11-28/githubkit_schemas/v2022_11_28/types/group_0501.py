@@ -9,54 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0058 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
+from .group_0250 import (
+    RepositoryRuleTagNamePatternPropParametersType,
+    RepositoryRuleTagNamePatternPropParametersTypeForResponse,
 )
 
 
-class PullRequestStackPullRequestType(TypedDict):
-    """Pull Request Stack Pull Request"""
+class RepositoryRuleDetailedOneof14Type(TypedDict):
+    """RepositoryRuleDetailedOneof14"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[_dt.datetime, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserType, None]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class PullRequestStackPullRequestTypeForResponse(TypedDict):
-    """Pull Request Stack Pull Request"""
+class RepositoryRuleDetailedOneof14TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof14"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[str, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "PullRequestStackPullRequestType",
-    "PullRequestStackPullRequestTypeForResponse",
+    "RepositoryRuleDetailedOneof14Type",
+    "RepositoryRuleDetailedOneof14TypeForResponse",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +17,90 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0141 import RepositoryRulesetBypassActor
+from .group_0150 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0151 import RepositoryRuleUpdate
+from .group_0153 import RepositoryRuleRequiredLinearHistory
+from .group_0154 import RepositoryRuleRequiredDeployments
+from .group_0157 import RepositoryRulePullRequest
+from .group_0159 import RepositoryRuleRequiredStatusChecks
+from .group_0161 import RepositoryRuleCommitMessagePattern
+from .group_0163 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0165 import RepositoryRuleCommitterEmailPattern
+from .group_0167 import RepositoryRuleBranchNamePattern
+from .group_0169 import RepositoryRuleTagNamePattern
+from .group_0171 import RepositoryRuleFilePathRestriction
+from .group_0173 import RepositoryRuleMaxFilePathLength
+from .group_0175 import RepositoryRuleFileExtensionRestriction
+from .group_0177 import RepositoryRuleMaxFileSize
+from .group_0180 import RepositoryRuleWorkflows
+from .group_0182 import RepositoryRuleCodeScanning
+from .group_0184 import RepositoryRuleCopilotCodeReview
+from .group_0186 import OrgRulesetConditionsOneof0
+from .group_0187 import OrgRulesetConditionsOneof1
+from .group_0188 import OrgRulesetConditionsOneof2
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
+class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.\nFor repository policy rulesets, the conditions object should only contain the `repository_name`, the `repository_id`, or the `repository_property`.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200)
+model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)

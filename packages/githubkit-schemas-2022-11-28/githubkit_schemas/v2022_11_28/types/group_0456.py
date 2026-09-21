@@ -9,56 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0055 import IssueType, IssueTypeForResponse
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryType, None]
-    sha: str
-    user: Union[SimpleUserType, None]
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
 
 
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
+class TimelineCrossReferencedEventPropSourceTypeForResponse(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryTypeForResponse, None]
-    sha: str
-    user: Union[SimpleUserTypeForResponse, None]
-
-
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
-
-
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    type: NotRequired[str]
+    issue: NotRequired[IssueTypeForResponse]
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "TimelineCrossReferencedEventPropSourceType",
+    "TimelineCrossReferencedEventPropSourceTypeForResponse",
 )

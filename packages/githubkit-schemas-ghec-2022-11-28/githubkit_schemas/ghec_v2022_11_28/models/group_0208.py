@@ -9,42 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    purchased_advanced_security_committers: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of GitHub Advanced Security licences purchased",
     )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
-    )
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-model_rebuild(Label)
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-__all__ = ("Label",)
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
+
+
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
+
+
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
+
+__all__ = (
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
+)

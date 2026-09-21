@@ -9,53 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
+class AuthenticationTokenType(TypedDict):
+    """Authentication Token
 
-    Organization Invitation
+    Authentication Token
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    token: str
+    expires_at: _dt.datetime
+    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
+    repositories: NotRequired[list[RepositoryType]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
 
 
-class OrganizationInvitationTypeForResponse(TypedDict):
-    """Organization Invitation
+class AuthenticationTokenTypeForResponse(TypedDict):
+    """Authentication Token
 
-    Organization Invitation
+    Authentication Token
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserTypeForResponse
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    token: str
+    expires_at: str
+    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
+    repositories: NotRequired[list[RepositoryTypeForResponse]]
+    single_file: NotRequired[Union[str, None]]
+    repository_selection: NotRequired[Literal["all", "selected"]]
+
+
+class AuthenticationTokenPropPermissionsType(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
+    """AuthenticationTokenPropPermissions
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
 
 
 __all__ = (
-    "OrganizationInvitationType",
-    "OrganizationInvitationTypeForResponse",
+    "AuthenticationTokenPropPermissionsType",
+    "AuthenticationTokenPropPermissionsTypeForResponse",
+    "AuthenticationTokenType",
+    "AuthenticationTokenTypeForResponse",
 )

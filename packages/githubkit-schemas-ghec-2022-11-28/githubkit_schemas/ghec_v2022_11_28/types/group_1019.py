@@ -9,336 +9,351 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0911 import (
-    WebhookRubygemsMetadataType,
-    WebhookRubygemsMetadataTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1020 import (
+    WebhookPullRequestReviewThreadUnresolvedPropPullRequestType,
+    WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
+class WebhookPullRequestReviewThreadUnresolvedType(TypedDict):
+    """pull_request_review_thread unresolved event"""
 
-    author: (
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType
+    action: Literal["unresolved"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequestType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
+    thread: WebhookPullRequestReviewThreadUnresolvedPropThreadType
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class WebhookPullRequestReviewThreadUnresolvedTypeForResponse(TypedDict):
+    """pull_request_review_thread unresolved event"""
+
+    action: Literal["unresolved"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropPullRequestTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
+    thread: WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse
+    updated_at: NotRequired[Union[str, None]]
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadType(TypedDict):
+    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
+
+    comments: list[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType
+    ]
+    node_id: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse(TypedDict):
+    """WebhookPullRequestReviewThreadUnresolvedPropThread"""
+
+    comments: list[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse
+    ]
+    node_id: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType(
+    TypedDict
+):
+    """Pull Request Review Comment
+
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
+    """
+
+    links: (
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType
     )
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
     body: str
-    body_html: str
-    created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        list[
-            Union[
-                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType,
-                None,
-            ]
-        ]
-    ]
-    draft: NotRequired[bool]
+    commit_id: str
+    created_at: _dt.datetime
+    diff_hunk: str
     html_url: str
     id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
+    node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
+    pull_request_url: str
+    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[Literal["LEFT", "RIGHT"], None]
+    subject_type: NotRequired[Literal["line", "file"]]
+    updated_at: _dt.datetime
+    url: str
+    user: Union[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType,
+        None,
     ]
-    name: str
-    package_files: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType
-    ]
-    package_url: str
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType
-    ]
-    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
-    updated_at: str
-    version: str
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
+    """Pull Request Review Comment
 
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorTypeForResponse
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+    itself.
+    """
+
+    links: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
     body: str
-    body_html: str
+    commit_id: str
     created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        list[
-            Union[
-                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse,
-                None,
-            ]
-        ]
-    ]
-    draft: NotRequired[bool]
+    diff_hunk: str
     html_url: str
     id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsTypeForResponse
-    ]
-    name: str
-    package_files: list[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsTypeForResponse
-    ]
-    package_url: str
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseTypeForResponse
-    ]
-    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataTypeForResponse]]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
+    in_reply_to_id: NotRequired[int]
+    line: Union[int, None]
+    node_id: str
+    original_commit_id: str
+    original_line: int
+    original_position: int
+    original_start_line: Union[int, None]
+    path: str
+    position: Union[int, None]
+    pull_request_review_id: Union[int, None]
+    pull_request_url: str
+    reactions: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse
+    side: Literal["LEFT", "RIGHT"]
+    start_line: Union[int, None]
+    start_side: Union[Literal["LEFT", "RIGHT"], None]
+    subject_type: NotRequired[Literal["line", "file"]]
     updated_at: str
-    version: str
+    url: str
+    user: Union[
+        WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse,
+        None,
+    ]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType(
     TypedDict
 ):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
+    """Reactions"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse(
+    TypedDict
+):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
     login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorTypeForResponse(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
-    dataItems
-    """
-
-    tags: NotRequired[list[str]]
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
-    dataItems
-    """
-
-    tags: NotRequired[list[str]]
-
-
-WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType: TypeAlias = dict[
-    str, Any
-]
-"""WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
-ems
-"""
-
-
-WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
-ems
-"""
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
-    esItems
-    """
-
-    content_type: NotRequired[str]
-    created_at: NotRequired[str]
-    download_url: NotRequired[str]
-    id: NotRequired[int]
-    md5: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    sha1: NotRequired[Union[str, None]]
-    sha256: NotRequired[str]
-    size: NotRequired[int]
-    state: NotRequired[str]
-    updated_at: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse(
     TypedDict
 ):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
-    esItems
-    """
+    """User"""
 
-    content_type: NotRequired[str]
-    created_at: NotRequired[str]
-    download_url: NotRequired[str]
-    id: NotRequired[int]
-    md5: NotRequired[Union[str, None]]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
     name: NotRequired[str]
-    sha1: NotRequired[Union[str, None]]
-    sha256: NotRequired[str]
-    size: NotRequired[int]
-    state: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
-
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
-    url: str
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseTypeForResponse(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
-
-    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorTypeForResponse
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
-    url: str
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType(
-    TypedDict
-):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
-    pAuthor
-    """
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorTypeForResponse(
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType(
     TypedDict
 ):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
-    pAuthor
-    """
+    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-    user_view_type: NotRequired[str]
+    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType
+    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse(
+    TypedDict
+):
+    """WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks"""
+
+    html: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse
+    pull_request: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse
+    self_: WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType(
+    TypedDict
+):
+    """Link"""
+
+    href: str
+
+
+class WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse(
+    TypedDict
+):
+    """Link"""
+
+    href: str
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseTypeForResponse",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUserTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadType",
+    "WebhookPullRequestReviewThreadUnresolvedPropThreadTypeForResponse",
+    "WebhookPullRequestReviewThreadUnresolvedType",
+    "WebhookPullRequestReviewThreadUnresolvedTypeForResponse",
 )

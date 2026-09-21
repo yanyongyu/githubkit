@@ -10,97 +10,133 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRuleType(TypedDict):
-    """branch protection rule
+class PrivateUserType(TypedDict):
+    """Private User
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/github/administering-a-repository/defining-
-    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
-    protection-settings) applied to branches that match the name. Binary settings
-    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
-    `everyone`. Actor and build lists are arrays of strings.
+    Private User
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
+    login: str
+    id: int
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
     created_at: _dt.datetime
-    dismiss_stale_reviews_on_push: bool
-    id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
     updated_at: _dt.datetime
+    private_gists: int
+    total_private_repos: int
+    owned_private_repos: int
+    disk_usage: int
+    collaborators: int
+    two_factor_authentication: bool
+    plan: NotRequired[PrivateUserPropPlanType]
+    business_plus: NotRequired[bool]
+    ldap_dn: NotRequired[str]
 
 
-class WebhooksRuleTypeForResponse(TypedDict):
-    """branch protection rule
+class PrivateUserTypeForResponse(TypedDict):
+    """Private User
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/github/administering-a-repository/defining-
-    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
-    protection-settings) applied to branches that match the name. Binary settings
-    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
-    `everyone`. Actor and build lists are arrays of strings.
+    Private User
     """
 
-    admin_enforced: bool
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: list[str]
-    authorized_actors_only: bool
-    authorized_dismissal_actors_only: bool
-    create_protected: NotRequired[bool]
-    created_at: str
-    dismiss_stale_reviews_on_push: bool
+    login: str
     id: int
-    ignore_approvals_from_contributors: bool
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ]
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
-    lock_allows_fork_sync: NotRequired[bool]
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
-    name: str
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
-    repository_id: int
-    require_code_owner_review: bool
-    require_last_push_approval: NotRequired[bool]
-    required_approving_review_count: int
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: list[str]
-    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
-    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
-    strict_required_status_checks_policy: bool
+    user_view_type: NotRequired[str]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    name: Union[str, None]
+    company: Union[str, None]
+    blog: Union[str, None]
+    location: Union[str, None]
+    email: Union[str, None]
+    notification_email: NotRequired[Union[str, None]]
+    hireable: Union[bool, None]
+    bio: Union[str, None]
+    twitter_username: NotRequired[Union[str, None]]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    created_at: str
     updated_at: str
+    private_gists: int
+    total_private_repos: int
+    owned_private_repos: int
+    disk_usage: int
+    collaborators: int
+    two_factor_authentication: bool
+    plan: NotRequired[PrivateUserPropPlanTypeForResponse]
+    business_plus: NotRequired[bool]
+    ldap_dn: NotRequired[str]
+
+
+class PrivateUserPropPlanType(TypedDict):
+    """PrivateUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
+
+
+class PrivateUserPropPlanTypeForResponse(TypedDict):
+    """PrivateUserPropPlan"""
+
+    collaborators: int
+    name: str
+    space: int
+    private_repos: int
 
 
 __all__ = (
-    "WebhooksRuleType",
-    "WebhooksRuleTypeForResponse",
+    "PrivateUserPropPlanType",
+    "PrivateUserPropPlanTypeForResponse",
+    "PrivateUserType",
+    "PrivateUserTypeForResponse",
 )

@@ -9,44 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0336 import Link
 
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
+class PullRequestSimplePropLinks(GitHubModel):
+    """PullRequestSimplePropLinks"""
 
-    External Groups to be mapped to a team for membership
-    """
-
-    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
-    )
-
-
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
-    )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
-    )
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
 
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
+model_rebuild(PullRequestSimplePropLinks)
 
-__all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
-)
+__all__ = ("PullRequestSimplePropLinks",)

@@ -9,55 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningAutofixCommitsType(TypedDict):
+    """CodeScanningAutofixCommits
 
-    A list of errors found in a repo's CODEOWNERS file
+    Commit an autofix for a code scanning alert
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsType]
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
-class CodeownersErrorsTypeForResponse(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommits
 
-    A list of errors found in a repo's CODEOWNERS file
+    Commit an autofix for a code scanning alert
     """
 
-    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
-
-
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
+    target_ref: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "CodeownersErrorsPropErrorsItemsType",
-    "CodeownersErrorsPropErrorsItemsTypeForResponse",
-    "CodeownersErrorsType",
-    "CodeownersErrorsTypeForResponse",
+    "CodeScanningAutofixCommitsType",
+    "CodeScanningAutofixCommitsTypeForResponse",
 )

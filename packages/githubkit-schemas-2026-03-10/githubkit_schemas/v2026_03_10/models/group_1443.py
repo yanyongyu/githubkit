@@ -12,17 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
+class ReposOwnerRepoMergeUpstreamPostBody(GitHubModel):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    branch: str = Field(
+        description="The name of the branch which should be updated to match upstream."
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse409)
+model_rebuild(ReposOwnerRepoMergeUpstreamPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409",)
+__all__ = ("ReposOwnerRepoMergeUpstreamPostBody",)

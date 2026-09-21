@@ -9,70 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class ActivityType(TypedDict):
+    """Activity
 
-    Check suite configuration preferences for a repository.
+    Activity
     """
 
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: _dt.datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[SimpleUserType, None]
 
 
-class CheckSuitePreferenceTypeForResponse(TypedDict):
-    """Check Suite Preference
+class ActivityTypeForResponse(TypedDict):
+    """Activity
 
-    Check suite configuration preferences for a repository.
+    Activity
     """
 
-    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: str
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
     ]
-
-
-class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        list[
-            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
-        ]
-    ]
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
-
-
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
-    TypedDict
-):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
-
-    app_id: int
-    setting: bool
+    actor: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesTypeForResponse",
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferenceTypeForResponse",
+    "ActivityType",
+    "ActivityTypeForResponse",
 )

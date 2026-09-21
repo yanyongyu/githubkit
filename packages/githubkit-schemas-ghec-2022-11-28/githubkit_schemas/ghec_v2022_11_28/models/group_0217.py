@@ -18,59 +18,63 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueFieldValue(GitHubModel):
-    """Issue Field Value
+class GetCostCenter(GitHubModel):
+    """GetCostCenter"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int = Field(description="Unique identifier for the issue field.")
-    issue_field_name: Missing[str] = Field(
-        default=UNSET, description="The human-readable name of the issue field."
-    )
-    node_id: str = Field()
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"] = (
-        Field(description="The data type of the issue field")
-    )
-    value: Union[str, float, int, None] = Field(
-        description="The value of the issue field"
-    )
-    single_select_option: Missing[
-        Union[IssueFieldValuePropSingleSelectOption, None]
-    ] = Field(
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Details about the selected option (only present for single_select fields)",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    multi_select_options: Missing[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItems], None]
-    ] = Field(default=UNSET, description="Details about the selected options")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
+    )
+    resources: list[GetCostCenterPropResourcesItems] = Field()
+    has_next_page: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
+    )
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+    )
+    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    )
 
 
-class IssueFieldValuePropSingleSelectOption(GitHubModel):
-    """IssueFieldValuePropSingleSelectOption
+class GetCostCenterPropResourcesItems(GitHubModel):
+    """GetCostCenterPropResourcesItems"""
 
-    Details about the selected option (only present for single_select fields)
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+class GetCostCenterPropAiCreditPoolState(GitHubModel):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
 
 
-class IssueFieldValuePropMultiSelectOptionsItems(GitHubModel):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int = Field(description="Unique identifier for the option.")
-    name: str = Field(description="The name of the option")
-    color: str = Field(description="The color of the option")
-
-
-model_rebuild(IssueFieldValue)
-model_rebuild(IssueFieldValuePropSingleSelectOption)
-model_rebuild(IssueFieldValuePropMultiSelectOptionsItems)
+model_rebuild(GetCostCenter)
+model_rebuild(GetCostCenterPropResourcesItems)
+model_rebuild(GetCostCenterPropAiCreditPoolState)
 
 __all__ = (
-    "IssueFieldValue",
-    "IssueFieldValuePropMultiSelectOptionsItems",
-    "IssueFieldValuePropSingleSelectOption",
+    "GetCostCenter",
+    "GetCostCenterPropAiCreditPoolState",
+    "GetCostCenterPropResourcesItems",
 )

@@ -895,6 +895,7 @@ class PullsClient:
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             PullRequest,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -910,6 +911,7 @@ class PullsClient:
             error_models={
                 "404": BasicError,
                 "406": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -959,6 +961,7 @@ class PullsClient:
             BasicError,
             EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             PullRequest,
+            ValidationError,
         )
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
@@ -974,6 +977,7 @@ class PullsClient:
             error_models={
                 "404": BasicError,
                 "406": BasicError,
+                "422": ValidationError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },

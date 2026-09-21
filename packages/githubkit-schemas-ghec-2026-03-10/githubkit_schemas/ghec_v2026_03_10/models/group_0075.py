@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,38 +18,94 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0051 import ActionsPolicyRepoConditionsOneof0
+from .group_0052 import ActionsPolicyRepoConditionsOneof1
+from .group_0059 import ActionsPolicyOrgConditionsOneof0
+from .group_0060 import ActionsPolicyOrgConditionsOneof1
+from .group_0061 import ActionsPolicyOrgConditionsOneof2
+from .group_0068 import ActionsPolicyEnterpriseConditionsOneof0
+from .group_0069 import ActionsPolicyEnterpriseConditionsOneof1
+from .group_0070 import ActionsPolicyEnterpriseConditionsOneof2
+from .group_0071 import ActionsPolicyEnterpriseConditionsOneof3
+from .group_0072 import ActionsPolicyEnterpriseConditionsOneof4
+from .group_0073 import ActionsPolicyEnterpriseConditionsOneof5
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class CodeScanningOptions(GitHubModel):
-    """CodeScanningOptions
 
-    Security Configuration feature options for code scanning
+class ActionsPolicy(GitHubModel):
+    """Actions Policy
+
+    An Actions policy defines rules for workflow execution protection.
     """
 
-    allow_advanced: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether to allow repos which use advanced setup"
+    id: int = Field(description="The ID of the policy")
+    name: str = Field(description="The name of the policy")
+    target: Literal["actions"] = Field(description="The target of the policy")
+    source_type: Literal["Repository", "Organization", "Enterprise"] = Field(
+        description="The type of the source of the policy"
     )
-
-
-class CodeScanningDefaultSetupOptions(GitHubModel):
-    """CodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    conditions: Missing[
+        Union[
+            ActionsPolicyRepoConditionsOneof0,
+            ActionsPolicyRepoConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof0,
+            ActionsPolicyOrgConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof2,
+            ActionsPolicyEnterpriseConditionsOneof0,
+            ActionsPolicyEnterpriseConditionsOneof1,
+            ActionsPolicyEnterpriseConditionsOneof2,
+            ActionsPolicyEnterpriseConditionsOneof3,
+            ActionsPolicyEnterpriseConditionsOneof4,
+            ActionsPolicyEnterpriseConditionsOneof5,
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="Whether to use labeled runners or standard GitHub runners.",
+        description='When workflow path targeting is available, detailed responses represent an omitted stored\nworkflow condition as `workflow_path` with `include` set to `["~ALL"]` and `exclude` set to `[]`.\nWhen workflow path targeting is unavailable, an omitted stored condition remains omitted.',
     )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
-    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy")
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[ActionsPolicyPropLinks] = Field(default=UNSET, alias="_links")
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningOptions)
-model_rebuild(CodeScanningDefaultSetupOptions)
+class ActionsPolicyPropLinks(GitHubModel):
+    """ActionsPolicyPropLinks"""
+
+    self_: Missing[ActionsPolicyPropLinksPropSelf] = Field(default=UNSET, alias="self")
+    html: Missing[ActionsPolicyPropLinksPropHtml] = Field(default=UNSET)
+
+
+class ActionsPolicyPropLinksPropSelf(GitHubModel):
+    """ActionsPolicyPropLinksPropSelf"""
+
+    href: Missing[str] = Field(default=UNSET, description="The URL of the policy")
+
+
+class ActionsPolicyPropLinksPropHtml(GitHubModel):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the policy")
+
+
+model_rebuild(ActionsPolicy)
+model_rebuild(ActionsPolicyPropLinks)
+model_rebuild(ActionsPolicyPropLinksPropSelf)
+model_rebuild(ActionsPolicyPropLinksPropHtml)
 
 __all__ = (
-    "CodeScanningDefaultSetupOptions",
-    "CodeScanningOptions",
+    "ActionsPolicy",
+    "ActionsPolicyPropLinks",
+    "ActionsPolicyPropLinksPropHtml",
+    "ActionsPolicyPropLinksPropSelf",
 )

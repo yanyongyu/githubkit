@@ -9,124 +9,126 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class JobType(TypedDict):
-    """Job
+class RuleSuitePullRequestType(TypedDict):
+    """Pull request rule suite metadata
 
-    Information of a job execution in a workflow run
+    Metadata for a pull request rule evaluation result.
     """
 
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ]
-    created_at: _dt.datetime
-    started_at: _dt.datetime
-    completed_at: Union[_dt.datetime, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsType]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
 
 
-class JobTypeForResponse(TypedDict):
-    """Job
+class RuleSuitePullRequestTypeForResponse(TypedDict):
+    """Pull request rule suite metadata
 
-    Information of a job execution in a workflow run
+    Metadata for a pull request rule evaluation result.
     """
 
-    id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
-    node_id: str
-    head_sha: str
-    url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
+
+
+class RuleSuitePullRequestPropPullRequestType(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
+    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
+
+
+class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
+    reviews: NotRequired[
+        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
     ]
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
+
+
+class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
     ]
-    created_at: str
-    started_at: str
-    completed_at: Union[str, None]
-    name: str
-    steps: NotRequired[list[JobPropStepsItemsTypeForResponse]]
-    check_run_url: str
-    labels: list[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    state: NotRequired[str]
 
 
-class JobPropStepsItemsType(TypedDict):
-    """JobPropStepsItems"""
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[_dt.datetime, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
-class JobPropStepsItemsTypeForResponse(TypedDict):
-    """JobPropStepsItems"""
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "JobPropStepsItemsType",
-    "JobPropStepsItemsTypeForResponse",
-    "JobType",
-    "JobTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestType",
+    "RuleSuitePullRequestPropPullRequestTypeForResponse",
+    "RuleSuitePullRequestType",
+    "RuleSuitePullRequestTypeForResponse",
 )

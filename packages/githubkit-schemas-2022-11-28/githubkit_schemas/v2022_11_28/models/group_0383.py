@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,19 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0130 import Team
+from .group_0330 import DiffEntry
+from .group_0331 import Commit
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class CommitComparison(GitHubModel):
+    """Commit Comparison
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+    Commit Comparison
+    """
+
+    url: str = Field()
+    html_url: str = Field()
+    permalink_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    base_commit: Commit = Field(title="Commit", description="Commit")
+    merge_base_commit: Commit = Field(title="Commit", description="Commit")
+    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
+    ahead_by: int = Field()
+    behind_by: int = Field()
+    total_commits: int = Field()
+    commits: list[Commit] = Field()
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
+model_rebuild(CommitComparison)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)
+__all__ = ("CommitComparison",)

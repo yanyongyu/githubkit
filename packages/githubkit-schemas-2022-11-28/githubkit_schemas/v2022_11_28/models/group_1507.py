@@ -16,18 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    subscribed: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications should be received from this repository.",
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-model_rebuild(UserKeysPostBody)
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-__all__ = ("UserKeysPostBody",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

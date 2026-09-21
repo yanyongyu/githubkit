@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,33 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0157 import Team
 
-class CodeQualitySetupUpdateAnyof1(GitHubModel):
-    """CodeQualitySetupUpdateAnyof1"""
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code quality setup."
+class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The list of users with review dismissal access."
     )
-    runner_type: Literal["standard", "labeled"] = Field(
-        description="Runner type to be used."
+    teams: Missing[list[Team]] = Field(
+        default=UNSET, description="The list of teams with review dismissal access."
     )
-    runner_label: Missing[Union[str, None]] = Field(
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET, description="The list of apps with review dismissal access."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    users_url: Missing[str] = Field(default=UNSET)
+    teams_url: Missing[str] = Field(default=UNSET)
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[list[SimpleUser]] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+        description="The list of users allowed to bypass pull request requirements.",
     )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+    teams: Missing[list[Team]] = Field(
         default=UNSET,
-        description="Whether AI findings run for Code Quality on this repository.",
+        description="The list of teams allowed to bypass pull request requirements.",
+    )
+    apps: Missing[list[Union[Integration, None]]] = Field(
+        default=UNSET,
+        description="The list of apps allowed to bypass pull request requirements.",
     )
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof1)
+model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
+model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
 
-__all__ = ("CodeQualitySetupUpdateAnyof1",)
+__all__ = (
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
+)

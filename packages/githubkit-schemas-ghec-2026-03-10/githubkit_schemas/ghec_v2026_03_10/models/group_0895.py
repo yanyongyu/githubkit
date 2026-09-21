@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0659 import WebhooksMilestone3
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_0658 import WebhooksLabel
 
 
-class WebhookMilestoneCreated(GitHubModel):
-    """milestone created event"""
+class WebhookLabelCreated(GitHubModel):
+    """label created event"""
 
     action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -39,10 +39,7 @@ class WebhookMilestoneCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone3 = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,9 +49,11 @@ class WebhookMilestoneCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookMilestoneCreated)
+model_rebuild(WebhookLabelCreated)
 
-__all__ = ("WebhookMilestoneCreated",)
+__all__ = ("WebhookLabelCreated",)

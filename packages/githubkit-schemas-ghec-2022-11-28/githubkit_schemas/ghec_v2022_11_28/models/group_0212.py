@@ -9,26 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReactionRollup(GitHubModel):
-    """Reaction Rollup"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    url: str = Field()
-    total_count: int = Field()
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    laugh: int = Field()
-    confused: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    eyes: int = Field()
-    rocket: int = Field()
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ] = Field(description="The type of scope for the budget")
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The user login when the budget is scoped to a single user (`user` scope).",
+    )
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
 
 
-model_rebuild(ReactionRollup)
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
 
-__all__ = ("ReactionRollup",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
+    )
+
+
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
+
+__all__ = (
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
+)

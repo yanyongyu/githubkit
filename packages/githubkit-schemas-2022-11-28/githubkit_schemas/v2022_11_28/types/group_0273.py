@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitType(TypedDict):
-    """Rate Limit"""
+class RulesetVersionPropActorType(TypedDict):
+    """RulesetVersionPropActor
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    The actor who updated the ruleset
+    """
+
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
-class RateLimitTypeForResponse(TypedDict):
-    """Rate Limit"""
+class RulesetVersionPropActorTypeForResponse(TypedDict):
+    """RulesetVersionPropActor
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    The actor who updated the ruleset
+    """
+
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "RateLimitType",
-    "RateLimitTypeForResponse",
+    "RulesetVersionPropActorType",
+    "RulesetVersionPropActorTypeForResponse",
 )

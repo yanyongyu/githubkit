@@ -14,13 +14,12 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0403 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class BlockingAddedIssueEventType(TypedDict):
-    """Blocking Added Issue Event
+class UnassignedIssueEventType(TypedDict):
+    """Unassigned Issue Event
 
-    Blocking Added Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -32,13 +31,14 @@ class BlockingAddedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    blocking: Union[None, IssueReferenceType, None]
+    assignee: SimpleUserType
+    assigner: SimpleUserType
 
 
-class BlockingAddedIssueEventTypeForResponse(TypedDict):
-    """Blocking Added Issue Event
+class UnassignedIssueEventTypeForResponse(TypedDict):
+    """Unassigned Issue Event
 
-    Blocking Added Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -50,10 +50,11 @@ class BlockingAddedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    blocking: Union[None, IssueReferenceTypeForResponse, None]
+    assignee: SimpleUserTypeForResponse
+    assigner: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "BlockingAddedIssueEventType",
-    "BlockingAddedIssueEventTypeForResponse",
+    "UnassignedIssueEventType",
+    "UnassignedIssueEventTypeForResponse",
 )

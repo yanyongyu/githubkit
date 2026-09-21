@@ -9,57 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryAdvisoryCreditType(TypedDict):
-    """RepositoryAdvisoryCredit
+class PullRequestStackType(TypedDict):
+    """Pull Request Stack
 
-    A credit given to a user for a repository security advisory.
+    The stack information associated with a pull request.
     """
 
-    user: SimpleUserType
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    base: PullRequestStackPropBaseType
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
 
 
-class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
-    """RepositoryAdvisoryCredit
+class PullRequestStackTypeForResponse(TypedDict):
+    """Pull Request Stack
 
-    A credit given to a user for a repository security advisory.
+    The stack information associated with a pull request.
     """
 
-    user: SimpleUserTypeForResponse
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ]
-    state: Literal["accepted", "declined", "pending"]
+    base: PullRequestStackPropBaseTypeForResponse
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+
+
+class PullRequestStackPropBaseType(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackPropBase"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "RepositoryAdvisoryCreditType",
-    "RepositoryAdvisoryCreditTypeForResponse",
+    "PullRequestStackPropBaseType",
+    "PullRequestStackPropBaseTypeForResponse",
+    "PullRequestStackType",
+    "PullRequestStackTypeForResponse",
 )

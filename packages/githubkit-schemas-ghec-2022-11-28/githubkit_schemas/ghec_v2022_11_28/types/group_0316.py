@@ -9,54 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-class ProjectsV2StatusUpdateType(TypedDict):
-    """Projects v2 Status Update
-
-    An status update belonging to a project
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    status: NotRequired[
-        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
-    start_date: NotRequired[_dt.date]
-    target_date: NotRequired[_dt.date]
-    body: NotRequired[Union[str, None]]
 
 
-class ProjectsV2StatusUpdateTypeForResponse(TypedDict):
-    """Projects v2 Status Update
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    An status update belonging to a project
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: float
-    node_id: str
-    project_node_id: NotRequired[str]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    status: NotRequired[
-        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
     ]
-    start_date: NotRequired[str]
-    target_date: NotRequired[str]
-    body: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ProjectsV2StatusUpdateType",
-    "ProjectsV2StatusUpdateTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

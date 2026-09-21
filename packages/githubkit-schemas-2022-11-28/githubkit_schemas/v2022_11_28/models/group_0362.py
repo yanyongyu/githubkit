@@ -9,39 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0309 import DiffEntry
-from .group_0310 import Commit
+from .group_0361 import CodeScanningVariantAnalysisRepository
 
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Commit Comparison
-    """
-
-    url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: list[Commit] = Field()
-    files: Missing[list[DiffEntry]] = Field(default=UNSET)
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
+    )
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    )
 
 
-model_rebuild(CommitComparison)
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-__all__ = ("CommitComparison",)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

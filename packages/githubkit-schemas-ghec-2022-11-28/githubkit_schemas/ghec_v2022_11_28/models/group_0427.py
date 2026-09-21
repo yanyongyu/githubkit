@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,34 +17,59 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0253 import MinimalRepository
+from .group_0097 import CodeScanningAlertLocation
 
 
-class RepositoryInvitation(GitHubModel):
-    """Repository Invitation
+class CodeScanningAlertInstanceList(GitHubModel):
+    """CodeScanningAlertInstanceList"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    id: int = Field(description="Unique identifier of the repository invitation.")
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`.",
     )
-    invitee: Union[SimpleUser, None] = Field()
-    inviter: Union[SimpleUser, None] = Field()
-    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
-        description="The permission associated with the invitation."
+    analysis_key: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
     )
-    created_at: _dt.datetime = Field()
-    expired: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the invitation has expired"
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
     )
-    url: str = Field(description="URL for the repository invitation")
-    html_url: str = Field()
-    node_id: str = Field()
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+    )
+    state: Missing[Union[Literal["open", "fixed"], None]] = Field(
+        default=UNSET, description="State of a code scanning alert instance."
+    )
+    commit_sha: Missing[str] = Field(default=UNSET)
+    message: Missing[CodeScanningAlertInstanceListPropMessage] = Field(default=UNSET)
+    location: Missing[CodeScanningAlertLocation] = Field(
+        default=UNSET, description="Describe a region within a file for the alert."
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    classifications: Missing[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",
+    )
 
 
-model_rebuild(RepositoryInvitation)
+class CodeScanningAlertInstanceListPropMessage(GitHubModel):
+    """CodeScanningAlertInstanceListPropMessage"""
 
-__all__ = ("RepositoryInvitation",)
+    text: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(CodeScanningAlertInstanceList)
+model_rebuild(CodeScanningAlertInstanceListPropMessage)
+
+__all__ = (
+    "CodeScanningAlertInstanceList",
+    "CodeScanningAlertInstanceListPropMessage",
+)

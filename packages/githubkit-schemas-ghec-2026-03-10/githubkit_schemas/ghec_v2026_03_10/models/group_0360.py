@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,107 +18,133 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0220 import PullRequestMinimal
-from .group_0253 import MinimalRepository
-from .group_0359 import SimpleCommit
+from .group_0107 import TeamSimple
 
 
-class WorkflowRun(GitHubModel):
-    """Workflow Run
+class TeamFull(GitHubModel):
+    """Full Team
 
-    An invocation of a workflow
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: int = Field(description="The ID of the workflow run.")
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the workflow run."
-    )
+    id: int = Field(description="Unique identifier of the team")
     node_id: str = Field()
-    check_suite_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the associated check suite."
-    )
-    check_suite_node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the associated check suite."
-    )
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that points to the version of the workflow being run."
-    )
-    path: str = Field(description="The full path of the workflow")
-    run_number: int = Field(
-        description="The auto incrementing run number for the workflow run."
-    )
-    run_attempt: Missing[int] = Field(
-        default=UNSET,
-        description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
-    )
-    referenced_workflows: Missing[Union[list[ReferencedWorkflow], None]] = Field(
-        default=UNSET
-    )
-    event: str = Field()
-    status: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    workflow_id: int = Field(description="The ID of the parent workflow.")
-    url: str = Field(description="The URL to the workflow run.")
+    url: str = Field(description="URL for the team")
     html_url: str = Field()
-    pull_requests: Union[list[PullRequestMinimal], None] = Field(
-        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run."
+    name: str = Field(description="Name of the team")
+    slug: str = Field()
+    description: Union[str, None] = Field()
+    privacy: Missing[Literal["closed", "secret"]] = Field(
+        default=UNSET, description="The level of privacy this team should have"
     )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(default=UNSET, description="The notification setting the team has set")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Missing[Union[TeamSimple, None]] = Field(default=UNSET)
+    members_count: int = Field()
+    repos_count: int = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    organization: TeamOrganization = Field(
+        title="Team Organization", description="Team Organization"
     )
-    triggering_actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    run_started_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The start time of the latest run. Resets on re-run."
-    )
-    jobs_url: str = Field(description="The URL to the jobs for the workflow run.")
-    logs_url: str = Field(
-        description="The URL to download the logs for the workflow run."
-    )
-    check_suite_url: str = Field(description="The URL to the associated check suite.")
-    artifacts_url: str = Field(
-        description="The URL to the artifacts for the workflow run."
-    )
-    cancel_url: str = Field(description="The URL to cancel the workflow run.")
-    rerun_url: str = Field(description="The URL to rerun the workflow run.")
-    previous_attempt_url: Missing[Union[str, None]] = Field(
+    ldap_dn: Missing[str] = Field(
         default=UNSET,
-        description="The URL to the previous attempted run of this workflow, if one exists.",
+        description="The [distinguished name](https://www.ldap.com/ldap-dns-and-rdns) (DN) of the LDAP entry to map to a team.",
     )
-    workflow_url: str = Field(description="The URL to the workflow.")
-    head_commit: Union[SimpleCommit, None] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
     )
-    head_repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
     )
-    head_repository_id: Missing[int] = Field(default=UNSET)
-    display_title: str = Field(
-        description="The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow."
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-class ReferencedWorkflow(GitHubModel):
-    """Referenced workflow
+class TeamOrganization(GitHubModel):
+    """Team Organization
 
-    A workflow referenced/reused by the initial caller workflow
+    Team Organization
     """
 
-    path: str = Field()
-    sha: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    is_verified: Missing[bool] = Field(default=UNSET)
+    has_organization_projects: bool = Field()
+    has_repository_projects: bool = Field()
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    html_url: str = Field()
+    created_at: _dt.datetime = Field()
+    type: str = Field()
+    total_private_repos: Missing[int] = Field(default=UNSET)
+    owned_private_repos: Missing[int] = Field(default=UNSET)
+    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
+    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
+    collaborators: Missing[Union[int, None]] = Field(default=UNSET)
+    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    plan: Missing[TeamOrganizationPropPlan] = Field(default=UNSET)
+    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
+    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
+    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
+    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
+    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
+    members_can_create_pages: Missing[bool] = Field(default=UNSET)
+    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
+    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
+    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    updated_at: _dt.datetime = Field()
+    archived_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WorkflowRun)
-model_rebuild(ReferencedWorkflow)
+class TeamOrganizationPropPlan(GitHubModel):
+    """TeamOrganizationPropPlan"""
+
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
+    filled_seats: Missing[int] = Field(default=UNSET)
+    seats: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(TeamFull)
+model_rebuild(TeamOrganization)
+model_rebuild(TeamOrganizationPropPlan)
 
 __all__ = (
-    "ReferencedWorkflow",
-    "WorkflowRun",
+    "TeamFull",
+    "TeamOrganization",
+    "TeamOrganizationPropPlan",
 )

@@ -9,175 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType(TypedDict):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    vulnerabilities: list[OsvVulnerabilityType]
-
-
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
-
-    vulnerabilities: list[OsvVulnerabilityTypeForResponse]
-
-
-class OsvVulnerabilityType(TypedDict):
-    """OSV Vulnerability
-
-    A vulnerability in OSV (Open Source Vulnerability) format
-    """
-
-    id: str
-    schema_version: NotRequired[str]
-    summary: NotRequired[str]
-    details: NotRequired[str]
-    aliases: NotRequired[list[str]]
-    severity: NotRequired[list[OsvVulnerabilityPropSeverityItemsType]]
-    affected: NotRequired[list[OsvVulnerabilityPropAffectedItemsType]]
-    references: NotRequired[list[OsvVulnerabilityPropReferencesItemsType]]
-    published: NotRequired[_dt.datetime]
-    modified: NotRequired[_dt.datetime]
-    withdrawn: NotRequired[_dt.datetime]
-
-
-class OsvVulnerabilityTypeForResponse(TypedDict):
-    """OSV Vulnerability
-
-    A vulnerability in OSV (Open Source Vulnerability) format
-    """
-
-    id: str
-    schema_version: NotRequired[str]
-    summary: NotRequired[str]
-    details: NotRequired[str]
-    aliases: NotRequired[list[str]]
-    severity: NotRequired[list[OsvVulnerabilityPropSeverityItemsTypeForResponse]]
-    affected: NotRequired[list[OsvVulnerabilityPropAffectedItemsTypeForResponse]]
-    references: NotRequired[list[OsvVulnerabilityPropReferencesItemsTypeForResponse]]
-    published: NotRequired[str]
-    modified: NotRequired[str]
-    withdrawn: NotRequired[str]
-
-
-class OsvVulnerabilityPropSeverityItemsType(TypedDict):
-    """OsvVulnerabilityPropSeverityItems"""
-
-    type: NotRequired[str]
-    score: NotRequired[str]
-
-
-class OsvVulnerabilityPropSeverityItemsTypeForResponse(TypedDict):
-    """OsvVulnerabilityPropSeverityItems"""
-
-    type: NotRequired[str]
-    score: NotRequired[str]
-
-
-class OsvVulnerabilityPropReferencesItemsType(TypedDict):
-    """OsvVulnerabilityPropReferencesItems"""
-
-    type: NotRequired[str]
-    url: NotRequired[str]
-
-
-class OsvVulnerabilityPropReferencesItemsTypeForResponse(TypedDict):
-    """OsvVulnerabilityPropReferencesItems"""
-
-    type: NotRequired[str]
-    url: NotRequired[str]
-
-
-class OsvVulnerabilityPropAffectedItemsType(TypedDict):
-    """OsvVulnerabilityPropAffectedItems"""
-
-    package: NotRequired[OsvVulnerabilityPropAffectedItemsPropPackageType]
-    ranges: NotRequired[list[OsvVulnerabilityPropAffectedItemsPropRangesItemsType]]
-
-
-class OsvVulnerabilityPropAffectedItemsTypeForResponse(TypedDict):
-    """OsvVulnerabilityPropAffectedItems"""
-
-    package: NotRequired[OsvVulnerabilityPropAffectedItemsPropPackageTypeForResponse]
-    ranges: NotRequired[
-        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsTypeForResponse]
-    ]
-
-
-class OsvVulnerabilityPropAffectedItemsPropPackageType(TypedDict):
-    """OsvVulnerabilityPropAffectedItemsPropPackage"""
-
-    ecosystem: NotRequired[str]
-    name: NotRequired[str]
-
-
-class OsvVulnerabilityPropAffectedItemsPropPackageTypeForResponse(TypedDict):
-    """OsvVulnerabilityPropAffectedItemsPropPackage"""
-
-    ecosystem: NotRequired[str]
-    name: NotRequired[str]
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsType(TypedDict):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
-
-    type: NotRequired[str]
-    events: NotRequired[
-        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsType]
-    ]
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsTypeForResponse(TypedDict):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
-
-    type: NotRequired[str]
-    events: NotRequired[
-        list[
-            OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsTypeForResponse
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
+            ],
+            None,
         ]
     ]
 
 
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsType(TypedDict):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    introduced: NotRequired[str]
-    fixed: NotRequired[str]
-    last_affected: NotRequired[str]
-    limit: NotRequired[str]
+    custom_agents: NotRequired[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
 
 
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
     TypedDict
 ):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-    introduced: NotRequired[str]
-    fixed: NotRequired[str]
-    last_affected: NotRequired[str]
-    limit: NotRequired[str]
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+
+    name: NotRequired[str]
+    file_path: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyType",
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBodyTypeForResponse",
-    "OsvVulnerabilityPropAffectedItemsPropPackageType",
-    "OsvVulnerabilityPropAffectedItemsPropPackageTypeForResponse",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsType",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItemsTypeForResponse",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsType",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsTypeForResponse",
-    "OsvVulnerabilityPropAffectedItemsType",
-    "OsvVulnerabilityPropAffectedItemsTypeForResponse",
-    "OsvVulnerabilityPropReferencesItemsType",
-    "OsvVulnerabilityPropReferencesItemsTypeForResponse",
-    "OsvVulnerabilityPropSeverityItemsType",
-    "OsvVulnerabilityPropSeverityItemsTypeForResponse",
-    "OsvVulnerabilityType",
-    "OsvVulnerabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
 )

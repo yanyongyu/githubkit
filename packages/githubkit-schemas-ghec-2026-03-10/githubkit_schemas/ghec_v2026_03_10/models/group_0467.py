@@ -13,43 +13,86 @@ import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0011 import WebhookConfig
-from .group_0466 import HookResponse
+from .group_0464 import Metadata
 
 
-class Hook(GitHubModel):
-    """Webhook
+class Snapshot(GitHubModel):
+    """snapshot
 
-    Webhooks for repositories.
+    Create a new snapshot of a repository's dependencies.
     """
 
-    type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
+    version: int = Field(
+        description="The version of the repository snapshot submission."
     )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
+    job: SnapshotPropJob = Field()
+    sha: str = Field(
+        min_length=40,
+        max_length=64,
+        description="The commit SHA associated with this dependency snapshot. Maximum length: 64 characters.",
     )
-    events: list[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
+    ref: str = Field(
+        pattern="^refs/",
+        description="The repository branch that triggered this snapshot.",
     )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
+    detector: SnapshotPropDetector = Field(
+        description="A description of the detector used."
     )
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    manifests: Missing[SnapshotPropManifests] = Field(
+        default=UNSET,
+        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
+    )
+    scanned: _dt.datetime = Field(
+        description="The time at which the snapshot was scanned."
+    )
 
 
-model_rebuild(Hook)
+class SnapshotPropJob(GitHubModel):
+    """SnapshotPropJob"""
 
-__all__ = ("Hook",)
+    id: str = Field(description="The external ID of the job.")
+    correlator: str = Field(
+        description="Correlator provides a key that is used to group snapshots submitted over time. Only the \"latest\" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given \"wave\" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables GITHUB_WORKFLOW and GITHUB_JOB concatenated together. If you're using a build matrix, then you'll also need to add additional key(s) to distinguish between each submission inside a matrix variation."
+    )
+    html_url: Missing[str] = Field(default=UNSET, description="The url for the job.")
+
+
+class SnapshotPropDetector(GitHubModel):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str = Field(description="The name of the detector used.")
+    version: str = Field(description="The version of the detector used.")
+    url: str = Field(description="The url of the detector used.")
+
+
+class SnapshotPropManifests(ExtraGitHubModel):
+    """SnapshotPropManifests
+
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
+    """
+
+
+model_rebuild(Snapshot)
+model_rebuild(SnapshotPropJob)
+model_rebuild(SnapshotPropDetector)
+model_rebuild(SnapshotPropManifests)
+
+__all__ = (
+    "Snapshot",
+    "SnapshotPropDetector",
+    "SnapshotPropJob",
+    "SnapshotPropManifests",
+)

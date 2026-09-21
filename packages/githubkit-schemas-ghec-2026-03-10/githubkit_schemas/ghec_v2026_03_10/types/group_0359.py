@@ -9,84 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleCommitType(TypedDict):
-    """Simple Commit
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    A commit.
+    External Groups to be mapped to a team for membership
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: _dt.datetime
-    author: Union[SimpleCommitPropAuthorType, None]
-    committer: Union[SimpleCommitPropCommitterType, None]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class SimpleCommitTypeForResponse(TypedDict):
-    """Simple Commit
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    A commit.
+    External Groups to be mapped to a team for membership
     """
 
-    id: str
-    tree_id: str
-    message: str
-    timestamp: str
-    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
-    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
 
 
-class SimpleCommitPropAuthorType(TypedDict):
-    """SimpleCommitPropAuthor
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    Information about the Git author
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropAuthorTypeForResponse(TypedDict):
-    """SimpleCommitPropAuthor
-
-    Information about the Git author
-    """
-
-    name: str
-    email: str
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
-class SimpleCommitPropCommitterType(TypedDict):
-    """SimpleCommitPropCommitter
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
 
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
-
-
-class SimpleCommitPropCommitterTypeForResponse(TypedDict):
-    """SimpleCommitPropCommitter
-
-    Information about the Git committer
-    """
-
-    name: str
-    email: str
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "SimpleCommitPropAuthorType",
-    "SimpleCommitPropAuthorTypeForResponse",
-    "SimpleCommitPropCommitterType",
-    "SimpleCommitPropCommitterTypeForResponse",
-    "SimpleCommitType",
-    "SimpleCommitTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0394 import MetadataType, MetadataTypeForResponse
 
 
-class CheckImmutableReleasesType(TypedDict):
-    """Check immutable releases
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    Check immutable releases
-    """
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
-    enabled: bool
-    enforced_by_owner: bool
 
+class DependencyTypeForResponse(TypedDict):
+    """Dependency"""
 
-class CheckImmutableReleasesTypeForResponse(TypedDict):
-    """Check immutable releases
-
-    Check immutable releases
-    """
-
-    enabled: bool
-    enforced_by_owner: bool
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataTypeForResponse]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[list[str]]
 
 
 __all__ = (
-    "CheckImmutableReleasesType",
-    "CheckImmutableReleasesTypeForResponse",
+    "DependencyType",
+    "DependencyTypeForResponse",
 )

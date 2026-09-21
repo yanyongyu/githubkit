@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
 
-class ReleaseNotesContent(GitHubModel):
-    """Generated Release Notes Content
 
-    Generated name and body describing a release
+class TimelineDisconnectedEvent(GitHubModel):
+    """Timeline Disconnected Event
+
+    Timeline Disconnected Event
     """
 
-    name: str = Field(description="The generated name of the release")
-    body: str = Field(
-        description="The generated body describing the contents of the release supporting markdown formatting"
-    )
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: str = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
 
 
-model_rebuild(ReleaseNotesContent)
+model_rebuild(TimelineDisconnectedEvent)
 
-__all__ = ("ReleaseNotesContent",)
+__all__ = ("TimelineDisconnectedEvent",)

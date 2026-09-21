@@ -9,52 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class GitRefType(TypedDict):
+    """Git Reference
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
-
-    Unassigned Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    object_: GitRefPropObjectType
 
 
-class UnassignedIssueEventTypeForResponse(TypedDict):
-    """Unassigned Issue Event
+class GitRefTypeForResponse(TypedDict):
+    """Git Reference
 
-    Unassigned Issue Event
+    Git references within a repository
     """
 
-    id: int
+    ref: str
     node_id: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
+    object_: GitRefPropObjectTypeForResponse
+
+
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+class GitRefPropObjectTypeForResponse(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
 
 
 __all__ = (
-    "UnassignedIssueEventType",
-    "UnassignedIssueEventTypeForResponse",
+    "GitRefPropObjectType",
+    "GitRefPropObjectTypeForResponse",
+    "GitRefType",
+    "GitRefTypeForResponse",
 )

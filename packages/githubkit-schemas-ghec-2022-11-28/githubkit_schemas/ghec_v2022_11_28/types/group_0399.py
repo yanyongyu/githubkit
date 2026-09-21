@@ -9,39 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof3Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class VerificationType(TypedDict):
+    """Verification"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
-class CodeQualitySetupUpdateAnyof3TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof3"""
+class VerificationTypeForResponse(TypedDict):
+    """Verification"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: NotRequired[Union[str, None]]
-    languages: list[
-        Literal[
-            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof3Type",
-    "CodeQualitySetupUpdateAnyof3TypeForResponse",
+    "VerificationType",
+    "VerificationTypeForResponse",
 )

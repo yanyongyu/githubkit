@@ -9,36 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0133 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
 
+class NetworkSettingsType(TypedDict):
+    """Hosted compute network settings resource
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
-
-    Only allow users with bypass permission to update matching refs.
+    A hosted compute network settings resource.
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
+class NetworkSettingsTypeForResponse(TypedDict):
+    """Hosted compute network settings resource
 
-    Only allow users with bypass permission to update matching refs.
+    A hosted compute network settings resource.
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    id: str
+    network_configuration_id: NotRequired[str]
+    name: str
+    subnet_id: str
+    region: str
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "NetworkSettingsType",
+    "NetworkSettingsTypeForResponse",
 )

@@ -9,20 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0238 import ReleaseEventPropRelease
-
-
-class ReleaseEvent(GitHubModel):
-    """ReleaseEvent"""
-
-    action: str = Field()
-    release: ReleaseEventPropRelease = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReleaseEvent)
+class IssuePropLabelsItemsOneof1(GitHubModel):
+    """IssuePropLabelsItemsOneof1"""
 
-__all__ = ("ReleaseEvent",)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    archived_by: Missing[None] = Field(
+        default=UNSET,
+        description="The user who archived the label, or `null` if it has not been archived.",
+    )
+
+
+class IssuePropPullRequest(GitHubModel):
+    """IssuePropPullRequest"""
+
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+model_rebuild(IssuePropLabelsItemsOneof1)
+model_rebuild(IssuePropPullRequest)
+
+__all__ = (
+    "IssuePropLabelsItemsOneof1",
+    "IssuePropPullRequest",
+)

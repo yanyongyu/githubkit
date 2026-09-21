@@ -12,14 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0203 import SecretScanningCustomPattern
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)

@@ -12,23 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    selected_usernames: list[str]
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

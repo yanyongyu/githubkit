@@ -9,245 +9,161 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0047 import MilestoneType, MilestoneTypeForResponse
-from .group_0048 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0050 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0053 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0054 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0516 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class RepositoryAdvisoryUpdateType(TypedDict):
+    """RepositoryAdvisoryUpdate"""
+
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[list[str], None]]
+    collaborating_teams: NotRequired[Union[list[str], None]]
 
 
-class IssueSearchResultItemType(TypedDict):
-    """Issue Search Result Item
+class RepositoryAdvisoryUpdateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdate"""
 
-    Issue Search Result Item
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[list[str], None]]
+    collaborating_teams: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    id: int
-    node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserType], None]]
-    user: Union[SimpleUserType, None]
-    labels: list[IssueSearchResultItemPropLabelsItemsType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    assignee: Union[SimpleUserType, None]
-    milestone: Union[MilestoneType, None]
-    comments: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
-    body: NotRequired[str]
-    score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
     ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    pinned_comment: NotRequired[Union[IssueCommentType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    name: NotRequired[Union[str, None]]
 
 
-class IssueSearchResultItemTypeForResponse(TypedDict):
-    """Issue Search Result Item
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
 
-    Issue Search Result Item
+    The name of the package affected by the vulnerability.
     """
 
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    id: int
-    node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
-    user: Union[SimpleUserTypeForResponse, None]
-    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    assignee: Union[SimpleUserTypeForResponse, None]
-    milestone: Union[MilestoneTypeForResponse, None]
-    comments: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
-    body: NotRequired[str]
-    score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
     ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryTypeForResponse]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-
-
-class IssueSearchResultItemPropLabelsItemsType(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    archived_by: NotRequired[None]
-
-
-class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    archived_at: NotRequired[Union[str, None]]
-    archived_by: NotRequired[None]
-
-
-class IssueSearchResultItemPropPullRequestType(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class SearchIssuesGetResponse200Type(TypedDict):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[IssueSearchResultItemType]
-    search_type: Literal["lexical", "semantic", "hybrid"]
-    lexical_fallback_reason: NotRequired[
-        list[
-            Literal[
-                "no_text_terms",
-                "quoted_text",
-                "non_issue_target",
-                "or_boolean_not_supported",
-                "no_accessible_repos",
-                "server_error",
-                "only_non_semantic_fields_requested",
-                "service_unavailable",
-            ]
-        ]
-    ]
-
-
-class SearchIssuesGetResponse200TypeForResponse(TypedDict):
-    """SearchIssuesGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[IssueSearchResultItemTypeForResponse]
-    search_type: Literal["lexical", "semantic", "hybrid"]
-    lexical_fallback_reason: NotRequired[
-        list[
-            Literal[
-                "no_text_terms",
-                "quoted_text",
-                "non_issue_target",
-                "or_boolean_not_supported",
-                "no_accessible_repos",
-                "server_error",
-                "only_non_semantic_fields_requested",
-                "service_unavailable",
-            ]
-        ]
-    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "IssueSearchResultItemPropLabelsItemsType",
-    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
-    "IssueSearchResultItemPropPullRequestType",
-    "IssueSearchResultItemPropPullRequestTypeForResponse",
-    "IssueSearchResultItemType",
-    "IssueSearchResultItemTypeForResponse",
-    "SearchIssuesGetResponse200Type",
-    "SearchIssuesGetResponse200TypeForResponse",
+    "RepositoryAdvisoryUpdatePropCreditsItemsType",
+    "RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryUpdateType",
+    "RepositoryAdvisoryUpdateTypeForResponse",
 )

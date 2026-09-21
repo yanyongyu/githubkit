@@ -10,37 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0232 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["required_linear_history"]
 
 
-class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
-    """workflows
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsType",
-    "RepositoryRuleWorkflowsTypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

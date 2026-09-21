@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+
+class DeleteBudget(GitHubModel):
+    """DeleteBudget"""
+
+    message: str = Field(
+        description="A message indicating the result of the deletion operation"
+    )
+    id: str = Field(description="The ID of the deleted budget")
 
 
-class PinnedIssueComment(GitHubModel):
-    """Pinned Issue Comment
+model_rebuild(DeleteBudget)
 
-    Context around who pinned an issue comment and when it was pinned.
-    """
-
-    pinned_at: _dt.datetime = Field()
-    pinned_by: Union[SimpleUser, None] = Field()
-
-
-model_rebuild(PinnedIssueComment)
-
-__all__ = ("PinnedIssueComment",)
+__all__ = ("DeleteBudget",)

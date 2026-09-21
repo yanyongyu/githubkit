@@ -9,43 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof2Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class GitUserType(TypedDict):
+    """Git User
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[_dt.datetime]
 
 
-class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class GitUserTypeForResponse(TypedDict):
+    """Git User
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ]
-    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
+    Metaproperties for Git author/committer information.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof2Type",
-    "CodeQualitySetupUpdateAnyof2TypeForResponse",
+    "GitUserType",
+    "GitUserTypeForResponse",
 )

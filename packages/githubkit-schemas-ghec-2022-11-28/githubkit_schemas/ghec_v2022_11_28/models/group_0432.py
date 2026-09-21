@@ -9,55 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0253 import MinimalRepository
+from .group_0431 import CodeScanningVariantAnalysisRepository
 
 
-class CombinedCommitStatus(GitHubModel):
-    """Combined Commit Status
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    Combined Commit Status
-    """
-
-    state: str = Field()
-    statuses: list[SimpleCommitStatus] = Field()
-    sha: str = Field()
-    total_count: int = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
     )
-    commit_url: str = Field()
-    url: str = Field()
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    )
 
 
-class SimpleCommitStatus(GitHubModel):
-    """Simple Commit Status"""
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-    description: Union[str, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: str = Field()
-    context: str = Field()
-    target_url: Union[str, None] = Field()
-    required: Missing[Union[bool, None]] = Field(default=UNSET)
-    avatar_url: Union[str, None] = Field()
-    url: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-
-
-model_rebuild(CombinedCommitStatus)
-model_rebuild(SimpleCommitStatus)
-
-__all__ = (
-    "CombinedCommitStatus",
-    "SimpleCommitStatus",
-)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

@@ -10,28 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
-    """ActionsRepositoryPermissions"""
+class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUserTypeForResponse
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
 __all__ = (
-    "ActionsRepositoryPermissionsType",
-    "ActionsRepositoryPermissionsTypeForResponse",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryCreditTypeForResponse",
 )

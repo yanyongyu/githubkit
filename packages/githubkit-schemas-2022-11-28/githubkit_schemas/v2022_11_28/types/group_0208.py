@@ -9,36 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0209 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+from .group_0203 import LinkType, LinkTypeForResponse
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class PullRequestSimplePropLinksType(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-    Only allow users with bypass permission to update matching refs.
-    """
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
+class PullRequestSimplePropLinksTypeForResponse(TypedDict):
+    """PullRequestSimplePropLinks"""
 
-class RepositoryRuleUpdateTypeForResponse(TypedDict):
-    """update
-
-    Only allow users with bypass permission to update matching refs.
-    """
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "RepositoryRuleUpdateType",
-    "RepositoryRuleUpdateTypeForResponse",
+    "PullRequestSimplePropLinksType",
+    "PullRequestSimplePropLinksTypeForResponse",
 )

@@ -9,48 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    total_count: int = Field()
-    images: list[ActionsHostedRunnerCustomImage] = Field()
-
-
-class ActionsHostedRunnerCustomImage(GitHubModel):
-    """GitHub-hosted runner custom image details
-
-    Provides details of a custom runner image
-    """
-
-    id: int = Field(
-        description="The ID of the image. Use this ID for the `image` parameter when creating a new larger runner."
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new name for the team."
     )
-    platform: str = Field(description="The operating system of the image.")
-    total_versions_size: int = Field(
-        description="Total size of all the image versions in GB."
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A new description for the team."
     )
-    name: str = Field(description="Display name for this image.")
-    source: str = Field(description="The image provider.")
-    versions_count: int = Field(
-        description="The number of image versions associated with the image."
+    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+        default=UNSET,
+        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
     )
-    latest_version: str = Field(
-        description="The latest image version associated with the image."
+    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
+        Field(
+            default=UNSET,
+            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
+        )
     )
-    state: str = Field(
-        description="The number of image versions associated with the image."
+    group_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersImagesCustomGetResponse200)
-model_rebuild(ActionsHostedRunnerCustomImage)
+model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
 
-__all__ = (
-    "ActionsHostedRunnerCustomImage",
-    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200",
-)
+__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)

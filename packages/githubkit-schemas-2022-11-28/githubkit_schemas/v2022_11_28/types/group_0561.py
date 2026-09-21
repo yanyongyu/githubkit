@@ -12,39 +12,53 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class BillingUsageReportUserType(TypedDict):
+    """BillingUsageReportUser"""
 
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhooksChangesPropBodyType]
+    usage_items: NotRequired[list[BillingUsageReportUserPropUsageItemsItemsType]]
 
 
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
+class BillingUsageReportUserTypeForResponse(TypedDict):
+    """BillingUsageReportUser"""
 
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
-
-
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    usage_items: NotRequired[
+        list[BillingUsageReportUserPropUsageItemsItemsTypeForResponse]
+    ]
 
 
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
+class BillingUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
 
-    from_: str
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
+
+
+class BillingUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageReportUserPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "BillingUsageReportUserPropUsageItemsItemsType",
+    "BillingUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingUsageReportUserType",
+    "BillingUsageReportUserTypeForResponse",
 )

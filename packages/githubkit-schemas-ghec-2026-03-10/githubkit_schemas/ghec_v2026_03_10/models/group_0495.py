@@ -9,35 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0474 import IssueReference
+from .group_0493 import IssueEventIntent
 
 
-class SubIssueAddedIssueEvent(GitHubModel):
-    """Sub-issue Added Issue Event
+class LabeledIssueEvent(GitHubModel):
+    """Labeled Issue Event
 
-    Sub-issue Added Issue Event
+    Labeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["labeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    sub_issue: Union[None, IssueReference, None] = Field()
+    label: LabeledIssueEventPropLabel = Field()
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(SubIssueAddedIssueEvent)
+class LabeledIssueEventPropLabel(GitHubModel):
+    """LabeledIssueEventPropLabel"""
 
-__all__ = ("SubIssueAddedIssueEvent",)
+    name: str = Field()
+    color: str = Field()
+
+
+model_rebuild(LabeledIssueEvent)
+model_rebuild(LabeledIssueEventPropLabel)
+
+__all__ = (
+    "LabeledIssueEvent",
+    "LabeledIssueEventPropLabel",
+)

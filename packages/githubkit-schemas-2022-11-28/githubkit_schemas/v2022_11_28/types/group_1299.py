@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0285 import ActionsVariableType, ActionsVariableTypeForResponse
+from .group_0147 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
-class ReposOwnerRepoAgentsVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
-
-
-class ReposOwnerRepoAgentsVariablesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsVariablesGetResponse200"""
+class ReposOwnerRepoActionsPoliciesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsPoliciesGetResponse200"""
 
     total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    policies: list[ActionsPolicyType]
+
+
+class ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPoliciesGetResponse200"""
+
+    total_count: int
+    policies: list[ActionsPolicyTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsVariablesGetResponse200Type",
-    "ReposOwnerRepoAgentsVariablesGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsPoliciesGetResponse200Type",
+    "ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse",
 )

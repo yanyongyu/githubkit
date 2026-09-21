@@ -9,25 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class ReactionType(TypedDict):
+    """Reaction
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
+    """
+
+    id: int
+    node_id: str
+    user: Union[SimpleUserType, None]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: _dt.datetime
+
+
+class ReactionTypeForResponse(TypedDict):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
+    """
+
+    id: int
+    node_id: str
+    user: Union[SimpleUserTypeForResponse, None]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: str
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "ReactionType",
+    "ReactionTypeForResponse",
 )

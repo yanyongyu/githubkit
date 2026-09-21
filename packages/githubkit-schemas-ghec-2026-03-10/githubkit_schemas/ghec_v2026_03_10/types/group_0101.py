@@ -9,72 +9,281 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetLicenseSyncStatusType(TypedDict):
-    """License Sync Status
+class CodeSecurityConfigurationType(TypedDict):
+    """CodeSecurityConfiguration
 
-    Information about the status of a license sync job for an enterprise.
+    A code security configuration
     """
 
-    server_instances: NotRequired[
-        list[GetLicenseSyncStatusPropServerInstancesItemsType]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
+    description: NotRequired[Union[str, None]]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_delegated_alert_dismissal: NotRequired[
+        Union[Literal["enabled", "disabled", "not_set"], None]
+    ]
+    code_scanning_options: NotRequired[
+        Union[CodeSecurityConfigurationPropCodeScanningOptionsType, None]
+    ]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
+    ]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced", "enterprise_enforced"]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class GetLicenseSyncStatusTypeForResponse(TypedDict):
-    """License Sync Status
+class CodeSecurityConfigurationTypeForResponse(TypedDict):
+    """CodeSecurityConfiguration
 
-    Information about the status of a license sync job for an enterprise.
+    A code security configuration
     """
 
-    server_instances: NotRequired[
-        list[GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
+    description: NotRequired[Union[str, None]]
+    advanced_security: NotRequired[
+        Literal["enabled", "disabled", "code_security", "secret_protection"]
     ]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
-
-    server_id: NotRequired[str]
-    hostname: NotRequired[str]
-    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
-
-    server_id: NotRequired[str]
-    hostname: NotRequired[str]
-    last_sync: NotRequired[
-        GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse
+    ]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_delegated_alert_dismissal: NotRequired[
+        Union[Literal["enabled", "disabled", "not_set"], None]
+    ]
+    code_scanning_options: NotRequired[
+        Union[CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse, None]
+    ]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup_options: NotRequired[
+        Union[
+            CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse,
+            None,
+        ]
+    ]
+    code_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_bypass_options: NotRequired[
+        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_delegated_alert_dismissal: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_extended_metadata: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced", "enterprise_enforced"]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: NotRequired[str]
-    status: NotRequired[str]
-    error: NotRequired[str]
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse(
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
     TypedDict
 ):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
 
-    date: NotRequired[str]
-    status: NotRequired[str]
-    error: NotRequired[str]
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+class CodeSecurityConfigurationPropCodeScanningOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropCodeScanningOptions
+
+    Feature options for code scanning
+    """
+
+    allow_advanced: NotRequired[Union[bool, None]]
+
+
+class CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationPropCodeScanningOptions
+
+    Feature options for code scanning
+    """
+
+    allow_advanced: NotRequired[Union[bool, None]]
+
+
+class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Union[Literal["standard", "labeled", "not_set"], None]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+
+    Feature options for code scanning default setup
+    """
+
+    runner_type: NotRequired[Union[Literal["standard", "labeled", "not_set"], None]]
+    runner_label: NotRequired[Union[str, None]]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: NotRequired[
+        list[
+            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+        ]
+    ]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+
+    Feature options for secret scanning delegated bypass
+    """
+
+    reviewers: NotRequired[
+        list[
+            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
+        ]
+    ]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
+    ems
+    """
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
+    security_configuration_id: NotRequired[int]
+
+
+class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
+    ems
+    """
+
+    reviewer_id: int
+    reviewer_type: Literal["TEAM", "ROLE"]
+    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
+    security_configuration_id: NotRequired[int]
 
 
 __all__ = (
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncTypeForResponse",
-    "GetLicenseSyncStatusPropServerInstancesItemsType",
-    "GetLicenseSyncStatusPropServerInstancesItemsTypeForResponse",
-    "GetLicenseSyncStatusType",
-    "GetLicenseSyncStatusTypeForResponse",
+    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
+    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse",
+    "CodeSecurityConfigurationPropCodeScanningOptionsType",
+    "CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
+    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse",
+    "CodeSecurityConfigurationType",
+    "CodeSecurityConfigurationTypeForResponse",
 )

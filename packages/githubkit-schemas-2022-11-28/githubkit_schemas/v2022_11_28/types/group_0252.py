@@ -9,30 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0253 import (
+    RepositoryRuleWorkflowsPropParametersType,
+    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+)
 
-class RulesetVersionPropActorType(TypedDict):
-    """RulesetVersionPropActor
 
-    The actor who updated the ruleset
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
+
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RulesetVersionPropActorTypeForResponse(TypedDict):
-    """RulesetVersionPropActor
+class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
+    """workflows
 
-    The actor who updated the ruleset
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    id: NotRequired[int]
-    type: NotRequired[str]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RulesetVersionPropActorType",
-    "RulesetVersionPropActorTypeForResponse",
+    "RepositoryRuleWorkflowsType",
+    "RepositoryRuleWorkflowsTypeForResponse",
 )

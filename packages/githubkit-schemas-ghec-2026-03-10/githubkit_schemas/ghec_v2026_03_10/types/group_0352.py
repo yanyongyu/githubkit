@@ -9,69 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupType(TypedDict):
-    """Concurrency Group
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
-    """
-
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
-
-
-class ConcurrencyGroupTypeForResponse(TypedDict):
-    """Concurrency Group
-
-    A concurrency group with the workflow runs and jobs that are either currently
-    holding
-    or waiting for the concurrency group lease.
-    """
-
-    group_name: str
-    group_url: str
-    total_count: int
-    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
+class RuleSuitesItemsTypeForResponse(TypedDict):
+    """RuleSuitesItems"""
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
-
-
-class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupPropGroupMembersItems"""
-
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    job_id: NotRequired[int]
-    job_name: NotRequired[str]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
 __all__ = (
-    "ConcurrencyGroupPropGroupMembersItemsType",
-    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupType",
-    "ConcurrencyGroupTypeForResponse",
+    "RuleSuitesItemsType",
+    "RuleSuitesItemsTypeForResponse",
 )

@@ -14,69 +14,74 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class IssueField(GitHubModel):
+    """Issue Field
 
-class ProjectsV2ItemWithContent(GitHubModel):
-    """Projects v2 Item
-
-    An item belonging to a project
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the issue field."
     )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The API URL of the project that contains this item."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
-    )
-    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description="The content of the item, which varies by content type.",
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
+        default=UNSET,
+        description="Available options for single select and multi select fields.",
     )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
-    updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
     )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-    item_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The API URL of this item."
-    )
-    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
-        default=UNSET, description="The fields and values associated with this item."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was last updated."
     )
 
 
-class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropContent
+class IssueFieldPropOptionsItems(GitHubModel):
+    """IssueFieldPropOptionsItems"""
 
-    The content of the item, which varies by content type.
-    """
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the option."
+    )
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
 
 
-class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
-    """ProjectsV2ItemWithContentPropFieldsItems"""
-
-
-model_rebuild(ProjectsV2ItemWithContent)
-model_rebuild(ProjectsV2ItemWithContentPropContent)
-model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
+model_rebuild(IssueField)
+model_rebuild(IssueFieldPropOptionsItems)
 
 __all__ = (
-    "ProjectsV2ItemWithContent",
-    "ProjectsV2ItemWithContentPropContent",
-    "ProjectsV2ItemWithContentPropFieldsItems",
+    "IssueField",
+    "IssueFieldPropOptionsItems",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,28 +18,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class SecretScanningCustomPatternValidationError(GitHubModel):
+    """Secret Scanning Custom Pattern Validation Error
 
-    Actions OIDC subject customization for a repository
+    A validation error for a custom pattern in a batch operation.
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    code: Missing[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ] = Field(
+        default=UNSET, description="A machine-readable code describing the error."
     )
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the repository has opted in to the immutable OIDC subject claim format. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim. If not set at the repository level, falls back to the organization-level setting.",
-    )
-    sub_claim_prefix: Missing[str] = Field(
-        default=UNSET, description="The current `sub` claim prefix for this repository."
+    message: Missing[str] = Field(
+        default=UNSET, description="A human-readable description of the error."
     )
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(SecretScanningCustomPatternValidationError)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("SecretScanningCustomPatternValidationError",)

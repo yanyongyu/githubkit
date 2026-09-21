@@ -9,72 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0122 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0130 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0139 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
+)
 
-class CopilotSpaceResourceType(TypedDict):
-    """Copilot Space Resource
 
-    A resource attached to a Copilot Space.
+class ActionsPolicyEnterpriseConditionsOneof5Type(TypedDict):
+    """organization_property_and_repository_property
+
+    Conditions to target organizations by property and repositories by property
     """
 
-    id: int
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    metadata: CopilotSpaceResourcePropMetadataType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CopilotSpaceResourceTypeForResponse(TypedDict):
-    """Copilot Space Resource
+class ActionsPolicyEnterpriseConditionsOneof5TypeForResponse(TypedDict):
+    """organization_property_and_repository_property
 
-    A resource attached to a Copilot Space.
+    Conditions to target organizations by property and repositories by property
     """
 
-    id: int
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
-    created_at: str
-    updated_at: str
-
-
-CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
-"""CopilotSpaceResourcePropMetadata
-
-Resource-specific metadata. The keys and values depend on the resource type.
-"""
-
-
-CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""CopilotSpaceResourcePropMetadata
-
-Resource-specific metadata. The keys and values depend on the resource type.
-"""
 
 
 __all__ = (
-    "CopilotSpaceResourcePropMetadataType",
-    "CopilotSpaceResourcePropMetadataTypeForResponse",
-    "CopilotSpaceResourceType",
-    "CopilotSpaceResourceTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof5Type",
+    "ActionsPolicyEnterpriseConditionsOneof5TypeForResponse",
 )

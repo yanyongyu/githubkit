@@ -9,27 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0050 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0063 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+class ActionsPolicyEnterpriseConditionsOneof1Type(TypedDict):
+    """organization_name_and_repository_property
+
+    Conditions to target organizations by name and repositories by property
+    """
+
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class CodeScanningAnalysisToolTypeForResponse(TypedDict):
-    """CodeScanningAnalysisTool"""
+class ActionsPolicyEnterpriseConditionsOneof1TypeForResponse(TypedDict):
+    """organization_name_and_repository_property
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    Conditions to target organizations by name and repositories by property
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "CodeScanningAnalysisToolType",
-    "CodeScanningAnalysisToolTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof1Type",
+    "ActionsPolicyEnterpriseConditionsOneof1TypeForResponse",
 )

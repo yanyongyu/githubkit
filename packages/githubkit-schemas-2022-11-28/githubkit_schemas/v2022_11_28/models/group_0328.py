@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,22 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateResponse(GitHubModel):
-    """CodeQualitySetupUpdateResponse
+class GitUser(GitHubModel):
+    """Git User
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Metaproperties for Git author/committer information.
     """
 
-    run_id: Missing[int] = Field(
-        default=UNSET, description="ID of the corresponding run."
-    )
-    run_url: Missing[str] = Field(
-        default=UNSET, description="URL of the corresponding run."
-    )
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+    date: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodeQualitySetupUpdateResponse)
+model_rebuild(GitUser)
 
-__all__ = ("CodeQualitySetupUpdateResponse",)
+__all__ = ("GitUser",)

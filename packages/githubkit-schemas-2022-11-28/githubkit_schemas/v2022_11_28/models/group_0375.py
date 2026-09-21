@@ -9,17 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+import datetime as _dt
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0090 import MinimalRepository
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Repository invitations let you manage who you collaborate with.
     """
 
+    id: int = Field(description="Unique identifier of the repository invitation.")
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    invitee: Union[SimpleUser, None] = Field()
+    inviter: Union[SimpleUser, None] = Field()
+    permissions: Literal[
+        "read", "write", "admin", "triage", "triage_plus", "maintain"
+    ] = Field(description="The permission associated with the invitation.")
+    created_at: _dt.datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
+    )
+    url: str = Field(description="URL for the repository invitation")
+    html_url: str = Field()
+    node_id: str = Field()
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+model_rebuild(RepositoryInvitation)
+
+__all__ = ("RepositoryInvitation",)

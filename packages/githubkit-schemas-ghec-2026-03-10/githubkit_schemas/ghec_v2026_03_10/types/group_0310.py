@@ -9,87 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0080 import TeamSimpleType, TeamSimpleTypeForResponse
+
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
+
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    The Relationship a Team has with a role.
-    """
-
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[TeamSimpleType, None]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class TeamRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a Team
-
-    The Relationship a Team has with a role.
-    """
-
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsTypeForResponse]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[TeamSimpleTypeForResponse, None]
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-class TeamRoleAssignmentPropPermissionsTypeForResponse(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "TeamRoleAssignmentPropPermissionsType",
-    "TeamRoleAssignmentPropPermissionsTypeForResponse",
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentTypeForResponse",
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )

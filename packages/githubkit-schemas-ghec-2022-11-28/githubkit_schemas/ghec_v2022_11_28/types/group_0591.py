@@ -9,85 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0590 import MetaType, MetaTypeForResponse
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseGroupResponseType(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class PullRequestStackMinimalType(TypedDict):
+    """Pull Request Stack Minimal"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaType]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: PullRequestStackMinimalPropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
 
 
-class ScimEnterpriseGroupResponseTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class PullRequestStackMinimalTypeForResponse(TypedDict):
+    """Pull Request Stack Minimal"""
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersTypeForResponse]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaTypeForResponse]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: PullRequestStackMinimalPropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
 
 
-class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class PullRequestStackMinimalPropBaseType(TypedDict):
+    """PullRequestStackMinimalPropBase"""
 
-    value: str
     ref: str
-    display: NotRequired[str]
 
 
-class ScimEnterpriseGroupResponseMergedMembersTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropBase"""
 
-    value: str
     ref: str
-    display: NotRequired[str]
 
 
-class ScimEnterpriseGroupListType(TypedDict):
-    """ScimEnterpriseGroupList"""
+class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseType]
-    start_index: int
-    items_per_page: int
+    number: int
+    state: Literal["open", "closed"]
+    draft: bool
+    merged_at: Union[_dt.datetime, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
 
 
-class ScimEnterpriseGroupListTypeForResponse(TypedDict):
-    """ScimEnterpriseGroupList"""
+class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
 
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: list[ScimEnterpriseGroupResponseTypeForResponse]
-    start_index: int
-    items_per_page: int
+    number: int
+    state: Literal["open", "closed"]
+    draft: bool
+    merged_at: Union[str, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "ScimEnterpriseGroupListType",
-    "ScimEnterpriseGroupListTypeForResponse",
-    "ScimEnterpriseGroupResponseMergedMembersType",
-    "ScimEnterpriseGroupResponseMergedMembersTypeForResponse",
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseTypeForResponse",
+    "PullRequestStackMinimalPropBaseType",
+    "PullRequestStackMinimalPropBaseTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsType",
+    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
+    "PullRequestStackMinimalType",
+    "PullRequestStackMinimalTypeForResponse",
 )

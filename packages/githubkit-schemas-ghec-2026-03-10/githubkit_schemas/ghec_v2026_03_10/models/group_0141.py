@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,40 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRulesetBypassActor(GitHubModel):
+    """Repository Ruleset Bypass Actor
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
-    )
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
-    )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
-    )
-
-
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
-
-    Required status check
+    An actor that can bypass rules in a ruleset
     """
 
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
-    )
-    integration_id: Missing[int] = Field(
+    actor_id: Missing[Union[int, None]] = Field(
         default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
+        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin`, `EnterpriseOwner` and `EnterpriseRole` are not applicable for personal repositories.",
+    )
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "EnterpriseOwner",
+        "EnterpriseRole",
+        "User",
+    ] = Field(description="The type of actor that can bypass a ruleset")
+    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
+        default=UNSET,
+        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+model_rebuild(RepositoryRulesetBypassActor)
 
-__all__ = (
-    "RepositoryRuleParamsStatusCheckConfiguration",
-    "RepositoryRuleRequiredStatusChecksPropParameters",
-)
+__all__ = ("RepositoryRulesetBypassActor",)

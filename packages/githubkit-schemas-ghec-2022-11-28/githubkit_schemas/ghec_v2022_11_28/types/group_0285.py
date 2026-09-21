@@ -13,153 +13,71 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0283 import (
-    DismissalRequestResponseType,
-    DismissalRequestResponseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class DependabotAlertDismissalRequestType(TypedDict):
-    """Dependabot alert dismissal request
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
 
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    The campaign metadata and alert stats.
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[DependabotAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[DependabotAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[DependabotAlertDismissalRequestPropDataItemsType], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestTypeForResponse(TypedDict):
-    """Dependabot alert dismissal request
-
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        DependabotAlertDismissalRequestPropRepositoryTypeForResponse
-    ]
-    organization: NotRequired[
-        DependabotAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterTypeForResponse]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[DependabotAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRepositoryType(TypedDict):
-    """DependabotAlertDismissalRequestPropRepository
-
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
+    number: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     name: NotRequired[str]
-    full_name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class DependabotAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropRepository
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
 
-    The repository the dismissal request is for.
+    The campaign metadata and alert stats.
     """
 
-    id: NotRequired[int]
+    number: int
+    created_at: str
+    updated_at: str
     name: NotRequired[str]
-    full_name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
 
 
-class DependabotAlertDismissalRequestPropOrganizationType(TypedDict):
-    """DependabotAlertDismissalRequestPropOrganization
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
-class DependabotAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropOrganization
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRequesterType(TypedDict):
-    """DependabotAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropDataItemsType(TypedDict):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    alert_title: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    alert_title: NotRequired[str]
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "DependabotAlertDismissalRequestPropDataItemsType",
-    "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
-    "DependabotAlertDismissalRequestPropOrganizationType",
-    "DependabotAlertDismissalRequestPropOrganizationTypeForResponse",
-    "DependabotAlertDismissalRequestPropRepositoryType",
-    "DependabotAlertDismissalRequestPropRepositoryTypeForResponse",
-    "DependabotAlertDismissalRequestPropRequesterType",
-    "DependabotAlertDismissalRequestPropRequesterTypeForResponse",
-    "DependabotAlertDismissalRequestType",
-    "DependabotAlertDismissalRequestTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

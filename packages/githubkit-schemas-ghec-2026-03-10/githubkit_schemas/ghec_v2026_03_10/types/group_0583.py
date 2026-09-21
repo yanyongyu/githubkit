@@ -9,34 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0582 import TrafficType, TrafficTypeForResponse
+
+class SecretScanningScanHistoryType(TypedDict):
+    """SecretScanningScanHistory"""
+
+    incremental_scans: NotRequired[list[SecretScanningScanType]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanType]]
+    backfill_scans: NotRequired[list[SecretScanningScanType]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType]
+    ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanType]]
 
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
+class SecretScanningScanHistoryTypeForResponse(TypedDict):
+    """SecretScanningScanHistory"""
 
-    Clone Traffic
+    incremental_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    pattern_update_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+    custom_pattern_backfill_scans: NotRequired[
+        list[
+            SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse
+        ]
+    ]
+    generic_secrets_backfill_scans: NotRequired[list[SecretScanningScanTypeForResponse]]
+
+
+class SecretScanningScanType(TypedDict):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CloneTrafficTypeForResponse(TypedDict):
-    """Clone Traffic
+class SecretScanningScanTypeForResponse(TypedDict):
+    """SecretScanningScan
 
-    Clone Traffic
+    Information on a single scan performed by secret scanning on the repository
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficTypeForResponse]
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    started_at: NotRequired[Union[_dt.datetime, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse(
+    TypedDict
+):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: NotRequired[str]
+    status: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    started_at: NotRequired[Union[str, None]]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "CloneTrafficType",
-    "CloneTrafficTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsType",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsTypeForResponse",
+    "SecretScanningScanHistoryType",
+    "SecretScanningScanHistoryTypeForResponse",
+    "SecretScanningScanType",
+    "SecretScanningScanTypeForResponse",
 )

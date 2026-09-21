@@ -14,18 +14,23 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0238 import RepositoryRulePullRequestPropParameters
 
 
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
+class RepositoryRulePullRequest(GitHubModel):
+    """pull_request
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["license_compliance_scanning"] = Field()
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
+model_rebuild(RepositoryRulePullRequest)
 
-__all__ = ("RepositoryRuleLicenseComplianceScanning",)
+__all__ = ("RepositoryRulePullRequest",)

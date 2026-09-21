@@ -9,33 +9,119 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0375 import MetadataType, MetadataTypeForResponse
+
+class RepositoryCollaboratorPermissionType(TypedDict):
+    """Repository Collaborator Permission
+
+    Repository Collaborator Permission
+    """
+
+    permission: str
+    role_name: str
+    user: Union[CollaboratorType, None]
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class RepositoryCollaboratorPermissionTypeForResponse(TypedDict):
+    """Repository Collaborator Permission
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Repository Collaborator Permission
+    """
+
+    permission: str
+    role_name: str
+    user: Union[CollaboratorTypeForResponse, None]
 
 
-class DependencyTypeForResponse(TypedDict):
-    """Dependency"""
+class CollaboratorType(TypedDict):
+    """Collaborator
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataTypeForResponse]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[list[str]]
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsType]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorTypeForResponse(TypedDict):
+    """Collaborator
+
+    Collaborator
+    """
+
+    login: str
+    id: int
+    email: NotRequired[Union[str, None]]
+    name: NotRequired[Union[str, None]]
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    permissions: NotRequired[CollaboratorPropPermissionsTypeForResponse]
+    role_name: str
+    user_view_type: NotRequired[str]
+
+
+class CollaboratorPropPermissionsType(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
+
+
+class CollaboratorPropPermissionsTypeForResponse(TypedDict):
+    """CollaboratorPropPermissions"""
+
+    pull: bool
+    triage: NotRequired[bool]
+    push: bool
+    maintain: NotRequired[bool]
+    admin: bool
 
 
 __all__ = (
-    "DependencyType",
-    "DependencyTypeForResponse",
+    "CollaboratorPropPermissionsType",
+    "CollaboratorPropPermissionsTypeForResponse",
+    "CollaboratorType",
+    "CollaboratorTypeForResponse",
+    "RepositoryCollaboratorPermissionType",
+    "RepositoryCollaboratorPermissionTypeForResponse",
 )

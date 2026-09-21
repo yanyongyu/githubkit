@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,28 +18,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class OrgHook(GitHubModel):
+    """Org Hook
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended use of this role or the permissions it grants.",
-    )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
-    base_role: Missing[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ] = Field(
-        default=UNSET,
-        description="The system role from which this role can inherit permissions.",
-    )
+    Org Hook
+    """
+
+    id: int = Field()
+    url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    events: list[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    type: str = Field()
 
 
-model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
+
+__all__ = (
+    "OrgHook",
+    "OrgHookPropConfig",
+)

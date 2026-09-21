@@ -9,20 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+    The configuration for iteration fields.
+    """
+
+    start_date: _dt.date = Field(description="The start date of the first iteration.")
+    duration: int = Field(
+        description="The default duration for iterations in days. Individual iterations can override this value."
+    )
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
 
 
-model_rebuild(RateLimit)
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-__all__ = ("RateLimit",)
+    title: str = Field(description="The title of the iteration.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
+
+
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+
+__all__ = (
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+)

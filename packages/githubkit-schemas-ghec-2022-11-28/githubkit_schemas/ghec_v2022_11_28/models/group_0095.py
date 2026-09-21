@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,54 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0008 import Enterprise
 
+class CodeScanningAlertRuleSummary(GitHubModel):
+    """CodeScanningAlertRuleSummary"""
 
-class EnterpriseRole(GitHubModel):
-    """Enterprise Role
-
-    Enterprise custom roles
-    """
-
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
+    id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="A unique identifier for the rule used to detect the alert.",
     )
-    source: Missing[Union[Literal["Enterprise", "Predefined"], None]] = Field(
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
+    )
+    severity: Missing[Union[Literal["none", "note", "warning", "error"], None]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
+        description="A short description of the rule used to detect the alert.",
     )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
     )
-    enterprise: Union[Enterprise, None] = Field()
-    created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
+    tags: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
-    )
-
-
-class EnterprisesEnterpriseEnterpriseRolesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseEnterpriseRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
+    help_: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The total number of enterprise roles available to the enterprise.",
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
     )
-    roles: Missing[list[EnterpriseRole]] = Field(
+    help_uri: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The list of enterprise roles available to the enterprise.",
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 
-model_rebuild(EnterpriseRole)
-model_rebuild(EnterprisesEnterpriseEnterpriseRolesGetResponse200)
+model_rebuild(CodeScanningAlertRuleSummary)
 
-__all__ = (
-    "EnterpriseRole",
-    "EnterprisesEnterpriseEnterpriseRolesGetResponse200",
-)
+__all__ = ("CodeScanningAlertRuleSummary",)

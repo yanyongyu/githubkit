@@ -14,29 +14,20 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class Email(GitHubModel):
+    """Email
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+    Email
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
+    email: str = Field()
+    primary: bool = Field()
     verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+    visibility: Union[str, None] = Field()
 
 
-model_rebuild(WebhooksDeployKey)
+model_rebuild(Email)
 
-__all__ = ("WebhooksDeployKey",)
+__all__ = ("Email",)

@@ -10,38 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoReleasesPostBodyType(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    tag_name: str
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    discussion_category_name: NotRequired[str]
-    generate_release_notes: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesPostBodyType",
-    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
 )

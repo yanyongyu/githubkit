@@ -10,113 +10,87 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0488 import (
-    SecretScanningAlertMetadataItemsType,
-    SecretScanningAlertMetadataItemsTypeForResponse,
-)
+
+class WebhooksLabelUnarchivedAllof1Type(TypedDict):
+    """WebhooksLabelUnarchivedAllof1"""
+
+    archived_at: Union[_dt.datetime, None]
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
 
 
-class SecretScanningAlertWebhookType(TypedDict):
-    """SecretScanningAlertWebhook"""
+class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelUnarchivedAllof1"""
 
-    number: NotRequired[int]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-            None,
-        ]
-    ]
-    resolved_at: NotRequired[Union[_dt.datetime, None]]
-    resolved_by: NotRequired[Union[SimpleUserType, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    provider: NotRequired[Union[str, None]]
-    provider_slug: NotRequired[Union[str, None]]
-    secret_category: NotRequired[Literal["default", "generic"]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[SimpleUserType, None]]
-    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
-    push_protection_bypass_request_reviewer: NotRequired[Union[SimpleUserType, None]]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    assigned_to: NotRequired[Union[SimpleUserType, None]]
-    closure_request_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer: NotRequired[Union[SimpleUserType, None]]
-    metadata: NotRequired[list[SecretScanningAlertMetadataItemsType]]
+    archived_at: Union[str, None]
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
 
 
-class SecretScanningAlertWebhookTypeForResponse(TypedDict):
-    """SecretScanningAlertWebhook"""
+class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
 
-    number: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    resolution: NotRequired[
-        Union[
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-            None,
-        ]
-    ]
-    resolved_at: NotRequired[Union[str, None]]
-    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    provider: NotRequired[Union[str, None]]
-    provider_slug: NotRequired[Union[str, None]]
-    secret_category: NotRequired[Literal["default", "generic"]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    push_protection_bypassed_at: NotRequired[Union[str, None]]
-    push_protection_bypass_request_reviewer: NotRequired[
-        Union[SimpleUserTypeForResponse, None]
-    ]
-    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
-    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
-    publicly_leaked: NotRequired[Union[bool, None]]
-    multi_repo: NotRequired[Union[bool, None]]
-    assigned_to: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    closure_request_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer_comment: NotRequired[Union[str, None]]
-    closure_request_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    metadata: NotRequired[list[SecretScanningAlertMetadataItemsTypeForResponse]]
+    The user who archived the label. This is `null` after the label is unarchived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+
+    The user who archived the label. This is `null` after the label is unarchived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningAlertWebhookType",
-    "SecretScanningAlertWebhookTypeForResponse",
+    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
+    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
+    "WebhooksLabelUnarchivedAllof1Type",
+    "WebhooksLabelUnarchivedAllof1TypeForResponse",
 )

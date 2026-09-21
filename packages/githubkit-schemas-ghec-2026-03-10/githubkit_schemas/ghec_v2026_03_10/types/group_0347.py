@@ -10,73 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ArtifactType(TypedDict):
-    """Artifact
 
-    An artifact
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
+
+    An item belonging to a project
     """
 
-    id: int
-    node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[_dt.datetime, None]
-    expires_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-class ArtifactTypeForResponse(TypedDict):
-    """Artifact
+class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    An artifact
+    An item belonging to a project
     """
 
-    id: int
-    node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[str, None]
-    expires_at: Union[str, None]
-    updated_at: Union[str, None]
-    digest: NotRequired[Union[str, None]]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[
+        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
+    ]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
 
 
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+The content of the item, which varies by content type.
+"""
 
 
-class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
-    """ArtifactPropWorkflowRun"""
+ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+The content of the item, which varies by content type.
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
 __all__ = (
-    "ArtifactPropWorkflowRunType",
-    "ArtifactPropWorkflowRunTypeForResponse",
-    "ArtifactType",
-    "ArtifactTypeForResponse",
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropContentTypeForResponse",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
+    "ProjectsV2ItemWithContentType",
+    "ProjectsV2ItemWithContentTypeForResponse",
 )

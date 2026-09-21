@@ -11,28 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class GitignoreTemplateType(TypedDict):
-    """Gitignore Template
-
-    Gitignore Template
-    """
-
-    name: str
-    source: str
+from .group_0247 import ForkEventPropForkeeType, ForkEventPropForkeeTypeForResponse
 
 
-class GitignoreTemplateTypeForResponse(TypedDict):
-    """Gitignore Template
+class ForkEventType(TypedDict):
+    """ForkEvent"""
 
-    Gitignore Template
-    """
+    action: str
+    forkee: ForkEventPropForkeeType
 
-    name: str
-    source: str
+
+class ForkEventTypeForResponse(TypedDict):
+    """ForkEvent"""
+
+    action: str
+    forkee: ForkEventPropForkeeTypeForResponse
 
 
 __all__ = (
-    "GitignoreTemplateType",
-    "GitignoreTemplateTypeForResponse",
+    "ForkEventType",
+    "ForkEventTypeForResponse",
 )

@@ -9,31 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0143 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class SecretScanningCustomPatternToDeleteType(TypedDict):
-    """Secret Scanning Custom Pattern To Delete
 
-    A custom pattern to delete in a bulk operation.
+class OrgRulesetConditionsOneof2Type(TypedDict):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
     """
 
-    pattern_id: int
-    custom_pattern_version: NotRequired[Union[str, None]]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Delete
+class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """repository_property_and_ref_name
 
-    A custom pattern to delete in a bulk operation.
+    Conditions to target repositories by property and refs by name
     """
 
-    pattern_id: int
-    custom_pattern_version: NotRequired[Union[str, None]]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "SecretScanningCustomPatternToDeleteType",
-    "SecretScanningCustomPatternToDeleteTypeForResponse",
+    "OrgRulesetConditionsOneof2Type",
+    "OrgRulesetConditionsOneof2TypeForResponse",
 )

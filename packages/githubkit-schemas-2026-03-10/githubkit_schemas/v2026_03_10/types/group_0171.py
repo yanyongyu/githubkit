@@ -9,143 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
-    """
-
-    id: int
-    reason: Union[str, None]
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class OrganizationProgrammaticAccessGrantRequestTypeForResponse(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
-    """
-
-    id: int
-    reason: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: (
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse
-    )
-    created_at: str
-    token_id: int
-    token_name: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse(
-    TypedDict
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse
-    ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse
-    ]
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-"""
-
-
-OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-"""
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsTypeForResponse",
-    "OrganizationProgrammaticAccessGrantRequestType",
-    "OrganizationProgrammaticAccessGrantRequestTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Allof1Type",
+    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
 )

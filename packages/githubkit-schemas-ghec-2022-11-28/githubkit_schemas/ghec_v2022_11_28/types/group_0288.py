@@ -9,46 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    A list of external groups available to be connected to a team
+    A description of the machine powering a codespace.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
-class ExternalGroupsTypeForResponse(TypedDict):
-    """ExternalGroups
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    A list of external groups available to be connected to a team
+    A description of the machine powering a codespace.
     """
 
-    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
-
-
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 __all__ = (
-    "ExternalGroupsPropGroupsItemsType",
-    "ExternalGroupsPropGroupsItemsTypeForResponse",
-    "ExternalGroupsType",
-    "ExternalGroupsTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

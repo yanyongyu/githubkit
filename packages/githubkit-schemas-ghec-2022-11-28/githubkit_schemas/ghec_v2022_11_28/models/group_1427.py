@@ -12,15 +12,28 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
+    GitHubModel
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
+    )
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
+model_rebuild(
+    OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
+)
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)
+__all__ = (
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
+)

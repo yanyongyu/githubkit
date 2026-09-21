@@ -9,84 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    Rate Limit Overview
+    The configuration for iteration fields.
     """
 
-    resources: RateLimitOverviewPropResourcesType
+    start_date: _dt.date
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
+    ]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    Rate Limit Overview
+    The configuration for iteration fields.
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
+    start_date: str
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    ]
 
 
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    dependency_sbom: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
-    copilot_usage_records: NotRequired[RateLimitType]
+    title: str
+    start_date: _dt.date
+    duration: int
 
 
-class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
-    """RateLimitOverviewPropResources"""
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    core: RateLimitTypeForResponse
-    graphql: NotRequired[RateLimitTypeForResponse]
-    search: RateLimitTypeForResponse
-    code_search: NotRequired[RateLimitTypeForResponse]
-    source_import: NotRequired[RateLimitTypeForResponse]
-    integration_manifest: NotRequired[RateLimitTypeForResponse]
-    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
-    scim: NotRequired[RateLimitTypeForResponse]
-    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
-    dependency_sbom: NotRequired[RateLimitTypeForResponse]
-    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
-    copilot_usage_records: NotRequired[RateLimitTypeForResponse]
-
-
-class RateLimitType(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
-
-
-class RateLimitTypeForResponse(TypedDict):
-    """Rate Limit"""
-
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    title: str
+    start_date: str
+    duration: int
 
 
 __all__ = (
-    "RateLimitOverviewPropResourcesType",
-    "RateLimitOverviewPropResourcesTypeForResponse",
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
-    "RateLimitType",
-    "RateLimitTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

@@ -9,53 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-class PackageType(TypedDict):
-    """Package
-
-    A software package
+    The AI Scan organization setting to apply
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[SimpleUserType, None]]
-    repository: NotRequired[Union[MinimalRepositoryType, None]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    A software package
+    The AI Scan organization setting to apply
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    repository: NotRequired[Union[MinimalRepositoryTypeForResponse, None]]
-    created_at: str
-    updated_at: str
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "CodeScanningAiScanOrgEnablementUpdateType",
+    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
 )

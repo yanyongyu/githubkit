@@ -11,128 +11,32 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
-    """Organization private registry
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    Private registry configuration for an organization
+    Interaction limit settings.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: _dt.datetime
 
 
-class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(TypedDict):
-    """Organization private registry
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
 
-    Private registry configuration for an organization
+    Interaction limit settings.
     """
 
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ]
-    url: NotRequired[str]
-    username: NotRequired[str]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[list[int]]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
-    created_at: str
-    updated_at: str
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesType",
-    "OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse",
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
 )

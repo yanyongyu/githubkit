@@ -9,60 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActivityType(TypedDict):
-    """Activity
+class ConcurrencyGroupType(TypedDict):
+    """Concurrency Group
 
-    Activity
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: _dt.datetime
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[SimpleUserType, None]
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsType]
 
 
-class ActivityTypeForResponse(TypedDict):
-    """Activity
+class ConcurrencyGroupTypeForResponse(TypedDict):
+    """Concurrency Group
 
-    Activity
+    A concurrency group with the workflow runs and jobs that are either currently
+    holding
+    or waiting for the concurrency group lease.
     """
 
-    id: int
-    node_id: str
-    before: str
-    after: str
-    ref: str
-    timestamp: str
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ]
-    actor: Union[SimpleUserTypeForResponse, None]
+    group_name: str
+    group_url: str
+    total_count: int
+    group_members: list[ConcurrencyGroupPropGroupMembersItemsTypeForResponse]
+
+
+class ConcurrencyGroupPropGroupMembersItemsType(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
+
+
+class ConcurrencyGroupPropGroupMembersItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupPropGroupMembersItems"""
+
+    run_id: int
+    run_name: str
+    run_url: Union[str, None]
+    run_html_url: Union[str, None]
+    job_id: NotRequired[int]
+    job_name: NotRequired[str]
+    job_url: NotRequired[Union[str, None]]
+    job_html_url: NotRequired[Union[str, None]]
+    status: Literal["in_progress", "pending"]
 
 
 __all__ = (
-    "ActivityType",
-    "ActivityTypeForResponse",
+    "ConcurrencyGroupPropGroupMembersItemsType",
+    "ConcurrencyGroupPropGroupMembersItemsTypeForResponse",
+    "ConcurrencyGroupType",
+    "ConcurrencyGroupTypeForResponse",
 )

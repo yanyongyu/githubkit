@@ -10,35 +10,242 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0228 import MilestoneType, MilestoneTypeForResponse
+from .group_0229 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0230 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0231 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0234 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0235 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0619 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class KeySimpleType(TypedDict):
-    """Key Simple
 
-    Key Simple
+class IssueSearchResultItemType(TypedDict):
+    """Issue Search Result Item
+
+    Issue Search Result Item
     """
 
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
     id: int
-    key: str
-    created_at: NotRequired[_dt.datetime]
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    user: Union[SimpleUserType, None]
+    labels: list[IssueSearchResultItemPropLabelsItemsType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    milestone: Union[MilestoneType, None]
+    comments: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class IssueSearchResultItemTypeForResponse(TypedDict):
+    """Issue Search Result Item
 
-    Key Simple
+    Issue Search Result Item
     """
 
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
     id: int
-    key: str
-    created_at: NotRequired[str]
-    last_used: NotRequired[Union[str, None]]
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    user: Union[SimpleUserTypeForResponse, None]
+    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    milestone: Union[MilestoneTypeForResponse, None]
+    comments: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    archived_by: NotRequired[None]
+
+
+class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    archived_at: NotRequired[Union[str, None]]
+    archived_by: NotRequired[None]
+
+
+class IssueSearchResultItemPropPullRequestType(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class SearchIssuesGetResponse200Type(TypedDict):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemType]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+                "service_unavailable",
+            ]
+        ]
+    ]
+
+
+class SearchIssuesGetResponse200TypeForResponse(TypedDict):
+    """SearchIssuesGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemTypeForResponse]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+                "service_unavailable",
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
+    "IssueSearchResultItemPropPullRequestType",
+    "IssueSearchResultItemPropPullRequestTypeForResponse",
+    "IssueSearchResultItemType",
+    "IssueSearchResultItemTypeForResponse",
+    "SearchIssuesGetResponse200Type",
+    "SearchIssuesGetResponse200TypeForResponse",
 )

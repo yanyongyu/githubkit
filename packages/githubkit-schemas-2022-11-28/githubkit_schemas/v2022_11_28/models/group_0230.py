@@ -12,20 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleParamsRestrictedCommits(GitHubModel):
-    """RestrictedCommits
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
 
-    Restricted commit
-    """
-
-    oid: str = Field(description="Full or abbreviated commit hash to reject")
-    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
+    )
 
 
-model_rebuild(RepositoryRuleParamsRestrictedCommits)
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-__all__ = ("RepositoryRuleParamsRestrictedCommits",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

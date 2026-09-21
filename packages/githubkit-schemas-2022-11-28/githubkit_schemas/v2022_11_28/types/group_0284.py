@@ -9,33 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    Set secrets for GitHub Actions.
+    A custom pattern to delete in a bulk operation.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class ActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    Set secrets for GitHub Actions.
+    A custom pattern to delete in a bulk operation.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ActionsSecretType",
-    "ActionsSecretTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

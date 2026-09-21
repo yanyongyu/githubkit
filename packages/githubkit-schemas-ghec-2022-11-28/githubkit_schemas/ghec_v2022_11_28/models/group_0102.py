@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,35 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NetworkConfiguration(GitHubModel):
-    """Hosted compute network configuration
+class CodeScanningOptions(GitHubModel):
+    """CodeScanningOptions
 
-    A hosted compute network configuration.
+    Security Configuration feature options for code scanning
     """
 
-    id: str = Field(description="The unique identifier of the network configuration.")
-    name: str = Field(description="The name of the network configuration.")
-    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
-        default=UNSET,
-        description="The hosted compute service the network configuration supports.",
-    )
-    network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each network settings in the configuration.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each failover network settings in the configuration.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
-    )
-    created_on: Union[_dt.datetime, None] = Field(
-        description="The time at which the network configuration was created, in ISO 8601 format."
+    allow_advanced: Missing[Union[bool, None]] = Field(
+        default=UNSET, description="Whether to allow repos which use advanced setup"
     )
 
 
-model_rebuild(NetworkConfiguration)
+class CodeScanningDefaultSetupOptions(GitHubModel):
+    """CodeScanningDefaultSetupOptions
 
-__all__ = ("NetworkConfiguration",)
+    Feature options for code scanning default setup
+    """
+
+    runner_type: Missing[Literal["standard", "labeled", "not_set"]] = Field(
+        default=UNSET,
+        description="Whether to use labeled runners or standard GitHub runners.",
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
+    )
+
+
+model_rebuild(CodeScanningOptions)
+model_rebuild(CodeScanningDefaultSetupOptions)
+
+__all__ = (
+    "CodeScanningDefaultSetupOptions",
+    "CodeScanningOptions",
+)

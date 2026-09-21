@@ -12,25 +12,103 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheStorageLimitForRepositoryType(TypedDict):
-    """Actions cache storage limit for a repository
+class SecretScanningLocationIssueTitleType(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    GitHub Actions cache storage policy for a repository.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    max_cache_size_gb: NotRequired[int]
+    issue_title_url: str
+    html_url: NotRequired[str]
 
 
-class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache storage limit for a repository
+class SecretScanningLocationIssueTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueTitle
 
-    GitHub Actions cache storage policy for a repository.
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
     """
 
-    max_cache_size_gb: NotRequired[int]
+    issue_title_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationIssueCommentType(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationIssueCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestTitleType(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewCommentType(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForRepositoryType",
-    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
+    "SecretScanningLocationIssueCommentType",
+    "SecretScanningLocationIssueCommentTypeForResponse",
+    "SecretScanningLocationIssueTitleType",
+    "SecretScanningLocationIssueTitleTypeForResponse",
+    "SecretScanningLocationPullRequestReviewCommentType",
+    "SecretScanningLocationPullRequestReviewCommentTypeForResponse",
+    "SecretScanningLocationPullRequestTitleType",
+    "SecretScanningLocationPullRequestTitleTypeForResponse",
 )

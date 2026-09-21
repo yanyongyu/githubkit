@@ -9,73 +9,120 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0307 import GitUserType, GitUserTypeForResponse
-from .group_0308 import VerificationType, VerificationTypeForResponse
+
+class PrivateVulnerabilityReportCreateType(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
+
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
+    """PrivateVulnerabilityReportCreate"""
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[GitUserType, None]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommit"""
-
-    author: CommitSearchResultItemPropCommitPropAuthorTypeForResponse
-    committer: Union[GitUserTypeForResponse, None]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeTypeForResponse
-    url: str
-    verification: NotRequired[VerificationTypeForResponse]
+    summary: str
+    description: str
+    vulnerabilities: NotRequired[
+        Union[
+            list[
+                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
 
-    name: str
-    email: str
-    date: _dt.datetime
-
-
-class CommitSearchResultItemPropCommitPropAuthorTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: str
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
 
 
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
 
-    sha: str
-    url: str
+    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
 
 
-class CommitSearchResultItemPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
 
-    sha: str
-    url: str
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropAuthorTypeForResponse",
-    "CommitSearchResultItemPropCommitPropTreeType",
-    "CommitSearchResultItemPropCommitPropTreeTypeForResponse",
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
+    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
+    "PrivateVulnerabilityReportCreateType",
+    "PrivateVulnerabilityReportCreateTypeForResponse",
 )

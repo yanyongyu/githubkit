@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
-class CodeScanningAnalysisToolTypeForResponse(TypedDict):
-    """CodeScanningAnalysisTool"""
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
+    TypedDict
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "CodeScanningAnalysisToolType",
-    "CodeScanningAnalysisToolTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
 )

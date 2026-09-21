@@ -10,30 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0238 import (
+    RepositoryRulePullRequestPropParametersType,
+    RepositoryRulePullRequestPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleLicenseComplianceScanningType(TypedDict):
-    """license_compliance_scanning
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
-    """license_compliance_scanning
+class RepositoryRulePullRequestTypeForResponse(TypedDict):
+    """pull_request
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleLicenseComplianceScanningType",
-    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
+    "RepositoryRulePullRequestType",
+    "RepositoryRulePullRequestTypeForResponse",
 )

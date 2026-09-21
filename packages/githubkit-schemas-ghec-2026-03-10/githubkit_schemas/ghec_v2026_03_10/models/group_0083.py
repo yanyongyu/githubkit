@@ -9,63 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0045 import OrganizationSimple
-from .group_0081 import Team
-from .group_0082 import EnterpriseTeam
 
 
-class CopilotSeatDetails(GitHubModel):
-    """Copilot Business Seat Detail
+class AccessibleRepository(GitHubModel):
+    """Accessible Repository
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    A repository that may be made accessible to a GitHub App.
     """
 
-    assignee: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    organization: Missing[Union[OrganizationSimple, None]] = Field(default=UNSET)
-    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
-        default=UNSET,
-        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
-    )
-    pending_cancellation_date: Missing[Union[_dt.date, None]] = Field(
-        default=UNSET,
-        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
-    )
-    last_activity_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
-    )
-    last_activity_editor: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Last editor that was used by the user for a GitHub Copilot completion.",
-    )
-    last_authenticated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp of the last time the user authenticated with GitHub Copilot, in ISO 8601 format.",
-    )
-    created_at: _dt.datetime = Field(
-        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
-    )
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
-    )
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field()
 
 
-model_rebuild(CopilotSeatDetails)
+model_rebuild(AccessibleRepository)
 
-__all__ = ("CopilotSeatDetails",)
+__all__ = ("AccessibleRepository",)

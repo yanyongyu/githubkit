@@ -9,102 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class FeedType(TypedDict):
-    """Feed
+class ReleaseAssetType(TypedDict):
+    """Release Asset
 
-    Feed
+    Data related to a release.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    uploader: Union[SimpleUserType, None]
 
 
-class FeedTypeForResponse(TypedDict):
-    """Feed
+class ReleaseAssetTypeForResponse(TypedDict):
+    """Release Asset
 
-    Feed
+    Data related to a release.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksTypeForResponse
-
-
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[list[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
-
-
-class FeedPropLinksTypeForResponse(TypedDict):
-    """FeedPropLinks"""
-
-    timeline: LinkWithTypeTypeForResponse
-    user: LinkWithTypeTypeForResponse
-    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
-    current_user: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
-    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
-    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
-
-
-class LinkWithTypeType(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
-
-
-class LinkWithTypeTypeForResponse(TypedDict):
-    """Link With Type
-
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: str
+    updated_at: str
+    uploader: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "FeedPropLinksType",
-    "FeedPropLinksTypeForResponse",
-    "FeedType",
-    "FeedTypeForResponse",
-    "LinkWithTypeType",
-    "LinkWithTypeTypeForResponse",
+    "ReleaseAssetType",
+    "ReleaseAssetTypeForResponse",
 )

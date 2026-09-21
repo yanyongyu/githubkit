@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,39 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0059 import ActionsPolicyOrgConditionsOneof0
+from .group_0060 import ActionsPolicyOrgConditionsOneof1
+from .group_0061 import ActionsPolicyOrgConditionsOneof2
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class OrgsOrgAgentsVariablesNamePatchBody(GitHubModel):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
-    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    conditions: Missing[
+        Union[
+            ActionsPolicyOrgConditionsOneof0,
+            ActionsPolicyOrgConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof2,
+        ]
+    ] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+        title="Organization Actions policy conditions",
+        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
     )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(OrgsOrgAgentsVariablesNamePatchBody)
+model_rebuild(OrgsOrgActionsPoliciesPolicyIdPutBody)
 
-__all__ = ("OrgsOrgAgentsVariablesNamePatchBody",)
+__all__ = ("OrgsOrgActionsPoliciesPolicyIdPutBody",)

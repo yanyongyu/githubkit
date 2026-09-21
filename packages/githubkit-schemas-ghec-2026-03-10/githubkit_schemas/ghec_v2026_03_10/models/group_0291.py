@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,38 +18,64 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgHook(GitHubModel):
-    """Org Hook
+class CopilotSpaceCollaboratorAnyof0(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    Org Hook
-    """
-
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
     id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
     type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
+    )
 
 
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
+class CopilotSpaceCollaboratorAnyof1(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof1"""
 
+    actor_type: Literal["Team"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
+    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    slug: str = Field()
+    type: Literal["Team"] = Field()
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    members_url: Missing[str] = Field(default=UNSET)
+    repositories_url: Missing[str] = Field(default=UNSET)
+    organization_id: Missing[int] = Field(default=UNSET)
+    parent: Missing[None] = Field(default=UNSET)
 
 
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
+model_rebuild(CopilotSpaceCollaboratorAnyof0)
+model_rebuild(CopilotSpaceCollaboratorAnyof1)
 
 __all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
+    "CopilotSpaceCollaboratorAnyof0",
+    "CopilotSpaceCollaboratorAnyof1",
 )

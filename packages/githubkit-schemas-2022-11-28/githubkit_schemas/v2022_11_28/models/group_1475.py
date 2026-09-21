@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0501 import PullRequestStackPullRequest
 
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    reviewers: list[str] = Field(
+        description="An array of user `login`s that will be removed."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    team_reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be removed."
+    )
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)

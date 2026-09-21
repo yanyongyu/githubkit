@@ -9,75 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0081 import TeamType, TeamTypeForResponse
+from typing_extensions import TypedDict
 
 
-class CampaignSummaryType(TypedDict):
-    """Campaign summary
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    The campaign metadata and alert stats.
+    Marketplace Listing Plan
     """
 
+    url: str
+    accounts_url: str
+    id: int
     number: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    name: NotRequired[str]
+    name: str
     description: str
-    managers: list[SimpleUserType]
-    team_managers: NotRequired[list[TeamType]]
-    published_at: NotRequired[_dt.datetime]
-    ends_at: _dt.datetime
-    closed_at: NotRequired[Union[_dt.datetime, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-class CampaignSummaryTypeForResponse(TypedDict):
-    """Campaign summary
+class MarketplaceListingPlanTypeForResponse(TypedDict):
+    """Marketplace Listing Plan
 
-    The campaign metadata and alert stats.
+    Marketplace Listing Plan
     """
 
+    url: str
+    accounts_url: str
+    id: int
     number: int
-    created_at: str
-    updated_at: str
-    name: NotRequired[str]
+    name: str
     description: str
-    managers: list[SimpleUserTypeForResponse]
-    team_managers: NotRequired[list[TeamTypeForResponse]]
-    published_at: NotRequired[str]
-    ends_at: str
-    closed_at: NotRequired[Union[str, None]]
-    state: Literal["open", "closed"]
-    contact_link: Union[str, None]
-    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
-
-
-class CampaignSummaryPropAlertStatsType(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
-
-
-class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
-    """CampaignSummaryPropAlertStats"""
-
-    open_count: int
-    closed_count: int
-    in_progress_count: int
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
 __all__ = (
-    "CampaignSummaryPropAlertStatsType",
-    "CampaignSummaryPropAlertStatsTypeForResponse",
-    "CampaignSummaryType",
-    "CampaignSummaryTypeForResponse",
+    "MarketplaceListingPlanType",
+    "MarketplaceListingPlanTypeForResponse",
 )

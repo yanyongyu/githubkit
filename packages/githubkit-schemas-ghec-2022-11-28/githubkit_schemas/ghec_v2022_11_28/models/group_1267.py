@@ -9,50 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0137 import CustomPropertyValue
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseOrgPropertiesValuesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseOrgPropertiesValuesPatchBody"""
 
-    total_count: int = Field()
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignment] = Field()
-
-
-class VisualStudioSubscriptionAssignment(GitHubModel):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: Missing[str] = Field(
-        default=UNSET,
-        description="The email associated with the Visual Studio subscription assignment in the visual studio portal.",
+    organization_logins: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of organizations that the custom property values will be applied to.",
     )
-    subscription_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the Visual Studio Subscription. This is a GUID that comes from the Visual Studio management portal.",
-    )
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GitHub username of the user associated with the Visual Studio subscription assignment.",
-    )
-    manual_match: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if the Visual Studio subscription assignment was manually matched to a user.",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the organizations."
     )
 
 
-model_rebuild(EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200)
-model_rebuild(VisualStudioSubscriptionAssignment)
+model_rebuild(EnterprisesEnterpriseOrgPropertiesValuesPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200",
-    "VisualStudioSubscriptionAssignment",
-)
+__all__ = ("EnterprisesEnterpriseOrgPropertiesValuesPatchBody",)

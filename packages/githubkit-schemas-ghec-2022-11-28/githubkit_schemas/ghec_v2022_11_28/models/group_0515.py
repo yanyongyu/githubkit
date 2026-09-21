@@ -17,12 +17,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0494 import IssueReference
 
 
-class TimelineConnectedEvent(GitHubModel):
-    """Timeline Connected Event
+class SubIssueAddedIssueEvent(GitHubModel):
+    """Sub-issue Added Issue Event
 
-    Timeline Connected Event
+    Sub-issue Added Issue Event
     """
 
     id: int = Field()
@@ -34,8 +35,9 @@ class TimelineConnectedEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
+    sub_issue: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(TimelineConnectedEvent)
+model_rebuild(SubIssueAddedIssueEvent)
 
-__all__ = ("TimelineConnectedEvent",)
+__all__ = ("SubIssueAddedIssueEvent",)

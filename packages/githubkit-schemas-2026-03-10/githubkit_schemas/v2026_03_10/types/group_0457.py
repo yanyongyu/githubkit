@@ -9,109 +9,193 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class PullRequestMergeAsyncResultType(TypedDict):
-    """Pull Request Merge Async Result
+class PullRequestReviewCommentType(TypedDict):
+    """Pull Request Review Comment
 
-    Pull Request Merge Async Result
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0Type,
-        PullRequestMergeAsyncResultPropDetailsOneof1Type,
-        PullRequestMergeAsyncResultPropDetailsOneof2Type,
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[SimpleUserType, None]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
+    links: PullRequestReviewCommentPropLinksType
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
 
 
-class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
-    """Pull Request Merge Async Result
+class PullRequestReviewCommentTypeForResponse(TypedDict):
+    """Pull Request Review Comment
 
-    Pull Request Merge Async Result
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse,
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: NotRequired[int]
+    original_position: NotRequired[int]
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[SimpleUserTypeForResponse, None]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
+    links: PullRequestReviewCommentPropLinksTypeForResponse
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    subject_type: NotRequired[Literal["line", "file"]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof0Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
+class PullRequestReviewCommentPropLinksType(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
 
-    When an asynchronous merge request was created or already existed
+    self_: PullRequestReviewCommentPropLinksPropSelfType
+    html: PullRequestReviewCommentPropLinksPropHtmlType
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
+
+
+class PullRequestReviewCommentPropLinksTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinks"""
+
+    self_: PullRequestReviewCommentPropLinksPropSelfTypeForResponse
+    html: PullRequestReviewCommentPropLinksPropHtmlTypeForResponse
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse
+
+
+class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropSelfTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropHtmlTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse(TypedDict):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str
+
+
+class TimelineLineCommentedEventType(TypedDict):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
     """
 
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentType]]
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
+class TimelineLineCommentedEventTypeForResponse(TypedDict):
+    """Timeline Line Commented Event
 
-    When an asynchronous merge request was created or already existed
+    Timeline Line Commented Event
     """
 
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
-
-    When the pull request cannot be merged
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof2Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
-
-    When the pull request is already merged
-    """
-
-    message: str
-    sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
-
-    When the pull request is already merged
-    """
-
-    message: str
-    sha: str
+    event: NotRequired[Literal["line_commented"]]
+    node_id: NotRequired[str]
+    comments: NotRequired[list[PullRequestReviewCommentTypeForResponse]]
 
 
 __all__ = (
-    "PullRequestMergeAsyncResultPropDetailsOneof0Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof1Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof2Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse",
-    "PullRequestMergeAsyncResultType",
-    "PullRequestMergeAsyncResultTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropHtmlType",
+    "PullRequestReviewCommentPropLinksPropHtmlTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropPullRequestType",
+    "PullRequestReviewCommentPropLinksPropPullRequestTypeForResponse",
+    "PullRequestReviewCommentPropLinksPropSelfType",
+    "PullRequestReviewCommentPropLinksPropSelfTypeForResponse",
+    "PullRequestReviewCommentPropLinksType",
+    "PullRequestReviewCommentPropLinksTypeForResponse",
+    "PullRequestReviewCommentType",
+    "PullRequestReviewCommentTypeForResponse",
+    "TimelineLineCommentedEventType",
+    "TimelineLineCommentedEventTypeForResponse",
 )

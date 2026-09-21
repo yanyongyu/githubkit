@@ -9,77 +9,147 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0129 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0043 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class UserRoleAssignmentType(TypedDict):
-    """A Role Assignment for a User
+class CopilotSpaceType(TypedDict):
+    """Space
 
-    The Relationship a User has with a role.
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[TeamSimpleType]]
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
+    number: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    general_instructions: NotRequired[Union[str, None]]
+    base_role: Literal["reader", "writer", "admin", "no_access"]
+    owner: Union[SimpleUserType, OrganizationSimpleType]
+    creator: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    api_url: str
+    resources_attributes: NotRequired[
+        list[CopilotSpacePropResourcesAttributesItemsType]
+    ]
 
 
-class UserRoleAssignmentTypeForResponse(TypedDict):
-    """A Role Assignment for a User
+class CopilotSpaceTypeForResponse(TypedDict):
+    """Space
 
-    The Relationship a User has with a role.
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
-    inherited_from: NotRequired[list[TeamSimpleTypeForResponse]]
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
+    number: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    general_instructions: NotRequired[Union[str, None]]
+    base_role: Literal["reader", "writer", "admin", "no_access"]
+    owner: Union[SimpleUserTypeForResponse, OrganizationSimpleTypeForResponse]
+    creator: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    api_url: str
+    resources_attributes: NotRequired[
+        list[CopilotSpacePropResourcesAttributesItemsTypeForResponse]
+    ]
+
+
+class CopilotSpacePropResourcesAttributesItemsType(TypedDict):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: NotRequired[int]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[CopilotSpacePropResourcesAttributesItemsPropMetadataType]
+
+
+class CopilotSpacePropResourcesAttributesItemsTypeForResponse(TypedDict):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: NotRequired[int]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    metadata: NotRequired[
+        CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadataType(TypedDict):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+    copilot_chat_attachment_id: NotRequired[int]
+    media_type: NotRequired[str]
+    url: NotRequired[str]
+    height: NotRequired[int]
+    width: NotRequired[int]
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse(TypedDict):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+    copilot_chat_attachment_id: NotRequired[int]
+    media_type: NotRequired[str]
+    url: NotRequired[str]
+    height: NotRequired[int]
+    width: NotRequired[int]
 
 
 __all__ = (
-    "UserRoleAssignmentType",
-    "UserRoleAssignmentTypeForResponse",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "CopilotSpacePropResourcesAttributesItemsType",
+    "CopilotSpacePropResourcesAttributesItemsTypeForResponse",
+    "CopilotSpaceType",
+    "CopilotSpaceTypeForResponse",
 )

@@ -9,32 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0188 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    message: str
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    message: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse",
 )

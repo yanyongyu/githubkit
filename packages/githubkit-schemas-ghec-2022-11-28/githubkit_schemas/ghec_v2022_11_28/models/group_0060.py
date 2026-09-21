@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetAuditLogStreamConfigsItems(GitHubModel):
-    """GetAuditLogStreamConfigsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    stream_type: Missing[str] = Field(default=UNSET)
-    stream_details: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
-    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+from .group_0050 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0056 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-model_rebuild(GetAuditLogStreamConfigsItems)
+class ActionsPolicyOrgConditionsOneof1(GitHubModel):
+    """ActionsPolicyOrgConditionsOneof1"""
 
-__all__ = ("GetAuditLogStreamConfigsItems",)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ActionsPolicyOrgConditionsOneof1)
+
+__all__ = ("ActionsPolicyOrgConditionsOneof1",)

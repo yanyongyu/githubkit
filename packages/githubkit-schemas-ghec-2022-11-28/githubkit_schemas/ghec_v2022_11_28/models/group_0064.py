@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+)
 
 
-class GetAuditLogStreamConfig(GitHubModel):
-    """Get an audit log streaming configuration
+class EnterpriseRulesetConditionsOrganizationIdTarget(GitHubModel):
+    """Repository ruleset conditions for organization IDs
 
-    Get an audit log streaming configuration for an enterprise.
+    Parameters for an organization ID condition
     """
 
-    id: int = Field()
-    stream_type: str = Field()
-    stream_details: str = Field()
-    enabled: bool = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    paused_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
 
 
-model_rebuild(GetAuditLogStreamConfig)
+model_rebuild(EnterpriseRulesetConditionsOrganizationIdTarget)
 
-__all__ = ("GetAuditLogStreamConfig",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationIdTarget",)

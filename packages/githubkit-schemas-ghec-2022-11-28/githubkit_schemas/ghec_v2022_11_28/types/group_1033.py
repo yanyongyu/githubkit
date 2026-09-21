@@ -9,124 +9,136 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_1034 import (
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookRepositoryEditedTypeForResponse(TypedDict):
-    """repository edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
-
-
-class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
+    package_type: str
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
     ]
-    description: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
     ]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
+    updated_at: Union[str, None]
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
+    created_at: Union[str, None]
+    description: Union[str, None]
+    ecosystem: str
+    html_url: str
+    id: int
+    name: str
+    namespace: str
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse
+    package_type: str
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionTypeForResponse,
+        None,
+    ]
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse,
+        None,
+    ]
+    updated_at: Union[str, None]
 
 
-class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
-    from_: Union[str, None]
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
-    from_: NotRequired[Union[list[str], None]]
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
 
-    from_: NotRequired[Union[list[str], None]]
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
+
+
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedPropChangesTypeForResponse",
-    "WebhookRepositoryEditedType",
-    "WebhookRepositoryEditedTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryTypeForResponse",
+    "WebhookRegistryPackagePublishedPropRegistryPackageType",
+    "WebhookRegistryPackagePublishedPropRegistryPackageTypeForResponse",
 )

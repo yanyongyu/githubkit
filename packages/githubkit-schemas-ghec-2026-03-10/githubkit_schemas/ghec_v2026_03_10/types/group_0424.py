@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningAutofixCommitsResponseType(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
 
-    Permission check result for a given devcontainer config.
-    """
-
-    accepted: bool
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class CodespacesPermissionsCheckForDevcontainerTypeForResponse(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
+    """CodeScanningAutofixCommitsResponse"""
 
-    Permission check result for a given devcontainer config.
-    """
-
-    accepted: bool
+    target_ref: NotRequired[str]
+    sha: NotRequired[str]
 
 
 __all__ = (
-    "CodespacesPermissionsCheckForDevcontainerType",
-    "CodespacesPermissionsCheckForDevcontainerTypeForResponse",
+    "CodeScanningAutofixCommitsResponseType",
+    "CodeScanningAutofixCommitsResponseTypeForResponse",
 )

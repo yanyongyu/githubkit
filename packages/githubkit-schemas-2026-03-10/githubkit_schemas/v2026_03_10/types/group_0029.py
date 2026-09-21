@@ -77,7 +77,7 @@ class CodeSecurityConfigurationType(TypedDict):
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+    enforcement: NotRequired[Literal["enforced", "unenforced", "enterprise_enforced"]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     created_at: NotRequired[_dt.datetime]
@@ -150,7 +150,7 @@ class CodeSecurityConfigurationTypeForResponse(TypedDict):
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
+    enforcement: NotRequired[Literal["enforced", "unenforced", "enterprise_enforced"]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     created_at: NotRequired[str]

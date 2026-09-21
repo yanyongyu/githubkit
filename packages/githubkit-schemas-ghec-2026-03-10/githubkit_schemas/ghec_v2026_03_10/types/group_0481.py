@@ -9,64 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0397 import VerificationType, VerificationTypeForResponse
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Milestoned Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class MilestonedIssueEventTypeForResponse(TypedDict):
-    """Milestoned Issue Event
+class GitTagTypeForResponse(TypedDict):
+    """Git Tag
 
-    Milestoned Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    milestone: MilestonedIssueEventPropMilestoneTypeForResponse
+    message: str
+    tagger: GitTagPropTaggerTypeForResponse
+    object_: GitTagPropObjectTypeForResponse
+    verification: NotRequired[VerificationTypeForResponse]
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
-    title: str
+    date: str
+    email: str
+    name: str
 
 
-class MilestonedIssueEventPropMilestoneTypeForResponse(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class GitTagPropTaggerTypeForResponse(TypedDict):
+    """GitTagPropTagger"""
 
-    title: str
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+class GitTagPropObjectTypeForResponse(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "MilestonedIssueEventPropMilestoneType",
-    "MilestonedIssueEventPropMilestoneTypeForResponse",
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventTypeForResponse",
+    "GitTagPropObjectType",
+    "GitTagPropObjectTypeForResponse",
+    "GitTagPropTaggerType",
+    "GitTagPropTaggerTypeForResponse",
+    "GitTagType",
+    "GitTagTypeForResponse",
 )

@@ -9,25 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[SimpleUserType, None]
+    inviter: Union[SimpleUserType, None]
+    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
+
+
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
+
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    id: int
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[SimpleUserTypeForResponse, None]
+    inviter: Union[SimpleUserTypeForResponse, None]
+    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    created_at: str
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )

@@ -9,33 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0081 import TeamType, TeamTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class TimelineConnectedEventType(TypedDict):
+    """Timeline Connected Event
 
-    Pull Request Review Request
+    Timeline Connected Event
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
 
 
-class PullRequestReviewRequestTypeForResponse(TypedDict):
-    """Pull Request Review Request
+class TimelineConnectedEventTypeForResponse(TypedDict):
+    """Timeline Connected Event
 
-    Pull Request Review Request
+    Timeline Connected Event
     """
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
 
 
 __all__ = (
-    "PullRequestReviewRequestType",
-    "PullRequestReviewRequestTypeForResponse",
+    "TimelineConnectedEventType",
+    "TimelineConnectedEventTypeForResponse",
 )

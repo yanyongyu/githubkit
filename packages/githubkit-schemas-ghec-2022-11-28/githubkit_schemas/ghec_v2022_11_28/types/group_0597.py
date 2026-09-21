@@ -9,45 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0595 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0596 import UserRoleItemsType, UserRoleItemsTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    Contributor Activity
+    """
+
+    author: Union[SimpleUserType, None]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class ContributorActivityTypeForResponse(TypedDict):
+    """Contributor Activity
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
-    display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    Contributor Activity
+    """
+
+    author: Union[SimpleUserTypeForResponse, None]
+    total: int
+    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+
+
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "ContributorActivityPropWeeksItemsType",
+    "ContributorActivityPropWeeksItemsTypeForResponse",
+    "ContributorActivityType",
+    "ContributorActivityTypeForResponse",
 )

@@ -9,63 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0412 import (
-    CodeScanningVariantAnalysisSkippedRepoGroupType,
-    CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class CodeQualitySetupUpdateAnyof3Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof3"""
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
-    """
-
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    not_found_repos: (
-        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
-    )
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
-    """
-
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: list[
+        Literal[
+            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class CodeQualitySetupUpdateAnyof3TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof3"""
 
-    repository_count: int
-    repository_full_names: list[str]
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int
-    repository_full_names: list[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: list[
+        Literal[
+            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+        ]
+    ]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposTypeForResponse",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesTypeForResponse",
+    "CodeQualitySetupUpdateAnyof3Type",
+    "CodeQualitySetupUpdateAnyof3TypeForResponse",
 )

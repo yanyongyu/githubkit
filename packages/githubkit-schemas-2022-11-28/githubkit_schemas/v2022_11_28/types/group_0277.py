@@ -12,25 +12,199 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
-    """Actions cache retention limit for a repository
+class SecretScanningLocationCommitType(TypedDict):
+    """SecretScanningLocationCommit
 
-    GitHub Actions cache retention policy for a repository.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    max_cache_retention_days: NotRequired[int]
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    blob_url: str
+    commit_sha: str
+    commit_url: str
+    html_url: NotRequired[str]
 
 
-class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache retention limit for a repository
+class SecretScanningLocationCommitTypeForResponse(TypedDict):
+    """SecretScanningLocationCommit
 
-    GitHub Actions cache retention policy for a repository.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    max_cache_retention_days: NotRequired[int]
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    blob_url: str
+    commit_sha: str
+    commit_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationWikiCommitType(TypedDict):
+    """SecretScanningLocationWikiCommit
+
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    page_url: str
+    commit_sha: str
+    commit_url: str
+
+
+class SecretScanningLocationWikiCommitTypeForResponse(TypedDict):
+    """SecretScanningLocationWikiCommit
+
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+    blob_sha: str
+    page_url: str
+    commit_sha: str
+    commit_url: str
+
+
+class SecretScanningLocationIssueBodyType(TypedDict):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationIssueBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationDiscussionTitleType(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionTitleTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str
+
+
+class SecretScanningLocationDiscussionCommentType(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationDiscussionCommentTypeForResponse(TypedDict):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str
+
+
+class SecretScanningLocationPullRequestBodyType(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestBodyTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewType(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
+    html_url: NotRequired[str]
+
+
+class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheRetentionLimitForRepositoryType",
-    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
+    "SecretScanningLocationCommitType",
+    "SecretScanningLocationCommitTypeForResponse",
+    "SecretScanningLocationDiscussionCommentType",
+    "SecretScanningLocationDiscussionCommentTypeForResponse",
+    "SecretScanningLocationDiscussionTitleType",
+    "SecretScanningLocationDiscussionTitleTypeForResponse",
+    "SecretScanningLocationIssueBodyType",
+    "SecretScanningLocationIssueBodyTypeForResponse",
+    "SecretScanningLocationPullRequestBodyType",
+    "SecretScanningLocationPullRequestBodyTypeForResponse",
+    "SecretScanningLocationPullRequestReviewType",
+    "SecretScanningLocationPullRequestReviewTypeForResponse",
+    "SecretScanningLocationWikiCommitType",
+    "SecretScanningLocationWikiCommitTypeForResponse",
 )

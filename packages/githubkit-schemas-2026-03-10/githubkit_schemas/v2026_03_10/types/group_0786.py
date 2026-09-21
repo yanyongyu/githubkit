@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0541 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0542 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0543 import (
+from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0564 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0544 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0565 import WebhooksLabelArchivedType, WebhooksLabelArchivedTypeForResponse
+from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0787 import (
+    WebhookIssuesLockedPropIssueType,
+    WebhookIssuesLockedPropIssueTypeForResponse,
+)
 
 
-class WebhookLabelArchivedType(TypedDict):
-    """label archived event"""
+class WebhookIssuesLockedType(TypedDict):
+    """issues locked event"""
 
-    action: Literal["archived"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelArchivedType
+    issue: WebhookIssuesLockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelArchivedTypeForResponse(TypedDict):
-    """label archived event"""
+class WebhookIssuesLockedTypeForResponse(TypedDict):
+    """issues locked event"""
 
-    action: Literal["archived"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelArchivedTypeForResponse
+    issue: WebhookIssuesLockedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelArchivedType",
-    "WebhookLabelArchivedTypeForResponse",
+    "WebhookIssuesLockedType",
+    "WebhookIssuesLockedTypeForResponse",
 )

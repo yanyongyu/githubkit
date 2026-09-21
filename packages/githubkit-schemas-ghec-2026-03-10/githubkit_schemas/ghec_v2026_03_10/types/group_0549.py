@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0147 import (
-    RepositoryRuleCommitterEmailPatternPropParametersType,
-    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class RepositoryRuleDetailedOneof12Type(TypedDict):
-    """RepositoryRuleDetailedOneof12"""
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
-class RepositoryRuleDetailedOneof12TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof12"""
+class PullRequestReviewRequestTypeForResponse(TypedDict):
+    """Pull Request Review Request
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
-    ]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Review Request
+    """
+
+    users: list[SimpleUserTypeForResponse]
+    teams: list[TeamTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof12Type",
-    "RepositoryRuleDetailedOneof12TypeForResponse",
+    "PullRequestReviewRequestType",
+    "PullRequestReviewRequestTypeForResponse",
 )

@@ -11,28 +11,32 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from .group_0532 import TrafficType, TrafficTypeForResponse
 
-class SocialAccountType(TypedDict):
-    """Social account
 
-    Social media account
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
+
+    Clone Traffic
     """
 
-    provider: str
-    url: str
+    count: int
+    uniques: int
+    clones: list[TrafficType]
 
 
-class SocialAccountTypeForResponse(TypedDict):
-    """Social account
+class CloneTrafficTypeForResponse(TypedDict):
+    """Clone Traffic
 
-    Social media account
+    Clone Traffic
     """
 
-    provider: str
-    url: str
+    count: int
+    uniques: int
+    clones: list[TrafficTypeForResponse]
 
 
 __all__ = (
-    "SocialAccountType",
-    "SocialAccountTypeForResponse",
+    "CloneTrafficType",
+    "CloneTrafficTypeForResponse",
 )

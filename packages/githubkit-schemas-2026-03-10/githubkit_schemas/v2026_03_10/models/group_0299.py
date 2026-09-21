@@ -9,25 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Dependabot security updates
+class ConcurrencyGroupList(GitHubModel):
+    """Concurrency Group List
 
-    Check Dependabot security updates
+    A list of active concurrency groups for a repository.
     """
 
-    enabled: bool = Field(
-        description="Whether Dependabot security updates are enabled for the repository."
-    )
-    paused: bool = Field(
-        description="Whether Dependabot security updates are paused for the repository."
-    )
+    total_count: int = Field()
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+    group_name: str = Field(description="The name of the concurrency group.")
+    group_url: str = Field(description="API URL for this concurrency group.")
+    last_acquired_at: Union[_dt.datetime, None] = Field()
+
+
+model_rebuild(ConcurrencyGroupList)
+model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+
+__all__ = (
+    "ConcurrencyGroupList",
+    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+)

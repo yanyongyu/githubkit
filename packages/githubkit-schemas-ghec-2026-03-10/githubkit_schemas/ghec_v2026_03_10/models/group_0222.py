@@ -10,39 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class UsageReportExportRequest(GitHubModel):
+    """UsageReportExportRequest"""
 
-class ReleaseAsset(GitHubModel):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    url: str = Field()
-    browser_download_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="The file name of the asset.")
-    label: Union[str, None] = Field()
-    state: Literal["uploaded", "open"] = Field(
-        description="State of the release asset."
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
+        Field(description="The type of usage report to generate")
     )
-    content_type: str = Field()
-    size: int = Field()
-    digest: Union[str, None] = Field()
-    download_count: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    uploader: Union[SimpleUser, None] = Field()
+    start_date: _dt.date = Field(
+        description="The start date for the report in YYYY-MM-DD format"
+    )
+    end_date: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+    )
+    send_email: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
+    )
 
 
-model_rebuild(ReleaseAsset)
+model_rebuild(UsageReportExportRequest)
 
-__all__ = ("ReleaseAsset",)
+__all__ = ("UsageReportExportRequest",)

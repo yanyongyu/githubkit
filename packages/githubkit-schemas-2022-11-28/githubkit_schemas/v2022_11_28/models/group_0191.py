@@ -9,25 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class OrganizationUpdateIssueType(GitHubModel):
+    """OrganizationUpdateIssueType"""
 
-    Custom property name and associated value
-    """
-
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
+    name: str = Field(description="Name of the issue type.")
+    is_enabled: bool = Field(
+        description="Whether or not the issue type is enabled at the organization level."
     )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue type."
+    )
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(CustomPropertyValue)
+model_rebuild(OrganizationUpdateIssueType)
 
-__all__ = ("CustomPropertyValue",)
+__all__ = ("OrganizationUpdateIssueType",)

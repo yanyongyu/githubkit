@@ -13,47 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0544 import (
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0055 import IssueType, IssueTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0556 import WebhooksLabelType, WebhooksLabelTypeForResponse
-from .group_0765 import (
-    WebhookIssuesLabeledPropIssueType,
-    WebhookIssuesLabeledPropIssueTypeForResponse,
-)
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssuesLabeledType(TypedDict):
-    """issues labeled event"""
+class WebhookIssueDependenciesBlockingRemovedType(TypedDict):
+    """blocking issue removed event"""
 
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["blocking_removed"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueType]
+    blocked_issue_repo: NotRequired[RepositoryType]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLabeledPropIssueType
-    label: NotRequired[WebhooksLabelType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesLabeledTypeForResponse(TypedDict):
-    """issues labeled event"""
+class WebhookIssueDependenciesBlockingRemovedTypeForResponse(TypedDict):
+    """blocking issue removed event"""
 
-    action: Literal["labeled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["blocking_removed"]
+    blocked_issue_id: NotRequired[float]
+    blocked_issue: NotRequired[IssueTypeForResponse]
+    blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
+    blocking_issue_id: NotRequired[float]
+    blocking_issue: NotRequired[IssueTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesLabeledPropIssueTypeForResponse
-    label: NotRequired[WebhooksLabelTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesLabeledType",
-    "WebhookIssuesLabeledTypeForResponse",
+    "WebhookIssueDependenciesBlockingRemovedType",
+    "WebhookIssueDependenciesBlockingRemovedTypeForResponse",
 )

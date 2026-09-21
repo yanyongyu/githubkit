@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,67 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ContentTree(GitHubModel):
-    """Content Tree
-
-    Content Tree
-    """
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
-    encoding: Missing[str] = Field(default=UNSET)
-    links: ContentTreePropLinks = Field(alias="_links")
+from .group_0099 import SimpleRepository
 
 
-class ContentTreePropLinks(GitHubModel):
-    """ContentTreePropLinks"""
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
+    )
 
 
-class ContentTreePropEntriesItems(GitHubModel):
-    """ContentTreePropEntriesItems"""
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
-
-
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentTree)
-model_rebuild(ContentTreePropLinks)
-model_rebuild(ContentTreePropEntriesItems)
-model_rebuild(ContentTreePropEntriesItemsPropLinks)
-
-__all__ = (
-    "ContentTree",
-    "ContentTreePropEntriesItems",
-    "ContentTreePropEntriesItemsPropLinks",
-    "ContentTreePropLinks",
-)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

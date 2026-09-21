@@ -9,23 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+import datetime as _dt
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-CopilotEnterpriseContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Enterprise Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an enterprise.
-"""
+from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
 
 
-CopilotEnterpriseContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Enterprise Content Exclusion Details
+class EnterpriseOrganizationInstallationType(TypedDict):
+    """Enterprise Organization Installation
 
-List all Copilot Content Exclusion rules for an enterprise.
-"""
+    A GitHub App Installation on an enterprise-owned organization
+    """
+
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsType
+    events: NotRequired[list[str]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class EnterpriseOrganizationInstallationTypeForResponse(TypedDict):
+    """Enterprise Organization Installation
+
+    A GitHub App Installation on an enterprise-owned organization
+    """
+
+    id: int
+    app_slug: NotRequired[str]
+    client_id: str
+    repository_selection: Literal["all", "selected"]
+    repositories_url: str
+    permissions: AppPermissionsTypeForResponse
+    events: NotRequired[list[str]]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "CopilotEnterpriseContentExclusionDetailsType",
-    "CopilotEnterpriseContentExclusionDetailsTypeForResponse",
+    "EnterpriseOrganizationInstallationType",
+    "EnterpriseOrganizationInstallationTypeForResponse",
 )

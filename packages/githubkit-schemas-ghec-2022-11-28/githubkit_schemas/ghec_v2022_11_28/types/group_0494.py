@@ -12,51 +12,66 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0475 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
-from .group_0477 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class IssueTypeAddedIssueEventType(TypedDict):
-    """Issue Type Added Issue Event
+class IssueReferenceType(TypedDict):
+    """Issue Reference
 
-    Issue Type Added Issue Event
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
+    """
+
+    number: int
+    title: str
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryType
+    issue_type: Union[IssueReferencePropIssueTypeType, None]
+
+
+class IssueReferenceTypeForResponse(TypedDict):
+    """Issue Reference
+
+    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
+    parent-issue, or dependency events).
+    """
+
+    number: int
+    title: str
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    repository: SimpleRepositoryTypeForResponse
+    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
+
+
+class IssueReferencePropIssueTypeType(TypedDict):
+    """Issue Type
+
+    The type of the referenced issue.
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    issue_type: Union[IssueTypeWebhookType, None]
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    name: str
+    color: NotRequired[Union[str, None]]
 
 
-class IssueTypeAddedIssueEventTypeForResponse(TypedDict):
-    """Issue Type Added Issue Event
+class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
+    """Issue Type
 
-    Issue Type Added Issue Event
+    The type of the referenced issue.
     """
 
     id: int
     node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    name: str
+    color: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "IssueTypeAddedIssueEventType",
-    "IssueTypeAddedIssueEventTypeForResponse",
+    "IssueReferencePropIssueTypeType",
+    "IssueReferencePropIssueTypeTypeForResponse",
+    "IssueReferenceType",
+    "IssueReferenceTypeForResponse",
 )

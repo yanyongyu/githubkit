@@ -10,26 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class InteractionLimitResponse(GitHubModel):
-    """Interaction Limits
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
 
-    Interaction limit settings.
+    Custom repository roles created by organization owners
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    origin: str = Field()
-    expires_at: _dt.datetime = Field()
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
+    )
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(InteractionLimitResponse)
+class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-__all__ = ("InteractionLimitResponse",)
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+
+
+model_rebuild(OrganizationCustomRepositoryRole)
+model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+
+__all__ = (
+    "OrganizationCustomRepositoryRole",
+    "OrgsOrgCustomRepositoryRolesGetResponse200",
+)

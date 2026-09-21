@@ -12,21 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0056 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class InstallableOrganization(GitHubModel):
-    """Installable Organization
+class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
+    """Repository ruleset conditions for repository IDs
 
-    A GitHub organization on which a GitHub App can be installed.
+    Parameters for a repository ID condition
     """
 
-    id: int = Field()
-    login: str = Field()
-    accessible_repositories_url: Missing[str] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
 
 
-model_rebuild(InstallableOrganization)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
 
-__all__ = ("InstallableOrganization",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)

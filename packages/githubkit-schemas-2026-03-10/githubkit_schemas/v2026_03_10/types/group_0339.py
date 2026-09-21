@@ -9,29 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0338 import (
-    CodeScanningVariantAnalysisRepositoryType,
-    CodeScanningVariantAnalysisRepositoryTypeForResponse,
-)
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryType]
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
 
-    repository_count: int
-    repositories: list[CodeScanningVariantAnalysisRepositoryTypeForResponse]
+    Check suite configuration preferences for a repository.
+    """
+
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
+        ]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisSkippedRepoGroupType",
-    "CodeScanningVariantAnalysisSkippedRepoGroupTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

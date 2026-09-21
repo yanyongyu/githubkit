@@ -9,57 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    Repository actions caches
+    Code of Conduct Simple
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
+class CodeOfConductSimpleTypeForResponse(TypedDict):
+    """Code Of Conduct Simple
 
-    Repository actions caches
+    Code of Conduct Simple
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
-
-
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
-
-
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "CodeOfConductSimpleType",
+    "CodeOfConductSimpleTypeForResponse",
 )

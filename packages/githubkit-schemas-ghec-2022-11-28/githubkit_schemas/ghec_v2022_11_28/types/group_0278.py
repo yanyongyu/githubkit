@@ -9,23 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an organization.
-"""
+from typing_extensions import NotRequired, TypedDict
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-List all Copilot Content Exclusion rules for an organization.
-"""
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
+
+
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
+
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

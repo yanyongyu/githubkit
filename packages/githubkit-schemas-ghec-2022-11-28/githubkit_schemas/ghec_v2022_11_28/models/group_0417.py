@@ -9,41 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0414 import CodeScanningVariantAnalysisSkippedRepoGroup
-
-
-class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
-
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
-    """
-
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+class CodeQualitySetupUpdateAnyof3(GitHubModel):
+    """CodeQualitySetupUpdateAnyof3"""
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
     )
-    repository_full_names: list[str] = Field(
-        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    languages: list[
+        Literal[
+            "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+        ]
+    ] = Field(description="Languages to be analyzed.")
+    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+        default=UNSET,
+        description="Whether AI findings run for Code Quality on this repository.",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
-model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
+model_rebuild(CodeQualitySetupUpdateAnyof3)
 
-__all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositories",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
-)
+__all__ = ("CodeQualitySetupUpdateAnyof3",)

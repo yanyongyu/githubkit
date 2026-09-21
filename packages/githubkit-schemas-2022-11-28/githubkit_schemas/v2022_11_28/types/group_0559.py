@@ -9,30 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRepositoriesAddedItemsType(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class BillingAiCreditUsageReportUserType(TypedDict):
+    """BillingAiCreditUsageReportUser"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
 
 
-class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesAddedItems"""
+class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportUser"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
+    user: str
+    product: NotRequired[str]
+    model: NotRequired[str]
+    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
+
+
+class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportUserPropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "WebhooksRepositoriesAddedItemsType",
-    "WebhooksRepositoriesAddedItemsTypeForResponse",
+    "BillingAiCreditUsageReportUserPropTimePeriodType",
+    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
+    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportUserType",
+    "BillingAiCreditUsageReportUserTypeForResponse",
 )

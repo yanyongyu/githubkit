@@ -13,115 +13,172 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0220 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0389 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
-from .group_0632 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0288 import CodespaceMachineType, CodespaceMachineTypeForResponse
+from .group_0351 import FullRepositoryType, FullRepositoryTypeForResponse
 
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
+class CodespaceWithFullRepositoryType(TypedDict):
+    """Codespace
 
-    A check performed on the code of a given code change
+    A codespace.
     """
 
-    app: Union[IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[_dt.datetime, None]
-    conclusion: Union[
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
     id: int
     name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: list[PullRequestMinimalType]
-    started_at: _dt.datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: FullRepositoryType
+    machine: Union[CodespaceMachineType, None]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    last_used_at: _dt.datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ]
     url: str
+    git_status: CodespaceWithFullRepositoryPropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[
+        CodespaceWithFullRepositoryPropRuntimeConstraintsType
+    ]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
-    """CheckRun
+class CodespaceWithFullRepositoryTypeForResponse(TypedDict):
+    """Codespace
 
-    A check performed on the code of a given code change
+    A codespace.
     """
 
-    app: Union[IntegrationTypeForResponse, None]
-    check_suite: SimpleCheckSuiteTypeForResponse
-    completed_at: Union[str, None]
-    conclusion: Union[
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ]
-    deployment: NotRequired[DeploymentSimpleTypeForResponse]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
     id: int
     name: str
-    node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
-    pull_requests: list[PullRequestMinimalTypeForResponse]
-    started_at: str
-    status: Literal["queued", "in_progress", "completed", "pending"]
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserTypeForResponse
+    billable_owner: SimpleUserTypeForResponse
+    repository: FullRepositoryTypeForResponse
+    machine: Union[CodespaceMachineTypeForResponse, None]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
+    created_at: str
+    updated_at: str
+    last_used_at: str
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ]
     url: str
+    git_status: CodespaceWithFullRepositoryPropGitStatusTypeForResponse
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: list[str]
+    runtime_constraints: NotRequired[
+        CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse
+    ]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[str, None]]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
+    """CodespaceWithFullRepositoryPropGitStatus
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
+class CodespaceWithFullRepositoryPropGitStatusTypeForResponse(TypedDict):
+    """CodespaceWithFullRepositoryPropGitStatus
 
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
+
+
+class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
+    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+
+
+class CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse(TypedDict):
+    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuiteTypeForResponse",
+    "CodespaceWithFullRepositoryPropGitStatusType",
+    "CodespaceWithFullRepositoryPropGitStatusTypeForResponse",
+    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
+    "CodespaceWithFullRepositoryPropRuntimeConstraintsTypeForResponse",
+    "CodespaceWithFullRepositoryType",
+    "CodespaceWithFullRepositoryTypeForResponse",
 )

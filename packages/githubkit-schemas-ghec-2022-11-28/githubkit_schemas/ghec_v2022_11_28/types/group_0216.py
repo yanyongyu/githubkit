@@ -9,88 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0212 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0214 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0215 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
+
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
+
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
 
-    Comments provide a way for people to collaborate on an issue.
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
+    id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType
+    ]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+
+
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
+    id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse
+    ]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
-class IssueCommentTypeForResponse(TypedDict):
-    """Issue Comment
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse(
+    TypedDict
+):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
 
-    Comments provide a way for people to collaborate on an issue.
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    id: int
-    node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "IssueCommentType",
-    "IssueCommentTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

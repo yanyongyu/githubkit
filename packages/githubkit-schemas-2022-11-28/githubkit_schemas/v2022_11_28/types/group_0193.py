@@ -9,35 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class MigrationType(TypedDict):
+    """Migration
 
-    Code of Conduct Simple
+    A migration.
     """
 
+    id: int
+    owner: Union[SimpleUserType, None]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryType]
     url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class MigrationTypeForResponse(TypedDict):
+    """Migration
 
-    Code of Conduct Simple
+    A migration.
     """
 
+    id: int
+    owner: Union[SimpleUserTypeForResponse, None]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: list[RepositoryTypeForResponse]
     url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    created_at: str
+    updated_at: str
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "MigrationType",
+    "MigrationTypeForResponse",
 )

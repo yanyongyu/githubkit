@@ -9,54 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternType(TypedDict):
-    """Secret Scanning Custom Pattern
+class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    A custom pattern for secret scanning.
-    """
-
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
-class SecretScanningCustomPatternTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern
+class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    A custom pattern for secret scanning.
-    """
-
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    review_draft_pull_requests: NotRequired[bool]
+    review_on_push: NotRequired[bool]
 
 
 __all__ = (
-    "SecretScanningCustomPatternType",
-    "SecretScanningCustomPatternTypeForResponse",
+    "RepositoryRuleCopilotCodeReviewPropParametersType",
+    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
 )

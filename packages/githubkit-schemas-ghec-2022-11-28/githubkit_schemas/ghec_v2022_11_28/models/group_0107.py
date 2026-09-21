@@ -18,34 +18,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomPropertyPayload(GitHubModel):
-    """Organization Custom Property Payload
+class TeamSimple(GitHubModel):
+    """Team Simple
 
-    Payload for creating or updating an organization custom property definition on
-    an enterprise.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    value_type: Literal[
-        "string", "single_select", "multi_select", "true_false", "url"
-    ] = Field(description="The type of the value for the property.")
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
+    id: int = Field(description="Unique identifier of the team")
+    node_id: str = Field()
+    url: str = Field(description="URL for the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    description: Union[str, None] = Field(description="Description of the team")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    default_value: Missing[Union[str, list[str], None]] = Field(
-        default=UNSET, description="Default value of the property."
+    privacy: Missing[str] = Field(
+        default=UNSET, description="The level of privacy this team should have"
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property."
+    notification_setting: Missing[str] = Field(
+        default=UNSET, description="The notification setting the team has set"
     )
-    allowed_values: Missing[Union[list[str], None]] = Field(
+    html_url: str = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    ldap_dn: Missing[str] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
     )
-    values_editable_by: Missing[
-        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
-    ] = Field(default=UNSET, description="Who can edit the values of the property.")
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
+    )
 
 
-model_rebuild(OrganizationCustomPropertyPayload)
+model_rebuild(TeamSimple)
 
-__all__ = ("OrganizationCustomPropertyPayload",)
+__all__ = ("TeamSimple",)

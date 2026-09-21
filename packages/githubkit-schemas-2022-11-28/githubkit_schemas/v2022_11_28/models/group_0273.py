@@ -12,17 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+class RulesetVersionPropActor(GitHubModel):
+    """RulesetVersionPropActor
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
+    The actor who updated the ruleset
+    """
+
+    id: Missing[int] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RateLimit)
+model_rebuild(RulesetVersionPropActor)
 
-__all__ = ("RateLimit",)
+__all__ = ("RulesetVersionPropActor",)

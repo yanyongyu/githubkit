@@ -17,16 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0166 import RepositoryRuleCopilotCodeReviewPropParameters
 
+class RepositoryRuleRulesetInfo(GitHubModel):
+    """repository ruleset data for rule
 
-class RepositoryRuleDetailedOneof17(GitHubModel):
-    """RepositoryRuleDetailedOneof17"""
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
-    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -40,6 +38,6 @@ class RepositoryRuleDetailedOneof17(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof17)
+model_rebuild(RepositoryRuleRulesetInfo)
 
-__all__ = ("RepositoryRuleDetailedOneof17",)
+__all__ = ("RepositoryRuleRulesetInfo",)

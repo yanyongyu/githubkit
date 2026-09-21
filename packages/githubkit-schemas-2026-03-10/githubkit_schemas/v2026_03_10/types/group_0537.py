@@ -9,82 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingAiCreditUsageReportUserType(TypedDict):
-    """BillingAiCreditUsageReportUser"""
-
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
-
-
-class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUser"""
-
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0326 import GitUserType, GitUserTypeForResponse
+from .group_0535 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
+from .group_0538 import (
+    CommitSearchResultItemPropCommitType,
+    CommitSearchResultItemPropCommitTypeForResponse,
+)
 
 
-class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Commit Search Result Item
+    """
 
-
-class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[SimpleUserType, None]
+    committer: Union[GitUserType, None]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class CommitSearchResultItemTypeForResponse(TypedDict):
+    """Commit Search Result Item
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    Commit Search Result Item
+    """
+
+    url: str
+    sha: str
+    html_url: str
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitTypeForResponse
+    author: Union[SimpleUserTypeForResponse, None]
+    committer: Union[GitUserTypeForResponse, None]
+    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
+    repository: MinimalRepositoryTypeForResponse
+    score: float
+    node_id: str
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemType]
+
+
+class SearchCommitsGetResponse200TypeForResponse(TypedDict):
+    """SearchCommitsGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: list[CommitSearchResultItemTypeForResponse]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportUserPropTimePeriodType",
-    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportUserType",
-    "BillingAiCreditUsageReportUserTypeForResponse",
+    "CommitSearchResultItemPropParentsItemsType",
+    "CommitSearchResultItemPropParentsItemsTypeForResponse",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemTypeForResponse",
+    "SearchCommitsGetResponse200Type",
+    "SearchCommitsGetResponse200TypeForResponse",
 )

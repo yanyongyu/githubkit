@@ -10,26 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class DeploymentSimpleType(TypedDict):
+class DeploymentType(TypedDict):
     """Deployment
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
     url: str
     id: int
     node_id: str
+    sha: str
+    ref: str
     task: str
+    payload: Union[DeploymentPropPayloadOneof0Type, str]
     original_environment: NotRequired[str]
     environment: str
     description: Union[str, None]
+    creator: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
     statuses_url: str
@@ -39,20 +43,23 @@ class DeploymentSimpleType(TypedDict):
     performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class DeploymentSimpleTypeForResponse(TypedDict):
+class DeploymentTypeForResponse(TypedDict):
     """Deployment
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
     url: str
     id: int
     node_id: str
+    sha: str
+    ref: str
     task: str
+    payload: Union[DeploymentPropPayloadOneof0TypeForResponse, str]
     original_environment: NotRequired[str]
     environment: str
     description: Union[str, None]
+    creator: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
     statuses_url: str
@@ -62,7 +69,19 @@ class DeploymentSimpleTypeForResponse(TypedDict):
     performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
 
 
+DeploymentPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""DeploymentPropPayloadOneof0
+"""
+
+
+DeploymentPropPayloadOneof0TypeForResponse: TypeAlias = dict[str, Any]
+"""DeploymentPropPayloadOneof0
+"""
+
+
 __all__ = (
-    "DeploymentSimpleType",
-    "DeploymentSimpleTypeForResponse",
+    "DeploymentPropPayloadOneof0Type",
+    "DeploymentPropPayloadOneof0TypeForResponse",
+    "DeploymentType",
+    "DeploymentTypeForResponse",
 )

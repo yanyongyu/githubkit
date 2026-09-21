@@ -9,20 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0195 import RulesetVersionPropActor
+from .group_0198 import RulesetVersionWithStateAllof1PropState
 
-class DeleteBudget(GitHubModel):
-    """DeleteBudget"""
 
-    message: str = Field(
-        description="A message indicating the result of the deletion operation"
+class RulesetVersionWithState(GitHubModel):
+    """RulesetVersionWithState"""
+
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    id: str = Field(description="The ID of the deleted budget")
+    updated_at: _dt.datetime = Field()
+    state: RulesetVersionWithStateAllof1PropState = Field(
+        description="The state of the ruleset version"
+    )
 
 
-model_rebuild(DeleteBudget)
+model_rebuild(RulesetVersionWithState)
 
-__all__ = ("DeleteBudget",)
+__all__ = ("RulesetVersionWithState",)

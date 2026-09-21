@@ -9,50 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_1352 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
 )
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(ExtraGitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
 
-    state: Missing[Literal["dismissed", "open"]] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
+        description='The name of the check. For example, "code-coverage".',
     )
-    dismissed_reason: Missing[
+    details_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the integrator's site that has the full details of the check.",
+    )
+    external_id: Missing[str] = Field(
+        default=UNSET, description="A reference for the run on the integrator's system."
+    )
+    started_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    status: Missing[Literal["queued", "in_progress"]] = Field(default=UNSET)
+    conclusion: Missing[
         Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
         ]
     ] = Field(
         default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
     )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
+    completed_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    assignees: list[str] = Field(
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
+    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
+        default=UNSET,
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
     )
-    agent_assignment: Missing[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    actions: Missing[
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
     ] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Parameters for AI agent assignment. Only used when an agent bot login is\nincluded in `assignees`. Ignored when no agent is being assigned.",
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",)

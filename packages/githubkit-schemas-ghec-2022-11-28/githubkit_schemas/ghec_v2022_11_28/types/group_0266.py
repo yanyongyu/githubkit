@@ -9,81 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
-
-from githubkit.typing import UniqueList
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class ArtifactDeploymentRecordType(TypedDict):
-    """Artifact Deployment Record
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    Artifact Metadata Deployment Record
+    Marketplace Listing Plan
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsType]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
+    url: str
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
-class ArtifactDeploymentRecordTypeForResponse(TypedDict):
-    """Artifact Deployment Record
+class MarketplaceListingPlanTypeForResponse(TypedDict):
+    """Marketplace Listing Plan
 
-    Artifact Metadata Deployment Record
+    Marketplace Listing Plan
     """
 
-    id: NotRequired[int]
-    digest: NotRequired[str]
-    logical_environment: NotRequired[str]
-    physical_environment: NotRequired[str]
-    cluster: NotRequired[str]
-    deployment_name: NotRequired[str]
-    tags: NotRequired[ArtifactDeploymentRecordPropTagsTypeForResponse]
-    runtime_risks: NotRequired[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    attestation_id: NotRequired[Union[int, None]]
-
-
-ArtifactDeploymentRecordPropTagsType: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
-
-
-ArtifactDeploymentRecordPropTagsTypeForResponse: TypeAlias = dict[str, Any]
-"""ArtifactDeploymentRecordPropTags
-"""
+    url: str
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: list[str]
 
 
 __all__ = (
-    "ArtifactDeploymentRecordPropTagsType",
-    "ArtifactDeploymentRecordPropTagsTypeForResponse",
-    "ArtifactDeploymentRecordType",
-    "ArtifactDeploymentRecordTypeForResponse",
+    "MarketplaceListingPlanType",
+    "MarketplaceListingPlanTypeForResponse",
 )

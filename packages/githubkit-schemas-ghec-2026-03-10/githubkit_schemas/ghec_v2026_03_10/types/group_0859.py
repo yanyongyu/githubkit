@@ -9,54 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0860 import (
-    WebhookIssuesOpenedPropChangesType,
-    WebhookIssuesOpenedPropChangesTypeForResponse,
-)
-from .group_0862 import (
-    WebhookIssuesOpenedPropIssueType,
-    WebhookIssuesOpenedPropIssueTypeForResponse,
-)
+
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhookIssuesOpenedType(TypedDict):
-    """issues opened event"""
+class WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
+    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
 
-    action: Literal["opened"]
-    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesOpenedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookIssuesOpenedTypeForResponse(TypedDict):
-    """issues opened event"""
-
-    action: Literal["opened"]
-    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesOpenedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesOpenedType",
-    "WebhookIssuesOpenedTypeForResponse",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+    "WebhookIssuesClosedPropIssueAllof0PropPullRequestTypeForResponse",
 )

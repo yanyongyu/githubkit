@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0633 import WebhooksDeployKey
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_0732 import WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
 
-class WebhookDeployKeyCreated(GitHubModel):
-    """deploy_key created event"""
+class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["updated_assignment"] = Field()
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,9 +41,6 @@ class WebhookDeployKeyCreated(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    key: WebhooksDeployKey = Field(
-        description="The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookDeployKeyCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeployKeyCreated)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignment)
 
-__all__ = ("WebhookDeployKeyCreated",)
+__all__ = ("WebhookCodeScanningAlertUpdatedAssignment",)

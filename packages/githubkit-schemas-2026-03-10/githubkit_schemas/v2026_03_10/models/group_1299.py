@@ -9,18 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0123 import ActionsPolicyRepoConditionsOneof0
+from .group_0124 import ActionsPolicyRepoConditionsOneof1
+from .group_0146 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
 
-class ReposOwnerRepoAgentsVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesPostBody"""
+class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    conditions: Missing[
+        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    ] = Field(
+        default=UNSET,
+        title="Repository Actions policy conditions",
+        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesPostBody)
+model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
 
-__all__ = ("ReposOwnerRepoAgentsVariablesPostBody",)
+__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)

@@ -12,73 +12,122 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class ImportType(TypedDict):
+    """Import
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
-
-    Removed from Project Issue Event
+    A repository import from an external source.
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
-
-
-class RemovedFromProjectIssueEventTypeForResponse(TypedDict):
-    """Removed from Project Issue Event
-
-    Removed from Project Issue Event
-    """
-
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: Literal["removed_from_project"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        RemovedFromProjectIssueEventPropProjectCardTypeForResponse
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
     ]
-
-
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
-
-    id: int
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
 
 
-class RemovedFromProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class ImportTypeForResponse(TypedDict):
+    """Import
 
-    id: int
+    A repository import from an external source.
+    """
+
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ]
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsTypeForResponse]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
     url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
+
+
+class ImportPropProjectChoicesItemsType(TypedDict):
+    """ImportPropProjectChoicesItems"""
+
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
+
+
+class ImportPropProjectChoicesItemsTypeForResponse(TypedDict):
+    """ImportPropProjectChoicesItems"""
+
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventPropProjectCardType",
-    "RemovedFromProjectIssueEventPropProjectCardTypeForResponse",
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventTypeForResponse",
+    "ImportPropProjectChoicesItemsType",
+    "ImportPropProjectChoicesItemsTypeForResponse",
+    "ImportType",
+    "ImportTypeForResponse",
 )

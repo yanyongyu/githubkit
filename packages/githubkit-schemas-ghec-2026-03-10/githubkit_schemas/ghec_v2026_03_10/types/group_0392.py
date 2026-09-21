@@ -9,122 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
-class CodeQualityFindingType(TypedDict):
-    """CodeQualityFinding
 
-    Code quality finding
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
-    url: str
-    rule: CodeQualityFindingRuleType
-    location: CodeQualityFindingLocationType
-    message: CodeQualityFindingMessageType
-    created_at: NotRequired[_dt.datetime]
+    users: NotRequired[list[SimpleUserType]]
+    teams: NotRequired[list[TeamType]]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
-class CodeQualityFindingTypeForResponse(TypedDict):
-    """CodeQualityFinding
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse(
+    TypedDict
+):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
 
-    Code quality finding
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
-    url: str
-    rule: CodeQualityFindingRuleTypeForResponse
-    location: CodeQualityFindingLocationTypeForResponse
-    message: CodeQualityFindingMessageTypeForResponse
-    created_at: NotRequired[str]
-
-
-class CodeQualityFindingRuleType(TypedDict):
-    """CodeQualityFindingRule
-
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
-
-
-class CodeQualityFindingRuleTypeForResponse(TypedDict):
-    """CodeQualityFindingRule
-
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
-
-
-class CodeQualityFindingLocationType(TypedDict):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingLocationTypeForResponse(TypedDict):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingMessageType(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
-
-
-class CodeQualityFindingMessageTypeForResponse(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
+    users: NotRequired[list[SimpleUserTypeForResponse]]
+    teams: NotRequired[list[TeamTypeForResponse]]
+    apps: NotRequired[list[Union[IntegrationTypeForResponse, None]]]
 
 
 __all__ = (
-    "CodeQualityFindingLocationType",
-    "CodeQualityFindingLocationTypeForResponse",
-    "CodeQualityFindingMessageType",
-    "CodeQualityFindingMessageTypeForResponse",
-    "CodeQualityFindingRuleType",
-    "CodeQualityFindingRuleTypeForResponse",
-    "CodeQualityFindingType",
-    "CodeQualityFindingTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesTypeForResponse",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsTypeForResponse",
 )

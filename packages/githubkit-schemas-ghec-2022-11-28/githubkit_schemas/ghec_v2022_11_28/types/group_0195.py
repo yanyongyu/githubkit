@@ -9,98 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UpdateBudgetType(TypedDict):
-    """UpdateBudget"""
+class RulesetVersionPropActorType(TypedDict):
+    """RulesetVersionPropActor
 
-    message: str
-    budget: UpdateBudgetPropBudgetType
+    The actor who updated the ruleset
+    """
 
-
-class UpdateBudgetTypeForResponse(TypedDict):
-    """UpdateBudget"""
-
-    message: str
-    budget: UpdateBudgetPropBudgetTypeForResponse
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
-class UpdateBudgetPropBudgetType(TypedDict):
-    """UpdateBudgetPropBudget"""
+class RulesetVersionPropActorTypeForResponse(TypedDict):
+    """RulesetVersionPropActor
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    consumed_amount: NotRequired[float]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
-    expires_at: NotRequired[_dt.date]
+    The actor who updated the ruleset
+    """
 
-
-class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
-    """UpdateBudgetPropBudget"""
-
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    consumed_amount: NotRequired[float]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[
-        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    expires_at: NotRequired[str]
-
-
-class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    id: NotRequired[int]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "UpdateBudgetPropBudgetPropBudgetAlertingType",
-    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "UpdateBudgetPropBudgetType",
-    "UpdateBudgetPropBudgetTypeForResponse",
-    "UpdateBudgetType",
-    "UpdateBudgetTypeForResponse",
+    "RulesetVersionPropActorType",
+    "RulesetVersionPropActorTypeForResponse",
 )

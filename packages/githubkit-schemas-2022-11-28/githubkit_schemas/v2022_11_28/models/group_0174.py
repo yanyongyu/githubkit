@@ -19,43 +19,101 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0043 import OrganizationSimple
+from .group_0157 import Team
 
 
-class ProjectsV2StatusUpdate(GitHubModel):
-    """Projects v2 Status Update
+class CopilotSeatDetails(GitHubModel):
+    """Copilot Business Seat Detail
 
-    An status update belonging to a project
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    id: float = Field(description="The unique identifier of the status update.")
-    node_id: str = Field(description="The node ID of the status update.")
-    project_node_id: Missing[str] = Field(
+    assignee: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    organization: Missing[Union[OrganizationSimple, None]] = Field(default=UNSET)
+    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
         default=UNSET,
-        description="The node ID of the project that this status update belongs to.",
+        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    pending_cancellation_date: Missing[Union[_dt.date, None]] = Field(
+        default=UNSET,
+        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
+    )
+    last_activity_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
+    )
+    last_activity_editor: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Last editor that was used by the user for a GitHub Copilot completion.",
+    )
+    last_authenticated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp of the last time the user authenticated with GitHub Copilot, in ISO 8601 format.",
     )
     created_at: _dt.datetime = Field(
-        description="The time when the status update was created."
+        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
     )
-    updated_at: _dt.datetime = Field(
-        description="The time when the status update was last updated."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
     )
-    status: Missing[
-        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
-    ] = Field(default=UNSET, description="The current status.")
-    start_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The start date of the period covered by the update."
-    )
-    target_date: Missing[_dt.date] = Field(
-        default=UNSET, description="The target date associated with the update."
-    )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the status update"
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 
-model_rebuild(ProjectsV2StatusUpdate)
+class EnterpriseTeam(GitHubModel):
+    """Enterprise Team
 
-__all__ = ("ProjectsV2StatusUpdate",)
+    Group of enterprise owners and/or members
+    """
+
+    id: int = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
+    url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    html_url: str = Field()
+    members_url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="Whether team members will receive notifications when the team is mentioned.",
+    )
+
+
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
+    )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
+
+
+model_rebuild(CopilotSeatDetails)
+model_rebuild(EnterpriseTeam)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+
+__all__ = (
+    "CopilotSeatDetails",
+    "EnterpriseTeam",
+    "OrgsOrgCopilotBillingSeatsGetResponse200",
+)

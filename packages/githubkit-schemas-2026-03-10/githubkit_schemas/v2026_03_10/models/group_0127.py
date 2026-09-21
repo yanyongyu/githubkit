@@ -9,36 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0128 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
+class RepositoryRulesetConditionsRepositoryIdTarget(GitHubModel):
+    """Repository ruleset conditions for repository IDs
 
-    Organization variable for GitHub Actions.
+    Parameters for a repository ID condition
     """
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationActionsVariable)
+model_rebuild(RepositoryRulesetConditionsRepositoryIdTarget)
 
-__all__ = ("OrganizationActionsVariable",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTarget",)

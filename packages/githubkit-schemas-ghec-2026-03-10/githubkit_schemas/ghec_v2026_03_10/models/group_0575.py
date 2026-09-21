@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0174 import RepositoryRuleMaxFilePathLengthPropParameters
 
 
-class StargazerHistory(GitHubModel):
-    """Stargazer History
+class RepositoryRuleDetailedOneof20(GitHubModel):
+    """RepositoryRuleDetailedOneof20"""
 
-    Stargazer History
-    """
-
-    days: list[int] = Field(
-        description="The number of stars created on each day of the week, starting on Sunday."
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleMaxFilePathLengthPropParameters] = Field(
+        default=UNSET
     )
-    total: int = Field(description="The number of stars created during the week.")
-    week: int = Field(description="The start of the week, given as a Unix timestamp.")
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
 
-model_rebuild(StargazerHistory)
+model_rebuild(RepositoryRuleDetailedOneof20)
 
-__all__ = ("StargazerHistory",)
+__all__ = ("RepositoryRuleDetailedOneof20",)

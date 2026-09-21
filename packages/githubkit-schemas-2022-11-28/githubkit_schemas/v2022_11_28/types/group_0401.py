@@ -12,27 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class InteractionLimitPullRequestBypassListType(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    users: list[str]
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    users: list[str]
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
 __all__ = (
-    "InteractionLimitPullRequestBypassListType",
-    "InteractionLimitPullRequestBypassListTypeForResponse",
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
 )

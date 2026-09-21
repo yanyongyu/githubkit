@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -19,20 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0046 import Discussion
-from .group_0542 import EnterpriseWebhooks
-from .group_0543 import SimpleInstallation
-from .group_0544 import OrganizationSimpleWebhooks
-from .group_0545 import RepositoryWebhooks
+from .group_0216 import CustomProperty
+from .group_0563 import EnterpriseWebhooks
+from .group_0564 import SimpleInstallation
+from .group_0565 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCategoryChanged(GitHubModel):
-    """discussion category changed event"""
+class WebhookCustomPropertyPromotedToEnterprise(GitHubModel):
+    """custom property promoted to business event"""
 
-    action: Literal["category_changed"] = Field()
-    changes: WebhookDiscussionCategoryChangedPropChanges = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
+    action: Literal["promote_to_enterprise"] = Field()
+    definition: CustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -49,50 +47,11 @@ class WebhookDiscussionCategoryChanged(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookDiscussionCategoryChangedPropChanges(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChanges"""
-
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategory = Field()
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom = Field(
-        alias="from"
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+model_rebuild(WebhookCustomPropertyPromotedToEnterprise)
 
-    created_at: _dt.datetime = Field()
-    description: str = Field()
-    emoji: str = Field()
-    id: int = Field()
-    is_answerable: bool = Field()
-    name: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: int = Field()
-    slug: str = Field()
-    updated_at: str = Field()
-
-
-model_rebuild(WebhookDiscussionCategoryChanged)
-model_rebuild(WebhookDiscussionCategoryChangedPropChanges)
-model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategory)
-model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom)
-
-__all__ = (
-    "WebhookDiscussionCategoryChanged",
-    "WebhookDiscussionCategoryChangedPropChanges",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategory",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom",
-)
+__all__ = ("WebhookCustomPropertyPromotedToEnterprise",)

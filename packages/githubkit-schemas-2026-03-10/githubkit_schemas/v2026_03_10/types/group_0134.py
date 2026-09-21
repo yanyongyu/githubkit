@@ -9,43 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0135 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
+)
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    Parameters for an organization name condition
+    """
+
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
+    )
 
 
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    Parameters for an organization name condition
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
 )

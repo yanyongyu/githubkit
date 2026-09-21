@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0653 import WebhooksLabelArchivedAllof1PropArchivedBy
-
-
-class WebhooksLabelArchivedAllof1(GitHubModel):
-    """WebhooksLabelArchivedAllof1"""
-
-    archived_at: _dt.datetime = Field(
-        description="Timestamp indicating when the label was archived."
-    )
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedBy = Field(
-        description="The user who archived the label."
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(WebhooksLabelArchivedAllof1)
+class WebhooksDeployKey(GitHubModel):
+    """WebhooksDeployKey
 
-__all__ = ("WebhooksLabelArchivedAllof1",)
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
+    """
+
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
+    id: int = Field()
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
+    url: str = Field()
+    verified: bool = Field()
+    enabled: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksDeployKey)
+
+__all__ = ("WebhooksDeployKey",)

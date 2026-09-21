@@ -9,67 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0195 import RulesetVersionPropActor
 
 
-class GetBudget(GitHubModel):
-    """GetBudget"""
+class RulesetVersion(GitHubModel):
+    """Ruleset version
 
-    id: str = Field(description="ID of the budget.")
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ] = Field(description="The type of scope for the budget")
-    budget_entity_name: str = Field(
-        description="The name of the entity to apply the budget to"
+    The historical version of a ruleset
+    """
+
+    version_id: int = Field(description="The ID of the previous version of the ruleset")
+    actor: RulesetVersionPropActor = Field(
+        description="The actor who updated the ruleset"
     )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
-    )
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_alerting: GetBudgetPropBudgetAlerting = Field()
+    updated_at: _dt.datetime = Field()
 
 
-class GetBudgetPropBudgetAlerting(GitHubModel):
-    """GetBudgetPropBudgetAlerting"""
+model_rebuild(RulesetVersion)
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
-    )
-
-
-model_rebuild(GetBudget)
-model_rebuild(GetBudgetPropBudgetAlerting)
-
-__all__ = (
-    "GetBudget",
-    "GetBudgetPropBudgetAlerting",
-)
+__all__ = ("RulesetVersion",)

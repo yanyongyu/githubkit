@@ -9,69 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0384 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class DeploymentProtectionRuleType(TypedDict):
-    """Deployment protection rule
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    Deployment protection rule
+    An object describing a symlink
     """
 
-    id: int
-    node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppType
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-class DeploymentProtectionRuleTypeForResponse(TypedDict):
-    """Deployment protection rule
+class ContentSymlinkTypeForResponse(TypedDict):
+    """Symlink Content
 
-    Deployment protection rule
+    An object describing a symlink
     """
 
-    id: int
-    node_id: str
-    enabled: bool
-    app: CustomDeploymentRuleAppTypeForResponse
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksTypeForResponse
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[list[DeploymentProtectionRuleType]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+class ContentSymlinkPropLinksTypeForResponse(TypedDict):
+    """ContentSymlinkPropLinks"""
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: NotRequired[int]
-    custom_deployment_protection_rules: NotRequired[
-        list[DeploymentProtectionRuleTypeForResponse]
-    ]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DeploymentProtectionRuleType",
-    "DeploymentProtectionRuleTypeForResponse",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200TypeForResponse",
+    "ContentSymlinkPropLinksType",
+    "ContentSymlinkPropLinksTypeForResponse",
+    "ContentSymlinkType",
+    "ContentSymlinkTypeForResponse",
 )

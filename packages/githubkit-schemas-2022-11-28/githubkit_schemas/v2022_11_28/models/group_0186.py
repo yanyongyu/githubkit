@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,33 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ProjectsV2FieldIterationConfiguration(GitHubModel):
-    """ProjectsV2FieldIterationConfiguration
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-    The configuration for iteration fields.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    start_date: _dt.date = Field(description="The start date of the first iteration.")
-    duration: int = Field(
-        description="The default duration for iterations in days. Individual iterations can override this value."
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    iterations: Missing[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
-    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ] = Field(
+        default=UNSET,
+        description="The duration of the interaction restriction. Default: `one_day`.",
+    )
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+model_rebuild(InteractionLimit)
 
-    title: str = Field(description="The title of the iteration.")
-    start_date: _dt.date = Field(description="The start date of the iteration.")
-    duration: int = Field(description="The duration of the iteration in days.")
-
-
-model_rebuild(ProjectsV2FieldIterationConfiguration)
-model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
-
-__all__ = (
-    "ProjectsV2FieldIterationConfiguration",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
-)
+__all__ = ("InteractionLimit",)

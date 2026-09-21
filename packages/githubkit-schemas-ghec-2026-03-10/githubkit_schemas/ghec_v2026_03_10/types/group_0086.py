@@ -9,35 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class CopilotUsageMetrics28DayReportType(TypedDict):
-    """Copilot Metrics 28 Day Report
+class AuditLogStreamKeyType(TypedDict):
+    """stream-key
 
-    Links to download the latest Copilot usage metrics report for an
-    enterprise/organization.
+    Audit Log Streaming Public Key
     """
 
-    download_links: list[str]
-    report_start_day: _dt.date
-    report_end_day: _dt.date
+    key_id: str
+    key: str
 
 
-class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
-    """Copilot Metrics 28 Day Report
+class AuditLogStreamKeyTypeForResponse(TypedDict):
+    """stream-key
 
-    Links to download the latest Copilot usage metrics report for an
-    enterprise/organization.
+    Audit Log Streaming Public Key
     """
 
-    download_links: list[str]
-    report_start_day: str
-    report_end_day: str
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "CopilotUsageMetrics28DayReportType",
-    "CopilotUsageMetrics28DayReportTypeForResponse",
+    "AuditLogStreamKeyType",
+    "AuditLogStreamKeyTypeForResponse",
 )

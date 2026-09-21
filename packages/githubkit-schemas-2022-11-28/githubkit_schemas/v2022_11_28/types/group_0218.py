@@ -9,40 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0219 import (
-    RepositoryRuleRequiredStatusChecksPropParametersType,
-    RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse,
-)
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
+class CustomPropertyValueType(TypedDict):
+    """Custom Property Value
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Custom property name and associated value
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    property_name: str
+    value: Union[str, list[str], None]
 
 
-class RepositoryRuleRequiredStatusChecksTypeForResponse(TypedDict):
-    """required_status_checks
+class CustomPropertyValueTypeForResponse(TypedDict):
+    """Custom Property Value
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Custom property name and associated value
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[
-        RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse
-    ]
+    property_name: str
+    value: Union[str, list[str], None]
 
 
 __all__ = (
-    "RepositoryRuleRequiredStatusChecksType",
-    "RepositoryRuleRequiredStatusChecksTypeForResponse",
+    "CustomPropertyValueType",
+    "CustomPropertyValueTypeForResponse",
 )

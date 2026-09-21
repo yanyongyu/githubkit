@@ -9,39 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
-
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+from .group_0156 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class TeamType(TypedDict):
+    """Team
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
-    last_rate_limited_timestamp: NotRequired[Union[str, None]]
-    last_request_timestamp: NotRequired[str]
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[TeamSimpleType, None]
+
+
+class TeamTypeForResponse(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsTypeForResponse]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    type: Literal["enterprise", "organization"]
+    access_source: NotRequired[Literal["direct", "organization", "enterprise"]]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    parent: Union[TeamSimpleTypeForResponse, None]
+
+
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+class TeamPropPermissionsTypeForResponse(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "ApiInsightsUserStatsItemsType",
-    "ApiInsightsUserStatsItemsTypeForResponse",
+    "TeamPropPermissionsType",
+    "TeamPropPermissionsTypeForResponse",
+    "TeamType",
+    "TeamTypeForResponse",
 )

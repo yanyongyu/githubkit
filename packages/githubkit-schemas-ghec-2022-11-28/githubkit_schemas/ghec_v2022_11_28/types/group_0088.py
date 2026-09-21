@@ -9,66 +9,141 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0087 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class AzureBlobConfigType(TypedDict):
+    """AzureBlobConfig
 
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
-    ]
+    key_id: str
+    encrypted_sas_url: str
+    container: str
 
 
-class DependabotAlertSecurityVulnerabilityTypeForResponse(TypedDict):
-    """DependabotAlertSecurityVulnerability
+class AzureBlobConfigTypeForResponse(TypedDict):
+    """AzureBlobConfig
 
-    Details pertaining to one vulnerable version range for the advisory.
+    Azure Blob Config for audit log streaming configuration.
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse, None
-    ]
+    key_id: str
+    encrypted_sas_url: str
+    container: str
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+class AzureHubConfigType(TypedDict):
+    """AzureHubConfig
 
-    Details pertaining to the package version that patches this vulnerability.
+    Azure Event Hubs Config for audit log streaming configuration.
     """
 
-    identifier: str
+    name: str
+    encrypted_connstring: str
+    key_id: str
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+class AzureHubConfigTypeForResponse(TypedDict):
+    """AzureHubConfig
 
-    Details pertaining to the package version that patches this vulnerability.
+    Azure Event Hubs Config for audit log streaming configuration.
     """
 
-    identifier: str
+    name: str
+    encrypted_connstring: str
+    key_id: str
+
+
+class AmazonS3AccessKeysConfigType(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class AmazonS3AccessKeysConfigTypeForResponse(TypedDict):
+    """AmazonS3AccessKeysConfig
+
+    Amazon S3 Access Keys Config for audit log streaming configuration.
+    """
+
+    bucket: str
+    region: str
+    key_id: str
+    authentication_type: Literal["access_keys"]
+    encrypted_secret_key: str
+    encrypted_access_key_id: str
+
+
+class HecConfigType(TypedDict):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
+class HecConfigTypeForResponse(TypedDict):
+    """HecConfig
+
+    Hec Config for Audit Log Stream Configuration
+    """
+
+    domain: str
+    port: int
+    key_id: str
+    encrypted_token: str
+    path: str
+    ssl_verify: bool
+
+
+class DatadogConfigType(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
+
+
+class DatadogConfigTypeForResponse(TypedDict):
+    """DatadogConfig
+
+    Datadog Config for audit log streaming configuration.
+    """
+
+    encrypted_token: str
+    site: Literal["US", "US3", "US5", "EU1", "US1-FED", "AP1"]
+    key_id: str
 
 
 __all__ = (
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionTypeForResponse",
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityTypeForResponse",
+    "AmazonS3AccessKeysConfigType",
+    "AmazonS3AccessKeysConfigTypeForResponse",
+    "AzureBlobConfigType",
+    "AzureBlobConfigTypeForResponse",
+    "AzureHubConfigType",
+    "AzureHubConfigTypeForResponse",
+    "DatadogConfigType",
+    "DatadogConfigTypeForResponse",
+    "HecConfigType",
+    "HecConfigTypeForResponse",
 )

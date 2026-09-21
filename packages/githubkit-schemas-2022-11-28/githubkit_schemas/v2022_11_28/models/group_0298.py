@@ -16,57 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WorkflowUsage(GitHubModel):
-    """Workflow Usage
+class ActionsCacheRetentionLimitForRepository(GitHubModel):
+    """Actions cache retention limit for a repository
 
-    Workflow Usage
+    GitHub Actions cache retention policy for a repository.
     """
 
-    billable: WorkflowUsagePropBillable = Field()
-
-
-class WorkflowUsagePropBillable(GitHubModel):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
-    )
-    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
-    )
-    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
+    max_cache_retention_days: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum number of days to keep caches in this repository.",
     )
 
 
-class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowUsagePropBillablePropUbuntu"""
+model_rebuild(ActionsCacheRetentionLimitForRepository)
 
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(WorkflowUsage)
-model_rebuild(WorkflowUsagePropBillable)
-model_rebuild(WorkflowUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowUsagePropBillablePropMacos)
-model_rebuild(WorkflowUsagePropBillablePropWindows)
-
-__all__ = (
-    "WorkflowUsage",
-    "WorkflowUsagePropBillable",
-    "WorkflowUsagePropBillablePropMacos",
-    "WorkflowUsagePropBillablePropUbuntu",
-    "WorkflowUsagePropBillablePropWindows",
-)
+__all__ = ("ActionsCacheRetentionLimitForRepository",)

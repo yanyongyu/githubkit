@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_1504 import (
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-)
+from .group_0520 import PullRequestStackPullRequest
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
-    GitHubModel
-):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-    lof1
-    """
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    custom_properties: Missing[
-        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-    ] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(
-    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
-)
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
 )

@@ -10,51 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportListType(TypedDict):
-    """UsageReportExportList"""
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    usage_report_exports: list[UsageReportExportType]
+    A custom pattern for secret scanning.
+    """
 
-
-class UsageReportExportListTypeForResponse(TypedDict):
-    """UsageReportExportList"""
-
-    usage_report_exports: list[UsageReportExportTypeForResponse]
-
-
-class UsageReportExportType(TypedDict):
-    """UsageReportExport"""
-
-    id: str
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: _dt.date
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
     created_at: NotRequired[_dt.datetime]
-    actor: NotRequired[str]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class UsageReportExportTypeForResponse(TypedDict):
-    """UsageReportExport"""
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    id: str
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: str
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
+    A custom pattern for secret scanning.
+    """
+
+    id: int
+    name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
     created_at: NotRequired[str]
-    actor: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "UsageReportExportListType",
-    "UsageReportExportListTypeForResponse",
-    "UsageReportExportType",
-    "UsageReportExportTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

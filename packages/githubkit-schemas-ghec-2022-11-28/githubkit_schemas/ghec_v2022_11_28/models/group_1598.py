@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,110 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0210 import Milestone
-from .group_0211 import IssueType
-from .group_0212 import ReactionRollup
-from .group_0213 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0216 import IssueComment
-from .group_0217 import IssueFieldValue
-from .group_0219 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
-from .group_1600 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
+from .group_0471 import DeploymentBranchPolicySettings
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field(description="URL for the issue")
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the issue within its repository"
-    )
-    state: str = Field(description="State of the issue; either 'open' or 'closed'")
-    state_reason: Missing[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ] = Field(default=UNSET, description="The reason for the current state")
-    title: str = Field(description="Title of the issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Contents of the issue"
-    )
-    user: Union[SimpleUser, None] = Field()
-    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
-        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
-    )
-    assignee: Union[SimpleUser, None] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    milestone: Union[Milestone, None] = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: int = Field()
-    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
-    closed_at: Union[_dt.datetime, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    closed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
+    wait_timer: Missing[int] = Field(
         default=UNSET,
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
     )
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not a user who created the job is prevented from approving their own job.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
+    reviewers: Missing[
+        Union[
+            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
+            None,
         ]
     ] = Field(
         default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
+        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
     )
-    parent_issue_url: Missing[Union[str, None]] = Field(
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    id: Missing[int] = Field(
         default=UNSET,
-        description="URL to get the parent issue of this issue, if it is a sub-issue",
-    )
-    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
-    ] = Field(
-        default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+        description="The id of the user or team who can review the deployment",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
+)

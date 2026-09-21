@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0291 import CopilotSpaceType, CopilotSpaceTypeForResponse
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotSpacesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    spaces: list[CopilotSpaceType]
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotSpacesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    spaces: list[CopilotSpaceTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
+    "OrgsOrgCopilotSpacesGetResponse200Type",
+    "OrgsOrgCopilotSpacesGetResponse200TypeForResponse",
 )

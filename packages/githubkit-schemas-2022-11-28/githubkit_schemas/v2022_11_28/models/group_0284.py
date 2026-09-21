@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsSecret(GitHubModel):
-    """Actions Secret
+class SecretScanningCustomPatternToDelete(GitHubModel):
+    """Secret Scanning Custom Pattern To Delete
 
-    Set secrets for GitHub Actions.
+    A custom pattern to delete in a bulk operation.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
 
 
-model_rebuild(ActionsSecret)
+model_rebuild(SecretScanningCustomPatternToDelete)
 
-__all__ = ("ActionsSecret",)
+__all__ = ("SecretScanningCustomPatternToDelete",)

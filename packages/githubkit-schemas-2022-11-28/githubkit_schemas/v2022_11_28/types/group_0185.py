@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ProjectsV2FieldSingleSelectOptionType(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ]
-    description: NotRequired[str]
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: _dt.datetime
 
 
-class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
 
-    name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ]
-    description: NotRequired[str]
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
 
 
 __all__ = (
-    "ProjectsV2FieldSingleSelectOptionType",
-    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
 )

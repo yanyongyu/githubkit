@@ -9,21 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0318 import Link
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class ReviewCommentPropLinks(GitHubModel):
-    """ReviewCommentPropLinks"""
+class Language(ExtraGitHubModel):
+    """Language
 
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    pull_request: Link = Field(title="Link", description="Hypermedia Link")
+    Language
+    """
 
 
-model_rebuild(ReviewCommentPropLinks)
+model_rebuild(Language)
 
-__all__ = ("ReviewCommentPropLinks",)
+__all__ = ("Language",)

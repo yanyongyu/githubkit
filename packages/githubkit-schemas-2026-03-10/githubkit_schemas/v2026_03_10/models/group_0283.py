@@ -9,26 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsVariable(GitHubModel):
-    """Actions Variable"""
+class SecretScanningCustomPatternValidationError(GitHubModel):
+    """Secret Scanning Custom Pattern Validation Error
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    A validation error for a custom pattern in a batch operation.
+    """
+
+    code: Missing[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ] = Field(
+        default=UNSET, description="A machine-readable code describing the error."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    message: Missing[str] = Field(
+        default=UNSET, description="A human-readable description of the error."
     )
 
 
-model_rebuild(ActionsVariable)
+model_rebuild(SecretScanningCustomPatternValidationError)
 
-__all__ = ("ActionsVariable",)
+__all__ = ("SecretScanningCustomPatternValidationError",)

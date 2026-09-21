@@ -9,38 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0223 import (
-    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
-    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
-)
 
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
+    An actor that can bypass rules in a ruleset
     """
 
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
-
-
-class RepositoryRuleCommitAuthorEmailPatternTypeForResponse(TypedDict):
-    """commit_author_email_pattern
-
-    Parameters to be used for the commit_author_email_pattern rule
-    """
-
-    type: Literal["commit_author_email_pattern"]
-    parameters: NotRequired[
-        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "User",
     ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+
+
+class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
+    """Repository Ruleset Bypass Actor
+
+    An actor that can bypass rules in a ruleset
+    """
+
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "User",
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
 __all__ = (
-    "RepositoryRuleCommitAuthorEmailPatternType",
-    "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
+    "RepositoryRulesetBypassActorType",
+    "RepositoryRulesetBypassActorTypeForResponse",
 )

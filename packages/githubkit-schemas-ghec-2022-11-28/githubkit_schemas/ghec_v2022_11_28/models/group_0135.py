@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,15 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0136 import RepositoryRuleRequiredDeploymentsPropParameters
+
+class OrganizationCustomPropertyAllof1(GitHubModel):
+    """OrganizationCustomPropertyAllof1"""
+
+    values_editable_by: Missing[
+        Union[Literal["enterprise_actors", "enterprise_and_org_actors"], None]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
+model_rebuild(OrganizationCustomPropertyAllof1)
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(RepositoryRuleRequiredDeployments)
-
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = ("OrganizationCustomPropertyAllof1",)

@@ -15,52 +15,61 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0457 import CustomDeploymentRuleApp
 
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
 
-class DeploymentProtectionRule(GitHubModel):
-    """Deployment protection rule
-
-    Deployment protection rule
+    Repository rule violation was detected
     """
 
-    id: int = Field(
-        description="The unique identifier for the deployment protection rule."
-    )
-    node_id: str = Field(description="The node ID for the deployment protection rule.")
-    enabled: bool = Field(
-        description="Whether the deployment protection rule is enabled for the environment."
-    )
-    app: CustomDeploymentRuleApp = Field(
-        title="Custom deployment protection rule app",
-        description="A GitHub App that is providing a custom deployment protection rule.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        list[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
     GitHubModel
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
     """
 
-    total_count: Missing[int] = Field(
+    placeholder_id: Missing[str] = Field(
         default=UNSET,
-        description="The number of enabled custom deployment protection rules for this environment",
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
     )
-    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
-        default=UNSET
-    )
+    token_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentProtectionRule)
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
 model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
 )
 
 __all__ = (
-    "DeploymentProtectionRule",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
 )

@@ -9,28 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0324 import BranchProtectionType, BranchProtectionTypeForResponse
+from .group_0329 import CommitType, CommitTypeForResponse
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class BranchWithProtectionTypeForResponse(TypedDict):
+    """Branch With Protection
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitTypeForResponse
+    links: BranchWithProtectionPropLinksTypeForResponse
+    protected: bool
+    protection: BranchProtectionTypeForResponse
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
+
+
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+class BranchWithProtectionPropLinksTypeForResponse(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "BranchWithProtectionPropLinksType",
+    "BranchWithProtectionPropLinksTypeForResponse",
+    "BranchWithProtectionType",
+    "BranchWithProtectionTypeForResponse",
 )

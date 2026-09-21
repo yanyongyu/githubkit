@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0160 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleRequiredStatusChecks(GitHubModel):
+    """required_status_checks
 
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
+    """
+
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleMaxFileSizePropParameters)
+model_rebuild(RepositoryRuleRequiredStatusChecks)
 
-__all__ = ("RepositoryRuleMaxFileSizePropParameters",)
+__all__ = ("RepositoryRuleRequiredStatusChecks",)

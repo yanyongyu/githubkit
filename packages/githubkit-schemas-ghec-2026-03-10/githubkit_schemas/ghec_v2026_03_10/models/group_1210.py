@@ -9,13 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    RemovePatchBody
+    """
+
+    repositories: list[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        description="The repository names to remove from the installation.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
+model_rebuild(
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBody",
+)

@@ -17,19 +17,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0081 import Team
+
+class ContentFile(GitHubModel):
+    """Content File
+
+    Content File
+    """
+
+    type: Literal["file"] = Field()
+    encoding: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
 
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)
+__all__ = (
+    "ContentFile",
+    "ContentFilePropLinks",
+)

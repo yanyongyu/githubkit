@@ -9,63 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependencyGraphDiffItemsType(TypedDict):
-    """DependencyGraphDiffItems"""
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
-    scope: Literal["unknown", "runtime", "development"]
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
-class DependencyGraphDiffItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItems"""
+class CodeownersErrorsTypeForResponse(TypedDict):
+    """CODEOWNERS errors
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[
-        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
-    ]
-    scope: Literal["unknown", "runtime", "development"]
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: list[CodeownersErrorsPropErrorsItemsTypeForResponse]
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class CodeownersErrorsPropErrorsItemsTypeForResponse(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
-    "DependencyGraphDiffItemsType",
-    "DependencyGraphDiffItemsTypeForResponse",
+    "CodeownersErrorsPropErrorsItemsType",
+    "CodeownersErrorsPropErrorsItemsTypeForResponse",
+    "CodeownersErrorsType",
+    "CodeownersErrorsTypeForResponse",
 )

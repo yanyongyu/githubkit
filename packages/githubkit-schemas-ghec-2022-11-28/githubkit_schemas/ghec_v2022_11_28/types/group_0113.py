@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
-from .group_0114 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
-)
 
+class CopilotUsageMetrics28DayReportType(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
-    """Repository ruleset conditions for organization names
-
-    Parameters for an organization name condition
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
+    download_links: list[str]
+    report_start_day: _dt.date
+    report_end_day: _dt.date
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization names
+class CopilotUsageMetrics28DayReportTypeForResponse(TypedDict):
+    """Copilot Metrics 28 Day Report
 
-    Parameters for an organization name condition
+    Links to download the latest Copilot usage metrics report for an
+    enterprise/organization.
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
+    download_links: list[str]
+    report_start_day: str
+    report_end_day: str
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
+    "CopilotUsageMetrics28DayReportType",
+    "CopilotUsageMetrics28DayReportTypeForResponse",
 )

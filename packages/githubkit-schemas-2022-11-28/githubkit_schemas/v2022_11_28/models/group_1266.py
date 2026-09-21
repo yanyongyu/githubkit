@@ -18,15 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
 
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET,
-        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
     )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the issue or pull request to add to the project.",
+    )
+    owner: str = Field(description="The repository owner login.")
+    repo: str = Field(description="The repository name.")
+    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)

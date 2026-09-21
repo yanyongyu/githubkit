@@ -13,38 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0166 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+    RepositoryRuleCommitterEmailPatternPropParametersType,
+    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCommitterEmailPatternTypeForResponse(TypedDict):
+    """committer_email_pattern
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    type: Literal["copilot_code_review"]
+    type: Literal["committer_email_pattern"]
     parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
+        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
     ]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRuleCommitterEmailPatternType",
+    "RepositoryRuleCommitterEmailPatternTypeForResponse",
 )

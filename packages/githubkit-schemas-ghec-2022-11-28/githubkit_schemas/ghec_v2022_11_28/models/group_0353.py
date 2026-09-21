@@ -9,36 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupList(GitHubModel):
-    """Concurrency Group List
+class RuleSuitePullRequest(GitHubModel):
+    """Pull request rule suite metadata
 
-    A list of active concurrency groups for a repository.
+    Metadata for a pull request rule evaluation result.
     """
 
-    total_count: int = Field()
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
+    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
+        default=UNSET,
+        description="The pull request associated with the rule evaluation.",
+    )
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class RuleSuitePullRequestPropPullRequest(GitHubModel):
+    """RuleSuitePullRequestPropPullRequest
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    last_acquired_at: Union[_dt.datetime, None] = Field()
+    The pull request associated with the rule evaluation.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the pull request."
+    )
+    number: Missing[int] = Field(
+        default=UNSET, description="The number of the pull request."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
+        default=UNSET, description="The user who created the pull request."
+    )
+    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
+        default=UNSET, description="The reviews associated with the pull request."
+    )
 
 
-model_rebuild(ConcurrencyGroupList)
-model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the review."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
+        default=UNSET, description="The user who submitted the review."
+    )
+    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+model_rebuild(RuleSuitePullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
 
 __all__ = (
-    "ConcurrencyGroupList",
-    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+    "RuleSuitePullRequest",
+    "RuleSuitePullRequestPropPullRequest",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+    "RuleSuitePullRequestPropPullRequestPropUser",
 )

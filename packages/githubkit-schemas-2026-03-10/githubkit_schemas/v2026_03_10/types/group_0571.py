@@ -13,83 +13,127 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class WebhooksApproverType(TypedDict):
+    """WebhooksApprover"""
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
-    unit_count: int
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase"""
+class WebhooksApproverTypeForResponse(TypedDict):
+    """WebhooksApprover"""
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class WebhooksReviewersItemsType(TypedDict):
+    """WebhooksReviewersItems"""
 
+    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
+    type: NotRequired[Literal["User"]]
+
+
+class WebhooksReviewersItemsTypeForResponse(TypedDict):
+    """WebhooksReviewersItems"""
+
+    reviewer: NotRequired[
+        Union[WebhooksReviewersItemsPropReviewerTypeForResponse, None]
+    ]
+    type: NotRequired[Literal["User"]]
+
+
+class WebhooksReviewersItemsPropReviewerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
     login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
-class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
+class WebhooksReviewersItemsPropReviewerTypeForResponse(TypedDict):
+    """User"""
 
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
     login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
-    "WebhooksPreviousMarketplacePurchaseType",
-    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
+    "WebhooksApproverType",
+    "WebhooksApproverTypeForResponse",
+    "WebhooksReviewersItemsPropReviewerType",
+    "WebhooksReviewersItemsPropReviewerTypeForResponse",
+    "WebhooksReviewersItemsType",
+    "WebhooksReviewersItemsTypeForResponse",
 )

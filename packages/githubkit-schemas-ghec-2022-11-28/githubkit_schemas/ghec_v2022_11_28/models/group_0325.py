@@ -19,46 +19,61 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0218 import Issue
-from .group_0321 import PullRequestSimple
-from .group_0324 import ProjectsV2DraftIssue
 
 
-class ProjectsV2ItemSimple(GitHubModel):
-    """Projects v2 Item
+class OrganizationRole(GitHubModel):
+    """Organization Role
 
-    An item belonging to a project
+    Organization roles
     """
 
-    id: float = Field(description="The unique identifier of the project item.")
-    node_id: Missing[str] = Field(
-        default=UNSET, description="The node ID of the project item."
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    content: Missing[Union[Issue, PullRequestSimple, ProjectsV2DraftIssue]] = Field(
-        default=UNSET, description="The content represented by the item."
+    base_role: Missing[
+        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role inherits permissions.",
     )
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
-        title="Projects v2 Item Content Type",
-        description="The type of content tracked in a project item",
+    source: Missing[
+        Union[Literal["Organization", "Enterprise", "Predefined"], None]
+    ] = Field(
+        default=UNSET,
+        description='Source answers the question, "where did this role come from?"',
     )
-    creator: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    permissions: list[str] = Field(
+        description="A list of permissions included in this role."
     )
-    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    organization: Union[SimpleUser, None] = Field()
+    created_at: _dt.datetime = Field(
+        description="The date and time the role was created."
+    )
     updated_at: _dt.datetime = Field(
-        description="The time when the item was last updated."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="The time when the item was archived."
-    )
-    project_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the project this item belongs to."
-    )
-    item_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the item in the project."
+        description="The date and time the role was last updated."
     )
 
 
-model_rebuild(ProjectsV2ItemSimple)
+class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-__all__ = ("ProjectsV2ItemSimple",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of organization roles available to the organization.",
+    )
+    roles: Missing[list[OrganizationRole]] = Field(
+        default=UNSET,
+        description="The list of organization roles available to the organization.",
+    )
+
+
+model_rebuild(OrganizationRole)
+model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
+
+__all__ = (
+    "OrganizationRole",
+    "OrgsOrgOrganizationRolesGetResponse200",
+)

@@ -9,56 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
 
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0395 import HookResponseType, HookResponseTypeForResponse
+MetadataType: TypeAlias = dict[str, Any]
+"""metadata
 
-
-class HookType(TypedDict):
-    """Webhook
-
-    Webhooks for repositories.
-    """
-
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+MetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""metadata
 
-    Webhooks for repositories.
-    """
-
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+User-defined metadata to store domain-specific information limited to 8 keys
+with scalar values.
+"""
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "MetadataType",
+    "MetadataTypeForResponse",
 )

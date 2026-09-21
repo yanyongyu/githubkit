@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,49 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0019 import LicenseSimple
-from .group_0332 import CodeOfConductSimple
+from .group_0429 import CodeScanningVariantAnalysisRepository
 
 
-class CommunityProfilePropFiles(GitHubModel):
-    """CommunityProfilePropFiles"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    code_of_conduct: Union[CodeOfConductSimple, None] = Field()
-    code_of_conduct_file: Union[CommunityHealthFile, None] = Field()
-    license_: Union[LicenseSimple, None] = Field(alias="license")
-    contributing: Union[CommunityHealthFile, None] = Field()
-    readme: Union[CommunityHealthFile, None] = Field()
-    issue_template: Union[CommunityHealthFile, None] = Field()
-    pull_request_template: Union[CommunityHealthFile, None] = Field()
-
-
-class CommunityHealthFile(GitHubModel):
-    """Community Health File"""
-
-    url: str = Field()
-    html_url: str = Field()
-
-
-class CommunityProfile(GitHubModel):
-    """Community Profile
-
-    Community Profile
-    """
-
-    health_percentage: int = Field()
-    description: Union[str, None] = Field()
-    documentation: Union[str, None] = Field()
-    files: CommunityProfilePropFiles = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
 
 
-model_rebuild(CommunityProfilePropFiles)
-model_rebuild(CommunityHealthFile)
-model_rebuild(CommunityProfile)
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-__all__ = (
-    "CommunityHealthFile",
-    "CommunityProfile",
-    "CommunityProfilePropFiles",
-)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

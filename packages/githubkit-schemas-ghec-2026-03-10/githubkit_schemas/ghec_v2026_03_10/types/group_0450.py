@@ -10,64 +10,84 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0350 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    The status of a deployment.
-    """
-
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[SimpleUserType, None]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    code_of_conduct: Union[CodeOfConductSimpleType, None]
+    code_of_conduct_file: Union[CommunityHealthFileType, None]
+    license_: Union[LicenseSimpleType, None]
+    contributing: Union[CommunityHealthFileType, None]
+    readme: Union[CommunityHealthFileType, None]
+    issue_template: Union[CommunityHealthFileType, None]
+    pull_request_template: Union[CommunityHealthFileType, None]
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class CommunityProfilePropFilesTypeForResponse(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    The status of a deployment.
-    """
+    code_of_conduct: Union[CodeOfConductSimpleTypeForResponse, None]
+    code_of_conduct_file: Union[CommunityHealthFileTypeForResponse, None]
+    license_: Union[LicenseSimpleTypeForResponse, None]
+    contributing: Union[CommunityHealthFileTypeForResponse, None]
+    readme: Union[CommunityHealthFileTypeForResponse, None]
+    issue_template: Union[CommunityHealthFileTypeForResponse, None]
+    pull_request_template: Union[CommunityHealthFileTypeForResponse, None]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
 
     url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[SimpleUserTypeForResponse, None]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    html_url: str
+
+
+class CommunityHealthFileTypeForResponse(TypedDict):
+    """Community Health File"""
+
+    url: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[_dt.datetime, None]
+    content_reports_enabled: NotRequired[bool]
+
+
+class CommunityProfileTypeForResponse(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesTypeForResponse
+    updated_at: Union[str, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "CommunityHealthFileType",
+    "CommunityHealthFileTypeForResponse",
+    "CommunityProfilePropFilesType",
+    "CommunityProfilePropFilesTypeForResponse",
+    "CommunityProfileType",
+    "CommunityProfileTypeForResponse",
 )

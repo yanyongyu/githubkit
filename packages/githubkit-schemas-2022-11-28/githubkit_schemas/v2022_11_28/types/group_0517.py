@@ -9,78 +9,155 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0516 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class RepositoryAdvisoryCreateType(TypedDict):
+    """RepositoryAdvisoryCreate"""
+
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class RepositoryAdvisoryCreateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreate"""
 
-    Code Search Result Item
+    summary: str
+    description: str
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: list[
+        RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    start_private_fork: NotRequired[bool]
+
+
+class RepositoryAdvisoryCreatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
 
-    Code Search Result Item
+    The name of the package affected by the vulnerability.
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
-
-
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "RepositoryAdvisoryCreatePropCreditsItemsType",
+    "RepositoryAdvisoryCreatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryCreateType",
+    "RepositoryAdvisoryCreateTypeForResponse",
 )

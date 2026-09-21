@@ -9,28 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0197 import RepositoryRulesetConditionsPropRefName
-from .group_0199 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
+from .group_0003 import SimpleUser
 
 
-class OrgRulesetConditionsOneof0(GitHubModel):
-    """repository_name_and_ref_name
+class AutoMerge(GitHubModel):
+    """Auto merge
 
-    Conditions to target repositories by name and refs by name
+    The status of auto merging a pull request.
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
+    )
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
+    )
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
+    )
 
 
-model_rebuild(OrgRulesetConditionsOneof0)
+model_rebuild(AutoMerge)
 
-__all__ = ("OrgRulesetConditionsOneof0",)
+__all__ = ("AutoMerge",)

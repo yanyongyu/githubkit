@@ -9,42 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class GitTree(GitHubModel):
-    """Git Tree
+class Metadata(ExtraGitHubModel):
+    """metadata
 
-    The hierarchy between files in a Git repository.
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    sha: str = Field()
-    url: Missing[str] = Field(default=UNSET)
-    truncated: bool = Field()
-    tree: list[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
-    )
 
+model_rebuild(Metadata)
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
-
-    path: str = Field()
-    mode: str = Field()
-    type: str = Field()
-    sha: str = Field()
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
-
-__all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
-)
+__all__ = ("Metadata",)

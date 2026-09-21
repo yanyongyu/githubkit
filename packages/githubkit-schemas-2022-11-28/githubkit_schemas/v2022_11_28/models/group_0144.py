@@ -9,22 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0126 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0139 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+)
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class ActionsPolicyEnterpriseConditionsOneof4(GitHubModel):
+    """organization_property_and_repository_name
 
-    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
+    Conditions to target organizations by property and repositories by name
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(CopilotSpaceCollaboratorAnyof0Allof1)
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof4)
 
-__all__ = ("CopilotSpaceCollaboratorAnyof0Allof1",)
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof4",)

@@ -9,44 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class GitTree(GitHubModel):
+    """Git Tree
 
-class DemilestonedIssueEvent(GitHubModel):
-    """Demilestoned Issue Event
-
-    Demilestoned Issue Event
+    The hierarchy between files in a Git repository.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["demilestoned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    milestone: DemilestonedIssueEventPropMilestone = Field()
+    sha: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-class DemilestonedIssueEventPropMilestone(GitHubModel):
-    """DemilestonedIssueEventPropMilestone"""
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-    title: str = Field()
+    path: str = Field()
+    mode: str = Field()
+    type: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DemilestonedIssueEvent)
-model_rebuild(DemilestonedIssueEventPropMilestone)
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
 
 __all__ = (
-    "DemilestonedIssueEvent",
-    "DemilestonedIssueEventPropMilestone",
+    "GitTree",
+    "GitTreePropTreeItems",
 )

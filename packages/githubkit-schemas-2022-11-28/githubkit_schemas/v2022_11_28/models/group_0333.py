@@ -9,26 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0326 import BranchProtection
+from .group_0331 import Commit
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    Branch With Protection
+    """
+
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAutofix)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
 
-__all__ = ("CodeScanningAutofix",)
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
+
+__all__ = (
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
+)

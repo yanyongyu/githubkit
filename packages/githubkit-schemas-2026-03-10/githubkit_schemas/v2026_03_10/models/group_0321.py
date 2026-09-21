@@ -9,41 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0322 import (
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+)
 
-class CodeQualitySetupUpdateAnyof0(GitHubModel):
-    """CodeQualitySetupUpdateAnyof0"""
 
-    state: Literal["configured", "not-configured"] = Field(
-        description="The desired state of code quality setup."
-    )
-    runner_type: Missing[Literal["standard", "labeled"]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
+    """
+
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
         default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description="Whether AI findings run for Code Quality on this repository.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof0)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("CodeQualitySetupUpdateAnyof0",)
+__all__ = ("ProtectedBranchPullRequestReview",)

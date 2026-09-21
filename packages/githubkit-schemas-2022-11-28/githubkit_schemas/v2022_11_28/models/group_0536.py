@@ -13,27 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0532 import Traffic
 
-class Hovercard(GitHubModel):
-    """Hovercard
 
-    Hovercard
+class ViewTraffic(GitHubModel):
+    """View Traffic
+
+    View Traffic
     """
 
-    contexts: list[HovercardPropContextsItems] = Field()
+    count: int = Field()
+    uniques: int = Field()
+    views: list[Traffic] = Field()
 
 
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
+model_rebuild(ViewTraffic)
 
-    message: str = Field()
-    octicon: str = Field()
-
-
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
-
-__all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
-)
+__all__ = ("ViewTraffic",)

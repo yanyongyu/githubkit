@@ -9,67 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-
-
-class ThreadType(TypedDict):
-    """Thread
-
-    Thread
-    """
-
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0230 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class CommitCommentEventPropCommentType(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    Thread
-    """
-
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
-
-
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[SimpleUserType, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
+class CommitCommentEventPropCommentTypeForResponse(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "CommitCommentEventPropCommentType",
+    "CommitCommentEventPropCommentTypeForResponse",
 )

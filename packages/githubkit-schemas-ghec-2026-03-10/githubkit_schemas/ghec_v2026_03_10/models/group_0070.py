@@ -15,20 +15,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0050 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0054 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
+)
 
-class CodeScanningAlertLocation(GitHubModel):
-    """CodeScanningAlertLocation
 
-    Describe a region within a file for the alert.
+class ActionsPolicyEnterpriseConditionsOneof2(GitHubModel):
+    """organization_id_and_repository_name
+
+    Conditions to target organizations by id and repositories by name
     """
 
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
+    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(CodeScanningAlertLocation)
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof2)
 
-__all__ = ("CodeScanningAlertLocation",)
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof2",)

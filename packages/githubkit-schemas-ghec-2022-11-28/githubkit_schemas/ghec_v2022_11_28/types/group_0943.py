@@ -9,45 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0317 import ProjectsV2Type, ProjectsV2TypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookProjectsV2ProjectCreatedType(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPingFormEncodedType(TypedDict):
+    """WebhookPingFormEncoded
 
-    A project was created
+    The webhooks ping payload encoded with URL encoding.
     """
 
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    payload: str
 
 
-class WebhookProjectsV2ProjectCreatedTypeForResponse(TypedDict):
-    """WebhookProjectsV2ProjectCreated
+class WebhookPingFormEncodedTypeForResponse(TypedDict):
+    """WebhookPingFormEncoded
 
-    A project was created
+    The webhooks ping payload encoded with URL encoding.
     """
 
-    action: Literal["created"]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
-    projects_v2: ProjectsV2TypeForResponse
-    sender: SimpleUserTypeForResponse
+    payload: str
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectCreatedType",
-    "WebhookProjectsV2ProjectCreatedTypeForResponse",
+    "WebhookPingFormEncodedType",
+    "WebhookPingFormEncodedTypeForResponse",
 )

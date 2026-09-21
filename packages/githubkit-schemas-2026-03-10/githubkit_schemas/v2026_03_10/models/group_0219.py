@@ -12,44 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0218 import CustomPropertyValue
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class OrgRepoCustomPropertyValues(GitHubModel):
+    """Organization Repository Custom Property Values
 
-    do_not_enforce_on_create: Missing[bool] = Field(
-        default=UNSET,
-        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
-    )
-    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
-    )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
-    )
-
-
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
-
-    Required status check
+    List of custom property values for a repository
     """
 
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
+    repository_id: int = Field()
+    repository_name: str = Field()
+    repository_full_name: str = Field()
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values"
     )
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
-    )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+model_rebuild(OrgRepoCustomPropertyValues)
 
-__all__ = (
-    "RepositoryRuleParamsStatusCheckConfiguration",
-    "RepositoryRuleRequiredStatusChecksPropParameters",
-)
+__all__ = ("OrgRepoCustomPropertyValues",)

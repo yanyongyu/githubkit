@@ -9,39 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ActionsOrganizationPermissions(GitHubModel):
-    """ActionsOrganizationPermissions"""
-
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
-    selected_actions_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
-    )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
-    )
+from .group_0003 import SimpleUser
+from .group_0261 import GistSimplePropForkOf
 
 
-model_rebuild(ActionsOrganizationPermissions)
+class GistSimple(GitHubModel):
+    """Gist Simple
 
-__all__ = ("ActionsOrganizationPermissions",)
+    Gist Simple
+    """
+
+    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
+        default=UNSET, title="Gist", description="Gist"
+    )
+    url: Missing[str] = Field(default=UNSET)
+    forks_url: Missing[str] = Field(default=UNSET)
+    commits_url: Missing[str] = Field(default=UNSET)
+    id: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    git_pull_url: Missing[str] = Field(default=UNSET)
+    git_push_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
+    public: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: Missing[int] = Field(default=UNSET)
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Missing[Union[str, None]] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
+
+
+class GistSimplePropFiles(ExtraGitHubModel):
+    """GistSimplePropFiles"""
+
+
+model_rebuild(GistSimple)
+model_rebuild(GistSimplePropFiles)
+
+__all__ = (
+    "GistSimple",
+    "GistSimplePropFiles",
+)

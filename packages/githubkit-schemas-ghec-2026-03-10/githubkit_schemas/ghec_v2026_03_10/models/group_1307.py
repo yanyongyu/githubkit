@@ -13,15 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0137 import CustomPropertyValue
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    runners: list[int] = Field(
-        description="List of runner IDs to add to the runner group."
+class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+
+    properties: list[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the organization."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)

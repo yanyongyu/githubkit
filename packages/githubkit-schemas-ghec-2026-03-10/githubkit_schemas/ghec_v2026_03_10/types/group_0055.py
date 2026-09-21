@@ -9,32 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0056 import (
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse,
+)
 
 
-class InstallableOrganizationType(TypedDict):
-    """Installable Organization
+class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
+    """Repository ruleset conditions for repository IDs
 
-    A GitHub organization on which a GitHub App can be installed.
+    Parameters for a repository ID condition
     """
 
-    id: int
-    login: str
-    accessible_repositories_url: NotRequired[str]
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-class InstallableOrganizationTypeForResponse(TypedDict):
-    """Installable Organization
+class RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository IDs
 
-    A GitHub organization on which a GitHub App can be installed.
+    Parameters for a repository ID condition
     """
 
-    id: int
-    login: str
-    accessible_repositories_url: NotRequired[str]
+    repository_id: (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdTypeForResponse
+    )
 
 
 __all__ = (
-    "InstallableOrganizationType",
-    "InstallableOrganizationTypeForResponse",
+    "RepositoryRulesetConditionsRepositoryIdTargetType",
+    "RepositoryRulesetConditionsRepositoryIdTargetTypeForResponse",
 )

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,18 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class KeySimple(GitHubModel):
-    """Key Simple
+class SearchResultTextMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItems"""
 
-    Key Simple
-    """
+    object_url: Missing[str] = Field(default=UNSET)
+    object_type: Missing[Union[str, None]] = Field(default=UNSET)
+    property_: Missing[str] = Field(default=UNSET, alias="property")
+    fragment: Missing[str] = Field(default=UNSET)
+    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+        default=UNSET
+    )
 
-    id: int = Field()
-    key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
+
+    text: Missing[str] = Field(default=UNSET)
+    indices: Missing[list[int]] = Field(default=UNSET)
 
 
-model_rebuild(KeySimple)
+model_rebuild(SearchResultTextMatchesItems)
+model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
 
-__all__ = ("KeySimple",)
+__all__ = (
+    "SearchResultTextMatchesItems",
+    "SearchResultTextMatchesItemsPropMatchesItems",
+)

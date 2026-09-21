@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0590 import Meta
-from .group_0600 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class ScimEnterpriseUserResponseAllof1(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1"""
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
-        default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
+    Repository invitations let you manage who you collaborate with.
+    """
+
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
     )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
     )
+    reason: Union[str, None] = Field()
+    created_at: _dt.datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("ScimEnterpriseUserResponseAllof1",)
+__all__ = ("RepositorySubscription",)

@@ -9,56 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0572 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    ref: str
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse201PropBaseType",
-    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse201Type",
-    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",
+    "ReposOwnerRepoPullsPullNumberCodespacesPostBodyTypeForResponse",
 )

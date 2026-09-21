@@ -9,274 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0208 import LabelType, LabelTypeForResponse
+
+class BillingAiCreditUsageReportGheType(TypedDict):
+    """BillingAiCreditUsageReportGhe"""
+
+    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
 
 
-class DiscussionType(TypedDict):
-    """Discussion
+class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhe"""
 
-    A Discussion in a repository.
-    """
-
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    body: str
-    category: DiscussionPropCategoryType
-    comments: int
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsType]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: _dt.datetime
-    user: Union[DiscussionPropUserType, None]
-    labels: NotRequired[list[LabelType]]
+    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
 
 
-class DiscussionTypeForResponse(TypedDict):
-    """Discussion
+class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
 
-    A Discussion in a repository.
-    """
-
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByTypeForResponse, None]
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    body: str
-    category: DiscussionPropCategoryTypeForResponse
-    comments: int
-    created_at: str
-    html_url: str
-    id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsTypeForResponse]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: str
-    user: Union[DiscussionPropUserTypeForResponse, None]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class DiscussionPropAnswerChosenByType(TypedDict):
-    """User"""
+class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropTimePeriod"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
 
 
-class DiscussionPropAnswerChosenByTypeForResponse(TypedDict):
-    """User"""
+class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropCategoryType(TypedDict):
-    """DiscussionPropCategory"""
-
-    created_at: _dt.datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
+    id: str
     name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
 
 
-class DiscussionPropCategoryTypeForResponse(TypedDict):
-    """DiscussionPropCategory"""
+class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropCostCenter"""
 
-    created_at: str
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
+    id: str
     name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
 
 
-class DiscussionPropReactionsType(TypedDict):
-    """Reactions"""
+class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class DiscussionPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
-class DiscussionPropUserType(TypedDict):
-    """User"""
+class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "DiscussionPropAnswerChosenByType",
-    "DiscussionPropAnswerChosenByTypeForResponse",
-    "DiscussionPropCategoryType",
-    "DiscussionPropCategoryTypeForResponse",
-    "DiscussionPropReactionsType",
-    "DiscussionPropReactionsTypeForResponse",
-    "DiscussionPropUserType",
-    "DiscussionPropUserTypeForResponse",
-    "DiscussionType",
-    "DiscussionTypeForResponse",
+    "BillingAiCreditUsageReportGhePropCostCenterType",
+    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
+    "BillingAiCreditUsageReportGhePropTimePeriodType",
+    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
+    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
+    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingAiCreditUsageReportGheType",
+    "BillingAiCreditUsageReportGheTypeForResponse",
 )

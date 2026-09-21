@@ -9,38 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0139 import (
-    RepositoryRulePullRequestPropParametersType,
-    RepositoryRulePullRequestPropParametersTypeForResponse,
-)
+from .group_0137 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class CustomPropertiesForOrgsGetEnterprisePropertyValuesType(TypedDict):
+    """Enterprise Organization Custom Property Values
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    List of custom property values for an organization
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    organization_id: int
+    organization_login: str
+    properties: list[CustomPropertyValueType]
 
 
-class RepositoryRulePullRequestTypeForResponse(TypedDict):
-    """pull_request
+class CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse(TypedDict):
+    """Enterprise Organization Custom Property Values
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    List of custom property values for an organization
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersTypeForResponse]
+    organization_id: int
+    organization_login: str
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRulePullRequestType",
-    "RepositoryRulePullRequestTypeForResponse",
+    "CustomPropertiesForOrgsGetEnterprisePropertyValuesType",
+    "CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse",
 )

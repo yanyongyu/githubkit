@@ -9,60 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
+class InstallableOrganizationType(TypedDict):
+    """Installable Organization
 
-    Group of enterprise owners and/or members
+    A GitHub organization on which a GitHub App can be installed.
     """
 
     id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
-class EnterpriseTeamTypeForResponse(TypedDict):
-    """Enterprise Team
+class InstallableOrganizationTypeForResponse(TypedDict):
+    """Installable Organization
 
-    Group of enterprise owners and/or members
+    A GitHub organization on which a GitHub App can be installed.
     """
 
     id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: str
-    updated_at: str
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    login: str
+    accessible_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "EnterpriseTeamType",
-    "EnterpriseTeamTypeForResponse",
+    "InstallableOrganizationType",
+    "InstallableOrganizationTypeForResponse",
 )

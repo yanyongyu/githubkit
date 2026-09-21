@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0246 import (
+    RepositoryRuleCommitterEmailPatternPropParametersType,
+    RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleMaxFileSizePropParametersType(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
 
-    max_file_size: int
+    Parameters to be used for the committer_email_pattern rule
+    """
+
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-class RepositoryRuleMaxFileSizePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleCommitterEmailPatternTypeForResponse(TypedDict):
+    """committer_email_pattern
 
-    max_file_size: int
+    Parameters to be used for the committer_email_pattern rule
+    """
+
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitterEmailPatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleMaxFileSizePropParametersType",
-    "RepositoryRuleMaxFileSizePropParametersTypeForResponse",
+    "RepositoryRuleCommitterEmailPatternType",
+    "RepositoryRuleCommitterEmailPatternTypeForResponse",
 )

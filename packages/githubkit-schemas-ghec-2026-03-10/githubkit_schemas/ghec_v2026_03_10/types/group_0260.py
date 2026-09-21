@@ -9,31 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
-
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0261 import GistSimplePropForkOfType, GistSimplePropForkOfTypeForResponse
 
 
-class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
-    """ActionsOrganizationPermissions"""
+class GistSimpleType(TypedDict):
+    """Gist Simple
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Gist Simple
+    """
+
+    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
+    url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesType]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+
+
+class GistSimpleTypeForResponse(TypedDict):
+    """Gist Simple
+
+    Gist Simple
+    """
+
+    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
+    url: NotRequired[str]
+    forks_url: NotRequired[str]
+    commits_url: NotRequired[str]
+    id: NotRequired[str]
+    node_id: NotRequired[str]
+    git_pull_url: NotRequired[str]
+    git_push_url: NotRequired[str]
+    html_url: NotRequired[str]
+    files: NotRequired[GistSimplePropFilesTypeForResponse]
+    public: NotRequired[bool]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_enabled: NotRequired[bool]
+    user: NotRequired[Union[str, None]]
+    comments_url: NotRequired[str]
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+
+
+GistSimplePropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
+
+
+GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropFiles
+"""
 
 
 __all__ = (
-    "ActionsOrganizationPermissionsType",
-    "ActionsOrganizationPermissionsTypeForResponse",
+    "GistSimplePropFilesType",
+    "GistSimplePropFilesTypeForResponse",
+    "GistSimpleType",
+    "GistSimpleTypeForResponse",
 )

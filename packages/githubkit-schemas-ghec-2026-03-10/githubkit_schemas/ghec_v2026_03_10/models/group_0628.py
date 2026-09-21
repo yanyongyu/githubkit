@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,71 +19,67 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksRule(GitHubModel):
-    """branch protection rule
+class PublicUser(GitHubModel):
+    """Public User
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
-    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
-    branches#about-branch-protection-settings) applied to branches that match the
-    name. Binary settings are boolean. Multi-level configurations are one of `off`,
-    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+    Public User
     """
 
-    admin_enforced: bool = Field()
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    authorized_actor_names: list[str] = Field()
-    authorized_actors_only: bool = Field()
-    authorized_dismissal_actors_only: bool = Field()
-    create_protected: Missing[bool] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    dismiss_stale_reviews_on_push: bool = Field()
+    login: str = Field()
     id: int = Field()
-    ignore_approvals_from_contributors: bool = Field()
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
-        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
-    )
-    lock_allows_fork_sync: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
-    )
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
-    name: str = Field()
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    repository_id: int = Field()
-    require_code_owner_review: bool = Field()
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it",
-    )
-    required_approving_review_count: int = Field()
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_status_checks: list[str] = Field()
-    required_status_checks_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    signature_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    strict_required_status_checks_policy: bool = Field()
+    user_view_type: Missing[str] = Field(default=UNSET)
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    name: Union[str, None] = Field()
+    company: Union[str, None] = Field()
+    blog: Union[str, None] = Field()
+    location: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
+    hireable: Union[bool, None] = Field()
+    bio: Union[str, None] = Field()
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
+    plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
+    private_gists: Missing[int] = Field(default=UNSET)
+    total_private_repos: Missing[int] = Field(default=UNSET)
+    owned_private_repos: Missing[int] = Field(default=UNSET)
+    disk_usage: Missing[int] = Field(default=UNSET)
+    collaborators: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksRule)
+class PublicUserPropPlan(GitHubModel):
+    """PublicUserPropPlan"""
 
-__all__ = ("WebhooksRule",)
+    collaborators: int = Field()
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
+
+
+model_rebuild(PublicUser)
+model_rebuild(PublicUserPropPlan)
+
+__all__ = (
+    "PublicUser",
+    "PublicUserPropPlan",
+)

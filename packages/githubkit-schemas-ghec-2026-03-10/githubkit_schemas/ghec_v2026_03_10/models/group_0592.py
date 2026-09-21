@@ -9,39 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class Stargazer(GitHubModel):
+    """Stargazer
 
-    operations: list[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
-    )
-    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
+    Stargazer
+    """
 
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
-        default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
-    )
+    starred_at: _dt.datetime = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+model_rebuild(Stargazer)
 
-__all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
-)
+__all__ = ("Stargazer",)

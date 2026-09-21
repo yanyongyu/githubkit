@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,20 +17,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0217 import RepositoryRulePullRequestPropParameters
 
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
-
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Custom property defined on an organization
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    )
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
+    )
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[Union[list[str], None]] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    require_explicit_values: Missing[bool] = Field(
+        default=UNSET, description="Whether setting properties values is mandatory"
+    )
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(CustomProperty)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("CustomProperty",)

@@ -9,41 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0396 import BranchProtection
 
-class CodeQualitySetupUpdateAnyof1(GitHubModel):
-    """CodeQualitySetupUpdateAnyof1"""
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code quality setup."
+class ShortBranch(GitHubModel):
+    """Short Branch
+
+    Short Branch
+    """
+
+    name: str = Field()
+    commit: ShortBranchPropCommit = Field()
+    protected: bool = Field()
+    protection: Missing[BranchProtection] = Field(
+        default=UNSET, title="Branch Protection", description="Branch Protection"
     )
-    runner_type: Literal["standard", "labeled"] = Field(
-        description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
-        default=UNSET,
-        description="Whether AI findings run for Code Quality on this repository.",
-    )
+    protection_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof1)
+class ShortBranchPropCommit(GitHubModel):
+    """ShortBranchPropCommit"""
 
-__all__ = ("CodeQualitySetupUpdateAnyof1",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(ShortBranch)
+model_rebuild(ShortBranchPropCommit)
+
+__all__ = (
+    "ShortBranch",
+    "ShortBranchPropCommit",
+)

@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
 
-from .group_0318 import LinkType, LinkTypeForResponse
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
 
-
-class ReviewCommentPropLinksType(TypedDict):
-    """ReviewCommentPropLinks"""
-
-    self_: LinkType
-    html: LinkType
-    pull_request: LinkType
+Language
+"""
 
 
-class ReviewCommentPropLinksTypeForResponse(TypedDict):
-    """ReviewCommentPropLinks"""
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
 
-    self_: LinkTypeForResponse
-    html: LinkTypeForResponse
-    pull_request: LinkTypeForResponse
+Language
+"""
 
 
 __all__ = (
-    "ReviewCommentPropLinksType",
-    "ReviewCommentPropLinksTypeForResponse",
+    "LanguageType",
+    "LanguageTypeForResponse",
 )

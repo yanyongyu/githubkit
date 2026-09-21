@@ -9,51 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
+class UsageReportExportList(GitHubModel):
+    """UsageReportExportList"""
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
-
-
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
+    usage_report_exports: list[UsageReportExport] = Field(
+        description="List of usage report exports"
+    )
 
 
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
+class UsageReportExport(GitHubModel):
+    """UsageReportExport"""
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
+    id: str = Field(description="Unique identifier for the usage report export")
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
+        Field(description="The type of usage report")
+    )
+    start_date: _dt.date = Field(description="The start date for the report")
+    end_date: _dt.date = Field(description="The end date for the report")
+    status: Literal["processing", "completed", "failed"] = Field(
+        description="The current status of the report export"
+    )
+    download_urls: Missing[list[str]] = Field(
+        default=UNSET,
+        description="URLs to download the completed report. Only present when the report status is `completed`.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="When the report export was created"
+    )
+    actor: Missing[str] = Field(
+        default=UNSET, description="The login of the user who requested the export"
+    )
 
 
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
+model_rebuild(UsageReportExportList)
+model_rebuild(UsageReportExport)
 
 __all__ = (
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
+    "UsageReportExport",
+    "UsageReportExportList",
 )

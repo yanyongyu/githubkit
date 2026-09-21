@@ -9,37 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0116 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
+class EnterpriseTokenInventoryExportType(TypedDict):
+    """Enterprise Token Inventory Export
 
-    Parameters for a repository name condition
+    The status of an asynchronous enterprise token inventory CSV export.
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    export_id: str
+    status: Literal["pending", "queued", "started", "success", "error"]
+    as_of: NotRequired[Union[str, None]]
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository names
+class EnterpriseTokenInventoryExportTypeForResponse(TypedDict):
+    """Enterprise Token Inventory Export
 
-    Parameters for a repository name condition
+    The status of an asynchronous enterprise token inventory CSV export.
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    export_id: str
+    status: Literal["pending", "queued", "started", "success", "error"]
+    as_of: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetType",
-    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
+    "EnterpriseTokenInventoryExportType",
+    "EnterpriseTokenInventoryExportTypeForResponse",
 )

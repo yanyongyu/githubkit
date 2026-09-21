@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0244 import (
+    RepositoryRuleCommitAuthorEmailPatternPropParametersType,
+    RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersType(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
 
-    restricted_file_extensions: list[str]
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
 
 
-class RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleFileExtensionRestrictionPropParameters"""
+class RepositoryRuleCommitAuthorEmailPatternTypeForResponse(TypedDict):
+    """commit_author_email_pattern
 
-    restricted_file_extensions: list[str]
+    Parameters to be used for the commit_author_email_pattern rule
+    """
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitAuthorEmailPatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleFileExtensionRestrictionPropParametersType",
-    "RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse",
+    "RepositoryRuleCommitAuthorEmailPatternType",
+    "RepositoryRuleCommitAuthorEmailPatternTypeForResponse",
 )

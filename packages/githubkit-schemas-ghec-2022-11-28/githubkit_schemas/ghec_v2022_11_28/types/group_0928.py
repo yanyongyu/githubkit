@@ -9,141 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0679 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookProjectCardDeletedType(TypedDict):
-    """project_card deleted event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["deleted"]
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardDeletedPropProjectCardType
-    repository: NotRequired[Union[RepositoryWebhooksType, None]]
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
 
 
-class WebhookProjectCardDeletedTypeForResponse(TypedDict):
-    """project_card deleted event"""
+class WebhookOrganizationRenamedTypeForResponse(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["deleted"]
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_card: WebhookProjectCardDeletedPropProjectCardTypeForResponse
-    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
-    """Project Card"""
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: _dt.datetime
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
 
 
-class WebhookProjectCardDeletedPropProjectCardTypeForResponse(TypedDict):
-    """Project Card"""
+class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    after_id: NotRequired[Union[int, None]]
-    archived: bool
-    column_id: Union[int, None]
-    column_url: str
-    content_url: NotRequired[str]
-    created_at: str
-    creator: Union[
-        WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse, None
-    ]
-    id: int
-    node_id: str
-    note: Union[str, None]
-    project_url: str
-    updated_at: str
-    url: str
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
-    """User"""
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: NotRequired[str]
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse(TypedDict):
-    """User"""
+class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorTypeForResponse",
-    "WebhookProjectCardDeletedPropProjectCardType",
-    "WebhookProjectCardDeletedPropProjectCardTypeForResponse",
-    "WebhookProjectCardDeletedType",
-    "WebhookProjectCardDeletedTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesTypeForResponse",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedTypeForResponse",
 )

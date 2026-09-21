@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType(TypedDict):
-    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
-
-    organization_ids: NotRequired[list[int]]
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
 
-    organization_ids: NotRequired[list[int]]
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[Literal["public", "internal"], None]]
+    accessible_repositories: NotRequired[list[Union[SimpleRepositoryType, None]]]
+
+
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
+    """
+
+    default_level: NotRequired[Union[Literal["public", "internal"], None]]
+    accessible_repositories: NotRequired[
+        list[Union[SimpleRepositoryTypeForResponse, None]]
+    ]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType",
-    "EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

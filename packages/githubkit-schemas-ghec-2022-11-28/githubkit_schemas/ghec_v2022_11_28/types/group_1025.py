@@ -9,45 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0673 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0668 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
+from .group_1026 import (
+    WebhookPullRequestUnassignedPropPullRequestType,
+    WebhookPullRequestUnassignedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleaseReleasedType(TypedDict):
-    """release released event"""
+class WebhookPullRequestUnassignedType(TypedDict):
+    """pull_request unassigned event"""
 
-    action: Literal["released"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
+    pull_request: WebhookPullRequestUnassignedPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookReleaseReleasedTypeForResponse(TypedDict):
-    """release released event"""
+class WebhookPullRequestUnassignedTypeForResponse(TypedDict):
+    """pull_request unassigned event"""
 
-    action: Literal["released"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
+    pull_request: WebhookPullRequestUnassignedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleaseReleasedType",
-    "WebhookReleaseReleasedTypeForResponse",
+    "WebhookPullRequestUnassignedType",
+    "WebhookPullRequestUnassignedTypeForResponse",
 )

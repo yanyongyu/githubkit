@@ -15,17 +15,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0260 import SecretScanningCustomPattern
+
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
-    )
-
-
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
-
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)

@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0218 import CustomPropertyValue
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
     )
-    enable_debugger: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to enable the debugger for the re-run of this job.",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

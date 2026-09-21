@@ -9,35 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    An SSH key granting access to a single repository.
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    An SSH key granting access to a single repository.
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

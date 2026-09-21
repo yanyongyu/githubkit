@@ -17,30 +17,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1422 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
-
-    cname: Missing[Union[str, None]] = Field(
+    assignees: Missing[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
+            ]
+        ]
+    ] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )
-    https_enforced: Missing[bool] = Field(
+
+
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
+
+    login: str = Field(description="The login of the user to assign.")
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this assignee."
+    )
+    suggest: Missing[bool] = Field(
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description="If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this assignee choice."
     )
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    ] = Field()
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1",
+)

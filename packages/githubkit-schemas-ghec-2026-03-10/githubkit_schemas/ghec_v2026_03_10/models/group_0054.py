@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,25 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Announcement(GitHubModel):
-    """Enterprise Announcement
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    Enterprise global announcement
-    """
-
-    announcement: Union[str, None] = Field(
-        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
-    )
-    expires_at: Missing[Union[_dt.datetime, None]] = Field(
+    include: Missing[list[str]] = Field(
         default=UNSET,
-        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string.",
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
     )
-    user_dismissible: Missing[Union[bool, None]] = Field(
+    exclude: Missing[list[str]] = Field(
         default=UNSET,
-        description="Whether an announcement can be dismissed by the user.",
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
     )
 
 
-model_rebuild(Announcement)
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-__all__ = ("Announcement",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

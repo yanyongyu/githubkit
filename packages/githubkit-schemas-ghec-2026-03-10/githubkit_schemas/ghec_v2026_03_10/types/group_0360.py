@@ -10,130 +10,215 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0220 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
-from .group_0253 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0359 import SimpleCommitType, SimpleCommitTypeForResponse
+from .group_0107 import TeamSimpleType, TeamSimpleTypeForResponse
 
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
+class TeamFullType(TypedDict):
+    """Full Team
 
-    An invocation of a workflow
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
-    name: NotRequired[Union[str, None]]
     node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
     url: str
     html_url: str
-    pull_requests: Union[list[PullRequestMinimalType], None]
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[Literal["closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: str
+    members_url: str
+    repositories_url: str
+    parent: NotRequired[Union[TeamSimpleType, None]]
+    members_count: int
+    repos_count: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[_dt.datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[SimpleCommitType, None]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
-    head_repository_id: NotRequired[int]
-    display_title: str
+    organization: TeamOrganizationType
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class WorkflowRunTypeForResponse(TypedDict):
-    """Workflow Run
+class TeamFullTypeForResponse(TypedDict):
+    """Full Team
 
-    An invocation of a workflow
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
-    name: NotRequired[Union[str, None]]
     node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[
-        Union[list[ReferencedWorkflowTypeForResponse], None]
-    ]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
     url: str
     html_url: str
-    pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[Literal["closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: str
+    members_url: str
+    repositories_url: str
+    parent: NotRequired[Union[TeamSimpleTypeForResponse, None]]
+    members_count: int
+    repos_count: int
     created_at: str
     updated_at: str
-    actor: NotRequired[SimpleUserTypeForResponse]
-    triggering_actor: NotRequired[SimpleUserTypeForResponse]
-    run_started_at: NotRequired[str]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[SimpleCommitTypeForResponse, None]
-    repository: MinimalRepositoryTypeForResponse
-    head_repository: MinimalRepositoryTypeForResponse
-    head_repository_id: NotRequired[int]
-    display_title: str
+    organization: TeamOrganizationTypeForResponse
+    ldap_dn: NotRequired[str]
+    type: Literal["enterprise", "organization"]
+    organization_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
 
 
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
+class TeamOrganizationType(TypedDict):
+    """Team Organization
 
-    A workflow referenced/reused by the initial caller workflow
+    Team Organization
     """
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    name: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    blog: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    twitter_username: NotRequired[Union[str, None]]
+    is_verified: NotRequired[bool]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    html_url: str
+    created_at: _dt.datetime
+    type: str
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    private_gists: NotRequired[Union[int, None]]
+    disk_usage: NotRequired[Union[int, None]]
+    collaborators: NotRequired[Union[int, None]]
+    billing_email: NotRequired[Union[str, None]]
+    plan: NotRequired[TeamOrganizationPropPlanType]
+    default_repository_permission: NotRequired[Union[str, None]]
+    members_can_create_repositories: NotRequired[Union[bool, None]]
+    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
+    members_allowed_repository_creation_type: NotRequired[str]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
+    web_commit_signoff_required: NotRequired[bool]
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
 
 
-class ReferencedWorkflowTypeForResponse(TypedDict):
-    """Referenced workflow
+class TeamOrganizationTypeForResponse(TypedDict):
+    """Team Organization
 
-    A workflow referenced/reused by the initial caller workflow
+    Team Organization
     """
 
-    path: str
-    sha: str
-    ref: NotRequired[str]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    name: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
+    blog: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    twitter_username: NotRequired[Union[str, None]]
+    is_verified: NotRequired[bool]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    html_url: str
+    created_at: str
+    type: str
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    private_gists: NotRequired[Union[int, None]]
+    disk_usage: NotRequired[Union[int, None]]
+    collaborators: NotRequired[Union[int, None]]
+    billing_email: NotRequired[Union[str, None]]
+    plan: NotRequired[TeamOrganizationPropPlanTypeForResponse]
+    default_repository_permission: NotRequired[Union[str, None]]
+    members_can_create_repositories: NotRequired[Union[bool, None]]
+    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
+    members_allowed_repository_creation_type: NotRequired[str]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
+    web_commit_signoff_required: NotRequired[bool]
+    updated_at: str
+    archived_at: Union[str, None]
+
+
+class TeamOrganizationPropPlanType(TypedDict):
+    """TeamOrganizationPropPlan"""
+
+    name: str
+    space: int
+    private_repos: int
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
+
+
+class TeamOrganizationPropPlanTypeForResponse(TypedDict):
+    """TeamOrganizationPropPlan"""
+
+    name: str
+    space: int
+    private_repos: int
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
 
 
 __all__ = (
-    "ReferencedWorkflowType",
-    "ReferencedWorkflowTypeForResponse",
-    "WorkflowRunType",
-    "WorkflowRunTypeForResponse",
+    "TeamFullType",
+    "TeamFullTypeForResponse",
+    "TeamOrganizationPropPlanType",
+    "TeamOrganizationPropPlanTypeForResponse",
+    "TeamOrganizationType",
+    "TeamOrganizationTypeForResponse",
 )

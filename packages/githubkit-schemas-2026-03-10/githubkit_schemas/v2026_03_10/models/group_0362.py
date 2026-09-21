@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,35 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
-
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
+from .group_0359 import CodeScanningVariantAnalysisRepository
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    repository: CodeScanningVariantAnalysisRepository = Field(
+        title="Repository Identifier", description="Repository Identifier"
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
 
 
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
 
-__all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
-)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)

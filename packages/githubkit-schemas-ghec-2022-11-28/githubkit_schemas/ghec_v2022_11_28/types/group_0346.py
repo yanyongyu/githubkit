@@ -9,28 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class RateLimitType(TypedDict):
-    """Rate Limit"""
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    The configuration for iteration fields.
+    """
+
+    start_date: _dt.date
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
+    ]
 
 
-class RateLimitTypeForResponse(TypedDict):
-    """Rate Limit"""
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    The configuration for iteration fields.
+    """
+
+    start_date: str
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    ]
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: str
+    start_date: _dt.date
+    duration: int
+
+
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
+    TypedDict
+):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+
+    title: str
+    start_date: str
+    duration: int
 
 
 __all__ = (
-    "RateLimitType",
-    "RateLimitTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

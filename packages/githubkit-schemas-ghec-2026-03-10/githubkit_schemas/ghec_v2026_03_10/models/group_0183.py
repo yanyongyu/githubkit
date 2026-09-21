@@ -9,45 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SecretScanningLocationDiscussionBody(GitHubModel):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleCodeScanningPropParameters(GitHubModel):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
+        description="Tools that must provide code scanning results for this rule to pass."
+    )
+
+
+class RepositoryRuleParamsCodeScanningTool(GitHubModel):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    discussion_body_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
+        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
     )
-
-
-class SecretScanningLocationPullRequestComment(GitHubModel):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str = Field(
-        description="The API URL to get the pull request comment where the secret was detected."
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ] = Field(
+        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/enterprise-cloud@latest/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
     )
-    html_url: Missing[str] = Field(
-        default=UNSET,
-        description="The GitHub URL for the pull request comment where the secret was detected.",
-    )
+    tool: str = Field(description="The name of a code scanning tool")
 
 
-model_rebuild(SecretScanningLocationDiscussionBody)
-model_rebuild(SecretScanningLocationPullRequestComment)
+model_rebuild(RepositoryRuleCodeScanningPropParameters)
+model_rebuild(RepositoryRuleParamsCodeScanningTool)
 
 __all__ = (
-    "SecretScanningLocationDiscussionBody",
-    "SecretScanningLocationPullRequestComment",
+    "RepositoryRuleCodeScanningPropParameters",
+    "RepositoryRuleParamsCodeScanningTool",
 )

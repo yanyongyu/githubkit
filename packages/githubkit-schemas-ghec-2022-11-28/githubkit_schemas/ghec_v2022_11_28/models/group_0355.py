@@ -19,92 +19,90 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Job(GitHubModel):
-    """Job
+class RuleSuite(GitHubModel):
+    """Rule Suite
 
-    Information of a job execution in a workflow run
+    Response
     """
 
-    id: int = Field(description="The id of the job.")
-    run_id: int = Field(description="The id of the associated workflow run.")
-    run_url: str = Field()
-    run_attempt: Missing[int] = Field(
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
+    )
+    actor_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The previous commit SHA of the ref."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The new commit SHA of the ref."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
         default=UNSET,
-        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
+        description="The ID of the repository associated with the rule evaluation.",
     )
-    node_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being run.")
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ] = Field(description="The phase of the lifecycle that the job is currently in.")
-    conclusion: Union[
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-        None,
-    ] = Field(description="The outcome of the job.")
-    created_at: _dt.datetime = Field(
-        description="The time that the job created, in ISO 8601 format."
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
     )
-    started_at: _dt.datetime = Field(
-        description="The time that the job started, in ISO 8601 format."
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
     )
-    completed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the job finished, in ISO 8601 format."
+    evaluation_result: Missing[Union[Literal["pass", "fail", "bypass"], None]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
     )
-    name: str = Field(description="The name of the job.")
-    steps: Missing[list[JobPropStepsItems]] = Field(
-        default=UNSET, description="Steps in this job."
-    )
-    check_run_url: str = Field()
-    labels: list[str] = Field(
-        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
-    )
-    runner_id: Union[int, None] = Field(
-        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_name: Union[str, None] = Field(
-        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_id: Union[int, None] = Field(
-        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_name: Union[str, None] = Field(
-        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-
-
-class JobPropStepsItems(GitHubModel):
-    """JobPropStepsItems"""
-
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The phase of the lifecycle that the job is currently in."
-    )
-    conclusion: Union[str, None] = Field(description="The outcome of the job.")
-    name: str = Field(description="The name of the job.")
-    number: int = Field()
-    started_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="The time that the step started, in ISO 8601 format."
-    )
-    completed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="The time that the job finished, in ISO 8601 format."
+    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
+        default=UNSET, description="Details on the evaluated rules."
     )
 
 
-model_rebuild(Job)
-model_rebuild(JobPropStepsItems)
+class RuleSuitePropRuleEvaluationsItems(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
+        default=UNSET, description="The enforcement level of this rule source."
+    )
+    result: Missing[Literal["pass", "fail"]] = Field(
+        default=UNSET,
+        description="The result of the evaluation of the individual rule.",
+    )
+    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
+    details: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The detailed failure message for the rule. Null if the rule passed.",
+    )
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the rule source."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the rule source."
+    )
+
+
+model_rebuild(RuleSuite)
+model_rebuild(RuleSuitePropRuleEvaluationsItems)
+model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
 
 __all__ = (
-    "Job",
-    "JobPropStepsItems",
+    "RuleSuite",
+    "RuleSuitePropRuleEvaluationsItems",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
 )

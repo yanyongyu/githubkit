@@ -9,36 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0191 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0043 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    List of custom property values for a repository
+    Org Membership
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[SimpleUserType, None]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
-    """Organization Repository Custom Property Values
+class OrgMembershipTypeForResponse(TypedDict):
+    """Org Membership
 
-    List of custom property values for a repository
+    Org Membership
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    organization_url: str
+    organization: OrganizationSimpleTypeForResponse
+    user: Union[SimpleUserTypeForResponse, None]
+    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
+
+
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
+
+
+class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
 
 
 __all__ = (
-    "OrgRepoCustomPropertyValuesType",
-    "OrgRepoCustomPropertyValuesTypeForResponse",
+    "OrgMembershipPropPermissionsType",
+    "OrgMembershipPropPermissionsTypeForResponse",
+    "OrgMembershipType",
+    "OrgMembershipTypeForResponse",
 )

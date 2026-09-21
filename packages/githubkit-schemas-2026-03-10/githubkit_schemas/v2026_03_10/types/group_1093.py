@@ -9,66 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    ]
-    budget_scope: NotRequired[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-    expires_at: NotRequired[_dt.date]
+    default_level: Literal["public", "internal"]
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
-
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    ]
-    budget_scope: NotRequired[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: NotRequired[Literal["BundlePricing", "ProductPricing", "SkuPricing"]]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-    expires_at: NotRequired[str]
-
-
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
-
-
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(
     TypedDict
 ):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

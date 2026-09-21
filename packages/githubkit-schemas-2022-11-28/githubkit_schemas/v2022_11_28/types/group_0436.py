@@ -9,154 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
-class TimelineCommittedEventType(TypedDict):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
+
+    Review Dismissed Issue Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorType
-    committer: TimelineCommittedEventPropCommitterType
-    message: str
-    tree: TimelineCommittedEventPropTreeType
-    parents: list[TimelineCommittedEventPropParentsItemsType]
-    verification: TimelineCommittedEventPropVerificationType
-    html_url: str
+    actor: SimpleUserType
+    event: Literal["review_dismissed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-class TimelineCommittedEventTypeForResponse(TypedDict):
-    """Timeline Committed Event
+class ReviewDismissedIssueEventTypeForResponse(TypedDict):
+    """Review Dismissed Issue Event
 
-    Timeline Committed Event
+    Review Dismissed Issue Event
     """
 
-    event: NotRequired[Literal["committed"]]
-    sha: str
+    id: int
     node_id: str
     url: str
-    author: TimelineCommittedEventPropAuthorTypeForResponse
-    committer: TimelineCommittedEventPropCommitterTypeForResponse
-    message: str
-    tree: TimelineCommittedEventPropTreeTypeForResponse
-    parents: list[TimelineCommittedEventPropParentsItemsTypeForResponse]
-    verification: TimelineCommittedEventPropVerificationTypeForResponse
-    html_url: str
+    actor: SimpleUserTypeForResponse
+    event: Literal["review_dismissed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
 
 
-class TimelineCommittedEventPropAuthorType(TypedDict):
-    """TimelineCommittedEventPropAuthor
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
-class TimelineCommittedEventPropAuthorTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropAuthor
+class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterType(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: _dt.datetime
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropCommitterTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: str
-    email: str
-    name: str
-
-
-class TimelineCommittedEventPropTreeType(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropTreeTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropTree"""
-
-    sha: str
-    url: str
-
-
-class TimelineCommittedEventPropParentsItemsType(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropParentsItemsTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class TimelineCommittedEventPropVerificationType(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
-
-
-class TimelineCommittedEventPropVerificationTypeForResponse(TypedDict):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-    verified_at: Union[str, None]
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
 __all__ = (
-    "TimelineCommittedEventPropAuthorType",
-    "TimelineCommittedEventPropAuthorTypeForResponse",
-    "TimelineCommittedEventPropCommitterType",
-    "TimelineCommittedEventPropCommitterTypeForResponse",
-    "TimelineCommittedEventPropParentsItemsType",
-    "TimelineCommittedEventPropParentsItemsTypeForResponse",
-    "TimelineCommittedEventPropTreeType",
-    "TimelineCommittedEventPropTreeTypeForResponse",
-    "TimelineCommittedEventPropVerificationType",
-    "TimelineCommittedEventPropVerificationTypeForResponse",
-    "TimelineCommittedEventType",
-    "TimelineCommittedEventTypeForResponse",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
+    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventTypeForResponse",
 )

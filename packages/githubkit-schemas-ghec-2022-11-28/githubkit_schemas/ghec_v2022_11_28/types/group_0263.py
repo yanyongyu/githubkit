@@ -10,37 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class OrganizationActionsSecretType(TypedDict):
-    """Actions Secret for an Organization
 
-    Secrets for GitHub Actions for an organization.
+class GistCommitType(TypedDict):
+    """Gist Commit
+
+    Gist Commit
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    url: str
+    version: str
+    user: Union[SimpleUserType, None]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class OrganizationActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret for an Organization
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    Secrets for GitHub Actions for an organization.
+    Gist Commit
     """
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    url: str
+    version: str
+    user: Union[SimpleUserTypeForResponse, None]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
+
+
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationActionsSecretType",
-    "OrganizationActionsSecretTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

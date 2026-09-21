@@ -9,45 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0542 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0543 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0544 import (
+from .group_0205 import PullRequestStackType, PullRequestStackTypeForResponse
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0545 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0589 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0931 import (
+    WebhookPullRequestStackedPropPullRequestType,
+    WebhookPullRequestStackedPropPullRequestTypeForResponse,
+)
 
 
-class WebhookReleasePublishedType(TypedDict):
-    """release published event"""
+class WebhookPullRequestStackedType(TypedDict):
+    """pull_request stacked event"""
 
-    action: Literal["published"]
+    action: Literal["stacked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    stack: NotRequired[Union[PullRequestStackType, None]]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    pull_request: WebhookPullRequestStackedPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookReleasePublishedTypeForResponse(TypedDict):
-    """release published event"""
+class WebhookPullRequestStackedTypeForResponse(TypedDict):
+    """pull_request stacked event"""
 
-    action: Literal["published"]
+    action: Literal["stacked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksRelease1TypeForResponse
+    pull_request: WebhookPullRequestStackedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookReleasePublishedType",
-    "WebhookReleasePublishedTypeForResponse",
+    "WebhookPullRequestStackedType",
+    "WebhookPullRequestStackedTypeForResponse",
 )

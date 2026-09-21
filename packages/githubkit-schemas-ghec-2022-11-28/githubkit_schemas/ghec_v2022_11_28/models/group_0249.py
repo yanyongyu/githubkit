@@ -9,38 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0250 import (
-    MarketplacePurchasePropMarketplacePendingChange,
-    MarketplacePurchasePropMarketplacePurchase,
-)
+from .group_0003 import SimpleUser
+from .group_0226 import Label
+from .group_0238 import PullRequestMinimal
 
 
-class MarketplacePurchase(GitHubModel):
-    """Marketplace Purchase
+class PullRequestEvent(GitHubModel):
+    """PullRequestEvent"""
 
-    Marketplace Purchase
-    """
+    action: str = Field()
+    number: int = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    assignee: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    label: Missing[Label] = Field(
+        default=UNSET,
+        title="Label",
+        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
+    )
+    labels: Missing[list[Label]] = Field(default=UNSET)
 
-    url: str = Field()
-    type: str = Field()
-    id: int = Field()
-    login: str = Field()
-    organization_billing_email: Missing[str] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    marketplace_pending_change: Missing[
-        Union[MarketplacePurchasePropMarketplacePendingChange, None]
-    ] = Field(default=UNSET)
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
+model_rebuild(PullRequestEvent)
 
-model_rebuild(MarketplacePurchase)
-
-__all__ = ("MarketplacePurchase",)
+__all__ = ("PullRequestEvent",)

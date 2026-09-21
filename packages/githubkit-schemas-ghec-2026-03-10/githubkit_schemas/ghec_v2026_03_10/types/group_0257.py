@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheStorageLimitForOrganizationType(TypedDict):
-    """Actions cache storage limit for an organization
+class ReleaseEventPropReleaseAllof1Type(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    GitHub Actions cache storage policy for an organization.
-    """
-
-    max_cache_size_gb: NotRequired[int]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
-    """Actions cache storage limit for an organization
+class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    GitHub Actions cache storage policy for an organization.
-    """
-
-    max_cache_size_gb: NotRequired[int]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForOrganizationType",
-    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
+    "ReleaseEventPropReleaseAllof1Type",
+    "ReleaseEventPropReleaseAllof1TypeForResponse",
 )

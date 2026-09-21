@@ -9,54 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0378 import GitUserType, GitUserTypeForResponse
-from .group_0379 import VerificationType, VerificationTypeForResponse
+
+class ReviewCustomGatesStateRequiredType(TypedDict):
+    """ReviewCustomGatesStateRequired"""
+
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class ReviewCustomGatesStateRequiredTypeForResponse(TypedDict):
+    """ReviewCustomGatesStateRequired"""
 
-    url: str
-    author: Union[GitUserType, None]
-    committer: Union[GitUserType, None]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
-
-
-class CommitPropCommitTypeForResponse(TypedDict):
-    """CommitPropCommit"""
-
-    url: str
-    author: Union[GitUserTypeForResponse, None]
-    committer: Union[GitUserTypeForResponse, None]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeTypeForResponse
-    verification: NotRequired[VerificationTypeForResponse]
-
-
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class CommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """CommitPropCommitPropTree"""
-
-    sha: str
-    url: str
+    environment_name: str
+    state: Literal["approved", "rejected"]
+    comment: NotRequired[str]
 
 
 __all__ = (
-    "CommitPropCommitPropTreeType",
-    "CommitPropCommitPropTreeTypeForResponse",
-    "CommitPropCommitType",
-    "CommitPropCommitTypeForResponse",
+    "ReviewCustomGatesStateRequiredType",
+    "ReviewCustomGatesStateRequiredTypeForResponse",
 )

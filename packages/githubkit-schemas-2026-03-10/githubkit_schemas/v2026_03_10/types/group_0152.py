@@ -10,68 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgHookType(TypedDict):
-    """Org Hook
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
 
-    Org Hook
+    Secrets for GitHub Actions for an organization.
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: _dt.datetime
     created_at: _dt.datetime
-    type: str
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgHookTypeForResponse(TypedDict):
-    """Org Hook
+class OrganizationActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret for an Organization
 
-    Org Hook
+    Secrets for GitHub Actions for an organization.
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigTypeForResponse
-    updated_at: str
     created_at: str
-    type: str
-
-
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-
-
-class OrgHookPropConfigTypeForResponse(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookPropConfigTypeForResponse",
-    "OrgHookType",
-    "OrgHookTypeForResponse",
+    "OrganizationActionsSecretType",
+    "OrganizationActionsSecretTypeForResponse",
 )

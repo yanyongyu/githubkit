@@ -14,21 +14,27 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
     ] = Field(
-        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
+        default=UNSET,
+        description="Specify which types of repository this security configuration should be applied to by default.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
+model_rebuild(
+    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
+)

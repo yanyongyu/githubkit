@@ -19,63 +19,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksMilestone(GitHubModel):
-    """Milestone
+class ExemptionResponse(GitHubModel):
+    """Exemption response
 
-    A collection of related issues and pull requests.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    closed_at: Union[_dt.datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    creator: Union[WebhooksMilestonePropCreator, None] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
-
-
-class WebhooksMilestonePropCreator(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption response."
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    reviewer_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user who reviewed the exemption request.",
+    )
+    reviewer_login: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user who reviewed the exemption request.",
+    )
+    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
+        default=UNSET, description="The status of the exemption response."
+    )
+    reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the reviewer provided when responding to the exemption request.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
 
 
-model_rebuild(WebhooksMilestone)
-model_rebuild(WebhooksMilestonePropCreator)
+model_rebuild(ExemptionResponse)
 
-__all__ = (
-    "WebhooksMilestone",
-    "WebhooksMilestonePropCreator",
-)
+__all__ = ("ExemptionResponse",)

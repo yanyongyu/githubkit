@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -19,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropAssignee(GitHubModel):
+class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -48,36 +47,6 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropAssignee(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems(GitHubModel):
-    """Label"""
+model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator)
 
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-
-
-class WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest"""
-
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest)
-
-__all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropAssignee",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest",
-)
+__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator",)

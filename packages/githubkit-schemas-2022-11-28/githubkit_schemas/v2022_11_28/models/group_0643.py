@@ -18,17 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0542 import EnterpriseWebhooks
-from .group_0543 import SimpleInstallation
-from .group_0544 import OrganizationSimpleWebhooks
-from .group_0545 import RepositoryWebhooks
-from .group_0549 import WebhooksDeployKey
+from .group_0563 import EnterpriseWebhooks
+from .group_0564 import SimpleInstallation
+from .group_0565 import OrganizationSimpleWebhooks
+from .group_0566 import RepositoryWebhooks
+from .group_0644 import WebhookCodeScanningAlertReopenedByUserPropAlert
 
 
-class WebhookDeployKeyDeleted(GitHubModel):
-    """deploy_key deleted event"""
+class WebhookCodeScanningAlertReopenedByUser(GitHubModel):
+    """code_scanning_alert reopened_by_user event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["reopened_by_user"] = Field()
+    alert: WebhookCodeScanningAlertReopenedByUserPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,13 +45,13 @@ class WebhookDeployKeyDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    key: WebhooksDeployKey = Field(
-        description="The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
-    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -54,6 +60,6 @@ class WebhookDeployKeyDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeployKeyDeleted)
+model_rebuild(WebhookCodeScanningAlertReopenedByUser)
 
-__all__ = ("WebhookDeployKeyDeleted",)
+__all__ = ("WebhookCodeScanningAlertReopenedByUser",)

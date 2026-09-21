@@ -9,39 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueEventIntentType(TypedDict):
-    """Issue Event Intent
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
-class IssueEventIntentTypeForResponse(TypedDict):
-    """Issue Event Intent
+class CustomDeploymentRuleAppTypeForResponse(TypedDict):
+    """Custom deployment protection rule app
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    id: int
+    slug: str
+    integration_url: str
+    node_id: str
 
 
 __all__ = (
-    "IssueEventIntentType",
-    "IssueEventIntentTypeForResponse",
+    "CustomDeploymentRuleAppType",
+    "CustomDeploymentRuleAppTypeForResponse",
 )

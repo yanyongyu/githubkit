@@ -12,25 +12,27 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class LinkType(TypedDict):
-    """Link
+class DependabotPublicKeyType(TypedDict):
+    """DependabotPublicKey
 
-    Hypermedia Link
+    The public key used for setting Dependabot Secrets.
     """
 
-    href: str
+    key_id: str
+    key: str
 
 
-class LinkTypeForResponse(TypedDict):
-    """Link
+class DependabotPublicKeyTypeForResponse(TypedDict):
+    """DependabotPublicKey
 
-    Hypermedia Link
+    The public key used for setting Dependabot Secrets.
     """
 
-    href: str
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "LinkType",
-    "LinkTypeForResponse",
+    "DependabotPublicKeyType",
+    "DependabotPublicKeyTypeForResponse",
 )

@@ -9,37 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+from .group_0116 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
 )
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
-    """Repository ruleset conditions for organization IDs
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Parameters for an organization ID condition
+    Details for the vulnerable dependency.
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for organization IDs
+class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Parameters for an organization ID condition
+    Details for the vulnerable dependency.
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
-    )
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationIdTargetType",
-    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
+    "DependabotAlertWithRepositoryPropDependencyType",
+    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
 )

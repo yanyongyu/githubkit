@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,28 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0932 import WebhookPackagePublishedPropPackagePropPackageVersion
 
-class WebhookProjectCardMovedPropProjectCardAllof0(GitHubModel):
-    """Project Card"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreator, None] = (
-        Field(title="User")
+class WebhookPackagePublishedPropPackage(GitHubModel):
+    """WebhookPackagePublishedPropPackage
+
+    Information about the package.
+    """
+
+    created_at: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
+        title="User"
     )
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    package_type: str = Field()
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersion, None
+    ] = Field()
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreator(GitHubModel):
+class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -61,17 +66,27 @@ class WebhookProjectCardMovedPropProjectCardAllof0PropCreator(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectCardMovedPropProjectCardAllof0)
-model_rebuild(WebhookProjectCardMovedPropProjectCardAllof0PropCreator)
+class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
+
+    about_url: str = Field()
+    name: str = Field()
+    type: str = Field()
+    url: str = Field()
+    vendor: str = Field()
+
+
+model_rebuild(WebhookPackagePublishedPropPackage)
+model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
+model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof0",
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreator",
+    "WebhookPackagePublishedPropPackage",
+    "WebhookPackagePublishedPropPackagePropOwner",
+    "WebhookPackagePublishedPropPackagePropRegistry",
 )

@@ -9,102 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingUsageSummaryReportGheType(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodType
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
+    A custom pattern to delete in a bulk operation.
+    """
+
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhe"""
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    organization: NotRequired[str]
-    repository: NotRequired[str]
-    product: NotRequired[str]
-    sku: NotRequired[str]
-    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+    A custom pattern to delete in a bulk operation.
+    """
 
-
-class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "BillingUsageSummaryReportGhePropCostCenterType",
-    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
-    "BillingUsageSummaryReportGhePropTimePeriodType",
-    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
-    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingUsageSummaryReportGheType",
-    "BillingUsageSummaryReportGheTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

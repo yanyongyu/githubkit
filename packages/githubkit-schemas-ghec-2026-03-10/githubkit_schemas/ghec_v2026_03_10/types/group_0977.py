@@ -13,43 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0667 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0978 import (
+    WebhookPullRequestAutoMergeDisabledPropPullRequestType,
+    WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse,
+)
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestAutoMergeDisabledType(TypedDict):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["auto_merge_disabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestType
+    reason: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestReadyForReviewTypeForResponse(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestAutoMergeDisabledTypeForResponse(TypedDict):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["auto_merge_disabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse
+    reason: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestReadyForReviewType",
-    "WebhookPullRequestReadyForReviewTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledType",
+    "WebhookPullRequestAutoMergeDisabledTypeForResponse",
 )

@@ -9,51 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class StatusType(TypedDict):
-    """Status
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    The status of a commit.
+    A CodeQL database.
     """
 
-    url: str
-    avatar_url: Union[str, None]
     id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[SimpleUserType, None]
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
+class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
+    """CodeQL Database
 
-    The status of a commit.
+    A CodeQL database.
     """
 
-    url: str
-    avatar_url: Union[str, None]
     id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
+    name: str
+    language: str
+    uploader: SimpleUserTypeForResponse
+    content_type: str
+    size: int
     created_at: str
     updated_at: str
-    creator: Union[SimpleUserTypeForResponse, None]
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "CodeScanningCodeqlDatabaseType",
+    "CodeScanningCodeqlDatabaseTypeForResponse",
 )

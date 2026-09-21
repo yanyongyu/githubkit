@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,20 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0541 import EnterpriseWebhooks
-from .group_0542 import SimpleInstallation
-from .group_0543 import OrganizationSimpleWebhooks
-from .group_0544 import RepositoryWebhooks
-from .group_0561 import WebhooksIssue
-from .group_0564 import WebhooksUserMannequin
+from .group_0562 import EnterpriseWebhooks
+from .group_0563 import SimpleInstallation
+from .group_0564 import OrganizationSimpleWebhooks
+from .group_0565 import RepositoryWebhooks
+from .group_0576 import WebhooksLabel
+from .group_0781 import WebhookIssuesEditedPropIssue
 
 
-class WebhookIssuesUnassigned(GitHubModel):
-    """issues unassigned event"""
+class WebhookIssuesEdited(GitHubModel):
+    """issues edited event"""
 
-    action: Literal["unassigned"] = Field(description="The action that was performed.")
-    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
-        default=UNSET, title="User"
+    action: Literal["edited"] = Field()
+    changes: WebhookIssuesEditedPropChanges = Field(
+        description="The changes to the issue."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -43,10 +43,11 @@ class WebhookIssuesUnassigned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue = Field(
+    issue: WebhookIssuesEditedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -59,6 +60,36 @@ class WebhookIssuesUnassigned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnassigned)
+class WebhookIssuesEditedPropChanges(GitHubModel):
+    """WebhookIssuesEditedPropChanges
 
-__all__ = ("WebhookIssuesUnassigned",)
+    The changes to the issue.
+    """
+
+    body: Missing[WebhookIssuesEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookIssuesEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookIssuesEditedPropChangesPropBody(GitHubModel):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+class WebhookIssuesEditedPropChangesPropTitle(GitHubModel):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str = Field(alias="from", description="The previous version of the title.")
+
+
+model_rebuild(WebhookIssuesEdited)
+model_rebuild(WebhookIssuesEditedPropChanges)
+model_rebuild(WebhookIssuesEditedPropChangesPropBody)
+model_rebuild(WebhookIssuesEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookIssuesEdited",
+    "WebhookIssuesEditedPropChanges",
+    "WebhookIssuesEditedPropChangesPropBody",
+    "WebhookIssuesEditedPropChangesPropTitle",
+)

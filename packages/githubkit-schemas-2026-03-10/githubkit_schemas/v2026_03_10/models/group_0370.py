@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,33 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0036 import DependabotAlertPackage
+from .group_0029 import CodeSecurityConfiguration
 
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
+class CodeSecurityConfigurationForRepository(GitHubModel):
+    """CodeSecurityConfigurationForRepository
 
-    Details for the vulnerable dependency.
+    Code security configuration associated with a repository and attachment status
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ] = Field(
         default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        description="The attachment status of the code security configuration on the repository.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
     )
 
 
-model_rebuild(DependabotAlertPropDependency)
+model_rebuild(CodeSecurityConfigurationForRepository)
 
-__all__ = ("DependabotAlertPropDependency",)
+__all__ = ("CodeSecurityConfigurationForRepository",)

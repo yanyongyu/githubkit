@@ -14,28 +14,48 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-class AutoMerge(GitHubModel):
-    """Auto merge
-
-    The status of auto merging a pull request.
-    """
-
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue field."
     )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
     )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
+        default=UNSET,
+        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
     )
 
 
-model_rebuild(AutoMerge)
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-__all__ = ("AutoMerge",)
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+    )
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
+)

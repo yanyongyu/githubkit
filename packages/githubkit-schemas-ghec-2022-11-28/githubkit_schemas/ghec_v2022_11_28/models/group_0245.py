@@ -9,43 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-
-
-class GistCommit(GitHubModel):
-    """Gist Commit
-
-    Gist Commit
-    """
-
-    url: str = Field()
-    version: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: _dt.datetime = Field()
+from .group_0234 import IssueComment
+from .group_0236 import Issue
 
 
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
+class IssueCommentEvent(GitHubModel):
+    """IssueCommentEvent"""
 
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
+    action: str = Field()
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: IssueComment = Field(
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
 
 
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
+model_rebuild(IssueCommentEvent)
 
-__all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
-)
+__all__ = ("IssueCommentEvent",)

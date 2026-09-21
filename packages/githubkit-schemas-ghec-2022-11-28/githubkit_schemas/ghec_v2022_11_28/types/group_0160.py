@@ -12,27 +12,47 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
+class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-    Restricted commit
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
+
+    do_not_enforce_on_create: NotRequired[bool]
+    required_status_checks: list[
+        RepositoryRuleParamsStatusCheckConfigurationTypeForResponse
+    ]
+    strict_required_status_checks_policy: bool
+
+
+class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
+    """StatusCheckConfiguration
+
+    Required status check
     """
 
-    oid: str
-    reason: NotRequired[str]
+    context: str
+    integration_id: NotRequired[int]
 
 
-class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
-    """RestrictedCommits
+class RepositoryRuleParamsStatusCheckConfigurationTypeForResponse(TypedDict):
+    """StatusCheckConfiguration
 
-    Restricted commit
+    Required status check
     """
 
-    oid: str
-    reason: NotRequired[str]
+    context: str
+    integration_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryRuleParamsRestrictedCommitsType",
-    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
+    "RepositoryRuleParamsStatusCheckConfigurationType",
+    "RepositoryRuleParamsStatusCheckConfigurationTypeForResponse",
+    "RepositoryRuleRequiredStatusChecksPropParametersType",
+    "RepositoryRuleRequiredStatusChecksPropParametersTypeForResponse",
 )

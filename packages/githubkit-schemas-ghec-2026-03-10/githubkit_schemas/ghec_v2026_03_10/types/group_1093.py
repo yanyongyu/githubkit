@@ -13,38 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0624 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0625 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0626 import (
+from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0627 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0695 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0696 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class WebhookWatchStartedType(TypedDict):
-    """watch started event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["started"]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookWatchStartedTypeForResponse(TypedDict):
-    """watch started event"""
+class WebhookSponsorshipTierChangedTypeForResponse(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["started"]
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8TypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookWatchStartedType",
-    "WebhookWatchStartedTypeForResponse",
+    "WebhookSponsorshipTierChangedType",
+    "WebhookSponsorshipTierChangedTypeForResponse",
 )

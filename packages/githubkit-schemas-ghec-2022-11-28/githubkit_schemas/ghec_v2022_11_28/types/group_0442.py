@@ -9,100 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0101 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
-class RepositoryRuleViolationErrorType(TypedDict):
-    """RepositoryRuleViolationError
 
-    Repository rule violation was detected
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
     """
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataType]
-
-
-class RepositoryRuleViolationErrorTypeForResponse(TypedDict):
-    """RepositoryRuleViolationError
-
-    Repository rule violation was detected
-    """
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    status: NotRequired[str]
-    metadata: NotRequired[RepositoryRuleViolationErrorPropMetadataTypeForResponse]
-
-
-class RepositoryRuleViolationErrorPropMetadataType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningType
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataTypeForResponse(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadata"""
-
-    secret_scanning: NotRequired[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse
-    ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningType(TypedDict):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
         ]
     ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    bypass_placeholders: NotRequired[
-        list[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse
+    Code security configuration associated with a repository and attachment status
+    """
+
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
         ]
     ]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: NotRequired[str]
-    token_type: NotRequired[str]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsTypeForResponse",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningTypeForResponse",
-    "RepositoryRuleViolationErrorPropMetadataType",
-    "RepositoryRuleViolationErrorPropMetadataTypeForResponse",
-    "RepositoryRuleViolationErrorType",
-    "RepositoryRuleViolationErrorTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

@@ -13,51 +13,39 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCreateIssueFieldType(TypedDict):
-    """OrganizationCreateIssueField"""
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
     ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-class OrganizationCreateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationCreateIssueField"""
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
     ]
-
-
-class OrganizationCreateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
-
-
-class OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
-
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrganizationCreateIssueFieldPropOptionsItemsType",
-    "OrganizationCreateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationCreateIssueFieldType",
-    "OrganizationCreateIssueFieldTypeForResponse",
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
 )

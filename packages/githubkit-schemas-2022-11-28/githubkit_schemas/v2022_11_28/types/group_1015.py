@@ -9,79 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class AgentsReposOwnerRepoTasksGetResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType]
-    ]
-    documentation_url: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0616 import WebhooksTeam1Type, WebhooksTeam1TypeForResponse
 
 
-class AgentsReposOwnerRepoTasksGetResponse401TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401
+class WebhookTeamAddType(TypedDict):
+    """team_add event"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    team: WebhooksTeam1Type
 
 
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+class WebhookTeamAddTypeForResponse(TypedDict):
+    """team_add event"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    team: WebhooksTeam1TypeForResponse
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse401Type",
-    "AgentsReposOwnerRepoTasksGetResponse401TypeForResponse",
+    "WebhookTeamAddType",
+    "WebhookTeamAddTypeForResponse",
 )

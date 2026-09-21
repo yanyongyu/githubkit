@@ -9,29 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsRepositoryPermissionsType(TypedDict):
-    """ActionsRepositoryPermissions"""
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    External Groups to be mapped to a team for membership
+    """
+
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
-    """ActionsRepositoryPermissions"""
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    enabled: bool
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    External Groups to be mapped to a team for membership
+    """
+
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
+
+
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ActionsRepositoryPermissionsType",
-    "ActionsRepositoryPermissionsTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

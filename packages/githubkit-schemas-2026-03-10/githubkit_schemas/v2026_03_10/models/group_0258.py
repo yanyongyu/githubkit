@@ -16,38 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningLocationDiscussionBody(GitHubModel):
-    """SecretScanningLocationDiscussionBody
+class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
+    """RepositoryRuleCopilotCodeReviewPropParameters"""
 
-    Represents a 'discussion_body' secret scanning location type. This location type
-    shows that a secret was detected in the body of a discussion.
-    """
-
-    discussion_body_url: str = Field(
-        description="The URL to the discussion where the secret was detected."
-    )
-
-
-class SecretScanningLocationPullRequestComment(GitHubModel):
-    """SecretScanningLocationPullRequestComment
-
-    Represents a 'pull_request_comment' secret scanning location type. This location
-    type shows that a secret was detected in a comment on a pull request.
-    """
-
-    pull_request_comment_url: str = Field(
-        description="The API URL to get the pull request comment where the secret was detected."
-    )
-    html_url: Missing[str] = Field(
+    review_draft_pull_requests: Missing[bool] = Field(
         default=UNSET,
-        description="The GitHub URL for the pull request comment where the secret was detected.",
+        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+    )
+    review_on_push: Missing[bool] = Field(
+        default=UNSET,
+        description="Copilot automatically reviews each new push to the pull request.",
     )
 
 
-model_rebuild(SecretScanningLocationDiscussionBody)
-model_rebuild(SecretScanningLocationPullRequestComment)
+model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
 
-__all__ = (
-    "SecretScanningLocationDiscussionBody",
-    "SecretScanningLocationPullRequestComment",
-)
+__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)

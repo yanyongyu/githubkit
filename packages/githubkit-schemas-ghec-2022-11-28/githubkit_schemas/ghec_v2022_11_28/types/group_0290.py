@@ -9,30 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryFineGrainedPermissionType(TypedDict):
-    """Repository Fine-Grained Permission
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    A fine-grained permission that protects repository resources.
+    The public key used for setting Codespaces secrets.
     """
 
-    name: str
-    description: str
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class RepositoryFineGrainedPermissionTypeForResponse(TypedDict):
-    """Repository Fine-Grained Permission
+class CodespacesPublicKeyTypeForResponse(TypedDict):
+    """CodespacesPublicKey
 
-    A fine-grained permission that protects repository resources.
+    The public key used for setting Codespaces secrets.
     """
 
-    name: str
-    description: str
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryFineGrainedPermissionType",
-    "RepositoryFineGrainedPermissionTypeForResponse",
+    "CodespacesPublicKeyType",
+    "CodespacesPublicKeyTypeForResponse",
 )

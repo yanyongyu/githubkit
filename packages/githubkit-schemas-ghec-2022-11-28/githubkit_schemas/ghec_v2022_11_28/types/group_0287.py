@@ -9,72 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalGroupType(TypedDict):
-    """ExternalGroup
+class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    Information about an external group's usage and its members
+    The AI Scan organization setting to apply
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsType]
-    members: list[ExternalGroupPropMembersItemsType]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class ExternalGroupTypeForResponse(TypedDict):
-    """ExternalGroup
+class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    Information about an external group's usage and its members
+    The AI Scan organization setting to apply
     """
 
-    group_id: int
-    group_name: str
-    updated_at: NotRequired[str]
-    teams: list[ExternalGroupPropTeamsItemsTypeForResponse]
-    members: list[ExternalGroupPropMembersItemsTypeForResponse]
-
-
-class ExternalGroupPropTeamsItemsType(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropTeamsItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropTeamsItems"""
-
-    team_id: int
-    team_name: str
-
-
-class ExternalGroupPropMembersItemsType(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
-
-
-class ExternalGroupPropMembersItemsTypeForResponse(TypedDict):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int
-    member_login: str
-    member_name: str
-    member_email: str
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "ExternalGroupPropMembersItemsType",
-    "ExternalGroupPropMembersItemsTypeForResponse",
-    "ExternalGroupPropTeamsItemsType",
-    "ExternalGroupPropTeamsItemsTypeForResponse",
-    "ExternalGroupType",
-    "ExternalGroupTypeForResponse",
+    "CodeScanningAiScanOrgEnablementUpdateType",
+    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
 )

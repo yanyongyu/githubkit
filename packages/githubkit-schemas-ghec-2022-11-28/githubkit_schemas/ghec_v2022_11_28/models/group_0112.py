@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
+class CopilotUsageMetrics1DayReport(GitHubModel):
+    """Copilot Metrics 1 Day Report
 
-    An actor that can bypass rules in a ruleset
+    Links to download the Copilot usage metrics report for an
+    enterprise/organization for a specific day.
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin`, `EnterpriseOwner` and `EnterpriseRole` are not applicable for personal repositories.",
+    download_links: list[str] = Field(
+        description="The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day."
     )
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
-    ] = Field(description="The type of actor that can bypass a ruleset")
-    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
-        default=UNSET,
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
+    report_day: _dt.date = Field(
+        description="The day of the report in `YYYY-MM-DD` format."
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+model_rebuild(CopilotUsageMetrics1DayReport)
 
-__all__ = ("RepositoryRulesetBypassActor",)
+__all__ = ("CopilotUsageMetrics1DayReport",)

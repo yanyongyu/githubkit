@@ -9,46 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0198 import (
+    RulesetVersionWithStateAllof1PropStateType,
+    RulesetVersionWithStateAllof1PropStateTypeForResponse,
+)
 
 
-class GetBudgetUserStatesType(TypedDict):
-    """GetBudgetUserStates"""
+class RulesetVersionWithStateAllof1Type(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
-    has_next_page: bool
-    total_count: int
+    state: RulesetVersionWithStateAllof1PropStateType
 
 
-class GetBudgetUserStatesTypeForResponse(TypedDict):
-    """GetBudgetUserStates"""
+class RulesetVersionWithStateAllof1TypeForResponse(TypedDict):
+    """RulesetVersionWithStateAllof1"""
 
-    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
-    has_next_page: bool
-    total_count: int
-
-
-class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
-    """GetBudgetUserStatesPropUserStatesItems"""
-
-    user: NotRequired[str]
-    consumed_amount: float
-    target_amount: float
-    override_budget_id: NotRequired[str]
-
-
-class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
-    """GetBudgetUserStatesPropUserStatesItems"""
-
-    user: NotRequired[str]
-    consumed_amount: float
-    target_amount: float
-    override_budget_id: NotRequired[str]
+    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
 
 
 __all__ = (
-    "GetBudgetUserStatesPropUserStatesItemsType",
-    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
-    "GetBudgetUserStatesType",
-    "GetBudgetUserStatesTypeForResponse",
+    "RulesetVersionWithStateAllof1Type",
+    "RulesetVersionWithStateAllof1TypeForResponse",
 )

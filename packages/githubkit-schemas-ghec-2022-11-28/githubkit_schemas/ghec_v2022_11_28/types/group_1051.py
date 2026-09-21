@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
-    """repository_vulnerability_alert resolve event"""
+class WebhookRepositoryEditedType(TypedDict):
+    """repository edited event"""
 
-    action: Literal["resolve"]
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
+    action: Literal["edited"]
+    changes: WebhookRepositoryEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,11 +34,11 @@ class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryVulnerabilityAlertResolveTypeForResponse(TypedDict):
-    """repository_vulnerability_alert resolve event"""
+class WebhookRepositoryEditedTypeForResponse(TypedDict):
+    """repository edited event"""
 
-    action: Literal["resolve"]
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse
+    action: Literal["edited"]
+    changes: WebhookRepositoryEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -47,124 +46,87 @@ class WebhookRepositoryVulnerabilityAlertResolveTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhookRepositoryEditedPropChangesType(TypedDict):
+    """WebhookRepositoryEditedPropChanges"""
 
-    The security alert of the vulnerable dependency.
-    """
+    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
+    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
+    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
+    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
-        Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType, None
-        ]
+
+class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChanges"""
+
+    default_branch: NotRequired[
+        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
     ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["fixed", "open"]
-
-
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
-
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
-        Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse,
-            None,
-        ]
+    description: NotRequired[
+        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
     ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["fixed", "open"]
+    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
+    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(TypedDict):
-    """User"""
+class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    from_: str
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    from_: str
+
+
+class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None]
+
+
+class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: NotRequired[Union[list[str], None]]
+
+
+class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: NotRequired[Union[list[str], None]]
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertType",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertTypeForResponse",
-    "WebhookRepositoryVulnerabilityAlertResolveType",
-    "WebhookRepositoryVulnerabilityAlertResolveTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropDescriptionType",
+    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropHomepageType",
+    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
+    "WebhookRepositoryEditedPropChangesPropTopicsType",
+    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
+    "WebhookRepositoryEditedPropChangesType",
+    "WebhookRepositoryEditedPropChangesTypeForResponse",
+    "WebhookRepositoryEditedType",
+    "WebhookRepositoryEditedTypeForResponse",
 )

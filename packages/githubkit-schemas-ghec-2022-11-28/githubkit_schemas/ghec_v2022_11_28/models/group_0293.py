@@ -9,27 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ApiInsightsSubjectStatsItems(GitHubModel):
-    """ApiInsightsSubjectStatsItems"""
+class CopilotSpaceCollaboratorAnyof0Allof1(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    subject_type: Missing[str] = Field(default=UNSET)
-    subject_name: Missing[str] = Field(default=UNSET)
-    subject_id: Missing[int] = Field(default=UNSET)
-    total_request_count: Missing[int] = Field(default=UNSET)
-    rate_limited_request_count: Missing[int] = Field(default=UNSET)
-    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
-    last_request_timestamp: Missing[str] = Field(default=UNSET)
+    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
+    )
 
 
-model_rebuild(ApiInsightsSubjectStatsItems)
+model_rebuild(CopilotSpaceCollaboratorAnyof0Allof1)
 
-__all__ = ("ApiInsightsSubjectStatsItems",)
+__all__ = ("CopilotSpaceCollaboratorAnyof0Allof1",)

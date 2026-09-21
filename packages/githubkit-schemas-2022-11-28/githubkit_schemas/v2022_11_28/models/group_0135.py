@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
+class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName(
+    GitHubModel
+):
+    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    name: Missing[str] = Field(
+    include: Missing[list[str]] = Field(
         default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
+        description="Array of organization names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all organizations and ~EMUS to target all enterprise managed user accounts.",
     )
-    version: Missing[Union[str, None]] = Field(
+    exclude: Missing[list[str]] = Field(
         default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
-    )
-    guid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
+        description="Array of organization names or patterns to exclude. The condition will not pass if any of these patterns match.",
     )
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName",)

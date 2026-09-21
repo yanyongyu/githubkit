@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
+class WorkflowDispatchResponse(GitHubModel):
+    """Workflow Dispatch Response
 
-    Check Annotation
+    Response containing the workflow run ID and URLs.
     """
 
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+    workflow_run_id: int = Field(
+        title="Workflow Run ID", description="The ID of the workflow run."
+    )
+    run_url: str = Field(description="The URL to the workflow run.")
+    html_url: str = Field()
 
 
-model_rebuild(CheckAnnotation)
+model_rebuild(WorkflowDispatchResponse)
 
-__all__ = ("CheckAnnotation",)
+__all__ = ("WorkflowDispatchResponse",)

@@ -9,34 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    Actions OIDC subject customization for a repository
+    A credit given to a user for a repository security advisory.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
-    sub_claim_prefix: NotRequired[str]
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
-class OidcCustomSubRepoTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class RepositoryAdvisoryCreditTypeForResponse(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    Actions OIDC subject customization for a repository
+    A credit given to a user for a repository security advisory.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
-    sub_claim_prefix: NotRequired[str]
+    user: SimpleUserTypeForResponse
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+    state: Literal["accepted", "declined", "pending"]
 
 
 __all__ = (
-    "OidcCustomSubRepoType",
-    "OidcCustomSubRepoTypeForResponse",
+    "RepositoryAdvisoryCreditType",
+    "RepositoryAdvisoryCreditTypeForResponse",
 )

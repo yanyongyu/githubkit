@@ -9,30 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Dependabot security updates
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Check Dependabot security updates
+    Actions OIDC subject customization for a repository
     """
 
-    enabled: bool
-    paused: bool
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
+    sub_claim_prefix: NotRequired[str]
 
 
-class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
-    """Check Dependabot security updates
+class OidcCustomSubRepoTypeForResponse(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    Check Dependabot security updates
+    Actions OIDC subject customization for a repository
     """
 
-    enabled: bool
-    paused: bool
+    use_default: bool
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
+    sub_claim_prefix: NotRequired[str]
 
 
 __all__ = (
-    "CheckAutomatedSecurityFixesType",
-    "CheckAutomatedSecurityFixesTypeForResponse",
+    "OidcCustomSubRepoType",
+    "OidcCustomSubRepoTypeForResponse",
 )

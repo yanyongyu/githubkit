@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0114 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-)
-from .group_0118 import RepositoryRulesetConditionsPropRefName
-from .group_0120 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-)
+from .group_0109 import EnterpriseTeam
 
 
-class EnterpriseRulesetConditionsOneof1(GitHubModel):
-    """organization_name_and_repository_property
+class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Conditions to target organizations by name and repositories by property
-    """
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+    )
+    inherited_from: Missing[list[EnterpriseTeam]] = Field(
+        default=UNSET,
+        description="Enterprise Team the user has gotten the role through",
+    )
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
+model_rebuild(EnterpriseUserRoleAssignmentAllof1)
 
-model_rebuild(EnterpriseRulesetConditionsOneof1)
-
-__all__ = ("EnterpriseRulesetConditionsOneof1",)
+__all__ = ("EnterpriseUserRoleAssignmentAllof1",)

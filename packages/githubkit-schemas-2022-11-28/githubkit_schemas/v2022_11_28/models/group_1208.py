@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0169 import CopilotSpace
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesGetResponse200"""
+
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
     )
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody)
+model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",)
+__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)

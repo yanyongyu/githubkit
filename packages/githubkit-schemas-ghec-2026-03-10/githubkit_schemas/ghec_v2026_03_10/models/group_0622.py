@@ -9,31 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0396 import GitUser
+from .group_0397 import Verification
 
 
-class Hovercard(GitHubModel):
-    """Hovercard
+class CommitSearchResultItemPropCommit(GitHubModel):
+    """CommitSearchResultItemPropCommit"""
 
-    Hovercard
-    """
-
-    contexts: list[HovercardPropContextsItems] = Field()
-
-
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
-
+    author: CommitSearchResultItemPropCommitPropAuthor = Field()
+    committer: Union[GitUser, None] = Field()
+    comment_count: int = Field()
     message: str = Field()
-    octicon: str = Field()
+    tree: CommitSearchResultItemPropCommitPropTree = Field()
+    url: str = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
+class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
+    name: str = Field()
+    email: str = Field()
+    date: _dt.datetime = Field()
+
+
+class CommitSearchResultItemPropCommitPropTree(GitHubModel):
+    """CommitSearchResultItemPropCommitPropTree"""
+
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(CommitSearchResultItemPropCommit)
+model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
+model_rebuild(CommitSearchResultItemPropCommitPropTree)
 
 __all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
+    "CommitSearchResultItemPropCommit",
+    "CommitSearchResultItemPropCommitPropAuthor",
+    "CommitSearchResultItemPropCommitPropTree",
 )

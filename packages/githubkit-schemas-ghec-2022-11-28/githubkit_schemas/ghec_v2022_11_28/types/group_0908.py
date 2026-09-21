@@ -9,90 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0625 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0626 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0627 import (
+from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0645 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0628 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0638 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0656 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0676 import WebhooksTeamType, WebhooksTeamTypeForResponse
 
 
-class WebhookOrganizationMemberInvitedType(TypedDict):
-    """organization member_invited event"""
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    action: Literal["member_invited"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    invitation: WebhookOrganizationMemberInvitedPropInvitationType
+    member: Union[WebhooksUserType, None]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    user: NotRequired[Union[WebhooksUserType, None]]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookOrganizationMemberInvitedTypeForResponse(TypedDict):
-    """organization member_invited event"""
+class WebhookMembershipAddedTypeForResponse(TypedDict):
+    """membership added event"""
 
-    action: Literal["member_invited"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    invitation: WebhookOrganizationMemberInvitedPropInvitationTypeForResponse
+    member: Union[WebhooksUserTypeForResponse, None]
     organization: OrganizationSimpleWebhooksTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    user: NotRequired[Union[WebhooksUserTypeForResponse, None]]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderTypeForResponse, None]
+    team: WebhooksTeamTypeForResponse
 
 
-class WebhookOrganizationMemberInvitedPropInvitationType(TypedDict):
-    """WebhookOrganizationMemberInvitedPropInvitation
-
-    The invitation for the user or email if the action is `member_invited`.
-    """
-
-    created_at: _dt.datetime
-    email: Union[str, None]
-    failed_at: Union[_dt.datetime, None]
-    failed_reason: Union[str, None]
-    id: float
-    invitation_teams_url: str
-    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviterType, None]
-    login: Union[str, None]
-    node_id: str
-    role: str
-    team_count: float
-    invitation_source: NotRequired[str]
-
-
-class WebhookOrganizationMemberInvitedPropInvitationTypeForResponse(TypedDict):
-    """WebhookOrganizationMemberInvitedPropInvitation
-
-    The invitation for the user or email if the action is `member_invited`.
-    """
-
-    created_at: str
-    email: Union[str, None]
-    failed_at: Union[str, None]
-    failed_reason: Union[str, None]
-    id: float
-    invitation_teams_url: str
-    inviter: Union[
-        WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse, None
-    ]
-    login: Union[str, None]
-    node_id: str
-    role: str
-    team_count: float
-    invitation_source: NotRequired[str]
-
-
-class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
+class WebhookMembershipAddedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -119,9 +78,7 @@ class WebhookOrganizationMemberInvitedPropInvitationPropInviterType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse(
-    TypedDict
-):
+class WebhookMembershipAddedPropSenderTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -149,10 +106,8 @@ class WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse(
 
 
 __all__ = (
-    "WebhookOrganizationMemberInvitedPropInvitationPropInviterType",
-    "WebhookOrganizationMemberInvitedPropInvitationPropInviterTypeForResponse",
-    "WebhookOrganizationMemberInvitedPropInvitationType",
-    "WebhookOrganizationMemberInvitedPropInvitationTypeForResponse",
-    "WebhookOrganizationMemberInvitedType",
-    "WebhookOrganizationMemberInvitedTypeForResponse",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropSenderTypeForResponse",
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedTypeForResponse",
 )

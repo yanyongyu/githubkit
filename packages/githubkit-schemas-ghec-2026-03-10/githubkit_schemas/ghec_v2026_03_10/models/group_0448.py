@@ -9,52 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0446 import Metadata
+from .group_0271 import MinimalRepository
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
-
-
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    Combined Commit Status
     """
 
+    state: str = Field()
+    statuses: list[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    commit_url: str = Field()
+    url: str = Field()
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
+
+    description: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+
+
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
 
 __all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
 )

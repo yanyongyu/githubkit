@@ -9,41 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0501 import PullRequestStackPullRequest
-
-
-class ReposOwnerRepoStacksPostResponse201(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
-    )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    ref: str = Field()
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoStacksPostResponse201)
-model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse409)
 
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse201",
-    "ReposOwnerRepoStacksPostResponse201PropBase",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409",)

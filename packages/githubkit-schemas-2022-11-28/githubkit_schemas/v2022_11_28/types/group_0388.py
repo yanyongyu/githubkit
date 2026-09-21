@@ -9,30 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class ShortBlobType(TypedDict):
-    """Short Blob
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    Short Blob
+    An object describing a submodule
     """
 
-    url: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
     sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-class ShortBlobTypeForResponse(TypedDict):
-    """Short Blob
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
 
-    Short Blob
+    An object describing a submodule
     """
 
-    url: str
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
     sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
+
+
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "ShortBlobType",
-    "ShortBlobTypeForResponse",
+    "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
+    "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
 )

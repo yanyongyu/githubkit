@@ -13,27 +13,29 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ProjectsV2FieldSingleSelectOptionType(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
     name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ]
     description: NotRequired[str]
+    permissions: NotRequired[list[str]]
+    base_role: NotRequired[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ]
 
 
-class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
-    """ProjectsV2FieldSingleSelectOption"""
+class OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse(TypedDict):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
     name: NotRequired[str]
-    color: NotRequired[
-        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
-    ]
     description: NotRequired[str]
+    permissions: NotRequired[list[str]]
+    base_role: NotRequired[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ]
 
 
 __all__ = (
-    "ProjectsV2FieldSingleSelectOptionType",
-    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
+    "OrganizationCustomOrganizationRoleUpdateSchemaType",
+    "OrganizationCustomOrganizationRoleUpdateSchemaTypeForResponse",
 )

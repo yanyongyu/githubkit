@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0185 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+    credential_id: int
+    credential_type: Literal["classic_pat"]
+    organizations: list[str]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    credential_id: int
+    credential_type: Literal["classic_pat"]
+    organizations: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse",
 )

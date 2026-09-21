@@ -13,118 +13,187 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0043 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
-from .group_0130 import TeamType, TeamTypeForResponse
+from .group_0123 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+)
+from .group_0124 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0131 import (
+    ActionsPolicyOrgConditionsOneof0Type,
+    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+)
+from .group_0132 import (
+    ActionsPolicyOrgConditionsOneof1Type,
+    ActionsPolicyOrgConditionsOneof1TypeForResponse,
+)
+from .group_0133 import (
+    ActionsPolicyOrgConditionsOneof2Type,
+    ActionsPolicyOrgConditionsOneof2TypeForResponse,
+)
+from .group_0140 import (
+    ActionsPolicyEnterpriseConditionsOneof0Type,
+    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+)
+from .group_0141 import (
+    ActionsPolicyEnterpriseConditionsOneof1Type,
+    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+)
+from .group_0142 import (
+    ActionsPolicyEnterpriseConditionsOneof2Type,
+    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+)
+from .group_0143 import (
+    ActionsPolicyEnterpriseConditionsOneof3Type,
+    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+)
+from .group_0144 import (
+    ActionsPolicyEnterpriseConditionsOneof4Type,
+    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+)
+from .group_0145 import (
+    ActionsPolicyEnterpriseConditionsOneof5Type,
+    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+)
+from .group_0146 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class ActionsPolicyType(TypedDict):
+    """Actions Policy
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    An Actions policy defines rules for workflow execution protection.
     """
 
-    assignee: NotRequired[Union[SimpleUserType, None]]
-    organization: NotRequired[Union[OrganizationSimpleType, None]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[_dt.date, None]]
-    last_activity_at: NotRequired[Union[_dt.datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
-    created_at: _dt.datetime
+    id: int
+    name: str
+    target: Literal["actions"]
+    source_type: Literal["Repository", "Organization", "Enterprise"]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type,
+            ActionsPolicyRepoConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof0Type,
+            ActionsPolicyOrgConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof0Type,
+            ActionsPolicyEnterpriseConditionsOneof1Type,
+            ActionsPolicyEnterpriseConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof3Type,
+            ActionsPolicyEnterpriseConditionsOneof4Type,
+            ActionsPolicyEnterpriseConditionsOneof5Type,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[ActionsPolicyPropLinksType]
+    created_at: NotRequired[_dt.datetime]
     updated_at: NotRequired[_dt.datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class CopilotSeatDetailsTypeForResponse(TypedDict):
-    """Copilot Business Seat Detail
+class ActionsPolicyTypeForResponse(TypedDict):
+    """Actions Policy
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    An Actions policy defines rules for workflow execution protection.
     """
 
-    assignee: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    organization: NotRequired[Union[OrganizationSimpleTypeForResponse, None]]
-    assigning_team: NotRequired[
-        Union[TeamTypeForResponse, EnterpriseTeamTypeForResponse, None]
+    id: int
+    name: str
+    target: Literal["actions"]
+    source_type: Literal["Repository", "Organization", "Enterprise"]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof0TypeForResponse,
+            ActionsPolicyOrgConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+            None,
+        ]
     ]
-    pending_cancellation_date: NotRequired[Union[str, None]]
-    last_activity_at: NotRequired[Union[str, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    last_authenticated_at: NotRequired[Union[str, None]]
-    created_at: str
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[ActionsPolicyPropLinksTypeForResponse]
+    created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
+class ActionsPolicyPropLinksType(TypedDict):
+    """ActionsPolicyPropLinks"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    self_: NotRequired[ActionsPolicyPropLinksPropSelfType]
+    html: NotRequired[ActionsPolicyPropLinksPropHtmlType]
 
 
-class EnterpriseTeamTypeForResponse(TypedDict):
-    """Enterprise Team
+class ActionsPolicyPropLinksTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinks"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    created_at: str
-    updated_at: str
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    self_: NotRequired[ActionsPolicyPropLinksPropSelfTypeForResponse]
+    html: NotRequired[ActionsPolicyPropLinksPropHtmlTypeForResponse]
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class ActionsPolicyPropLinksPropSelfType(TypedDict):
+    """ActionsPolicyPropLinksPropSelf"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+    href: NotRequired[str]
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class ActionsPolicyPropLinksPropSelfTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinksPropSelf"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropHtmlType(TypedDict):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropHtmlTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "CopilotSeatDetailsTypeForResponse",
-    "EnterpriseTeamType",
-    "EnterpriseTeamTypeForResponse",
-    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
-    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
+    "ActionsPolicyPropLinksPropHtmlType",
+    "ActionsPolicyPropLinksPropHtmlTypeForResponse",
+    "ActionsPolicyPropLinksPropSelfType",
+    "ActionsPolicyPropLinksPropSelfTypeForResponse",
+    "ActionsPolicyPropLinksType",
+    "ActionsPolicyPropLinksTypeForResponse",
+    "ActionsPolicyType",
+    "ActionsPolicyTypeForResponse",
 )

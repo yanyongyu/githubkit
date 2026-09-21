@@ -9,20 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0123 import ActionsPolicyRepoConditionsOneof0
+from .group_0124 import ActionsPolicyRepoConditionsOneof1
+from .group_0146 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class ReposOwnerRepoAgentsVariablesNamePatchBody(GitHubModel):
-    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    )
+    conditions: Missing[
+        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    ] = Field(
+        default=UNSET,
+        title="Repository Actions policy conditions",
+        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoAgentsVariablesNamePatchBody)
+model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
 
-__all__ = ("ReposOwnerRepoAgentsVariablesNamePatchBody",)
+__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)

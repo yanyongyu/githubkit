@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,18 +17,18 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0637 import WebhooksUser
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_0655 import WebhooksUser
+from .group_0675 import WebhooksTeam
 
 
-class WebhookOrganizationMemberInvited(GitHubModel):
-    """organization member_invited event"""
+class WebhookMembershipAdded(GitHubModel):
+    """membership added event"""
 
-    action: Literal["member_invited"] = Field()
+    action: Literal["added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,9 +39,7 @@ class WebhookOrganizationMemberInvited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    invitation: WebhookOrganizationMemberInvitedPropInvitation = Field(
-        description="The invitation for the user or email if the action is `member_invited`."
-    )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
@@ -52,33 +49,17 @@ class WebhookOrganizationMemberInvited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    user: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
-
-
-class WebhookOrganizationMemberInvitedPropInvitation(GitHubModel):
-    """WebhookOrganizationMemberInvitedPropInvitation
-
-    The invitation for the user or email if the action is `member_invited`.
-    """
-
-    created_at: _dt.datetime = Field()
-    email: Union[str, None] = Field()
-    failed_at: Union[_dt.datetime, None] = Field()
-    failed_reason: Union[str, None] = Field()
-    id: float = Field()
-    invitation_teams_url: str = Field()
-    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviter, None] = (
-        Field(title="User")
+    scope: Literal["team"] = Field(
+        description="The scope of the membership. Currently, can only be `team`."
     )
-    login: Union[str, None] = Field()
-    node_id: str = Field()
-    role: str = Field()
-    team_count: float = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
+    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
+    team: WebhooksTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
 
 
-class WebhookOrganizationMemberInvitedPropInvitationPropInviter(GitHubModel):
+class WebhookMembershipAddedPropSender(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -105,12 +86,10 @@ class WebhookOrganizationMemberInvitedPropInvitationPropInviter(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrganizationMemberInvited)
-model_rebuild(WebhookOrganizationMemberInvitedPropInvitation)
-model_rebuild(WebhookOrganizationMemberInvitedPropInvitationPropInviter)
+model_rebuild(WebhookMembershipAdded)
+model_rebuild(WebhookMembershipAddedPropSender)
 
 __all__ = (
-    "WebhookOrganizationMemberInvited",
-    "WebhookOrganizationMemberInvitedPropInvitation",
-    "WebhookOrganizationMemberInvitedPropInvitationPropInviter",
+    "WebhookMembershipAdded",
+    "WebhookMembershipAddedPropSender",
 )

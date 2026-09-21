@@ -9,30 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0148 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class RunnerType(TypedDict):
+    """Self hosted runners
 
-    The public key used for setting Dependabot Secrets.
+    A self hosted runner
     """
 
-    key_id: str
-    key: str
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
 
-    The public key used for setting Dependabot Secrets.
+    A self hosted runner
     """
 
-    key_id: str
-    key: str
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

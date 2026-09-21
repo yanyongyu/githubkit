@@ -14,111 +14,35 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMilestoneType(TypedDict):
-    """Milestone
+class ExemptionResponseType(TypedDict):
+    """Exemption response
 
-    A collection of related issues and pull requests.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    closed_at: Union[_dt.datetime, None]
-    closed_issues: int
-    created_at: _dt.datetime
-    creator: Union[WebhooksMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[_dt.datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: _dt.datetime
-    url: str
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
 
 
-class WebhooksMilestoneTypeForResponse(TypedDict):
-    """Milestone
+class ExemptionResponseTypeForResponse(TypedDict):
+    """Exemption response
 
-    A collection of related issues and pull requests.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    closed_at: Union[str, None]
-    closed_issues: int
-    created_at: str
-    creator: Union[WebhooksMilestonePropCreatorTypeForResponse, None]
-    description: Union[str, None]
-    due_on: Union[str, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: str
-    url: str
-
-
-class WebhooksMilestonePropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksMilestonePropCreatorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    id: NotRequired[int]
+    reviewer_id: NotRequired[int]
+    reviewer_login: NotRequired[str]
+    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
+    reviewer_comment: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMilestonePropCreatorType",
-    "WebhooksMilestonePropCreatorTypeForResponse",
-    "WebhooksMilestoneType",
-    "WebhooksMilestoneTypeForResponse",
+    "ExemptionResponseType",
+    "ExemptionResponseTypeForResponse",
 )

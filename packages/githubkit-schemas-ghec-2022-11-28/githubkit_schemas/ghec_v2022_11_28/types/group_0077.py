@@ -9,55 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0072 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0076 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class CodeSecurityConfigurationRepositoriesType(TypedDict):
-    """CodeSecurityConfigurationRepositories
+class RunnerType(TypedDict):
+    """Self hosted runners
 
-    Repositories associated with a code security configuration and attachment status
+    A self hosted runner
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    repository: NotRequired[SimpleRepositoryType]
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
-class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationRepositories
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
 
-    Repositories associated with a code security configuration and attachment status
+    A self hosted runner
     """
 
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-        ]
-    ]
-    repository: NotRequired[SimpleRepositoryTypeForResponse]
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeSecurityConfigurationRepositoriesType",
-    "CodeSecurityConfigurationRepositoriesTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

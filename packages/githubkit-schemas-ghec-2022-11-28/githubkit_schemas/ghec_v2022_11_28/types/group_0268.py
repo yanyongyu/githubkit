@@ -9,29 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0266 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class CodeScanningAiScanOrgSettingsType(TypedDict):
-    """Code scanning AI Scan organization settings
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    The AI Scan organization setting
-    """
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
-    pr_scan: Literal["enabled", "disabled"]
+
+class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
+
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
-class CodeScanningAiScanOrgSettingsTypeForResponse(TypedDict):
-    """Code scanning AI Scan organization settings
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    The AI Scan organization setting
-    """
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
 
-    pr_scan: Literal["enabled", "disabled"]
+
+class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
 __all__ = (
-    "CodeScanningAiScanOrgSettingsType",
-    "CodeScanningAiScanOrgSettingsTypeForResponse",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
+    "MarketplacePurchasePropMarketplacePurchaseType",
+    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
 )

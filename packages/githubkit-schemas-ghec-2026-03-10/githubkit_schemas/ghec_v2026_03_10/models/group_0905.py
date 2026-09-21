@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0624 import EnterpriseWebhooks
-from .group_0625 import SimpleInstallation
-from .group_0626 import OrganizationSimpleWebhooks
-from .group_0627 import RepositoryWebhooks
-from .group_0660 import WebhooksMembership
+from .group_0642 import EnterpriseWebhooks
+from .group_0643 import SimpleInstallation
+from .group_0644 import OrganizationSimpleWebhooks
+from .group_0645 import RepositoryWebhooks
+from .group_0655 import WebhooksUser
 
 
-class WebhookOrganizationDeleted(GitHubModel):
-    """organization deleted event"""
+class WebhookMemberEdited(GitHubModel):
+    """member edited event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookMemberEditedPropChanges = Field(
+        description="The changes to the collaborator permissions"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,23 +42,57 @@ class WebhookOrganizationDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: Missing[WebhooksMembership] = Field(
+    member: Union[WebhooksUser, None] = Field(title="User")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
-    )
-    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationDeleted)
+class WebhookMemberEditedPropChanges(GitHubModel):
+    """WebhookMemberEditedPropChanges
 
-__all__ = ("WebhookOrganizationDeleted",)
+    The changes to the collaborator permissions
+    """
+
+    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
+        default=UNSET
+    )
+    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
+        default=UNSET
+    )
+
+
+class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous permissions of the collaborator if the action was edited.",
+    )
+
+
+class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookMemberEdited)
+model_rebuild(WebhookMemberEditedPropChanges)
+model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
+model_rebuild(WebhookMemberEditedPropChangesPropPermission)
+
+__all__ = (
+    "WebhookMemberEdited",
+    "WebhookMemberEditedPropChanges",
+    "WebhookMemberEditedPropChangesPropOldPermission",
+    "WebhookMemberEditedPropChangesPropPermission",
+)

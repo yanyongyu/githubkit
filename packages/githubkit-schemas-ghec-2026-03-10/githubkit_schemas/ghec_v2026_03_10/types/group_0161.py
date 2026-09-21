@@ -13,34 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0162 import (
-    RepositoryRuleWorkflowsPropParametersType,
-    RepositoryRuleWorkflowsPropParametersTypeForResponse,
+    RepositoryRuleCommitMessagePatternPropParametersType,
+    RepositoryRuleCommitMessagePatternPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleWorkflowsType(TypedDict):
-    """workflows
+class RepositoryRuleCommitMessagePatternType(TypedDict):
+    """commit_message_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
 
 
-class RepositoryRuleWorkflowsTypeForResponse(TypedDict):
-    """workflows
+class RepositoryRuleCommitMessagePatternTypeForResponse(TypedDict):
+    """commit_message_pattern
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
+    Parameters to be used for the commit_message_pattern rule
     """
 
-    type: Literal["workflows"]
-    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersTypeForResponse]
+    type: Literal["commit_message_pattern"]
+    parameters: NotRequired[
+        RepositoryRuleCommitMessagePatternPropParametersTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRuleWorkflowsType",
-    "RepositoryRuleWorkflowsTypeForResponse",
+    "RepositoryRuleCommitMessagePatternType",
+    "RepositoryRuleCommitMessagePatternTypeForResponse",
 )

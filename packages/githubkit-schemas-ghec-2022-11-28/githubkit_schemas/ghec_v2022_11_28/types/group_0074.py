@@ -9,281 +9,203 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeSecurityConfigurationType(TypedDict):
-    """CodeSecurityConfiguration
+class ActionsRuleRestrictActionsActorsType(TypedDict):
+    """restrict_actions_actors
 
-    A code security configuration
+    Choose specific actors that are authorized to trigger Actions workflows.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[Union[str, None]]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
-    ]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_delegated_alert_dismissal: NotRequired[
-        Union[Literal["enabled", "disabled", "not_set"], None]
-    ]
-    code_scanning_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningOptionsType, None]
-    ]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType, None]
-    ]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_extended_metadata: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    type: Literal["restrict_actions_actors"]
+    parameters: NotRequired[ActionsRuleRestrictActionsActorsPropParametersType]
 
 
-class CodeSecurityConfigurationTypeForResponse(TypedDict):
-    """CodeSecurityConfiguration
+class ActionsRuleRestrictActionsActorsTypeForResponse(TypedDict):
+    """restrict_actions_actors
 
-    A code security configuration
+    Choose specific actors that are authorized to trigger Actions workflows.
     """
 
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization", "enterprise"]]
-    description: NotRequired[Union[str, None]]
-    advanced_security: NotRequired[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    type: Literal["restrict_actions_actors"]
+    parameters: NotRequired[
+        ActionsRuleRestrictActionsActorsPropParametersTypeForResponse
     ]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_delegated_alert_dismissal: NotRequired[
-        Union[Literal["enabled", "disabled", "not_set"], None]
-    ]
-    code_scanning_options: NotRequired[
-        Union[CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse, None]
-    ]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup_options: NotRequired[
-        Union[
-            CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse,
-            None,
-        ]
-    ]
-    code_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_bypass_options: NotRequired[
-        CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_generic_secrets: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_delegated_alert_dismissal: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_extended_metadata: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
 
 
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+class ActionsRuleRestrictActionsActorsPropParametersType(TypedDict):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
 
-    Feature options for Automatic dependency submission
+    allowed_actors: list[ActionsRuleParamsActorType]
+
+
+class ActionsRuleRestrictActionsActorsPropParametersTypeForResponse(TypedDict):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
+
+    allowed_actors: list[ActionsRuleParamsActorTypeForResponse]
+
+
+class ActionsRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor authorized to trigger Actions workflows
     """
 
-    labeled_runners: NotRequired[bool]
+    id: int
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
+    ]
 
 
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+class ActionsRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
 
-    Feature options for Automatic dependency submission
+    An actor authorized to trigger Actions workflows
     """
 
-    labeled_runners: NotRequired[bool]
+    id: int
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
+    ]
 
 
-class CodeSecurityConfigurationPropCodeScanningOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningOptions
+class ActionsRuleRestrictActionEventsType(TypedDict):
+    """restrict_action_events
 
-    Feature options for code scanning
+    Choose specific GitHub events that will trigger Actions workflows.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    type: Literal["restrict_action_events"]
+    parameters: NotRequired[ActionsRuleRestrictActionEventsPropParametersType]
 
 
-class CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningOptions
+class ActionsRuleRestrictActionEventsTypeForResponse(TypedDict):
+    """restrict_action_events
 
-    Feature options for code scanning
+    Choose specific GitHub events that will trigger Actions workflows.
     """
 
-    allow_advanced: NotRequired[Union[bool, None]]
+    type: Literal["restrict_action_events"]
+    parameters: NotRequired[
+        ActionsRuleRestrictActionEventsPropParametersTypeForResponse
+    ]
 
 
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
+class ActionsRuleRestrictActionEventsPropParametersType(TypedDict):
+    """ActionsRuleRestrictActionEventsPropParameters"""
 
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Union[Literal["standard", "labeled", "not_set"], None]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions
-
-    Feature options for code scanning default setup
-    """
-
-    runner_type: NotRequired[Union[Literal["standard", "labeled", "not_set"], None]]
-    runner_label: NotRequired[Union[str, None]]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType(TypedDict):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
         ]
     ]
 
 
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions
+class ActionsRuleRestrictActionEventsPropParametersTypeForResponse(TypedDict):
+    """ActionsRuleRestrictActionEventsPropParameters"""
 
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: NotRequired[
-        list[
-            CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
         ]
     ]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
-    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
-    security_configuration_id: NotRequired[int]
-
-
-class CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersIt
-    ems
-    """
-
-    reviewer_id: int
-    reviewer_type: Literal["TEAM", "ROLE"]
-    mode: NotRequired[Literal["ALWAYS", "EXEMPT"]]
-    security_configuration_id: NotRequired[int]
 
 
 __all__ = (
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsType",
-    "CodeSecurityConfigurationPropCodeScanningDefaultSetupOptionsTypeForResponse",
-    "CodeSecurityConfigurationPropCodeScanningOptionsType",
-    "CodeSecurityConfigurationPropCodeScanningOptionsTypeForResponse",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItemsTypeForResponse",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsType",
-    "CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsTypeForResponse",
-    "CodeSecurityConfigurationType",
-    "CodeSecurityConfigurationTypeForResponse",
+    "ActionsRuleParamsActorType",
+    "ActionsRuleParamsActorTypeForResponse",
+    "ActionsRuleRestrictActionEventsPropParametersType",
+    "ActionsRuleRestrictActionEventsPropParametersTypeForResponse",
+    "ActionsRuleRestrictActionEventsType",
+    "ActionsRuleRestrictActionEventsTypeForResponse",
+    "ActionsRuleRestrictActionsActorsPropParametersType",
+    "ActionsRuleRestrictActionsActorsPropParametersTypeForResponse",
+    "ActionsRuleRestrictActionsActorsType",
+    "ActionsRuleRestrictActionsActorsTypeForResponse",
 )

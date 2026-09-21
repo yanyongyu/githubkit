@@ -31,6 +31,7 @@ class CodeSecurityConfigurationRepositoriesType(TypedDict):
             "failed",
             "updating",
             "removed_by_enterprise",
+            "enterprise_enforced",
         ]
     ]
     repository: NotRequired[SimpleRepositoryType]
@@ -52,6 +53,7 @@ class CodeSecurityConfigurationRepositoriesTypeForResponse(TypedDict):
             "failed",
             "updating",
             "removed_by_enterprise",
+            "enterprise_enforced",
         ]
     ]
     repository: NotRequired[SimpleRepositoryTypeForResponse]

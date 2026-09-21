@@ -9,41 +9,160 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0197 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0047 import MilestoneType, MilestoneTypeForResponse
+from .group_0157 import TeamType, TeamTypeForResponse
+from .group_0204 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0205 import PullRequestStackType, PullRequestStackTypeForResponse
+from .group_0207 import (
+    PullRequestSimplePropBaseType,
+    PullRequestSimplePropBaseTypeForResponse,
+    PullRequestSimplePropHeadType,
+    PullRequestSimplePropHeadTypeForResponse,
 )
-from .group_0203 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0208 import (
+    PullRequestSimplePropLinksType,
+    PullRequestSimplePropLinksTypeForResponse,
 )
 
 
-class OrgRulesetConditionsOneof2Type(TypedDict):
-    """repository_property_and_ref_name
+class PullRequestSimpleType(TypedDict):
+    """Pull Request Simple
 
-    Conditions to target repositories by property and refs by name
+    Pull Request Simple
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[SimpleUserType, None]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsType]
+    milestone: Union[MilestoneType, None]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamType]]
+    head: PullRequestSimplePropHeadType
+    base: PullRequestSimplePropBaseType
+    links: PullRequestSimplePropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    stack: NotRequired[Union[PullRequestStackType, None]]
+    draft: NotRequired[bool]
 
 
-class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
-    """repository_property_and_ref_name
+class PullRequestSimpleTypeForResponse(TypedDict):
+    """Pull Request Simple
 
-    Conditions to target repositories by property and refs by name
+    Pull Request Simple
     """
 
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[SimpleUserTypeForResponse, None]
+    body: Union[str, None]
+    labels: list[PullRequestSimplePropLabelsItemsTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamTypeForResponse]]
+    head: PullRequestSimplePropHeadTypeForResponse
+    base: PullRequestSimplePropBaseTypeForResponse
+    links: PullRequestSimplePropLinksTypeForResponse
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
+    draft: NotRequired[bool]
+
+
+class PullRequestSimplePropLabelsItemsType(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_by: None
+
+
+class PullRequestSimplePropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_by: None
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof2Type",
-    "OrgRulesetConditionsOneof2TypeForResponse",
+    "PullRequestSimplePropLabelsItemsType",
+    "PullRequestSimplePropLabelsItemsTypeForResponse",
+    "PullRequestSimpleType",
+    "PullRequestSimpleTypeForResponse",
 )

@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserSshSigningKeysPostBodyType(TypedDict):
-    """UserSshSigningKeysPostBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    title: NotRequired[str]
-    key: str
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
-class UserSshSigningKeysPostBodyTypeForResponse(TypedDict):
-    """UserSshSigningKeysPostBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    title: NotRequired[str]
-    key: str
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
 __all__ = (
-    "UserSshSigningKeysPostBodyType",
-    "UserSshSigningKeysPostBodyTypeForResponse",
+    "TeamsTeamIdReposOwnerRepoPutBodyType",
+    "TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse",
 )
