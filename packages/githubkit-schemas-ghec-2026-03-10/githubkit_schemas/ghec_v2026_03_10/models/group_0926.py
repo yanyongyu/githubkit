@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0678 import WebhooksMembership
 
 
-class WebhookOrganizationMemberRemoved(GitHubModel):
-    """organization member_removed event"""
+class WebhookOrganizationMemberAdded(GitHubModel):
+    """organization member_added event"""
 
-    action: Literal["member_removed"] = Field()
+    action: Literal["member_added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +55,6 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrganizationMemberRemoved)
+model_rebuild(WebhookOrganizationMemberAdded)
 
-__all__ = ("WebhookOrganizationMemberRemoved",)
+__all__ = ("WebhookOrganizationMemberAdded",)

@@ -20,37 +20,40 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0658 import WebhooksLabelType, WebhooksLabelTypeForResponse
 from .group_0874 import (
-    WebhookIssuesLockedPropIssueType,
-    WebhookIssuesLockedPropIssueTypeForResponse,
+    WebhookIssuesLabeledPropIssueType,
+    WebhookIssuesLabeledPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesLockedType(TypedDict):
-    """issues locked event"""
+class WebhookIssuesLabeledType(TypedDict):
+    """issues labeled event"""
 
-    action: Literal["locked"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesLockedPropIssueType
+    issue: WebhookIssuesLabeledPropIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesLockedTypeForResponse(TypedDict):
-    """issues locked event"""
+class WebhookIssuesLabeledTypeForResponse(TypedDict):
+    """issues labeled event"""
 
-    action: Literal["locked"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesLockedPropIssueTypeForResponse
+    issue: WebhookIssuesLabeledPropIssueTypeForResponse
+    label: NotRequired[WebhooksLabelTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesLockedType",
-    "WebhookIssuesLockedTypeForResponse",
+    "WebhookIssuesLabeledType",
+    "WebhookIssuesLabeledTypeForResponse",
 )

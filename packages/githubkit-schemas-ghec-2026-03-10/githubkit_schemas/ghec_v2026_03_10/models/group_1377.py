@@ -11,31 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    attestations: Missing[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems]
-    ] = Field(default=UNSET)
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems(GitHubModel):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    repository_id: Missing[int] = Field(default=UNSET)
-    bundle_url: Missing[str] = Field(default=UNSET)
-    initiator: Missing[str] = Field(default=UNSET)
+    attestation_ids: list[int] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of unique IDs associated with the artifact attestations to delete.",
+    )
 
 
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200)
-model_rebuild(OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof1)
 
-__all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
-)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",)

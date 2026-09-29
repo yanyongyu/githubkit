@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAnalysisTool(GitHubModel):
-    """CodeScanningAnalysisTool"""
+class CodeScanningAlertLocation(GitHubModel):
+    """CodeScanningAlertLocation
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the tool used to generate the code scanning analysis.",
-    )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the tool used to generate the code scanning analysis.",
-    )
-    guid: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GUID of the tool used to generate the code scanning analysis, if provided in the uploaded SARIF data.",
-    )
+    Describe a region within a file for the alert.
+    """
+
+    path: Missing[str] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    end_column: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAnalysisTool)
+model_rebuild(CodeScanningAlertLocation)
 
-__all__ = ("CodeScanningAnalysisTool",)
+__all__ = ("CodeScanningAlertLocation",)

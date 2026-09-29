@@ -9,29 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
-    """Code scanning AI Scan organization settings update
+class CodeScanningAlertRuleSummaryType(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-    The AI Scan organization setting to apply
-    """
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
+class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
+    """CodeScanningAlertRuleSummary"""
 
-class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
-    """Code scanning AI Scan organization settings update
-
-    The AI Scan organization setting to apply
-    """
-
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAiScanOrgEnablementUpdateType",
-    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
+    "CodeScanningAlertRuleSummaryType",
+    "CodeScanningAlertRuleSummaryTypeForResponse",
 )

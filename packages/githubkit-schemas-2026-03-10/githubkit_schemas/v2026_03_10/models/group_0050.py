@@ -9,32 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class IssueCommentMinimized(GitHubModel):
+    """Minimized Issue Comment
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    Details about why an issue comment was minimized.
+    """
 
-
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
+    reason: Union[str, None] = Field(
+        description="The reason the comment was minimized."
+    )
 
 
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
+model_rebuild(IssueCommentMinimized)
 
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("IssueCommentMinimized",)

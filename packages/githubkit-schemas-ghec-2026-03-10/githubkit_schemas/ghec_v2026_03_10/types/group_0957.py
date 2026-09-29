@@ -23,83 +23,31 @@ from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0681 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectCreatedType(TypedDict):
+    """project created event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     project: WebhooksProjectType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookProjectEditedTypeForResponse(TypedDict):
-    """project edited event"""
+class WebhookProjectCreatedTypeForResponse(TypedDict):
+    """project created event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesTypeForResponse]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     project: WebhooksProjectTypeForResponse
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: NotRequired[SimpleUserTypeForResponse]
-
-
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
-
-
-class WebhookProjectEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyTypeForResponse]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropBodyTypeForResponse",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedPropChangesTypeForResponse",
-    "WebhookProjectEditedType",
-    "WebhookProjectEditedTypeForResponse",
+    "WebhookProjectCreatedType",
+    "WebhookProjectCreatedTypeForResponse",
 )

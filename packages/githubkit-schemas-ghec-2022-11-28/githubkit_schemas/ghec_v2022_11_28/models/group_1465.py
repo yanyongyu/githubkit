@@ -9,34 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
-        Field(description="A list of field updates to apply.")
+    type: Literal["Issue", "PullRequest"] = Field(
+        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    )
+    id: int = Field(
+        description="The unique identifier of the issue or pull request to add to the project."
+    )
+    owner: Missing[str] = Field(
+        default=UNSET, description="The repository owner login."
+    )
+    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
+    number: Missing[int] = Field(
+        default=UNSET, description="The issue or pull request number."
     )
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
 
-    id: int = Field(description="The ID of the project field to update.")
-    value: Union[str, float, None] = Field(
-        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
-    )
-
-
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
-
-__all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
-    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
-)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)

@@ -13,27 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
     commit_title: NotRequired[str]
     commit_message: NotRequired[str]
     sha: NotRequired[str]
     merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
     commit_title: NotRequired[str]
     commit_message: NotRequired[str]
     sha: NotRequired[str]
     merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
 )

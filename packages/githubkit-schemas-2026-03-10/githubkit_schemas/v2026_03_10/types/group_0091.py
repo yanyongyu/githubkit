@@ -12,64 +12,48 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0090 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-class ThreadType(TypedDict):
-    """Thread
-
-    Thread
+    A GitHub organization.
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
+    login: str
+    id: int
+    node_id: str
     url: str
-    subscription_url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class ThreadTypeForResponse(TypedDict):
-    """Thread
+class OrganizationSimpleTypeForResponse(TypedDict):
+    """Organization Simple
 
-    Thread
+    A GitHub organization.
     """
 
-    id: str
-    repository: MinimalRepositoryTypeForResponse
-    subject: ThreadPropSubjectTypeForResponse
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
+    login: str
+    id: int
+    node_id: str
     url: str
-    subscription_url: str
-
-
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
-
-
-class ThreadPropSubjectTypeForResponse(TypedDict):
-    """ThreadPropSubject"""
-
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
 __all__ = (
-    "ThreadPropSubjectType",
-    "ThreadPropSubjectTypeForResponse",
-    "ThreadType",
-    "ThreadTypeForResponse",
+    "OrganizationSimpleType",
+    "OrganizationSimpleTypeForResponse",
 )

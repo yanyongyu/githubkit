@@ -9,65 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0521 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoStacksStackNumberAddPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
-    ]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[
-            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
-        ]
-    ]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    ref: str
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse",
 )

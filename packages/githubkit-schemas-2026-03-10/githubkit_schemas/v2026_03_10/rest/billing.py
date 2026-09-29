@@ -678,22 +678,6 @@ class BillingClient:
         budget_alerting: Missing[
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
-        budget_scope: Missing[
-            Literal[
-                "enterprise",
-                "organization",
-                "repository",
-                "cost_center",
-                "multi_user_customer",
-                "user",
-            ]
-        ] = UNSET,
-        budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[
-            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-        ] = UNSET,
-        budget_product_sku: Missing[str] = UNSET,
-        user: Missing[str] = UNSET,
         expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
@@ -782,22 +766,6 @@ class BillingClient:
         budget_alerting: Missing[
             OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
-        budget_scope: Missing[
-            Literal[
-                "enterprise",
-                "organization",
-                "repository",
-                "cost_center",
-                "multi_user_customer",
-                "user",
-            ]
-        ] = UNSET,
-        budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[
-            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-        ] = UNSET,
-        budget_product_sku: Missing[str] = UNSET,
-        user: Missing[str] = UNSET,
         expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 

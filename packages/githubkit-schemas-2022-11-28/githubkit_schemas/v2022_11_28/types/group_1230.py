@@ -9,22 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    secrets: list[OrganizationDependabotSecretType]
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    message: NotRequired[str]
+    total_count: int
+    secrets: list[OrganizationDependabotSecretTypeForResponse]
+
+
+class OrganizationDependabotSecretType(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+class OrganizationDependabotSecretTypeForResponse(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutResponse200Type",
-    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
+    "OrganizationDependabotSecretType",
+    "OrganizationDependabotSecretTypeForResponse",
+    "OrgsOrgDependabotSecretsGetResponse200Type",
+    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
 )

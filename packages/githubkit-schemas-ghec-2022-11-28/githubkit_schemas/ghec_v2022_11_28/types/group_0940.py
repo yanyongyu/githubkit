@@ -25,29 +25,29 @@ from .group_0680 import (
 )
 
 
-class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    action: Literal["denied"]
+    action: Literal["cancelled"]
     personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
     enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     sender: SimpleUserType
     installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestDeniedTypeForResponse(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    action: Literal["denied"]
+    action: Literal["cancelled"]
     personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
-    organization: OrganizationSimpleWebhooksTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
     installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestDeniedType",
-    "WebhookPersonalAccessTokenRequestDeniedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestCancelledType",
+    "WebhookPersonalAccessTokenRequestCancelledTypeForResponse",
 )

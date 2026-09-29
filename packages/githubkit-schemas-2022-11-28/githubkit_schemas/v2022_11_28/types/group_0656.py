@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0392 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0393 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertAutoDismissedType(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookDependabotAlertAssigneesChangedType(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_dismissed"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertAutoDismissedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
-    """Dependabot alert auto-dismissed event"""
+class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["auto_dismissed"]
+    action: Literal["assignees_changed"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertAutoDismissedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertAutoDismissedType",
-    "WebhookDependabotAlertAutoDismissedTypeForResponse",
+    "WebhookDependabotAlertAssigneesChangedType",
+    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
 )

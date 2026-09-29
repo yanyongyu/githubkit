@@ -13,25 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import (
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0613 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertUnassignedType(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["unassigned"]
+    action: Literal["publicly_leaked"]
     alert: SecretScanningAlertWebhookType
-    assignee: NotRequired[SimpleUserType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -39,12 +38,11 @@ class WebhookSecretScanningAlertUnassignedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["unassigned"]
+    action: Literal["publicly_leaked"]
     alert: SecretScanningAlertWebhookTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +51,6 @@ class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertUnassignedType",
-    "WebhookSecretScanningAlertUnassignedTypeForResponse",
+    "WebhookSecretScanningAlertPubliclyLeakedType",
+    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
 )

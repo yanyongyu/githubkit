@@ -9,43 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
+class WebhooksMilestone3Type(TypedDict):
+    """Milestone
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    A collection of related issues and pull requests.
     """
 
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
+    closed_at: Union[_dt.datetime, None]
+    closed_issues: int
+    created_at: _dt.datetime
+    creator: Union[WebhooksMilestone3PropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[_dt.datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: _dt.datetime
     url: str
-    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksMembershipTypeForResponse(TypedDict):
-    """Membership
+class WebhooksMilestone3TypeForResponse(TypedDict):
+    """Milestone
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    A collection of related issues and pull requests.
     """
 
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
+    closed_at: Union[str, None]
+    closed_issues: int
+    created_at: str
+    creator: Union[WebhooksMilestone3PropCreatorTypeForResponse, None]
+    description: Union[str, None]
+    due_on: Union[str, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: str
     url: str
-    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
 
 
-class WebhooksMembershipPropUserType(TypedDict):
+class WebhooksMilestone3PropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -72,7 +89,7 @@ class WebhooksMembershipPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksMembershipPropUserTypeForResponse(TypedDict):
+class WebhooksMilestone3PropCreatorTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -100,8 +117,8 @@ class WebhooksMembershipPropUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipPropUserTypeForResponse",
-    "WebhooksMembershipType",
-    "WebhooksMembershipTypeForResponse",
+    "WebhooksMilestone3PropCreatorType",
+    "WebhooksMilestone3PropCreatorTypeForResponse",
+    "WebhooksMilestone3Type",
+    "WebhooksMilestone3TypeForResponse",
 )

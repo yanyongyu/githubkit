@@ -13968,6 +13968,82 @@ class ActionsClient:
             },
         )
 
+    def download_step_logs_for_workflow_run_job(
+        self,
+        owner: str,
+        repo: str,
+        job_id: int,
+        step_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/download-step-logs-for-workflow-run-job
+
+        GET /repos/{owner}/{repo}/actions/jobs/{job_id}/steps/{step_number}/logs
+
+        Gets a redirect URL to download a plain text file of logs for a specific step of a workflow job. This link expires after
+        1 minute. Look for `Location:` in the response header to find the URL for the download.
+
+        This endpoint is intended for selective retrieval of one step. To download complete job logs, use the
+        [job logs endpoint](https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#download-step-logs-for-a-workflow-run-job
+        """
+
+        url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/steps/{step_number}/logs"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
+    async def async_download_step_logs_for_workflow_run_job(
+        self,
+        owner: str,
+        repo: str,
+        job_id: int,
+        step_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """actions/download-step-logs-for-workflow-run-job
+
+        GET /repos/{owner}/{repo}/actions/jobs/{job_id}/steps/{step_number}/logs
+
+        Gets a redirect URL to download a plain text file of logs for a specific step of a workflow job. This link expires after
+        1 minute. Look for `Location:` in the response header to find the URL for the download.
+
+        This endpoint is intended for selective retrieval of one step. To download complete job logs, use the
+        [job logs endpoint](https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run).
+
+        Anyone with read access to the repository can use this endpoint.
+
+        If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/workflow-jobs#download-step-logs-for-a-workflow-run-job
+        """
+
+        url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/steps/{step_number}/logs"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+        )
+
     def get_custom_oidc_sub_claim_for_repo(
         self,
         owner: str,

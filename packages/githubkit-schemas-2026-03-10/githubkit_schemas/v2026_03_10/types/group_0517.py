@@ -9,120 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PrivateVulnerabilityReportCreateType(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
+class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
-    ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
-
-
-class PrivateVulnerabilityReportCreateTypeForResponse(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
-
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[
-            list[
-                PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse
-            ],
-            None,
-        ]
-    ]
-    cwe_ids: NotRequired[Union[list[str], None]]
-    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[list[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
+    The description does not answer the repository's report template.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
     ]
-    name: NotRequired[Union[str, None]]
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    The name of the package affected by the vulnerability.
+    The description does not answer the repository's report template.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
     ]
-    name: NotRequired[Union[str, None]]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
 
 
 __all__ = (
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsTypeForResponse",
-    "PrivateVulnerabilityReportCreateType",
-    "PrivateVulnerabilityReportCreateTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorType",
+    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
 )

@@ -23,10 +23,11 @@ from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0655 import WebhooksUserType, WebhooksUserTypeForResponse
 
 
-class WebhookMemberRemovedType(TypedDict):
-    """member removed event"""
+class WebhookMemberAddedType(TypedDict):
+    """member added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
+    changes: NotRequired[WebhookMemberAddedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
@@ -35,10 +36,11 @@ class WebhookMemberRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMemberRemovedTypeForResponse(TypedDict):
-    """member removed event"""
+class WebhookMemberAddedTypeForResponse(TypedDict):
+    """member added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
+    changes: NotRequired[WebhookMemberAddedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     member: Union[WebhooksUserTypeForResponse, None]
@@ -47,7 +49,75 @@ class WebhookMemberRemovedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
+class WebhookMemberAddedPropChangesType(TypedDict):
+    """WebhookMemberAddedPropChanges"""
+
+    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
+    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameType]
+
+
+class WebhookMemberAddedPropChangesTypeForResponse(TypedDict):
+    """WebhookMemberAddedPropChanges"""
+
+    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionTypeForResponse]
+    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameTypeForResponse]
+
+
+class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"]
+
+
+class WebhookMemberAddedPropChangesPropPermissionTypeForResponse(TypedDict):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"]
+
+
+class WebhookMemberAddedPropChangesPropRoleNameType(TypedDict):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str
+
+
+class WebhookMemberAddedPropChangesPropRoleNameTypeForResponse(TypedDict):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str
+
+
 __all__ = (
-    "WebhookMemberRemovedType",
-    "WebhookMemberRemovedTypeForResponse",
+    "WebhookMemberAddedPropChangesPropPermissionType",
+    "WebhookMemberAddedPropChangesPropPermissionTypeForResponse",
+    "WebhookMemberAddedPropChangesPropRoleNameType",
+    "WebhookMemberAddedPropChangesPropRoleNameTypeForResponse",
+    "WebhookMemberAddedPropChangesType",
+    "WebhookMemberAddedPropChangesTypeForResponse",
+    "WebhookMemberAddedType",
+    "WebhookMemberAddedTypeForResponse",
 )

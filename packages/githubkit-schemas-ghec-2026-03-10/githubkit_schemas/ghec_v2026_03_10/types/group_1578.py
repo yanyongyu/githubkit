@@ -12,35 +12,73 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
+
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse
+    ]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
     """
 
-    custom_instructions: NotRequired[str]
-    custom_agent: NotRequired[str]
-    model: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
+    object containing information about the committer.
     """
 
-    custom_instructions: NotRequired[str]
-    custom_agent: NotRequired[str]
-    model: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
+    "ReposOwnerRepoContentsPathDeleteBodyTypeForResponse",
 )

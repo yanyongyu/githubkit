@@ -22,11 +22,10 @@ from .group_0644 import (
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class WebhookRepositoryPrivatizedType(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -34,11 +33,10 @@ class WebhookRepositoryRenamedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryRenamedTypeForResponse(TypedDict):
-    """repository renamed event"""
+class WebhookRepositoryPrivatizedTypeForResponse(TypedDict):
+    """repository privatized event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesTypeForResponse
+    action: Literal["privatized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -46,51 +44,7 @@ class WebhookRepositoryRenamedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
-
-
-class WebhookRepositoryRenamedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse(
-    TypedDict
-):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameTypeForResponse",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryTypeForResponse",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedPropChangesTypeForResponse",
-    "WebhookRepositoryRenamedType",
-    "WebhookRepositoryRenamedTypeForResponse",
+    "WebhookRepositoryPrivatizedType",
+    "WebhookRepositoryPrivatizedTypeForResponse",
 )

@@ -9,50 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1581 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
-)
 
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
+    GitHubModel
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
 
-    state: Missing[Literal["dismissed", "open"]] = Field(
-        default=UNSET,
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
     )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
     )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
-    )
-    assignees: list[str] = Field(
-        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
-    )
-    agent_assignment: Missing[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
-    ] = Field(
-        default=UNSET,
-        description="Parameters for AI agent assignment. Only used when an agent bot login is\nincluded in `assignees`. Ignored when no agent is being assigned.",
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

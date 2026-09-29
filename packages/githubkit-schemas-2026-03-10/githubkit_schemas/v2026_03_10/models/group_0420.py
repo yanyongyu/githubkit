@@ -14,18 +14,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimitPullRequestBypassList(GitHubModel):
-    """Interaction Limits Pull Request Bypass List
+class PorterLargeFile(GitHubModel):
+    """Porter Large File
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Porter Large File
     """
 
-    users: list[str] = Field(
-        description="A list of user logins to add or remove from the bypass list."
-    )
+    ref_name: str = Field()
+    path: str = Field()
+    oid: str = Field()
+    size: int = Field()
 
 
-model_rebuild(InteractionLimitPullRequestBypassList)
+model_rebuild(PorterLargeFile)
 
-__all__ = ("InteractionLimitPullRequestBypassList",)
+__all__ = ("PorterLargeFile",)

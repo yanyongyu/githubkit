@@ -12,25 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202Type(TypedDict):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202"""
 
     message: NotRequired[str]
     warning: NotRequired[str]
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
+class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+    """OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202"""
 
     message: NotRequired[str]
     warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse",
 )

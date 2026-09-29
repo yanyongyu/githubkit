@@ -13,27 +13,35 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ]
-    dismissed_comment: NotRequired[str]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ]
-    dismissed_comment: NotRequired[str]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",
+    "ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyTypeForResponse",
 )

@@ -22,29 +22,29 @@ from .group_0644 import (
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryPublicizedType(TypedDict):
-    """repository publicized event"""
+class WebhookRepositoryImportType(TypedDict):
+    """repository_import event"""
 
-    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
+    status: Literal["success", "cancelled", "failure"]
 
 
-class WebhookRepositoryPublicizedTypeForResponse(TypedDict):
-    """repository publicized event"""
+class WebhookRepositoryImportTypeForResponse(TypedDict):
+    """repository_import event"""
 
-    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
+    status: Literal["success", "cancelled", "failure"]
 
 
 __all__ = (
-    "WebhookRepositoryPublicizedType",
-    "WebhookRepositoryPublicizedTypeForResponse",
+    "WebhookRepositoryImportType",
+    "WebhookRepositoryImportTypeForResponse",
 )

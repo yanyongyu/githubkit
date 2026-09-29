@@ -9,40 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
-
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ReactionRollupTypeForResponse(TypedDict):
-    """Reaction Rollup"""
+class PinnedIssueCommentType(TypedDict):
+    """Pinned Issue Comment
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: _dt.datetime
+    pinned_by: Union[SimpleUserType, None]
+
+
+class PinnedIssueCommentTypeForResponse(TypedDict):
+    """Pinned Issue Comment
+
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: str
+    pinned_by: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "ReactionRollupType",
-    "ReactionRollupTypeForResponse",
+    "PinnedIssueCommentType",
+    "PinnedIssueCommentTypeForResponse",
 )

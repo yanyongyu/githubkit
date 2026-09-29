@@ -25,14 +25,10 @@ from .group_0646 import RepositoryWebhooks
 from .group_0696 import WebhooksSponsorship
 
 
-class WebhookSponsorshipPendingCancellation(GitHubModel):
-    """sponsorship pending_cancellation event"""
+class WebhookSponsorshipCreated(GitHubModel):
+    """sponsorship created event"""
 
-    action: Literal["pending_cancellation"] = Field()
-    effective_date: Missing[str] = Field(
-        default=UNSET,
-        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,6 +53,6 @@ class WebhookSponsorshipPendingCancellation(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipPendingCancellation)
+model_rebuild(WebhookSponsorshipCreated)
 
-__all__ = ("WebhookSponsorshipPendingCancellation",)
+__all__ = ("WebhookSponsorshipCreated",)

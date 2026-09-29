@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
-    content: str
-    encoding: NotRequired[str]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitBlobsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
-    content: str
-    encoding: NotRequired[str]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoGitBlobsPostBodyType",
-    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyTypeForResponse",
 )

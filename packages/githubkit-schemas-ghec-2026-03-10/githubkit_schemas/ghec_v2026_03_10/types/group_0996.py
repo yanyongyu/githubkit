@@ -23,10 +23,10 @@ from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0685 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestReopenedType(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestOpenedType(TypedDict):
+    """pull_request opened event"""
 
-    action: Literal["reopened"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookPullRequestReopenedTypeForResponse(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestOpenedTypeForResponse(TypedDict):
+    """pull_request opened event"""
 
-    action: Literal["reopened"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestReopenedType",
-    "WebhookPullRequestReopenedTypeForResponse",
+    "WebhookPullRequestOpenedType",
+    "WebhookPullRequestOpenedTypeForResponse",
 )

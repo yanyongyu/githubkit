@@ -13,43 +13,48 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0564 import (
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0603 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0892 import (
+    WebhookPullRequestAutoMergeEnabledPropPullRequestType,
+    WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse,
+)
 
 
-class WebhookPullRequestConvertedToDraftType(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookPullRequestAutoMergeEnabledType(TypedDict):
+    """pull_request auto_merge_enabled event"""
 
-    action: Literal["converted_to_draft"]
+    action: Literal["auto_merge_enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
+    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestType
+    reason: NotRequired[str]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestConvertedToDraftTypeForResponse(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookPullRequestAutoMergeEnabledTypeForResponse(TypedDict):
+    """pull_request auto_merge_enabled event"""
 
-    action: Literal["converted_to_draft"]
+    action: Literal["auto_merge_enabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
+    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse
+    reason: NotRequired[str]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestConvertedToDraftType",
-    "WebhookPullRequestConvertedToDraftTypeForResponse",
+    "WebhookPullRequestAutoMergeEnabledType",
+    "WebhookPullRequestAutoMergeEnabledTypeForResponse",
 )

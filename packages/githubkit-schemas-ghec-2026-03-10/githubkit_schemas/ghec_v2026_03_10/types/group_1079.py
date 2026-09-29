@@ -26,10 +26,10 @@ from .group_0693 import (
 )
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertResolvedType(TypedDict):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["validated"]
+    action: Literal["resolved"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertValidatedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["validated"]
+    action: Literal["resolved"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertValidatedType",
-    "WebhookSecretScanningAlertValidatedTypeForResponse",
+    "WebhookSecretScanningAlertResolvedType",
+    "WebhookSecretScanningAlertResolvedTypeForResponse",
 )

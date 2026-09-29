@@ -23,10 +23,10 @@ from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0679 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookOrganizationMemberRemovedType(TypedDict):
-    """organization member_removed event"""
+class WebhookOrganizationMemberAddedType(TypedDict):
+    """organization member_added event"""
 
-    action: Literal["member_removed"]
+    action: Literal["member_added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     membership: WebhooksMembershipType
@@ -35,10 +35,10 @@ class WebhookOrganizationMemberRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
-    """organization member_removed event"""
+class WebhookOrganizationMemberAddedTypeForResponse(TypedDict):
+    """organization member_added event"""
 
-    action: Literal["member_removed"]
+    action: Literal["member_added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     membership: WebhooksMembershipTypeForResponse
@@ -48,6 +48,6 @@ class WebhookOrganizationMemberRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookOrganizationMemberRemovedType",
-    "WebhookOrganizationMemberRemovedTypeForResponse",
+    "WebhookOrganizationMemberAddedType",
+    "WebhookOrganizationMemberAddedTypeForResponse",
 )

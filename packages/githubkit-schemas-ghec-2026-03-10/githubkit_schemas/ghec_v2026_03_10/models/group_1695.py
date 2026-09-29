@@ -17,33 +17,88 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0141 import RepositoryRulesetBypassActor
+from .group_0142 import RepositoryRulesetConditions
+from .group_0150 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0151 import RepositoryRuleUpdate
+from .group_0153 import RepositoryRuleRequiredLinearHistory
+from .group_0154 import RepositoryRuleRequiredDeployments
+from .group_0157 import RepositoryRulePullRequest
+from .group_0159 import RepositoryRuleRequiredStatusChecks
+from .group_0161 import RepositoryRuleCommitMessagePattern
+from .group_0163 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0165 import RepositoryRuleCommitterEmailPattern
+from .group_0167 import RepositoryRuleBranchNamePattern
+from .group_0169 import RepositoryRuleTagNamePattern
+from .group_0171 import RepositoryRuleFilePathRestriction
+from .group_0173 import RepositoryRuleMaxFilePathLength
+from .group_0175 import RepositoryRuleFileExtensionRestriction
+from .group_0177 import RepositoryRuleMaxFileSize
+from .group_0180 import RepositoryRuleWorkflows
+from .group_0182 import RepositoryRuleCodeScanning
+from .group_0184 import RepositoryRuleCopilotCodeReview
+from .group_0189 import RepositoryRuleMergeQueue
+from .group_0191 import RepositoryRuleCodeCoverage, RepositoryRuleCodeQuality
+from .group_0192 import RepositoryRuleLicenseComplianceScanning
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    state: Missing[Literal["open", "resolved"]] = Field(
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    resolution: Missing[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
-    ] = Field(
+    conditions: Missing[RepositoryRulesetConditions] = Field(
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
     )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
-    )
-    assignee: Union[str, None] = Field(
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
-    )
-    validity: Missing[Union[Literal["active", "inactive"], None]] = Field(
-        default=UNSET,
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
-    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCodeQuality,
+                RepositoryRuleCodeCoverage,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

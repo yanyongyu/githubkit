@@ -12,31 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
 
-class ActionsPolicyWorkflowPathCondition(GitHubModel):
-    """Actions policy workflow path condition
+class ActionsPolicyWorkflowPathConditionPropWorkflowPath(GitHubModel):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    Parameters for an Actions policy workflow path condition. Omitting
-    `workflow_path` when creating
-    a policy targets all workflows without storing an explicit condition. Omitting
-    it when updating a
-    policy preserves the existing workflow targeting. For new or changed workflow
-    conditions, the API
-    requires at least one included or excluded pattern. This is validated server-
-    side rather than by
-    this schema, which can also describe existing stored conditions.
-    """
-
-    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
-        default=UNSET
+    include: list[str] = Field(
+        description="Array of workflow file paths or glob patterns to include. An empty array includes all\nworkflows not matched by an excluded pattern. Use `~ALL` by itself to include all workflows.\n`~ALL` cannot be combined with other included patterns."
+    )
+    exclude: list[str] = Field(
+        description="Array of workflow file paths or glob patterns to exclude. The condition will not pass\nif any of these patterns match. `~ALL` is not allowed in this array."
     )
 
 
-model_rebuild(ActionsPolicyWorkflowPathCondition)
+model_rebuild(ActionsPolicyWorkflowPathConditionPropWorkflowPath)
 
-__all__ = ("ActionsPolicyWorkflowPathCondition",)
+__all__ = ("ActionsPolicyWorkflowPathConditionPropWorkflowPath",)

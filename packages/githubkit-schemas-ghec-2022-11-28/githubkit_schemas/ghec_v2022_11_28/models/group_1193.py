@@ -9,53 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
-
-    total_count: float = Field()
-    runner_groups: list[RunnerGroupsEnterprise] = Field()
-
-
-class RunnerGroupsEnterprise(GitHubModel):
-    """RunnerGroupsEnterprise"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_organizations_url: Missing[str] = Field(default=UNSET)
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of a hosted compute network configuration.",
-    )
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
-
-
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsEnterprise)
-
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsEnterprise",
+from .group_0068 import ActionsPolicyEnterpriseConditionsOneof0
+from .group_0069 import ActionsPolicyEnterpriseConditionsOneof1
+from .group_0070 import ActionsPolicyEnterpriseConditionsOneof2
+from .group_0071 import ActionsPolicyEnterpriseConditionsOneof3
+from .group_0072 import ActionsPolicyEnterpriseConditionsOneof4
+from .group_0073 import ActionsPolicyEnterpriseConditionsOneof5
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
 )
+
+
+class EnterprisesEnterpriseActionsPoliciesPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    conditions: Missing[
+        Union[
+            ActionsPolicyEnterpriseConditionsOneof0,
+            ActionsPolicyEnterpriseConditionsOneof1,
+            ActionsPolicyEnterpriseConditionsOneof2,
+            ActionsPolicyEnterpriseConditionsOneof3,
+            ActionsPolicyEnterpriseConditionsOneof4,
+            ActionsPolicyEnterpriseConditionsOneof5,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Enterprise Actions policy conditions",
+        description="Conditions for an enterprise Actions policy. The conditions object supports one organization\ntarget (`organization_name`, `organization_id`, or `organization_property`) combined with one\nrepository target (`repository_name` or `repository_property`), and may also contain `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
+
+
+model_rebuild(EnterprisesEnterpriseActionsPoliciesPostBody)
+
+__all__ = ("EnterprisesEnterpriseActionsPoliciesPostBody",)

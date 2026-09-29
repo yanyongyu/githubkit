@@ -9,53 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1631 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
+)
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    assignees: Missing[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
-            ]
-        ]
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+
+    suggestions: Missing[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
     ] = Field(
         default=UNSET,
-        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
+        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
 
-    login: str = Field(description="The login of the user to assign.")
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this assignee."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this assignee choice."
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)

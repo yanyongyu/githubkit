@@ -13,17 +13,24 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0"""
 
-    credential_id: int = Field()
+    credential_id: int = Field(
+        description="The token ID of the personal access token (classic) to authorize."
+    )
     credential_type: Literal["classic_pat"] = Field()
-    organizations: list[str] = Field()
+    organizations: UniqueList[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0",)

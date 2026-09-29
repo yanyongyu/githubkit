@@ -11,27 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0152 import (
-    OrganizationActionsSecretType,
-    OrganizationActionsSecretTypeForResponse,
-)
+
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: int
-    secrets: list[OrganizationActionsSecretType]
-
-
-class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsGetResponse200Type",
-    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
+    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse",
 )

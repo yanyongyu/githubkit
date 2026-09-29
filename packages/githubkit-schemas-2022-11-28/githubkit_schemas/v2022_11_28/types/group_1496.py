@@ -10,26 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0285 import (
+    SecretScanningCustomPatternToDeleteType,
+    SecretScanningCustomPatternToDeleteTypeForResponse,
+)
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    patterns: list[SecretScanningCustomPatternToDeleteType]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
+    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
+    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse",
 )

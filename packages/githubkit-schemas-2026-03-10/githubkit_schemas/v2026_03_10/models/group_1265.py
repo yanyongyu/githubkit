@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,21 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgPropertiesInstallationsPostBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
-    )
-    id: Missing[int] = Field(
+    installation_id: Missing[int] = Field(
         default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
+        description="The unique identifier of the GitHub App installation to register for managing external custom properties. When authenticating as a GitHub App installation, this defaults to the authenticated installation and can be omitted. It is required for all other callers (users and fine-grained personal access tokens).",
     )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
+    display_name: str = Field(
+        min_length=1,
+        max_length=15,
+        pattern="^[a-zA-Z0-9]+$",
+        description="The display name for this app installation's external custom properties in the organization. This can't be changed after the app installation is registered.",
+    )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(OrgsOrgPropertiesInstallationsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("OrgsOrgPropertiesInstallationsPostBody",)

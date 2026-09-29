@@ -21,15 +21,13 @@ from .group_0644 import (
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0695 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
-from .group_0696 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class WebhookSponsorshipPendingTierChangeType(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8Type
-    effective_date: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -38,12 +36,11 @@ class WebhookSponsorshipPendingTierChangeType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipEditedTypeForResponse(TypedDict):
+    """sponsorship edited event"""
 
-    action: Literal["pending_tier_change"]
-    changes: WebhooksChanges8TypeForResponse
-    effective_date: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -52,7 +49,37 @@ class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
     sponsorship: WebhooksSponsorshipTypeForResponse
 
 
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[
+        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
+    ]
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
 __all__ = (
-    "WebhookSponsorshipPendingTierChangeType",
-    "WebhookSponsorshipPendingTierChangeTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesTypeForResponse",
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedTypeForResponse",
 )

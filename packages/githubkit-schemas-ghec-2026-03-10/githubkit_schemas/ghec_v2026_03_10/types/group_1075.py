@@ -26,10 +26,10 @@ from .group_0693 import (
 )
 
 
-class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookSecretScanningAlertMetadataCreatedType(TypedDict):
+    """secret_scanning_alert metadata created event"""
 
-    action: Literal["publicly_leaked"]
+    action: Literal["metadata_created"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
-    """secret_scanning_alert publicly leaked event"""
+class WebhookSecretScanningAlertMetadataCreatedTypeForResponse(TypedDict):
+    """secret_scanning_alert metadata created event"""
 
-    action: Literal["publicly_leaked"]
+    action: Literal["metadata_created"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertPubliclyLeakedType",
-    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
+    "WebhookSecretScanningAlertMetadataCreatedType",
+    "WebhookSecretScanningAlertMetadataCreatedTypeForResponse",
 )

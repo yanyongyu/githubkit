@@ -9,25 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
-
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+from .group_0121 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
 
 
-class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
+class ActionsPolicyWorkflowPathConditionType(TypedDict):
+    """Actions policy workflow path condition
 
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+    Parameters for an Actions policy workflow path condition. Omitting
+    `workflow_path` when creating
+    a policy targets all workflows without storing an explicit condition. Omitting
+    it when updating a
+    policy preserves the existing workflow targeting. For new or changed workflow
+    conditions, the API
+    requires at least one included or excluded pattern. This is validated server-
+    side rather than by
+    this schema, which can also describe existing stored conditions.
+    """
+
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+
+
+class ActionsPolicyWorkflowPathConditionTypeForResponse(TypedDict):
+    """Actions policy workflow path condition
+
+    Parameters for an Actions policy workflow path condition. Omitting
+    `workflow_path` when creating
+    a policy targets all workflows without storing an explicit condition. Omitting
+    it when updating a
+    policy preserves the existing workflow targeting. For new or changed workflow
+    conditions, the API
+    requires at least one included or excluded pattern. This is validated server-
+    side rather than by
+    this schema, which can also describe existing stored conditions.
+    """
+
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "ActionsSetDefaultWorkflowPermissionsType",
-    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
+    "ActionsPolicyWorkflowPathConditionType",
+    "ActionsPolicyWorkflowPathConditionTypeForResponse",
 )

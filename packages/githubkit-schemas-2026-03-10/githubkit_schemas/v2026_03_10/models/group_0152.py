@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,21 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-    Secrets for GitHub Actions for an organization.
+    The public key used for setting Actions Secrets.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(ActionsPublicKey)
 
-__all__ = ("OrganizationActionsSecret",)
+__all__ = ("ActionsPublicKey",)

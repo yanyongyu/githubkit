@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0090 import MinimalRepository
+from .group_0088 import MinimalRepository
 
 
 class OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200(GitHubModel):

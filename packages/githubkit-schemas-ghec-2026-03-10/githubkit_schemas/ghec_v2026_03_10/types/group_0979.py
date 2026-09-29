@@ -21,40 +21,40 @@ from .group_0644 import (
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0980 import (
-    WebhookPullRequestAutoMergeEnabledPropPullRequestType,
-    WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse,
+    WebhookPullRequestAutoMergeDisabledPropPullRequestType,
+    WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestAutoMergeEnabledType(TypedDict):
-    """pull_request auto_merge_enabled event"""
+class WebhookPullRequestAutoMergeDisabledType(TypedDict):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["auto_merge_enabled"]
+    action: Literal["auto_merge_disabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestType
-    reason: NotRequired[str]
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestType
+    reason: str
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestAutoMergeEnabledTypeForResponse(TypedDict):
-    """pull_request auto_merge_enabled event"""
+class WebhookPullRequestAutoMergeDisabledTypeForResponse(TypedDict):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["auto_merge_enabled"]
+    action: Literal["auto_merge_disabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse
-    reason: NotRequired[str]
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequestTypeForResponse
+    reason: str
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestAutoMergeEnabledType",
-    "WebhookPullRequestAutoMergeEnabledTypeForResponse",
+    "WebhookPullRequestAutoMergeDisabledType",
+    "WebhookPullRequestAutoMergeDisabledTypeForResponse",
 )

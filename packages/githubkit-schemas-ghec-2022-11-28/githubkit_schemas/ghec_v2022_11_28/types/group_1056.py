@@ -13,7 +13,6 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0193 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
 from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0645 import (
@@ -23,31 +22,29 @@ from .group_0645 import (
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetCreatedType(TypedDict):
-    """repository ruleset created event"""
+class WebhookRepositoryPublicizedType(TypedDict):
+    """repository publicized event"""
 
-    action: Literal["created"]
+    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetCreatedTypeForResponse(TypedDict):
-    """repository ruleset created event"""
+class WebhookRepositoryPublicizedTypeForResponse(TypedDict):
+    """repository publicized event"""
 
-    action: Literal["created"]
+    action: Literal["publicized"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetCreatedType",
-    "WebhookRepositoryRulesetCreatedTypeForResponse",
+    "WebhookRepositoryPublicizedType",
+    "WebhookRepositoryPublicizedTypeForResponse",
 )

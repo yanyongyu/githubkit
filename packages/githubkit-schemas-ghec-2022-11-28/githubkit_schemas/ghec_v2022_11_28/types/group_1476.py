@@ -9,93 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
     ]
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyType",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

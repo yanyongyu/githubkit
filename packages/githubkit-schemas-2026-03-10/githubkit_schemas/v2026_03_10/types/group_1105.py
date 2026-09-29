@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_1106 import (
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
+)
 
 
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    body: str
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    ]
 
 
-class GistsGistIdCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
+    TypedDict
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
 
-    body: str
+    custom_properties: NotRequired[
+        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    ]
 
 
 __all__ = (
-    "GistsGistIdCommentsCommentIdPatchBodyType",
-    "GistsGistIdCommentsCommentIdPatchBodyTypeForResponse",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
 )

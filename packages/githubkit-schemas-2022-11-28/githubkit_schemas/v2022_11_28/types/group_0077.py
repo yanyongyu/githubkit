@@ -9,102 +9,130 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class FeedType(TypedDict):
-    """Feed
 
-    Feed
+class GistHistoryType(TypedDict):
+    """Gist History
+
+    Gist History
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    user: NotRequired[Union[SimpleUserType, None]]
+    version: NotRequired[str]
+    committed_at: NotRequired[_dt.datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
 
 
-class FeedTypeForResponse(TypedDict):
-    """Feed
+class GistHistoryTypeForResponse(TypedDict):
+    """Gist History
 
-    Feed
+    Gist History
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[list[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksTypeForResponse
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    version: NotRequired[str]
+    committed_at: NotRequired[str]
+    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
+    url: NotRequired[str]
 
 
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
 
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[list[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-class FeedPropLinksTypeForResponse(TypedDict):
-    """FeedPropLinks"""
+class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
+    """GistHistoryPropChangeStatus"""
 
-    timeline: LinkWithTypeTypeForResponse
-    user: LinkWithTypeTypeForResponse
-    security_advisories: NotRequired[LinkWithTypeTypeForResponse]
-    current_user: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_public: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_actor: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organization: NotRequired[LinkWithTypeTypeForResponse]
-    current_user_organizations: NotRequired[list[LinkWithTypeTypeForResponse]]
-    repository_discussions: NotRequired[LinkWithTypeTypeForResponse]
-    repository_discussions_category: NotRequired[LinkWithTypeTypeForResponse]
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-class LinkWithTypeType(TypedDict):
-    """Link With Type
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
 
-    Hypermedia Link with Type
+    Gist
     """
 
-    href: str
-    type: str
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserType, None]
+    comments_url: str
+    owner: NotRequired[Union[SimpleUserType, None]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class LinkWithTypeTypeForResponse(TypedDict):
-    """Link With Type
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
 
-    Hypermedia Link with Type
+    Gist
     """
 
-    href: str
-    type: str
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserTypeForResponse, None]
+    comments_url: str
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (
-    "FeedPropLinksType",
-    "FeedPropLinksTypeForResponse",
-    "FeedType",
-    "FeedTypeForResponse",
-    "LinkWithTypeType",
-    "LinkWithTypeTypeForResponse",
+    "GistHistoryPropChangeStatusType",
+    "GistHistoryPropChangeStatusTypeForResponse",
+    "GistHistoryType",
+    "GistHistoryTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

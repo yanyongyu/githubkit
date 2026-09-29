@@ -11,51 +11,49 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
+from .group_0121 import (
     ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
     ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
 )
-from .group_0126 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
+from .group_0129 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
-from .group_0135 import (
+from .group_0134 import (
     EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
     EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
 )
 
 
-class ActionsPolicyEnterpriseConditionsOneof0Type(TypedDict):
-    """organization_name_and_repository_name
+class ActionsPolicyEnterpriseConditionsOneof1Type(TypedDict):
+    """organization_name_and_repository_property
 
-    Conditions to target organizations by name and repositories by name
+    Conditions to target organizations by name and repositories by property
     """
 
     organization_name: (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
     )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
     )
     workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class ActionsPolicyEnterpriseConditionsOneof0TypeForResponse(TypedDict):
-    """organization_name_and_repository_name
+class ActionsPolicyEnterpriseConditionsOneof1TypeForResponse(TypedDict):
+    """organization_name_and_repository_property
 
-    Conditions to target organizations by name and repositories by name
+    Conditions to target organizations by name and repositories by property
     """
 
     organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
     workflow_path: NotRequired[
         ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
 
 
 __all__ = (
-    "ActionsPolicyEnterpriseConditionsOneof0Type",
-    "ActionsPolicyEnterpriseConditionsOneof0TypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof1Type",
+    "ActionsPolicyEnterpriseConditionsOneof1TypeForResponse",
 )

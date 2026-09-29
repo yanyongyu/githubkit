@@ -9,96 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0141 import RepositoryRulesetBypassActor
-from .group_0142 import RepositoryRulesetConditions
-from .group_0150 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0151 import RepositoryRuleUpdate
-from .group_0153 import RepositoryRuleRequiredLinearHistory
-from .group_0154 import RepositoryRuleRequiredDeployments
-from .group_0157 import RepositoryRulePullRequest
-from .group_0159 import RepositoryRuleRequiredStatusChecks
-from .group_0161 import RepositoryRuleCommitMessagePattern
-from .group_0163 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0165 import RepositoryRuleCommitterEmailPattern
-from .group_0167 import RepositoryRuleBranchNamePattern
-from .group_0169 import RepositoryRuleTagNamePattern
-from .group_0171 import RepositoryRuleFilePathRestriction
-from .group_0173 import RepositoryRuleMaxFilePathLength
-from .group_0175 import RepositoryRuleFileExtensionRestriction
-from .group_0177 import RepositoryRuleMaxFileSize
-from .group_0180 import RepositoryRuleWorkflows
-from .group_0182 import RepositoryRuleCodeScanning
-from .group_0184 import RepositoryRuleCopilotCodeReview
-from .group_0189 import RepositoryRuleMergeQueue
-from .group_0191 import RepositoryRuleCodeCoverage, RepositoryRuleCodeQuality
-from .group_0192 import RepositoryRuleLicenseComplianceScanning
 
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    tag_name: str = Field(
+        description="The tag name for the release. This can be an existing tag or a new one."
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    previous_tag_name: Missing[str] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
     )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCodeQuality,
-                RepositoryRuleCodeCoverage,
-                RepositoryRuleCopilotCodeReview,
-                RepositoryRuleLicenseComplianceScanning,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    configuration_file_path: Missing[str] = Field(
+        default=UNSET,
+        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
+    )
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)

@@ -9,79 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksPostResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse400
+class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsType]
-    ]
-    documentation_url: str
+    prompt: str
+    model: NotRequired[str]
+    custom_agent: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksPostResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse400
+class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksPostBody"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
-
-
-class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    prompt: str
+    model: NotRequired[str]
+    custom_agent: NotRequired[str]
+    create_pull_request: NotRequired[bool]
+    base_ref: NotRequired[str]
+    head_ref: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse400Type",
-    "AgentsReposOwnerRepoTasksPostResponse400TypeForResponse",
+    "AgentsReposOwnerRepoTasksPostBodyType",
+    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
 )

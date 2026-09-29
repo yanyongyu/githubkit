@@ -9,141 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1187 import (
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType,
+    OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse,
+)
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
-    attestations: NotRequired[
-        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
+class OrgsOrgCampaignsPostBodyOneof1Type(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
+
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: _dt.datetime
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
+        Union[list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType], None]
     ]
+    generate_issues: NotRequired[bool]
 
 
-class OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200"""
+class OrgsOrgCampaignsPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyOneof1"""
 
-    attestations: NotRequired[
-        list[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: NotRequired[
+    name: str
+    description: str
+    managers: NotRequired[list[str]]
+    team_managers: NotRequired[list[str]]
+    ends_at: str
+    contact_link: NotRequired[Union[str, None]]
+    code_scanning_alerts: NotRequired[
         Union[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
+            list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse],
             None,
         ]
     ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
-
-    bundle: NotRequired[
-        Union[
-            OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse,
-            None,
-        ]
-    ]
-    repository_id: NotRequired[int]
-    bundle_url: NotRequired[str]
-    initiator: NotRequired[str]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
-    ]
-    dsse_envelope: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
-    ]
-
-
-class OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle
-
-    The attestation's Sigstore Bundle.
-    Refer to the [Sigstore Bundle
-    Specification](https://github.com/sigstore/protobuf-
-    specs/blob/main/protos/sigstore_bundle.proto) for more information.
-    """
-
-    media_type: NotRequired[str]
-    verification_material: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
-    ]
-    dsse_envelope: NotRequired[
-        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
-    ]
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pVerificationMaterial
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pVerificationMaterial
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pDsseEnvelope
-"""
-
-
-OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePro
-pDsseEnvelope
-"""
+    generate_issues: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
-    "OrgsOrgAttestationsSubjectDigestGetResponse200TypeForResponse",
+    "OrgsOrgCampaignsPostBodyOneof1Type",
+    "OrgsOrgCampaignsPostBodyOneof1TypeForResponse",
 )

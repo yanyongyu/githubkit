@@ -37,12 +37,14 @@ if TYPE_CHECKING:
         ApiInsightsUserStatsItems,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         CustomProperty,
+        ExternalProperty,
         HookDelivery,
         HookDeliveryItem,
         ImmutableReleasesOrganizationSettings,
         IssueField,
         IssueType,
         MinimalRepository,
+        OrganizationExternalPropertyInstallation,
         OrganizationFull,
         OrganizationInvitation,
         OrganizationProgrammaticAccessGrant,
@@ -86,6 +88,7 @@ if TYPE_CHECKING:
         CustomPropertyType,
         CustomPropertyTypeForResponse,
         CustomPropertyValueType,
+        ExternalPropertyTypeForResponse,
         HookDeliveryItemTypeForResponse,
         HookDeliveryTypeForResponse,
         ImmutableReleasesOrganizationSettingsTypeForResponse,
@@ -95,6 +98,7 @@ if TYPE_CHECKING:
         OrganizationCreateIssueFieldPropOptionsItemsType,
         OrganizationCreateIssueFieldType,
         OrganizationCreateIssueTypeType,
+        OrganizationExternalPropertyInstallationTypeForResponse,
         OrganizationFullTypeForResponse,
         OrganizationInvitationTypeForResponse,
         OrganizationProgrammaticAccessGrantRequestTypeForResponse,
@@ -143,12 +147,16 @@ if TYPE_CHECKING:
         OrgsOrgPersonalAccessTokenRequestsPostBodyType,
         OrgsOrgPersonalAccessTokensPatIdPostBodyType,
         OrgsOrgPersonalAccessTokensPostBodyType,
+        OrgsOrgPropertiesInstallationsPostBodyType,
+        OrgsOrgPropertiesInstallationsValuesPatchBodyType,
+        OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType,
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
         OrgsOrgSettingsImmutableReleasesPutBodyType,
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200TypeForResponse,
         OrgsOrgSettingsImmutableReleasesRepositoriesPutBodyType,
+        RepositoryExternalPropertyPayloadType,
         RulesetVersionTypeForResponse,
         RulesetVersionWithStateTypeForResponse,
         SimpleUserTypeForResponse,
@@ -9109,6 +9117,754 @@ class OrgsClient:
                 "500": BasicError,
                 "404": BasicError,
                 "403": BasicError,
+            },
+        )
+
+    def external_properties_for_repos_get_organization_app_installations(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrganizationExternalPropertyInstallation],
+        list[OrganizationExternalPropertyInstallationTypeForResponse],
+    ]:
+        """orgs/external-properties-for-repos-get-organization-app-installations
+
+        GET /orgs/{org}/properties/installations
+
+        Gets the registered GitHub App installations used to read and write external custom properties for an organization.
+
+        A GitHub App installation token will only be able to see its own registration info, whereas an authenticated user will be able to see all registrations for the organization.
+
+        To use this endpoint, the authenticated caller must have the `organization_external_properties_for_repos:admin` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#get-registered-app-installations-for-external-custom-properties
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationExternalPropertyInstallation,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrganizationExternalPropertyInstallation],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_external_properties_for_repos_get_organization_app_installations(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[OrganizationExternalPropertyInstallation],
+        list[OrganizationExternalPropertyInstallationTypeForResponse],
+    ]:
+        """orgs/external-properties-for-repos-get-organization-app-installations
+
+        GET /orgs/{org}/properties/installations
+
+        Gets the registered GitHub App installations used to read and write external custom properties for an organization.
+
+        A GitHub App installation token will only be able to see its own registration info, whereas an authenticated user will be able to see all registrations for the organization.
+
+        To use this endpoint, the authenticated caller must have the `organization_external_properties_for_repos:admin` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#get-registered-app-installations-for-external-custom-properties
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationExternalPropertyInstallation,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[OrganizationExternalPropertyInstallation],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def external_properties_for_repos_register_organization_app_installation(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgPropertiesInstallationsPostBodyType,
+    ) -> Response[
+        OrganizationExternalPropertyInstallation,
+        OrganizationExternalPropertyInstallationTypeForResponse,
+    ]: ...
+
+    @overload
+    def external_properties_for_repos_register_organization_app_installation(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        installation_id: Missing[int] = UNSET,
+        display_name: str,
+    ) -> Response[
+        OrganizationExternalPropertyInstallation,
+        OrganizationExternalPropertyInstallationTypeForResponse,
+    ]: ...
+
+    def external_properties_for_repos_register_organization_app_installation(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgPropertiesInstallationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrganizationExternalPropertyInstallation,
+        OrganizationExternalPropertyInstallationTypeForResponse,
+    ]:
+        """orgs/external-properties-for-repos-register-organization-app-installation
+
+        POST /orgs/{org}/properties/installations
+
+        Registers a GitHub App installation so it can read and write external custom properties for an organization, and assigns it a display name.
+
+        An app installation can only be registered once, and its display name can't be changed afterward. Calling with an app installation that has already been registered returns a `422` response with an `already_exists` error code.
+
+        Uninstalling the GitHub App unregisters it, and removes the external custom properties it created.
+
+        To use this endpoint, the authenticated caller must have the `organization_external_properties_for_repos:admin` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#register-an-app-installation-for-external-custom-properties
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationExternalPropertyInstallation,
+            OrgsOrgPropertiesInstallationsPostBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgPropertiesInstallationsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationExternalPropertyInstallation,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_external_properties_for_repos_register_organization_app_installation(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgPropertiesInstallationsPostBodyType,
+    ) -> Response[
+        OrganizationExternalPropertyInstallation,
+        OrganizationExternalPropertyInstallationTypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_external_properties_for_repos_register_organization_app_installation(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        installation_id: Missing[int] = UNSET,
+        display_name: str,
+    ) -> Response[
+        OrganizationExternalPropertyInstallation,
+        OrganizationExternalPropertyInstallationTypeForResponse,
+    ]: ...
+
+    async def async_external_properties_for_repos_register_organization_app_installation(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgPropertiesInstallationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrganizationExternalPropertyInstallation,
+        OrganizationExternalPropertyInstallationTypeForResponse,
+    ]:
+        """orgs/external-properties-for-repos-register-organization-app-installation
+
+        POST /orgs/{org}/properties/installations
+
+        Registers a GitHub App installation so it can read and write external custom properties for an organization, and assigns it a display name.
+
+        An app installation can only be registered once, and its display name can't be changed afterward. Calling with an app installation that has already been registered returns a `422` response with an `already_exists` error code.
+
+        Uninstalling the GitHub App unregisters it, and removes the external custom properties it created.
+
+        To use this endpoint, the authenticated caller must have the `organization_external_properties_for_repos:admin` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#register-an-app-installation-for-external-custom-properties
+        """
+
+        from ..models import (
+            BasicError,
+            OrganizationExternalPropertyInstallation,
+            OrgsOrgPropertiesInstallationsPostBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgPropertiesInstallationsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationExternalPropertyInstallation,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def external_properties_for_repos_get_organization_definitions(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[ExternalProperty], list[ExternalPropertyTypeForResponse]]:
+        """orgs/external-properties-for-repos-get-organization-definitions
+
+        GET /orgs/{org}/properties/installations/schema
+
+        Gets all external custom properties defined for the authenticated GitHub App installation on an organization.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:read` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#get-all-external-custom-properties-for-a-github-app-installation-in-an-organization
+        """
+
+        from ..models import BasicError, ExternalProperty, ValidationError
+
+        url = f"/orgs/{org}/properties/installations/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[ExternalProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_external_properties_for_repos_get_organization_definitions(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[ExternalProperty], list[ExternalPropertyTypeForResponse]]:
+        """orgs/external-properties-for-repos-get-organization-definitions
+
+        GET /orgs/{org}/properties/installations/schema
+
+        Gets all external custom properties defined for the authenticated GitHub App installation on an organization.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:read` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#get-all-external-custom-properties-for-a-github-app-installation-in-an-organization
+        """
+
+        from ..models import BasicError, ExternalProperty, ValidationError
+
+        url = f"/orgs/{org}/properties/installations/schema"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[ExternalProperty],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def external_properties_for_repos_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgPropertiesInstallationsValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def external_properties_for_repos_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        repository_names: list[str],
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    def external_properties_for_repos_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgPropertiesInstallationsValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/external-properties-for-repos-create-or-update-organization-values
+
+        PATCH /orgs/{org}/properties/installations/values
+
+        Create new or update existing external custom property values for repositories in a batch that belong to an organization.
+        Each target repository will have its external custom property values updated to match the values provided in the request.
+
+        A maximum of 30 repositories can be updated in a single request.
+
+        Using a value of `null` for an external custom property will remove or 'unset' the property value from the repository.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:write` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-external-custom-property-values-for-organization-repositories
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgPropertiesInstallationsValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgPropertiesInstallationsValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_external_properties_for_repos_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgPropertiesInstallationsValuesPatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_external_properties_for_repos_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        repository_names: list[str],
+        properties: list[CustomPropertyValueType],
+    ) -> Response: ...
+
+    async def async_external_properties_for_repos_create_or_update_organization_values(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgPropertiesInstallationsValuesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/external-properties-for-repos-create-or-update-organization-values
+
+        PATCH /orgs/{org}/properties/installations/values
+
+        Create new or update existing external custom property values for repositories in a batch that belong to an organization.
+        Each target repository will have its external custom property values updated to match the values provided in the request.
+
+        A maximum of 30 repositories can be updated in a single request.
+
+        Using a value of `null` for an external custom property will remove or 'unset' the property value from the repository.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:write` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-external-custom-property-values-for-organization-repositories
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgPropertiesInstallationsValuesPatchBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations/values"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgPropertiesInstallationsValuesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def external_properties_for_repos_delete_organization_values(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/external-properties-for-repos-delete-organization-values
+
+        DELETE /orgs/{org}/properties/installations/values/{property_name}
+
+        Removes all external custom property values for a specified property name across all repositories that belong to an organization.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:write` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#remove-all-external-custom-property-values-for-a-property-across-all-organization-repositories
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/orgs/{org}/properties/installations/values/{property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    async def async_external_properties_for_repos_delete_organization_values(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """orgs/external-properties-for-repos-delete-organization-values
+
+        DELETE /orgs/{org}/properties/installations/values/{property_name}
+
+        Removes all external custom property values for a specified property name across all repositories that belong to an organization.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:write` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#remove-all-external-custom-property-values-for-a-property-across-all-organization-repositories
+        """
+
+        from ..models import BasicError, ValidationError
+
+        url = f"/orgs/{org}/properties/installations/values/{property_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    def external_properties_for_repos_create_or_update_values_for_organization_property(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    def external_properties_for_repos_create_or_update_values_for_organization_property(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        repository_values: list[RepositoryExternalPropertyPayloadType],
+    ) -> Response: ...
+
+    def external_properties_for_repos_create_or_update_values_for_organization_property(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/external-properties-for-repos-create-or-update-values-for-organization-property
+
+        PATCH /orgs/{org}/properties/installations/values/{property_name}
+
+        Create new or update existing external custom property values for a single named property across repositories that belong to an organization.
+
+        Up to 100 repository values can be updated in a single request. Repositories not included in the request are left unchanged.
+
+        Using a value of `null` for a repository will remove or 'unset' the property value for that repository. A request that only contains `null` values for a property that does not yet exist is a no-op.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:write` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-external-custom-property-values-for-a-property-across-organization-repositories
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations/values/{property_name}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_external_properties_for_repos_create_or_update_values_for_organization_property(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_external_properties_for_repos_create_or_update_values_for_organization_property(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        repository_values: list[RepositoryExternalPropertyPayloadType],
+    ) -> Response: ...
+
+    async def async_external_properties_for_repos_create_or_update_values_for_organization_property(
+        self,
+        org: str,
+        property_name: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """orgs/external-properties-for-repos-create-or-update-values-for-organization-property
+
+        PATCH /orgs/{org}/properties/installations/values/{property_name}
+
+        Create new or update existing external custom property values for a single named property across repositories that belong to an organization.
+
+        Up to 100 repository values can be updated in a single request. Repositories not included in the request are left unchanged.
+
+        Using a value of `null` for a repository will remove or 'unset' the property value for that repository. A request that only contains `null` values for a property that does not yet exist is a no-op.
+
+        To use this endpoint, the authenticated GitHub App must have the `organization_external_properties_for_repos:write` permission.
+
+        See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-external-custom-property-values-for-a-property-across-organization-repositories
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/properties/installations/values/{property_name}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

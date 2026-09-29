@@ -10,59 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
 
-class AuthenticationTokenType(TypedDict):
-    """Authentication Token
-
-    Authentication Token
+    Secrets for GitHub Actions for an organization.
     """
 
-    token: str
-    expires_at: _dt.datetime
-    permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[list[RepositoryType]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-class AuthenticationTokenTypeForResponse(TypedDict):
-    """Authentication Token
+class OrganizationActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret for an Organization
 
-    Authentication Token
+    Secrets for GitHub Actions for an organization.
     """
 
-    token: str
-    expires_at: str
-    permissions: NotRequired[AuthenticationTokenPropPermissionsTypeForResponse]
-    repositories: NotRequired[list[RepositoryTypeForResponse]]
-    single_file: NotRequired[Union[str, None]]
-    repository_selection: NotRequired[Literal["all", "selected"]]
-
-
-class AuthenticationTokenPropPermissionsType(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-class AuthenticationTokenPropPermissionsTypeForResponse(TypedDict):
-    """AuthenticationTokenPropPermissions
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "AuthenticationTokenPropPermissionsType",
-    "AuthenticationTokenPropPermissionsTypeForResponse",
-    "AuthenticationTokenType",
-    "AuthenticationTokenTypeForResponse",
+    "OrganizationActionsSecretType",
+    "OrganizationActionsSecretTypeForResponse",
 )

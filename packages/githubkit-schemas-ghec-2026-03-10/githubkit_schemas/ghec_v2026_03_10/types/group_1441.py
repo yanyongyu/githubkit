@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0288 import CodespaceType, CodespaceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    total_count: int
-    codespaces: list[CodespaceType]
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    total_count: int
-    codespaces: list[CodespaceTypeForResponse]
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
-    "OrgsOrgMembersUsernameCodespacesGetResponse200TypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
 )

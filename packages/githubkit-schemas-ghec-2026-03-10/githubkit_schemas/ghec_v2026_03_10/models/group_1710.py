@@ -9,17 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoStargazersCountGetResponse200(GitHubModel):
-    """ReposOwnerRepoStargazersCountGetResponse200"""
-
-    count: int = Field()
+from .group_0590 import PullRequestStackPullRequest
 
 
-model_rebuild(ReposOwnerRepoStargazersCountGetResponse200)
+class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-__all__ = ("ReposOwnerRepoStargazersCountGetResponse200",)
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
+)

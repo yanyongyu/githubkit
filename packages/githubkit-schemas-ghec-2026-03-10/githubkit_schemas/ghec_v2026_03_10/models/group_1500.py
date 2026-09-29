@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,21 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0051 import ActionsPolicyRepoConditionsOneof0
+from .group_0052 import ActionsPolicyRepoConditionsOneof1
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
     )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    conditions: Missing[
+        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    ] = Field(
         default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
+        title="Repository Actions policy conditions",
+        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
     )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200)
+model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)

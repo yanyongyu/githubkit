@@ -9,35 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[list[str]]
+    total_count: int
+    secrets: list[CodespacesOrgSecretType]
 
 
-class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
-    ]
-    selected_usernames: NotRequired[list[str]]
+    total_count: int
+    secrets: list[CodespacesOrgSecretTypeForResponse]
+
+
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+class CodespacesOrgSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessPutBodyType",
-    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
+    "CodespacesOrgSecretType",
+    "CodespacesOrgSecretTypeForResponse",
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "OrgsOrgCodespacesSecretsGetResponse200TypeForResponse",
 )

@@ -13,41 +13,40 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0596 import WebhooksMilestone3Type, WebhooksMilestone3TypeForResponse
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0596 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookMilestoneCreatedType(TypedDict):
-    """milestone created event"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
+    merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookMilestoneCreatedTypeForResponse(TypedDict):
-    """milestone created event"""
+class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    milestone: WebhooksMilestone3TypeForResponse
+    merge_group: MergeGroupTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookMilestoneCreatedType",
-    "WebhookMilestoneCreatedTypeForResponse",
+    "WebhookMergeGroupDestroyedType",
+    "WebhookMergeGroupDestroyedTypeForResponse",
 )

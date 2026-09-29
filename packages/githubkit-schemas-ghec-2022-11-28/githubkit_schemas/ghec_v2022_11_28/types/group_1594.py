@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200Type(
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ]
+    dismissed_comment: NotRequired[str]
+
+
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    dismissal_review_id: NotRequired[int]
-
-
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200"""
-
-    dismissal_review_id: NotRequired[int]
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ]
+    dismissed_comment: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200Type",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
+    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
 )

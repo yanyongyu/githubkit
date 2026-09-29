@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
     name: str
     ai_credit_pool_enabled: NotRequired[bool]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
     name: str
     ai_credit_pool_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
 )

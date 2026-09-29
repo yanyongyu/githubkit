@@ -20,40 +20,37 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0666 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 from .group_0885 import (
-    WebhookIssuesTransferredPropChangesType,
-    WebhookIssuesTransferredPropChangesTypeForResponse,
+    WebhookIssuesReopenedPropIssueType,
+    WebhookIssuesReopenedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesTransferredType(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesReopenedType(TypedDict):
+    """issues reopened event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesType
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhookIssuesReopenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesTransferredTypeForResponse(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesReopenedTypeForResponse(TypedDict):
+    """issues reopened event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesTypeForResponse
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssue2TypeForResponse
+    issue: WebhookIssuesReopenedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesTransferredType",
-    "WebhookIssuesTransferredTypeForResponse",
+    "WebhookIssuesReopenedType",
+    "WebhookIssuesReopenedTypeForResponse",
 )

@@ -9,31 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202Type(TypedDict):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+
+    message: NotRequired[str]
+    warning: NotRequired[str]
+
+
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
-
-
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
-
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse",
 )

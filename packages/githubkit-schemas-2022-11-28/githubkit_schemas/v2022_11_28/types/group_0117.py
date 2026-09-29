@@ -9,26 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class SelectedActionsTypeForResponse(TypedDict):
-    """SelectedActions"""
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[list[str]]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "SelectedActionsType",
-    "SelectedActionsTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

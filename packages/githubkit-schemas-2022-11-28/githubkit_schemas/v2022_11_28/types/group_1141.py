@@ -11,26 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0107 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
+from .group_0148 import RunnerType, RunnerTypeForResponse
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
     total_count: float
-    runners: list[ActionsHostedRunnerType]
+    runners: list[RunnerType]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse(
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200"""
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
     total_count: float
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
+    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
 )

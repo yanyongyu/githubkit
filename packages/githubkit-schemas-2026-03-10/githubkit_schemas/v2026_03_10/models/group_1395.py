@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0304 import ActionsVariable
+from .group_0305 import ActionsVariable
 
 
 class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):

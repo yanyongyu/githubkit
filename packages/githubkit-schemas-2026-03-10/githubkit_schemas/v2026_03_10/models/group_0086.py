@@ -9,38 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0087 import (
-    MarketplacePurchasePropMarketplacePendingChange,
-    MarketplacePurchasePropMarketplacePurchase,
-)
 
+class ApiOverview(GitHubModel):
+    """Api Overview
 
-class MarketplacePurchase(GitHubModel):
-    """Marketplace Purchase
-
-    Marketplace Purchase
+    Api Overview
     """
 
-    url: str = Field()
-    type: str = Field()
-    id: int = Field()
-    login: str = Field()
-    organization_billing_email: Missing[str] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    marketplace_pending_change: Missing[
-        Union[MarketplacePurchasePropMarketplacePendingChange, None]
-    ] = Field(default=UNSET)
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
+    verifiable_password_authentication: bool = Field()
+    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
+        default=UNSET
+    )
+    ssh_keys: Missing[list[str]] = Field(default=UNSET)
+    hooks: Missing[list[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
+    web: Missing[list[str]] = Field(default=UNSET)
+    api: Missing[list[str]] = Field(default=UNSET)
+    git: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    pages: Missing[list[str]] = Field(default=UNSET)
+    importer: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_macos: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    dependabot: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    commit_signing_keys: Missing[list[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
 
 
-model_rebuild(MarketplacePurchase)
+class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+    """ApiOverviewPropSshKeyFingerprints"""
 
-__all__ = ("MarketplacePurchase",)
+    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
+    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
+    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
+    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
+
+
+class ApiOverviewPropDomains(GitHubModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    storage: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_inbound: Missing[ApiOverviewPropDomainsPropActionsInbound] = Field(
+        default=UNSET
+    )
+    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
+        Field(default=UNSET)
+    )
+
+
+class ApiOverviewPropDomainsPropActionsInbound(GitHubModel):
+    """ApiOverviewPropDomainsPropActionsInbound"""
+
+    full_domains: Missing[list[str]] = Field(default=UNSET)
+    wildcard_domains: Missing[list[str]] = Field(default=UNSET)
+
+
+class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: Missing[str] = Field(default=UNSET)
+    services: Missing[list[str]] = Field(default=UNSET)
+
+
+model_rebuild(ApiOverview)
+model_rebuild(ApiOverviewPropSshKeyFingerprints)
+model_rebuild(ApiOverviewPropDomains)
+model_rebuild(ApiOverviewPropDomainsPropActionsInbound)
+model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
+
+__all__ = (
+    "ApiOverview",
+    "ApiOverviewPropDomains",
+    "ApiOverviewPropDomainsPropActionsInbound",
+    "ApiOverviewPropDomainsPropArtifactAttestations",
+    "ApiOverviewPropSshKeyFingerprints",
+)

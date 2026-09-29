@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0172 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
 
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceType]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
+    y
+    """
 
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    role: Literal["reader", "writer", "admin", "no_access"]
+
+
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBod
+    y
+    """
+
+    role: Literal["reader", "writer", "admin", "no_access"]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyType",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBodyTypeForResponse",
 )

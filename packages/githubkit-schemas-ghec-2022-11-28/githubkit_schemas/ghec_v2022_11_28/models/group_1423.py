@@ -9,21 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200(GitHubModel):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke across the organization.")
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody)
+model_rebuild(OrgsOrgCopilotContentExclusionPutResponse200)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutResponse200",)

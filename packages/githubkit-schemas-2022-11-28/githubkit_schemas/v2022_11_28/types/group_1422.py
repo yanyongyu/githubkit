@@ -16,18 +16,18 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0047 import MilestoneType, MilestoneTypeForResponse
-from .group_0048 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0049 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0050 import (
+from .group_0045 import MilestoneType, MilestoneTypeForResponse
+from .group_0046 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0048 import (
     IssueDependenciesSummaryType,
     IssueDependenciesSummaryTypeForResponse,
     SubIssuesSummaryType,
     SubIssuesSummaryTypeForResponse,
 )
-from .group_0053 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0054 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0056 import (
+from .group_0051 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0052 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0054 import (
     IssuePropLabelsItemsOneof1Type,
     IssuePropLabelsItemsOneof1TypeForResponse,
     IssuePropPullRequestType,

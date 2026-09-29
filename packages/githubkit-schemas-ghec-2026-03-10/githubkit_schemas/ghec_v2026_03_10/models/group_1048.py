@@ -24,10 +24,10 @@ from .group_0644 import OrganizationSimpleWebhooks
 from .group_0645 import RepositoryWebhooks
 
 
-class WebhookRepositoryDeleted(GitHubModel):
-    """repository deleted event"""
+class WebhookRepositoryArchived(GitHubModel):
+    """repository archived event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["archived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,6 +50,6 @@ class WebhookRepositoryDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryDeleted)
+model_rebuild(WebhookRepositoryArchived)
 
-__all__ = ("WebhookRepositoryDeleted",)
+__all__ = ("WebhookRepositoryArchived",)

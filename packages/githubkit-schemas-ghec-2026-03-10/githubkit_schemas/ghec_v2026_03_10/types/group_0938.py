@@ -25,29 +25,29 @@ from .group_0679 import (
 )
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    action: Literal["created"]
+    action: Literal["approved"]
     personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
     organization: OrganizationSimpleWebhooksType
     sender: SimpleUserType
-    installation: NotRequired[SimpleInstallationType]
+    installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestCreatedTypeForResponse(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPersonalAccessTokenRequestApprovedTypeForResponse(TypedDict):
+    """personal_access_token_request approved event"""
 
-    action: Literal["created"]
+    action: Literal["approved"]
     personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestCreatedType",
-    "WebhookPersonalAccessTokenRequestCreatedTypeForResponse",
+    "WebhookPersonalAccessTokenRequestApprovedType",
+    "WebhookPersonalAccessTokenRequestApprovedTypeForResponse",
 )

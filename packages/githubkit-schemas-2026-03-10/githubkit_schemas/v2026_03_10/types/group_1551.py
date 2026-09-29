@@ -9,29 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0169 import (
+    CopilotSpaceCollaboratorAnyof0Type,
+    CopilotSpaceCollaboratorAnyof0TypeForResponse,
+    CopilotSpaceCollaboratorAnyof1Type,
+    CopilotSpaceCollaboratorAnyof1TypeForResponse,
+)
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
+
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0Type, CopilotSpaceCollaboratorAnyof1Type]
+    ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    collaborators: list[
+        Union[
+            CopilotSpaceCollaboratorAnyof0TypeForResponse,
+            CopilotSpaceCollaboratorAnyof1TypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200Type",
+    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200TypeForResponse",
 )

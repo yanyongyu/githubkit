@@ -13,7 +13,10 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0583 import (
+    SecretScanningLocationType,
+    SecretScanningLocationTypeForResponse,
+)
 from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0645 import (
     OrganizationSimpleWebhooksType,
@@ -26,31 +29,31 @@ from .group_0694 import (
 )
 
 
-class WebhookSecretScanningAlertMetadataCreatedType(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookSecretScanningAlertLocationCreatedType(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["metadata_created"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    location: SecretScanningLocationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertMetadataCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookSecretScanningAlertLocationCreatedTypeForResponse(TypedDict):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["metadata_created"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    location: SecretScanningLocationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertMetadataCreatedType",
-    "WebhookSecretScanningAlertMetadataCreatedTypeForResponse",
+    "WebhookSecretScanningAlertLocationCreatedType",
+    "WebhookSecretScanningAlertLocationCreatedTypeForResponse",
 )

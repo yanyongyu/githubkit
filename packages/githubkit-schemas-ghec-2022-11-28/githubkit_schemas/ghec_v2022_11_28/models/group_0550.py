@@ -24,16 +24,17 @@ class PullRequestMergeAsyncResult(GitHubModel):
 
     status: Literal["pending", "merged", "enqueued", "failed"] = Field()
     details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0,
-        PullRequestMergeAsyncResultPropDetailsOneof1,
-        PullRequestMergeAsyncResultPropDetailsOneof2,
+        PullRequestMergeAsyncResultPropDetailsAnyof0,
+        PullRequestMergeAsyncResultPropDetailsAnyof1,
+        PullRequestMergeAsyncResultPropDetailsAnyof2,
+        PullRequestMergeAsyncResultPropDetailsAnyof3,
     ] = Field()
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof0(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
+class PullRequestMergeAsyncResultPropDetailsAnyof0(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-    When an asynchronous merge request was created or already existed
+    When the asynchronous merge request is pending
     """
 
     message: str = Field()
@@ -45,19 +46,28 @@ class PullRequestMergeAsyncResultPropDetailsOneof0(GitHubModel):
     )
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof1(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
+class PullRequestMergeAsyncResultPropDetailsAnyof1(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
 
-    When the pull request cannot be merged
+    When the pull request is in a merge queue
     """
 
     message: str = Field()
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof2(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
+class PullRequestMergeAsyncResultPropDetailsAnyof2(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
 
-    When the pull request is already merged
+    When the asynchronous merge request failed
+    """
+
+    message: str = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
     """
 
     message: str = Field()
@@ -65,13 +75,15 @@ class PullRequestMergeAsyncResultPropDetailsOneof2(GitHubModel):
 
 
 model_rebuild(PullRequestMergeAsyncResult)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof0)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof1)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsOneof2)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof0)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof1)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof2)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof3)
 
 __all__ = (
     "PullRequestMergeAsyncResult",
-    "PullRequestMergeAsyncResultPropDetailsOneof0",
-    "PullRequestMergeAsyncResultPropDetailsOneof1",
-    "PullRequestMergeAsyncResultPropDetailsOneof2",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3",
 )

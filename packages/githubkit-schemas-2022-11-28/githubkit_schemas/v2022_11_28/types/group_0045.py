@@ -10,47 +10,61 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class LabelType(TypedDict):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class MilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
     """
 
+    url: str
+    html_url: str
+    labels_url: str
     id: int
     node_id: str
-    url: str
-    name: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
     description: Union[str, None]
-    color: str
-    default: bool
-    archived_at: Union[_dt.datetime, None]
-    archived_by: None
+    creator: Union[SimpleUserType, None]
+    open_issues: int
+    closed_issues: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    A collection of related issues and pull requests.
     """
 
+    url: str
+    html_url: str
+    labels_url: str
     id: int
     node_id: str
-    url: str
-    name: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
     description: Union[str, None]
-    color: str
-    default: bool
-    archived_at: Union[str, None]
-    archived_by: None
+    creator: Union[SimpleUserTypeForResponse, None]
+    open_issues: int
+    closed_issues: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

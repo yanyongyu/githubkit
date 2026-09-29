@@ -16,21 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
+    ponse202
     """
 
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
     )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
+)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
+)

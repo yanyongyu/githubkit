@@ -9,24 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0169 import CopilotSpaceType, CopilotSpaceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    spaces: list[CopilotSpaceType]
+    attestations: NotRequired[
+        list[
+            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
+        ]
+    ]
 
 
-class UsersUsernameCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    spaces: list[CopilotSpaceTypeForResponse]
+    attestations: NotRequired[
+        list[
+            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
+        ]
+    ]
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
+    TypedDict
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesGetResponse200Type",
-    "UsersUsernameCopilotSpacesGetResponse200TypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

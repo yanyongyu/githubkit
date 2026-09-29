@@ -11,26 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
-
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
-
-    seats_cancelled: int
+from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
 
-    The total number of seats set to "pending cancellation" for the specified users.
-    """
+    total_count: int
+    repositories: list[MinimalRepositoryType]
 
-    seats_cancelled: int
+
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
-    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse",
 )

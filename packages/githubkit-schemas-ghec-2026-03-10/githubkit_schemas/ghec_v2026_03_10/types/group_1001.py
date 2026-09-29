@@ -20,43 +20,40 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0663 import WebhooksChangesType, WebhooksChangesTypeForResponse
 from .group_0688 import WebhooksReviewCommentType, WebhooksReviewCommentTypeForResponse
 from .group_1002 import (
-    WebhookPullRequestReviewCommentEditedPropPullRequestType,
-    WebhookPullRequestReviewCommentEditedPropPullRequestTypeForResponse,
+    WebhookPullRequestReviewCommentDeletedPropPullRequestType,
+    WebhookPullRequestReviewCommentDeletedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestReviewCommentEditedType(TypedDict):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestReviewCommentDeletedType(TypedDict):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesType
+    action: Literal["deleted"]
     comment: WebhooksReviewCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequestType
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestReviewCommentEditedTypeForResponse(TypedDict):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestReviewCommentDeletedTypeForResponse(TypedDict):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesTypeForResponse
+    action: Literal["deleted"]
     comment: WebhooksReviewCommentTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequestTypeForResponse
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestReviewCommentEditedType",
-    "WebhookPullRequestReviewCommentEditedTypeForResponse",
+    "WebhookPullRequestReviewCommentDeletedType",
+    "WebhookPullRequestReviewCommentDeletedTypeForResponse",
 )

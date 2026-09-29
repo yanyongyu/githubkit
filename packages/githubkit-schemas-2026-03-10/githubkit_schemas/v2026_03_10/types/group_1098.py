@@ -9,26 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, Literal, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    organization_slugs: list[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
+class GistsPostBodyTypeForResponse(TypedDict):
+    """GistsPostBody"""
 
-    organization_slugs: list[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesTypeForResponse
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
+
+
+GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
+
+
+GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistsPostBodyPropFiles
+
+Names and content for the files that make up the gist
+
+Examples:
+    {'hello.rb': {'content': 'puts "Hello, World!"'}}
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
+    "GistsPostBodyPropFilesType",
+    "GistsPostBodyPropFilesTypeForResponse",
+    "GistsPostBodyType",
+    "GistsPostBodyTypeForResponse",
 )

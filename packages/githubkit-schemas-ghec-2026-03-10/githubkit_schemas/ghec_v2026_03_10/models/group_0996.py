@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0685 import PullRequestWebhook
 
 
-class WebhookPullRequestReopened(GitHubModel):
-    """pull_request reopened event"""
+class WebhookPullRequestOpened(GitHubModel):
+    """pull_request opened event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["opened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookPullRequestReopened(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReopened)
+model_rebuild(WebhookPullRequestOpened)
 
-__all__ = ("WebhookPullRequestReopened",)
+__all__ = ("WebhookPullRequestOpened",)

@@ -15,18 +15,37 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0155 import ArtifactDeploymentRecord
 
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    total_count: int = Field(description="The number of deployment records created")
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    job_id: int = Field(description="The ID of the created job.")
+    errors: Missing[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Deployments that were rejected during authorization.",
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
+    """
 
-__all__ = ("OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200",)
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
+)
+
+__all__ = (
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems",
+)

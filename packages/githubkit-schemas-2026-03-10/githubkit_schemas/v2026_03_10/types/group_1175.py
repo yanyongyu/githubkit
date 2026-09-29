@@ -9,138 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0155 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
 
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207Type(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[_dt.datetime]
+    total_count: NotRequired[int]
     errors: NotRequired[
         list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsType
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType
         ]
     ]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207TypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[str]
+    total_count: NotRequired[int]
     errors: NotRequired[
         list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsTypeForResponse
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse
         ]
     ]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsType(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    tems
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
     """
 
-    cause: NotRequired[Literal["unauthorized", "not_found"]]
-    deployment: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentType
-    ]
 
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsTypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    tems
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
     """
-
-    cause: NotRequired[Literal["unauthorized", "not_found"]]
-    deployment: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentTypeForResponse
-    ]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    temsPropDeployment
-
-    The deployment payload that could not be processed.
-    """
-
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    deployment_name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    github_repository: NotRequired[Union[str, None]]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTagsType
-    ]
-    runtime_risks: NotRequired[list[str]]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    temsPropDeployment
-
-    The deployment payload that could not be processed.
-    """
-
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    deployment_name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    github_repository: NotRequired[Union[str, None]]
-    tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTagsTypeForResponse
-    ]
-    runtime_risks: NotRequired[list[str]]
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTagsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-temsPropDeploymentPropTags
-
-Custom metadata tags for the deployment.
-"""
-
-
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTagsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-temsPropDeploymentPropTags
-
-Custom metadata tags for the deployment.
-"""
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse",
 )

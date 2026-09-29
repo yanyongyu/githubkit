@@ -9,31 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternToDeleteType(TypedDict):
-    """Secret Scanning Custom Pattern To Delete
+class SecretScanningCustomPatternValidationErrorType(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A custom pattern to delete in a bulk operation.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    pattern_id: int
-    custom_pattern_version: NotRequired[Union[str, None]]
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
-class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Delete
+class SecretScanningCustomPatternValidationErrorTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern Validation Error
 
-    A custom pattern to delete in a bulk operation.
+    A validation error for a custom pattern in a batch operation.
     """
 
-    pattern_id: int
-    custom_pattern_version: NotRequired[Union[str, None]]
+    code: NotRequired[
+        Literal[
+            "invalid",
+            "unprocessable",
+            "start_delimiter",
+            "end_delimiter",
+            "name",
+            "must_match",
+            "must_not_match",
+            "custom_pattern_version_mismatch",
+        ]
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "SecretScanningCustomPatternToDeleteType",
-    "SecretScanningCustomPatternToDeleteTypeForResponse",
+    "SecretScanningCustomPatternValidationErrorType",
+    "SecretScanningCustomPatternValidationErrorTypeForResponse",
 )

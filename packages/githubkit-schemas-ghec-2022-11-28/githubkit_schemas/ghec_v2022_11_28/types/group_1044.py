@@ -23,10 +23,10 @@ from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0692 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
-    action: Literal["unpublished"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookReleaseUnpublishedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
-    """release unpublished event"""
+class WebhookReleasePublishedTypeForResponse(TypedDict):
+    """release published event"""
 
-    action: Literal["unpublished"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookReleaseUnpublishedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookReleaseUnpublishedType",
-    "WebhookReleaseUnpublishedTypeForResponse",
+    "WebhookReleasePublishedType",
+    "WebhookReleasePublishedTypeForResponse",
 )

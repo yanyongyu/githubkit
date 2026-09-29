@@ -20,37 +20,34 @@ from .group_0645 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0672 import (
-    WebhooksLabelUnarchivedType,
-    WebhooksLabelUnarchivedTypeForResponse,
-)
+from .group_0659 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookLabelUnarchivedType(TypedDict):
-    """label unarchived event"""
+class WebhookLabelDeletedType(TypedDict):
+    """label deleted event"""
 
-    action: Literal["unarchived"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelUnarchivedType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelUnarchivedTypeForResponse(TypedDict):
-    """label unarchived event"""
+class WebhookLabelDeletedTypeForResponse(TypedDict):
+    """label deleted event"""
 
-    action: Literal["unarchived"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelUnarchivedTypeForResponse
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelUnarchivedType",
-    "WebhookLabelUnarchivedTypeForResponse",
+    "WebhookLabelDeletedType",
+    "WebhookLabelDeletedTypeForResponse",
 )

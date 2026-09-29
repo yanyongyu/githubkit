@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,80 +19,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    id: Missing[str] = Field(
-        default=UNSET, description="Unique identifier for the cost center"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
-    azure_subscription: Missing[Union[str, None]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: Missing[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-        ]
-    ] = Field(
-        default=UNSET, description="List of resources assigned to this cost center"
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
     )
-    ai_credit_pool_state: Missing[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
-    ] = Field(
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    expires_at: Missing[Union[_dt.date, Literal[0], None]] = Field(
         default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set.\n\nOnly supported for existing user-scoped budgets.",
     )
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-    type: Missing[str] = Field(
-        default=UNSET, description="Type of resource (User, Org, or Repo)"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
+    will_alert: Missing[bool] = Field(
         default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them.",
     )
-    current_amount: Missing[Union[float, None]] = Field(
+    alert_recipients: Missing[list[str]] = Field(
         default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
 )

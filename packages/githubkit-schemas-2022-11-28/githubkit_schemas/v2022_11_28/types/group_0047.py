@@ -9,62 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-
-class MilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
 
     url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[SimpleUserType, None]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
+class ReactionRollupTypeForResponse(TypedDict):
+    """Reaction Rollup"""
 
     url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[SimpleUserTypeForResponse, None]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "ReactionRollupType",
+    "ReactionRollupTypeForResponse",
 )

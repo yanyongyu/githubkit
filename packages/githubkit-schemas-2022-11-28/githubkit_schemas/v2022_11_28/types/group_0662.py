@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0392 import DependabotAlertType, DependabotAlertTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0393 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertReopenedType(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookDependabotAlertReintroducedType(TypedDict):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["reopened"]
+    action: Literal["reintroduced"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookDependabotAlertReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
-    """Dependabot alert reopened event"""
+class WebhookDependabotAlertReintroducedTypeForResponse(TypedDict):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["reopened"]
+    action: Literal["reintroduced"]
     alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertReopenedType",
-    "WebhookDependabotAlertReopenedTypeForResponse",
+    "WebhookDependabotAlertReintroducedType",
+    "WebhookDependabotAlertReintroducedTypeForResponse",
 )

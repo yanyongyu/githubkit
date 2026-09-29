@@ -12,24 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostBody(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostBody"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    subject_digests: list[str] = Field(
+    attestation_ids: list[int] = Field(
         max_length=1024 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
-    )
-    predicate_type: Missing[str] = Field(
-        default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
+        description="List of unique IDs associated with the artifact attestations to delete.",
     )
 
 
-model_rebuild(OrgsOrgAttestationsBulkListPostBody)
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof1)
 
-__all__ = ("OrgsOrgAttestationsBulkListPostBody",)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof1",)

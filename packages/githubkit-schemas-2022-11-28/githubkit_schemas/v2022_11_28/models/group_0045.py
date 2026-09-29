@@ -10,41 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class Label(GitHubModel):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class Milestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
     """
 
-    id: int = Field(description="Unique identifier for the label.")
+    url: str = Field()
+    html_url: str = Field()
+    labels_url: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
+    number: int = Field(description="The number of the milestone.")
+    state: Literal["open", "closed"] = Field(
+        default="open", description="The state of the milestone."
     )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
-    )
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
+    title: str = Field(description="The title of the milestone.")
+    description: Union[str, None] = Field()
+    creator: Union[SimpleUser, None] = Field()
+    open_issues: int = Field()
+    closed_issues: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    due_on: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(Label)
+model_rebuild(Milestone)
 
-__all__ = ("Label",)
+__all__ = ("Milestone",)

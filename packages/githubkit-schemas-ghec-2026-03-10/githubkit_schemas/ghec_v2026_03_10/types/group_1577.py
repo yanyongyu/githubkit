@@ -9,105 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
-        None,
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
+
+
+class ReposOwnerRepoContentsPathPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
+
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[
+        ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse
     ]
-    enabled_tools: (
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
-    )
-    require_actions_workflow_approval: bool
-    is_firewall_enabled: bool
-    is_firewall_recommended_allowlist_enabled: bool
-    custom_allowlist: list[str]
-    is_automations_enabled: bool
-    require_write_access_for_automation_triggers: bool
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse]
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
-        None,
-    ]
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
-    require_actions_workflow_approval: bool
-    is_firewall_enabled: bool
-    is_firewall_recommended_allowlist_enabled: bool
-    custom_allowlist: list[str]
-    is_automations_enabled: bool
-    require_write_access_for_automation_triggers: bool
-
-
-ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-
-The user-supplied MCP server configuration for the repository, as a free-form
-JSON object. This will be set to `null` if no configuration has been set.
-
-The shape of a valid MCP configuration may evolve over time, so this property is
-intentionally not strictly typed. Clients should not assume a fixed schema.
-"""
-
-
-ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-
-The user-supplied MCP server configuration for the repository, as a free-form
-JSON object. This will be set to `null` if no configuration has been set.
-
-The shape of a valid MCP configuration may evolve over time, so this property is
-intentionally not strictly typed. Clients should not assume a fixed schema.
-"""
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
-    TypedDict
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-
-    The enabled review tools for Copilot cloud agent.
+    The person that committed the file. Default: the authenticated user.
     """
 
-    codeql: bool
-    copilot_code_review: bool
-    secret_scanning: bool
-    dependency_vulnerability_checks: bool
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+class ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-    The enabled review tools for Copilot cloud agent.
+    The person that committed the file. Default: the authenticated user.
     """
 
-    codeql: bool
-    copilot_code_review: bool
-    secret_scanning: bool
-    dependency_vulnerability_checks: bool
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorTypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterTypeForResponse",
+    "ReposOwnerRepoContentsPathPutBodyType",
+    "ReposOwnerRepoContentsPathPutBodyTypeForResponse",
 )

@@ -23,11 +23,10 @@ from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0695 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -36,11 +35,10 @@ class WebhookSponsorshipEditedType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipEditedTypeForResponse(TypedDict):
-    """sponsorship edited event"""
+class WebhookSponsorshipCancelledTypeForResponse(TypedDict):
+    """sponsorship cancelled event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -49,37 +47,7 @@ class WebhookSponsorshipEditedTypeForResponse(TypedDict):
     sponsorship: WebhooksSponsorshipTypeForResponse
 
 
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
-
-
-class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[
-        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
-    ]
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedPropChangesTypeForResponse",
-    "WebhookSponsorshipEditedType",
-    "WebhookSponsorshipEditedTypeForResponse",
+    "WebhookSponsorshipCancelledType",
+    "WebhookSponsorshipCancelledTypeForResponse",
 )

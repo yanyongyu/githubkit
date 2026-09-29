@@ -9,64 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class GitignoreTemplateType(TypedDict):
+    """Gitignore Template
 
-class GistCommentType(TypedDict):
-    """Gist Comment
-
-    A comment made to a gist.
+    Gitignore Template
     """
 
-    id: int
-    node_id: str
-    url: str
-    body: str
-    user: Union[SimpleUserType, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    name: str
+    source: str
 
 
-class GistCommentTypeForResponse(TypedDict):
-    """Gist Comment
+class GitignoreTemplateTypeForResponse(TypedDict):
+    """Gitignore Template
 
-    A comment made to a gist.
+    Gitignore Template
     """
 
-    id: int
-    node_id: str
-    url: str
-    body: str
-    user: Union[SimpleUserTypeForResponse, None]
-    created_at: str
-    updated_at: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    name: str
+    source: str
 
 
 __all__ = (
-    "GistCommentType",
-    "GistCommentTypeForResponse",
+    "GitignoreTemplateType",
+    "GitignoreTemplateTypeForResponse",
 )

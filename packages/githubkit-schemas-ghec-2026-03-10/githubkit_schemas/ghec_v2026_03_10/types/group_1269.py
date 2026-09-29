@@ -9,207 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0141 import (
-    RepositoryRulesetBypassActorType,
-    RepositoryRulesetBypassActorTypeForResponse,
-)
-from .group_0144 import (
-    EnterpriseRulesetConditionsOneof0Type,
-    EnterpriseRulesetConditionsOneof0TypeForResponse,
-)
-from .group_0145 import (
-    EnterpriseRulesetConditionsOneof1Type,
-    EnterpriseRulesetConditionsOneof1TypeForResponse,
-)
-from .group_0146 import (
-    EnterpriseRulesetConditionsOneof2Type,
-    EnterpriseRulesetConditionsOneof2TypeForResponse,
-)
-from .group_0147 import (
-    EnterpriseRulesetConditionsOneof3Type,
-    EnterpriseRulesetConditionsOneof3TypeForResponse,
-)
-from .group_0148 import (
-    EnterpriseRulesetConditionsOneof4Type,
-    EnterpriseRulesetConditionsOneof4TypeForResponse,
-)
-from .group_0149 import (
-    EnterpriseRulesetConditionsOneof5Type,
-    EnterpriseRulesetConditionsOneof5TypeForResponse,
-)
-from .group_0150 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0151 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0153 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0154 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0157 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0159 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0161 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0163 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0165 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0167 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0169 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0171 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0173 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0175 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0177 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
-from .group_0180 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0182 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0184 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
+from .group_0139 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
-class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0Type,
-            EnterpriseRulesetConditionsOneof1Type,
-            EnterpriseRulesetConditionsOneof2Type,
-            EnterpriseRulesetConditionsOneof3Type,
-            EnterpriseRulesetConditionsOneof4Type,
-            EnterpriseRulesetConditionsOneof5Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCopilotCodeReviewType,
-            ]
-        ]
-    ]
+    properties: list[CustomPropertyType]
 
 
-class EnterprisesEnterpriseRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
-    conditions: NotRequired[
-        Union[
-            EnterpriseRulesetConditionsOneof0TypeForResponse,
-            EnterpriseRulesetConditionsOneof1TypeForResponse,
-            EnterpriseRulesetConditionsOneof2TypeForResponse,
-            EnterpriseRulesetConditionsOneof3TypeForResponse,
-            EnterpriseRulesetConditionsOneof4TypeForResponse,
-            EnterpriseRulesetConditionsOneof5TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-            ]
-        ]
-    ]
+    properties: list[CustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseRulesetsRulesetIdPutBodyType",
-    "EnterprisesEnterpriseRulesetsRulesetIdPutBodyTypeForResponse",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
+    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
 )

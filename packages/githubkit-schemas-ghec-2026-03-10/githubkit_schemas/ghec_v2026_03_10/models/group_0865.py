@@ -22,14 +22,13 @@ from .group_0642 import EnterpriseWebhooks
 from .group_0643 import SimpleInstallation
 from .group_0644 import OrganizationSimpleWebhooks
 from .group_0645 import RepositoryWebhooks
-from .group_0665 import WebhooksMilestone
-from .group_0866 import WebhookIssuesDemilestonedPropIssue
+from .group_0866 import WebhookIssuesDeletedPropIssue
 
 
-class WebhookIssuesDemilestoned(GitHubModel):
-    """issues demilestoned event"""
+class WebhookIssuesDeleted(GitHubModel):
+    """issues deleted event"""
 
-    action: Literal["demilestoned"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,14 +39,9 @@ class WebhookIssuesDemilestoned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesDemilestonedPropIssue = Field(
+    issue: WebhookIssuesDeletedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
-    )
-    milestone: Missing[WebhooksMilestone] = Field(
-        default=UNSET,
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -61,6 +55,6 @@ class WebhookIssuesDemilestoned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesDemilestoned)
+model_rebuild(WebhookIssuesDeleted)
 
-__all__ = ("WebhookIssuesDemilestoned",)
+__all__ = ("WebhookIssuesDeleted",)

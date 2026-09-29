@@ -9,74 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0059 import (
-    ActionsPolicyOrgConditionsOneof0Type,
-    ActionsPolicyOrgConditionsOneof0TypeForResponse,
-)
-from .group_0060 import (
-    ActionsPolicyOrgConditionsOneof1Type,
-    ActionsPolicyOrgConditionsOneof1TypeForResponse,
-)
-from .group_0061 import (
-    ActionsPolicyOrgConditionsOneof2Type,
-    ActionsPolicyOrgConditionsOneof2TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0Type,
-            ActionsPolicyOrgConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    total_count: int
+    policies: list[ActionsPolicyType]
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0TypeForResponse,
-            ActionsPolicyOrgConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof2TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    total_count: int
+    policies: list[ActionsPolicyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgActionsPoliciesGetResponse200Type",
+    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
 )

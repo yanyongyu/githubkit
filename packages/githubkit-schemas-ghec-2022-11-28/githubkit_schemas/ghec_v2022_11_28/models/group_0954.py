@@ -25,11 +25,10 @@ from .group_0646 import RepositoryWebhooks
 from .group_0683 import WebhooksProjectColumn
 
 
-class WebhookProjectColumnEdited(GitHubModel):
-    """project_column edited event"""
+class WebhookProjectColumnCreated(GitHubModel):
+    """project_column created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectColumnEditedPropChanges = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,24 +55,6 @@ class WebhookProjectColumnEdited(GitHubModel):
     )
 
 
-class WebhookProjectColumnEditedPropChanges(GitHubModel):
-    """WebhookProjectColumnEditedPropChanges"""
+model_rebuild(WebhookProjectColumnCreated)
 
-    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookProjectColumnEdited)
-model_rebuild(WebhookProjectColumnEditedPropChanges)
-model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
-
-__all__ = (
-    "WebhookProjectColumnEdited",
-    "WebhookProjectColumnEditedPropChanges",
-    "WebhookProjectColumnEditedPropChangesPropName",
-)
+__all__ = ("WebhookProjectColumnCreated",)

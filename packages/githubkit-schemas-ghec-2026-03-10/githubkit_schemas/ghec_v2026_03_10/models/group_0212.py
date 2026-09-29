@@ -51,6 +51,10 @@ class GetBudget(GitHubModel):
         description="The type of pricing for the budget"
     )
     budget_alerting: GetBudgetPropBudgetAlerting = Field()
+    consumed_amount: Missing[float] = Field(
+        default=UNSET,
+        description="The current usage amount counted toward the budget. How usage is calculated may vary by budget type.",
+    )
 
 
 class GetBudgetPropBudgetAlerting(GitHubModel):

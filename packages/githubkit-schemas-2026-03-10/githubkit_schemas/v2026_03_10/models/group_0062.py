@@ -13,18 +13,24 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0046 import Discussion
+from .group_0051 import IssueComment
+from .group_0053 import Issue
 
 
-class DiscussionEvent(GitHubModel):
-    """DiscussionEvent"""
+class IssueCommentEvent(GitHubModel):
+    """IssueCommentEvent"""
 
     action: str = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: IssueComment = Field(
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
     )
 
 
-model_rebuild(DiscussionEvent)
+model_rebuild(IssueCommentEvent)
 
-__all__ = ("DiscussionEvent",)
+__all__ = ("IssueCommentEvent",)

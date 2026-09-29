@@ -9,28 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class TeamMembership(GitHubModel):
-    """Team Membership
+class TeamMember(GitHubModel):
+    """Team Member
 
-    Team Membership
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    role: Literal["member", "maintainer"] = Field(
-        default="member", description="The role of the user in the team."
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET,
+        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
-    state: Literal["active", "pending"] = Field(
-        description="The state of the user's membership in the team."
+    inherited: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
 
 
-model_rebuild(TeamMembership)
+model_rebuild(TeamMember)
 
-__all__ = ("TeamMembership",)
+__all__ = ("TeamMember",)

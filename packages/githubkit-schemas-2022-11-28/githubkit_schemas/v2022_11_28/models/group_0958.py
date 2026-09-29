@@ -18,16 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0563 import EnterpriseWebhooks
-from .group_0564 import SimpleInstallation
-from .group_0565 import OrganizationSimpleWebhooks
-from .group_0566 import RepositoryWebhooks
+from .group_0288 import RepositoryAdvisory
+from .group_0564 import EnterpriseWebhooks
+from .group_0565 import SimpleInstallation
+from .group_0566 import OrganizationSimpleWebhooks
+from .group_0567 import RepositoryWebhooks
 
 
-class WebhookRepositoryDeleted(GitHubModel):
-    """repository deleted event"""
+class WebhookRepositoryAdvisoryReported(GitHubModel):
+    """Repository advisory reported event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["reported"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -47,9 +48,14 @@ class WebhookRepositoryDeleted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    repository_advisory: RepositoryAdvisory = Field(
+        description="A repository security advisory."
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookRepositoryDeleted)
+model_rebuild(WebhookRepositoryAdvisoryReported)
 
-__all__ = ("WebhookRepositoryDeleted",)
+__all__ = ("WebhookRepositoryAdvisoryReported",)

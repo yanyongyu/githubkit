@@ -17,9 +17,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0123 import ActionsPolicyRepoConditionsOneof0
-from .group_0124 import ActionsPolicyRepoConditionsOneof1
-from .group_0146 import (
+from .group_0122 import ActionsPolicyRepoConditionsOneof0
+from .group_0123 import ActionsPolicyRepoConditionsOneof1
+from .group_0145 import (
     ActionsRuleRestrictActionEvents,
     ActionsRuleRestrictActionsActors,
 )

@@ -25,14 +25,11 @@ from .group_0645 import RepositoryWebhooks
 from .group_0693 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertUnassigned(GitHubModel):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertReopened(GitHubModel):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["unassigned"] = Field()
+    action: Literal["reopened"] = Field()
     alert: SecretScanningAlertWebhook = Field()
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,6 +54,6 @@ class WebhookSecretScanningAlertUnassigned(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertUnassigned)
+model_rebuild(WebhookSecretScanningAlertReopened)
 
-__all__ = ("WebhookSecretScanningAlertUnassigned",)
+__all__ = ("WebhookSecretScanningAlertReopened",)

@@ -59,6 +59,9 @@ class AppPermissionsType(TypedDict):
     organization_custom_properties: NotRequired[Literal["read", "write", "admin"]]
     organization_copilot_seat_management: NotRequired[Literal["read", "write"]]
     organization_copilot_agent_settings: NotRequired[Literal["read", "write"]]
+    organization_external_properties_for_repos: NotRequired[
+        Literal["read", "write", "admin"]
+    ]
     organization_announcement_banners: NotRequired[Literal["read", "write"]]
     organization_events: NotRequired[Literal["read"]]
     organization_hooks: NotRequired[Literal["read", "write"]]
@@ -128,6 +131,9 @@ class AppPermissionsTypeForResponse(TypedDict):
     organization_custom_properties: NotRequired[Literal["read", "write", "admin"]]
     organization_copilot_seat_management: NotRequired[Literal["read", "write"]]
     organization_copilot_agent_settings: NotRequired[Literal["read", "write"]]
+    organization_external_properties_for_repos: NotRequired[
+        Literal["read", "write", "admin"]
+    ]
     organization_announcement_banners: NotRequired[Literal["read", "write"]]
     organization_events: NotRequired[Literal["read"]]
     organization_hooks: NotRequired[Literal["read", "write"]]

@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    installation_id: NotRequired[int]
+    display_name: str
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    type: Literal["Issue", "PullRequest"]
-    id: NotRequired[int]
-    owner: str
-    repo: str
-    number: int
+    installation_id: NotRequired[int]
+    display_name: str
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1Type",
-    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1TypeForResponse",
+    "OrgsOrgPropertiesInstallationsPostBodyType",
+    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
 )

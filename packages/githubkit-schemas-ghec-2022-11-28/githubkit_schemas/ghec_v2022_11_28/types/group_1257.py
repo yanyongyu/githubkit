@@ -13,37 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
     """
 
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
     ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+    revoke_credentials: NotRequired[bool]
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
     """
 
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
     ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
-    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
 )

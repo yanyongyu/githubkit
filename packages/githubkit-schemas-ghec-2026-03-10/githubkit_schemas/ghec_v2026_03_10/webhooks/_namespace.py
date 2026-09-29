@@ -54,6 +54,7 @@ if TYPE_CHECKING:
     from .installation_target import InstallationTargetEvent
     from .issue_comment import IssueCommentEvent
     from .issue_dependencies import IssueDependenciesEvent
+    from .issue_relates_to import IssueRelatesToEvent
     from .issues import IssuesEvent
     from .label import LabelEvent
     from .marketplace_purchase import MarketplacePurchaseEvent
@@ -141,6 +142,7 @@ EventNameType: TypeAlias = Literal[
     "installation_target",
     "issue_comment",
     "issue_dependencies",
+    "issue_relates_to",
     "issues",
     "label",
     "marketplace_purchase",
@@ -225,6 +227,7 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "installation_target",
     "issue_comment",
     "issue_dependencies",
+    "issue_relates_to",
     "issues",
     "label",
     "marketplace_purchase",
@@ -442,6 +445,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["issue_dependencies"], payload: str | bytes
     ) -> "IssueDependenciesEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["issue_relates_to"], payload: str | bytes
+    ) -> "IssueRelatesToEvent": ...
     @overload
     @staticmethod
     def parse(name: Literal["issues"], payload: str | bytes) -> "IssuesEvent": ...
@@ -857,6 +865,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["issue_dependencies"], payload: Mapping[str, Any]
     ) -> "IssueDependenciesEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["issue_relates_to"], payload: Mapping[str, Any]
+    ) -> "IssueRelatesToEvent": ...
     @overload
     @staticmethod
     def parse_obj(

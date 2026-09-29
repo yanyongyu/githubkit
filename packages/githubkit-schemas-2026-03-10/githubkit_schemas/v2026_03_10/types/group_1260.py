@@ -9,22 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
+from .group_0212 import (
+    ProjectsV2FieldIterationConfigurationType,
+    ProjectsV2FieldIterationConfigurationTypeForResponse,
+)
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
 
-    issue_field_id: int
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationType
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
 
-    issue_field_id: int
+    name: str
+    data_type: Literal["iteration"]
+    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
+    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
 )

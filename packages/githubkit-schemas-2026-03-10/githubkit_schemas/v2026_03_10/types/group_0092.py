@@ -9,42 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ThreadSubscriptionType(TypedDict):
-    """Thread Subscription
+class ActionsCacheRetentionLimitForOrganizationType(TypedDict):
+    """Actions cache retention limit for an organization
 
-    Thread Subscription
+    GitHub Actions cache retention policy for an organization.
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[_dt.datetime, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    max_cache_retention_days: NotRequired[int]
 
 
-class ThreadSubscriptionTypeForResponse(TypedDict):
-    """Thread Subscription
+class ActionsCacheRetentionLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache retention limit for an organization
 
-    Thread Subscription
+    GitHub Actions cache retention policy for an organization.
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: Union[str, None]
-    url: str
-    thread_url: NotRequired[str]
-    repository_url: NotRequired[str]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "ThreadSubscriptionType",
-    "ThreadSubscriptionTypeForResponse",
+    "ActionsCacheRetentionLimitForOrganizationType",
+    "ActionsCacheRetentionLimitForOrganizationTypeForResponse",
 )

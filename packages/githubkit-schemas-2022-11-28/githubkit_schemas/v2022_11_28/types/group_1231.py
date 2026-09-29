@@ -9,32 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[list[Union[int, str]]]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyType",
+    "OrgsOrgDependabotSecretsSecretNamePutBodyTypeForResponse",
 )

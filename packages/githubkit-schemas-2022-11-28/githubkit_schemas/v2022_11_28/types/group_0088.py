@@ -9,148 +9,303 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0087 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
 
-class ApiOverviewType(TypedDict):
-    """Api Overview
 
-    Api Overview
+class MinimalRepositoryType(TypedDict):
+    """Minimal Repository
+
+    Minimal Repository
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    commit_signing_keys: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsType]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: NotRequired[str]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: NotRequired[str]
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[Union[str, None]]
+    hooks_url: str
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    language: NotRequired[Union[str, None]]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[Union[_dt.datetime, None]]
+    created_at: NotRequired[Union[_dt.datetime, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    permissions: NotRequired[MinimalRepositoryPropPermissionsType]
+    role_name: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
+    delete_branch_on_merge: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    code_of_conduct: NotRequired[CodeOfConductType]
+    license_: NotRequired[Union[MinimalRepositoryPropLicenseType, None]]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesType]
 
 
-class ApiOverviewTypeForResponse(TypedDict):
-    """Api Overview
+class MinimalRepositoryTypeForResponse(TypedDict):
+    """Minimal Repository
 
-    Api Overview
+    Minimal Repository
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsTypeForResponse]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    commit_signing_keys: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsTypeForResponse]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: NotRequired[str]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: NotRequired[str]
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: NotRequired[str]
+    mirror_url: NotRequired[Union[str, None]]
+    hooks_url: str
+    svn_url: NotRequired[str]
+    homepage: NotRequired[Union[str, None]]
+    language: NotRequired[Union[str, None]]
+    forks_count: NotRequired[int]
+    stargazers_count: NotRequired[int]
+    watchers_count: NotRequired[int]
+    size: NotRequired[int]
+    default_branch: NotRequired[str]
+    open_issues_count: NotRequired[int]
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: NotRequired[bool]
+    has_projects: NotRequired[bool]
+    has_wiki: NotRequired[bool]
+    has_pages: NotRequired[bool]
+    has_downloads: NotRequired[bool]
+    has_discussions: NotRequired[bool]
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: NotRequired[bool]
+    disabled: NotRequired[bool]
+    visibility: NotRequired[str]
+    pushed_at: NotRequired[Union[str, None]]
+    created_at: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    permissions: NotRequired[MinimalRepositoryPropPermissionsTypeForResponse]
+    role_name: NotRequired[str]
+    temp_clone_token: NotRequired[Union[str, None]]
+    delete_branch_on_merge: NotRequired[bool]
+    subscribers_count: NotRequired[int]
+    network_count: NotRequired[int]
+    code_of_conduct: NotRequired[CodeOfConductTypeForResponse]
+    license_: NotRequired[Union[MinimalRepositoryPropLicenseTypeForResponse, None]]
+    forks: NotRequired[int]
+    open_issues: NotRequired[int]
+    watchers: NotRequired[int]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
+    custom_properties: NotRequired[MinimalRepositoryPropCustomPropertiesTypeForResponse]
 
 
-class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
+class CodeOfConductType(TypedDict):
+    """Code Of Conduct
 
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
+    Code Of Conduct
+    """
 
-
-class ApiOverviewPropSshKeyFingerprintsTypeForResponse(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
-
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
+    key: str
+    name: str
+    url: str
+    body: NotRequired[str]
+    html_url: Union[str, None]
 
 
-class ApiOverviewPropDomainsType(TypedDict):
-    """ApiOverviewPropDomains"""
+class CodeOfConductTypeForResponse(TypedDict):
+    """Code Of Conduct
 
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    storage: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsType
-    ]
+    Code Of Conduct
+    """
+
+    key: str
+    name: str
+    url: str
+    body: NotRequired[str]
+    html_url: Union[str, None]
 
 
-class ApiOverviewPropDomainsTypeForResponse(TypedDict):
-    """ApiOverviewPropDomains"""
+class MinimalRepositoryPropPermissionsType(TypedDict):
+    """MinimalRepositoryPropPermissions"""
 
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    storage: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[
-        ApiOverviewPropDomainsPropActionsInboundTypeForResponse
-    ]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse
-    ]
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
 
 
-class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
+class MinimalRepositoryPropPermissionsTypeForResponse(TypedDict):
+    """MinimalRepositoryPropPermissions"""
 
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
-
-
-class ApiOverviewPropDomainsPropActionsInboundTypeForResponse(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
-
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
+    admin: NotRequired[bool]
+    maintain: NotRequired[bool]
+    push: NotRequired[bool]
+    triage: NotRequired[bool]
+    pull: NotRequired[bool]
 
 
-class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
+class MinimalRepositoryPropLicenseType(TypedDict):
+    """MinimalRepositoryPropLicense"""
 
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    key: NotRequired[str]
+    name: NotRequired[str]
+    spdx_id: NotRequired[str]
+    url: NotRequired[Union[str, None]]
+    node_id: NotRequired[str]
 
 
-class ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
+class MinimalRepositoryPropLicenseTypeForResponse(TypedDict):
+    """MinimalRepositoryPropLicense"""
 
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    key: NotRequired[str]
+    name: NotRequired[str]
+    spdx_id: NotRequired[str]
+    url: NotRequired[Union[str, None]]
+    node_id: NotRequired[str]
+
+
+MinimalRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""MinimalRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+MinimalRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""MinimalRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
 __all__ = (
-    "ApiOverviewPropDomainsPropActionsInboundType",
-    "ApiOverviewPropDomainsPropActionsInboundTypeForResponse",
-    "ApiOverviewPropDomainsPropArtifactAttestationsType",
-    "ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse",
-    "ApiOverviewPropDomainsType",
-    "ApiOverviewPropDomainsTypeForResponse",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewPropSshKeyFingerprintsTypeForResponse",
-    "ApiOverviewType",
-    "ApiOverviewTypeForResponse",
+    "CodeOfConductType",
+    "CodeOfConductTypeForResponse",
+    "MinimalRepositoryPropCustomPropertiesType",
+    "MinimalRepositoryPropCustomPropertiesTypeForResponse",
+    "MinimalRepositoryPropLicenseType",
+    "MinimalRepositoryPropLicenseTypeForResponse",
+    "MinimalRepositoryPropPermissionsType",
+    "MinimalRepositoryPropPermissionsTypeForResponse",
+    "MinimalRepositoryType",
+    "MinimalRepositoryTypeForResponse",
 )

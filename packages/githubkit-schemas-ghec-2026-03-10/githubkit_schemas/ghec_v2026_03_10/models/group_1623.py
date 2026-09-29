@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,62 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    title: Union[str, int] = Field(description="The title of the issue.")
-    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
-    ] = Field(
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
-    )
-    assignees: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
-    )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
-    )
-    type: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
-    )
-    parent_issue_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the parent issue to add this issue to as a sub-issue. _NOTE: Only users with triage access to both the parent issue's repository and this repository can set the parent issue._",
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. For multi-select fields, provide an array of option names."
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesPostBody)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
-
-__all__ = (
-    "ReposOwnerRepoIssuesPostBody",
-    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)

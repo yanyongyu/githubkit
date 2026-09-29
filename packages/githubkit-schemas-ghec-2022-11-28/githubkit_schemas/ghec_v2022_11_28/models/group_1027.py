@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -22,14 +22,17 @@ from .group_0643 import EnterpriseWebhooks
 from .group_0644 import SimpleInstallation
 from .group_0645 import OrganizationSimpleWebhooks
 from .group_0646 import RepositoryWebhooks
-from .group_0659 import WebhooksLabel
-from .group_1028 import WebhookPullRequestUnlabeledPropPullRequest
+from .group_0668 import WebhooksUserMannequin
+from .group_1028 import WebhookPullRequestUnassignedPropPullRequest
 
 
-class WebhookPullRequestUnlabeled(GitHubModel):
-    """pull_request unlabeled event"""
+class WebhookPullRequestUnassigned(GitHubModel):
+    """pull_request unassigned event"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["unassigned"] = Field()
+    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
+        default=UNSET, title="User"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,14 +43,13 @@ class WebhookPullRequestUnlabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestUnlabeledPropPullRequest = Field(
+    pull_request: WebhookPullRequestUnassignedPropPullRequest = Field(
         title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
@@ -57,6 +59,6 @@ class WebhookPullRequestUnlabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestUnlabeled)
+model_rebuild(WebhookPullRequestUnassigned)
 
-__all__ = ("WebhookPullRequestUnlabeled",)
+__all__ = ("WebhookPullRequestUnassigned",)

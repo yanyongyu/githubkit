@@ -9,84 +9,124 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingAiCreditUsageReportOrgType(TypedDict):
-    """BillingAiCreditUsageReportOrg"""
+class GetAllBudgetsType(TypedDict):
+    """GetAllBudgets"""
 
-    time_period: BillingAiCreditUsageReportOrgPropTimePeriodType
-    organization: str
+    budgets: list[BudgetType]
     user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsType]
+    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetType]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
-class BillingAiCreditUsageReportOrgTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportOrg"""
+class GetAllBudgetsTypeForResponse(TypedDict):
+    """GetAllBudgets"""
 
-    time_period: BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse
-    organization: str
+    budgets: list[BudgetTypeForResponse]
     user: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse]
+    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetTypeForResponse]
+    has_next_page: NotRequired[bool]
+    total_count: NotRequired[int]
 
 
-class BillingAiCreditUsageReportOrgPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportOrgPropTimePeriod"""
+class GetAllBudgetsPropEffectiveBudgetType(TypedDict):
+    """GetAllBudgetsPropEffectiveBudget
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Effective user-level budget details returned when the response is scoped with
+    the `user` query parameter.
+    """
 
-
-class BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportOrgPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    id: str
+    budget_amount: int
+    consumed_amount: float
 
 
-class BillingAiCreditUsageReportOrgPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
+class GetAllBudgetsPropEffectiveBudgetTypeForResponse(TypedDict):
+    """GetAllBudgetsPropEffectiveBudget
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    Effective user-level budget details returned when the response is scoped with
+    the `user` query parameter.
+    """
+
+    id: str
+    budget_amount: int
+    consumed_amount: float
 
 
-class BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportOrgPropUsageItemsItems"""
+class BudgetType(TypedDict):
+    """Budget"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingType
+    expires_at: NotRequired[_dt.date]
+
+
+class BudgetTypeForResponse(TypedDict):
+    """Budget"""
+
+    id: str
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: NotRequired[float]
+    budget_product_sku: str
+    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
+    expires_at: NotRequired[str]
+
+
+class BudgetPropBudgetAlertingType(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
+
+
+class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportOrgPropTimePeriodType",
-    "BillingAiCreditUsageReportOrgPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportOrgPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportOrgPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportOrgType",
-    "BillingAiCreditUsageReportOrgTypeForResponse",
+    "BudgetPropBudgetAlertingType",
+    "BudgetPropBudgetAlertingTypeForResponse",
+    "BudgetType",
+    "BudgetTypeForResponse",
+    "GetAllBudgetsPropEffectiveBudgetType",
+    "GetAllBudgetsPropEffectiveBudgetTypeForResponse",
+    "GetAllBudgetsType",
+    "GetAllBudgetsTypeForResponse",
 )

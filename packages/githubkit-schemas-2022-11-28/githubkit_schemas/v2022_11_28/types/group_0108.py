@@ -9,37 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ActionsHostedRunnerCuratedImageType(TypedDict):
-    """GitHub-hosted runner image details.
+class ActionsHostedRunnerLimitsType(TypedDict):
+    """ActionsHostedRunnerLimits"""
 
-    Provides details of a hosted runner image
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
+
+
+class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
+    """ActionsHostedRunnerLimits"""
+
+    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
+
+
+class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
+
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
     """
 
-    id: str
-    platform: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
+    maximum: int
+    current_usage: int
 
 
-class ActionsHostedRunnerCuratedImageTypeForResponse(TypedDict):
-    """GitHub-hosted runner image details.
+class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
+    """Static public IP Limits for GitHub-hosted Hosted Runners.
 
-    Provides details of a hosted runner image
+    Provides details of static public IP limits for GitHub-hosted Hosted Runners
     """
 
-    id: str
-    platform: str
-    size_gb: int
-    display_name: str
-    source: Literal["github", "partner", "custom"]
+    maximum: int
+    current_usage: int
 
 
 __all__ = (
-    "ActionsHostedRunnerCuratedImageType",
-    "ActionsHostedRunnerCuratedImageTypeForResponse",
+    "ActionsHostedRunnerLimitsPropPublicIpsType",
+    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
+    "ActionsHostedRunnerLimitsType",
+    "ActionsHostedRunnerLimitsTypeForResponse",
 )

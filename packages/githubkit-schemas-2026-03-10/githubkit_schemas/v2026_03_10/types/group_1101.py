@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class GistsGistIdCommentsPostBodyType(TypedDict):
+    """GistsGistIdCommentsPostBody"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    body: str
 
 
-class GistsPostBodyTypeForResponse(TypedDict):
-    """GistsPostBody"""
+class GistsGistIdCommentsPostBodyTypeForResponse(TypedDict):
+    """GistsGistIdCommentsPostBody"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesTypeForResponse
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
-
-
-GistsPostBodyPropFilesType: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
-
-Names and content for the files that make up the gist
-
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
-
-
-GistsPostBodyPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistsPostBodyPropFiles
-
-Names and content for the files that make up the gist
-
-Examples:
-    {'hello.rb': {'content': 'puts "Hello, World!"'}}
-"""
+    body: str
 
 
 __all__ = (
-    "GistsPostBodyPropFilesType",
-    "GistsPostBodyPropFilesTypeForResponse",
-    "GistsPostBodyType",
-    "GistsPostBodyTypeForResponse",
+    "GistsGistIdCommentsPostBodyType",
+    "GistsGistIdCommentsPostBodyTypeForResponse",
 )

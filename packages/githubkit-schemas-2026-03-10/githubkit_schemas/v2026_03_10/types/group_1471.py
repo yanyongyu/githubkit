@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
 
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
-    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
-    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",
+    "ReposOwnerRepoPullsPullNumberMergePutResponse409TypeForResponse",
 )

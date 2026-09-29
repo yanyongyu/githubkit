@@ -9,62 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0154 import (
+    ArtifactDeploymentRecordType,
+    ArtifactDeploymentRecordTypeForResponse,
+)
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type(
+
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    job_id: int
-    status: Literal["pending", "processing", "completed", "failed"]
-    started_at: NotRequired[_dt.datetime]
     total_count: NotRequired[int]
-    errors: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType
-        ]
-    ]
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse(
+class OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+    """OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200"""
 
-    job_id: int
-    status: Literal["pending", "processing", "completed", "failed"]
-    started_at: NotRequired[str]
     total_count: NotRequired[int]
-    errors: NotRequired[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
-    pErrorsItems
-    """
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
-    pErrorsItems
-    """
+    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200Type",
+    "OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200TypeForResponse",
 )

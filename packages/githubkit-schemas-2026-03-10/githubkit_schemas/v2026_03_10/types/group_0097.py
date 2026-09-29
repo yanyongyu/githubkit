@@ -9,94 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CreateBudgetType(TypedDict):
-    """CreateBudget"""
+class GetBudgetType(TypedDict):
+    """GetBudget"""
 
-    message: str
-    budget: CreateBudgetPropBudgetType
-
-
-class CreateBudgetTypeForResponse(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetTypeForResponse
-
-
-class CreateBudgetPropBudgetType(TypedDict):
-    """CreateBudgetPropBudget"""
-
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
+    id: str
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
     ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
-    expires_at: NotRequired[_dt.date]
+    budget_entity_name: str
+    user: NotRequired[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingType
+    consumed_amount: NotRequired[float]
 
 
-class CreateBudgetPropBudgetTypeForResponse(TypedDict):
-    """CreateBudgetPropBudget"""
+class GetBudgetTypeForResponse(TypedDict):
+    """GetBudget"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
+    id: str
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
     ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[
-        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    expires_at: NotRequired[str]
+    budget_entity_name: str
+    user: NotRequired[str]
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_product_sku: str
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
+    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    consumed_amount: NotRequired[float]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class GetBudgetPropBudgetAlertingType(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """GetBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "CreateBudgetPropBudgetPropBudgetAlertingType",
-    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "CreateBudgetPropBudgetType",
-    "CreateBudgetPropBudgetTypeForResponse",
-    "CreateBudgetType",
-    "CreateBudgetTypeForResponse",
+    "GetBudgetPropBudgetAlertingType",
+    "GetBudgetPropBudgetAlertingTypeForResponse",
+    "GetBudgetType",
+    "GetBudgetTypeForResponse",
 )

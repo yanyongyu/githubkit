@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -22,17 +22,15 @@ from .group_0643 import EnterpriseWebhooks
 from .group_0644 import SimpleInstallation
 from .group_0645 import OrganizationSimpleWebhooks
 from .group_0646 import RepositoryWebhooks
-from .group_0668 import WebhooksUserMannequin
-from .group_1026 import WebhookPullRequestUnassignedPropPullRequest
+from .group_1026 import WebhookPullRequestSynchronizePropPullRequest
 
 
-class WebhookPullRequestUnassigned(GitHubModel):
-    """pull_request unassigned event"""
+class WebhookPullRequestSynchronize(GitHubModel):
+    """pull_request synchronize event"""
 
-    action: Literal["unassigned"] = Field()
-    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
-        default=UNSET, title="User"
-    )
+    action: Literal["synchronize"] = Field()
+    after: str = Field()
+    before: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,7 +47,7 @@ class WebhookPullRequestUnassigned(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestUnassignedPropPullRequest = Field(
+    pull_request: WebhookPullRequestSynchronizePropPullRequest = Field(
         title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
@@ -59,6 +57,6 @@ class WebhookPullRequestUnassigned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestUnassigned)
+model_rebuild(WebhookPullRequestSynchronize)
 
-__all__ = ("WebhookPullRequestUnassigned",)
+__all__ = ("WebhookPullRequestSynchronize",)

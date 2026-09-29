@@ -14,13 +14,8 @@ from pydantic import Field
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class UserEmailsDeleteBodyOneof0(GitHubModel):
-    """UserEmailsDeleteBodyOneof0
-
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+class UserEmailsPostBodyOneof0(GitHubModel):
+    """UserEmailsPostBodyOneof0
 
     Examples:
         {'emails': ['octocat@github.com', 'mona@github.com']}
@@ -28,10 +23,10 @@ class UserEmailsDeleteBodyOneof0(GitHubModel):
 
     emails: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="Email addresses associated with the GitHub user account.",
+        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
     )
 
 
-model_rebuild(UserEmailsDeleteBodyOneof0)
+model_rebuild(UserEmailsPostBodyOneof0)
 
-__all__ = ("UserEmailsDeleteBodyOneof0",)
+__all__ = ("UserEmailsPostBodyOneof0",)

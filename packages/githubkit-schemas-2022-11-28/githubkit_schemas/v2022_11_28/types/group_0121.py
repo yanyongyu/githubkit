@@ -9,51 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0122 import (
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class ActionsPolicyWorkflowPathConditionType(TypedDict):
-    """Actions policy workflow path condition
+class ActionsPolicyWorkflowPathConditionPropWorkflowPathType(TypedDict):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    Parameters for an Actions policy workflow path condition. Omitting
-    `workflow_path` when creating
-    a policy targets all workflows without storing an explicit condition. Omitting
-    it when updating a
-    policy preserves the existing workflow targeting. For new or changed workflow
-    conditions, the API
-    requires at least one included or excluded pattern. This is validated server-
-    side rather than by
-    this schema, which can also describe existing stored conditions.
-    """
-
-    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+    include: list[str]
+    exclude: list[str]
 
 
-class ActionsPolicyWorkflowPathConditionTypeForResponse(TypedDict):
-    """Actions policy workflow path condition
+class ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse(TypedDict):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    Parameters for an Actions policy workflow path condition. Omitting
-    `workflow_path` when creating
-    a policy targets all workflows without storing an explicit condition. Omitting
-    it when updating a
-    policy preserves the existing workflow targeting. For new or changed workflow
-    conditions, the API
-    requires at least one included or excluded pattern. This is validated server-
-    side rather than by
-    this schema, which can also describe existing stored conditions.
-    """
-
-    workflow_path: NotRequired[
-        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
-    ]
+    include: list[str]
+    exclude: list[str]
 
 
 __all__ = (
-    "ActionsPolicyWorkflowPathConditionType",
-    "ActionsPolicyWorkflowPathConditionTypeForResponse",
+    "ActionsPolicyWorkflowPathConditionPropWorkflowPathType",
+    "ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse",
 )

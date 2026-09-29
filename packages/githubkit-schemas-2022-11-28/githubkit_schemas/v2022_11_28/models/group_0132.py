@@ -15,21 +15,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
-from .group_0128 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
+from .group_0121 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0129 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class ActionsPolicyOrgConditionsOneof1(GitHubModel):
-    """ActionsPolicyOrgConditionsOneof1"""
+class ActionsPolicyOrgConditionsOneof2(GitHubModel):
+    """ActionsPolicyOrgConditionsOneof2"""
 
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
-        Field()
-    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
     workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
         default=UNSET
     )
 
 
-model_rebuild(ActionsPolicyOrgConditionsOneof1)
+model_rebuild(ActionsPolicyOrgConditionsOneof2)
 
-__all__ = ("ActionsPolicyOrgConditionsOneof1",)
+__all__ = ("ActionsPolicyOrgConditionsOneof2",)

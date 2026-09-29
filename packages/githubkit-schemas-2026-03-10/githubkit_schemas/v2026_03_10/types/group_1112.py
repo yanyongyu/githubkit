@@ -9,22 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    message: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
+    ]
+    expires_at: NotRequired[Union[_dt.date, Literal[0], None]]
 
 
-class NotificationsPutResponse202TypeForResponse(TypedDict):
-    """NotificationsPutResponse202"""
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    message: NotRequired[str]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_alerting: NotRequired[
+        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
+    ]
+    expires_at: NotRequired[Union[str, Literal[0], None]]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
+
+
+class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
+    TypedDict
+):
+    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+
+    will_alert: NotRequired[bool]
+    alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "NotificationsPutResponse202Type",
-    "NotificationsPutResponse202TypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
+    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
 )

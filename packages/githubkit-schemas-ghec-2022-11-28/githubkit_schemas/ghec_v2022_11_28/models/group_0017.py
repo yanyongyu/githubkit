@@ -172,6 +172,12 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization.",
     )
+    organization_external_properties_for_repos: Missing[
+        Literal["read", "write", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The level of permission to grant the access token for managing external custom properties for repositories in an organization.",
+    )
     organization_announcement_banners: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
         description="The level of permission to grant the access token to view and manage announcement banners for an organization.",

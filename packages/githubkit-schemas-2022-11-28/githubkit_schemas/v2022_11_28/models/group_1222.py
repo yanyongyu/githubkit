@@ -9,20 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    The total number of seats created for the specified user(s).
-    """
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
+    )
 
-    seats_created: int = Field()
 
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

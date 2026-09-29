@@ -13,33 +13,23 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
-        Field(description="Resource-specific metadata.")
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
+    )
+    actor_identifier: str = Field(
+        description="The username of the collaborator. The numeric user ID is also accepted."
+    )
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
-    ExtraGitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
-
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)

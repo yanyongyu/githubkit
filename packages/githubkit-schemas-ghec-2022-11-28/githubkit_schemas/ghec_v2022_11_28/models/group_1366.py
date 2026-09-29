@@ -9,108 +9,116 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
-from .group_0284 import ArtifactDeploymentRecord
 
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207"""
-
-    total_count: int = Field(
-        description="The number of deployment records created or updated."
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
     )
-    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
-    errors: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
-        ]
-    ] = Field(
+    physical_environment: Missing[str] = Field(
+        max_length=128,
         default=UNSET,
-        description="A list of errors for deployments that could not be processed.",
+        description="The physical region of the deployment.",
     )
-
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    tems
-    """
-
-    cause: Missing[Literal["unauthorized", "not_found"]] = Field(
-        default=UNSET, description="The reason the deployment failed processing."
-    )
-    deployment: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
     ] = Field(
-        default=UNSET, description="The deployment payload that could not be processed."
+        max_length=1000 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
+    partial_success: Missing[bool] = Field(
+        default=UNSET,
+        description="When enabled, deployments associated with repositories the actor can write to are processed\nwhile deployments associated with repositories that cannot be resolved or written to by the actor\nare skipped and reported in the `errors` array. When false (the default), the endpoint returns\nan error if any targeted repository cannot be resolved, the actor lacks write access, or no matching attestation can be found.\n",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the set records in the response body\n",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems(
     GitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    temsPropDeployment
-
-    The deployment payload that could not be processed.
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    ms
     """
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the artifact.")
-    digest: Missing[str] = Field(
-        default=UNSET, description="The digest of the artifact."
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    deployment_name: Missing[str] = Field(
-        default=UNSET, description="The name of the deployment that failed processing."
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact.",
     )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The version of the deployment."
+    version: Missing[str] = Field(
+        max_length=100, default=UNSET, description="The artifact version."
     )
-    status: Missing[str] = Field(default=UNSET, description="The deployment status.")
-    github_repository: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The repository associated with the deployment."
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record. To accommodate differing\ncontainers and namespaces within a record set, the following format is recommended:\n{namespaceName}-{deploymentName}-{containerName}.\nThe deployment_name must be unique across all entries in the deployments array.\n",
+    )
+    github_repository: Missing[str] = Field(
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
     )
     tags: Missing[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
-    ] = Field(default=UNSET, description="Custom metadata tags for the deployment.")
-    runtime_risks: Missing[list[str]] = Field(
-        default=UNSET, description="Runtime risk classifications for the deployment."
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
+    ] = Field(
+        default=UNSET, description="Key-value pairs to tag the deployment record."
+    )
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
+        ]
+    ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="A list of runtime risks associated with the deployment.",
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags(
     ExtraGitHubModel
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
-    temsPropDeploymentPropTags
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
+    msPropTags
 
-    Custom metadata tags for the deployment.
+    Key-value pairs to tag the deployment record.
     """
 
 
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody)
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems
 )
 model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags
 )
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags",
 )

@@ -23,13 +23,12 @@ from .group_0643 import EnterpriseWebhooks
 from .group_0644 import SimpleInstallation
 from .group_0645 import OrganizationSimpleWebhooks
 from .group_0646 import RepositoryWebhooks
-from .group_1059 import WebhookRepositoryRulesetEditedPropChanges
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryRulesetCreated(GitHubModel):
+    """repository ruleset created event"""
 
-    action: Literal["edited"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,10 +53,9 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Repository ruleset",
         description="A set of rules to apply when specified conditions are met.",
     )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+model_rebuild(WebhookRepositoryRulesetCreated)
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+__all__ = ("WebhookRepositoryRulesetCreated",)

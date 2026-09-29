@@ -9,29 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0122 import (
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+from .group_0125 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
 
 
-class ActionsPolicyRepoConditionsOneof1Type(TypedDict):
-    """ActionsPolicyRepoConditionsOneof1"""
+class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+    Parameters for a repository name condition
+    """
+
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-class ActionsPolicyRepoConditionsOneof1TypeForResponse(TypedDict):
-    """ActionsPolicyRepoConditionsOneof1"""
+class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for repository names
 
-    workflow_path: NotRequired[
-        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
-    ]
+    Parameters for a repository name condition
+    """
+
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
 
 
 __all__ = (
-    "ActionsPolicyRepoConditionsOneof1Type",
-    "ActionsPolicyRepoConditionsOneof1TypeForResponse",
+    "RepositoryRulesetConditionsRepositoryNameTargetType",
+    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
 )

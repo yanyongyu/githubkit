@@ -11,19 +11,41 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStacksPostBody(GitHubModel):
-    """ReposOwnerRepoStacksPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    pull_requests: list[int] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=2 if PYDANTIC_V2 else None,
-        description="An ordered list of pull request numbers forming the stack from bottom to top.",
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(ReposOwnerRepoStacksPostBody)
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-__all__ = ("ReposOwnerRepoStacksPostBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
+
+__all__ = (
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

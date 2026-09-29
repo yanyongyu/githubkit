@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0692 import WebhooksAlert
 
 
-class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryVulnerabilityAlertCreate(GitHubModel):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["reopen"] = Field()
+    action: Literal["create"] = Field()
     alert: WebhooksAlert = Field(
         title="Repository Vulnerability Alert Alert",
         description="The security alert of the vulnerable dependency.",
@@ -55,6 +55,6 @@ class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
+model_rebuild(WebhookRepositoryVulnerabilityAlertCreate)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreate",)

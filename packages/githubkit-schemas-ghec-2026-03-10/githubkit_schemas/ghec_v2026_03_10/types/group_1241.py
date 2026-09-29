@@ -9,60 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
-        ]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
     ]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
-        ]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
     ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
 )

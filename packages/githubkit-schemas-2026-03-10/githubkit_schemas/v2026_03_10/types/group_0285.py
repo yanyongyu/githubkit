@@ -9,79 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningPatternConfigurationType(TypedDict):
-    """Secret scanning pattern configuration
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
+    A custom pattern to delete in a bulk operation.
     """
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
-    custom_pattern_overrides: NotRequired[list[SecretScanningPatternOverrideType]]
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class SecretScanningPatternConfigurationTypeForResponse(TypedDict):
-    """Secret scanning pattern configuration
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    A collection of secret scanning patterns and their settings related to push
-    protection.
+    A custom pattern to delete in a bulk operation.
     """
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-    custom_pattern_overrides: NotRequired[
-        list[SecretScanningPatternOverrideTypeForResponse]
-    ]
-
-
-class SecretScanningPatternOverrideType(TypedDict):
-    """SecretScanningPatternOverride"""
-
-    token_type: NotRequired[str]
+    pattern_id: int
     custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[Literal["not-set", "disabled", "enabled"], None]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class SecretScanningPatternOverrideTypeForResponse(TypedDict):
-    """SecretScanningPatternOverride"""
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    slug: NotRequired[str]
-    display_name: NotRequired[str]
-    alert_total: NotRequired[int]
-    alert_total_percentage: NotRequired[int]
-    false_positives: NotRequired[int]
-    false_positive_rate: NotRequired[int]
-    bypass_rate: NotRequired[int]
-    default_setting: NotRequired[Literal["disabled", "enabled"]]
-    enterprise_setting: NotRequired[
-        Union[Literal["not-set", "disabled", "enabled"], None]
-    ]
-    setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
 
 
 __all__ = (
-    "SecretScanningPatternConfigurationType",
-    "SecretScanningPatternConfigurationTypeForResponse",
-    "SecretScanningPatternOverrideType",
-    "SecretScanningPatternOverrideTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

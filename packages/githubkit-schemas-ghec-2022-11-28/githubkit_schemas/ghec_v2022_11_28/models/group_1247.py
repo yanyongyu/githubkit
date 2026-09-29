@@ -13,20 +13,24 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
 
-    credential_id: int = Field()
-    credential_type: Literal["ssh_key"] = Field()
-    fingerprint: str = Field(
-        description="The SHA-256 fingerprint of the authorized SSH key."
+    credential_id: str = Field(
+        description="The SHA-256 fingerprint of the user-owned SSH authentication key to authorize."
     )
-    organizations: list[str] = Field()
+    credential_type: Literal["ssh_key"] = Field()
+    organizations: UniqueList[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1",)

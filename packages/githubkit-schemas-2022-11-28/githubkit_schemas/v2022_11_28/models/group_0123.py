@@ -9,13 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0121 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
 
-class ActionsPolicyRepoConditionsOneof0(GitHubModel):
-    """ActionsPolicyRepoConditionsOneof0"""
+class ActionsPolicyRepoConditionsOneof1(GitHubModel):
+    """ActionsPolicyRepoConditionsOneof1"""
+
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(ActionsPolicyRepoConditionsOneof0)
+model_rebuild(ActionsPolicyRepoConditionsOneof1)
 
-__all__ = ("ActionsPolicyRepoConditionsOneof0",)
+__all__ = ("ActionsPolicyRepoConditionsOneof1",)

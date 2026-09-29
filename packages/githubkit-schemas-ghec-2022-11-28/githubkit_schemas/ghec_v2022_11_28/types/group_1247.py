@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
+from githubkit.typing import UniqueList
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    credential_id: int
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
+
+    credential_id: str
     credential_type: Literal["ssh_key"]
-    fingerprint: str
-    organizations: list[str]
+    organizations: UniqueList[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
 
-    credential_id: int
+    credential_id: str
     credential_type: Literal["ssh_key"]
-    fingerprint: str
-    organizations: list[str]
+    organizations: UniqueList[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1TypeForResponse",
 )

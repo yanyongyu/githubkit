@@ -9,34 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Configuration for code scanning default setup.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-class CodeScanningDefaultSetupUpdateResponseTypeForResponse(TypedDict):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningDefaultSetupUpdateTypeForResponse(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Configuration for code scanning default setup.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    threat_model: NotRequired[Literal["remote", "remote_and_local"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "actions",
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "CodeScanningDefaultSetupUpdateResponseType",
-    "CodeScanningDefaultSetupUpdateResponseTypeForResponse",
+    "CodeScanningDefaultSetupUpdateType",
+    "CodeScanningDefaultSetupUpdateTypeForResponse",
 )

@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    pat_request_ids: NotRequired[list[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    action: Literal["revoke"]
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-    pat_request_ids: NotRequired[list[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    action: Literal["revoke"]
 
 
 __all__ = (
-    "OrgsOrgPersonalAccessTokenRequestsPostBodyType",
-    "OrgsOrgPersonalAccessTokenRequestsPostBodyTypeForResponse",
+    "OrgsOrgPersonalAccessTokensPatIdPostBodyType",
+    "OrgsOrgPersonalAccessTokensPatIdPostBodyTypeForResponse",
 )

@@ -12,17 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0288 import Codespace
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
+    )
+
+
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
+
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)

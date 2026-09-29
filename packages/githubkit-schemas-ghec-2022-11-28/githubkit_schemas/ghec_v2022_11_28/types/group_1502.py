@@ -9,26 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0077 import RunnerType, RunnerTypeForResponse
+from .group_0051 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+)
+from .group_0052 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class ReposOwnerRepoActionsPoliciesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-    total_count: int
-    runners: list[RunnerType]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsPoliciesPostBodyType",
+    "ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse",
 )

@@ -12,35 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsHostedRunnerLimits(GitHubModel):
-    """ActionsHostedRunnerLimits"""
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIps = Field(
-        title="Static public IP Limits for GitHub-hosted Hosted Runners.",
-        description="Provides details of static public IP limits for GitHub-hosted Hosted Runners",
-    )
-
-
-class ActionsHostedRunnerLimitsPropPublicIps(GitHubModel):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Actions OIDC Subject customization
     """
 
-    maximum: int = Field(
-        description="The maximum number of static public IP addresses that can be used for Hosted Runners."
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
-    current_usage: int = Field(
-        description="The current number of static public IP addresses in use by Hosted Runners."
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
     )
 
 
-model_rebuild(ActionsHostedRunnerLimits)
-model_rebuild(ActionsHostedRunnerLimitsPropPublicIps)
+model_rebuild(OidcCustomSub)
 
-__all__ = (
-    "ActionsHostedRunnerLimits",
-    "ActionsHostedRunnerLimitsPropPublicIps",
-)
+__all__ = ("OidcCustomSub",)

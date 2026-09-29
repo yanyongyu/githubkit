@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
 )

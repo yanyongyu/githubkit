@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,38 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgHook(GitHubModel):
-    """Org Hook
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-    Org Hook
-    """
-
-    id: int = Field()
-    url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    name: str = Field()
-    events: list[str] = Field()
-    active: bool = Field()
-    config: OrgHookPropConfig = Field()
-    updated_at: _dt.datetime = Field()
-    created_at: _dt.datetime = Field()
-    type: str = Field()
-
-
-class OrgHookPropConfig(GitHubModel):
-    """OrgHookPropConfig"""
-
-    url: Missing[str] = Field(default=UNSET)
-    insecure_ssl: Missing[str] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    secret: Missing[str] = Field(default=UNSET)
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
+    )
+    total_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests within the queried time period",
+    )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgHook)
-model_rebuild(OrgHookPropConfig)
+model_rebuild(ApiInsightsRouteStatsItems)
 
-__all__ = (
-    "OrgHook",
-    "OrgHookPropConfig",
-)
+__all__ = ("ApiInsightsRouteStatsItems",)

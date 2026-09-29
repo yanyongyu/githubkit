@@ -12,39 +12,110 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0258 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
-)
 
+class RepositoryRuleCodeQualityType(TypedDict):
+    """code_quality
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
-
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
 
 
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
+    """code_quality
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
+
+
+class RepositoryRuleCodeQualityPropParametersType(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
+
+    severity: Literal["errors", "warnings", "notes", "all"]
+
+
+class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
+
+    severity: Literal["errors", "warnings", "notes", "all"]
+
+
+class RepositoryRuleCodeCoverageType(TypedDict):
+    """code_coverage
+
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
+
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
+
+
+class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
+    """code_coverage
+
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
+
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
+
+
+class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
+
+
+class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
+
+
+class RepositoryRuleLicenseComplianceScanningType(TypedDict):
+    """license_compliance_scanning
+
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"]
+
+
+class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
+    """license_compliance_scanning
+
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRuleCodeCoveragePropParametersType",
+    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
+    "RepositoryRuleCodeCoverageType",
+    "RepositoryRuleCodeCoverageTypeForResponse",
+    "RepositoryRuleCodeQualityPropParametersType",
+    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
+    "RepositoryRuleCodeQualityType",
+    "RepositoryRuleCodeQualityTypeForResponse",
+    "RepositoryRuleLicenseComplianceScanningType",
+    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

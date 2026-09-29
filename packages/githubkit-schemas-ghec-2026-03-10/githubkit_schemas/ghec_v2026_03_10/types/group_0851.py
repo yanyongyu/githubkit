@@ -9,48 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0236 import IssueType, IssueTypeForResponse
 from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0644 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0655 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0664 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesAssignedType(TypedDict):
-    """issues assigned event"""
+class WebhookIssueRelatesToAddedType(TypedDict):
+    """relates to issue added event"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserType, None]]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["relates_to_added"]
+    issue_id: NotRequired[float]
+    issue: NotRequired[IssueType]
+    related_issue_id: NotRequired[float]
+    related_issue: NotRequired[IssueType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesAssignedTypeForResponse(TypedDict):
-    """issues assigned event"""
+class WebhookIssueRelatesToAddedTypeForResponse(TypedDict):
+    """relates to issue added event"""
 
-    action: Literal["assigned"]
-    assignee: NotRequired[Union[WebhooksUserTypeForResponse, None]]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["relates_to_added"]
+    issue_id: NotRequired[float]
+    issue: NotRequired[IssueTypeForResponse]
+    related_issue_id: NotRequired[float]
+    related_issue: NotRequired[IssueTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesAssignedType",
-    "WebhookIssuesAssignedTypeForResponse",
+    "WebhookIssueRelatesToAddedType",
+    "WebhookIssueRelatesToAddedTypeForResponse",
 )

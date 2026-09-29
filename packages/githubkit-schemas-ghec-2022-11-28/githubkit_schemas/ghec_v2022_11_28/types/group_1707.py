@@ -9,59 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
-class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
-    ]
-
-
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
-
-
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
+    placeholder_id: str
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse422Type",
-    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
 )

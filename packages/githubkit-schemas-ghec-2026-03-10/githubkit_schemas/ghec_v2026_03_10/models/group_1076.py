@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0693 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertReopened(GitHubModel):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertMetadataRemoved(GitHubModel):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["metadata_removed"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookSecretScanningAlertReopened(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertReopened)
+model_rebuild(WebhookSecretScanningAlertMetadataRemoved)
 
-__all__ = ("WebhookSecretScanningAlertReopened",)
+__all__ = ("WebhookSecretScanningAlertMetadataRemoved",)

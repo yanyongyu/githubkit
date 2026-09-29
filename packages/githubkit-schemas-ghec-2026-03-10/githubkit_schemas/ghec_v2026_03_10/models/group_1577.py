@@ -9,88 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoContentsPathPutBody(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
-        None,
-    ] = Field(
-        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
+    message: str = Field(description="The commit message.")
+    content: str = Field(description="The new file content, using Base64 encoding.")
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
     )
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
-        description="The enabled review tools for Copilot cloud agent."
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch name. Default: the repository’s default branch.",
     )
-    require_actions_workflow_approval: bool = Field(
-        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
+        default=UNSET,
+        description="The person that committed the file. Default: the authenticated user.",
     )
-    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
-    is_firewall_recommended_allowlist_enabled: bool = Field(
-        description="Whether the firewall recommended allowlist is enabled."
-    )
-    custom_allowlist: list[str] = Field(
-        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
-    )
-    is_automations_enabled: bool = Field(
-        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
-    )
-    require_write_access_for_automation_triggers: bool = Field(
-        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
+    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
+        default=UNSET,
+        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
     )
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-    The user-supplied MCP server configuration for the repository, as a free-form
-    JSON object. This will be set to `null` if no configuration has been set.
-
-    The shape of a valid MCP configuration may evolve over time, so this property is
-    intentionally not strictly typed. Clients should not assume a fixed schema.
+    The person that committed the file. Default: the authenticated user.
     """
 
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
-    GitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 
-    The enabled review tools for Copilot cloud agent.
+class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
     """
 
-    codeql: bool = Field(
-        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
     )
-    copilot_code_review: bool = Field(
-        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
     )
-    secret_scanning: bool = Field(
-        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
-    )
-    dependency_vulnerability_checks: bool = Field(
-        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
-    )
+    date: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-)
+model_rebuild(ReposOwnerRepoContentsPathPutBody)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
 
 __all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
+    "ReposOwnerRepoContentsPathPutBody",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
 )

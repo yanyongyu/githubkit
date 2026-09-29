@@ -12,29 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
 )

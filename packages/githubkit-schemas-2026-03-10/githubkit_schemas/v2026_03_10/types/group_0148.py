@@ -9,33 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0147 import RunnerLabelType, RunnerLabelTypeForResponse
 
-class RunnerLabelType(TypedDict):
-    """Self hosted runner label
 
-    A label for a self hosted runner
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    id: NotRequired[int]
+    id: int
+    runner_group_id: NotRequired[int]
     name: str
-    type: NotRequired[Literal["read-only", "custom"]]
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelType]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
-class RunnerLabelTypeForResponse(TypedDict):
-    """Self hosted runner label
+class RunnerTypeForResponse(TypedDict):
+    """Self hosted runners
 
-    A label for a self hosted runner
+    A self hosted runner
     """
 
-    id: NotRequired[int]
+    id: int
+    runner_group_id: NotRequired[int]
     name: str
-    type: NotRequired[Literal["read-only", "custom"]]
+    os: str
+    status: str
+    busy: bool
+    labels: list[RunnerLabelTypeForResponse]
+    ephemeral: NotRequired[bool]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "RunnerLabelType",
-    "RunnerLabelTypeForResponse",
+    "RunnerType",
+    "RunnerTypeForResponse",
 )

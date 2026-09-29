@@ -9,29 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AppHookConfigPatchBodyType(TypedDict):
-    """AppHookConfigPatchBody"""
+class AgentsTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse422PropErrorsItemsType]]
+    documentation_url: str
 
 
-class AppHookConfigPatchBodyTypeForResponse(TypedDict):
-    """AppHookConfigPatchBody"""
+class AgentsTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AppHookConfigPatchBodyType",
-    "AppHookConfigPatchBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse422Type",
+    "AgentsTasksTaskIdGetResponse422TypeForResponse",
 )

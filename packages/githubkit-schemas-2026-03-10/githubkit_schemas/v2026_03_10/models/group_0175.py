@@ -9,16 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
-    """Copilot Organization Content Exclusion Details
+class DependabotPublicKey(GitHubModel):
+    """DependabotPublicKey
 
-    List all Copilot Content Exclusion rules for an organization.
+    The public key used for setting Dependabot Secrets.
     """
 
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
-model_rebuild(CopilotOrganizationContentExclusionDetails)
 
-__all__ = ("CopilotOrganizationContentExclusionDetails",)
+model_rebuild(DependabotPublicKey)
+
+__all__ = ("DependabotPublicKey",)

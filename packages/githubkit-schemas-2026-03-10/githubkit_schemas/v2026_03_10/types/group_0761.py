@@ -14,19 +14,19 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0055 import IssueType, IssueTypeForResponse
-from .group_0563 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0564 import (
+from .group_0053 import IssueType, IssueTypeForResponse
+from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockedByAddedType(TypedDict):
+    """blocked by issue added event"""
 
-    action: Literal["blocked_by_removed"]
+    action: Literal["blocked_by_added"]
     blocked_issue_id: NotRequired[float]
     blocked_issue: NotRequired[IssueType]
     blocking_issue_id: NotRequired[float]
@@ -38,10 +38,10 @@ class WebhookIssueDependenciesBlockedByRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
-    """blocked by issue removed event"""
+class WebhookIssueDependenciesBlockedByAddedTypeForResponse(TypedDict):
+    """blocked by issue added event"""
 
-    action: Literal["blocked_by_removed"]
+    action: Literal["blocked_by_added"]
     blocked_issue_id: NotRequired[float]
     blocked_issue: NotRequired[IssueTypeForResponse]
     blocking_issue_id: NotRequired[float]
@@ -54,6 +54,6 @@ class WebhookIssueDependenciesBlockedByRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockedByRemovedType",
-    "WebhookIssueDependenciesBlockedByRemovedTypeForResponse",
+    "WebhookIssueDependenciesBlockedByAddedType",
+    "WebhookIssueDependenciesBlockedByAddedTypeForResponse",
 )

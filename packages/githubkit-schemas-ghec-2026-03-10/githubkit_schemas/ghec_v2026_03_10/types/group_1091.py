@@ -23,11 +23,10 @@ from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0695 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
 
 
-class WebhookSponsorshipPendingCancellationType(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSponsorshipCreatedType(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -36,11 +35,10 @@ class WebhookSponsorshipPendingCancellationType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSponsorshipCreatedTypeForResponse(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -50,6 +48,6 @@ class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSponsorshipPendingCancellationType",
-    "WebhookSponsorshipPendingCancellationTypeForResponse",
+    "WebhookSponsorshipCreatedType",
+    "WebhookSponsorshipCreatedTypeForResponse",
 )

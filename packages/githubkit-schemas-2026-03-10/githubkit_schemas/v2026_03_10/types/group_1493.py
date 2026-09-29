@@ -9,53 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
-
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
+from .group_0282 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
+
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+
+
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
-
-
-ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

@@ -11,41 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0126 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0224 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
+
+class RepositoryRulesetConditionsPropRefNameType(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
+
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
-class OrgRulesetConditionsOneof0Type(TypedDict):
-    """repository_name_and_ref_name
+class RepositoryRulesetConditionsPropRefNameTypeForResponse(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
 
-    Conditions to target repositories by name and refs by name
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-
-
-class OrgRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """repository_name_and_ref_name
-
-    Conditions to target repositories by name and refs by name
-    """
-
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+    include: NotRequired[list[str]]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgRulesetConditionsOneof0Type",
-    "OrgRulesetConditionsOneof0TypeForResponse",
+    "RepositoryRulesetConditionsPropRefNameType",
+    "RepositoryRulesetConditionsPropRefNameTypeForResponse",
 )

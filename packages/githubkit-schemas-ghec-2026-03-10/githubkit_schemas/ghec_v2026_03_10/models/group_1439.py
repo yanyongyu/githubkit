@@ -16,8 +16,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
     enabled: bool = Field(
         description="Whether the pull request creation cap is enabled"
@@ -33,6 +33,6 @@ class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapGetResponse200)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapGetResponse200",)

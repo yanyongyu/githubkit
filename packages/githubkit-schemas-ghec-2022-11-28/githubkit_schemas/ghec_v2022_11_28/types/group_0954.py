@@ -23,11 +23,10 @@ from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0683 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectColumnCreatedType(TypedDict):
+    """project_column created event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -36,11 +35,10 @@ class WebhookProjectColumnEditedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectColumnEditedTypeForResponse(TypedDict):
-    """project_column edited event"""
+class WebhookProjectColumnCreatedTypeForResponse(TypedDict):
+    """project_column created event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesTypeForResponse
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -49,35 +47,7 @@ class WebhookProjectColumnEditedTypeForResponse(TypedDict):
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameTypeForResponse]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectColumnEditedPropChangesPropNameTypeForResponse(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-    "WebhookProjectColumnEditedPropChangesPropNameTypeForResponse",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedPropChangesTypeForResponse",
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedTypeForResponse",
+    "WebhookProjectColumnCreatedType",
+    "WebhookProjectColumnCreatedTypeForResponse",
 )

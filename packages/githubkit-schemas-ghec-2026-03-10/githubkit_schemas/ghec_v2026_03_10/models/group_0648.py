@@ -30,9 +30,9 @@ class ExemptionRequest(GitHubModel):
     id: Missing[int] = Field(
         default=UNSET, description="The ID of the exemption request."
     )
-    number: Missing[Union[int, None]] = Field(
+    number: Missing[int] = Field(
         default=UNSET,
-        description="The number uniquely identifying the exemption request within it's repository.",
+        description="The number uniquely identifying the exemption request within its repository.",
     )
     repository_id: Missing[int] = Field(
         default=UNSET,

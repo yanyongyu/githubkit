@@ -9,31 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
 
     name: str = Field()
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this label."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this label choice."
-    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",)

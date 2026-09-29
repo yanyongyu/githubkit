@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
 
     selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
 
     selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
-    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
 )

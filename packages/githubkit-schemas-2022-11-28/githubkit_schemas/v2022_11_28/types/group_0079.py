@@ -10,129 +10,63 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GistHistoryType(TypedDict):
-    """Gist History
+class GistCommentType(TypedDict):
+    """Gist Comment
 
-    Gist History
+    A comment made to a gist.
     """
 
-    user: NotRequired[Union[SimpleUserType, None]]
-    version: NotRequired[str]
-    committed_at: NotRequired[_dt.datetime]
-    change_status: NotRequired[GistHistoryPropChangeStatusType]
-    url: NotRequired[str]
-
-
-class GistHistoryTypeForResponse(TypedDict):
-    """Gist History
-
-    Gist History
-    """
-
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    version: NotRequired[str]
-    committed_at: NotRequired[str]
-    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
-    url: NotRequired[str]
-
-
-class GistHistoryPropChangeStatusType(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
-
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
+    url: str
+    body: str
+    user: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserType, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserType, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Gist
+    A comment made to a gist.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
+    url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserTypeForResponse, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
-
-
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
-
-
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "GistHistoryPropChangeStatusType",
-    "GistHistoryPropChangeStatusTypeForResponse",
-    "GistHistoryType",
-    "GistHistoryTypeForResponse",
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

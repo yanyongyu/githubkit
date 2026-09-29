@@ -20,37 +20,37 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0694 import (
-    WebhooksSecurityAdvisoryType,
-    WebhooksSecurityAdvisoryTypeForResponse,
+from .group_0693 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecurityAdvisoryPublishedType(TypedDict):
-    """security_advisory published event"""
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["published"]
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhooksSecurityAdvisoryType
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryPublishedTypeForResponse(TypedDict):
-    """security_advisory published event"""
+class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["published"]
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryPublishedType",
-    "WebhookSecurityAdvisoryPublishedTypeForResponse",
+    "WebhookSecretScanningAlertValidatedType",
+    "WebhookSecretScanningAlertValidatedTypeForResponse",
 )

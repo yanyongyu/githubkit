@@ -20,67 +20,36 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0985 import (
-    WebhookPullRequestDequeuedPropPullRequestType,
-    WebhookPullRequestDequeuedPropPullRequestTypeForResponse,
-)
+from .group_0685 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestDequeuedType(TypedDict):
-    """pull_request dequeued event"""
+class WebhookPullRequestConvertedToDraftType(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["dequeued"]
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestType
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
+    pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestDequeuedTypeForResponse(TypedDict):
-    """pull_request dequeued event"""
+class WebhookPullRequestConvertedToDraftTypeForResponse(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["dequeued"]
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestDequeuedPropPullRequestTypeForResponse
-    reason: Literal[
-        "UNKNOWN_REMOVAL_REASON",
-        "MANUAL",
-        "MERGE",
-        "MERGE_CONFLICT",
-        "CI_FAILURE",
-        "CI_TIMEOUT",
-        "ALREADY_MERGED",
-        "QUEUE_CLEARED",
-        "ROLL_BACK",
-        "BRANCH_PROTECTIONS",
-        "GIT_TREE_INVALID",
-        "INVALID_MERGE_COMMIT",
-    ]
+    pull_request: PullRequestWebhookTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestDequeuedType",
-    "WebhookPullRequestDequeuedTypeForResponse",
+    "WebhookPullRequestConvertedToDraftType",
+    "WebhookPullRequestConvertedToDraftTypeForResponse",
 )

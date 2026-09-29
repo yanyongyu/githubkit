@@ -9,60 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueTypeType(TypedDict):
-    """Issue Type
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    The type assigned to the issue. This is only present for issues in repositories
-    where issue types are supported.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    is_enabled: NotRequired[bool]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class IssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
 
-    The type assigned to the issue. This is only present for issues in repositories
-    where issue types are supported.
-    """
+    total: int
+    completed: int
+    percent_completed: int
 
-    id: int
-    node_id: str
-    name: str
-    description: Union[str, None]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    is_enabled: NotRequired[bool]
+
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
+
+
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
+    """Issue Dependencies Summary"""
+
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "IssueTypeType",
-    "IssueTypeTypeForResponse",
+    "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
+    "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

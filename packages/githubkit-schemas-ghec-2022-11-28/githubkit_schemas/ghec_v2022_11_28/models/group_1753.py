@@ -12,22 +12,21 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class UserSocialAccountsPostBody(GitHubModel):
+    """UserSocialAccountsPostBody
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: list[str] = Field(
+        description="Full URLs for the social media profiles to add."
     )
-    body: Missing[str] = Field(
-        default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
-    )
 
 
-model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(UserSocialAccountsPostBody)
 
-__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("UserSocialAccountsPostBody",)

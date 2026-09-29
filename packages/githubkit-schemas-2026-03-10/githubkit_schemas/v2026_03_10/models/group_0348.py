@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanEnablement(GitHubModel):
-    """CodeScanningAiScanEnablement
+class CodeQualitySetupUpdateResponse(GitHubModel):
+    """CodeQualitySetupUpdateResponse
 
-    AI Scan enablement for a repository.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan is enabled for the repository."
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(CodeScanningAiScanEnablement)
+model_rebuild(CodeQualitySetupUpdateResponse)
 
-__all__ = ("CodeScanningAiScanEnablement",)
+__all__ = ("CodeQualitySetupUpdateResponse",)

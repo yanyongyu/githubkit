@@ -127,6 +127,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type,
         ReposOwnerRepoIssuesIssueNumberPatchBodyType,
         ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse,
+        ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType,
         ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType,
@@ -5201,6 +5202,394 @@ class IssuesClient:
             stream=stream,
             response_model=Issue,
             error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    def list_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
+        """issues/list-relates-to
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/relates_to
+
+        You can use the REST API to list the issues that are related to an issue.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issues#list-issues-related-to-an-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/relates_to"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_list_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[Issue], list[IssueTypeForResponse]]:
+        """issues/list-relates-to
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/relates_to
+
+        You can use the REST API to list the issues that are related to an issue.
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issues#list-issues-related-to-an-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/relates_to"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Issue],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    @overload
+    def add_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType,
+    ) -> Response[Issue, IssueTypeForResponse]: ...
+
+    @overload
+    def add_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        issue_id: int,
+    ) -> Response[Issue, IssueTypeForResponse]: ...
+
+    def add_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueTypeForResponse]:
+        """issues/add-relates-to
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/relates_to
+
+        You can use the REST API to mark an issue as related to another issue.
+
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issues#add-a-related-issue
+        """
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberRelatesToPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/relates_to"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberRelatesToPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_add_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType,
+    ) -> Response[Issue, IssueTypeForResponse]: ...
+
+    @overload
+    async def async_add_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        issue_id: int,
+    ) -> Response[Issue, IssueTypeForResponse]: ...
+
+    async def async_add_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[Issue, IssueTypeForResponse]:
+        """issues/add-relates-to
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/relates_to
+
+        You can use the REST API to mark an issue as related to another issue.
+
+        Creating content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issues#add-a-related-issue
+        """
+
+        from ..models import (
+            BasicError,
+            Issue,
+            ReposOwnerRepoIssuesIssueNumberRelatesToPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/relates_to"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberRelatesToPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def remove_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueTypeForResponse]:
+        """issues/remove-relates-to
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/relates_to/{issue_id}
+
+        You can use the REST API to remove a 'relates to' relationship between two issues.
+
+        Removing content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issues#remove-a-related-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/relates_to/{issue_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+            },
+        )
+
+    async def async_remove_relates_to(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        issue_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[Issue, IssueTypeForResponse]:
+        """issues/remove-relates-to
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/relates_to/{issue_id}
+
+        You can use the REST API to remove a 'relates to' relationship between two issues.
+
+        Removing content too quickly using this endpoint may result in secondary rate limiting.
+        For more information, see [Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)
+        and [Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api).
+
+        This endpoint supports the following custom media types. For more information, see [Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types).
+
+        - **`application/vnd.github.raw+json`**: Returns the raw Markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+        - **`application/vnd.github.text+json`**: Returns a text only representation of the Markdown body. Response will include `body_text`.
+        - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's Markdown. Response will include `body_html`.
+        - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+
+        See also: https://docs.github.com/rest/issues/issues#remove-a-related-issue
+        """
+
+        from ..models import BasicError, Issue
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/relates_to/{issue_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Issue,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
                 "404": BasicError,
                 "410": BasicError,
             },

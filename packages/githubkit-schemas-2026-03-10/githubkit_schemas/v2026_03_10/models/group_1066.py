@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,66 +16,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    Full session details within a task
-    """
-
-    id: str = Field(description="Session ID")
-    name: Missing[str] = Field(default=UNSET, description="Session name")
-    user: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser] = (
-        Field(default=UNSET, description="The user who created this session")
-    )
-    owner: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner] = (
-        Field(default=UNSET, description="The owner of the repository")
-    )
-    repository: Missing[
-        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
-    ] = Field(default=UNSET, description="The repository this session belongs to")
-    task_id: Missing[str] = Field(
-        default=UNSET, description="Task ID this session belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(description="Current state of a session")
-    created_at: _dt.datetime = Field(description="Creation timestamp")
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Last update timestamp"
-    )
-    completed_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Completion timestamp"
-    )
-    prompt: Missing[str] = Field(
-        default=UNSET, description="Content of the triggering event"
-    )
-    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
-    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
-    model: Missing[str] = Field(
-        default=UNSET, description="Model used for this session"
-    )
-    usage: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage] = (
-        Field(
-            default=UNSET,
-            description="Structured information about billing units consumed by the session.",
-        )
-    )
-    error: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError] = (
-        Field(default=UNSET, description="Error details for a failed session")
-    )
-
-
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
-
-    The user who created this session
+    A GitHub user
     """
 
     id: Missing[int] = Field(
@@ -86,10 +27,10 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(GitHubModel
     )
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 
-    The owner of the repository
+    A GitHub user
     """
 
     id: Missing[int] = Field(
@@ -97,10 +38,10 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(GitHubMode
     )
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+class AgentsTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
 
-    The repository this session belongs to
+    The repository this task belongs to
     """
 
     id: Missing[int] = Field(
@@ -108,41 +49,26 @@ class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(GitHu
     )
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
 
-    Structured information about billing units consumed by the session.
+    Custom agent metadata associated with this task
     """
 
-    type: Literal["ai_credits", "premium_requests"] = Field(
-        description="Billing unit used for this session. New sessions since June 1, 2026 use `ai_credits`, but older sessions use `premium_requests`."
-    )
-    amount: float = Field(
-        description="Number of billing units used by this session. When the `type` is `ai_credits`, the value is a whole number, expressed in nano units. When presenting this to a human, divide by 1,000,000,000 and round to one decimal place. When aggregating (for example, summing usage across sessions), sum the nano values first, and divide once at the end before presenting to a human to avoid losing precision. When the `type` is `premium_requests`, the value may be fractional (for example `1.5`)."
+    id: Missing[str] = Field(
+        default=UNSET,
+        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
     )
 
 
-class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
-
-    Error details for a failed session
-    """
-
-    message: Missing[str] = Field(default=UNSET, description="Error message")
-
-
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage)
-model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropRepository)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage",
-    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepository",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
 )

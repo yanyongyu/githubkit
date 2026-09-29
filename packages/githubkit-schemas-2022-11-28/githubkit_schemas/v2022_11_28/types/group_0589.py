@@ -9,71 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0590 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
+)
 
 
-class WebhooksLabelArchivedAllof1PropArchivedByType(TypedDict):
-    """WebhooksLabelArchivedAllof1PropArchivedBy
+class WebhooksLabelArchivedAllof1Type(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    The user who archived the label.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
 
 
-class WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelArchivedAllof1PropArchivedBy
+class WebhooksLabelArchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    The user who archived the label.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
 
 
 __all__ = (
-    "WebhooksLabelArchivedAllof1PropArchivedByType",
-    "WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse",
+    "WebhooksLabelArchivedAllof1Type",
+    "WebhooksLabelArchivedAllof1TypeForResponse",
 )

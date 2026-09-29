@@ -18,32 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
     """
 
-    token_types: Missing[list[str]] = Field(
-        default=UNSET, description="The credential types to include."
-    )
-    authorization_state: Missing[
-        Literal["currently_authorized", "member_owned_only"]
-    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
-    owner: Missing[str] = Field(
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke for the user.")
+    revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="Filter to credentials owned by this user, given as a login.",
-    )
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
-    )
-    application: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
+        description="Whether to also destroy the actual credential of this type owned by the\nuser. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, the credential of the given type owned\nby the user will be destroyed in addition to the credential authorizations.\nNote that `oauth_app_token` credentials cannot be destroyed; for that type\nonly the credential authorizations are revoked.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",
+)

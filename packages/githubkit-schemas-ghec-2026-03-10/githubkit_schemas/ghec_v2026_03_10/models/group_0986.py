@@ -22,16 +22,13 @@ from .group_0642 import EnterpriseWebhooks
 from .group_0643 import SimpleInstallation
 from .group_0644 import OrganizationSimpleWebhooks
 from .group_0645 import RepositoryWebhooks
-from .group_0685 import PullRequestWebhook
+from .group_0987 import WebhookPullRequestDequeuedPropPullRequest
 
 
-class WebhookPullRequestEdited(GitHubModel):
-    """pull_request edited event"""
+class WebhookPullRequestDequeued(GitHubModel):
+    """pull_request dequeued event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookPullRequestEditedPropChanges = Field(
-        description="The changes to the comment if the action was `edited`."
-    )
+    action: Literal["dequeued"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,7 +45,23 @@ class WebhookPullRequestEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhookPullRequestDequeuedPropPullRequest = Field(
+        title="Pull Request"
+    )
+    reason: Literal[
+        "UNKNOWN_REMOVAL_REASON",
+        "MANUAL",
+        "MERGE",
+        "MERGE_CONFLICT",
+        "CI_FAILURE",
+        "CI_TIMEOUT",
+        "ALREADY_MERGED",
+        "QUEUE_CLEARED",
+        "ROLL_BACK",
+        "BRANCH_PROTECTIONS",
+        "GIT_TREE_INVALID",
+        "INVALID_MERGE_COMMIT",
+    ] = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -56,68 +69,6 @@ class WebhookPullRequestEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookPullRequestEditedPropChanges(GitHubModel):
-    """WebhookPullRequestEditedPropChanges
+model_rebuild(WebhookPullRequestDequeued)
 
-    The changes to the comment if the action was `edited`.
-    """
-
-    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
-    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropTitle"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
-    )
-
-
-class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBase"""
-
-    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
-    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookPullRequestEdited)
-model_rebuild(WebhookPullRequestEditedPropChanges)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
-model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
-
-__all__ = (
-    "WebhookPullRequestEdited",
-    "WebhookPullRequestEditedPropChanges",
-    "WebhookPullRequestEditedPropChangesPropBase",
-    "WebhookPullRequestEditedPropChangesPropBasePropRef",
-    "WebhookPullRequestEditedPropChangesPropBasePropSha",
-    "WebhookPullRequestEditedPropChangesPropBody",
-    "WebhookPullRequestEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookPullRequestDequeued",)

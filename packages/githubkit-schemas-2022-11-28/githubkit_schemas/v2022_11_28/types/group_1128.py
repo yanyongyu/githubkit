@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC Subject customization
+class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
-    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsRepositoriesPutBodyTypeForResponse",
 )

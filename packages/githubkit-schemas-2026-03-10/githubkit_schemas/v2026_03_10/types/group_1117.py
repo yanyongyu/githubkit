@@ -12,45 +12,55 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
+    images: list[ActionsHostedRunnerCustomImageType]
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesCustomGetResponse200"""
 
     total_count: int
-    repository_cache_usages: list[ActionsCacheUsageByRepositoryTypeForResponse]
+    images: list[ActionsHostedRunnerCustomImageTypeForResponse]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
+class ActionsHostedRunnerCustomImageType(TypedDict):
+    """GitHub-hosted runner custom image details
 
-    GitHub Actions Cache Usage by repository.
+    Provides details of a custom runner image
     """
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
-class ActionsCacheUsageByRepositoryTypeForResponse(TypedDict):
-    """Actions Cache Usage by repository
+class ActionsHostedRunnerCustomImageTypeForResponse(TypedDict):
+    """GitHub-hosted runner custom image details
 
-    GitHub Actions Cache Usage by repository.
+    Provides details of a custom runner image
     """
 
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
+    id: int
+    platform: str
+    total_versions_size: int
+    name: str
+    source: str
+    versions_count: int
+    latest_version: str
+    state: str
 
 
 __all__ = (
-    "ActionsCacheUsageByRepositoryType",
-    "ActionsCacheUsageByRepositoryTypeForResponse",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200TypeForResponse",
+    "ActionsHostedRunnerCustomImageType",
+    "ActionsHostedRunnerCustomImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesCustomGetResponse200TypeForResponse",
 )

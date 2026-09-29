@@ -13,20 +13,26 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0285 import SecretScanningCustomPatternToDelete
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
-        description="The reason for bypassing push protection."
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
     )
-    placeholder_id: str = Field(
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+        default=UNSET,
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)

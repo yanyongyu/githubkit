@@ -20,39 +20,42 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0658 import WebhooksLabelType, WebhooksLabelTypeForResponse
 from .group_1029 import (
-    WebhookPullRequestUnlockedPropPullRequestType,
-    WebhookPullRequestUnlockedPropPullRequestTypeForResponse,
+    WebhookPullRequestUnlabeledPropPullRequestType,
+    WebhookPullRequestUnlabeledPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestUnlockedType(TypedDict):
-    """pull_request unlocked event"""
+class WebhookPullRequestUnlabeledType(TypedDict):
+    """pull_request unlabeled event"""
 
-    action: Literal["unlocked"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: NotRequired[WebhooksLabelType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestUnlockedPropPullRequestType
+    pull_request: WebhookPullRequestUnlabeledPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestUnlockedTypeForResponse(TypedDict):
-    """pull_request unlocked event"""
+class WebhookPullRequestUnlabeledTypeForResponse(TypedDict):
+    """pull_request unlabeled event"""
 
-    action: Literal["unlocked"]
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: NotRequired[WebhooksLabelTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestUnlockedPropPullRequestTypeForResponse
+    pull_request: WebhookPullRequestUnlabeledPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestUnlockedType",
-    "WebhookPullRequestUnlockedTypeForResponse",
+    "WebhookPullRequestUnlabeledType",
+    "WebhookPullRequestUnlabeledTypeForResponse",
 )

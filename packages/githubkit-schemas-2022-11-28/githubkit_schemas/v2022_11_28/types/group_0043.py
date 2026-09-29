@@ -9,51 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class LabelType(TypedDict):
+    """Label
 
-    A GitHub organization.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    login: str
     id: int
     node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
+    name: str
     description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[_dt.datetime, None]
+    archived_by: None
 
 
-class OrganizationSimpleTypeForResponse(TypedDict):
-    """Organization Simple
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    A GitHub organization.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    login: str
     id: int
     node_id: str
     url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
+    name: str
     description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[str, None]
+    archived_by: None
 
 
 __all__ = (
-    "OrganizationSimpleType",
-    "OrganizationSimpleTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

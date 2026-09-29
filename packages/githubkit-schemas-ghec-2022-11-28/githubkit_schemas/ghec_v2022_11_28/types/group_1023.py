@@ -9,10 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0338 import PullRequestStackType, PullRequestStackTypeForResponse
 from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
 from .group_0645 import (
@@ -21,42 +22,40 @@ from .group_0645 import (
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_1024 import (
-    WebhookPullRequestSynchronizePropPullRequestType,
-    WebhookPullRequestSynchronizePropPullRequestTypeForResponse,
+    WebhookPullRequestStackedPropPullRequestType,
+    WebhookPullRequestStackedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestSynchronizeType(TypedDict):
-    """pull_request synchronize event"""
+class WebhookPullRequestStackedType(TypedDict):
+    """pull_request stacked event"""
 
-    action: Literal["synchronize"]
-    after: str
-    before: str
+    action: Literal["stacked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    stack: NotRequired[Union[PullRequestStackType, None]]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestSynchronizePropPullRequestType
+    pull_request: WebhookPullRequestStackedPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestSynchronizeTypeForResponse(TypedDict):
-    """pull_request synchronize event"""
+class WebhookPullRequestStackedTypeForResponse(TypedDict):
+    """pull_request stacked event"""
 
-    action: Literal["synchronize"]
-    after: str
-    before: str
+    action: Literal["stacked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestSynchronizePropPullRequestTypeForResponse
+    pull_request: WebhookPullRequestStackedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestSynchronizeType",
-    "WebhookPullRequestSynchronizeTypeForResponse",
+    "WebhookPullRequestStackedType",
+    "WebhookPullRequestStackedTypeForResponse",
 )

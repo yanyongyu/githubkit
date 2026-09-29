@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
 )

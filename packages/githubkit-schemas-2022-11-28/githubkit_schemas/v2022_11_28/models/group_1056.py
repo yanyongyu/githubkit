@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse422(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse422(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems]
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -39,8 +39,8 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse422(GitHubModel):
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +59,10 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse422)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse422",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems",
 )

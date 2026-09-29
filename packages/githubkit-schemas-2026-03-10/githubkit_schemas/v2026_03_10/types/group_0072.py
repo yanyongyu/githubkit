@@ -12,26 +12,26 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0073 import (
-    CommitCommentEventPropCommentType,
-    CommitCommentEventPropCommentTypeForResponse,
+    ReleaseEventPropReleaseType,
+    ReleaseEventPropReleaseTypeForResponse,
 )
 
 
-class CommitCommentEventType(TypedDict):
-    """CommitCommentEvent"""
+class ReleaseEventType(TypedDict):
+    """ReleaseEvent"""
 
     action: str
-    comment: CommitCommentEventPropCommentType
+    release: ReleaseEventPropReleaseType
 
 
-class CommitCommentEventTypeForResponse(TypedDict):
-    """CommitCommentEvent"""
+class ReleaseEventTypeForResponse(TypedDict):
+    """ReleaseEvent"""
 
     action: str
-    comment: CommitCommentEventPropCommentTypeForResponse
+    release: ReleaseEventPropReleaseTypeForResponse
 
 
 __all__ = (
-    "CommitCommentEventType",
-    "CommitCommentEventTypeForResponse",
+    "ReleaseEventType",
+    "ReleaseEventTypeForResponse",
 )

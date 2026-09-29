@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0149 import RunnerType, RunnerTypeForResponse
+from .group_0148 import RunnerType, RunnerTypeForResponse
 
 
 class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):

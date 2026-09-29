@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
+    The total number of seats created for members of the specified team(s).
+    """
 
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: (
-        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
-    )
+    seats_created: int
 
 
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-Resource-specific metadata.
-"""
+    The total number of seats created for members of the specified team(s).
+    """
 
-
-OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

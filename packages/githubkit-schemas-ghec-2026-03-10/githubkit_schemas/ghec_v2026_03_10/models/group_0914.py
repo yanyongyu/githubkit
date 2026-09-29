@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0665 import WebhooksMilestone
 
 
-class WebhookMilestoneDeleted(GitHubModel):
-    """milestone deleted event"""
+class WebhookMilestoneClosed(GitHubModel):
+    """milestone closed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +55,6 @@ class WebhookMilestoneDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneDeleted)
+model_rebuild(WebhookMilestoneClosed)
 
-__all__ = ("WebhookMilestoneDeleted",)
+__all__ = ("WebhookMilestoneClosed",)

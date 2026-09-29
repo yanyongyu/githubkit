@@ -9,17 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
-    message: str = Field()
+    credential_id: int = Field()
+    credential_type: Literal["classic_pat"] = Field()
+    organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)

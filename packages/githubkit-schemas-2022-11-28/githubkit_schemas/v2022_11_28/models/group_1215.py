@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
-        description="Resource-specific metadata."
-    )
-
-
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-    Resource-specific metadata.
+    The total number of seats created for members of the specified team(s).
     """
 
+    seats_created: int = Field()
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
 
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
+
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)

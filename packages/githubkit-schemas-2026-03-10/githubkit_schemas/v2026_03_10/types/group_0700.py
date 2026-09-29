@@ -14,29 +14,29 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0562 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import (
+from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0565 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0573 import WebhooksUserType, WebhooksUserTypeForResponse
-from .group_0579 import (
+from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0574 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0580 import (
     WebhooksRepositoriesAddedItemsType,
     WebhooksRepositoriesAddedItemsTypeForResponse,
 )
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationRepositoriesAddedType(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repositories_added: list[WebhooksRepositoriesAddedItemsType]
     repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType
     ]
     repository: NotRequired[RepositoryWebhooksType]
     repository_selection: Literal["all", "selected"]
@@ -44,16 +44,16 @@ class WebhookInstallationRepositoriesRemovedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookInstallationRepositoriesRemovedTypeForResponse(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationRepositoriesAddedTypeForResponse(TypedDict):
+    """installation_repositories added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repositories_added: list[WebhooksRepositoriesAddedItemsTypeForResponse]
     repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse
     ]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
     repository_selection: Literal["all", "selected"]
@@ -61,31 +61,31 @@ class WebhookInstallationRepositoriesRemovedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse(
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse(
     TypedDict
 ):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    full_name: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsTypeForResponse",
-    "WebhookInstallationRepositoriesRemovedType",
-    "WebhookInstallationRepositoriesRemovedTypeForResponse",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItemsTypeForResponse",
+    "WebhookInstallationRepositoriesAddedType",
+    "WebhookInstallationRepositoriesAddedTypeForResponse",
 )

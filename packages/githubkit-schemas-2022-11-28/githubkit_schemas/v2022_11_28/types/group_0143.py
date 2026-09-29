@@ -11,51 +11,49 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
+from .group_0121 import (
     ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
     ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
 )
-from .group_0130 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0125 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
-from .group_0137 import (
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
-    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+from .group_0138 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
 )
 
 
-class ActionsPolicyEnterpriseConditionsOneof3Type(TypedDict):
-    """organization_id_and_repository_property
+class ActionsPolicyEnterpriseConditionsOneof4Type(TypedDict):
+    """organization_property_and_repository_name
 
-    Conditions to target organizations by id and repositories by property
+    Conditions to target organizations by property and repositories by name
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
-    )
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
     )
     workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class ActionsPolicyEnterpriseConditionsOneof3TypeForResponse(TypedDict):
-    """organization_id_and_repository_property
+class ActionsPolicyEnterpriseConditionsOneof4TypeForResponse(TypedDict):
+    """organization_property_and_repository_name
 
-    Conditions to target organizations by id and repositories by property
+    Conditions to target organizations by property and repositories by name
     """
 
-    organization_id: (
-        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
     )
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
     workflow_path: NotRequired[
         ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
 
 
 __all__ = (
-    "ActionsPolicyEnterpriseConditionsOneof3Type",
-    "ActionsPolicyEnterpriseConditionsOneof3TypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof4Type",
+    "ActionsPolicyEnterpriseConditionsOneof4TypeForResponse",
 )

@@ -23,10 +23,10 @@ from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0666 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookMilestoneDeletedType(TypedDict):
-    """milestone deleted event"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     milestone: WebhooksMilestoneType
@@ -35,10 +35,10 @@ class WebhookMilestoneDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMilestoneDeletedTypeForResponse(TypedDict):
-    """milestone deleted event"""
+class WebhookMilestoneClosedTypeForResponse(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     milestone: WebhooksMilestoneTypeForResponse
@@ -48,6 +48,6 @@ class WebhookMilestoneDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookMilestoneDeletedType",
-    "WebhookMilestoneDeletedTypeForResponse",
+    "WebhookMilestoneClosedType",
+    "WebhookMilestoneClosedTypeForResponse",
 )

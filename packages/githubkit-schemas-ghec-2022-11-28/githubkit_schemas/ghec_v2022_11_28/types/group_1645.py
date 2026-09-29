@@ -10,26 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: str
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: str
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse",
 )

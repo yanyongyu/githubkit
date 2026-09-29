@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    attestation_ids: list[int]
+    repository_id: int
+    alert_numbers: list[int]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
+class OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems"""
 
-    attestation_ids: list[int]
+    repository_id: int
+    alert_numbers: list[int]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsType",
+    "OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItemsTypeForResponse",
 )

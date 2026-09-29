@@ -14,29 +14,33 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0085 import (
+    MarketplacePurchasePropMarketplacePendingChange,
+    MarketplacePurchasePropMarketplacePurchase,
+)
 
 
-class License(GitHubModel):
-    """License
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    License
+    Marketplace Purchase
     """
 
-    key: str = Field()
-    name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: list[str] = Field()
-    conditions: list[str] = Field()
-    limitations: list[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
+    url: str = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-model_rebuild(License)
+model_rebuild(MarketplacePurchase)
 
-__all__ = ("License",)
+__all__ = ("MarketplacePurchase",)

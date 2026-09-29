@@ -25,10 +25,10 @@ from .group_0646 import RepositoryWebhooks
 from .group_0692 import WebhooksRelease1
 
 
-class WebhookReleaseUnpublished(GitHubModel):
-    """release unpublished event"""
+class WebhookReleasePublished(GitHubModel):
+    """release published event"""
 
-    action: Literal["unpublished"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -57,6 +57,6 @@ class WebhookReleaseUnpublished(GitHubModel):
     )
 
 
-model_rebuild(WebhookReleaseUnpublished)
+model_rebuild(WebhookReleasePublished)
 
-__all__ = ("WebhookReleaseUnpublished",)
+__all__ = ("WebhookReleasePublished",)

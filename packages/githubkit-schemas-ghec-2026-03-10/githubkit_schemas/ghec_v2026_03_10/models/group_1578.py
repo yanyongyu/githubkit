@@ -16,26 +16,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
-    GitHubModel
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
+    message: str = Field(description="The commit message.")
+    sha: str = Field(description="The blob SHA of the file being deleted.")
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch name. Default: the repository’s default branch",
+    )
+    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
+        default=UNSET, description="object containing information about the committer."
+    )
+    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
+        default=UNSET, description="object containing information about the author."
+    )
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
     """
 
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
     )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+    object containing information about the author.
+    """
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the author (or committer) of the commit"
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="The email of the author (or committer) of the commit",
+    )
+
+
+model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
+
+__all__ = (
+    "ReposOwnerRepoContentsPathDeleteBody",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
+)

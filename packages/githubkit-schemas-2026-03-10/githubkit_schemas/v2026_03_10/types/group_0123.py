@@ -9,18 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0121 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
 
 
-class ActionsPolicyRepoConditionsOneof0Type(TypedDict):
-    """ActionsPolicyRepoConditionsOneof0"""
+class ActionsPolicyRepoConditionsOneof1Type(TypedDict):
+    """ActionsPolicyRepoConditionsOneof1"""
+
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class ActionsPolicyRepoConditionsOneof0TypeForResponse(TypedDict):
-    """ActionsPolicyRepoConditionsOneof0"""
+class ActionsPolicyRepoConditionsOneof1TypeForResponse(TypedDict):
+    """ActionsPolicyRepoConditionsOneof1"""
+
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "ActionsPolicyRepoConditionsOneof0Type",
-    "ActionsPolicyRepoConditionsOneof0TypeForResponse",
+    "ActionsPolicyRepoConditionsOneof1Type",
+    "ActionsPolicyRepoConditionsOneof1TypeForResponse",
 )

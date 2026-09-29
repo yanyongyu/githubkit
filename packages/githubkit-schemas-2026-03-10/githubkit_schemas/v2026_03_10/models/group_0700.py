@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0018 import Installation
-from .group_0562 import EnterpriseWebhooks
-from .group_0564 import OrganizationSimpleWebhooks
-from .group_0565 import RepositoryWebhooks
-from .group_0573 import WebhooksUser
-from .group_0579 import WebhooksRepositoriesAddedItems
+from .group_0563 import EnterpriseWebhooks
+from .group_0565 import OrganizationSimpleWebhooks
+from .group_0566 import RepositoryWebhooks
+from .group_0574 import WebhooksUser
+from .group_0580 import WebhooksRepositoriesAddedItems
 
 
-class WebhookInstallationRepositoriesRemoved(GitHubModel):
-    """installation_repositories removed event"""
+class WebhookInstallationRepositoriesAdded(GitHubModel):
+    """installation_repositories added event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,7 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
         description="An array of repository objects, which were added to the installation."
     )
     repositories_removed: list[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems
     ] = Field(
         description="An array of repository objects, which were removed from the installation. When `repository_selection` changes from `all` to `selected`, this array is empty."
     )
@@ -61,20 +61,24 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubModel):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
+    full_name: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the repository"
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    node_id: Missing[str] = Field(default=UNSET)
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the repository is private or public."
+    )
 
 
-model_rebuild(WebhookInstallationRepositoriesRemoved)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems)
+model_rebuild(WebhookInstallationRepositoriesAdded)
+model_rebuild(WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems)
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemoved",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
+    "WebhookInstallationRepositoriesAdded",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems",
 )

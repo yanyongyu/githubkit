@@ -10,28 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodeScanningAiScanEnablementUpdateType(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class CodeScanningAiScanEnablementType(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    AI Scan enablement update for a repository.
+    AI Scan enablement for a repository.
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    pr_scan: Literal["enabled", "disabled"]
 
 
-class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    AI Scan enablement update for a repository.
+    AI Scan enablement for a repository.
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    pr_scan: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementUpdateType",
-    "CodeScanningAiScanEnablementUpdateTypeForResponse",
+    "CodeScanningAiScanEnablementType",
+    "CodeScanningAiScanEnablementTypeForResponse",
 )

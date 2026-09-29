@@ -69,6 +69,8 @@ from .issue_comment import Event as IssueCommentEvent
 from .issue_comment import action_types as issue_comment_action_types
 from .issue_dependencies import Event as IssueDependenciesEvent
 from .issue_dependencies import action_types as issue_dependencies_action_types
+from .issue_relates_to import Event as IssueRelatesToEvent
+from .issue_relates_to import action_types as issue_relates_to_action_types
 from .issues import Event as IssuesEvent
 from .issues import action_types as issues_action_types
 from .label import Event as LabelEvent
@@ -207,6 +209,7 @@ WebhookEvent = Union[
     InstallationTargetEvent,
     IssueCommentEvent,
     IssueDependenciesEvent,
+    IssueRelatesToEvent,
     IssuesEvent,
     LabelEvent,
     MarketplacePurchaseEvent,
@@ -285,6 +288,7 @@ webhook_action_types = {
     "installation_target": installation_target_action_types,
     "issue_comment": issue_comment_action_types,
     "issue_dependencies": issue_dependencies_action_types,
+    "issue_relates_to": issue_relates_to_action_types,
     "issues": issues_action_types,
     "label": label_action_types,
     "marketplace_purchase": marketplace_purchase_action_types,
@@ -363,6 +367,7 @@ webhook_event_types = {
     "installation_target": InstallationTargetEvent,
     "issue_comment": IssueCommentEvent,
     "issue_dependencies": IssueDependenciesEvent,
+    "issue_relates_to": IssueRelatesToEvent,
     "issues": IssuesEvent,
     "label": LabelEvent,
     "marketplace_purchase": MarketplacePurchaseEvent,

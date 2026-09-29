@@ -12,34 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0045 import Label
-from .group_0055 import Issue
+from .group_0064 import ForkEventPropForkee
 
 
-class IssuesEvent(GitHubModel):
-    """IssuesEvent"""
+class ForkEvent(GitHubModel):
+    """ForkEvent"""
 
     action: str = Field()
-    issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
-    )
-    labels: Missing[list[Label]] = Field(default=UNSET)
+    forkee: ForkEventPropForkee = Field()
 
 
-model_rebuild(IssuesEvent)
+model_rebuild(ForkEvent)
 
-__all__ = ("IssuesEvent",)
+__all__ = ("ForkEvent",)

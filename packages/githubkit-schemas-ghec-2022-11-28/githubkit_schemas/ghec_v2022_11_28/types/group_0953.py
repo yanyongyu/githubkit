@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
@@ -20,34 +20,34 @@ from .group_0645 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0683 import WebhooksProjectColumnType, WebhooksProjectColumnTypeForResponse
+from .group_0682 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectColumnDeletedType(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectClosedType(TypedDict):
+    """project closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[Union[RepositoryWebhooksType, None]]
-    sender: NotRequired[SimpleUserType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookProjectColumnDeletedTypeForResponse(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectClosedTypeForResponse(TypedDict):
+    """project closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    project_column: WebhooksProjectColumnTypeForResponse
-    repository: NotRequired[Union[RepositoryWebhooksTypeForResponse, None]]
-    sender: NotRequired[SimpleUserTypeForResponse]
+    project: WebhooksProjectTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookProjectColumnDeletedType",
-    "WebhookProjectColumnDeletedTypeForResponse",
+    "WebhookProjectClosedType",
+    "WebhookProjectClosedTypeForResponse",
 )

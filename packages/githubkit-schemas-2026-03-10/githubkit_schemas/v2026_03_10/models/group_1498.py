@@ -9,45 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0521 import PullRequestStackPullRequest
 
 
-class ReposOwnerRepoStacksPostResponse422(GitHubModel):
-    """Validation Error
+class ReposOwnerRepoStacksPostResponse201(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
-        default=UNSET
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
 
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
-    )
+    ref: str = Field()
 
 
-model_rebuild(ReposOwnerRepoStacksPostResponse422)
-model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
+model_rebuild(ReposOwnerRepoStacksPostResponse201)
+model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse422",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
+    "ReposOwnerRepoStacksPostResponse201",
+    "ReposOwnerRepoStacksPostResponse201PropBase",
 )

@@ -9,25 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
-
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
-    )
+class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
+    """OrgsOrgCopilotContentExclusionPutBody"""
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202)
+model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)

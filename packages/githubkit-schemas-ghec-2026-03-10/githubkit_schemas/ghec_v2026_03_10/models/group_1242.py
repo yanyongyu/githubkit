@@ -11,40 +11,47 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    type: Missing[str] = Field(
-        default=UNSET, description="The record type (request or response)."
+    organizations: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of organization logins within the enterprise to enable Copilot cloud agent for.",
     )
-    user_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who made the request."
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the enterprise."
-    )
-    github_request_id: Missing[str] = Field(
-        default=UNSET, description="The GitHub request ID."
-    )
-    endpoint: Missing[str] = Field(
-        default=UNSET, description="The API endpoint called."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The request or response body."
-    )
-    timestamp: Missing[int] = Field(
-        default=UNSET, alias="@timestamp", description="Milliseconds since Unix epoch."
-    )
-    event_id: Missing[str] = Field(
-        default=UNSET, description="The source-assigned event ID."
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items)
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
 
-__all__ = ("EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items",)
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
+    )
+    values: list[str] = Field(description="The values of the custom property to match.")
+
+
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
+)

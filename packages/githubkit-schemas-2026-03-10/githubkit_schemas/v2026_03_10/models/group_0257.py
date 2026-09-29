@@ -17,23 +17,74 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0258 import RepositoryRuleCopilotCodeReviewPropParameters
 
+class RepositoryRuleCodeQuality(GitHubModel):
+    """code_quality
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
-
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
+    type: Literal["code_quality"] = Field()
+    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleCodeQualityPropParameters(GitHubModel):
+    """RepositoryRuleCodeQualityPropParameters"""
+
+    severity: Literal["errors", "warnings", "notes", "all"] = Field(
+        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
     )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+class RepositoryRuleCodeCoverage(GitHubModel):
+    """code_coverage
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+    Enforce minimum line coverage thresholds on pull requests. When configured,
+    uploaded coverage data must meet the specified criteria before changes can be
+    merged.
+    """
+
+    type: Literal["code_coverage"] = Field()
+    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
+    """RepositoryRuleCodeCoveragePropParameters"""
+
+    max_coverage_drop: Missing[float] = Field(
+        le=100.0,
+        default=UNSET,
+        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
+    )
+    minimum_coverage: Missing[float] = Field(
+        le=100.0,
+        default=UNSET,
+        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
+    )
+
+
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
+
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
+    """
+
+    type: Literal["license_compliance_scanning"] = Field()
+
+
+model_rebuild(RepositoryRuleCodeQuality)
+model_rebuild(RepositoryRuleCodeQualityPropParameters)
+model_rebuild(RepositoryRuleCodeCoverage)
+model_rebuild(RepositoryRuleCodeCoveragePropParameters)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
+
+__all__ = (
+    "RepositoryRuleCodeCoverage",
+    "RepositoryRuleCodeCoveragePropParameters",
+    "RepositoryRuleCodeQuality",
+    "RepositoryRuleCodeQualityPropParameters",
+    "RepositoryRuleLicenseComplianceScanning",
+)

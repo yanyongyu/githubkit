@@ -12,21 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ActionsPolicyWorkflowPathConditionPropWorkflowPathType(TypedDict):
-    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
-
-    include: list[str]
-    exclude: list[str]
+class ActionsPolicyRepoConditionsOneof0Type(TypedDict):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
-class ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse(TypedDict):
-    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
-
-    include: list[str]
-    exclude: list[str]
+class ActionsPolicyRepoConditionsOneof0TypeForResponse(TypedDict):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
 __all__ = (
-    "ActionsPolicyWorkflowPathConditionPropWorkflowPathType",
-    "ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse",
+    "ActionsPolicyRepoConditionsOneof0Type",
+    "ActionsPolicyRepoConditionsOneof0TypeForResponse",
 )

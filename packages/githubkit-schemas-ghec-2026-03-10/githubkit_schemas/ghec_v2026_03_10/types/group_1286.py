@@ -9,37 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    enterprise_teams: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    users: NotRequired[list[str]]
+    organizations: NotRequired[list[str]]
+    repositories: NotRequired[list[str]]
+    enterprise_teams: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsPostBodyType",
-    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyTypeForResponse",
 )

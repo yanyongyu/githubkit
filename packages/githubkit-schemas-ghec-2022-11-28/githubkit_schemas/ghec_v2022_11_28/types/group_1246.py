@@ -12,26 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
+from githubkit.typing import UniqueList
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0"""
 
     credential_id: int
     credential_type: Literal["classic_pat"]
-    organizations: list[str]
+    organizations: UniqueList[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0"""
 
     credential_id: int
     credential_type: Literal["classic_pat"]
-    organizations: list[str]
+    organizations: UniqueList[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0TypeForResponse",
 )

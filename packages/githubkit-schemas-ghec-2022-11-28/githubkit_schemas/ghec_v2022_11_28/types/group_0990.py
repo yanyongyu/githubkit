@@ -20,42 +20,39 @@ from .group_0645 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0659 import WebhooksLabelType, WebhooksLabelTypeForResponse
 from .group_0991 import (
-    WebhookPullRequestLabeledPropPullRequestType,
-    WebhookPullRequestLabeledPropPullRequestTypeForResponse,
+    WebhookPullRequestEnqueuedPropPullRequestType,
+    WebhookPullRequestEnqueuedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestLabeledType(TypedDict):
-    """pull_request labeled event"""
+class WebhookPullRequestEnqueuedType(TypedDict):
+    """pull_request enqueued event"""
 
-    action: Literal["labeled"]
+    action: Literal["enqueued"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: NotRequired[WebhooksLabelType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestLabeledPropPullRequestType
+    pull_request: WebhookPullRequestEnqueuedPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestLabeledTypeForResponse(TypedDict):
-    """pull_request labeled event"""
+class WebhookPullRequestEnqueuedTypeForResponse(TypedDict):
+    """pull_request enqueued event"""
 
-    action: Literal["labeled"]
+    action: Literal["enqueued"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: NotRequired[WebhooksLabelTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestLabeledPropPullRequestTypeForResponse
+    pull_request: WebhookPullRequestEnqueuedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestLabeledType",
-    "WebhookPullRequestLabeledTypeForResponse",
+    "WebhookPullRequestEnqueuedType",
+    "WebhookPullRequestEnqueuedTypeForResponse",
 )

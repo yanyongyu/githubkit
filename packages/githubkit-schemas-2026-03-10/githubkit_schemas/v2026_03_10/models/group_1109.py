@@ -9,25 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
-    ExtraGitHubModel
-):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-    rties
+class NotificationsPutResponse202(GitHubModel):
+    """NotificationsPutResponse202"""
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values. Present for org repos only.
-    """
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-)
+model_rebuild(NotificationsPutResponse202)
 
-__all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
-)
+__all__ = ("NotificationsPutResponse202",)

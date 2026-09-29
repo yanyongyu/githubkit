@@ -12,16 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to add to the team."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200",
+)

@@ -134,6 +134,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
         EnterprisesEnterpriseAuditLogStreamsPostBodyType,
+        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse,
@@ -4966,6 +4967,8 @@ class EnterpriseAdminClient:
 
         Creates an audit log streaming configuration for any of the supported streaming endpoints: Azure Blob Storage, Azure Event Hubs, Amazon S3, Splunk, Google Cloud Storage, Datadog.
 
+        Microsoft Agent365 and Microsoft Purview streams require Microsoft Entra authorization and cannot be created with this endpoint. Configure those destinations from the enterprise audit log streaming settings.
+
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#create-an-audit-log-streaming-configuration-for-an-enterprise
@@ -5054,6 +5057,8 @@ class EnterpriseAdminClient:
         POST /enterprises/{enterprise}/audit-log/streams
 
         Creates an audit log streaming configuration for any of the supported streaming endpoints: Azure Blob Storage, Azure Event Hubs, Amazon S3, Splunk, Google Cloud Storage, Datadog.
+
+        Microsoft Agent365 and Microsoft Purview streams require Microsoft Entra authorization and cannot be created with this endpoint. Configure those destinations from the enterprise audit log streaming settings.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
@@ -5184,6 +5189,7 @@ class EnterpriseAdminClient:
             "HTTPS Event Collector",
             "Google Cloud Storage",
             "Datadog",
+            "Microsoft Agent365",
         ],
         vendor_specific: Union[
             AzureBlobConfigType,
@@ -5194,6 +5200,7 @@ class EnterpriseAdminClient:
             HecConfigType,
             GoogleCloudConfigType,
             DatadogConfigType,
+            EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type,
         ],
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
@@ -5212,6 +5219,8 @@ class EnterpriseAdminClient:
         PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
 
         Updates an existing audit log stream configuration for an enterprise.
+
+        Microsoft Agent365 streams are configured through Microsoft Entra authorization. For those streams, this endpoint can only pause or resume the stream. Authorization-managed fields cannot be updated; delete and recreate the stream to change its Entra tenant or authorization.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
@@ -5280,6 +5289,7 @@ class EnterpriseAdminClient:
             "HTTPS Event Collector",
             "Google Cloud Storage",
             "Datadog",
+            "Microsoft Agent365",
         ],
         vendor_specific: Union[
             AzureBlobConfigType,
@@ -5290,6 +5300,7 @@ class EnterpriseAdminClient:
             HecConfigType,
             GoogleCloudConfigType,
             DatadogConfigType,
+            EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type,
         ],
     ) -> Response[GetAuditLogStreamConfig, GetAuditLogStreamConfigTypeForResponse]: ...
 
@@ -5308,6 +5319,8 @@ class EnterpriseAdminClient:
         PUT /enterprises/{enterprise}/audit-log/streams/{stream_id}
 
         Updates an existing audit log stream configuration for an enterprise.
+
+        Microsoft Agent365 streams are configured through Microsoft Entra authorization. For those streams, this endpoint can only pause or resume the stream. Authorization-managed fields cannot be updated; delete and recreate the stream to change its Entra tenant or authorization.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 

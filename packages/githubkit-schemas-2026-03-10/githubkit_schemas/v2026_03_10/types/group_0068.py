@@ -9,38 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0045 import LabelType, LabelTypeForResponse
-from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0055 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0069 import (
+    PullRequestReviewEventPropReviewType,
+    PullRequestReviewEventPropReviewTypeForResponse,
+)
 
 
-class PullRequestEventType(TypedDict):
-    """PullRequestEvent"""
+class PullRequestReviewEventType(TypedDict):
+    """PullRequestReviewEvent"""
 
     action: str
-    number: int
+    review: PullRequestReviewEventPropReviewType
     pull_request: PullRequestMinimalType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
 
 
-class PullRequestEventTypeForResponse(TypedDict):
-    """PullRequestEvent"""
+class PullRequestReviewEventTypeForResponse(TypedDict):
+    """PullRequestReviewEvent"""
 
     action: str
-    number: int
+    review: PullRequestReviewEventPropReviewTypeForResponse
     pull_request: PullRequestMinimalTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "PullRequestEventType",
-    "PullRequestEventTypeForResponse",
+    "PullRequestReviewEventType",
+    "PullRequestReviewEventTypeForResponse",
 )

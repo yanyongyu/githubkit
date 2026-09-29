@@ -12,19 +12,15 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
-
-    access_token: str
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class ApplicationsClientIdGrantDeleteBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
-
-    access_token: str
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
 __all__ = (
-    "ApplicationsClientIdGrantDeleteBodyType",
-    "ApplicationsClientIdGrantDeleteBodyTypeForResponse",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",
+    "AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse",
 )

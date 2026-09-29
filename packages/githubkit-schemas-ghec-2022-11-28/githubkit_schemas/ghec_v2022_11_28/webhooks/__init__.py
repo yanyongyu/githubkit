@@ -142,6 +142,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .issue_dependencies import (
         issue_dependencies_action_types as issue_dependencies_action_types,
     )
+    from .issue_relates_to import IssueRelatesToEvent as IssueRelatesToEvent
+    from .issue_relates_to import (
+        issue_relates_to_action_types as issue_relates_to_action_types,
+    )
     from .issues import IssuesEvent as IssuesEvent
     from .issues import issues_action_types as issues_action_types
     from .label import LabelEvent as LabelEvent
@@ -394,6 +398,7 @@ else:
             "IssueDependenciesEvent",
             "issue_dependencies_action_types",
         ),
+        ".issue_relates_to": ("IssueRelatesToEvent", "issue_relates_to_action_types"),
         ".issues": ("IssuesEvent", "issues_action_types"),
         ".label": ("LabelEvent", "label_action_types"),
         ".marketplace_purchase": (

@@ -9,48 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    groups: NotRequired[
-        list[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
-    ]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    groups: NotRequired[
-        list[
-            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse
-        ]
-    ]
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-
-
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
 )

@@ -13,16 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0075 import ActionsPolicy
+
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200"""
+
+    disable_self_hosted_runners_for_all_orgs: bool = Field(
+        description="When true, repository-level runners will be disabled across all organizations in the enterprise"
+    )
 
 
-class EnterprisesEnterpriseActionsPoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
+model_rebuild(EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200)
 
-    total_count: int = Field(description="The total number of Actions policies.")
-    policies: list[ActionsPolicy] = Field(description="An array of Actions policies.")
-
-
-model_rebuild(EnterprisesEnterpriseActionsPoliciesGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsPoliciesGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersGetResponse200",)

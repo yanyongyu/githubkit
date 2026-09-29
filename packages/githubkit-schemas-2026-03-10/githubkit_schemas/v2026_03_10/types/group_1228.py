@@ -9,19 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-OrgsOrgCopilotContentExclusionPutBodyType: TypeAlias = dict[str, Any]
-"""OrgsOrgCopilotContentExclusionPutBody
-"""
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-OrgsOrgCopilotContentExclusionPutBodyTypeForResponse: TypeAlias = dict[str, Any]
-"""OrgsOrgCopilotContentExclusionPutBody
-"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
+
+
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutBodyType",
-    "OrgsOrgCopilotContentExclusionPutBodyTypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

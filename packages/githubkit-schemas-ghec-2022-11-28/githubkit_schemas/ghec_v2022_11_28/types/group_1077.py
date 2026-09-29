@@ -26,10 +26,10 @@ from .group_0694 import (
 )
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertMetadataRemovedType(TypedDict):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["reopened"]
+    action: Literal["metadata_removed"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertReopenedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertMetadataRemovedTypeForResponse(TypedDict):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["reopened"]
+    action: Literal["metadata_removed"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertReopenedType",
-    "WebhookSecretScanningAlertReopenedTypeForResponse",
+    "WebhookSecretScanningAlertMetadataRemovedType",
+    "WebhookSecretScanningAlertMetadataRemovedTypeForResponse",
 )

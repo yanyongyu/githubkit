@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,32 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    total_count: int = Field()
-    secrets: list[OrganizationDependabotSecret] = Field()
-
-
-class OrganizationDependabotSecret(GitHubModel):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    repository_ids_to_add: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to add."
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    repository_ids_to_remove: Missing[list[int]] = Field(
+        default=UNSET, description="List of repository IDs to remove."
+    )
 
 
-model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
-model_rebuild(OrganizationDependabotSecret)
+model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
 
-__all__ = (
-    "OrganizationDependabotSecret",
-    "OrgsOrgDependabotSecretsGetResponse200",
-)
+__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)

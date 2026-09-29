@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
+    ExtraGitHubModel
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1PropCustomProperties
 
-    state: Literal["active"] = Field(
-        description='The state that the membership should be in. Only `"active"` will be accepted.'
-    )
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values. Present for org repos only.
+    """
 
 
-model_rebuild(UserMembershipsOrgsOrgPatchBody)
+model_rebuild(
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+)
 
-__all__ = ("UserMembershipsOrgsOrgPatchBody",)
+__all__ = (
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
+)

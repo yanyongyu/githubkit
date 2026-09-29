@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0206 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
+from .group_0203 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
 )
 
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsDeleteBodyType",
-    "OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

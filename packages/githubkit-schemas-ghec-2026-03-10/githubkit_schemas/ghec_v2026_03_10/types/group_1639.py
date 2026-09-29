@@ -9,61 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+
+    labels: NotRequired[
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
 
     labels: NotRequired[
         list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type,
-            ]
+            ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse
         ]
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
-
-    labels: NotRequired[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse,
-            ]
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
     name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse(
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
 
     name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1TypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2TypeForResponse",
 )

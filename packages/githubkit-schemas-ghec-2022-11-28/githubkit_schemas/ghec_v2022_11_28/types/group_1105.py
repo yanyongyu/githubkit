@@ -23,30 +23,30 @@ from .group_0645 import (
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSubIssuesSubIssueRemovedType(TypedDict):
-    """sub-issue removed event"""
+class WebhookSubIssuesParentIssueRemovedType(TypedDict):
+    """parent issue removed event"""
 
-    action: Literal["sub_issue_removed"]
-    sub_issue_id: NotRequired[float]
-    sub_issue: NotRequired[IssueType]
-    sub_issue_repo: NotRequired[RepositoryType]
-    parent_issue_id: float
-    parent_issue: IssueType
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueType]
+    parent_issue_repo: NotRequired[RepositoryType]
+    sub_issue_id: float
+    sub_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
-    """sub-issue removed event"""
+class WebhookSubIssuesParentIssueRemovedTypeForResponse(TypedDict):
+    """parent issue removed event"""
 
-    action: Literal["sub_issue_removed"]
-    sub_issue_id: NotRequired[float]
-    sub_issue: NotRequired[IssueTypeForResponse]
-    sub_issue_repo: NotRequired[RepositoryTypeForResponse]
-    parent_issue_id: float
-    parent_issue: IssueTypeForResponse
+    action: Literal["parent_issue_removed"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueTypeForResponse]
+    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
@@ -54,6 +54,6 @@ class WebhookSubIssuesSubIssueRemovedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSubIssuesSubIssueRemovedType",
-    "WebhookSubIssuesSubIssueRemovedTypeForResponse",
+    "WebhookSubIssuesParentIssueRemovedType",
+    "WebhookSubIssuesParentIssueRemovedTypeForResponse",
 )

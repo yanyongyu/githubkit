@@ -9,41 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type(TypedDict):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
+    total_count: NotRequired[int]
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType
+        ]
+    ]
+
+
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
+
+    total_count: NotRequired[int]
+    storage_records: NotRequired[
+        list[
+            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
     artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
+    registry_url: NotRequired[str]
     repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
+    rdsItems
+    """
 
-    name: str
-    digest: str
-    version: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    digest: NotRequired[str]
     artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
+    registry_url: NotRequired[str]
     repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    status: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsType",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItemsTypeForResponse",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200Type",
+    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200TypeForResponse",
 )

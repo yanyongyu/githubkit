@@ -9,95 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType
-        ]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBody"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    pattern_config_version: NotRequired[Union[str, None]]
-    provider_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse
-        ]
-    ]
-    custom_pattern_settings: NotRequired[
-        list[
-            EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse
-        ]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
 
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPat
-    ternSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    push_protection_setting: NotRequired[Literal["not-set", "disabled", "enabled"]]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
 
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
-
-
-class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatte
-    rnSettingsItems
-    """
-
-    token_type: NotRequired[str]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    push_protection_setting: NotRequired[Literal["disabled", "enabled"]]
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType",
-    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

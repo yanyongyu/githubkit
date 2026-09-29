@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
+    "ReposOwnerRepoImportLfsPatchBodyType",
+    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
 )

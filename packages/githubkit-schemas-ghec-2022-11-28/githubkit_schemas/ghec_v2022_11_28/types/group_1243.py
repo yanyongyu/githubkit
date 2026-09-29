@@ -12,35 +12,57 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
-
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
-
-
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
+
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyTypeForResponse",
 )

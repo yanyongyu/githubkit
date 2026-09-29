@@ -9,51 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, Literal, TypeAlias
+from typing_extensions import TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
     ]
+    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
     ]
+    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = (
+    dict[str, Any]
+)
+"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-Updated resource-specific metadata.
+Resource-specific metadata.
 """
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
+UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-Updated resource-specific metadata.
+Resource-specific metadata.
 """
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
 )

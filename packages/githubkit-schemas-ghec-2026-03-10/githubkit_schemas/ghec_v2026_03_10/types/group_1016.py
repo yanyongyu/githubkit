@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
@@ -21,337 +20,40 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0689 import WebhooksReviewType, WebhooksReviewTypeForResponse
 from .group_1017 import (
-    WebhookPullRequestReviewThreadResolvedPropPullRequestType,
-    WebhookPullRequestReviewThreadResolvedPropPullRequestTypeForResponse,
+    WebhookPullRequestReviewSubmittedPropPullRequestType,
+    WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestReviewThreadResolvedType(TypedDict):
-    """pull_request_review_thread resolved event"""
+class WebhookPullRequestReviewSubmittedType(TypedDict):
+    """pull_request_review submitted event"""
 
-    action: Literal["resolved"]
+    action: Literal["submitted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewThreadResolvedPropPullRequestType
+    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
-    thread: WebhookPullRequestReviewThreadResolvedPropThreadType
-    updated_at: NotRequired[Union[_dt.datetime, None]]
+    review: WebhooksReviewType
+    sender: SimpleUserType
 
 
-class WebhookPullRequestReviewThreadResolvedTypeForResponse(TypedDict):
-    """pull_request_review_thread resolved event"""
+class WebhookPullRequestReviewSubmittedTypeForResponse(TypedDict):
+    """pull_request_review submitted event"""
 
-    action: Literal["resolved"]
+    action: Literal["submitted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestReviewThreadResolvedPropPullRequestTypeForResponse
+    pull_request: WebhookPullRequestReviewSubmittedPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
-    thread: WebhookPullRequestReviewThreadResolvedPropThreadTypeForResponse
-    updated_at: NotRequired[Union[str, None]]
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadType(TypedDict):
-    """WebhookPullRequestReviewThreadResolvedPropThread"""
-
-    comments: list[
-        WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType
-    ]
-    node_id: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadTypeForResponse(TypedDict):
-    """WebhookPullRequestReviewThreadResolvedPropThread"""
-
-    comments: list[
-        WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsTypeForResponse
-    ]
-    node_id: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType(TypedDict):
-    """Pull Request Review Comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
-    """
-
-    links: (
-        WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType
-    )
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: _dt.datetime
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: Union[int, None]
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[Literal["LEFT", "RIGHT"], None]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: _dt.datetime
-    url: str
-    user: Union[
-        WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserType,
-        None,
-    ]
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsTypeForResponse(
-    TypedDict
-):
-    """Pull Request Review Comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-    itself.
-    """
-
-    links: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksTypeForResponse
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    commit_id: str
-    created_at: str
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: Union[int, None]
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[Literal["LEFT", "RIGHT"], None]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: str
-    url: str
-    user: Union[
-        WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserTypeForResponse,
-        None,
-    ]
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsType(
-    TypedDict
-):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse(
-    TypedDict
-):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserType(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType(
-    TypedDict
-):
-    """WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks"""
-
-    html: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlType
-    pull_request: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType
-    self_: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfType
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksTypeForResponse(
-    TypedDict
-):
-    """WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks"""
-
-    html: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse
-    pull_request: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse
-    self_: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlType(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfType(
-    TypedDict
-):
-    """Link"""
-
-    href: str
-
-
-class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse(
-    TypedDict
-):
-    """Link"""
-
-    href: str
+    review: WebhooksReviewTypeForResponse
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtmlTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequestTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelfTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactionsTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUserTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedPropThreadType",
-    "WebhookPullRequestReviewThreadResolvedPropThreadTypeForResponse",
-    "WebhookPullRequestReviewThreadResolvedType",
-    "WebhookPullRequestReviewThreadResolvedTypeForResponse",
+    "WebhookPullRequestReviewSubmittedType",
+    "WebhookPullRequestReviewSubmittedTypeForResponse",
 )

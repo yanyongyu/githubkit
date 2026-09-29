@@ -17,39 +17,33 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0131 import ActionsPolicyOrgConditionsOneof0
-from .group_0132 import ActionsPolicyOrgConditionsOneof1
-from .group_0133 import ActionsPolicyOrgConditionsOneof2
-from .group_0146 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
 
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all", "private"]] = Field(
         default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
     )
-    conditions: Missing[
-        Union[
-            ActionsPolicyOrgConditionsOneof0,
-            ActionsPolicyOrgConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof2,
-        ]
-    ] = Field(
+    allows_public_repositories: Missing[bool] = Field(
         default=UNSET,
-        title="Organization Actions policy conditions",
-        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
+        description="Whether the runner group can be used by `public` repositories.",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
+    )
 
 
-model_rebuild(OrgsOrgActionsPoliciesPolicyIdPutBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = ("OrgsOrgActionsPoliciesPolicyIdPutBody",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)

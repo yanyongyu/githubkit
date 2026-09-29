@@ -11,30 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 from .group_0071 import (
-    PullRequestReviewEventPropReviewType,
-    PullRequestReviewEventPropReviewTypeForResponse,
+    CommitCommentEventPropCommentType,
+    CommitCommentEventPropCommentTypeForResponse,
 )
 
 
-class PullRequestReviewEventType(TypedDict):
-    """PullRequestReviewEvent"""
+class CommitCommentEventType(TypedDict):
+    """CommitCommentEvent"""
 
     action: str
-    review: PullRequestReviewEventPropReviewType
-    pull_request: PullRequestMinimalType
+    comment: CommitCommentEventPropCommentType
 
 
-class PullRequestReviewEventTypeForResponse(TypedDict):
-    """PullRequestReviewEvent"""
+class CommitCommentEventTypeForResponse(TypedDict):
+    """CommitCommentEvent"""
 
     action: str
-    review: PullRequestReviewEventPropReviewTypeForResponse
-    pull_request: PullRequestMinimalTypeForResponse
+    comment: CommitCommentEventPropCommentTypeForResponse
 
 
 __all__ = (
-    "PullRequestReviewEventType",
-    "PullRequestReviewEventTypeForResponse",
+    "CommitCommentEventType",
+    "CommitCommentEventTypeForResponse",
 )

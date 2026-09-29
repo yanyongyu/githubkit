@@ -33,6 +33,7 @@ class GetBudgetType(TypedDict):
     budget_product_sku: str
     budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
     budget_alerting: GetBudgetPropBudgetAlertingType
+    consumed_amount: NotRequired[float]
 
 
 class GetBudgetTypeForResponse(TypedDict):
@@ -55,6 +56,7 @@ class GetBudgetTypeForResponse(TypedDict):
     budget_product_sku: str
     budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
     budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    consumed_amount: NotRequired[float]
 
 
 class GetBudgetPropBudgetAlertingType(TypedDict):

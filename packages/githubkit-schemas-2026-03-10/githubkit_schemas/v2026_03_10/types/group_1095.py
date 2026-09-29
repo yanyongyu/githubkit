@@ -9,24 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    usernames: list[str]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
+class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
 
-    usernames: list[str]
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    """
+
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
+    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

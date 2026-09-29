@@ -9,28 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0136 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse,
+)
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class EnterpriseRulesetConditionsOrganizationIdTargetType(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+    Parameters for an organization ID condition
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType
+    )
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization IDs
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+    Parameters for an organization ID condition
+    """
+
+    organization_id: (
+        EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdTypeForResponse
+    )
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationIdTargetType",
+    "EnterpriseRulesetConditionsOrganizationIdTargetTypeForResponse",
 )

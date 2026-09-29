@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
     state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
@@ -35,15 +35,15 @@ class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2(GitHubModel):
         default=UNSET,
         description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
-    assignee: Missing[Union[str, None]] = Field(
+    assignee: Union[str, None] = Field(
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
+    )
+    validity: Missing[Union[Literal["active", "inactive"], None]] = Field(
         default=UNSET,
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert.",
-    )
-    validity: Union[Literal["active", "inactive"], None] = Field(
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override."
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)

@@ -14,12 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberRelatesToPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
+    issue_id: int = Field(
+        description="The id of the issue to mark as related to the current issue"
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberRelatesToPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberRelatesToPostBody",)

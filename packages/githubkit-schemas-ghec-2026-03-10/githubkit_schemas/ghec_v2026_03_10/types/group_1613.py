@@ -13,8 +13,29 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
+
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
+
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
 
     url: NotRequired[str]
     content_type: NotRequired[str]
@@ -22,8 +43,11 @@ class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
     insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
+class ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
 
     url: NotRequired[str]
     content_type: NotRequired[str]
@@ -32,6 +56,8 @@ class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
-    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
+    "ReposOwnerRepoHooksPostBodyPropConfigType",
+    "ReposOwnerRepoHooksPostBodyPropConfigTypeForResponse",
+    "ReposOwnerRepoHooksPostBodyType",
+    "ReposOwnerRepoHooksPostBodyTypeForResponse",
 )

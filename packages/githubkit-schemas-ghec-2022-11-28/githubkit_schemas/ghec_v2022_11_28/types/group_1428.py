@@ -9,29 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0274 import (
-    OrganizationCustomRepositoryRoleType,
-    OrganizationCustomRepositoryRoleTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
 
 
 __all__ = (
-    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
-    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
 )

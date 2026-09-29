@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0216 import CustomPropertyType, CustomPropertyTypeForResponse
+from .group_0218 import CustomPropertyType, CustomPropertyTypeForResponse
 
 
 class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):

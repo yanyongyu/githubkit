@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -21,10 +21,10 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class BaseGist(GitHubModel):
-    """Base Gist
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
 
-    Base Gist
+    Gist
     """
 
     url: str = Field()
@@ -35,28 +35,29 @@ class BaseGist(GitHubModel):
     git_pull_url: str = Field()
     git_push_url: str = Field()
     html_url: str = Field()
-    files: BaseGistPropFiles = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
     public: bool = Field()
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
     description: Union[str, None] = Field()
     comments: int = Field()
     comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
     comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
     truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
 
 
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
 
 __all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
 )

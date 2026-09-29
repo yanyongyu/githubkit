@@ -9,67 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0051 import (
-    ActionsPolicyRepoConditionsOneof0Type,
-    ActionsPolicyRepoConditionsOneof0TypeForResponse,
-)
-from .group_0052 import (
-    ActionsPolicyRepoConditionsOneof1Type,
-    ActionsPolicyRepoConditionsOneof1TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ReposOwnerRepoActionsPoliciesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPostBody"""
+class ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
-
-
-class ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPostBody"""
-
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0TypeForResponse,
-            ActionsPolicyRepoConditionsOneof1TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPoliciesPostBodyType",
-    "ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsPermissionsPutBodyType",
+    "ReposOwnerRepoActionsPermissionsPutBodyTypeForResponse",
 )

@@ -9,36 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CodeScanningAlertLocationType(TypedDict):
-    """CodeScanningAlertLocation
-
-    Describe a region within a file for the alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+from .group_0162 import (
+    CodeScanningAlertLocationType,
+    CodeScanningAlertLocationTypeForResponse,
+)
 
 
-class CodeScanningAlertLocationTypeForResponse(TypedDict):
-    """CodeScanningAlertLocation
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    Describe a region within a file for the alert.
-    """
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
 
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
+
+class CodeScanningAlertInstanceTypeForResponse(TypedDict):
+    """CodeScanningAlertInstance"""
+
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Union[Literal["open", "dismissed", "fixed"], None]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageTypeForResponse]
+    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
+    html_url: NotRequired[str]
+    classifications: NotRequired[
+        list[
+            Union[
+                Literal["source", "generated", "test", "library", "documentation"], None
+            ]
+        ]
+    ]
+
+
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+    markdown: NotRequired[str]
+
+
+class CodeScanningAlertInstancePropMessageTypeForResponse(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
+    markdown: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAlertLocationType",
-    "CodeScanningAlertLocationTypeForResponse",
+    "CodeScanningAlertInstancePropMessageType",
+    "CodeScanningAlertInstancePropMessageTypeForResponse",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertInstanceTypeForResponse",
 )

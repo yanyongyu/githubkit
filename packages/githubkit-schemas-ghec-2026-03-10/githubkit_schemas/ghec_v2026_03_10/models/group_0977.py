@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -22,13 +22,15 @@ from .group_0642 import EnterpriseWebhooks
 from .group_0643 import SimpleInstallation
 from .group_0644 import OrganizationSimpleWebhooks
 from .group_0645 import RepositoryWebhooks
-from .group_0978 import WebhookPullRequestAutoMergeDisabledPropPullRequest
+from .group_0655 import WebhooksUser
+from .group_0978 import WebhookPullRequestAssignedPropPullRequest
 
 
-class WebhookPullRequestAutoMergeDisabled(GitHubModel):
-    """pull_request auto_merge_disabled event"""
+class WebhookPullRequestAssigned(GitHubModel):
+    """pull_request assigned event"""
 
-    action: Literal["auto_merge_disabled"] = Field()
+    action: Literal["assigned"] = Field()
+    assignee: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,10 +47,9 @@ class WebhookPullRequestAutoMergeDisabled(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequest = Field(
+    pull_request: WebhookPullRequestAssignedPropPullRequest = Field(
         title="Pull Request"
     )
-    reason: str = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -56,6 +57,6 @@ class WebhookPullRequestAutoMergeDisabled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestAutoMergeDisabled)
+model_rebuild(WebhookPullRequestAssigned)
 
-__all__ = ("WebhookPullRequestAutoMergeDisabled",)
+__all__ = ("WebhookPullRequestAssigned",)

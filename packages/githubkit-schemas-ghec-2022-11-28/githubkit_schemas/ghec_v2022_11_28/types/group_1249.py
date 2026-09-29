@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    revoke_credentials: NotRequired[bool]
+    credential_id: int
+    credential_type: Literal["ssh_key"]
+    fingerprint: str
+    organizations: list[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    revoke_credentials: NotRequired[bool]
+    credential_id: int
+    credential_type: Literal["ssh_key"]
+    fingerprint: str
+    organizations: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse",
 )

@@ -9,22 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    expected_head_sha: NotRequired[str]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    expected_head_sha: NotRequired[str]
+    body: NotRequired[str]
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
-    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyTypeForResponse",
 )

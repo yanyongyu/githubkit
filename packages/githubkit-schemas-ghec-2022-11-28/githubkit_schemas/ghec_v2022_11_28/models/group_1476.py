@@ -9,78 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
-    pattern_config_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
     )
-    provider_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
-    custom_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
+    validation_errors: Missing[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    )
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
-    GitHubModel
+class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
 ):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
     """
 
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
 
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
-
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
-
-
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
 
 __all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
 )

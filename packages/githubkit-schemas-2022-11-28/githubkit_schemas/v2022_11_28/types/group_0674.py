@@ -13,22 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0046 import DiscussionType, DiscussionTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0044 import DiscussionType, DiscussionTypeForResponse
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0576 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionCommentCreatedType(TypedDict):
-    """discussion_comment created event"""
+class WebhookDiscussionClosedType(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentType
+    action: Literal["closed"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -37,11 +35,10 @@ class WebhookDiscussionCommentCreatedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
-    """discussion_comment created event"""
+class WebhookDiscussionClosedTypeForResponse(TypedDict):
+    """discussion closed event"""
 
-    action: Literal["created"]
-    comment: WebhooksCommentTypeForResponse
+    action: Literal["closed"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +48,6 @@ class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentCreatedType",
-    "WebhookDiscussionCommentCreatedTypeForResponse",
+    "WebhookDiscussionClosedType",
+    "WebhookDiscussionClosedTypeForResponse",
 )

@@ -16,10 +16,10 @@ from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class TimelineDisconnectedEventType(TypedDict):
-    """Timeline Disconnected Event
+class TimelineConnectedEventType(TypedDict):
+    """Timeline Connected Event
 
-    Timeline Disconnected Event
+    Timeline Connected Event
     """
 
     id: int
@@ -33,10 +33,10 @@ class TimelineDisconnectedEventType(TypedDict):
     performed_via_github_app: Union[None, IntegrationType, None]
 
 
-class TimelineDisconnectedEventTypeForResponse(TypedDict):
-    """Timeline Disconnected Event
+class TimelineConnectedEventTypeForResponse(TypedDict):
+    """Timeline Connected Event
 
-    Timeline Disconnected Event
+    Timeline Connected Event
     """
 
     id: int
@@ -51,6 +51,6 @@ class TimelineDisconnectedEventTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "TimelineDisconnectedEventType",
-    "TimelineDisconnectedEventTypeForResponse",
+    "TimelineConnectedEventType",
+    "TimelineConnectedEventTypeForResponse",
 )

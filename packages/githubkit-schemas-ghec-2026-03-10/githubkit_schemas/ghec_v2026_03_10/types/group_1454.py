@@ -13,34 +13,32 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPrivateRegistriesPostBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    registry_type: NotRequired[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
-    url: NotRequired[str]
+    url: str
     username: NotRequired[Union[str, None]]
     replaces_base: NotRequired[bool]
     encrypted_value: NotRequired[str]
     key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
     auth_type: NotRequired[
         Literal[
@@ -70,34 +68,32 @@ class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
     service_account: NotRequired[str]
 
 
-class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
+class OrgsOrgPrivateRegistriesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPostBody"""
 
-    registry_type: NotRequired[
-        Literal[
-            "maven_repository",
-            "nuget_feed",
-            "goproxy_server",
-            "npm_registry",
-            "rubygems_server",
-            "cargo_registry",
-            "composer_repository",
-            "docker_registry",
-            "git_source",
-            "helm_registry",
-            "hex_organization",
-            "hex_repository",
-            "pub_repository",
-            "python_index",
-            "terraform_registry",
-        ]
+    registry_type: Literal[
+        "maven_repository",
+        "nuget_feed",
+        "goproxy_server",
+        "npm_registry",
+        "rubygems_server",
+        "cargo_registry",
+        "composer_repository",
+        "docker_registry",
+        "git_source",
+        "helm_registry",
+        "hex_organization",
+        "hex_repository",
+        "pub_repository",
+        "python_index",
+        "terraform_registry",
     ]
-    url: NotRequired[str]
+    url: str
     username: NotRequired[Union[str, None]]
     replaces_base: NotRequired[bool]
     encrypted_value: NotRequired[str]
     key_id: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
     auth_type: NotRequired[
         Literal[
@@ -128,6 +124,6 @@ class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
-    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesPostBodyType",
+    "OrgsOrgPrivateRegistriesPostBodyTypeForResponse",
 )

@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
     enabled: bool
     max_open_pull_requests: int
     include_drafts: NotRequired[bool]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
     enabled: bool
     max_open_pull_requests: int
@@ -31,6 +31,6 @@ class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResp
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
 )

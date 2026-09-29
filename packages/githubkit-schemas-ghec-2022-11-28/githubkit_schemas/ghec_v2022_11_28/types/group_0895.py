@@ -20,34 +20,34 @@ from .group_0645 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0669 import WebhooksLabelArchivedType, WebhooksLabelArchivedTypeForResponse
+from .group_0667 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookLabelArchivedType(TypedDict):
-    """label archived event"""
+class WebhookIssuesUnpinnedType(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["archived"]
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelArchivedType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelArchivedTypeForResponse(TypedDict):
-    """label archived event"""
+class WebhookIssuesUnpinnedTypeForResponse(TypedDict):
+    """issues unpinned event"""
 
-    action: Literal["archived"]
+    action: Literal["unpinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelArchivedTypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelArchivedType",
-    "WebhookLabelArchivedTypeForResponse",
+    "WebhookIssuesUnpinnedType",
+    "WebhookIssuesUnpinnedTypeForResponse",
 )

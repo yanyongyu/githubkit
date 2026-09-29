@@ -9,22 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsPolicyWorkflowPathConditionPropWorkflowPath(GitHubModel):
-    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
-
-    include: list[str] = Field(
-        description="Array of workflow file paths or glob patterns to include. An empty array includes all\nworkflows not matched by an excluded pattern. Use `~ALL` by itself to include all workflows.\n`~ALL` cannot be combined with other included patterns."
-    )
-    exclude: list[str] = Field(
-        description="Array of workflow file paths or glob patterns to exclude. The condition will not pass\nif any of these patterns match. `~ALL` is not allowed in this array."
-    )
+class ActionsPolicyRepoConditionsOneof0(GitHubModel):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
-model_rebuild(ActionsPolicyWorkflowPathConditionPropWorkflowPath)
+model_rebuild(ActionsPolicyRepoConditionsOneof0)
 
-__all__ = ("ActionsPolicyWorkflowPathConditionPropWorkflowPath",)
+__all__ = ("ActionsPolicyRepoConditionsOneof0",)

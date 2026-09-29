@@ -10,83 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    Gist
+    Gist Commit
     """
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
+    version: str
     user: Union[SimpleUserType, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserType, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    Gist
+    Gist Commit
     """
 
     url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
+    version: str
     user: Union[SimpleUserTypeForResponse, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
 
 
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

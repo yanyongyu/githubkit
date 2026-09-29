@@ -22,10 +22,10 @@ from .group_0644 import (
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryDeletedType(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryArchivedType(TypedDict):
+    """repository archived event"""
 
-    action: Literal["deleted"]
+    action: Literal["archived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,10 +33,10 @@ class WebhookRepositoryDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryDeletedTypeForResponse(TypedDict):
-    """repository deleted event"""
+class WebhookRepositoryArchivedTypeForResponse(TypedDict):
+    """repository archived event"""
 
-    action: Literal["deleted"]
+    action: Literal["archived"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookRepositoryDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookRepositoryDeletedType",
-    "WebhookRepositoryDeletedTypeForResponse",
+    "WebhookRepositoryArchivedType",
+    "WebhookRepositoryArchivedTypeForResponse",
 )

@@ -9,27 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    total_count: int
+    secrets: list[CodespacesSecretType]
 
 
-class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    total_count: int
+    secrets: list[CodespacesSecretTypeForResponse]
+
+
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
+
+
+class CodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNamePutBodyType",
-    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "CodespacesSecretType",
+    "CodespacesSecretTypeForResponse",
+    "UserCodespacesSecretsGetResponse200Type",
+    "UserCodespacesSecretsGetResponse200TypeForResponse",
 )

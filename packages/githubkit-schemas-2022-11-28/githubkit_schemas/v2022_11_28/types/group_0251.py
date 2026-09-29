@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    Restricted commit
-    """
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
-    oid: str
-    reason: NotRequired[str]
 
+class RepositoryRuleTagNamePatternPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-class RepositoryRuleParamsRestrictedCommitsTypeForResponse(TypedDict):
-    """RestrictedCommits
-
-    Restricted commit
-    """
-
-    oid: str
-    reason: NotRequired[str]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
 __all__ = (
-    "RepositoryRuleParamsRestrictedCommitsType",
-    "RepositoryRuleParamsRestrictedCommitsTypeForResponse",
+    "RepositoryRuleTagNamePatternPropParametersType",
+    "RepositoryRuleTagNamePatternPropParametersTypeForResponse",
 )

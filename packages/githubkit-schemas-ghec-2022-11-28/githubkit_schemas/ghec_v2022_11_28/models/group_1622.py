@@ -9,30 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
-    include_drafts: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
+    use_lfs: Literal["opt_in", "opt_out"] = Field(
+        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
     )
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
+model_rebuild(ReposOwnerRepoImportLfsPatchBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)
+__all__ = ("ReposOwnerRepoImportLfsPatchBody",)

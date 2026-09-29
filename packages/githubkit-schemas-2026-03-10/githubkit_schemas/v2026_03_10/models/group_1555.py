@@ -9,36 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = (
+        Field(description="Resource-specific metadata.")
+    )
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(
     ExtraGitHubModel
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-    Updated resource-specific metadata.
+    Resource-specific metadata.
     """
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
-)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
 )

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0147 import ActionsPolicyType, ActionsPolicyTypeForResponse
+from .group_0146 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
 class ReposOwnerRepoActionsPoliciesGetResponse200Type(TypedDict):

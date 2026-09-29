@@ -9,49 +9,203 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
-)
-from .group_0130 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
-)
-from .group_0139 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
-)
 
+class ActionsRuleRestrictActionsActorsType(TypedDict):
+    """restrict_actions_actors
 
-class ActionsPolicyEnterpriseConditionsOneof5Type(TypedDict):
-    """organization_property_and_repository_property
-
-    Conditions to target organizations by property and repositories by property
+    Choose specific actors that are authorized to trigger Actions workflows.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
-    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+    type: Literal["restrict_actions_actors"]
+    parameters: NotRequired[ActionsRuleRestrictActionsActorsPropParametersType]
 
 
-class ActionsPolicyEnterpriseConditionsOneof5TypeForResponse(TypedDict):
-    """organization_property_and_repository_property
+class ActionsRuleRestrictActionsActorsTypeForResponse(TypedDict):
+    """restrict_actions_actors
 
-    Conditions to target organizations by property and repositories by property
+    Choose specific actors that are authorized to trigger Actions workflows.
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    workflow_path: NotRequired[
-        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    type: Literal["restrict_actions_actors"]
+    parameters: NotRequired[
+        ActionsRuleRestrictActionsActorsPropParametersTypeForResponse
+    ]
+
+
+class ActionsRuleRestrictActionsActorsPropParametersType(TypedDict):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
+
+    allowed_actors: list[ActionsRuleParamsActorType]
+
+
+class ActionsRuleRestrictActionsActorsPropParametersTypeForResponse(TypedDict):
+    """ActionsRuleRestrictActionsActorsPropParameters"""
+
+    allowed_actors: list[ActionsRuleParamsActorTypeForResponse]
+
+
+class ActionsRuleParamsActorType(TypedDict):
+    """Actor
+
+    An actor authorized to trigger Actions workflows
+    """
+
+    id: int
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
+    ]
+
+
+class ActionsRuleParamsActorTypeForResponse(TypedDict):
+    """Actor
+
+    An actor authorized to trigger Actions workflows
+    """
+
+    id: int
+    type: Literal[
+        "User",
+        "Bot",
+        "Team",
+        "BusinessTeam",
+        "EnterpriseTeam",
+        "IntegrationInstallation",
+        "App",
+        "RepositoryRole",
+    ]
+
+
+class ActionsRuleRestrictActionEventsType(TypedDict):
+    """restrict_action_events
+
+    Choose specific GitHub events that will trigger Actions workflows.
+    """
+
+    type: Literal["restrict_action_events"]
+    parameters: NotRequired[ActionsRuleRestrictActionEventsPropParametersType]
+
+
+class ActionsRuleRestrictActionEventsTypeForResponse(TypedDict):
+    """restrict_action_events
+
+    Choose specific GitHub events that will trigger Actions workflows.
+    """
+
+    type: Literal["restrict_action_events"]
+    parameters: NotRequired[
+        ActionsRuleRestrictActionEventsPropParametersTypeForResponse
+    ]
+
+
+class ActionsRuleRestrictActionEventsPropParametersType(TypedDict):
+    """ActionsRuleRestrictActionEventsPropParameters"""
+
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
+        ]
+    ]
+
+
+class ActionsRuleRestrictActionEventsPropParametersTypeForResponse(TypedDict):
+    """ActionsRuleRestrictActionEventsPropParameters"""
+
+    allowed_events: list[
+        Literal[
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "image_version",
+            "issue_comment",
+            "issues",
+            "label",
+            "merge_group",
+            "milestone",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_target",
+            "push",
+            "registry_package",
+            "release",
+            "repository_dispatch",
+            "schedule",
+            "status",
+            "watch",
+            "workflow_call",
+            "workflow_dispatch",
+            "workflow_run",
+        ]
     ]
 
 
 __all__ = (
-    "ActionsPolicyEnterpriseConditionsOneof5Type",
-    "ActionsPolicyEnterpriseConditionsOneof5TypeForResponse",
+    "ActionsRuleParamsActorType",
+    "ActionsRuleParamsActorTypeForResponse",
+    "ActionsRuleRestrictActionEventsPropParametersType",
+    "ActionsRuleRestrictActionEventsPropParametersTypeForResponse",
+    "ActionsRuleRestrictActionEventsType",
+    "ActionsRuleRestrictActionEventsTypeForResponse",
+    "ActionsRuleRestrictActionsActorsPropParametersType",
+    "ActionsRuleRestrictActionsActorsPropParametersTypeForResponse",
+    "ActionsRuleRestrictActionsActorsType",
+    "ActionsRuleRestrictActionsActorsTypeForResponse",
 )

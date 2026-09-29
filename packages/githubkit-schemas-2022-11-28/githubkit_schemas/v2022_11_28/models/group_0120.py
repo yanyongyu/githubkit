@@ -9,28 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0121 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
-class ActionsSetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsSetDefaultWorkflowPermissions"""
 
-    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
-        default=UNSET,
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
+class ActionsPolicyWorkflowPathCondition(GitHubModel):
+    """Actions policy workflow path condition
+
+    Parameters for an Actions policy workflow path condition. Omitting
+    `workflow_path` when creating
+    a policy targets all workflows without storing an explicit condition. Omitting
+    it when updating a
+    policy preserves the existing workflow targeting. For new or changed workflow
+    conditions, the API
+    requires at least one included or excluded pattern. This is validated server-
+    side rather than by
+    this schema, which can also describe existing stored conditions.
+    """
+
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
-    can_approve_pull_request_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
-    )
 
 
-model_rebuild(ActionsSetDefaultWorkflowPermissions)
+model_rebuild(ActionsPolicyWorkflowPathCondition)
 
-__all__ = ("ActionsSetDefaultWorkflowPermissions",)
+__all__ = ("ActionsPolicyWorkflowPathCondition",)

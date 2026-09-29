@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
 
-    message: NotRequired[str]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotContentExclusionPutResponse200"""
+class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
 
-    message: NotRequired[str]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCopilotContentExclusionPutResponse200Type",
-    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType",
+    "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyTypeForResponse",
 )

@@ -15,28 +15,28 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0122 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
-from .group_0126 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+from .group_0121 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0129 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
 )
-from .group_0137 import (
+from .group_0136 import (
     EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
 )
 
 
-class ActionsPolicyEnterpriseConditionsOneof2(GitHubModel):
-    """organization_id_and_repository_name
+class ActionsPolicyEnterpriseConditionsOneof3(GitHubModel):
+    """organization_id_and_repository_property
 
-    Conditions to target organizations by id and repositories by name
+    Conditions to target organizations by id and repositories by property
     """
 
     organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
     workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
         default=UNSET
     )
 
 
-model_rebuild(ActionsPolicyEnterpriseConditionsOneof2)
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof3)
 
-__all__ = ("ActionsPolicyEnterpriseConditionsOneof2",)
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof3",)

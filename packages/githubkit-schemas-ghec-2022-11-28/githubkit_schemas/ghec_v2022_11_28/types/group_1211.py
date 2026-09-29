@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
     TypedDict
 ):
     """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
+    PatchBody
     """
 
-    repositories: list[str]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse(
     TypedDict
 ):
     """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    RemovePatchBody
+    PatchBody
     """
 
-    repositories: list[str]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyType",
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesRemovePatchBodyTypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse",
 )

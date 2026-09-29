@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
 
-    default_level: Literal["public", "internal"]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
 
-    default_level: Literal["public", "internal"]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
-    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
 )

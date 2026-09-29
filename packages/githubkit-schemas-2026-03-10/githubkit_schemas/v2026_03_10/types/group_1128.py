@@ -10,26 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
-class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    enabled_repositories: Literal["all", "selected", "none"]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsPutBodyType",
-    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailVisibilityPatchBodyType(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class UserCodespacesCodespaceNamePublishPostBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    visibility: Literal["public", "private"]
+    name: NotRequired[str]
+    private: NotRequired[bool]
 
 
-class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class UserCodespacesCodespaceNamePublishPostBodyTypeForResponse(TypedDict):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    visibility: Literal["public", "private"]
+    name: NotRequired[str]
+    private: NotRequired[bool]
 
 
 __all__ = (
-    "UserEmailVisibilityPatchBodyType",
-    "UserEmailVisibilityPatchBodyTypeForResponse",
+    "UserCodespacesCodespaceNamePublishPostBodyType",
+    "UserCodespacesCodespaceNamePublishPostBodyTypeForResponse",
 )

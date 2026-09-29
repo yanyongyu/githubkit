@@ -16,8 +16,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
     enabled: bool = Field(
         description="Whether the pull request creation cap is enabled"
@@ -33,6 +33,6 @@ class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubMode
     )
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)

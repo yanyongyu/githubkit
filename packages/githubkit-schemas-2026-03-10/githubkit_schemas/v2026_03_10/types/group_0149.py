@@ -9,47 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0148 import RunnerLabelType, RunnerLabelTypeForResponse
 
+class RunnerApplicationType(TypedDict):
+    """Runner Application
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
+    Runner Application
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
     os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
-class RunnerTypeForResponse(TypedDict):
-    """Self hosted runners
+class RunnerApplicationTypeForResponse(TypedDict):
+    """Runner Application
 
-    A self hosted runner
+    Runner Application
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
     os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelTypeForResponse]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    architecture: str
+    download_url: str
+    filename: str
+    temp_download_token: NotRequired[str]
+    sha256_checksum: NotRequired[str]
 
 
 __all__ = (
-    "RunnerType",
-    "RunnerTypeForResponse",
+    "RunnerApplicationType",
+    "RunnerApplicationTypeForResponse",
 )

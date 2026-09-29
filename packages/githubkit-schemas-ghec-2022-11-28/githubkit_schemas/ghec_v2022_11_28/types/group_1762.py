@@ -9,117 +9,139 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
+    attestations: NotRequired[
         list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType
+            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
         ]
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse(TypedDict):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
+    attestations: NotRequired[
         list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
+            UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse
         ]
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
+    bundle: NotRequired[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
     ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
-    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
+    bundle: NotRequired[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse
     ]
-    metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
+    repository_id: NotRequired[int]
+    bundle_url: NotRequired[str]
+    initiator: NotRequired[str]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dle
 
-    Metadata specific to the resource type.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
+    ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+    dle
 
-    Metadata specific to the resource type.
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
     """
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse
+    ]
+    dsse_envelope: NotRequired[
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse
+    ]
+
+
+UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+dlePropVerificationMaterial
+"""
+
+
+UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+dlePropVerificationMaterial
+"""
+
+
+UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+dlePropDsseEnvelope
+"""
+
+
+UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBun
+dlePropDsseEnvelope
+"""
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsTypeForResponse",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse",
 )

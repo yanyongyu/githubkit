@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +18,119 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryAdvisoryDescriptionValidationError(GitHubModel):
-    """Repository Advisory Description Validation Error
+class RepositoryAdvisoryCreate(GitHubModel):
+    """RepositoryAdvisoryCreate"""
 
-    The description does not answer the repository's report template.
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
+    )
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+        description="A product affected by the vulnerability detailed in a repository security advisory."
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
+    )
+    severity: Missing[Union[Literal["critical", "high", "medium", "low"], None]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+    )
+
+
+class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
+
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field(
-        description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
-    )
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
-    section: Missing[str] = Field(
-        default=UNSET, description="The report template section the violation concerns."
-    )
-    option: Missing[str] = Field(
-        default=UNSET,
-        description="The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.",
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
     )
 
 
-model_rebuild(RepositoryAdvisoryDescriptionValidationError)
-model_rebuild(RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems)
+model_rebuild(RepositoryAdvisoryCreate)
+model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "RepositoryAdvisoryDescriptionValidationError",
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
+    "RepositoryAdvisoryCreate",
+    "RepositoryAdvisoryCreatePropCreditsItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
 )

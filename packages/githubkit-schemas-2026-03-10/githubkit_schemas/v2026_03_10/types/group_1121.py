@@ -11,54 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
-
-    total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionType]
+from .group_0105 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
+)
 
 
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
     total_count: int
-    image_versions: list[ActionsHostedRunnerCustomImageVersionTypeForResponse]
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-class ActionsHostedRunnerCustomImageVersionType(TypedDict):
-    """GitHub-hosted runner custom image version details.
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
-
-
-class ActionsHostedRunnerCustomImageVersionTypeForResponse(TypedDict):
-    """GitHub-hosted runner custom image version details.
-
-    Provides details of a hosted runner custom image version
-    """
-
-    version: str
-    state: str
-    size_gb: int
-    created_on: str
-    state_details: str
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "ActionsHostedRunnerCustomImageVersionType",
-    "ActionsHostedRunnerCustomImageVersionTypeForResponse",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

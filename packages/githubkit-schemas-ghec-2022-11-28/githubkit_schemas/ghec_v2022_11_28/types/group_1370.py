@@ -9,41 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    job_id: int
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType
+        ]
+    ]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    name: str
-    digest: str
-    version: NotRequired[str]
-    artifact_url: NotRequired[str]
-    path: NotRequired[str]
-    registry_url: str
-    repository: NotRequired[str]
-    status: NotRequired[Literal["active", "eol", "deleted"]]
-    github_repository: NotRequired[str]
-    return_records: NotRequired[bool]
+    job_id: int
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
+    """
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
+    """
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse",
 )

@@ -9,29 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    message: NotRequired[str]
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType",
-    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

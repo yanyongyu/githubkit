@@ -22,13 +22,13 @@ from .group_0643 import EnterpriseWebhooks
 from .group_0644 import SimpleInstallation
 from .group_0645 import OrganizationSimpleWebhooks
 from .group_0646 import RepositoryWebhooks
-from .group_0686 import PullRequestWebhook
+from .group_0983 import WebhookPullRequestAutoMergeEnabledPropPullRequest
 
 
-class WebhookPullRequestClosed(GitHubModel):
-    """pull_request closed event"""
+class WebhookPullRequestAutoMergeEnabled(GitHubModel):
+    """pull_request auto_merge_enabled event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["auto_merge_enabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,10 @@ class WebhookPullRequestClosed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequest = Field(
+        title="Pull Request"
+    )
+    reason: Missing[str] = Field(default=UNSET)
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +56,6 @@ class WebhookPullRequestClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestClosed)
+model_rebuild(WebhookPullRequestAutoMergeEnabled)
 
-__all__ = ("WebhookPullRequestClosed",)
+__all__ = ("WebhookPullRequestAutoMergeEnabled",)

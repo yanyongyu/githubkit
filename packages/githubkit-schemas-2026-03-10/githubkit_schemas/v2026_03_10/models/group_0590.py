@@ -15,55 +15,30 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0578 import WebhooksLabelPropArchivedBy
 
 
-class WebhooksLabelUnarchivedAllof1(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksLabelUnarchived(GitHubModel):
+    """Unarchived label"""
 
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived. This is `null` after the label is unarchived."
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedBy, None] = Field(
-        description="The user who archived the label. This is `null` after the label is unarchived."
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    archived_at: Union[Union[_dt.datetime, None], None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
     )
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedBy(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
+    archived_by: Union[Union[None, WebhooksLabelPropArchivedBy], None] = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
     id: int = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhooksLabelUnarchivedAllof1)
-model_rebuild(WebhooksLabelUnarchivedAllof1PropArchivedBy)
+model_rebuild(WebhooksLabelUnarchived)
 
-__all__ = (
-    "WebhooksLabelUnarchivedAllof1",
-    "WebhooksLabelUnarchivedAllof1PropArchivedBy",
-)
+__all__ = ("WebhooksLabelUnarchived",)

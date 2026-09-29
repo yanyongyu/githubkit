@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0405 import (
+from .group_0406 import (
     CustomDeploymentRuleAppType,
     CustomDeploymentRuleAppTypeForResponse,
 )

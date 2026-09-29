@@ -78,6 +78,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.webhooks import (
         IssueDependenciesEvent as IssueDependenciesEvent,
     )
+    from githubkit_schemas.v2026_03_10.webhooks import (
+        IssueRelatesToEvent as IssueRelatesToEvent,
+    )
     from githubkit_schemas.v2026_03_10.webhooks import IssuesEvent as IssuesEvent
     from githubkit_schemas.v2026_03_10.webhooks import LabelEvent as LabelEvent
     from githubkit_schemas.v2026_03_10.webhooks import (
@@ -264,6 +267,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.webhooks import (
         issue_dependencies_action_types as issue_dependencies_action_types,
+    )
+    from githubkit_schemas.v2026_03_10.webhooks import (
+        issue_relates_to_action_types as issue_relates_to_action_types,
     )
     from githubkit_schemas.v2026_03_10.webhooks import (
         issues_action_types as issues_action_types,
@@ -535,6 +541,10 @@ else:
         "githubkit_schemas.v2026_03_10.webhooks.issue_dependencies": (
             "IssueDependenciesEvent",
             "issue_dependencies_action_types",
+        ),
+        "githubkit_schemas.v2026_03_10.webhooks.issue_relates_to": (
+            "IssueRelatesToEvent",
+            "issue_relates_to_action_types",
         ),
         "githubkit_schemas.v2026_03_10.webhooks.issues": (
             "IssuesEvent",

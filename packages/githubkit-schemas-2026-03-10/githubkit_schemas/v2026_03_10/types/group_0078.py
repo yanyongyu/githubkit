@@ -16,10 +16,10 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
 
-    Base Gist
+    Gist
     """
 
     url: str
@@ -30,22 +30,25 @@ class BaseGistType(TypedDict):
     git_pull_url: str
     git_push_url: str
     html_url: str
-    files: BaseGistPropFilesType
+    files: GistSimplePropForkOfPropFilesType
     public: bool
     created_at: _dt.datetime
     updated_at: _dt.datetime
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserType, None]
     comments_url: str
-    owner: NotRequired[SimpleUserType]
+    owner: NotRequired[Union[SimpleUserType, None]]
     truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class BaseGistTypeForResponse(TypedDict):
-    """Base Gist
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
 
-    Base Gist
+    Gist
     """
 
     url: str
@@ -56,31 +59,34 @@ class BaseGistTypeForResponse(TypedDict):
     git_pull_url: str
     git_push_url: str
     html_url: str
-    files: BaseGistPropFilesTypeForResponse
+    files: GistSimplePropForkOfPropFilesTypeForResponse
     public: bool
     created_at: str
     updated_at: str
     description: Union[str, None]
     comments: int
     comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserTypeForResponse, None]
     comments_url: str
-    owner: NotRequired[SimpleUserTypeForResponse]
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
     truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-BaseGistPropFilesType: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
-BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""BaseGistPropFiles
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
 """
 
 
 __all__ = (
-    "BaseGistPropFilesType",
-    "BaseGistPropFilesTypeForResponse",
-    "BaseGistType",
-    "BaseGistTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0106 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC Subject customization
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: NotRequired[list[str]]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
+    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
 )

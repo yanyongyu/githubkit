@@ -9,30 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0051 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+)
+from .group_0052 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
+    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse",
 )

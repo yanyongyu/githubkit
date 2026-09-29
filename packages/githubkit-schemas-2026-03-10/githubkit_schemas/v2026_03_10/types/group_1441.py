@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoLabelsPostBodyType(TypedDict):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoKeysPostBodyType(TypedDict):
+    """ReposOwnerRepoKeysPostBody"""
 
-    name: str
-    color: NotRequired[str]
-    description: NotRequired[str]
+    title: NotRequired[str]
+    key: str
+    read_only: NotRequired[bool]
 
 
-class ReposOwnerRepoLabelsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoKeysPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoKeysPostBody"""
 
-    name: str
-    color: NotRequired[str]
-    description: NotRequired[str]
+    title: NotRequired[str]
+    key: str
+    read_only: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoLabelsPostBodyType",
-    "ReposOwnerRepoLabelsPostBodyTypeForResponse",
+    "ReposOwnerRepoKeysPostBodyType",
+    "ReposOwnerRepoKeysPostBodyTypeForResponse",
 )

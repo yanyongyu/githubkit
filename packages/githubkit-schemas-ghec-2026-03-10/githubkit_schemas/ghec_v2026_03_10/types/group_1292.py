@@ -9,53 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
-
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
-
-
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
-
-
-class VisualStudioSubscriptionAssignmentType(TypedDict):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    organization_slugs: list[str]
 
 
-class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
-    """Visual Studio Subscription Assignment
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
-    "VisualStudioSubscriptionAssignmentType",
-    "VisualStudioSubscriptionAssignmentTypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
 )

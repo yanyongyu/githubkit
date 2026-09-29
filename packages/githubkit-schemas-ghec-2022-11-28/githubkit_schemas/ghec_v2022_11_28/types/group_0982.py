@@ -20,36 +20,41 @@ from .group_0645 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0686 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0983 import (
+    WebhookPullRequestAutoMergeEnabledPropPullRequestType,
+    WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse,
+)
 
 
-class WebhookPullRequestClosedType(TypedDict):
-    """pull_request closed event"""
+class WebhookPullRequestAutoMergeEnabledType(TypedDict):
+    """pull_request auto_merge_enabled event"""
 
-    action: Literal["closed"]
+    action: Literal["auto_merge_enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
+    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestType
+    reason: NotRequired[str]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestClosedTypeForResponse(TypedDict):
-    """pull_request closed event"""
+class WebhookPullRequestAutoMergeEnabledTypeForResponse(TypedDict):
+    """pull_request auto_merge_enabled event"""
 
-    action: Literal["closed"]
+    action: Literal["auto_merge_enabled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: PullRequestWebhookTypeForResponse
+    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse
+    reason: NotRequired[str]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestClosedType",
-    "WebhookPullRequestClosedTypeForResponse",
+    "WebhookPullRequestAutoMergeEnabledType",
+    "WebhookPullRequestAutoMergeEnabledTypeForResponse",
 )

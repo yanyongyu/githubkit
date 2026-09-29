@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0566 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import (
+from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0613 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertResolvedType(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertMetadataRemovedType(TypedDict):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["resolved"]
+    action: Literal["metadata_removed"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertResolvedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertMetadataRemovedTypeForResponse(TypedDict):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["resolved"]
+    action: Literal["metadata_removed"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertResolvedType",
-    "WebhookSecretScanningAlertResolvedTypeForResponse",
+    "WebhookSecretScanningAlertMetadataRemovedType",
+    "WebhookSecretScanningAlertMetadataRemovedTypeForResponse",
 )

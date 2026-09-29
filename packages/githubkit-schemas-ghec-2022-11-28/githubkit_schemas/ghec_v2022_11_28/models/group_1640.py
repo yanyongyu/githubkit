@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
@@ -16,24 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody"""
 
-    labels: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+        ]
+    ] = Field(
+        max_length=25 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="An array of issue field values to add to this issue. Each field value must include the field ID and the value to set.",
+    )
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems"""
 
-    name: str = Field()
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For multi_select fields: provide an array of option names (must match existing options)\n- For date fields: provide an ISO 8601 date string"
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems
+)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems",
 )

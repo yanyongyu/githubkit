@@ -10,28 +10,110 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse(
+class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
+        ]
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
-    actor_type: Literal["User", "Team"]
-    actor_identifier: str
-    role: Literal["reader", "writer", "admin"]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyType",
+    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
 )

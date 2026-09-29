@@ -13,25 +13,31 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
     ]
+    selected_usernames: NotRequired[list[str]]
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgCodespacesAccessPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
     ]
+    selected_usernames: NotRequired[list[str]]
 
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
-    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyTypeForResponse",
+    "OrgsOrgCodespacesAccessPutBodyType",
+    "OrgsOrgCodespacesAccessPutBodyTypeForResponse",
 )

@@ -23,10 +23,10 @@ from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForRespons
 from .group_0693 import WebhooksAlertType, WebhooksAlertTypeForResponse
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["reopen"]
+    action: Literal["create"]
     alert: WebhooksAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -35,10 +35,10 @@ class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryVulnerabilityAlertCreateTypeForResponse(TypedDict):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["reopen"]
+    action: Literal["create"]
     alert: WebhooksAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookRepositoryVulnerabilityAlertReopenTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertReopenType",
-    "WebhookRepositoryVulnerabilityAlertReopenTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertCreateType",
+    "WebhookRepositoryVulnerabilityAlertCreateTypeForResponse",
 )

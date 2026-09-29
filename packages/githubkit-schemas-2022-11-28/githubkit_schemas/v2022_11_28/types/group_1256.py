@@ -9,49 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyType(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationType]
-
-
-class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
-
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
-
-
-class OrgPrivateRegistryConfigurationType(TypedDict):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
     ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
     auth_type: NotRequired[
         Literal[
             "token",
@@ -63,10 +53,6 @@ class OrgPrivateRegistryConfigurationType(TypedDict):
             "oidc_gcp",
         ]
     ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
     tenant_id: NotRequired[str]
     client_id: NotRequired[str]
     aws_region: NotRequired[str]
@@ -82,34 +68,37 @@ class OrgPrivateRegistryConfigurationType(TypedDict):
     api_host: NotRequired[str]
     workload_identity_provider: NotRequired[str]
     service_account: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
 
 
-class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
-    """Organization private registry
+class OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesSecretNamePatchBody"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
+    registry_type: NotRequired[
+        Literal[
+            "maven_repository",
+            "nuget_feed",
+            "goproxy_server",
+            "npm_registry",
+            "rubygems_server",
+            "cargo_registry",
+            "composer_repository",
+            "docker_registry",
+            "git_source",
+            "helm_registry",
+            "hex_organization",
+            "hex_repository",
+            "pub_repository",
+            "python_index",
+            "terraform_registry",
+        ]
     ]
+    url: NotRequired[str]
+    username: NotRequired[Union[str, None]]
+    replaces_base: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[list[int]]
     auth_type: NotRequired[
         Literal[
             "token",
@@ -121,10 +110,6 @@ class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
             "oidc_gcp",
         ]
     ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
     tenant_id: NotRequired[str]
     client_id: NotRequired[str]
     aws_region: NotRequired[str]
@@ -140,13 +125,9 @@ class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
     api_host: NotRequired[str]
     workload_identity_provider: NotRequired[str]
     service_account: NotRequired[str]
-    created_at: str
-    updated_at: str
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationType",
-    "OrgPrivateRegistryConfigurationTypeForResponse",
-    "OrgsOrgPrivateRegistriesGetResponse200Type",
-    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyType",
+    "OrgsOrgPrivateRegistriesSecretNamePatchBodyTypeForResponse",
 )

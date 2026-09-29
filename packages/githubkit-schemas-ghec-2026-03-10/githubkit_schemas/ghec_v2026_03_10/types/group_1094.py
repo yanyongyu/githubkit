@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
@@ -20,33 +20,39 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0695 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0696 import WebhooksChanges8Type, WebhooksChanges8TypeForResponse
 
 
-class WebhookStarCreatedType(TypedDict):
-    """star created event"""
+class WebhookSponsorshipPendingTierChangeType(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["created"]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8Type
+    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    starred_at: Union[str, None]
+    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookStarCreatedTypeForResponse(TypedDict):
-    """star created event"""
+class WebhookSponsorshipPendingTierChangeTypeForResponse(TypedDict):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["created"]
+    action: Literal["pending_tier_change"]
+    changes: WebhooksChanges8TypeForResponse
+    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    starred_at: Union[str, None]
+    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookStarCreatedType",
-    "WebhookStarCreatedTypeForResponse",
+    "WebhookSponsorshipPendingTierChangeType",
+    "WebhookSponsorshipPendingTierChangeTypeForResponse",
 )

@@ -9,35 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[_dt.datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[str]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    language: Literal[
+        "actions",
+        "cpp",
+        "csharp",
+        "go",
+        "java",
+        "javascript",
+        "python",
+        "ruby",
+        "rust",
+        "swift",
+    ]
+    query_pack: str
+    repositories: NotRequired[list[str]]
+    repository_lists: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningSarifsPostBodyType",
-    "ReposOwnerRepoCodeScanningSarifsPostBodyTypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1TypeForResponse",
 )

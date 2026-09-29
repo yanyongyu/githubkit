@@ -15,37 +15,33 @@ from typing_extensions import NotRequired, TypedDict
 from githubkit.typing import UniqueList
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType(TypedDict):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType(TypedDict):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
 
     logical_environment: str
     physical_environment: NotRequired[str]
     deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType
     ]
-    partial_success: NotRequired[bool]
-    return_records: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
 
     logical_environment: str
     physical_environment: NotRequired[str]
     deployments: list[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsTypeForResponse
     ]
-    partial_success: NotRequired[bool]
-    return_records: NotRequired[bool]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItems
     """
 
     name: str
@@ -55,7 +51,7 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeployme
     deployment_name: str
     github_repository: NotRequired[str]
     tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsType
     ]
     runtime_risks: NotRequired[
         UniqueList[
@@ -69,11 +65,11 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeployme
     ]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-    ms
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItems
     """
 
     name: str
@@ -83,7 +79,7 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeployme
     deployment_name: str
     github_repository: NotRequired[str]
     tags: NotRequired[
-        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsTypeForResponse
     ]
     runtime_risks: NotRequired[
         UniqueList[
@@ -97,31 +93,31 @@ class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeployme
     ]
 
 
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsType: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+sItemsPropTags
 
 Key-value pairs to tag the deployment record.
 """
 
 
-OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
+OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsIte
-msPropTags
+"""OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+sItemsPropTags
 
 Key-value pairs to tag the deployment record.
 """
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyType",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTagsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyTypeForResponse",
 )

@@ -9,26 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
-
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
-    include_drafts: NotRequired[bool]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
-
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
-    include_drafts: NotRequired[bool]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
+    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

@@ -13,54 +13,52 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ArtifactDeploymentRecord(GitHubModel):
-    """Artifact Deployment Record
+class TeamSimple(GitHubModel):
+    """Team Simple
 
-    Artifact Metadata Deployment Record
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    logical_environment: Missing[str] = Field(default=UNSET)
-    physical_environment: Missing[str] = Field(default=UNSET)
-    cluster: Missing[str] = Field(default=UNSET)
-    deployment_name: Missing[str] = Field(default=UNSET)
-    tags: Missing[ArtifactDeploymentRecordPropTags] = Field(default=UNSET)
-    runtime_risks: Missing[
-        UniqueList[
-            Literal[
-                "critical-resource",
-                "internet-exposed",
-                "lateral-movement",
-                "sensitive-data",
-            ]
-        ]
-    ] = Field(
-        max_length=4 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="A list of runtime risks associated with the deployment.",
+    id: int = Field(description="Unique identifier of the team")
+    node_id: str = Field()
+    url: str = Field(description="URL for the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    description: Union[str, None] = Field(description="Description of the team")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    attestation_id: Missing[Union[int, None]] = Field(
+    privacy: Missing[str] = Field(
+        default=UNSET, description="The level of privacy this team should have"
+    )
+    notification_setting: Missing[str] = Field(
+        default=UNSET, description="The notification setting the team has set"
+    )
+    html_url: str = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    ldap_dn: Missing[str] = Field(
         default=UNSET,
-        description="The ID of the provenance attestation associated with the deployment record.",
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
+    )
+    type: Literal["enterprise", "organization"] = Field(
+        description="The ownership type of the team"
+    )
+    organization_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the organization to which this team belongs",
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET,
+        description="Unique identifier of the enterprise to which this team belongs",
     )
 
 
-class ArtifactDeploymentRecordPropTags(ExtraGitHubModel):
-    """ArtifactDeploymentRecordPropTags"""
+model_rebuild(TeamSimple)
 
-
-model_rebuild(ArtifactDeploymentRecord)
-model_rebuild(ArtifactDeploymentRecordPropTags)
-
-__all__ = (
-    "ArtifactDeploymentRecord",
-    "ArtifactDeploymentRecordPropTags",
-)
+__all__ = ("TeamSimple",)

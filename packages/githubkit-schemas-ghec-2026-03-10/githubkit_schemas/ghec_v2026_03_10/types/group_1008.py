@@ -21,27 +21,29 @@ from .group_0644 import (
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_1009 import (
-    WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType,
-    WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse,
+    WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType,
+    WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestReviewRequestRemovedOneof1Type(TypedDict):
-    """WebhookPullRequestReviewRequestRemovedOneof1"""
+class WebhookPullRequestReviewRequestRemovedOneof0Type(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof0"""
 
     action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestType
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType
     repository: RepositoryWebhooksType
-    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType
+    requested_reviewer: Union[
+        WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerType, None
+    ]
     sender: SimpleUserType
 
 
-class WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse(TypedDict):
-    """WebhookPullRequestReviewRequestRemovedOneof1"""
+class WebhookPullRequestReviewRequestRemovedOneof0TypeForResponse(TypedDict):
+    """WebhookPullRequestReviewRequestRemovedOneof0"""
 
     action: Literal["review_request_removed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
@@ -49,110 +51,75 @@ class WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse(TypedDict):
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     pull_request: (
-        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestTypeForResponse
+        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestTypeForResponse
     )
     repository: RepositoryWebhooksTypeForResponse
-    requested_team: (
-        WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse
-    )
+    requested_reviewer: Union[
+        WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerTypeForResponse,
+        None,
+    ]
     sender: SimpleUserTypeForResponse
 
 
-class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType(TypedDict):
-    """Team
+class WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerType(TypedDict):
+    """User"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
+    avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
-    description: Union[str, None]
-    html_url: str
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    members_url: str
-    name: str
-    node_id: str
-    parent: NotRequired[
-        Union[
-            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType,
-            None,
-        ]
-    ]
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse(
+class WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerTypeForResponse(
     TypedDict
 ):
-    """Team
+    """User"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
+    avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
-    description: Union[str, None]
-    html_url: str
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    members_url: str
-    name: str
-    node_id: str
-    parent: NotRequired[
-        Union[
-            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse,
-            None,
-        ]
-    ]
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
-
-
-class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType(
-    TypedDict
-):
-    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
-
-
-class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse(
-    TypedDict
-):
-    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    repositories_url: str
-    slug: str
-    url: str
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentType",
-    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParentTypeForResponse",
-    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamType",
-    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamTypeForResponse",
-    "WebhookPullRequestReviewRequestRemovedOneof1Type",
-    "WebhookPullRequestReviewRequestRemovedOneof1TypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerType",
+    "WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewerTypeForResponse",
+    "WebhookPullRequestReviewRequestRemovedOneof0Type",
+    "WebhookPullRequestReviewRequestRemovedOneof0TypeForResponse",
 )

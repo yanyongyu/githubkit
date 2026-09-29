@@ -17,37 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0155 import TeamSimple
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+
+class Team(GitHubModel):
+    """Team
 
     Groups of organization members that gives permissions on specified repositories.
     """
 
-    id: int = Field(description="Unique identifier of the team")
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
+    name: str = Field()
     slug: str = Field()
-    ldap_dn: Missing[str] = Field(
-        default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-    )
+    description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
     type: Literal["enterprise", "organization"] = Field(
         description="The ownership type of the team"
+    )
+    access_source: Missing[Literal["direct", "organization", "enterprise"]] = Field(
+        default=UNSET,
+        description="How the team's access to the repository was granted. This property is only\npresent when the team is returned in a repository context, such as\n`GET /repos/{owner}/{repo}/teams`.",
     )
     organization_id: Missing[int] = Field(
         default=UNSET,
@@ -57,8 +54,23 @@ class TeamSimple(GitHubModel):
         default=UNSET,
         description="Unique identifier of the enterprise to which this team belongs",
     )
+    parent: Union[TeamSimple, None] = Field()
 
 
-model_rebuild(TeamSimple)
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-__all__ = ("TeamSimple",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
+
+__all__ = (
+    "Team",
+    "TeamPropPermissions",
+)

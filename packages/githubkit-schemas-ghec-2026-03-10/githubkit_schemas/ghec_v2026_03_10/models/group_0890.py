@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -22,13 +22,17 @@ from .group_0642 import EnterpriseWebhooks
 from .group_0643 import SimpleInstallation
 from .group_0644 import OrganizationSimpleWebhooks
 from .group_0645 import RepositoryWebhooks
-from .group_0891 import WebhookIssuesUnlockedPropIssue
+from .group_0664 import WebhooksIssue
+from .group_0667 import WebhooksUserMannequin
 
 
-class WebhookIssuesUnlocked(GitHubModel):
-    """issues unlocked event"""
+class WebhookIssuesUnassigned(GitHubModel):
+    """issues unassigned event"""
 
-    action: Literal["unlocked"] = Field()
+    action: Literal["unassigned"] = Field(description="The action that was performed.")
+    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
+        default=UNSET, title="User"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +43,7 @@ class WebhookIssuesUnlocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesUnlockedPropIssue = Field(
+    issue: WebhooksIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
     )
@@ -55,6 +59,6 @@ class WebhookIssuesUnlocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnlocked)
+model_rebuild(WebhookIssuesUnassigned)
 
-__all__ = ("WebhookIssuesUnlocked",)
+__all__ = ("WebhookIssuesUnassigned",)

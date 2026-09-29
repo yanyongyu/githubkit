@@ -11,86 +11,43 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0579 import (
+    WebhooksLabelPropArchivedByType,
+    WebhooksLabelPropArchivedByTypeForResponse,
+)
 
 
-class WebhooksLabelUnarchivedAllof1Type(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksLabelUnarchivedType(TypedDict):
+    """Unarchived label"""
 
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
-
-
-class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
-
-    archived_at: Union[str, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: Union[Union[_dt.datetime, None], None]
+    archived_by: Union[Union[None, WebhooksLabelPropArchivedByType], None]
     id: int
+    name: str
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
-class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+class WebhooksLabelUnarchivedTypeForResponse(TypedDict):
+    """Unarchived label"""
 
-    The user who archived the label. This is `null` after the label is unarchived.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: Union[Union[str, None], None]
+    archived_by: Union[Union[None, WebhooksLabelPropArchivedByTypeForResponse], None]
     id: int
+    name: str
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
-    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
-    "WebhooksLabelUnarchivedAllof1Type",
-    "WebhooksLabelUnarchivedAllof1TypeForResponse",
+    "WebhooksLabelUnarchivedType",
+    "WebhooksLabelUnarchivedTypeForResponse",
 )

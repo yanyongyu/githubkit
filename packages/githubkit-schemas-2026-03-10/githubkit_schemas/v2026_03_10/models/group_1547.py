@@ -12,18 +12,32 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0169 import CopilotSpace
-
-
-class UsersUsernameCopilotSpacesGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesGetResponse200"""
-
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(UsersUsernameCopilotSpacesGetResponse200)
+class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
-__all__ = ("UsersUsernameCopilotSpacesGetResponse200",)
+    attestations: Missing[
+        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+    ] = Field(default=UNSET)
+
+
+class UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems(
+    GitHubModel
+):
+    """UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
+
+    repository_id: Missing[int] = Field(default=UNSET)
+    bundle_url: Missing[str] = Field(default=UNSET)
+    initiator: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200)
+model_rebuild(UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems)
+
+__all__ = (
+    "UsersUsernameAttestationsSubjectDigestGetResponse200",
+    "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+)

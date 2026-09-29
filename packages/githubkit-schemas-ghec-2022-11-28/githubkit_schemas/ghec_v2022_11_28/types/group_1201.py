@@ -9,32 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runners: list[int]
 
 
-class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    runners: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type",
-    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse",
 )

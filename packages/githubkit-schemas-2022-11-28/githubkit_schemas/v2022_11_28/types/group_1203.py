@@ -11,20 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
-
-    selected_usernames: list[str]
+from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    selected_usernames: list[str]
+    total_count: int
+    repositories: list[MinimalRepositoryType]
+
+
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: list[MinimalRepositoryTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",
-    "OrgsOrgCodespacesAccessSelectedUsersDeleteBodyTypeForResponse",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
+    "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
 )

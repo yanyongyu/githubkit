@@ -34,9 +34,6 @@ if TYPE_CHECKING:
     from .dependabot import DependabotClient
     from .dependency_graph import DependencyGraphClient
     from .emojis import EmojisClient
-    from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
-    from .enterprise_team_organizations import EnterpriseTeamOrganizationsClient
-    from .enterprise_teams import EnterpriseTeamsClient
     from .gists import GistsClient
     from .git import GitClient
     from .gitignore import GitignoreClient
@@ -153,24 +150,6 @@ class RestNamespace:
         from .dependabot import DependabotClient
 
         return DependabotClient(self._github)
-
-    @cached_property
-    def enterprise_team_memberships(self) -> "EnterpriseTeamMembershipsClient":
-        from .enterprise_team_memberships import EnterpriseTeamMembershipsClient
-
-        return EnterpriseTeamMembershipsClient(self._github)
-
-    @cached_property
-    def enterprise_teams(self) -> "EnterpriseTeamsClient":
-        from .enterprise_teams import EnterpriseTeamsClient
-
-        return EnterpriseTeamsClient(self._github)
-
-    @cached_property
-    def enterprise_team_organizations(self) -> "EnterpriseTeamOrganizationsClient":
-        from .enterprise_team_organizations import EnterpriseTeamOrganizationsClient
-
-        return EnterpriseTeamOrganizationsClient(self._github)
 
     @cached_property
     def activity(self) -> "ActivityClient":

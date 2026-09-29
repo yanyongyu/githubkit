@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0310 import WorkflowRunType, WorkflowRunTypeForResponse
+from .group_0311 import WorkflowRunType, WorkflowRunTypeForResponse
 
 
 class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):

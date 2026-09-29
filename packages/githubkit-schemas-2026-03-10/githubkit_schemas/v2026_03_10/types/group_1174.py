@@ -11,31 +11,52 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0155 import (
-    ArtifactDeploymentRecordType,
-    ArtifactDeploymentRecordTypeForResponse,
-)
 
-
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202Type(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordType]]
+    job_id: int
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType
+        ]
+    ]
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200"""
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    total_count: int
-    deployment_records: NotRequired[list[ArtifactDeploymentRecordTypeForResponse]]
+    job_id: int
+    errors: NotRequired[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
+    """
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
+    """
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200Type",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202TypeForResponse",
 )

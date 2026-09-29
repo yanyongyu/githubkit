@@ -26,12 +26,11 @@ from .group_0694 import (
 )
 
 
-class WebhookSecretScanningAlertUnassignedType(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertReopenedType(TypedDict):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["unassigned"]
+    action: Literal["reopened"]
     alert: SecretScanningAlertWebhookType
-    assignee: NotRequired[SimpleUserType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -39,12 +38,11 @@ class WebhookSecretScanningAlertUnassignedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
-    """secret_scanning_alert unassigned event"""
+class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
+    """secret_scanning_alert reopened event"""
 
-    action: Literal["unassigned"]
+    action: Literal["reopened"]
     alert: SecretScanningAlertWebhookTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +51,6 @@ class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertUnassignedType",
-    "WebhookSecretScanningAlertUnassignedTypeForResponse",
+    "WebhookSecretScanningAlertReopenedType",
+    "WebhookSecretScanningAlertReopenedTypeForResponse",
 )

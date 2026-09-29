@@ -9,28 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
+from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1"""
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items(ExtraGitHubModel):
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    credential_id: str = Field(
-        description="The SHA-256 fingerprint of the user-owned SSH authentication key to authorize."
+    type: Missing[str] = Field(
+        default=UNSET, description="The record type (request or response)."
     )
-    credential_type: Literal["ssh_key"] = Field()
-    organizations: UniqueList[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+    user_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the user who made the request."
+    )
+    enterprise_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the enterprise."
+    )
+    github_request_id: Missing[str] = Field(
+        default=UNSET, description="The GitHub request ID."
+    )
+    endpoint: Missing[str] = Field(
+        default=UNSET, description="The API endpoint called."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The request or response body."
+    )
+    timestamp: Missing[int] = Field(
+        default=UNSET, alias="@timestamp", description="Milliseconds since Unix epoch."
+    )
+    event_id: Missing[str] = Field(
+        default=UNSET, description="The source-assigned event ID."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1)
+model_rebuild(EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1",)
+__all__ = ("EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items",)

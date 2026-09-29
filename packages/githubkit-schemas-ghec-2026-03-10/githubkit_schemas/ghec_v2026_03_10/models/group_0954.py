@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0682 import WebhooksProjectColumn
 
 
-class WebhookProjectColumnMoved(GitHubModel):
-    """project_column moved event"""
+class WebhookProjectColumnDeleted(GitHubModel):
+    """project_column deleted event"""
 
-    action: Literal["moved"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,14 +45,12 @@ class WebhookProjectColumnMoved(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     project_column: WebhooksProjectColumn = Field(title="Project Column")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    repository: Missing[Union[RepositoryWebhooks, None]] = Field(default=UNSET)
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectColumnMoved)
+model_rebuild(WebhookProjectColumnDeleted)
 
-__all__ = ("WebhookProjectColumnMoved",)
+__all__ = ("WebhookProjectColumnDeleted",)

@@ -20,40 +20,37 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0665 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 from .group_0876 import (
-    WebhookIssuesMilestonedPropIssueType,
-    WebhookIssuesMilestonedPropIssueTypeForResponse,
+    WebhookIssuesLockedPropIssueType,
+    WebhookIssuesLockedPropIssueTypeForResponse,
 )
 
 
-class WebhookIssuesMilestonedType(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesLockedType(TypedDict):
+    """issues locked event"""
 
-    action: Literal["milestoned"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesMilestonedPropIssueType
-    milestone: WebhooksMilestoneType
+    issue: WebhookIssuesLockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesMilestonedTypeForResponse(TypedDict):
-    """issues milestoned event"""
+class WebhookIssuesLockedTypeForResponse(TypedDict):
+    """issues locked event"""
 
-    action: Literal["milestoned"]
+    action: Literal["locked"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesMilestonedPropIssueTypeForResponse
-    milestone: WebhooksMilestoneTypeForResponse
+    issue: WebhookIssuesLockedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesMilestonedType",
-    "WebhookIssuesMilestonedTypeForResponse",
+    "WebhookIssuesLockedType",
+    "WebhookIssuesLockedTypeForResponse",
 )

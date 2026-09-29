@@ -9,44 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsHostedRunnerLimitsType(TypedDict):
-    """ActionsHostedRunnerLimits"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsType
-
-
-class ActionsHostedRunnerLimitsTypeForResponse(TypedDict):
-    """ActionsHostedRunnerLimits"""
-
-    public_ips: ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse
-
-
-class ActionsHostedRunnerLimitsPropPublicIpsType(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
-
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Actions OIDC Subject customization
     """
 
-    maximum: int
-    current_usage: int
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
-class ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse(TypedDict):
-    """Static public IP Limits for GitHub-hosted Hosted Runners.
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    Provides details of static public IP limits for GitHub-hosted Hosted Runners
+    Actions OIDC Subject customization
     """
 
-    maximum: int
-    current_usage: int
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsHostedRunnerLimitsPropPublicIpsType",
-    "ActionsHostedRunnerLimitsPropPublicIpsTypeForResponse",
-    "ActionsHostedRunnerLimitsType",
-    "ActionsHostedRunnerLimitsTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

@@ -9,49 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
 from typing_extensions import TypedDict
 
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
-
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
+from .group_0171 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody"""
+class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ]
-    metadata: UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
+    resources: list[CopilotSpaceResourceType]
 
 
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = (
-    dict[str, Any]
-)
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
 
-Resource-specific metadata.
-"""
-
-
-UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
-
-Resource-specific metadata.
-"""
+    resources: list[CopilotSpaceResourceTypeForResponse]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
+    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
 )

@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
-
-    name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
 
     name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items"""
+
+    name: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsTypeForResponse",
 )

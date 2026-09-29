@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,17 +16,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
+        default=UNSET,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)

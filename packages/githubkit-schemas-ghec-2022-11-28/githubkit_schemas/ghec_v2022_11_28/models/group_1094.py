@@ -23,14 +23,16 @@ from .group_0644 import SimpleInstallation
 from .group_0645 import OrganizationSimpleWebhooks
 from .group_0646 import RepositoryWebhooks
 from .group_0696 import WebhooksSponsorship
-from .group_0697 import WebhooksChanges8
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSponsorshipPendingCancellation(GitHubModel):
+    """sponsorship pending_cancellation event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    action: Literal["pending_cancellation"] = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +57,6 @@ class WebhookSponsorshipTierChanged(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSponsorshipPendingCancellation)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSponsorshipPendingCancellation",)

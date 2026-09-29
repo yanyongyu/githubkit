@@ -26,10 +26,10 @@ from .group_0693 import (
 )
 
 
-class WebhookSecretScanningAlertResolvedType(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertPubliclyLeakedType(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["resolved"]
+    action: Literal["publicly_leaked"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertResolvedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertPubliclyLeakedTypeForResponse(TypedDict):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["resolved"]
+    action: Literal["publicly_leaked"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertResolvedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertResolvedType",
-    "WebhookSecretScanningAlertResolvedTypeForResponse",
+    "WebhookSecretScanningAlertPubliclyLeakedType",
+    "WebhookSecretScanningAlertPubliclyLeakedTypeForResponse",
 )

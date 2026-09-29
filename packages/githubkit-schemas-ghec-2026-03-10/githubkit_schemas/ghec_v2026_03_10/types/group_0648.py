@@ -23,7 +23,7 @@ class ExemptionRequestType(TypedDict):
     """
 
     id: NotRequired[int]
-    number: NotRequired[Union[int, None]]
+    number: NotRequired[int]
     repository_id: NotRequired[int]
     requester_id: NotRequired[int]
     requester_login: NotRequired[str]
@@ -73,7 +73,7 @@ class ExemptionRequestTypeForResponse(TypedDict):
     """
 
     id: NotRequired[int]
-    number: NotRequired[Union[int, None]]
+    number: NotRequired[int]
     repository_id: NotRequired[int]
     requester_id: NotRequired[int]
     requester_login: NotRequired[str]

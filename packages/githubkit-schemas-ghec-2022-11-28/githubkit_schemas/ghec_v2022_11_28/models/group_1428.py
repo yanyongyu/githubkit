@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0274 import OrganizationCustomRepositoryRole
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
-    )
-    custom_roles: Missing[list[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke for the user.")
 
 
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody)
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)
+__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",)

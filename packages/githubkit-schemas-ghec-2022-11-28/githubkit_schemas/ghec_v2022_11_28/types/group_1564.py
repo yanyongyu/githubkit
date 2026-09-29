@@ -13,8 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
     language: Literal[
         "actions",
@@ -29,15 +29,15 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDic
         "swift",
     ]
     query_pack: str
-    repositories: NotRequired[list[str]]
+    repositories: list[str]
     repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse(
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
     language: Literal[
         "actions",
@@ -52,12 +52,12 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForRespon
         "swift",
     ]
     query_pack: str
-    repositories: NotRequired[list[str]]
+    repositories: list[str]
     repository_lists: NotRequired[list[str]]
-    repository_owners: list[str]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
-    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2TypeForResponse",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
+    "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0TypeForResponse",
 )

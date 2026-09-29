@@ -14,22 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanEnablementUpdate(GitHubModel):
-    """CodeScanningAiScanEnablementUpdate
+class CodeScanningAiScanEnablement(GitHubModel):
+    """CodeScanningAiScanEnablement
 
-    AI Scan enablement update for a repository.
+    AI Scan enablement for a repository.
     """
 
-    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="Whether to enable or disable AI Scan for the repository.",
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan is enabled for the repository."
     )
 
 
-model_rebuild(CodeScanningAiScanEnablementUpdate)
+model_rebuild(CodeScanningAiScanEnablement)
 
-__all__ = ("CodeScanningAiScanEnablementUpdate",)
+__all__ = ("CodeScanningAiScanEnablement",)

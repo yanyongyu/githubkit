@@ -9,91 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldValueType(TypedDict):
-    """Issue Field Value
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionType, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
-    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[None]
 
 
-class IssueFieldValueTypeForResponse(TypedDict):
-    """Issue Field Value
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    A value assigned to an issue field
-    """
-
-    issue_field_id: int
-    issue_field_name: NotRequired[str]
-    node_id: str
-    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
-    value: Union[str, float, int, None]
-    single_select_option: NotRequired[
-        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
-    ]
-    multi_select_options: NotRequired[
-        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
-    ]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[None]
 
 
-class IssueFieldValuePropSingleSelectOptionType(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
 
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
-    """IssueFieldValuePropSingleSelectOption
-
-    Details about the selected option (only present for single_select fields)
-    """
-
-    id: int
-    name: str
-    color: str
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
-class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
+class IssuePropPullRequestTypeForResponse(TypedDict):
+    """IssuePropPullRequest"""
 
-    id: int
-    name: str
-    color: str
-
-
-class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldValuePropMultiSelectOptionsItems"""
-
-    id: int
-    name: str
-    color: str
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "IssueFieldValuePropMultiSelectOptionsItemsType",
-    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
-    "IssueFieldValuePropSingleSelectOptionType",
-    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
-    "IssueFieldValueType",
-    "IssueFieldValueTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropPullRequestType",
+    "IssuePropPullRequestTypeForResponse",
 )

@@ -9,37 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0058 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class ReleaseAssetType(TypedDict):
+    """Release Asset
 
-    id: int
-    number: int
+    Data related to a release.
+    """
+
     url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-
-
-class PullRequestMinimalTypeForResponse(TypedDict):
-    """Pull Request Minimal"""
-
+    browser_download_url: str
     id: int
-    number: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    uploader: Union[SimpleUserType, None]
+
+
+class ReleaseAssetTypeForResponse(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
     url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: str
+    updated_at: str
+    uploader: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "PullRequestMinimalType",
-    "PullRequestMinimalTypeForResponse",
+    "ReleaseAssetType",
+    "ReleaseAssetTypeForResponse",
 )

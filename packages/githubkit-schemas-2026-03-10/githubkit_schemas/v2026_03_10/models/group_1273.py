@@ -13,7 +13,7 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0282 import SecretScanningCustomPatternToCreate
+from .group_0283 import SecretScanningCustomPatternToCreate
 
 
 class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):

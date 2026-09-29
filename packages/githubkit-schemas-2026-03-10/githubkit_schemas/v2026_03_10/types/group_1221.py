@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    The total number of seats created for the specified user(s).
-    """
-
-    seats_created: int
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
-    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
+    "OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse",
 )

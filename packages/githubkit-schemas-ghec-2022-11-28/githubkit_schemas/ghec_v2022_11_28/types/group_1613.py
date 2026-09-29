@@ -9,47 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
-    base_tree: NotRequired[str]
-
-
-class ReposOwnerRepoGitTreesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
-
-    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse]
-    base_tree: NotRequired[str]
+    sha: str
+    force: NotRequired[bool]
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
-
-
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
-
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    sha: str
+    force: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsTypeForResponse",
-    "ReposOwnerRepoGitTreesPostBodyType",
-    "ReposOwnerRepoGitTreesPostBodyTypeForResponse",
+    "ReposOwnerRepoGitRefsRefPatchBodyType",
+    "ReposOwnerRepoGitRefsRefPatchBodyTypeForResponse",
 )

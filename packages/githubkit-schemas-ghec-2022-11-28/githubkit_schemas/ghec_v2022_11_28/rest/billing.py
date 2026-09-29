@@ -822,23 +822,6 @@ class BillingClient:
         budget_alerting: Missing[
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
-        budget_scope: Missing[
-            Literal[
-                "enterprise",
-                "organization",
-                "repository",
-                "cost_center",
-                "multi_user_customer",
-                "multi_user_cost_center",
-                "user",
-            ]
-        ] = UNSET,
-        budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[
-            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-        ] = UNSET,
-        budget_product_sku: Missing[str] = UNSET,
-        user: Missing[str] = UNSET,
         expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
@@ -928,23 +911,6 @@ class BillingClient:
         budget_alerting: Missing[
             EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
         ] = UNSET,
-        budget_scope: Missing[
-            Literal[
-                "enterprise",
-                "organization",
-                "repository",
-                "cost_center",
-                "multi_user_customer",
-                "multi_user_cost_center",
-                "user",
-            ]
-        ] = UNSET,
-        budget_entity_name: Missing[str] = UNSET,
-        budget_type: Missing[
-            Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-        ] = UNSET,
-        budget_product_sku: Missing[str] = UNSET,
-        user: Missing[str] = UNSET,
         expires_at: Missing[Union[_dt.date, Literal[0], None]] = UNSET,
     ) -> Response[UpdateBudget, UpdateBudgetTypeForResponse]: ...
 
@@ -2336,7 +2302,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports
 
-        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
+        Lists all usage report exports for an enterprise. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
@@ -2377,7 +2343,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports
 
-        Lists all usage report exports for an enterprise. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
+        Lists all usage report exports for an enterprise. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
@@ -2579,7 +2545,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
 
-        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
+        Gets the status and details of a usage report export by ID. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """
@@ -2621,7 +2587,7 @@ class BillingClient:
 
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
 
-        Gets the status and details of a usage report export by ID. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
+        Gets the status and details of a usage report export by ID. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """

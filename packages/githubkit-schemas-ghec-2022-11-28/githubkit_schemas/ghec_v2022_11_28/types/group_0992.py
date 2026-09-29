@@ -20,39 +20,42 @@ from .group_0645 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0659 import WebhooksLabelType, WebhooksLabelTypeForResponse
 from .group_0993 import (
-    WebhookPullRequestLockedPropPullRequestType,
-    WebhookPullRequestLockedPropPullRequestTypeForResponse,
+    WebhookPullRequestLabeledPropPullRequestType,
+    WebhookPullRequestLabeledPropPullRequestTypeForResponse,
 )
 
 
-class WebhookPullRequestLockedType(TypedDict):
-    """pull_request locked event"""
+class WebhookPullRequestLabeledType(TypedDict):
+    """pull_request labeled event"""
 
-    action: Literal["locked"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: NotRequired[WebhooksLabelType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestLockedPropPullRequestType
+    pull_request: WebhookPullRequestLabeledPropPullRequestType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestLockedTypeForResponse(TypedDict):
-    """pull_request locked event"""
+class WebhookPullRequestLabeledTypeForResponse(TypedDict):
+    """pull_request labeled event"""
 
-    action: Literal["locked"]
+    action: Literal["labeled"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    label: NotRequired[WebhooksLabelTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestLockedPropPullRequestTypeForResponse
+    pull_request: WebhookPullRequestLabeledPropPullRequestTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestLockedType",
-    "WebhookPullRequestLockedTypeForResponse",
+    "WebhookPullRequestLabeledType",
+    "WebhookPullRequestLabeledTypeForResponse",
 )

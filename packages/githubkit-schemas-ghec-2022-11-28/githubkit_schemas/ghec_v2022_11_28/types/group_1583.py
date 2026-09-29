@@ -9,50 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1581 import (
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
-    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
-)
 
-
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
-
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
-    ]
-
-
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType(
     TypedDict
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    state: NotRequired[Literal["dismissed", "open"]]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
-    assignees: list[str]
-    agent_assignment: NotRequired[
-        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
-    ]
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: NotRequired[str]
+    custom_agent: NotRequired[str]
+    model: NotRequired[str]
+
+
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: NotRequired[str]
+    custom_agent: NotRequired[str]
+    model: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse",
 )

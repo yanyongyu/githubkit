@@ -9,24 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0157 import Team
 
+class PullRequestMergeAsyncResult(GitHubModel):
+    """Pull Request Merge Async Result
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Pull Request Merge Async Result
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0,
+        PullRequestMergeAsyncResultPropDetailsAnyof1,
+        PullRequestMergeAsyncResultPropDetailsAnyof2,
+        PullRequestMergeAsyncResultPropDetailsAnyof3,
+    ] = Field()
 
 
-model_rebuild(PullRequestReviewRequest)
+class PullRequestMergeAsyncResultPropDetailsAnyof0(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-__all__ = ("PullRequestReviewRequest",)
+    When the asynchronous merge request is pending
+    """
+
+    message: str = Field()
+    uuid: str = Field()
+    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
+    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
+    expected_head_sha: str = Field(
+        description="SHA that the pull request head must match for the enqueued merge to proceed."
+    )
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof1(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
+
+    When the pull request is in a merge queue
+    """
+
+    message: str = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestMergeAsyncResult)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof0)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof1)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof2)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof3)
+
+__all__ = (
+    "PullRequestMergeAsyncResult",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3",
+)

@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    body: str
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
-class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+class ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
 
-    body: str
+    title: NotRequired[str]
+    body: NotRequired[str]
+    state: NotRequired[Literal["open", "closed"]]
+    base: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
-    "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberPatchBodyType",
+    "ReposOwnerRepoPullsPullNumberPatchBodyTypeForResponse",
 )

@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0149 import RunnerType, RunnerTypeForResponse
-
-
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: list[RunnerType]
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    total_count: float
-    runners: list[RunnerTypeForResponse]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
+
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-    "OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

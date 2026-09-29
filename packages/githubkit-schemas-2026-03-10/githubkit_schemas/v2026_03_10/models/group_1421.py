@@ -21,13 +21,13 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
 from .group_0020 import Repository
-from .group_0047 import Milestone
-from .group_0048 import IssueType
-from .group_0049 import ReactionRollup
-from .group_0050 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0053 import IssueComment
-from .group_0054 import IssueFieldValue
-from .group_0056 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
+from .group_0045 import Milestone
+from .group_0046 import IssueType
+from .group_0047 import ReactionRollup
+from .group_0048 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0051 import IssueComment
+from .group_0052 import IssueFieldValue
+from .group_0054 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
 from .group_1423 import (
     ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
 )

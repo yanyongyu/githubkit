@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1110 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[_dt.datetime]
+    read: NotRequired[bool]
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class NotificationsPutBodyTypeForResponse(TypedDict):
+    """NotificationsPutBody"""
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
-    ]
-
-
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
-
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
-    ]
+    last_read_at: NotRequired[str]
+    read: NotRequired[bool]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "NotificationsPutBodyType",
+    "NotificationsPutBodyTypeForResponse",
 )

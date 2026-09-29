@@ -23,30 +23,30 @@ from .group_0644 import (
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookSubIssuesSubIssueAddedType(TypedDict):
-    """sub-issue added event"""
+class WebhookSubIssuesParentIssueAddedType(TypedDict):
+    """parent issue added event"""
 
-    action: Literal["sub_issue_added"]
-    sub_issue_id: NotRequired[float]
-    sub_issue: NotRequired[IssueType]
-    sub_issue_repo: NotRequired[RepositoryType]
-    parent_issue_id: float
-    parent_issue: IssueType
+    action: Literal["parent_issue_added"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueType]
+    parent_issue_repo: NotRequired[RepositoryType]
+    sub_issue_id: float
+    sub_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
-    """sub-issue added event"""
+class WebhookSubIssuesParentIssueAddedTypeForResponse(TypedDict):
+    """parent issue added event"""
 
-    action: Literal["sub_issue_added"]
-    sub_issue_id: NotRequired[float]
-    sub_issue: NotRequired[IssueTypeForResponse]
-    sub_issue_repo: NotRequired[RepositoryTypeForResponse]
-    parent_issue_id: float
-    parent_issue: IssueTypeForResponse
+    action: Literal["parent_issue_added"]
+    parent_issue_id: NotRequired[float]
+    parent_issue: NotRequired[IssueTypeForResponse]
+    parent_issue_repo: NotRequired[RepositoryTypeForResponse]
+    sub_issue_id: float
+    sub_issue: IssueTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
@@ -54,6 +54,6 @@ class WebhookSubIssuesSubIssueAddedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSubIssuesSubIssueAddedType",
-    "WebhookSubIssuesSubIssueAddedTypeForResponse",
+    "WebhookSubIssuesParentIssueAddedType",
+    "WebhookSubIssuesParentIssueAddedTypeForResponse",
 )

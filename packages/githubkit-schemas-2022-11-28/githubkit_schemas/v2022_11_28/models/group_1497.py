@@ -9,21 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoStacksPostBody(GitHubModel):
-    """ReposOwnerRepoStacksPostBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    pull_requests: list[int] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=2 if PYDANTIC_V2 else None,
-        description="An ordered list of pull request numbers forming the stack from bottom to top.",
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
     )
 
 
-model_rebuild(ReposOwnerRepoStacksPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-__all__ = ("ReposOwnerRepoStacksPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)

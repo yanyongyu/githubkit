@@ -9,29 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanEnablementType(TypedDict):
-    """CodeScanningAiScanEnablement
+class CodeQualitySetupUpdateResponseType(TypedDict):
+    """CodeQualitySetupUpdateResponse
 
-    AI Scan enablement for a repository.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    pr_scan: Literal["enabled", "disabled"]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablement
+class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateResponse
 
-    AI Scan enablement for a repository.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    pr_scan: Literal["enabled", "disabled"]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementType",
-    "CodeScanningAiScanEnablementTypeForResponse",
+    "CodeQualitySetupUpdateResponseType",
+    "CodeQualitySetupUpdateResponseTypeForResponse",
 )

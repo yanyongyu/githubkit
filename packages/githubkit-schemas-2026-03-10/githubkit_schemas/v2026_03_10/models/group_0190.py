@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueType(GitHubModel):
-    """OrganizationCreateIssueType"""
+class OrganizationUpdateIssueType(GitHubModel):
+    """OrganizationUpdateIssueType"""
 
     name: str = Field(description="Name of the issue type.")
     is_enabled: bool = Field(
@@ -38,6 +38,6 @@ class OrganizationCreateIssueType(GitHubModel):
     ] = Field(default=UNSET, description="Color for the issue type.")
 
 
-model_rebuild(OrganizationCreateIssueType)
+model_rebuild(OrganizationUpdateIssueType)
 
-__all__ = ("OrganizationCreateIssueType",)
+__all__ = ("OrganizationUpdateIssueType",)

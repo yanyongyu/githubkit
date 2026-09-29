@@ -9,31 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from githubkit.typing import UniqueList
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0"""
-
-    credential_id: int
-    credential_type: Literal["classic_pat"]
-    organizations: UniqueList[str]
-
-
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0TypeForResponse(
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0"""
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    credential_id: int
-    credential_type: Literal["classic_pat"]
-    organizations: UniqueList[str]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0TypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
 )

@@ -25,10 +25,10 @@ from .group_0645 import RepositoryWebhooks
 from .group_0693 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertResolved(GitHubModel):
-    """secret_scanning_alert resolved event"""
+class WebhookSecretScanningAlertPubliclyLeaked(GitHubModel):
+    """secret_scanning_alert publicly leaked event"""
 
-    action: Literal["resolved"] = Field()
+    action: Literal["publicly_leaked"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookSecretScanningAlertResolved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertResolved)
+model_rebuild(WebhookSecretScanningAlertPubliclyLeaked)
 
-__all__ = ("WebhookSecretScanningAlertResolved",)
+__all__ = ("WebhookSecretScanningAlertPubliclyLeaked",)

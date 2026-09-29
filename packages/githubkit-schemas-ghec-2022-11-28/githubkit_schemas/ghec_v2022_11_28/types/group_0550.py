@@ -21,9 +21,10 @@ class PullRequestMergeAsyncResultType(TypedDict):
 
     status: Literal["pending", "merged", "enqueued", "failed"]
     details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0Type,
-        PullRequestMergeAsyncResultPropDetailsOneof1Type,
-        PullRequestMergeAsyncResultPropDetailsOneof2Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof0Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof1Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof2Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof3Type,
     ]
 
 
@@ -35,16 +36,17 @@ class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
 
     status: Literal["pending", "merged", "enqueued", "failed"]
     details: Union[
-        PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse,
     ]
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof0Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
+class PullRequestMergeAsyncResultPropDetailsAnyof0Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-    When an asynchronous merge request was created or already existed
+    When the asynchronous merge request is pending
     """
 
     message: str
@@ -54,10 +56,10 @@ class PullRequestMergeAsyncResultPropDetailsOneof0Type(TypedDict):
     expected_head_sha: str
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof0
+class PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-    When an asynchronous merge request was created or already existed
+    When the asynchronous merge request is pending
     """
 
     message: str
@@ -67,38 +69,56 @@ class PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse(TypedDict):
     expected_head_sha: str
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof1Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
+class PullRequestMergeAsyncResultPropDetailsAnyof1Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
 
-    When the pull request cannot be merged
+    When the pull request is in a merge queue
     """
 
     message: str
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof1
+class PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
 
-    When the pull request cannot be merged
+    When the pull request is in a merge queue
     """
 
     message: str
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof2Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
+class PullRequestMergeAsyncResultPropDetailsAnyof2Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
 
-    When the pull request is already merged
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
     """
 
     message: str
     sha: str
 
 
-class PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsOneof2
+class PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
 
-    When the pull request is already merged
+    When the pull request has been merged
     """
 
     message: str
@@ -106,12 +126,14 @@ class PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "PullRequestMergeAsyncResultPropDetailsOneof0Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof0TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof1Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof1TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsOneof2Type",
-    "PullRequestMergeAsyncResultPropDetailsOneof2TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse",
     "PullRequestMergeAsyncResultType",
     "PullRequestMergeAsyncResultTypeForResponse",
 )

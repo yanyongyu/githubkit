@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
@@ -16,16 +18,37 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody"""
 
-    labels: Missing[list[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
+        ]
+    ] = Field(
+        max_length=25 if PYDANTIC_V2 else None,
         default=UNSET,
-        description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#add-labels-to-an-issue)."',
+        description="An array of issue field values to set for this issue. Each field value must include the field ID and the value to set. All existing field values will be replaced.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0)
+class ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",)
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float] = Field(
+        description="The value to set for the field. The type depends on the field's data type:\n- For text fields: provide a string value\n- For single_select fields: provide the option name as a string (must match an existing option)\n- For number fields: provide a numeric value\n- For date fields: provide an ISO 8601 date string"
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems
+)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody",
+    "ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems",
+)

@@ -9,92 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0068 import (
-    ActionsPolicyEnterpriseConditionsOneof0Type,
-    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-)
-from .group_0069 import (
-    ActionsPolicyEnterpriseConditionsOneof1Type,
-    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-)
-from .group_0070 import (
-    ActionsPolicyEnterpriseConditionsOneof2Type,
-    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-)
-from .group_0071 import (
-    ActionsPolicyEnterpriseConditionsOneof3Type,
-    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-)
-from .group_0072 import (
-    ActionsPolicyEnterpriseConditionsOneof4Type,
-    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-)
-from .group_0073 import (
-    ActionsPolicyEnterpriseConditionsOneof5Type,
-    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsPoliciesPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0Type,
-            ActionsPolicyEnterpriseConditionsOneof1Type,
-            ActionsPolicyEnterpriseConditionsOneof2Type,
-            ActionsPolicyEnterpriseConditionsOneof3Type,
-            ActionsPolicyEnterpriseConditionsOneof4Type,
-            ActionsPolicyEnterpriseConditionsOneof5Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
-class EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+class EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBody"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    disable_self_hosted_runners_for_all_orgs: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPoliciesPostBodyType",
-    "EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyType",
+    "EnterprisesEnterpriseActionsPermissionsSelfHostedRunnersPutBodyTypeForResponse",
 )

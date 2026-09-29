@@ -20,39 +20,37 @@ from .group_0644 import (
     OrganizationSimpleWebhooksTypeForResponse,
 )
 from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_1084 import (
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
-    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
+from .group_0694 import (
+    WebhooksSecurityAdvisoryType,
+    WebhooksSecurityAdvisoryTypeForResponse,
 )
 
 
-class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecurityAdvisoryPublishedType(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    security_advisory: WebhooksSecurityAdvisoryType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
-    """security_advisory withdrawn event"""
+class WebhookSecurityAdvisoryPublishedTypeForResponse(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["withdrawn"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    security_advisory: (
-        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
-    )
+    security_advisory: WebhooksSecurityAdvisoryTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryWithdrawnType",
-    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
+    "WebhookSecurityAdvisoryPublishedType",
+    "WebhookSecurityAdvisoryPublishedTypeForResponse",
 )

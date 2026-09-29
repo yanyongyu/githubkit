@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
+    include_drafts: NotRequired[bool]
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoInvitationsInvitationIdPatchBodyType",
-    "ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

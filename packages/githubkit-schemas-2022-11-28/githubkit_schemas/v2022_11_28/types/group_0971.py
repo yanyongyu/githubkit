@@ -9,245 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0228 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleCreationTypeForResponse,
-    RepositoryRuleDeletionType,
-    RepositoryRuleDeletionTypeForResponse,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleNonFastForwardTypeForResponse,
-    RepositoryRuleRequiredSignaturesType,
-    RepositoryRuleRequiredSignaturesTypeForResponse,
-)
-from .group_0229 import RepositoryRuleUpdateType, RepositoryRuleUpdateTypeForResponse
-from .group_0231 import (
-    RepositoryRuleRequiredLinearHistoryType,
-    RepositoryRuleRequiredLinearHistoryTypeForResponse,
-)
-from .group_0232 import (
-    RepositoryRuleMergeQueueType,
-    RepositoryRuleMergeQueueTypeForResponse,
-)
-from .group_0234 import (
-    RepositoryRuleRequiredDeploymentsType,
-    RepositoryRuleRequiredDeploymentsTypeForResponse,
-)
-from .group_0237 import (
-    RepositoryRulePullRequestType,
-    RepositoryRulePullRequestTypeForResponse,
-)
-from .group_0239 import (
-    RepositoryRuleRequiredStatusChecksType,
-    RepositoryRuleRequiredStatusChecksTypeForResponse,
-)
-from .group_0241 import (
-    RepositoryRuleCommitMessagePatternType,
-    RepositoryRuleCommitMessagePatternTypeForResponse,
-)
-from .group_0243 import (
-    RepositoryRuleCommitAuthorEmailPatternType,
-    RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-)
-from .group_0245 import (
-    RepositoryRuleCommitterEmailPatternType,
-    RepositoryRuleCommitterEmailPatternTypeForResponse,
-)
-from .group_0247 import (
-    RepositoryRuleBranchNamePatternType,
-    RepositoryRuleBranchNamePatternTypeForResponse,
-)
-from .group_0249 import (
-    RepositoryRuleTagNamePatternType,
-    RepositoryRuleTagNamePatternTypeForResponse,
-)
-from .group_0252 import (
-    RepositoryRuleWorkflowsType,
-    RepositoryRuleWorkflowsTypeForResponse,
-)
-from .group_0254 import (
-    RepositoryRuleCodeScanningType,
-    RepositoryRuleCodeScanningTypeForResponse,
-)
-from .group_0256 import (
-    RepositoryRuleCodeCoverageType,
-    RepositoryRuleCodeCoverageTypeForResponse,
-    RepositoryRuleCodeQualityType,
-    RepositoryRuleCodeQualityTypeForResponse,
-    RepositoryRuleLicenseComplianceScanningType,
-    RepositoryRuleLicenseComplianceScanningTypeForResponse,
-)
-from .group_0257 import (
-    RepositoryRuleCopilotCodeReviewType,
-    RepositoryRuleCopilotCodeReviewTypeForResponse,
-)
-from .group_0259 import (
-    RepositoryRuleFilePathRestrictionType,
-    RepositoryRuleFilePathRestrictionTypeForResponse,
-)
-from .group_0261 import (
-    RepositoryRuleMaxFilePathLengthType,
-    RepositoryRuleMaxFilePathLengthTypeForResponse,
-)
-from .group_0263 import (
-    RepositoryRuleFileExtensionRestrictionType,
-    RepositoryRuleFileExtensionRestrictionTypeForResponse,
-)
-from .group_0265 import (
-    RepositoryRuleMaxFileSizeType,
-    RepositoryRuleMaxFileSizeTypeForResponse,
-)
 from .group_0972 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsTypeForResponse,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse,
+)
+from .group_0974 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesType,
+    WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse,
 )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    added: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCodeQualityType,
-                RepositoryRuleCodeCoverageType,
-                RepositoryRuleCopilotCodeReviewType,
-                RepositoryRuleLicenseComplianceScanningType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-            ]
-        ]
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
     ]
-    deleted: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-                RepositoryRuleCodeQualityType,
-                RepositoryRuleCodeCoverageType,
-                RepositoryRuleCopilotCodeReviewType,
-                RepositoryRuleLicenseComplianceScanningType,
-                RepositoryRuleFilePathRestrictionType,
-                RepositoryRuleMaxFilePathLengthType,
-                RepositoryRuleFileExtensionRestrictionType,
-                RepositoryRuleMaxFileSizeType,
-            ]
-        ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
+
+
+class WebhookRepositoryRulesetEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
+
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse
     ]
-    updated: NotRequired[
-        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
+    conditions: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsTypeForResponse
+    ]
+    rules: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse
     ]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
 
-    added: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleMergeQueueTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCodeQualityTypeForResponse,
-                RepositoryRuleCodeCoverageTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-                RepositoryRuleLicenseComplianceScanningTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-            ]
-        ]
-    ]
-    deleted: NotRequired[
-        list[
-            Union[
-                RepositoryRuleCreationTypeForResponse,
-                RepositoryRuleUpdateTypeForResponse,
-                RepositoryRuleDeletionTypeForResponse,
-                RepositoryRuleRequiredLinearHistoryTypeForResponse,
-                RepositoryRuleMergeQueueTypeForResponse,
-                RepositoryRuleRequiredDeploymentsTypeForResponse,
-                RepositoryRuleRequiredSignaturesTypeForResponse,
-                RepositoryRulePullRequestTypeForResponse,
-                RepositoryRuleRequiredStatusChecksTypeForResponse,
-                RepositoryRuleNonFastForwardTypeForResponse,
-                RepositoryRuleCommitMessagePatternTypeForResponse,
-                RepositoryRuleCommitAuthorEmailPatternTypeForResponse,
-                RepositoryRuleCommitterEmailPatternTypeForResponse,
-                RepositoryRuleBranchNamePatternTypeForResponse,
-                RepositoryRuleTagNamePatternTypeForResponse,
-                RepositoryRuleWorkflowsTypeForResponse,
-                RepositoryRuleCodeScanningTypeForResponse,
-                RepositoryRuleCodeQualityTypeForResponse,
-                RepositoryRuleCodeCoverageTypeForResponse,
-                RepositoryRuleCopilotCodeReviewTypeForResponse,
-                RepositoryRuleLicenseComplianceScanningTypeForResponse,
-                RepositoryRuleFilePathRestrictionTypeForResponse,
-                RepositoryRuleMaxFilePathLengthTypeForResponse,
-                RepositoryRuleFileExtensionRestrictionTypeForResponse,
-                RepositoryRuleMaxFileSizeTypeForResponse,
-            ]
-        ]
-    ]
-    updated: NotRequired[
-        list[
-            WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsTypeForResponse
-        ]
-    ]
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameTypeForResponse",
+    "WebhookRepositoryRulesetEditedPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesTypeForResponse",
 )

@@ -1352,28 +1352,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseDependabotRepositoryAccessPatchBody as EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
     )
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterprisesEnterpriseTeamsPostBody as EnterprisesEnterpriseTeamsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterprisesEnterpriseTeamsTeamSlugPatchBody as EnterprisesEnterpriseTeamsTeamSlugPatchBody,
-    )
     from githubkit_schemas.v2026_03_10.models import EnterpriseTeam as EnterpriseTeam
-    from githubkit_schemas.v2026_03_10.models import (
-        EnterpriseTeamWithMemberCount as EnterpriseTeamWithMemberCount,
-    )
     from githubkit_schemas.v2026_03_10.models import (
         EnterpriseWebhooks as EnterpriseWebhooks,
     )
@@ -1400,6 +1379,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import EventPropRepo as EventPropRepo
     from githubkit_schemas.v2026_03_10.models import (
         EventsGetResponse503 as EventsGetResponse503,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ExternalProperty as ExternalProperty,
     )
     from githubkit_schemas.v2026_03_10.models import Feed as Feed
     from githubkit_schemas.v2026_03_10.models import FeedPropLinks as FeedPropLinks
@@ -1806,6 +1788,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrganizationDependabotSecret as OrganizationDependabotSecret,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrganizationExternalPropertyInstallation as OrganizationExternalPropertyInstallation,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrganizationExternalPropertyInstallationPropInstallation as OrganizationExternalPropertyInstallationPropInstallation,
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrganizationFull as OrganizationFull,
@@ -2461,6 +2449,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgProjectsV2ProjectNumberViewsPostBody as OrgsOrgProjectsV2ProjectNumberViewsPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgPropertiesInstallationsPostBody as OrgsOrgPropertiesInstallationsPostBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgPropertiesInstallationsValuesPatchBody as OrgsOrgPropertiesInstallationsValuesPatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody as OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2777,13 +2774,16 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestMergeAsyncResult as PullRequestMergeAsyncResult,
     )
     from githubkit_schemas.v2026_03_10.models import (
-        PullRequestMergeAsyncResultPropDetailsOneof0 as PullRequestMergeAsyncResultPropDetailsOneof0,
+        PullRequestMergeAsyncResultPropDetailsAnyof0 as PullRequestMergeAsyncResultPropDetailsAnyof0,
     )
     from githubkit_schemas.v2026_03_10.models import (
-        PullRequestMergeAsyncResultPropDetailsOneof1 as PullRequestMergeAsyncResultPropDetailsOneof1,
+        PullRequestMergeAsyncResultPropDetailsAnyof1 as PullRequestMergeAsyncResultPropDetailsAnyof1,
     )
     from githubkit_schemas.v2026_03_10.models import (
-        PullRequestMergeAsyncResultPropDetailsOneof2 as PullRequestMergeAsyncResultPropDetailsOneof2,
+        PullRequestMergeAsyncResultPropDetailsAnyof2 as PullRequestMergeAsyncResultPropDetailsAnyof2,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        PullRequestMergeAsyncResultPropDetailsAnyof3 as PullRequestMergeAsyncResultPropDetailsAnyof3,
     )
     from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeResult as PullRequestMergeResult,
@@ -3033,6 +3033,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryExternalPropertyPayload as RepositoryExternalPropertyPayload,
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryHashAlgorithm as RepositoryHashAlgorithm,
@@ -3948,6 +3951,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoIssuesIssueNumberRelatesToPostBody as ReposOwnerRepoIssuesIssueNumberRelatesToPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody as ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
@@ -6169,6 +6175,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueDependenciesBlockingRemoved as WebhookIssueDependenciesBlockingRemoved,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssueRelatesToAdded as WebhookIssueRelatesToAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssueRelatesToRemoved as WebhookIssueRelatesToRemoved,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesAssigned as WebhookIssuesAssigned,
@@ -11576,8 +11588,6 @@ else:
             "DependabotAlertWithRepository",
             "DependabotAlertWithRepositoryPropDependency",
             "DependabotRepositoryAccessDetails",
-            "OrganizationSimple",
-            "EnterpriseTeamWithMemberCount",
             "Label",
             "Discussion",
             "DiscussionPropAnswerChosenBy",
@@ -11683,6 +11693,7 @@ else:
             "Thread",
             "ThreadPropSubject",
             "ThreadSubscription",
+            "OrganizationSimple",
             "ActionsCacheRetentionLimitForOrganization",
             "ActionsCacheStorageLimitForOrganization",
             "BillingAiCreditUsageReportOrg",
@@ -11879,9 +11890,12 @@ else:
             "ProjectsV2ItemWithContentPropFieldsItems",
             "ProjectsV2View",
             "ProjectsV2ViewPropCreator",
+            "OrganizationExternalPropertyInstallation",
+            "OrganizationExternalPropertyInstallationPropInstallation",
+            "ExternalProperty",
+            "CustomPropertyValue",
             "CustomProperty",
             "CustomPropertySetPayload",
-            "CustomPropertyValue",
             "OrgRepoCustomPropertyValues",
             "CodeOfConductSimple",
             "FullRepository",
@@ -12348,9 +12362,10 @@ else:
             "PullRequestPropLinks",
             "PullRequestMergeResult",
             "PullRequestMergeAsyncResult",
-            "PullRequestMergeAsyncResultPropDetailsOneof0",
-            "PullRequestMergeAsyncResultPropDetailsOneof1",
-            "PullRequestMergeAsyncResultPropDetailsOneof2",
+            "PullRequestMergeAsyncResultPropDetailsAnyof0",
+            "PullRequestMergeAsyncResultPropDetailsAnyof1",
+            "PullRequestMergeAsyncResultPropDetailsAnyof2",
+            "PullRequestMergeAsyncResultPropDetailsAnyof3",
             "PullRequestReviewRequest",
             "PullRequestReview",
             "PullRequestReviewPropLinks",
@@ -13106,6 +13121,8 @@ else:
             "WebhookIssueDependenciesBlockedByRemoved",
             "WebhookIssueDependenciesBlockingAdded",
             "WebhookIssueDependenciesBlockingRemoved",
+            "WebhookIssueRelatesToAdded",
+            "WebhookIssueRelatesToRemoved",
             "WebhookIssuesAssigned",
             "WebhookIssuesClosed",
             "WebhookIssuesClosedPropIssue",
@@ -14869,12 +14886,6 @@ else:
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
             "EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",
             "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",
-            "EnterprisesEnterpriseTeamsPostBody",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBody",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody",
-            "EnterprisesEnterpriseTeamsTeamSlugPatchBody",
             "EventsGetResponse503",
             "GistsPostBody",
             "GistsPostBodyPropFiles",
@@ -15087,6 +15098,10 @@ else:
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
             "OrgsOrgProjectsV2ProjectNumberViewsPostBody",
+            "OrgsOrgPropertiesInstallationsPostBody",
+            "OrgsOrgPropertiesInstallationsValuesPatchBody",
+            "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
+            "RepositoryExternalPropertyPayload",
             "OrgsOrgPropertiesSchemaPatchBody",
             "OrgsOrgPropertiesValuesPatchBody",
             "OrgsOrgReposPostBody",
@@ -15329,6 +15344,7 @@ else:
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",
             "ReposOwnerRepoIssuesIssueNumberLockPutBody",
             "ReposOwnerRepoIssuesIssueNumberReactionsPostBody",
+            "ReposOwnerRepoIssuesIssueNumberRelatesToPostBody",
             "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",
             "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody",
             "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",

@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
-    "ReposOwnerRepoPullsPullNumberMergePutResponse405TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergePutBodyTypeForResponse",
 )

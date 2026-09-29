@@ -9,46 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class IssueCommentMinimizedType(TypedDict):
+    """Minimized Issue Comment
 
-    total: int
-    completed: int
-    percent_completed: int
+    Details about why an issue comment was minimized.
+    """
 
-
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
-
-    total: int
-    completed: int
-    percent_completed: int
+    reason: Union[str, None]
 
 
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
+class IssueCommentMinimizedTypeForResponse(TypedDict):
+    """Minimized Issue Comment
 
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    Details about why an issue comment was minimized.
+    """
 
-
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    reason: Union[str, None]
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "IssueCommentMinimizedType",
+    "IssueCommentMinimizedTypeForResponse",
 )

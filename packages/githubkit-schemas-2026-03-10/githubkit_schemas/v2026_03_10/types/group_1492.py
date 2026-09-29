@@ -9,29 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0281 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
+from .group_0283 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
 )
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

@@ -9,67 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    total_count: int
-    storage_records: NotRequired[
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[_dt.datetime]
+    total_count: NotRequired[int]
+    errors: NotRequired[
         list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType
         ]
     ]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse(TypedDict):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
 
-    total_count: int
-    storage_records: NotRequired[
+    job_id: int
+    status: Literal["pending", "processing", "completed", "failed"]
+    started_at: NotRequired[str]
+    total_count: NotRequired[int]
+    errors: NotRequired[
         list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse
         ]
     ]
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
+    """
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    digest: NotRequired[str]
-    artifact_url: NotRequired[Union[str, None]]
-    registry_url: NotRequired[str]
-    repository: NotRequired[Union[str, None]]
-    status: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
+    pErrorsItems
+    """
 
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsType",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItemsTypeForResponse",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200Type",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200TypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsType",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItemsTypeForResponse",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Type",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200TypeForResponse",
 )

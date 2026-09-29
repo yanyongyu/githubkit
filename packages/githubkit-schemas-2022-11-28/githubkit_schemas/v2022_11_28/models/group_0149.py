@@ -9,39 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0148 import RunnerLabel
 
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
+    Runner Application
     """
 
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
-    )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
-    version: Missing[Union[str, None]] = Field(
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
         default=UNSET,
-        description="The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once.",
+        description="A short lived bearer token used to download the runner, if needed.",
     )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Runner)
+model_rebuild(RunnerApplication)
 
-__all__ = ("Runner",)
+__all__ = ("RunnerApplication",)

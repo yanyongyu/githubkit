@@ -14,16 +14,36 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: Missing[list[str]] = Field(
+        default=UNSET, description="The credential types to include."
+    )
+    authorization_state: Missing[
+        Literal["currently_authorized", "member_owned_only"]
+    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials owned by this user, given as a login.",
+    )
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
+    )
+    application: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody)
+model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",)
+__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)

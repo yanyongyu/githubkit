@@ -17,7 +17,7 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0284 import SecretScanningCustomPatternToDelete
+from .group_0285 import SecretScanningCustomPatternToDelete
 
 
 class OrgsOrgSecretScanningCustomPatternsDeleteBody(GitHubModel):

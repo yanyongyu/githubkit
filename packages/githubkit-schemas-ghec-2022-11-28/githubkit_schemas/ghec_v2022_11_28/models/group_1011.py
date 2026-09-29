@@ -22,13 +22,13 @@ from .group_0643 import EnterpriseWebhooks
 from .group_0644 import SimpleInstallation
 from .group_0645 import OrganizationSimpleWebhooks
 from .group_0646 import RepositoryWebhooks
-from .group_1012 import WebhookPullRequestReviewRequestedOneof0PropPullRequest
+from .group_1012 import WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest
 
 
-class WebhookPullRequestReviewRequestedOneof0(GitHubModel):
-    """WebhookPullRequestReviewRequestedOneof0"""
+class WebhookPullRequestReviewRequestRemovedOneof1(GitHubModel):
+    """WebhookPullRequestReviewRequestRemovedOneof1"""
 
-    action: Literal["review_requested"] = Field()
+    action: Literal["review_request_removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,52 +45,74 @@ class WebhookPullRequestReviewRequestedOneof0(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestReviewRequestedOneof0PropPullRequest = Field(
+    pull_request: WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest = Field(
         title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requested_reviewer: Union[
-        WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer, None
-    ] = Field(title="User")
+    requested_team: WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer(GitHubModel):
-    """User"""
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam(GitHubModel):
+    """Team
 
-    avatar_url: Missing[str] = Field(default=UNSET)
+    Groups of organization members that gives permissions on specified repositories.
+    """
+
     deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    parent: Missing[
+        Union[
+            WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    privacy: Literal["open", "closed", "secret"] = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
 
 
-model_rebuild(WebhookPullRequestReviewRequestedOneof0)
-model_rebuild(WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer)
+class WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent(
+    GitHubModel
+):
+    """WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent"""
+
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Literal["open", "closed", "secret"] = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+
+
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam)
+model_rebuild(WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent)
 
 __all__ = (
-    "WebhookPullRequestReviewRequestedOneof0",
-    "WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer",
+    "WebhookPullRequestReviewRequestRemovedOneof1",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam",
+    "WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent",
 )

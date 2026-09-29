@@ -1386,28 +1386,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType as EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType as EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        EnterprisesEnterpriseTeamsPostBodyType as EnterprisesEnterpriseTeamsPostBodyType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        EnterprisesEnterpriseTeamsTeamSlugPatchBodyType as EnterprisesEnterpriseTeamsTeamSlugPatchBodyType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
         EnterpriseTeamType as EnterpriseTeamType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        EnterpriseTeamWithMemberCountType as EnterpriseTeamWithMemberCountType,
     )
     from githubkit_schemas.v2026_03_10.types import EnterpriseType as EnterpriseType
     from githubkit_schemas.v2026_03_10.types import (
@@ -1439,6 +1418,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         EventsGetResponse503Type as EventsGetResponse503Type,
     )
     from githubkit_schemas.v2026_03_10.types import EventType as EventType
+    from githubkit_schemas.v2026_03_10.types import (
+        ExternalPropertyType as ExternalPropertyType,
+    )
     from githubkit_schemas.v2026_03_10.types import (
         FeedPropLinksType as FeedPropLinksType,
     )
@@ -1872,6 +1854,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrganizationDependabotSecretType as OrganizationDependabotSecretType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrganizationExternalPropertyInstallationPropInstallationType as OrganizationExternalPropertyInstallationPropInstallationType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrganizationExternalPropertyInstallationType as OrganizationExternalPropertyInstallationType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrganizationFullPropPlanType as OrganizationFullPropPlanType,
@@ -2529,6 +2517,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgProjectsV2ProjectNumberViewsPostBodyType as OrgsOrgProjectsV2ProjectNumberViewsPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgPropertiesInstallationsPostBodyType as OrgsOrgPropertiesInstallationsPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgPropertiesInstallationsValuesPatchBodyType as OrgsOrgPropertiesInstallationsValuesPatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType as OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgPropertiesSchemaPatchBodyType as OrgsOrgPropertiesSchemaPatchBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2859,13 +2856,16 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestEventType as PullRequestEventType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        PullRequestMergeAsyncResultPropDetailsOneof0Type as PullRequestMergeAsyncResultPropDetailsOneof0Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof0Type as PullRequestMergeAsyncResultPropDetailsAnyof0Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        PullRequestMergeAsyncResultPropDetailsOneof1Type as PullRequestMergeAsyncResultPropDetailsOneof1Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof1Type as PullRequestMergeAsyncResultPropDetailsAnyof1Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        PullRequestMergeAsyncResultPropDetailsOneof2Type as PullRequestMergeAsyncResultPropDetailsOneof2Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof2Type as PullRequestMergeAsyncResultPropDetailsAnyof2Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        PullRequestMergeAsyncResultPropDetailsAnyof3Type as PullRequestMergeAsyncResultPropDetailsAnyof3Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
         PullRequestMergeAsyncResultType as PullRequestMergeAsyncResultType,
@@ -3122,6 +3122,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryCollaboratorPermissionType as RepositoryCollaboratorPermissionType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryExternalPropertyPayloadType as RepositoryExternalPropertyPayloadType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryHashAlgorithmType as RepositoryHashAlgorithmType,
@@ -4038,6 +4041,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType as ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType as ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType as ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType,
@@ -6295,6 +6301,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssueDependenciesBlockingRemovedType as WebhookIssueDependenciesBlockingRemovedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssueRelatesToAddedType as WebhookIssueRelatesToAddedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssueRelatesToRemovedType as WebhookIssueRelatesToRemovedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesAssignedType as WebhookIssuesAssignedType,
@@ -11732,8 +11744,6 @@ else:
             "DependabotAlertWithRepositoryType",
             "DependabotAlertWithRepositoryPropDependencyType",
             "DependabotRepositoryAccessDetailsType",
-            "OrganizationSimpleType",
-            "EnterpriseTeamWithMemberCountType",
             "LabelType",
             "DiscussionType",
             "DiscussionPropAnswerChosenByType",
@@ -11839,6 +11849,7 @@ else:
             "ThreadType",
             "ThreadPropSubjectType",
             "ThreadSubscriptionType",
+            "OrganizationSimpleType",
             "ActionsCacheRetentionLimitForOrganizationType",
             "ActionsCacheStorageLimitForOrganizationType",
             "BillingAiCreditUsageReportOrgType",
@@ -12035,9 +12046,12 @@ else:
             "ProjectsV2ItemWithContentPropFieldsItemsType",
             "ProjectsV2ViewType",
             "ProjectsV2ViewPropCreatorType",
+            "OrganizationExternalPropertyInstallationType",
+            "OrganizationExternalPropertyInstallationPropInstallationType",
+            "ExternalPropertyType",
+            "CustomPropertyValueType",
             "CustomPropertyType",
             "CustomPropertySetPayloadType",
-            "CustomPropertyValueType",
             "OrgRepoCustomPropertyValuesType",
             "CodeOfConductSimpleType",
             "FullRepositoryType",
@@ -12504,9 +12518,10 @@ else:
             "PullRequestPropLinksType",
             "PullRequestMergeResultType",
             "PullRequestMergeAsyncResultType",
-            "PullRequestMergeAsyncResultPropDetailsOneof0Type",
-            "PullRequestMergeAsyncResultPropDetailsOneof1Type",
-            "PullRequestMergeAsyncResultPropDetailsOneof2Type",
+            "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
+            "PullRequestMergeAsyncResultPropDetailsAnyof1Type",
+            "PullRequestMergeAsyncResultPropDetailsAnyof2Type",
+            "PullRequestMergeAsyncResultPropDetailsAnyof3Type",
             "PullRequestReviewRequestType",
             "PullRequestReviewType",
             "PullRequestReviewPropLinksType",
@@ -13262,6 +13277,8 @@ else:
             "WebhookIssueDependenciesBlockedByRemovedType",
             "WebhookIssueDependenciesBlockingAddedType",
             "WebhookIssueDependenciesBlockingRemovedType",
+            "WebhookIssueRelatesToAddedType",
+            "WebhookIssueRelatesToRemovedType",
             "WebhookIssuesAssignedType",
             "WebhookIssuesClosedType",
             "WebhookIssuesClosedPropIssueType",
@@ -15025,12 +15042,6 @@ else:
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
             "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
             "EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType",
-            "EnterprisesEnterpriseTeamsPostBodyType",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsAddPostBodyType",
-            "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
-            "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
             "EventsGetResponse503Type",
             "GistsPostBodyType",
             "GistsPostBodyPropFilesType",
@@ -15243,6 +15254,10 @@ else:
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
             "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
             "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+            "OrgsOrgPropertiesInstallationsPostBodyType",
+            "OrgsOrgPropertiesInstallationsValuesPatchBodyType",
+            "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+            "RepositoryExternalPropertyPayloadType",
             "OrgsOrgPropertiesSchemaPatchBodyType",
             "OrgsOrgPropertiesValuesPatchBodyType",
             "OrgsOrgReposPostBodyType",
@@ -15485,6 +15500,7 @@ else:
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
             "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
             "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
+            "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
             "ReposOwnerRepoIssuesIssueNumberSubIssuesPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",

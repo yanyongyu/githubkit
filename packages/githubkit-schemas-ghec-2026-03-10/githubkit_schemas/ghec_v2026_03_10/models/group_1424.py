@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke for the user.")
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
+    )
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202",)

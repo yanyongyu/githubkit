@@ -9,37 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0122 import (
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
-)
-from .group_0130 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0134 import (
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
+    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
 )
 
 
-class ActionsPolicyOrgConditionsOneof2Type(TypedDict):
-    """ActionsPolicyOrgConditionsOneof2"""
+class EnterpriseRulesetConditionsOrganizationNameTargetType(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    Parameters for an organization name condition
+    """
+
+    organization_name: (
+        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
     )
-    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class ActionsPolicyOrgConditionsOneof2TypeForResponse(TypedDict):
-    """ActionsPolicyOrgConditionsOneof2"""
+class EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse(TypedDict):
+    """Repository ruleset conditions for organization names
 
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
-    workflow_path: NotRequired[
-        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
-    ]
+    Parameters for an organization name condition
+    """
+
+    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
 
 
 __all__ = (
-    "ActionsPolicyOrgConditionsOneof2Type",
-    "ActionsPolicyOrgConditionsOneof2TypeForResponse",
+    "EnterpriseRulesetConditionsOrganizationNameTargetType",
+    "EnterpriseRulesetConditionsOrganizationNameTargetTypeForResponse",
 )

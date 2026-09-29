@@ -12,24 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    bypass_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the bypass review."
-    )
+    new_name: str = Field(description="The new name of the branch.")
 
 
-model_rebuild(
-    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
-)
+model_rebuild(ReposOwnerRepoBranchesBranchRenamePostBody)
 
-__all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBody",)

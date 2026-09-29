@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
-class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdConfigPatchBodyType",
-    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
 )

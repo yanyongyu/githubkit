@@ -9,37 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+        ]
     ]
 
 
-class EnterprisesEnterpriseTeamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    name: str
-    description: NotRequired[Union[str, None]]
-    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
-    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
-    group_id: NotRequired[Union[str, None]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    organizations: NotRequired[list[str]]
+    custom_properties: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
+        ]
     ]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
+
+
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
+    PropertiesItems
+    """
+
+    property_name: str
+    values: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsPostBodyType",
-    "EnterprisesEnterpriseTeamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
 )

@@ -9,32 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0213 import (
-    ProjectsV2FieldIterationConfigurationType,
-    ProjectsV2FieldIterationConfigurationTypeForResponse,
-)
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationType
+    fields: list[
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
+    ]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-    name: str
-    data_type: Literal["iteration"]
-    iteration_configuration: ProjectsV2FieldIterationConfigurationTypeForResponse
+    id: int
+    value: Union[str, float, None]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
+
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

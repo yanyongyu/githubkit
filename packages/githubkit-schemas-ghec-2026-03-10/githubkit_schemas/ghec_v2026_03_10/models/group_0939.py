@@ -24,22 +24,22 @@ from .group_0644 import OrganizationSimpleWebhooks
 from .group_0679 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
+    """personal_access_token_request cancelled event"""
 
-    action: Literal["denied"] = Field()
+    action: Literal["cancelled"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     installation: SimpleInstallation = Field(
@@ -48,6 +48,6 @@ class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestDenied)
+model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
 
-__all__ = ("WebhookPersonalAccessTokenRequestDenied",)
+__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)

@@ -9,99 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0222 import RepositoryRulesetBypassActor
-from .group_0223 import RepositoryRulesetConditions
-from .group_0228 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0229 import RepositoryRuleUpdate
-from .group_0231 import RepositoryRuleRequiredLinearHistory
-from .group_0232 import RepositoryRuleMergeQueue
-from .group_0234 import RepositoryRuleRequiredDeployments
-from .group_0237 import RepositoryRulePullRequest
-from .group_0239 import RepositoryRuleRequiredStatusChecks
-from .group_0241 import RepositoryRuleCommitMessagePattern
-from .group_0243 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0245 import RepositoryRuleCommitterEmailPattern
-from .group_0247 import RepositoryRuleBranchNamePattern
-from .group_0249 import RepositoryRuleTagNamePattern
-from .group_0252 import RepositoryRuleWorkflows
-from .group_0254 import RepositoryRuleCodeScanning
-from .group_0256 import (
-    RepositoryRuleCodeCoverage,
-    RepositoryRuleCodeQuality,
-    RepositoryRuleLicenseComplianceScanning,
-)
-from .group_0257 import RepositoryRuleCopilotCodeReview
-from .group_0259 import RepositoryRuleFilePathRestriction
-from .group_0261 import RepositoryRuleMaxFilePathLength
-from .group_0263 import RepositoryRuleFileExtensionRestriction
-from .group_0265 import RepositoryRuleMaxFileSize
 
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release."
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCodeQuality,
-                RepositoryRuleCodeCoverage,
-                RepositoryRuleCopilotCodeReview,
-                RepositoryRuleLicenseComplianceScanning,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",)

@@ -975,6 +975,8 @@ class DependabotClient:
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
 
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
         **Example request body:**
         ```json
         {
@@ -1055,6 +1057,8 @@ class DependabotClient:
         > [!NOTE]
         >    This operation supports both server-to-server and user-to-server access.
         Unauthorized users will not see the existence of this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
         **Example request body:**
         ```json
@@ -1138,6 +1142,8 @@ class DependabotClient:
 
         This operation supports both server-to-server and user-to-server access.
 
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
         """
 
@@ -1214,6 +1220,8 @@ class DependabotClient:
         Unauthorized users will not see the existence of this endpoint.
 
         This operation supports both server-to-server and user-to-server access.
+
+        OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot
         """

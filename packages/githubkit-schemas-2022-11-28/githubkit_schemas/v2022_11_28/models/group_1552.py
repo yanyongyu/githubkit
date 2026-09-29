@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
-
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
-    )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
-    )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
-    )
+from .group_0169 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
+
+
+model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
+
+__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

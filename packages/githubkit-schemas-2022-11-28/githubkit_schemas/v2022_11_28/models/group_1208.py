@@ -9,21 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0169 import CopilotSpace
+from .group_0169 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
 
 
-class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotSpacesGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
 
-    spaces: list[CopilotSpace] = Field(
-        description="The list of Copilot Spaces on this page of results."
-    )
+    collaborators: list[
+        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
+    ] = Field(description="The list of collaborators for this Copilot Space.")
 
 
-model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
 
-__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)

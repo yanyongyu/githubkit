@@ -9,54 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    total_count: int
-    secrets: list[OrganizationDependabotSecretType]
-
-
-class OrgsOrgDependabotSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[OrganizationDependabotSecretTypeForResponse]
-
-
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
-class OrganizationDependabotSecretTypeForResponse(TypedDict):
-    """Dependabot Secret for an Organization
+class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessPatchBody
 
-    Secrets for GitHub Dependabot for an organization.
+    Examples:
+        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
     """
 
-    name: str
-    created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    repository_ids_to_add: NotRequired[list[int]]
+    repository_ids_to_remove: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrganizationDependabotSecretType",
-    "OrganizationDependabotSecretTypeForResponse",
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrgsOrgDependabotSecretsGetResponse200TypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
+    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
 )

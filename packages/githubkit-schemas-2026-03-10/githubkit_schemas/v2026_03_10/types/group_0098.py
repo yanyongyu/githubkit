@@ -9,71 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
+class UpdateBudgetType(TypedDict):
+    """UpdateBudget"""
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
+    message: str
+    budget: UpdateBudgetPropBudgetType
+
+
+class UpdateBudgetTypeForResponse(TypedDict):
+    """UpdateBudget"""
+
+    message: str
+    budget: UpdateBudgetPropBudgetTypeForResponse
+
+
+class UpdateBudgetPropBudgetType(TypedDict):
+    """UpdateBudgetPropBudget"""
+
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
     ]
-    budget_entity_name: str
+    budget_entity_name: NotRequired[str]
     user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[UpdateBudgetPropBudgetPropBudgetAlertingType]
+    expires_at: NotRequired[_dt.date]
 
 
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
+class UpdateBudgetPropBudgetTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudget"""
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
+    id: NotRequired[str]
+    budget_scope: NotRequired[
+        Literal[
+            "enterprise",
+            "organization",
+            "repository",
+            "cost_center",
+            "multi_user_customer",
+            "multi_user_cost_center",
+            "user",
+        ]
     ]
-    budget_entity_name: str
+    budget_entity_name: NotRequired[str]
     user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
+    consumed_amount: NotRequired[float]
+    budget_amount: NotRequired[int]
+    prevent_further_usage: NotRequired[bool]
+    budget_product_sku: NotRequired[str]
+    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
+    budget_alerting: NotRequired[
+        UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse
+    ]
+    expires_at: NotRequired[str]
 
 
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
+    """UpdateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: NotRequired[bool]
     alert_recipients: NotRequired[list[str]]
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "UpdateBudgetPropBudgetPropBudgetAlertingType",
+    "UpdateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
+    "UpdateBudgetPropBudgetType",
+    "UpdateBudgetPropBudgetTypeForResponse",
+    "UpdateBudgetType",
+    "UpdateBudgetTypeForResponse",
 )

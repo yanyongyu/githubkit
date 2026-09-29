@@ -35,7 +35,7 @@ class GetAllBudgets(GitHubModel):
     )
     has_next_page: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates if there are more pages of results available (maps to hasNextPage from billing platform)",
+        description="Indicates if there are more pages of results available",
     )
     total_count: Missing[int] = Field(
         default=UNSET, description="Total number of budgets matching the query"

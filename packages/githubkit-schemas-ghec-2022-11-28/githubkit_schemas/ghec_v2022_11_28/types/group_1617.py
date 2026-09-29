@@ -9,31 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoImportPutBodyType(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
-
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
-class ReposOwnerRepoImportPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoImportPutBodyType",
-    "ReposOwnerRepoImportPutBodyTypeForResponse",
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
 )

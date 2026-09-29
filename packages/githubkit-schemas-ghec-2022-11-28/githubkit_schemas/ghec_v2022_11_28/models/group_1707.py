@@ -9,45 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStacksPostResponse422(GitHubModel):
-    """Validation Error
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
-        default=UNSET
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
     )
 
 
-class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse422)
-model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
-
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse422",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
-)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
