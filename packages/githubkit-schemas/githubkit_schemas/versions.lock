@@ -80,6 +80,7 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 "/components/schemas/pull-request/properties/head/properties/user" = {anyOf = [{type = "null"}, {"$ref" = "#/components/schemas/simple-user"}], "$ref" = "<unset>"}
 "/components/schemas/pull-request/properties/head/properties/repo" = {anyOf = [{type = "null"}, {"$ref" = "#/components/schemas/repository"}], "$ref" = "<unset>"}
 "/components/schemas/pull-request-simple/properties/labels/items/properties/description" = {type = ["string", "null"]}
+"/components/schemas/pull-request-stack/properties/base/properties/sha" = {type = ["string", "null"]}
 "/components/schemas/repository/properties/temp_clone_token" = {type = ["string", "null"]}
 "/components/schemas/minimal-repository/properties/temp_clone_token" = {type = ["string", "null"]}
 "/components/schemas/team-repository/properties/temp_clone_token" = {type = ["string", "null"]}

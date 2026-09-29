@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -46,7 +48,7 @@ class PullRequestStackPropBase(GitHubModel):
     ref: str = Field(
         description="The base ref of the stack this pull request belongs to."
     )
-    sha: str = Field(
+    sha: Union[str, None] = Field(
         description="The base SHA of the stack this pull request belongs to."
     )
 

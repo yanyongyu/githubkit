@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
@@ -42,14 +43,14 @@ class PullRequestStackPropBaseType(TypedDict):
     """PullRequestStackPropBase"""
 
     ref: str
-    sha: str
+    sha: Union[str, None]
 
 
 class PullRequestStackPropBaseTypeForResponse(TypedDict):
     """PullRequestStackPropBase"""
 
     ref: str
-    sha: str
+    sha: Union[str, None]
 
 
 __all__ = (
