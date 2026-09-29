@@ -313,6 +313,12 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
   "null",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/326
+"/components/schemas/pull-request-stack/properties/base/properties/sha" = { type = [
+  "string",
+  "null",
+] }
+
 # https://github.com/github/rest-api-description/issues/621
 "/components/schemas/repository/properties/temp_clone_token" = { type = [
   "string",
@@ -580,10 +586,22 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 ] }
 
 # webhook label archived_by user should be null or object
-"/components/schemas/webhooks_label/properties/archived_by" = { type = ["null", "object"] }
-"/components/schemas/webhooks_label_unarchived/allOf/1/properties/archived_by" = { type = ["null", "object"] }
-"/components/schemas/webhook-issues-labeled/properties/issue/properties/labels/items/properties/archived_by" = { type = ["null", "object"] }
-"/components/schemas/webhook-pull-request-labeled/properties/pull_request/properties/labels/items/properties/archived_by" = { type = ["null", "object"] }
+"/components/schemas/webhooks_label/properties/archived_by" = { type = [
+  "null",
+  "object",
+] }
+"/components/schemas/webhooks_label_unarchived/allOf/1/properties/archived_by" = { type = [
+  "null",
+  "object",
+] }
+"/components/schemas/webhook-issues-labeled/properties/issue/properties/labels/items/properties/archived_by" = { type = [
+  "null",
+  "object",
+] }
+"/components/schemas/webhook-pull-request-labeled/properties/pull_request/properties/labels/items/properties/archived_by" = { type = [
+  "null",
+  "object",
+] }
 
 # webhook deployment protection rule action is required
 "/components/schemas/webhook-deployment-protection-rule-requested" = { required = [
