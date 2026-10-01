@@ -1,6 +1,12 @@
 # Configuration
 
-githubkit is highly configurable. You can customize its behavior by passing keyword arguments directly to the `GitHub` constructor:
+githubkit is highly configurable.
+
+GitHubKit installs HTTPX by default to preserve compatibility with existing transports. It prefers [HTTPX2](https://pydantic.dev/docs/httpx2/) when you install it separately. The default HTTPX path remains supported, but emits a `DeprecationWarning`. To opt in, run `pip install httpx2`, then use `import httpx2` and `httpx2.*` as in the examples below. If you remain on HTTPX, use `import httpx` and `httpx.*` instead.
+
+Custom timeouts, URLs, proxies, transports, and responses must come from the selected package: HTTPX2 when installed, or HTTPX on the deprecated fallback path. Objects from the two packages are not interchangeable. HTTPX2 uses the operating system's trust store by default instead of HTTPX's bundled CA certificates; its logger names are `httpx2` and `httpcore2.*`.
+
+You can customize GitHubKit's behavior by passing keyword arguments directly to the `GitHub` constructor:
 
 ```python
 from githubkit import GitHub
@@ -30,7 +36,7 @@ github = GitHub(
 Alternatively, you can build a `Config` object and pass it via the `config` parameter. This is useful when you want to share the same configuration across multiple `GitHub` instances:
 
 ```python
-import httpx
+import httpx2
 from githubkit import GitHub, Config
 from githubkit.retry import RETRY_DEFAULT
 from githubkit.cache import DEFAULT_CACHE_STRATEGY
@@ -40,7 +46,7 @@ config = Config(
     accept="application/vnd.github+json",
     user_agent="GitHubKit/Python",
     follow_redirects=True,
-    timeout=httpx.Timeout(None),
+    timeout=httpx2.Timeout(None),
     ssl_verify=True,
     trust_env=True,
     proxy=None,
@@ -103,16 +109,16 @@ Whether to automatically follow HTTP redirects (3xx responses). Enabled by defau
 
 ### `timeout`
 
-The request timeout. Accepts a `float` (seconds), an `httpx.Timeout` object for fine-grained control, or `None` for no timeout (default). See [HTTPX Timeouts](https://www.python-httpx.org/advanced/timeouts/) for details.
+The request timeout. Accepts a `float` (seconds), an `httpx2.Timeout` object for fine-grained control, or `None` for no timeout (default). See [HTTPX2 Timeouts](https://pydantic.dev/docs/httpx2/advanced/timeouts/) for details.
 
 ```python
-import httpx
+import httpx2
 
 # Simple: 10 second timeout for all operations
 github = GitHub(timeout=10.0)
 
 # Fine-grained: different timeouts for connect vs. read
-github = GitHub(timeout=httpx.Timeout(5.0, read=30.0))
+github = GitHub(timeout=httpx2.Timeout(5.0, read=30.0))
 ```
 
 ### `ssl_verify`
@@ -123,21 +129,21 @@ Controls SSL certificate verification. Defaults to `True`.
 - `False` — **disable** SSL verification (not recommended for production).
 - `ssl.SSLContext` — provide a custom SSL context for advanced use cases.
 
-See [HTTPX SSL](https://www.python-httpx.org/advanced/ssl/) for details.
+See [HTTPX2 SSL](https://pydantic.dev/docs/httpx2/advanced/ssl/) for details.
 
 ### `trust_env`
 
-When `True` (default), githubkit (via HTTPX) reads environment variables such as `HTTP_PROXY`, `HTTPS_PROXY`, and `SSL_CERT_FILE` to configure proxies and SSL. Set to `False` to ignore these variables.
+When `True` (default), githubkit (via HTTPX2) reads environment variables such as `HTTP_PROXY`, `HTTPS_PROXY`, and `SSL_CERT_FILE` to configure proxies and SSL. Set to `False` to ignore these variables.
 
 ### `proxy`
 
-Sets a proxy URL for all requests. Accepts a string, `httpx.URL`, or `httpx.Proxy` object.
+Sets a proxy URL for all requests. Accepts a string, `httpx2.URL`, or `httpx2.Proxy` object.
 
 ```python
 github = GitHub(proxy="http://proxy.example.com:8080")
 ```
 
-See [HTTPX Proxies](https://www.python-httpx.org/advanced/proxies/) for more details.
+See [HTTPX2 Proxies](https://pydantic.dev/docs/httpx2/advanced/proxies/) for more details.
 
 !!! note
 
@@ -145,54 +151,54 @@ See [HTTPX Proxies](https://www.python-httpx.org/advanced/proxies/) for more det
 
 ### `transport`, `async_transport`
 
-Provide custom [HTTPX transports](https://www.python-httpx.org/advanced/transports/) to replace the default networking layer. This is useful for:
+Provide custom [HTTPX2 transports](https://pydantic.dev/docs/httpx2/advanced/transports/) to replace the default networking layer. This is useful for:
 
-- **Unit testing** — inject `httpx.MockTransport` to stub API responses without making real HTTP calls.
+- **Unit testing** — inject `httpx2.MockTransport` to stub API responses without making real HTTP calls.
 - **Custom networking** — use alternative transport implementations (e.g., HTTP/3, Unix sockets).
 
 | Option            | Type                       | Used for       |
 | ----------------- | -------------------------- | -------------- |
-| `transport`       | `httpx.BaseTransport`      | Sync requests  |
-| `async_transport` | `httpx.AsyncBaseTransport` | Async requests |
+| `transport`       | `httpx2.BaseTransport`      | Sync requests  |
+| `async_transport` | `httpx2.AsyncBaseTransport` | Async requests |
 
 ```python
-import httpx
+import httpx2
 
 
-def mock_handler(request: httpx.Request) -> httpx.Response:
-    return httpx.Response(200, json={"login": "octocat"})
+def mock_handler(request: httpx2.Request) -> httpx2.Response:
+    return httpx2.Response(200, json={"login": "octocat"})
 
 
-github = GitHub(transport=httpx.MockTransport(mock_handler))
+github = GitHub(transport=httpx2.MockTransport(mock_handler))
 ```
 
 !!! warning
 
-    When a custom transport is provided, proxy-related environment variables (`HTTP_PROXY`, etc.) have no effect. Set `transport` / `async_transport` to `None` (default) to use HTTPX's built-in transport.
+    When a custom transport is provided, proxy-related environment variables (`HTTP_PROXY`, etc.) have no effect. Set `transport` / `async_transport` to `None` (default) to use HTTPX2's built-in transport.
 
 ### `event_hooks`, `async_event_hooks`
 
-Register [HTTPX event hooks](https://www.python-httpx.org/advanced/event-hooks/) that run on every request and/or response. This is useful for logging, injecting headers, collecting metrics, or raising on error status codes — without modifying your business logic.
+Register [HTTPX2 event hooks](https://pydantic.dev/docs/httpx2/advanced/event-hooks/) that run on every request and/or response. This is useful for logging, injecting headers, collecting metrics, or raising on error status codes — without modifying your business logic.
 
 | Option              | Hook signatures                                        | Used for       |
 | ------------------- | ------------------------------------------------------ | -------------- |
 | `event_hooks`       | `def hook(request)` / `def hook(response)`             | Sync requests  |
 | `async_event_hooks` | `async def hook(request)` / `async def hook(response)` | Async requests |
 
-Both options accept a dictionary mapping event names (`"request"`, `"response"`) to a list of callables. Each callable receives an `httpx.Request` or `httpx.Response` object respectively.
+Both options accept a dictionary mapping event names (`"request"`, `"response"`) to a list of callables. Each callable receives an `httpx2.Request` or `httpx2.Response` object respectively.
 
 === "Sync"
 
     ```python
-    import httpx
+    import httpx2
     from githubkit import GitHub
 
 
-    def log_request(request: httpx.Request) -> None:
+    def log_request(request: httpx2.Request) -> None:
         print(f"-> {request.method} {request.url}")
 
 
-    def log_response(response: httpx.Response) -> None:
+    def log_response(response: httpx2.Response) -> None:
         print(f"<- {response.status_code}")
 
 
@@ -207,15 +213,15 @@ Both options accept a dictionary mapping event names (`"request"`, `"response"`)
 === "Async"
 
     ```python
-    import httpx
+    import httpx2
     from githubkit import GitHub
 
 
-    async def log_request(request: httpx.Request) -> None:
+    async def log_request(request: httpx2.Request) -> None:
         print(f"-> {request.method} {request.url}")
 
 
-    async def log_response(response: httpx.Response) -> None:
+    async def log_response(response: httpx2.Response) -> None:
         print(f"<- {response.status_code}")
 
 
