@@ -3,7 +3,7 @@ from functools import cache
 import os
 from typing import Any
 
-import httpx
+import httpx2 as httpx
 from jsonpointer import JsonPointer
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")

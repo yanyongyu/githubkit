@@ -11,8 +11,9 @@ from typing import (
     TypeVar,
 )
 
-import httpx
 from pydantic import Field
+
+from githubkit._httpx import httpx
 
 from .compat import PYDANTIC_V2
 from .exception import GitHubException
