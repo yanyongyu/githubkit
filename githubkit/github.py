@@ -14,8 +14,7 @@ from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 if TYPE_CHECKING:
     import ssl
 
-    import httpx
-
+    from ._httpx import httpx
     from .auth import TokenAuthStrategy, UnauthAuthStrategy
     from .cache import BaseCacheStrategy
     from .config import Config

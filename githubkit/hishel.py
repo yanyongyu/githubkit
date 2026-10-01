@@ -10,8 +10,8 @@ from hishel import (
     SyncBaseStorage,
     SyncSqliteStorage,
 )
-from hishel.httpx import AsyncCacheTransport, SyncCacheTransport
-import httpx
+
+from ._httpx import AsyncCacheTransport, SyncCacheTransport, httpx
 
 
 class SyncCacheClient(httpx.Client):

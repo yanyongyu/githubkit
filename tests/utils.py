@@ -1,8 +1,7 @@
 from collections.abc import Callable
 
-import httpx
-
 from githubkit import GitHub, UnauthAuthStrategy
+from githubkit._httpx import httpx
 
 
 def get_mock_github(

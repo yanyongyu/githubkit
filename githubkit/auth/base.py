@@ -1,7 +1,7 @@
 import abc
 from typing import TYPE_CHECKING
 
-import httpx
+from githubkit._httpx import httpx
 
 if TYPE_CHECKING:
     from githubkit import GitHubCore

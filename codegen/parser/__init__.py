@@ -1,7 +1,7 @@
 from contextvars import ContextVar
 from typing import TYPE_CHECKING, Optional
 
-import httpx
+import httpx2 as httpx
 from openapi_pydantic import OpenAPI
 
 from ..log import logger
