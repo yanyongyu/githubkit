@@ -20,13 +20,19 @@ jobs:
     name: Test Coverage
     runs-on: ${{ matrix.os }}
     concurrency:
-      group: test-coverage-${{ github.ref }}-${{ matrix.os }}-${{ matrix.python-version }}-${{ matrix.env }}
+      group: test-coverage-${{ github.ref }}-${{ matrix.os }}-${{ matrix.python-version }}-${{ matrix.env }}-${{ matrix.http-client }}
       cancel-in-progress: true
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
         os: [ubuntu-latest, windows-latest, macos-latest]
         env: [pydantic-v1, pydantic-v2]
+        http-client: [httpx2]
+        include:
+          - python-version: "3.14"
+            os: ubuntu-latest
+            env: pydantic-v2
+            http-client: httpx
       fail-fast: false
     env:
       OS: ${{ matrix.os }}
@@ -41,6 +47,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           env-group: ${{ matrix.env }}
+
+      - name: Use httpx without httpx2
+        if: matrix.http-client == 'httpx'
+        run: uv pip uninstall httpx2
 
       - name: Run Pytest
         run: |
