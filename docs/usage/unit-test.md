@@ -2,6 +2,8 @@
 
 If you are using githubkit in your business logic, you may want to mock the github API in your unit tests. There are two ways to reach this.
 
+These examples use HTTPX2, the preferred opt-in backend. Run `pip install httpx2` to use it. GitHubKit installs HTTPX by default; if you use that deprecated fallback, use `import httpx` and replace `httpx2.*` with `httpx.*` instead. Mock requests, responses, and transports must use the same package as GitHubKit; HTTPX and HTTPX2 objects are not interchangeable.
+
 ## Mocking the API Calls
 
 If you can't provide a githubkit test client to your business logic, you can mock the `request`/`arequest` method of the `GitHub` class to custom the response. Here is an example of how to mock githubkit's API calls:
@@ -13,7 +15,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
     from pathlib import Path
     from typing import Any, Type
 
-    import httpx
+    import httpx2
     import pytest
 
     from githubkit import GitHub
@@ -41,7 +43,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
     ) -> Response[Any]:
         if method == "GET" and url == "/repos/owner/repo":  # (3)!
             return Response(
-                httpx.Response(status_code=200, json=FAKE_RESPONSE),
+                httpx2.Response(status_code=200, json=FAKE_RESPONSE),
                 Any if response_model is UNSET else response_model,
             )
         raise RuntimeError(f"Unexpected request: {method} {url}")
@@ -68,7 +70,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
     from pathlib import Path
     from typing import Any, Type
 
-    import httpx
+    import httpx2
     import pytest
 
     from githubkit import GitHub
@@ -96,7 +98,7 @@ If you can't provide a githubkit test client to your business logic, you can moc
     ) -> Response[Any]:
         if method == "GET" and url == "/repos/owner/repo":  # (3)!
             return Response(
-                httpx.Response(status_code=200, json=FAKE_RESPONSE),
+                httpx2.Response(status_code=200, json=FAKE_RESPONSE),
                 Any if response_model is UNSET else response_model,
             )
         raise RuntimeError(f"Unexpected request: {method} {url}")
@@ -127,7 +129,7 @@ You can also create a test client with mock transport and provide it to your bus
     import json
     from pathlib import Path
 
-    import httpx
+    import httpx2
     import pytest
 
     from githubkit import GitHub
@@ -141,14 +143,14 @@ You can also create a test client with mock transport and provide it to your bus
         return resp.parsed_data
 
 
-    def mock_transport_handler(request: httpx.Request) -> httpx.Response:
+    def mock_transport_handler(request: httpx2.Request) -> httpx2.Response:
         if request.method == "GET" and request.url.path == "/repos/owner/repo":
-            return httpx.Response(status_code=200, json=FAKE_RESPONSE)
+            return httpx2.Response(status_code=200, json=FAKE_RESPONSE)
         raise RuntimeError(f"Unexpected request: {request.method} {request.url.path}")
 
 
     def test_sync_mock():
-        g = GitHub("xxxxx", transport=httpx.MockTransport(mock_transport_handler))
+        g = GitHub("xxxxx", transport=httpx2.MockTransport(mock_transport_handler))
         repo = target_sync_func(g)
         assert isinstance(repo, FullRepository)
     ```
@@ -159,7 +161,7 @@ You can also create a test client with mock transport and provide it to your bus
     import json
     from pathlib import Path
 
-    import httpx
+    import httpx2
     import pytest
 
     from githubkit import GitHub
@@ -173,15 +175,15 @@ You can also create a test client with mock transport and provide it to your bus
         return resp.parsed_data
 
 
-    def mock_transport_handler(request: httpx.Request) -> httpx.Response:
+    def mock_transport_handler(request: httpx2.Request) -> httpx2.Response:
         if request.method == "GET" and request.url.path == "/repos/owner/repo":
-            return httpx.Response(status_code=200, json=FAKE_RESPONSE)
+            return httpx2.Response(status_code=200, json=FAKE_RESPONSE)
         raise RuntimeError(f"Unexpected request: {request.method} {request.url.path}")
 
 
     @pytest.mark.anyio
     async def test_async_mock():
-        g = GitHub("xxxxx", async_transport=httpx.MockTransport(mock_transport_handler))
+        g = GitHub("xxxxx", async_transport=httpx2.MockTransport(mock_transport_handler))
         repo = await target_async_func(g)
         assert isinstance(repo, FullRepository)
     ```

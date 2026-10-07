@@ -1,7 +1,7 @@
 from datetime import timedelta
 from typing import TYPE_CHECKING, Generic, TypeVar
 
-import httpx
+from ._httpx import httpx
 
 if TYPE_CHECKING:
     from .graphql import GraphQLResponse

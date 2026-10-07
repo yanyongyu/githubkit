@@ -3,7 +3,7 @@ from dataclasses import dataclass, fields
 from typing import TYPE_CHECKING, Any
 from typing_extensions import Self
 
-import httpx
+from githubkit._httpx import httpx
 
 from .cache import DEFAULT_CACHE_STRATEGY, BaseCacheStrategy
 from .retry import RETRY_DEFAULT

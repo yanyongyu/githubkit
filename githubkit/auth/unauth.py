@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-import httpx
+from githubkit._httpx import httpx
 
 from .base import BaseAuthStrategy
 

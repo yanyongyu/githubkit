@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager, contextmanager
 from typing import Any, Generic
 from typing_extensions import TypeVar
 
-import httpx
+from githubkit._httpx import httpx
 
 from .compat import type_validate_json
 from .exception import RequestError, RequestTimeout

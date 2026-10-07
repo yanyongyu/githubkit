@@ -7,7 +7,8 @@ from types import TracebackType
 from typing import TYPE_CHECKING, Any, Generic, TypeVar, overload
 
 import anyio
-import httpx
+
+from githubkit._httpx import httpx
 
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .cache import BaseCacheStrategy
