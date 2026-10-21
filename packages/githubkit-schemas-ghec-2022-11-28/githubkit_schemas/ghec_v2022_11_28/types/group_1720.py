@@ -9,26 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoTransferPostBodyType(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type(TypedDict):
+    """Package license compliance results
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType
 
 
-class ReposOwnerRepoTransferPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse(
+    TypedDict
+):
+    """Package license compliance results
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse
+
+
+ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
+"""
+
+
+ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoTransferPostBodyType",
-    "ReposOwnerRepoTransferPostBodyTypeForResponse",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse",
 )

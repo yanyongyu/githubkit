@@ -12,32 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0226 import Label
-from .group_0238 import PullRequestMinimal
+from .group_0233 import Discussion
 
 
-class PullRequestEvent(GitHubModel):
-    """PullRequestEvent"""
+class DiscussionEvent(GitHubModel):
+    """DiscussionEvent"""
 
     action: str = Field()
-    number: int = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
-    assignee: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    label: Missing[Label] = Field(
-        default=UNSET,
-        title="Label",
-        description="Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
-    )
-    labels: Missing[list[Label]] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestEvent)
+model_rebuild(DiscussionEvent)
 
-__all__ = ("PullRequestEvent",)
+__all__ = ("DiscussionEvent",)

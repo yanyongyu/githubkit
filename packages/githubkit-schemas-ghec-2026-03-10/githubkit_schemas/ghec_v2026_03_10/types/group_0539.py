@@ -9,30 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    Page Build Status
+    An SSH key granting access to a single repository.
     """
 
+    id: int
+    key: str
     url: str
-    status: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[_dt.datetime, None]]
+    enabled: NotRequired[bool]
 
 
-class PageBuildStatusTypeForResponse(TypedDict):
-    """Page Build Status
+class DeployKeyTypeForResponse(TypedDict):
+    """Deploy Key
 
-    Page Build Status
+    An SSH key granting access to a single repository.
     """
 
+    id: int
+    key: str
     url: str
-    status: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
+    enabled: NotRequired[bool]
 
 
 __all__ = (
-    "PageBuildStatusType",
-    "PageBuildStatusTypeForResponse",
+    "DeployKeyType",
+    "DeployKeyTypeForResponse",
 )

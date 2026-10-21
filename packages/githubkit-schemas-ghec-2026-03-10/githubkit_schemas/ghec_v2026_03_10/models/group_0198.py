@@ -9,16 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RulesetVersionWithStateAllof1PropState(GitHubModel):
-    """RulesetVersionWithStateAllof1PropState
+class RepositoryRuleLicenseComplianceScanning(GitHubModel):
+    """license_compliance_scanning
 
-    The state of the ruleset version
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
+    type: Literal["license_compliance_scanning"] = Field()
 
-model_rebuild(RulesetVersionWithStateAllof1PropState)
 
-__all__ = ("RulesetVersionWithStateAllof1PropState",)
+model_rebuild(RepositoryRuleLicenseComplianceScanning)
+
+__all__ = ("RepositoryRuleLicenseComplianceScanning",)

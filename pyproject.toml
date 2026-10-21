@@ -536,6 +536,9 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 # get user by username response discriminator not supported
 "/paths/~1users~1{username}/get/responses/200/content/application~1json/schema" = { discriminator = "<unset>" }
 
+# rule suite rule metadata type discriminator not supported
+"/components/schemas/rule-suite/properties/rule_evaluations/items/properties/metadata" = { discriminator = "<unset>" }
+
 # Webhook schema overrides
 # webhook check run action is required
 "/components/schemas/webhook-check-run-completed/required" = { "<add>" = [

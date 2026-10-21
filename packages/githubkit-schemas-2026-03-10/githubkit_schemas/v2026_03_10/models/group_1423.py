@@ -9,163 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    Pending suggestions for each suggestible field (`type`,
-    `issue_field_values`, `labels`, `assignees`, `state`) the
-    request touched. Omitted for fields not in the request or
-    with no pending or ignored suggestions. Items tagged
-    `ignored` are echoes of the current request's inputs that
-    were not persisted as pending suggestions.
-    """
-
-    type: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
-        ]
-    ] = Field(default=UNSET)
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
-        ]
-    ] = Field(default=UNSET)
-    labels: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
-        ]
-    ] = Field(default=UNSET)
-    assignees: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
-        ]
-    ] = Field(default=UNSET)
-    state: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
-    s
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
+        None,
+    ] = Field(
+        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
+    )
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
+        description="The enabled review tools for Copilot cloud agent."
+    )
+    require_actions_workflow_approval: bool = Field(
+        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    )
+    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
+    is_firewall_recommended_allowlist_enabled: bool = Field(
+        description="Whether the firewall recommended allowlist is enabled."
+    )
+    custom_allowlist: list[str] = Field(
+        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+    )
+    is_automations_enabled: bool = Field(
+        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
+    )
+    require_write_access_for_automation_triggers: bool = Field(
+        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems(
-    GitHubModel
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
+    ExtraGitHubModel
 ):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
-    ldValuesItems
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+    The user-supplied MCP server configuration for the repository, as a free-form
+    JSON object. This will be set to `null` if no configuration has been set.
+
+    The shape of a valid MCP configuration may evolve over time, so this property is
+    intentionally not strictly typed. Clients should not assume a fixed schema.
     """
 
-    field_id: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, float, list[str]]] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
+    GitHubModel
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool = Field(
+        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
+    )
+    copilot_code_review: bool = Field(
+        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
+    )
+    secret_scanning: bool = Field(
+        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
+    )
+    dependency_vulnerability_checks: bool = Field(
+        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
-    ems
-    """
-
-    name: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
-    sItems
-    """
-
-    login: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
-    ms
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    state_reason: Missing[str] = Field(default=UNSET)
-    duplicate_issue_id: Missing[int] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions)
+model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
 model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
 )
 model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
+    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
 )
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
 )

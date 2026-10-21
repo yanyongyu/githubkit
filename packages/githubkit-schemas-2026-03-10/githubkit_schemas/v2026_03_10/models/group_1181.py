@@ -9,59 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200"""
+class OrgsOrgActionsRunnerGroupsPostBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    attestations_subject_digests: Missing[
-        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
-    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
-    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
-        default=UNSET, description="Information about the current page."
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all", "private"]] = Field(
+        default=UNSET,
+        description="Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories.",
+    )
+    selected_repository_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that can access the runner group.",
+    )
+    runners: Missing[list[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
+    )
+    allows_public_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
-    ExtraGitHubModel
-):
-    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+model_rebuild(OrgsOrgActionsRunnerGroupsPostBody)
 
-    Mapping of subject digest to bundles.
-    """
-
-
-class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
-    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
-
-    Information about the current page.
-    """
-
-    has_next: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a next page."
-    )
-    has_previous: Missing[bool] = Field(
-        default=UNSET, description="Indicates whether there is a previous page."
-    )
-    next_: Missing[str] = Field(
-        default=UNSET, alias="next", description="The cursor to the next page."
-    )
-    previous: Missing[str] = Field(
-        default=UNSET, description="The cursor to the previous page."
-    )
-
-
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
-model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
-
-__all__ = (
-    "OrgsOrgAttestationsBulkListPostResponse200",
-    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
-    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
-)
+__all__ = ("OrgsOrgActionsRunnerGroupsPostBody",)

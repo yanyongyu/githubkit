@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,34 +19,43 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0491 import IssueTypeWebhook
-from .group_0493 import IssueEventIntent
 
 
-class IssueTypeChangedIssueEvent(GitHubModel):
-    """Issue Type Changed Issue Event
+class AddedToProjectIssueEvent(GitHubModel):
+    """Added to Project Issue Event
 
-    Issue Type Changed Issue Event
+    Added to Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["added_to_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
+    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
     )
-    prev_issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
-    )
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(IssueTypeChangedIssueEvent)
+class AddedToProjectIssueEventPropProjectCard(GitHubModel):
+    """AddedToProjectIssueEventPropProjectCard"""
 
-__all__ = ("IssueTypeChangedIssueEvent",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(AddedToProjectIssueEvent)
+model_rebuild(AddedToProjectIssueEventPropProjectCard)
+
+__all__ = (
+    "AddedToProjectIssueEvent",
+    "AddedToProjectIssueEventPropProjectCard",
+)

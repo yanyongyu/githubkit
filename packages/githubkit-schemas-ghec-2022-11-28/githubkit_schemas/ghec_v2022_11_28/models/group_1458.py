@@ -13,14 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgPrivateRegistriesPublicKeyGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
-
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+from .group_0297 import CopilotSpace
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPublicKeyGetResponse200)
+class OrgsOrgCopilotSpacesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotSpacesGetResponse200"""
 
-__all__ = ("OrgsOrgPrivateRegistriesPublicKeyGetResponse200",)
+    spaces: list[CopilotSpace] = Field(
+        description="The list of Copilot Spaces on this page of results."
+    )
+
+
+model_rebuild(OrgsOrgCopilotSpacesGetResponse200)
+
+__all__ = ("OrgsOrgCopilotSpacesGetResponse200",)

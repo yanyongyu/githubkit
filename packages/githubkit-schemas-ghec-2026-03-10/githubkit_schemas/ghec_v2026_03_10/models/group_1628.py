@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
@@ -18,143 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    title: Missing[Union[str, int, None]] = Field(
-        default=UNSET, description="The title of the issue."
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=64,
+        pattern="^([0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?)$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
     )
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The contents of the issue."
+    ref: str = Field(
+        pattern="^refs/(heads|tags|pull)/.*$",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
     )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET, description="The open or closed state of the issue."
+    sarif: str = Field(
+        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secure-coding/sarif-support-for-code-scanning)."'
     )
-    state_reason: Missing[
-        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
-    ] = Field(
+    checkout_uri: Missing[str] = Field(
         default=UNSET,
-        description="The reason for the state change. Ignored unless `state` is changed.",
+        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
     )
-    duplicate_issue_id: Missing[int] = Field(
+    started_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The ID of the issue to mark as the canonical duplicate when `state_reason` is `duplicate`. The issue must exist and be accessible to the authenticated user. Ignored when `state_reason` is not `duplicate`.",
+        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
-    labels: Missing[
-        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
-    ] = Field(
+    tool_name: Missing[str] = Field(
         default=UNSET,
-        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
+        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
     )
-    assignees: Missing[
-        list[
-            Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1]
-        ]
-    ] = Field(
+    validate_: Missing[bool] = Field(
         default=UNSET,
-        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
-    )
-    issue_field_values: Missing[
-        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
-    )
-    type: Missing[
-        Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1, None]
-    ] = Field(
-        default=UNSET,
-        description="The issue type to associate with this issue. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
+        alias="validate",
+        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for selecting this label."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this label choice."
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
-
-    login: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for selecting this assignee."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this assignee choice."
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
-
-    field_id: int = Field(description="The ID of the issue field to set")
-    value: Union[str, float, list[str]] = Field(
-        description="The value to set for the field. For multi-select fields, provide an array of option names."
-    )
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for setting this field value."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this field value choice."
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
-
-    The issue type with optional metadata.
-    """
-
-    value: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The name of the issue type to associate with this issue, or `null` to remove the current issue type.",
-    )
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for selecting this type."
-    )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
-    )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this type choice."
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBody",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1",
-)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)

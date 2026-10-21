@@ -47,6 +47,7 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositoriesType(TypedDict):
             "oidc_jfrog",
             "oidc_cloudsmith",
             "oidc_gcp",
+            "anonymous",
         ]
     ]
     url: NotRequired[str]
@@ -106,6 +107,7 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositoriesTypeForResponse(Typ
             "oidc_jfrog",
             "oidc_cloudsmith",
             "oidc_gcp",
+            "anonymous",
         ]
     ]
     url: NotRequired[str]

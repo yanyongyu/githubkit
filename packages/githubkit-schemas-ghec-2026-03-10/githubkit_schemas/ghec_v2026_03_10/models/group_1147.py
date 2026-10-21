@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse404
+class AgentsAutomationsAutomationIdGetResponse404(GitHubModel):
+    """AgentsAutomationsAutomationIdGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems]
+        list[AgentsAutomationsAutomationIdGetResponse404PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -39,8 +39,8 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse404(GitHubModel):
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems
+class AgentsAutomationsAutomationIdGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsAutomationsAutomationIdGetResponse404PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +59,10 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems)
+model_rebuild(AgentsAutomationsAutomationIdGetResponse404)
+model_rebuild(AgentsAutomationsAutomationIdGetResponse404PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse404",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems",
+    "AgentsAutomationsAutomationIdGetResponse404",
+    "AgentsAutomationsAutomationIdGetResponse404PropErrorsItems",
 )

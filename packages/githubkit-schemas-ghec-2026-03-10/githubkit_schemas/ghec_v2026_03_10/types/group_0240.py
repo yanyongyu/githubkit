@@ -11,56 +11,86 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0236 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0238 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0239 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    Data related to a release.
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    url: str
-    browser_download_url: str
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserType, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    uploader: Union[SimpleUserType, None]
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class ReleaseAssetTypeForResponse(TypedDict):
-    """Release Asset
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    Data related to a release.
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    url: str
-    browser_download_url: str
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    digest: Union[str, None]
-    download_count: int
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
     created_at: str
     updated_at: str
-    uploader: Union[SimpleUserTypeForResponse, None]
+    issue_url: str
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "ReleaseAssetType",
-    "ReleaseAssetTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

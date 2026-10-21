@@ -9,35 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0131 import (
+    EnterpriseLicensePolicyItemPropLicenses,
+    EnterpriseLicensePolicyItemPropPackagesItems,
+)
 
 
-class NetworkSettings(GitHubModel):
-    """Hosted compute network settings resource
+class EnterpriseLicensePolicyResponse(GitHubModel):
+    """Enterprise license policy
 
-    A hosted compute network settings resource.
+    The license compliance policy for an enterprise.
     """
 
-    id: str = Field(
-        description="The unique identifier of the network settings resource."
+    licenses: EnterpriseLicensePolicyItemPropLicenses = Field()
+    packages: list[EnterpriseLicensePolicyItemPropPackagesItems] = Field(
+        description="The package-level exceptions in this policy."
     )
-    network_configuration_id: Missing[str] = Field(
-        default=UNSET,
-        description="The identifier of the network configuration that is using this settings resource.",
-    )
-    name: str = Field(description="The name of the network settings resource.")
-    subnet_id: str = Field(
-        description="The subnet this network settings resource is configured for."
-    )
-    region: str = Field(
-        description="The location of the subnet this network settings resource is configured for."
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The time the policy was created."
     )
 
 
-model_rebuild(NetworkSettings)
+model_rebuild(EnterpriseLicensePolicyResponse)
 
-__all__ = ("NetworkSettings",)
+__all__ = ("EnterpriseLicensePolicyResponse",)

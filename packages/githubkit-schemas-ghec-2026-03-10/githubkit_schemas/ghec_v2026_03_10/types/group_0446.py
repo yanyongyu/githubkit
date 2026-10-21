@@ -9,46 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0101 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Code security configuration associated with a repository and attachment status
     """
 
-    id: int
-    node_id: str
-    user: Union[SimpleUserType, None]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ]
-    created_at: _dt.datetime
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class ReactionTypeForResponse(TypedDict):
-    """Reaction
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    Code security configuration associated with a repository and attachment status
     """
 
-    id: int
-    node_id: str
-    user: Union[SimpleUserTypeForResponse, None]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
     ]
-    created_at: str
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "ReactionType",
-    "ReactionTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

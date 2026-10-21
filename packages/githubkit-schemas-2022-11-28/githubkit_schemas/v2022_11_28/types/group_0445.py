@@ -14,14 +14,14 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0424 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
-from .group_0426 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from .group_0426 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0428 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class IssueTypeChangedIssueEventType(TypedDict):
-    """Issue Type Changed Issue Event
+class IssueTypeAddedIssueEventType(TypedDict):
+    """Issue Type Added Issue Event
 
-    Issue Type Changed Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int
@@ -34,14 +34,13 @@ class IssueTypeChangedIssueEventType(TypedDict):
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
     issue_type: Union[IssueTypeWebhookType, None]
-    prev_issue_type: Union[IssueTypeWebhookType, None]
     intent: NotRequired[Union[None, IssueEventIntentType, None]]
 
 
-class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
-    """Issue Type Changed Issue Event
+class IssueTypeAddedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Added Issue Event
 
-    Issue Type Changed Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int
@@ -54,11 +53,10 @@ class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
     issue_type: Union[IssueTypeWebhookTypeForResponse, None]
-    prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
     intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "IssueTypeChangedIssueEventType",
-    "IssueTypeChangedIssueEventTypeForResponse",
+    "IssueTypeAddedIssueEventType",
+    "IssueTypeAddedIssueEventTypeForResponse",
 )

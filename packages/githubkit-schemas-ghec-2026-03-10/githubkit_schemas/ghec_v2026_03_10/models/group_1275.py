@@ -13,26 +13,47 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0206 import SecretScanningCustomPatternToDelete
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the apps layer's configured value, or `optional` if the apps layer has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
     )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
-        default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the apps layer can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available apps policy controls allow the apps layer's policy to be updated."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems
+)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems",
+)

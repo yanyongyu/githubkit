@@ -9,71 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0660 import (
+    DependabotAlertWithdrawnWebhookPropDependencyType,
+    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
+)
 
 
-class WebhooksLabelPropArchivedByType(TypedDict):
-    """WebhooksLabelPropArchivedBy
+class DependabotAlertWithdrawnWebhookType(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    The user who archived the label, or `null` if it has not been archived.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
     url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    created_at: _dt.datetime
+    withdrawn_at: _dt.datetime
 
 
-class WebhooksLabelPropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelPropArchivedBy
+class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    The user who archived the label, or `null` if it has not been archived.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
+    security_advisory: (
+        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
+    )
     url: str
     html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    created_at: str
+    withdrawn_at: str
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
 
 
 __all__ = (
-    "WebhooksLabelPropArchivedByType",
-    "WebhooksLabelPropArchivedByTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
+    "DependabotAlertWithdrawnWebhookType",
+    "DependabotAlertWithdrawnWebhookTypeForResponse",
 )

@@ -9,47 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0059 import ActionsPolicyOrgConditionsOneof0
-from .group_0060 import ActionsPolicyOrgConditionsOneof1
-from .group_0061 import ActionsPolicyOrgConditionsOneof2
-from .group_0074 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
+from .group_0212 import SecretScanningCustomPatternToDelete
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
     )
-    conditions: Missing[
-        Union[
-            ActionsPolicyOrgConditionsOneof0,
-            ActionsPolicyOrgConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof2,
-        ]
-    ] = Field(
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
         default=UNSET,
-        title="Organization Actions policy conditions",
-        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(OrgsOrgActionsPoliciesPolicyIdPutBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody)
 
-__all__ = ("OrgsOrgActionsPoliciesPolicyIdPutBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody",)

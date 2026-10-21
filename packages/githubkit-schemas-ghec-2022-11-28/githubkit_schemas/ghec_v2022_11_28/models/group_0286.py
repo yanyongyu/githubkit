@@ -14,19 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanOrgSettings(GitHubModel):
-    """Code scanning AI Scan organization settings
+class SelfHostedRunnersSettings(GitHubModel):
+    """SelfHostedRunnersSettings"""
 
-    The AI Scan organization setting
-    """
-
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
     )
 
 
-model_rebuild(CodeScanningAiScanOrgSettings)
+model_rebuild(SelfHostedRunnersSettings)
 
-__all__ = ("CodeScanningAiScanOrgSettings",)
+__all__ = ("SelfHostedRunnersSettings",)

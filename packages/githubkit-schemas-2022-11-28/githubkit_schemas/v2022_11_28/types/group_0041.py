@@ -26,6 +26,7 @@ class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
 
     package: NotRequired[DependabotAlertPackageType]
     manifest_path: NotRequired[str]
+    version_requirement: NotRequired[Union[str, None]]
     scope: NotRequired[Union[Literal["development", "runtime"], None]]
     relationship: NotRequired[
         Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
@@ -40,6 +41,7 @@ class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
 
     package: NotRequired[DependabotAlertPackageTypeForResponse]
     manifest_path: NotRequired[str]
+    version_requirement: NotRequired[Union[str, None]]
     scope: NotRequired[Union[Literal["development", "runtime"], None]]
     relationship: NotRequired[
         Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]

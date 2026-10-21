@@ -15,39 +15,61 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NetworkConfiguration(GitHubModel):
-    """Hosted compute network configuration
+class EnterpriseLicensePolicyItemPropLicenses(GitHubModel):
+    """EnterpriseLicensePolicyItemPropLicenses"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str = Field(description="The unique identifier of the network configuration.")
-    name: str = Field(description="The name of the network configuration.")
-    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
-        default=UNSET,
-        description="The hosted compute service the network configuration supports.",
-    )
-    network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each network settings in the configuration.",
-    )
-    failover_network_settings_ids: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The unique identifier of each failover network settings in the configuration.",
-    )
-    failover_network_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the failover network resource is enabled.",
-    )
-    created_on: Union[_dt.datetime, None] = Field(
-        description="The time at which the network configuration was created, in ISO 8601 format."
+    allowed: list[EnterpriseLicensePolicyItemPropLicensesPropAllowedItems] = Field(
+        description="The licenses allowed by this policy."
     )
 
 
-model_rebuild(NetworkConfiguration)
+class EnterpriseLicensePolicyItemPropLicensesPropAllowedItems(GitHubModel):
+    """Allowed license"""
 
-__all__ = ("NetworkConfiguration",)
+    spdx_id: str = Field(description="The SPDX identifier of the license.")
+    added_at: Union[_dt.datetime, None] = Field(
+        description="The time the license was added to the policy."
+    )
+
+
+class EnterpriseLicensePolicyItemPropPackagesItems(GitHubModel):
+    """License policy package exception"""
+
+    package_manager: Literal[
+        "unknown",
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "gomod",
+        "rust",
+        "actions",
+        "pub",
+        "swift",
+    ] = Field(description="The package manager the package belongs to.")
+    name: str = Field(description="The name of the package.")
+    action: Literal["unknown", "allowed", "private"] = Field(
+        description="How the package is treated by the policy."
+    )
+    reason: str = Field(description="The reason the exception was added.")
+    extra_allowed_spdx_ids: list[str] = Field(
+        description="Additional SPDX identifiers allowed for this package."
+    )
+    added_at: Union[_dt.datetime, None] = Field(
+        description="The time the exception was added to the policy."
+    )
+
+
+model_rebuild(EnterpriseLicensePolicyItemPropLicenses)
+model_rebuild(EnterpriseLicensePolicyItemPropLicensesPropAllowedItems)
+model_rebuild(EnterpriseLicensePolicyItemPropPackagesItems)
+
+__all__ = (
+    "EnterpriseLicensePolicyItemPropLicenses",
+    "EnterpriseLicensePolicyItemPropLicensesPropAllowedItems",
+    "EnterpriseLicensePolicyItemPropPackagesItems",
+)

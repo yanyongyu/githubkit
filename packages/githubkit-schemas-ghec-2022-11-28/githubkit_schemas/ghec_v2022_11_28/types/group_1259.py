@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0076 import RunnerLabelType, RunnerLabelTypeForResponse
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
-    ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+    total_count: int
+    labels: list[RunnerLabelType]
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
-    ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+    total_count: int
+    labels: list[RunnerLabelTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
-    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200TypeForResponse",
 )

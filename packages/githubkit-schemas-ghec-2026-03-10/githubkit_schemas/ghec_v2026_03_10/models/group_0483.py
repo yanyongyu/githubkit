@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryHashAlgorithm(GitHubModel):
-    """Repository hash algorithm
+class ShortBlob(GitHubModel):
+    """Short Blob
 
-    Repository hash algorithm
+    Short Blob
     """
 
-    hash_algorithm: Literal["sha1", "sha256"] = Field(
-        description="The Git hash algorithm used by this repository."
-    )
+    url: str = Field()
+    sha: str = Field()
 
 
-model_rebuild(RepositoryHashAlgorithm)
+model_rebuild(ShortBlob)
 
-__all__ = ("RepositoryHashAlgorithm",)
+__all__ = ("ShortBlob",)

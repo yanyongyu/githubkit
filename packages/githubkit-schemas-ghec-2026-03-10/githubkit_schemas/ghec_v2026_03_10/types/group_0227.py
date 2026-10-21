@@ -10,273 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0226 import LabelType, LabelTypeForResponse
+
+class UsageReportExportListType(TypedDict):
+    """UsageReportExportList"""
+
+    usage_report_exports: list[UsageReportExportType]
 
 
-class DiscussionType(TypedDict):
-    """Discussion
+class UsageReportExportListTypeForResponse(TypedDict):
+    """UsageReportExportList"""
 
-    A Discussion in a repository.
-    """
-
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    body: str
-    category: DiscussionPropCategoryType
-    comments: int
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsType]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: _dt.datetime
-    user: Union[DiscussionPropUserType, None]
-    labels: NotRequired[list[LabelType]]
+    usage_report_exports: list[UsageReportExportTypeForResponse]
 
 
-class DiscussionTypeForResponse(TypedDict):
-    """Discussion
+class UsageReportExportType(TypedDict):
+    """UsageReportExport"""
 
-    A Discussion in a repository.
-    """
-
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByTypeForResponse, None]
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    body: str
-    category: DiscussionPropCategoryTypeForResponse
-    comments: int
-    created_at: str
-    html_url: str
-    id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsTypeForResponse]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: str
-    user: Union[DiscussionPropUserTypeForResponse, None]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    id: str
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
+    start_date: _dt.date
+    end_date: _dt.date
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[_dt.datetime]
+    actor: NotRequired[str]
 
 
-class DiscussionPropAnswerChosenByType(TypedDict):
-    """User"""
+class UsageReportExportTypeForResponse(TypedDict):
+    """UsageReportExport"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropAnswerChosenByTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropCategoryType(TypedDict):
-    """DiscussionPropCategory"""
-
-    created_at: _dt.datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-class DiscussionPropCategoryTypeForResponse(TypedDict):
-    """DiscussionPropCategory"""
-
-    created_at: str
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-class DiscussionPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class DiscussionPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class DiscussionPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    id: str
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
+    start_date: str
+    end_date: str
+    status: Literal["processing", "completed", "failed"]
+    download_urls: NotRequired[list[str]]
+    created_at: NotRequired[str]
+    actor: NotRequired[str]
 
 
 __all__ = (
-    "DiscussionPropAnswerChosenByType",
-    "DiscussionPropAnswerChosenByTypeForResponse",
-    "DiscussionPropCategoryType",
-    "DiscussionPropCategoryTypeForResponse",
-    "DiscussionPropReactionsType",
-    "DiscussionPropReactionsTypeForResponse",
-    "DiscussionPropUserType",
-    "DiscussionPropUserTypeForResponse",
-    "DiscussionType",
-    "DiscussionTypeForResponse",
+    "UsageReportExportListType",
+    "UsageReportExportListTypeForResponse",
+    "UsageReportExportType",
+    "UsageReportExportTypeForResponse",
 )

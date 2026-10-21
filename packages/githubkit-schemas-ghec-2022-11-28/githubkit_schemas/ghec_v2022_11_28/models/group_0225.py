@@ -9,52 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterpriseTeamWithMemberCount(GitHubModel):
-    """Enterprise Team
+class DeleteCostCenter(GitHubModel):
+    """DeleteCostCenter"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int = Field()
-    name: str = Field()
-    description: Missing[str] = Field(default=UNSET)
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: Missing[str] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    message: str = Field(
+        description="A message indicating the result of the deletion operation"
     )
-    organization_selection_type: Missing[str] = Field(default=UNSET)
-    group_id: Union[str, None] = Field()
-    group_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Retired: this field will not be returned with GHEC enterprise teams.",
-    )
-    html_url: str = Field()
-    members_url: str = Field()
-    members_count: int = Field(
-        description="The number of members in the enterprise team."
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when the team is mentioned.",
+    id: str = Field(description="The unique identifier of the deleted cost center")
+    name: str = Field(description="The name of the deleted cost center")
+    cost_center_state: Literal["CostCenterArchived"] = Field(
+        alias="costCenterState",
+        description="The state of the cost center after deletion",
     )
 
 
-model_rebuild(EnterpriseTeamWithMemberCount)
+model_rebuild(DeleteCostCenter)
 
-__all__ = ("EnterpriseTeamWithMemberCount",)
+__all__ = ("DeleteCostCenter",)

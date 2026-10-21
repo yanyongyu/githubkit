@@ -18,25 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueEventIntent(GitHubModel):
-    """Issue Event Intent
+class IssueTypeWebhook(GitHubModel):
+    """Issue Type
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    The type of issue.
     """
 
-    rationale: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reasoning the agent provided for the change."
-    )
-    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
-        default=UNSET,
-        description="The confidence level the agent had when performing this action.",
-    )
+    id: int = Field(description="The unique identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
 
 
-model_rebuild(IssueEventIntent)
+model_rebuild(IssueTypeWebhook)
 
-__all__ = ("IssueEventIntent",)
+__all__ = ("IssueTypeWebhook",)

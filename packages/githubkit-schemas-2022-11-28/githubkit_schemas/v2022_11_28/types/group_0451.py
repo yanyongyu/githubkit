@@ -14,13 +14,13 @@ from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0425 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0427 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class BlockedByRemovedIssueEventType(TypedDict):
-    """Blocked-by Removed Issue Event
+class ParentIssueRemovedIssueEventType(TypedDict):
+    """Parent-issue Removed Issue Event
 
-    Blocked-by Removed Issue Event
+    Parent-issue Removed Issue Event
     """
 
     id: int
@@ -32,13 +32,13 @@ class BlockedByRemovedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    blocked_by: Union[None, IssueReferenceType, None]
+    parent_issue: Union[None, IssueReferenceType, None]
 
 
-class BlockedByRemovedIssueEventTypeForResponse(TypedDict):
-    """Blocked-by Removed Issue Event
+class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
+    """Parent-issue Removed Issue Event
 
-    Blocked-by Removed Issue Event
+    Parent-issue Removed Issue Event
     """
 
     id: int
@@ -50,10 +50,10 @@ class BlockedByRemovedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    blocked_by: Union[None, IssueReferenceTypeForResponse, None]
+    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "BlockedByRemovedIssueEventType",
-    "BlockedByRemovedIssueEventTypeForResponse",
+    "ParentIssueRemovedIssueEventType",
+    "ParentIssueRemovedIssueEventTypeForResponse",
 )

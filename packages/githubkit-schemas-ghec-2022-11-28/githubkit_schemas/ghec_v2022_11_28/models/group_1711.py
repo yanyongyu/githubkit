@@ -9,41 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0592 import PullRequestStackPullRequest
 
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the issue."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+model_rebuild(ReposOwnerRepoIssuesIssueNumberReactionsPostBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",)

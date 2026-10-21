@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0195 import RulesetVersionPropActor
+from .group_0195 import RepositoryRuleCodeQualityPropParameters
 
 
-class RulesetVersion(GitHubModel):
-    """Ruleset version
+class RepositoryRuleCodeQuality(GitHubModel):
+    """code_quality
 
-    The historical version of a ruleset
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    version_id: int = Field(description="The ID of the previous version of the ruleset")
-    actor: RulesetVersionPropActor = Field(
-        description="The actor who updated the ruleset"
-    )
-    updated_at: _dt.datetime = Field()
+    type: Literal["code_quality"] = Field()
+    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RulesetVersion)
+model_rebuild(RepositoryRuleCodeQuality)
 
-__all__ = ("RulesetVersion",)
+__all__ = ("RepositoryRuleCodeQuality",)

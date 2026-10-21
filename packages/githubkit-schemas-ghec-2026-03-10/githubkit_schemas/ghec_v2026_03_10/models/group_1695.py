@@ -17,88 +17,155 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0141 import RepositoryRulesetBypassActor
-from .group_0142 import RepositoryRulesetConditions
-from .group_0150 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0151 import RepositoryRuleUpdate
-from .group_0153 import RepositoryRuleRequiredLinearHistory
-from .group_0154 import RepositoryRuleRequiredDeployments
-from .group_0157 import RepositoryRulePullRequest
-from .group_0159 import RepositoryRuleRequiredStatusChecks
-from .group_0161 import RepositoryRuleCommitMessagePattern
-from .group_0163 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0165 import RepositoryRuleCommitterEmailPattern
-from .group_0167 import RepositoryRuleBranchNamePattern
-from .group_0169 import RepositoryRuleTagNamePattern
-from .group_0171 import RepositoryRuleFilePathRestriction
-from .group_0173 import RepositoryRuleMaxFilePathLength
-from .group_0175 import RepositoryRuleFileExtensionRestriction
-from .group_0177 import RepositoryRuleMaxFileSize
-from .group_0180 import RepositoryRuleWorkflows
-from .group_0182 import RepositoryRuleCodeScanning
-from .group_0184 import RepositoryRuleCopilotCodeReview
-from .group_0189 import RepositoryRuleMergeQueue
-from .group_0191 import RepositoryRuleCodeCoverage, RepositoryRuleCodeQuality
-from .group_0192 import RepositoryRuleLicenseComplianceScanning
 
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
+    Pending suggestions for each suggestible field (`type`,
+    `issue_field_values`, `labels`, `assignees`, `state`) the
+    request touched. Omitted for fields not in the request or
+    with no pending or ignored suggestions. Items tagged
+    `ignored` are echoes of the current request's inputs that
+    were not persisted as pending suggestions.
+    """
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
-    )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
+    type: Missing[
         list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCodeQuality,
-                RepositoryRuleCodeCoverage,
-                RepositoryRuleCopilotCodeReview,
-                RepositoryRuleLicenseComplianceScanning,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-            ]
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
         ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    ] = Field(default=UNSET)
+    issue_field_values: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
+        ]
+    ] = Field(default=UNSET)
+    labels: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
+        ]
+    ] = Field(default=UNSET)
+    assignees: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
+        ]
+    ] = Field(default=UNSET)
+    state: Missing[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
+    s
+    """
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+    value: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
+    ldValuesItems
+    """
+
+    field_id: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, float, list[str]]] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
+    ems
+    """
+
+    name: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
+    sItems
+    """
+
+    login: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
+    ms
+    """
+
+    value: Missing[str] = Field(default=UNSET)
+    state_reason: Missing[str] = Field(default=UNSET)
+    duplicate_issue_id: Missing[int] = Field(default=UNSET)
+    rationale: Missing[str] = Field(default=UNSET)
+    suggest: Missing[bool] = Field(default=UNSET)
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
+    ignored: Missing[bool] = Field(default=UNSET)
+    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
+)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems",
+)

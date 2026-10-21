@@ -9,333 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0840 import (
-    WebhookRubygemsMetadataType,
-    WebhookRubygemsMetadataTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0569 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
 )
+from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0603 import WebhooksMembershipType, WebhooksMembershipTypeForResponse
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType, None
-    ]
-    body: str
-    body_html: str
-    created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        list[
-            WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType
-        ]
-    ]
-    draft: NotRequired[bool]
-    html_url: str
-    id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType
-    ]
-    name: str
-    package_files: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType
-    ]
-    package_url: NotRequired[str]
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType
-    ]
-    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
-    source_url: NotRequired[str]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
-    updated_at: str
-    version: str
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
+class WebhookOrganizationRenamedTypeForResponse(TypedDict):
+    """organization renamed event"""
 
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorTypeForResponse,
-        None,
-    ]
-    body: str
-    body_html: str
-    created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        list[
-            WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse
-        ]
-    ]
-    draft: NotRequired[bool]
-    html_url: str
-    id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsTypeForResponse
-    ]
-    name: str
-    package_files: list[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsTypeForResponse
-    ]
-    package_url: NotRequired[str]
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseTypeForResponse
-    ]
-    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataTypeForResponse]]
-    source_url: NotRequired[str]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
-    updated_at: str
-    version: str
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    membership: NotRequired[WebhooksMembershipTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType(TypedDict):
-    """User"""
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorTypeForResponse(
-    TypedDict
-):
-    """User"""
+class WebhookOrganizationRenamedPropChangesTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse]
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    tags: NotRequired[list[str]]
+    from_: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
+class WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    tags: NotRequired[list[str]]
-
-
-WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType: TypeAlias = (
-    dict[str, Any]
-)
-"""WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
-"""
-
-
-WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
-"""
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
-
-    content_type: str
-    created_at: str
-    download_url: str
-    id: int
-    md5: Union[str, None]
-    name: str
-    sha1: Union[str, None]
-    sha256: str
-    size: int
-    state: str
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsTypeForResponse(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
-
-    content_type: str
-    created_at: str
-    download_url: str
-    id: int
-    md5: Union[str, None]
-    name: str
-    sha1: Union[str, None]
-    sha256: str
-    size: int
-    state: str
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
-
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType,
-        None,
-    ]
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
-    url: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseTypeForResponse(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
-
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorTypeForResponse,
-        None,
-    ]
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
-    url: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorTypeForResponse(
-    TypedDict
-):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseTypeForResponse",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+    "WebhookOrganizationRenamedPropChangesPropLoginTypeForResponse",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesTypeForResponse",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedTypeForResponse",
 )

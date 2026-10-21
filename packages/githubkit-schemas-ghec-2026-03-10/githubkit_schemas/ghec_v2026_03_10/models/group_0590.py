@@ -15,28 +15,25 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0239 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
-
-
-class PullRequestStackPullRequest(GitHubModel):
-    """Pull Request Stack Pull Request"""
-
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
-    node_id: str = Field()
-    title: str = Field()
-    state: Literal["open", "closed"] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    draft: bool = Field()
-    html_url: str = Field()
-    user: Union[SimpleUser, None] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestStackPullRequest)
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-__all__ = ("PullRequestStackPullRequest",)
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
+    )
+    expire_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
+    )
+
+
+model_rebuild(SecretScanningPushProtectionBypass)
+
+__all__ = ("SecretScanningPushProtectionBypass",)

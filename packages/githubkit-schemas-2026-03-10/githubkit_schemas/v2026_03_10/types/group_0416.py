@@ -9,56 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
-from .group_0415 import HookResponseType, HookResponseTypeForResponse
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    Webhooks for repositories.
+    Repository hash algorithm
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class HookTypeForResponse(TypedDict):
-    """Webhook
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    Webhooks for repositories.
+    Repository hash algorithm
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: list[str]
-    config: WebhookConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseTypeForResponse
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "HookType",
-    "HookTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

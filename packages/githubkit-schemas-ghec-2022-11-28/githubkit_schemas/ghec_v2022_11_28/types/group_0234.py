@@ -11,86 +11,60 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0230 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0232 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
-from .group_0233 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class MilestoneType(TypedDict):
+    """Milestone
 
-    Comments provide a way for people to collaborate on an issue.
+    A collection of related issues and pull requests.
     """
 
+    url: str
+    html_url: str
+    labels_url: str
     id: int
     node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserType, None]
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[SimpleUserType, None]
+    open_issues: int
+    closed_issues: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
-    pin: NotRequired[Union[PinnedIssueCommentType, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class IssueCommentTypeForResponse(TypedDict):
-    """Issue Comment
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Comments provide a way for people to collaborate on an issue.
+    A collection of related issues and pull requests.
     """
 
+    url: str
+    html_url: str
+    labels_url: str
     id: int
     node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[SimpleUserTypeForResponse, None]
+    open_issues: int
+    closed_issues: int
     created_at: str
     updated_at: str
-    issue_url: str
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
-    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "IssueCommentType",
-    "IssueCommentTypeForResponse",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

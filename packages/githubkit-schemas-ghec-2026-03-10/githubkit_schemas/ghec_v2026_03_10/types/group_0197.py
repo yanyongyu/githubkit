@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0198 import (
-    RulesetVersionWithStateAllof1PropStateType,
-    RulesetVersionWithStateAllof1PropStateTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class RulesetVersionWithStateAllof1Type(TypedDict):
-    """RulesetVersionWithStateAllof1"""
+class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    state: RulesetVersionWithStateAllof1PropStateType
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
 
 
-class RulesetVersionWithStateAllof1TypeForResponse(TypedDict):
-    """RulesetVersionWithStateAllof1"""
+class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
 
 
 __all__ = (
-    "RulesetVersionWithStateAllof1Type",
-    "RulesetVersionWithStateAllof1TypeForResponse",
+    "RepositoryRuleCodeCoveragePropParametersType",
+    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
 )

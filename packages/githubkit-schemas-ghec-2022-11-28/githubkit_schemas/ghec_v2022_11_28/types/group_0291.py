@@ -14,142 +14,70 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
+from .group_0108 import TeamType, TeamTypeForResponse
 
 
-class CopilotSpaceType(TypedDict):
-    """Space
+class CampaignSummaryType(TypedDict):
+    """Campaign summary
 
-    A GitHub Copilot Space represents an interactive AI workspace where users can
-    ask questions and get assistance.
+    The campaign metadata and alert stats.
     """
 
-    id: int
     number: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    general_instructions: NotRequired[Union[str, None]]
-    base_role: Literal["reader", "writer", "admin", "no_access"]
-    owner: Union[SimpleUserType, OrganizationSimpleType]
-    creator: SimpleUserType
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    html_url: str
-    api_url: str
-    resources_attributes: NotRequired[
-        list[CopilotSpacePropResourcesAttributesItemsType]
-    ]
+    name: NotRequired[str]
+    description: str
+    managers: list[SimpleUserType]
+    team_managers: NotRequired[list[TeamType]]
+    published_at: NotRequired[_dt.datetime]
+    ends_at: _dt.datetime
+    closed_at: NotRequired[Union[_dt.datetime, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsType]
 
 
-class CopilotSpaceTypeForResponse(TypedDict):
-    """Space
+class CampaignSummaryTypeForResponse(TypedDict):
+    """Campaign summary
 
-    A GitHub Copilot Space represents an interactive AI workspace where users can
-    ask questions and get assistance.
+    The campaign metadata and alert stats.
     """
 
-    id: int
     number: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    general_instructions: NotRequired[Union[str, None]]
-    base_role: Literal["reader", "writer", "admin", "no_access"]
-    owner: Union[SimpleUserTypeForResponse, OrganizationSimpleTypeForResponse]
-    creator: SimpleUserTypeForResponse
     created_at: str
     updated_at: str
-    html_url: str
-    api_url: str
-    resources_attributes: NotRequired[
-        list[CopilotSpacePropResourcesAttributesItemsTypeForResponse]
-    ]
-
-
-class CopilotSpacePropResourcesAttributesItemsType(TypedDict):
-    """CopilotSpacePropResourcesAttributesItems"""
-
-    id: NotRequired[int]
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    metadata: NotRequired[CopilotSpacePropResourcesAttributesItemsPropMetadataType]
-
-
-class CopilotSpacePropResourcesAttributesItemsTypeForResponse(TypedDict):
-    """CopilotSpacePropResourcesAttributesItems"""
-
-    id: NotRequired[int]
-    resource_type: NotRequired[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    metadata: NotRequired[
-        CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse
-    ]
-
-
-class CopilotSpacePropResourcesAttributesItemsPropMetadataType(TypedDict):
-    """CopilotSpacePropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
     name: NotRequired[str]
-    number: NotRequired[int]
-    copilot_chat_attachment_id: NotRequired[int]
-    media_type: NotRequired[str]
-    url: NotRequired[str]
-    height: NotRequired[int]
-    width: NotRequired[int]
+    description: str
+    managers: list[SimpleUserTypeForResponse]
+    team_managers: NotRequired[list[TeamTypeForResponse]]
+    published_at: NotRequired[str]
+    ends_at: str
+    closed_at: NotRequired[Union[str, None]]
+    state: Literal["open", "closed"]
+    contact_link: Union[str, None]
+    alert_stats: NotRequired[CampaignSummaryPropAlertStatsTypeForResponse]
 
 
-class CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse(TypedDict):
-    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+class CampaignSummaryPropAlertStatsType(TypedDict):
+    """CampaignSummaryPropAlertStats"""
 
-    Metadata specific to the resource type.
-    """
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
-    repository_id: NotRequired[int]
-    file_path: NotRequired[str]
-    text: NotRequired[str]
-    name: NotRequired[str]
-    number: NotRequired[int]
-    copilot_chat_attachment_id: NotRequired[int]
-    media_type: NotRequired[str]
-    url: NotRequired[str]
-    height: NotRequired[int]
-    width: NotRequired[int]
+
+class CampaignSummaryPropAlertStatsTypeForResponse(TypedDict):
+    """CampaignSummaryPropAlertStats"""
+
+    open_count: int
+    closed_count: int
+    in_progress_count: int
 
 
 __all__ = (
-    "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
-    "CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "CopilotSpacePropResourcesAttributesItemsType",
-    "CopilotSpacePropResourcesAttributesItemsTypeForResponse",
-    "CopilotSpaceType",
-    "CopilotSpaceTypeForResponse",
+    "CampaignSummaryPropAlertStatsType",
+    "CampaignSummaryPropAlertStatsTypeForResponse",
+    "CampaignSummaryType",
+    "CampaignSummaryTypeForResponse",
 )

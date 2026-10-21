@@ -9,37 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0239 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class PinnedIssueCommentType(TypedDict):
+    """Pinned Issue Comment
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: _dt.datetime
+    pinned_by: Union[SimpleUserType, None]
 
 
-class PullRequestMinimalTypeForResponse(TypedDict):
-    """Pull Request Minimal"""
+class PinnedIssueCommentTypeForResponse(TypedDict):
+    """Pinned Issue Comment
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: str
+    pinned_by: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "PullRequestMinimalType",
-    "PullRequestMinimalTypeForResponse",
+    "PinnedIssueCommentType",
+    "PinnedIssueCommentTypeForResponse",
 )

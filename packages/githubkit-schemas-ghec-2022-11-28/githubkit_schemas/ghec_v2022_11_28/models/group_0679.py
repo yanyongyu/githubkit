@@ -9,69 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0681 import WebhooksLabelArchivedAllof1PropArchivedBy
 
 
-class WebhooksMembership(GitHubModel):
-    """Membership
+class WebhooksLabelArchived(GitHubModel):
+    """Archived label"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str = Field()
-    role: str = Field()
-    direct_membership: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user has direct membership in the organization.",
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    enterprise_teams_providing_indirect_membership: Missing[list[str]] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The slugs of the enterprise teams providing the user with indirect membership in the organization.\nA limit of 100 enterprise team slugs is returned.",
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    archived_at: _dt.datetime = Field(
+        description="Timestamp indicating when the label was archived."
     )
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
-
-
-class WebhooksMembershipPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedBy = Field(
+        description="The user who archived the label."
+    )
     id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhooksMembership)
-model_rebuild(WebhooksMembershipPropUser)
+model_rebuild(WebhooksLabelArchived)
 
-__all__ = (
-    "WebhooksMembership",
-    "WebhooksMembershipPropUser",
-)
+__all__ = ("WebhooksLabelArchived",)

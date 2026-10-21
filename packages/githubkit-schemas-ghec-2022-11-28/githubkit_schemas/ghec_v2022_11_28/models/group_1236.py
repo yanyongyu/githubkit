@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,45 +18,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
-
-    custom_agents: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-            ],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
-    )
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
 
     name: Missing[str] = Field(
         default=UNSET,
-        description="The display name of the custom agent (derived from filename).",
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="The path to the agent definition file."
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The existing runner group to add this runner to."
     )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the agent definition file."
+    maximum_runners: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+    )
+    enable_static_ip: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+    )
+    size: Missing[str] = Field(
+        default=UNSET,
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+    )
+    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET,
+        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
+    )
+    image_id: Missing[str] = Field(
+        default=UNSET,
+        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
+    )
+    image_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
-)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody",)

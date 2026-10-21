@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class InteractionLimitPullRequestBypassListType(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class HookResponseType(TypedDict):
+    """Hook Response"""
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
-    """
-
-    users: list[str]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
-class InteractionLimitPullRequestBypassListTypeForResponse(TypedDict):
-    """Interaction Limits Pull Request Bypass List
+class HookResponseTypeForResponse(TypedDict):
+    """Hook Response"""
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
-    """
-
-    users: list[str]
+    code: Union[int, None]
+    status: Union[str, None]
+    message: Union[str, None]
 
 
 __all__ = (
-    "InteractionLimitPullRequestBypassListType",
-    "InteractionLimitPullRequestBypassListTypeForResponse",
+    "HookResponseType",
+    "HookResponseTypeForResponse",
 )

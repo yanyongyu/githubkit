@@ -9,100 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(
+class AgentsAutomationsAvailableToolsGetResponse200ItemsType(TypedDict):
+    """AgentsAutomationsAvailableToolsGetResponse200Items
+
+    A CMC-controlled presentation category for Automation tools. Clients must not
+    depend on group identifiers, membership, or ordering remaining stable.
+    """
+
+    id: str
+    title: str
+    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType]
+
+
+class AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsAvailableToolsGetResponse200Items
+
+    A CMC-controlled presentation category for Automation tools. Clients must not
+    depend on group identifiers, membership, or ordering remaining stable.
+    """
+
+    id: str
+    title: str
+    tools: list[
+        AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse
+    ]
+
+
+class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType(TypedDict):
+    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
+
+    A tool that can be selected in an Automation.
+    """
+
+    id: str
+    title: str
+    description: str
+    scope: NotRequired[Literal["read", "write"]]
+
+
+class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
 
-    A GitHub user
+    A tool that can be selected in an Automation.
     """
 
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
+    id: str
+    title: str
+    description: str
+    scope: NotRequired[Literal["read", "write"]]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsType",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse",
 )

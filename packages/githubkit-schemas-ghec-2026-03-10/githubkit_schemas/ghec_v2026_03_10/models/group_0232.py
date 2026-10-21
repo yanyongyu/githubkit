@@ -16,19 +16,35 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class Label(GitHubModel):
+    """Label
 
-class PinnedIssueComment(GitHubModel):
-    """Pinned Issue Comment
-
-    Context around who pinned an issue comment and when it was pinned.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    pinned_at: _dt.datetime = Field()
-    pinned_by: Union[SimpleUser, None] = Field()
+    id: int = Field(description="Unique identifier for the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
+    )
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: None = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
 
 
-model_rebuild(PinnedIssueComment)
+model_rebuild(Label)
 
-__all__ = ("PinnedIssueComment",)
+__all__ = ("Label",)

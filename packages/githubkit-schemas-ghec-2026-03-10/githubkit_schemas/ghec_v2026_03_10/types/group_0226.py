@@ -9,48 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class LabelType(TypedDict):
-    """Label
+class BillingPremiumRequestUsageReportGheType(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
+    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
 
-    id: int
-    node_id: str
-    url: str
+
+class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhe"""
+
+    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    user: NotRequired[str]
+    organization: NotRequired[str]
+    product: NotRequired[str]
+    model: NotRequired[str]
+    cost_center: NotRequired[
+        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
+    ]
+    usage_items: list[
+        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
+    ]
+
+
+class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+
+    id: str
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_at: Union[_dt.datetime, None]
-    archived_by: None
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropCostCenter"""
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
-    """
-
-    id: int
-    node_id: str
-    url: str
+    id: str
     name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_at: Union[str, None]
-    archived_by: None
+
+
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    model: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "LabelType",
-    "LabelTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropCostCenterType",
+    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
+    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
+    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingPremiumRequestUsageReportGheType",
+    "BillingPremiumRequestUsageReportGheTypeForResponse",
 )

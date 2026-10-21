@@ -9,45 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0659 import (
-    WebhooksLabelPropArchivedByType,
-    WebhooksLabelPropArchivedByTypeForResponse,
-)
 
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-class WebhooksLabelUnarchivedType(TypedDict):
-    """Unarchived label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[Union[_dt.datetime, None], None]
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedByType], None]
+    full_name: str
     id: int
     name: str
     node_id: str
-    url: str
+    private: bool
 
 
-class WebhooksLabelUnarchivedTypeForResponse(TypedDict):
-    """Unarchived label"""
+class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[Union[str, None], None]
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedByTypeForResponse], None]
+    full_name: str
     id: int
     name: str
     node_id: str
-    url: str
+    private: bool
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedType",
-    "WebhooksLabelUnarchivedTypeForResponse",
+    "WebhooksRepositoriesAddedItemsType",
+    "WebhooksRepositoriesAddedItemsTypeForResponse",
 )

@@ -9,104 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingAiCreditUsageReportGheType(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
+class SecretScanningCustomPatternType(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
+    A custom pattern for secret scanning.
+    """
 
-
-class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
-
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
-
-
-class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str
+    id: int
     name: str
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
+class SecretScanningCustomPatternTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern
 
-    id: str
+    A custom pattern for secret scanning.
+    """
+
+    id: int
     name: str
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    pattern: str
+    slug: str
+    state: Literal["published", "unpublished"]
+    push_protection_enabled: bool
+    start_delimiter: NotRequired[Union[str, None]]
+    end_delimiter: NotRequired[Union[str, None]]
+    must_match: NotRequired[Union[list[str], None]]
+    must_not_match: NotRequired[Union[list[str], None]]
+    custom_pattern_version: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "BillingAiCreditUsageReportGhePropCostCenterType",
-    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
-    "BillingAiCreditUsageReportGhePropTimePeriodType",
-    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportGheType",
-    "BillingAiCreditUsageReportGheTypeForResponse",
+    "SecretScanningCustomPatternType",
+    "SecretScanningCustomPatternTypeForResponse",
 )

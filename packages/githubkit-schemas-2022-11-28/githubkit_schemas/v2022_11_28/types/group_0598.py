@@ -9,99 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMembershipType(TypedDict):
-    """Membership
+class WebhooksLabelUnarchivedAllof1Type(TypedDict):
+    """WebhooksLabelUnarchivedAllof1"""
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    archived_at: Union[_dt.datetime, None]
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
+
+
+class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelUnarchivedAllof1"""
+
+    archived_at: Union[str, None]
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
+
+
+class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+
+    The user who archived the label. This is `null` after the label is unarchived.
     """
 
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserType, None]
-
-
-class WebhooksMembershipTypeForResponse(TypedDict):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    state: str
-    url: str
-    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
-
-
-class WebhooksMembershipPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
+    name: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksMembershipPropUserTypeForResponse(TypedDict):
-    """User"""
+class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
+    The user who archived the label. This is `null` after the label is unarchived.
+    """
+
+    name: NotRequired[Union[str, None]]
     email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMembershipPropUserType",
-    "WebhooksMembershipPropUserTypeForResponse",
-    "WebhooksMembershipType",
-    "WebhooksMembershipTypeForResponse",
+    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
+    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
+    "WebhooksLabelUnarchivedAllof1Type",
+    "WebhooksLabelUnarchivedAllof1TypeForResponse",
 )

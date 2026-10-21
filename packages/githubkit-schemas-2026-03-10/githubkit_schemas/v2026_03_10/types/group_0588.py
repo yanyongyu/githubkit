@@ -9,30 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0589 import (
-    WebhooksLabelArchivedAllof1PropArchivedByType,
-    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksLabelArchivedAllof1Type(TypedDict):
-    """WebhooksLabelArchivedAllof1"""
+class WebhooksChangesType(TypedDict):
+    """WebhooksChanges
 
-    archived_at: _dt.datetime
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
+    The changes to the comment.
+    """
+
+    body: NotRequired[WebhooksChangesPropBodyType]
 
 
-class WebhooksLabelArchivedAllof1TypeForResponse(TypedDict):
-    """WebhooksLabelArchivedAllof1"""
+class WebhooksChangesTypeForResponse(TypedDict):
+    """WebhooksChanges
 
-    archived_at: str
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
+    The changes to the comment.
+    """
+
+    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
+
+
+class WebhooksChangesPropBodyType(TypedDict):
+    """WebhooksChangesPropBody"""
+
+    from_: str
+
+
+class WebhooksChangesPropBodyTypeForResponse(TypedDict):
+    """WebhooksChangesPropBody"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhooksLabelArchivedAllof1Type",
-    "WebhooksLabelArchivedAllof1TypeForResponse",
+    "WebhooksChangesPropBodyType",
+    "WebhooksChangesPropBodyTypeForResponse",
+    "WebhooksChangesType",
+    "WebhooksChangesTypeForResponse",
 )

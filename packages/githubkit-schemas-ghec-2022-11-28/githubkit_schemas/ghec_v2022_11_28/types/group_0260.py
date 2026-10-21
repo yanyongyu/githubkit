@@ -10,129 +10,50 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, TypeAlias, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0236 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class GistHistoryType(TypedDict):
-    """Gist History
+class CommitCommentEventPropCommentType(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    Gist History
-    """
-
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
     user: NotRequired[Union[SimpleUserType, None]]
-    version: NotRequired[str]
-    committed_at: NotRequired[_dt.datetime]
-    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    reactions: NotRequired[ReactionRollupType]
+
+
+class CommitCommentEventPropCommentTypeForResponse(TypedDict):
+    """CommitCommentEventPropComment"""
+
+    html_url: NotRequired[str]
     url: NotRequired[str]
-
-
-class GistHistoryTypeForResponse(TypedDict):
-    """Gist History
-
-    Gist History
-    """
-
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
     user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    version: NotRequired[str]
-    committed_at: NotRequired[str]
-    change_status: NotRequired[GistHistoryPropChangeStatusTypeForResponse]
-    url: NotRequired[str]
-
-
-class GistHistoryPropChangeStatusType(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistHistoryPropChangeStatusTypeForResponse(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
-
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserType, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserType, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
-
-
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
-
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserTypeForResponse, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
-
-
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
-
-
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "GistHistoryPropChangeStatusType",
-    "GistHistoryPropChangeStatusTypeForResponse",
-    "GistHistoryType",
-    "GistHistoryTypeForResponse",
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "CommitCommentEventPropCommentType",
+    "CommitCommentEventPropCommentTypeForResponse",
 )

@@ -13,25 +13,109 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
+
+
+class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
+
+
+class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
     name: str
+    slug: str
+    type: Literal["Team"]
     description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
-class OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
 
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
     name: str
+    slug: str
+    type: Literal["Team"]
     description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleCreateSchemaType",
-    "OrganizationCustomRepositoryRoleCreateSchemaTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Type",
+    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
+    "CopilotSpaceCollaboratorAnyof1Type",
+    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
 )

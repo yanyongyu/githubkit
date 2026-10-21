@@ -9,24 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0332 import Verification
 
 
-class RepositoryHashAlgorithm(GitHubModel):
-    """Repository hash algorithm
+class GitTag(GitHubModel):
+    """Git Tag
 
-    Repository hash algorithm
+    Metadata for a Git tag
     """
 
-    hash_algorithm: Literal["sha1", "sha256"] = Field(
-        description="The Git hash algorithm used by this repository."
-    )
+    node_id: str = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-model_rebuild(RepositoryHashAlgorithm)
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
 
-__all__ = ("RepositoryHashAlgorithm",)
+    date: str = Field()
+    email: str = Field()
+    name: str = Field()
+
+
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
+
+    sha: str = Field()
+    type: str = Field()
+    url: str = Field()
+
+
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
+
+__all__ = (
+    "GitTag",
+    "GitTagPropObject",
+    "GitTagPropTagger",
+)

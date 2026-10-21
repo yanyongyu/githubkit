@@ -9,29 +9,140 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-    client_id: str = Field(description="The Client ID of the GitHub App to install.")
-    repository_selection: Literal["all", "selected", "none"] = Field(
-        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
+    Full session details within a task
+    """
+
+    id: str = Field(description="Session ID")
+    name: Missing[str] = Field(default=UNSET, description="Session name")
+    user: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser] = (
+        Field(default=UNSET, description="The user who created this session")
     )
-    repositories: Missing[list[str]] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
+    owner: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner] = (
+        Field(default=UNSET, description="The owner of the repository")
+    )
+    repository: Missing[
+        AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this session belongs to")
+    task_id: Missing[str] = Field(
+        default=UNSET, description="Task ID this session belongs to"
+    )
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(description="Current state of a session")
+    created_at: _dt.datetime = Field(description="Creation timestamp")
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Last update timestamp"
+    )
+    completed_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Completion timestamp"
+    )
+    prompt: Missing[str] = Field(
+        default=UNSET, description="Content of the triggering event"
+    )
+    head_ref: Missing[str] = Field(default=UNSET, description="Head branch name")
+    base_ref: Missing[str] = Field(default=UNSET, description="Base branch name")
+    model: Missing[str] = Field(
+        default=UNSET, description="Model used for this session"
+    )
+    usage: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage] = (
+        Field(
+            default=UNSET,
+            description="Structured information about billing units consumed by the session.",
+        )
+    )
+    error: Missing[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError] = (
+        Field(default=UNSET, description="Error details for a failed session")
     )
 
 
-model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)
+    The user who created this session
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository
+
+    The repository this session belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage
+
+    Structured information about billing units consumed by the session.
+    """
+
+    type: Literal["ai_credits", "premium_requests"] = Field(
+        description="Billing unit used for this session. New sessions since June 1, 2026 use `ai_credits`, but older sessions use `premium_requests`."
+    )
+    amount: float = Field(
+        description="Number of billing units used by this session. When the `type` is `ai_credits`, the value is a whole number, expressed in nano units. When presenting this to a human, divide by 1,000,000,000 and round to one decimal place. When aggregating (for example, summing usage across sessions), sum the nano values first, and divide once at the end before presenting to a human to avoid losing precision. When the `type` is `premium_requests`, the value may be fractional (for example `1.5`)."
+    )
+
+
+class AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError
+
+    Error details for a failed session
+    """
+
+    message: Missing[str] = Field(default=UNSET, description="Error message")
+
+
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError)
+
+__all__ = (
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage",
+    "AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser",
+)

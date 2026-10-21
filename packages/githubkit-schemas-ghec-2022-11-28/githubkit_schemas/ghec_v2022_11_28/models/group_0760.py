@@ -18,24 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0227 import Discussion
-from .group_0643 import EnterpriseWebhooks
-from .group_0644 import SimpleInstallation
-from .group_0645 import OrganizationSimpleWebhooks
-from .group_0646 import RepositoryWebhooks
+from .group_0651 import EnterpriseWebhooks
+from .group_0652 import SimpleInstallation
+from .group_0653 import OrganizationSimpleWebhooks
+from .group_0654 import RepositoryWebhooks
+from .group_0660 import DependabotAlertWithdrawnWebhook
 
 
-class WebhookDiscussionClosed(GitHubModel):
-    """discussion closed event"""
+class WebhookDependabotAlertWithdrawn(GitHubModel):
+    """Dependabot alert withdrawn event"""
 
-    action: Literal["closed"] = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    action: Literal["withdrawn"] = Field()
+    alert: DependabotAlertWithdrawnWebhook = Field(
+        description="Identifiers for a withdrawn Dependabot alert, captured before deletion so that\nconsumers can reconcile external records. This is not a full alert representation.\n"
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -47,6 +42,11 @@ class WebhookDiscussionClosed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -54,6 +54,6 @@ class WebhookDiscussionClosed(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionClosed)
+model_rebuild(WebhookDependabotAlertWithdrawn)
 
-__all__ = ("WebhookDiscussionClosed",)
+__all__ = ("WebhookDependabotAlertWithdrawn",)

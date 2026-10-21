@@ -210,6 +210,7 @@ class PrivateRegistriesClient:
                 "oidc_jfrog",
                 "oidc_cloudsmith",
                 "oidc_gcp",
+                "anonymous",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -251,6 +252,7 @@ class PrivateRegistriesClient:
 
         Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
         For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
+        For anonymous registries (`anonymous`), the `username`, `encrypted_value`, and `key_id` fields must be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -344,6 +346,7 @@ class PrivateRegistriesClient:
                 "oidc_jfrog",
                 "oidc_cloudsmith",
                 "oidc_gcp",
+                "anonymous",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -385,6 +388,7 @@ class PrivateRegistriesClient:
 
         Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
         For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
+        For anonymous registries (`anonymous`), the `username`, `encrypted_value`, and `key_id` fields must be omitted.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -709,6 +713,7 @@ class PrivateRegistriesClient:
                 "oidc_jfrog",
                 "oidc_cloudsmith",
                 "oidc_gcp",
+                "anonymous",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -745,6 +750,7 @@ class PrivateRegistriesClient:
 
         Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
         For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
+        For anonymous registries (`anonymous`), the `username`, `encrypted_value`, and `key_id` fields must be omitted, and `auth_type` cannot be changed to or from `anonymous`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 
@@ -839,6 +845,7 @@ class PrivateRegistriesClient:
                 "oidc_jfrog",
                 "oidc_cloudsmith",
                 "oidc_gcp",
+                "anonymous",
             ]
         ] = UNSET,
         tenant_id: Missing[str] = UNSET,
@@ -875,6 +882,7 @@ class PrivateRegistriesClient:
 
         Updates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
         For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted.
+        For anonymous registries (`anonymous`), the `username`, `encrypted_value`, and `key_id` fields must be omitted, and `auth_type` cannot be changed to or from `anonymous`.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
 

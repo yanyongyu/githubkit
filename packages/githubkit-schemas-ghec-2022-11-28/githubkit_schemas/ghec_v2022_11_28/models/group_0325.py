@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,62 +17,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class OrganizationUpdateIssueField(GitHubModel):
+    """OrganizationUpdateIssueField"""
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
-
-    Organization roles
-    """
-
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue field."
+    )
+    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
     )
-    base_role: Missing[
-        Union[Literal["read", "triage", "write", "maintain", "admin"], None]
-    ] = Field(
+    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
         default=UNSET,
-        description="The system role from which this role inherits permissions.",
-    )
-    source: Missing[
-        Union[Literal["Organization", "Enterprise", "Predefined"], None]
-    ] = Field(
-        default=UNSET,
-        description='Source answers the question, "where did this role come from?"',
-    )
-    permissions: list[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[SimpleUser, None] = Field()
-    created_at: _dt.datetime = Field(
-        description="The date and time the role was created."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the role was last updated."
+        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
     )
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationUpdateIssueFieldPropOptionsItems"""
 
-    total_count: Missing[int] = Field(
+    id: Missing[int] = Field(
         default=UNSET,
-        description="The total number of organization roles available to the organization.",
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
     )
-    roles: Missing[list[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
     )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
 
 
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
+model_rebuild(OrganizationUpdateIssueField)
+model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
 
 __all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
+    "OrganizationUpdateIssueField",
+    "OrganizationUpdateIssueFieldPropOptionsItems",
 )

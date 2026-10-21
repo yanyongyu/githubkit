@@ -17,6 +17,8 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0258 import RepositoryRuleCodeQualityPropParameters
+
 
 class RepositoryRuleCodeQuality(GitHubModel):
     """code_quality
@@ -30,61 +32,6 @@ class RepositoryRuleCodeQuality(GitHubModel):
     parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleCodeQualityPropParameters(GitHubModel):
-    """RepositoryRuleCodeQualityPropParameters"""
-
-    severity: Literal["errors", "warnings", "notes", "all"] = Field(
-        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
-    )
-
-
-class RepositoryRuleCodeCoverage(GitHubModel):
-    """code_coverage
-
-    Enforce minimum line coverage thresholds on pull requests. When configured,
-    uploaded coverage data must meet the specified criteria before changes can be
-    merged.
-    """
-
-    type: Literal["code_coverage"] = Field()
-    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
-    """RepositoryRuleCodeCoveragePropParameters"""
-
-    max_coverage_drop: Missing[float] = Field(
-        le=100.0,
-        default=UNSET,
-        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
-    )
-    minimum_coverage: Missing[float] = Field(
-        le=100.0,
-        default=UNSET,
-        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
-    )
-
-
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
-
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
-    """
-
-    type: Literal["license_compliance_scanning"] = Field()
-
-
 model_rebuild(RepositoryRuleCodeQuality)
-model_rebuild(RepositoryRuleCodeQualityPropParameters)
-model_rebuild(RepositoryRuleCodeCoverage)
-model_rebuild(RepositoryRuleCodeCoveragePropParameters)
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
 
-__all__ = (
-    "RepositoryRuleCodeCoverage",
-    "RepositoryRuleCodeCoveragePropParameters",
-    "RepositoryRuleCodeQuality",
-    "RepositoryRuleCodeQualityPropParameters",
-    "RepositoryRuleLicenseComplianceScanning",
-)
+__all__ = ("RepositoryRuleCodeQuality",)

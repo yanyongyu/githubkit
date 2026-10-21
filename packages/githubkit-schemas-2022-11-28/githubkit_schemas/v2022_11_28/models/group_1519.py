@@ -9,46 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsGetResponse200(GitHubModel):
-    """UserCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    total_count: int = Field()
-    secrets: list[CodespacesSecret] = Field()
-
-
-class CodespacesSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    commit_title: Missing[str] = Field(
+        default=UNSET,
+        description="Title for the automatic commit message. Only supported for direct merges.",
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    commit_message: Missing[str] = Field(
+        default=UNSET,
+        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
     )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
     )
-    selected_repositories_url: str = Field(
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+        default=UNSET,
+        description="The merge method to use for a direct merge. Only supported for direct merges.",
+    )
+    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
+        default=UNSET,
+        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
+    )
+    bypass_rules: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to bypass repository rules that the authenticated actor is permitted to bypass.",
     )
 
 
-model_rebuild(UserCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesSecret)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
 
-__all__ = (
-    "CodespacesSecret",
-    "UserCodespacesSecretsGetResponse200",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)

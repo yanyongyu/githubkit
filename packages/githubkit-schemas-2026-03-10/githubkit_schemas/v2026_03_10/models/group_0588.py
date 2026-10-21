@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0589 import WebhooksLabelArchivedAllof1PropArchivedBy
-
-
-class WebhooksLabelArchivedAllof1(GitHubModel):
-    """WebhooksLabelArchivedAllof1"""
-
-    archived_at: _dt.datetime = Field(
-        description="Timestamp indicating when the label was archived."
-    )
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedBy = Field(
-        description="The user who archived the label."
-    )
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(WebhooksLabelArchivedAllof1)
+class WebhooksChanges(GitHubModel):
+    """WebhooksChanges
 
-__all__ = ("WebhooksLabelArchivedAllof1",)
+    The changes to the comment.
+    """
+
+    body: Missing[WebhooksChangesPropBody] = Field(default=UNSET)
+
+
+class WebhooksChangesPropBody(GitHubModel):
+    """WebhooksChangesPropBody"""
+
+    from_: str = Field(alias="from", description="The previous version of the body.")
+
+
+model_rebuild(WebhooksChanges)
+model_rebuild(WebhooksChangesPropBody)
+
+__all__ = (
+    "WebhooksChanges",
+    "WebhooksChangesPropBody",
+)

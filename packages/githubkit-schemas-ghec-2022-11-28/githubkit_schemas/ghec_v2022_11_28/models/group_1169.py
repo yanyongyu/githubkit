@@ -9,13 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
 
-__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems",
+)

@@ -14,18 +14,22 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0193 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["license_compliance_scanning"] = Field()
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleLicenseComplianceScanning",)
+__all__ = ("RepositoryRuleMergeQueue",)

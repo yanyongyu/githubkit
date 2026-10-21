@@ -11,26 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesInstallationsPostBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    installation_id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the GitHub App installation to register for managing external custom properties. When authenticating as a GitHub App installation, this defaults to the authenticated installation and can be omitted. It is required for all other callers (users and fine-grained personal access tokens).",
-    )
-    display_name: str = Field(
-        min_length=1,
-        max_length=15,
-        pattern="^[a-zA-Z0-9]+$",
-        description="The display name for this app installation's external custom properties in the organization. This can't be changed after the app installation is registered.",
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesInstallationsPostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgPropertiesInstallationsPostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

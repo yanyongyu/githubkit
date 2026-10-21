@@ -9,38 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0195 import (
-    RulesetVersionPropActorType,
-    RulesetVersionPropActorTypeForResponse,
-)
-from .group_0198 import (
-    RulesetVersionWithStateAllof1PropStateType,
-    RulesetVersionWithStateAllof1PropStateTypeForResponse,
+from .group_0197 import (
+    RepositoryRuleCodeCoveragePropParametersType,
+    RepositoryRuleCodeCoveragePropParametersTypeForResponse,
 )
 
 
-class RulesetVersionWithStateType(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleCodeCoverageType(TypedDict):
+    """code_coverage
 
-    version_id: int
-    actor: RulesetVersionPropActorType
-    updated_at: _dt.datetime
-    state: RulesetVersionWithStateAllof1PropStateType
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
+    """
+
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
 
 
-class RulesetVersionWithStateTypeForResponse(TypedDict):
-    """RulesetVersionWithState"""
+class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
+    """code_coverage
 
-    version_id: int
-    actor: RulesetVersionPropActorTypeForResponse
-    updated_at: str
-    state: RulesetVersionWithStateAllof1PropStateTypeForResponse
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
+    """
+
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RulesetVersionWithStateType",
-    "RulesetVersionWithStateTypeForResponse",
+    "RepositoryRuleCodeCoverageType",
+    "RepositoryRuleCodeCoverageTypeForResponse",
 )

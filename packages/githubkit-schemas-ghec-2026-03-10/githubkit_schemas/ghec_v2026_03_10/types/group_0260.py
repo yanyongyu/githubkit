@@ -9,82 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0261 import GistSimplePropForkOfType, GistSimplePropForkOfTypeForResponse
+from .group_0236 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class GistSimpleType(TypedDict):
-    """Gist Simple
+class CommitCommentEventPropCommentType(TypedDict):
+    """CommitCommentEventPropComment"""
 
-    Gist Simple
-    """
-
-    fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
     html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesType]
-    public: NotRequired[bool]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[SimpleUserType, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    reactions: NotRequired[ReactionRollupType]
+
+
+class CommitCommentEventPropCommentTypeForResponse(TypedDict):
+    """CommitCommentEventPropComment"""
+
+    html_url: NotRequired[str]
+    url: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    body: NotRequired[str]
+    path: NotRequired[Union[str, None]]
+    position: NotRequired[Union[int, None]]
+    line: NotRequired[Union[int, None]]
+    commit_id: NotRequired[str]
+    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-
-
-class GistSimpleTypeForResponse(TypedDict):
-    """Gist Simple
-
-    Gist Simple
-    """
-
-    fork_of: NotRequired[Union[GistSimplePropForkOfTypeForResponse, None]]
-    url: NotRequired[str]
-    forks_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    id: NotRequired[str]
-    node_id: NotRequired[str]
-    git_pull_url: NotRequired[str]
-    git_push_url: NotRequired[str]
-    html_url: NotRequired[str]
-    files: NotRequired[GistSimplePropFilesTypeForResponse]
-    public: NotRequired[bool]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_enabled: NotRequired[bool]
-    user: NotRequired[Union[str, None]]
-    comments_url: NotRequired[str]
-    owner: NotRequired[SimpleUserTypeForResponse]
-    truncated: NotRequired[bool]
-
-
-GistSimplePropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
-
-
-GistSimplePropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropFiles
-"""
+    reactions: NotRequired[ReactionRollupTypeForResponse]
 
 
 __all__ = (
-    "GistSimplePropFilesType",
-    "GistSimplePropFilesTypeForResponse",
-    "GistSimpleType",
-    "GistSimpleTypeForResponse",
+    "CommitCommentEventPropCommentType",
+    "CommitCommentEventPropCommentTypeForResponse",
 )

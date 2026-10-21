@@ -331,6 +331,9 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
         """
 
@@ -370,6 +373,9 @@ class ActionsClient:
         enterprise may not set a higher cache retention limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
         """
@@ -430,6 +436,9 @@ class ActionsClient:
         enterprise may not set a higher cache retention limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
         """
@@ -500,6 +509,9 @@ class ActionsClient:
         enterprise may not set a higher cache retention limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
         """
@@ -551,6 +563,9 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
         """
 
@@ -590,6 +605,9 @@ class ActionsClient:
         enterprise may not set a higher cache storage limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
         """
@@ -650,6 +668,9 @@ class ActionsClient:
         enterprise may not set a higher cache storage limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
         """
@@ -720,6 +741,9 @@ class ActionsClient:
         enterprise may not set a higher cache storage limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
         """
@@ -770,6 +794,9 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise
         """
 
@@ -804,6 +831,9 @@ class ActionsClient:
         The data fetched using this API is refreshed approximately every 5 minutes, so values returned from this endpoint may take at least 5 minutes to get updated.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise
         """
@@ -2144,6 +2174,9 @@ class ActionsClient:
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-github-actions-oidc-custom-issuer-policy-for-an-enterprise
         """
 
@@ -2209,6 +2242,9 @@ class ActionsClient:
         Sets the GitHub Actions OpenID Connect (OIDC) custom issuer policy for an enterprise.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/oidc#set-the-github-actions-oidc-custom-issuer-policy-for-an-enterprise
         """
@@ -2464,6 +2500,9 @@ class ActionsClient:
 
         List all Actions policies for an enterprise.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-enterprise-actions-policies
         """
 
@@ -2511,6 +2550,9 @@ class ActionsClient:
         GET /enterprises/{enterprise}/actions/policies
 
         List all Actions policies for an enterprise.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#list-enterprise-actions-policies
         """
@@ -2597,6 +2639,9 @@ class ActionsClient:
 
         Create an Actions policy for an enterprise.
         Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-an-enterprise-actions-policy
         """
@@ -2692,6 +2737,9 @@ class ActionsClient:
 
         Create an Actions policy for an enterprise.
         Omitting `workflow_path` targets all workflows without storing an explicit condition.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#create-an-enterprise-actions-policy
         """
@@ -2746,6 +2794,9 @@ class ActionsClient:
 
         Get a specific Actions policy for an enterprise.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-an-enterprise-actions-policy
         """
 
@@ -2780,6 +2831,9 @@ class ActionsClient:
         GET /enterprises/{enterprise}/actions/policies/{policy_id}
 
         Get a specific Actions policy for an enterprise.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#get-an-enterprise-actions-policy
         """
@@ -2860,6 +2914,9 @@ class ActionsClient:
 
         Update an Actions policy for an enterprise.
         Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-an-enterprise-actions-policy
         """
@@ -2958,6 +3015,9 @@ class ActionsClient:
 
         Update an Actions policy for an enterprise.
         Omitting `workflow_path` preserves the policy's existing workflow targeting.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#update-an-enterprise-actions-policy
         """
@@ -3012,6 +3072,9 @@ class ActionsClient:
 
         Delete an Actions policy for an enterprise.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-an-enterprise-actions-policy
         """
 
@@ -3045,6 +3108,9 @@ class ActionsClient:
         DELETE /enterprises/{enterprise}/actions/policies/{policy_id}
 
         Delete an Actions policy for an enterprise.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/policies#delete-an-enterprise-actions-policy
         """
@@ -5314,7 +5380,9 @@ class ActionsClient:
 
         GET /orgs/{org}/actions/permissions/artifact-and-log-retention
 
-        Gets artifact and log retention settings for an organization.
+        Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an organization.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
@@ -5353,7 +5421,9 @@ class ActionsClient:
 
         GET /orgs/{org}/actions/permissions/artifact-and-log-retention
 
-        Gets artifact and log retention settings for an organization.
+        Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an organization.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
@@ -5412,7 +5482,9 @@ class ActionsClient:
 
         PUT /orgs/{org}/actions/permissions/artifact-and-log-retention
 
-        Sets artifact and log retention settings for an organization.
+        Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an organization.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
@@ -5482,7 +5554,9 @@ class ActionsClient:
 
         PUT /orgs/{org}/actions/permissions/artifact-and-log-retention
 
-        Sets artifact and log retention settings for an organization.
+        Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an organization.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `admin:org` scope or the "Actions policies" fine-grained permission to use this endpoint.
 
@@ -14913,7 +14987,9 @@ class ActionsClient:
 
         GET /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
 
-        Gets artifact and log retention settings for a repository.
+        Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
@@ -14952,7 +15028,9 @@ class ActionsClient:
 
         GET /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
 
-        Gets artifact and log retention settings for a repository.
+        Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
@@ -15013,7 +15091,9 @@ class ActionsClient:
 
         PUT /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
 
-        Sets artifact and log retention settings for a repository.
+        Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 
@@ -15084,7 +15164,9 @@ class ActionsClient:
 
         PUT /repos/{owner}/{repo}/actions/permissions/artifact-and-log-retention
 
-        Sets artifact and log retention settings for a repository.
+        Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for a repository.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
 

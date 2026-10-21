@@ -10,28 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanOrgSettingsType(TypedDict):
-    """Code scanning AI Scan organization settings
+class SelfHostedRunnersSettingsType(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    The AI Scan organization setting
-    """
-
-    pr_scan: Literal["enabled", "disabled"]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
-class CodeScanningAiScanOrgSettingsTypeForResponse(TypedDict):
-    """Code scanning AI Scan organization settings
+class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
+    """SelfHostedRunnersSettings"""
 
-    The AI Scan organization setting
-    """
-
-    pr_scan: Literal["enabled", "disabled"]
+    enabled_repositories: Literal["all", "selected", "none"]
+    selected_repositories_url: NotRequired[str]
 
 
 __all__ = (
-    "CodeScanningAiScanOrgSettingsType",
-    "CodeScanningAiScanOrgSettingsTypeForResponse",
+    "SelfHostedRunnersSettingsType",
+    "SelfHostedRunnersSettingsTypeForResponse",
 )

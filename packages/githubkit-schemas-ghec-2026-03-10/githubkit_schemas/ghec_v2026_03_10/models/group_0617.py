@@ -17,65 +17,38 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0612 import UserRoleItems
 
+class Group(GitHubModel):
+    """Group"""
 
-class User(GitHubModel):
-    """User"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
     external_id: str = Field(
         alias="externalId",
         description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: str = Field(alias="userName", description="The username for the user.")
-    name: Missing[UserName] = Field(default=UNSET)
     display_name: str = Field(
-        alias="displayName", description="A human-readable name for the user."
+        alias="displayName", description="A human-readable name for a security group."
     )
-    emails: list[UserEmailsItems] = Field(description="The emails for the user.")
-    roles: Missing[list[UserRoleItems]] = Field(
-        default=UNSET, description="The roles assigned to the user."
-    )
-
-
-class UserName(GitHubModel):
-    """UserName"""
-
-    formatted: Missing[str] = Field(
-        default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
-    )
-    family_name: str = Field(
-        alias="familyName", description="The family name of the user."
-    )
-    given_name: str = Field(
-        alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    members: Missing[list[GroupPropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-class UserEmailsItems(GitHubModel):
-    """UserEmailsItems"""
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
 
-    value: str = Field(description="The email address.")
-    type: str = Field(description="The type of email address.")
-    primary: bool = Field(
-        description="Whether this email address is the primary address."
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
     )
 
 
-model_rebuild(User)
-model_rebuild(UserName)
-model_rebuild(UserEmailsItems)
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
 __all__ = (
-    "User",
-    "UserEmailsItems",
-    "UserName",
+    "Group",
+    "GroupPropMembersItems",
 )

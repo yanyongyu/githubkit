@@ -9,34 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0267 import GistSimplePropForkOf
 
 
-class MarketplaceListingPlan(GitHubModel):
-    """Marketplace Listing Plan
+class GistSimple(GitHubModel):
+    """Gist Simple
 
-    Marketplace Listing Plan
+    Gist Simple
     """
 
-    url: str = Field()
-    accounts_url: str = Field()
-    id: int = Field()
-    number: int = Field()
-    name: str = Field()
-    description: str = Field()
-    monthly_price_in_cents: int = Field()
-    yearly_price_in_cents: int = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    has_free_trial: bool = Field()
-    unit_name: Union[str, None] = Field()
-    state: str = Field()
-    bullets: list[str] = Field()
+    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
+        default=UNSET, title="Gist", description="Gist"
+    )
+    url: Missing[str] = Field(default=UNSET)
+    forks_url: Missing[str] = Field(default=UNSET)
+    commits_url: Missing[str] = Field(default=UNSET)
+    id: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    git_pull_url: Missing[str] = Field(default=UNSET)
+    git_push_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
+    public: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: Missing[int] = Field(default=UNSET)
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Missing[Union[str, None]] = Field(default=UNSET)
+    comments_url: Missing[str] = Field(default=UNSET)
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(MarketplaceListingPlan)
+class GistSimplePropFiles(ExtraGitHubModel):
+    """GistSimplePropFiles"""
 
-__all__ = ("MarketplaceListingPlan",)
+
+model_rebuild(GistSimple)
+model_rebuild(GistSimplePropFiles)
+
+__all__ = (
+    "GistSimple",
+    "GistSimplePropFiles",
+)

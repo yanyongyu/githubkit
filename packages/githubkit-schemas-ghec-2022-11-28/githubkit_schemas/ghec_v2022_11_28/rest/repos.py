@@ -114,6 +114,8 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof20,
         RepositoryRuleDetailedOneof21,
         RepositoryRuleDetailedOneof22,
+        RepositoryRuleDetailedOneof23,
+        RepositoryRuleDetailedOneof24,
         RepositoryRuleset,
         ReposOwnerRepoAttestationsPostResponse201,
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
@@ -250,6 +252,8 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof20TypeForResponse,
         RepositoryRuleDetailedOneof21TypeForResponse,
         RepositoryRuleDetailedOneof22TypeForResponse,
+        RepositoryRuleDetailedOneof23TypeForResponse,
+        RepositoryRuleDetailedOneof24TypeForResponse,
         RepositoryRuleFileExtensionRestrictionType,
         RepositoryRuleFilePathRestrictionType,
         RepositoryRuleLicenseComplianceScanningType,
@@ -459,6 +463,9 @@ class ReposClient:
 
         Create a repository ruleset for an enterprise.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
         """
 
@@ -570,6 +577,9 @@ class ReposClient:
 
         Create a repository ruleset for an enterprise.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
         """
 
@@ -622,6 +632,9 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
         """
 
@@ -659,6 +672,9 @@ class ReposClient:
 
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
         """
@@ -759,6 +775,9 @@ class ReposClient:
         PUT /enterprises/{enterprise}/rulesets/{ruleset_id}
 
         Update a ruleset for an enterprise.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
         """
@@ -875,6 +894,9 @@ class ReposClient:
         PUT /enterprises/{enterprise}/rulesets/{ruleset_id}
 
         Update a ruleset for an enterprise.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
         """
@@ -927,6 +949,9 @@ class ReposClient:
 
         Delete a ruleset for an enterprise.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
         """
 
@@ -960,6 +985,9 @@ class ReposClient:
         DELETE /enterprises/{enterprise}/rulesets/{ruleset_id}
 
         Delete a ruleset for an enterprise.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
         """
@@ -1710,6 +1738,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
+        include_metadata: Missing[bool] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
@@ -1727,11 +1756,16 @@ class ReposClient:
 
         url = f"/orgs/{org}/rulesets/rule-suites/{rule_suite_id}"
 
+        params = {
+            "include_metadata": include_metadata,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=RuleSuite,
@@ -1746,6 +1780,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
+        include_metadata: Missing[bool] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
@@ -1763,11 +1798,16 @@ class ReposClient:
 
         url = f"/orgs/{org}/rulesets/rule-suites/{rule_suite_id}"
 
+        params = {
+            "include_metadata": include_metadata,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=RuleSuite,
@@ -15613,7 +15653,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/issue-types
 
-        Lists issue types available for a repository (inherited from its organization owner, with any per-repository overrides applied).
+        Lists enabled issue types inherited from the repository owner.
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
         Fine-grained access tokens require the "Metadata" repository permission (read).
 
@@ -15653,7 +15693,7 @@ class ReposClient:
 
         GET /repos/{owner}/{repo}/issue-types
 
-        Lists issue types available for a repository (inherited from its organization owner, with any per-repository overrides applied).
+        Lists enabled issue types inherited from the repository owner.
         OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
         Fine-grained access tokens require the "Metadata" repository permission (read).
 
@@ -19993,6 +20033,8 @@ class ReposClient:
                 RepositoryRuleDetailedOneof20,
                 RepositoryRuleDetailedOneof21,
                 RepositoryRuleDetailedOneof22,
+                RepositoryRuleDetailedOneof23,
+                RepositoryRuleDetailedOneof24,
             ]
         ],
         list[
@@ -20020,6 +20062,8 @@ class ReposClient:
                 RepositoryRuleDetailedOneof20TypeForResponse,
                 RepositoryRuleDetailedOneof21TypeForResponse,
                 RepositoryRuleDetailedOneof22TypeForResponse,
+                RepositoryRuleDetailedOneof23TypeForResponse,
+                RepositoryRuleDetailedOneof24TypeForResponse,
             ]
         ],
     ]:
@@ -20061,6 +20105,8 @@ class ReposClient:
             RepositoryRuleDetailedOneof20,
             RepositoryRuleDetailedOneof21,
             RepositoryRuleDetailedOneof22,
+            RepositoryRuleDetailedOneof23,
+            RepositoryRuleDetailedOneof24,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -20103,6 +20149,8 @@ class ReposClient:
                     RepositoryRuleDetailedOneof20,
                     RepositoryRuleDetailedOneof21,
                     RepositoryRuleDetailedOneof22,
+                    RepositoryRuleDetailedOneof23,
+                    RepositoryRuleDetailedOneof24,
                 ]
             ],
         )
@@ -20143,6 +20191,8 @@ class ReposClient:
                 RepositoryRuleDetailedOneof20,
                 RepositoryRuleDetailedOneof21,
                 RepositoryRuleDetailedOneof22,
+                RepositoryRuleDetailedOneof23,
+                RepositoryRuleDetailedOneof24,
             ]
         ],
         list[
@@ -20170,6 +20220,8 @@ class ReposClient:
                 RepositoryRuleDetailedOneof20TypeForResponse,
                 RepositoryRuleDetailedOneof21TypeForResponse,
                 RepositoryRuleDetailedOneof22TypeForResponse,
+                RepositoryRuleDetailedOneof23TypeForResponse,
+                RepositoryRuleDetailedOneof24TypeForResponse,
             ]
         ],
     ]:
@@ -20211,6 +20263,8 @@ class ReposClient:
             RepositoryRuleDetailedOneof20,
             RepositoryRuleDetailedOneof21,
             RepositoryRuleDetailedOneof22,
+            RepositoryRuleDetailedOneof23,
+            RepositoryRuleDetailedOneof24,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -20253,6 +20307,8 @@ class ReposClient:
                     RepositoryRuleDetailedOneof20,
                     RepositoryRuleDetailedOneof21,
                     RepositoryRuleDetailedOneof22,
+                    RepositoryRuleDetailedOneof23,
+                    RepositoryRuleDetailedOneof24,
                 ]
             ],
         )
@@ -20687,6 +20743,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
+        include_metadata: Missing[bool] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
@@ -20704,11 +20761,16 @@ class ReposClient:
 
         url = f"/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}"
 
+        params = {
+            "include_metadata": include_metadata,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=RuleSuite,
@@ -20724,6 +20786,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
+        include_metadata: Missing[bool] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[RuleSuite, RuleSuiteTypeForResponse]:
@@ -20741,11 +20804,16 @@ class ReposClient:
 
         url = f"/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}"
 
+        params = {
+            "include_metadata": include_metadata,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=RuleSuite,

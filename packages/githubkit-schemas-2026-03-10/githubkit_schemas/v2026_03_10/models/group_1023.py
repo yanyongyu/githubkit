@@ -18,20 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0563 import EnterpriseWebhooks
-from .group_0564 import SimpleInstallation
-from .group_0565 import OrganizationSimpleWebhooks
-from .group_0566 import RepositoryWebhooks
+from .group_0020 import Repository
+from .group_0053 import Issue
+from .group_0568 import SimpleInstallation
+from .group_0569 import OrganizationSimpleWebhooks
+from .group_0570 import RepositoryWebhooks
 
 
-class WebhookWatchStarted(GitHubModel):
-    """watch started event"""
+class WebhookSubIssuesSubIssueRemoved(GitHubModel):
+    """sub-issue removed event"""
 
-    action: Literal["started"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["sub_issue_removed"] = Field()
+    sub_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the sub-issue."
+    )
+    sub_issue: Missing[Issue] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    sub_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    parent_issue_id: float = Field(description="The ID of the parent issue.")
+    parent_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -50,6 +62,6 @@ class WebhookWatchStarted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookWatchStarted)
+model_rebuild(WebhookSubIssuesSubIssueRemoved)
 
-__all__ = ("WebhookWatchStarted",)
+__all__ = ("WebhookSubIssuesSubIssueRemoved",)

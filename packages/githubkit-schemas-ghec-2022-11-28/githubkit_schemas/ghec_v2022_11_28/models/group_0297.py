@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -18,54 +18,120 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0045 import OrganizationSimple
 
-class CredentialAuthorization(GitHubModel):
-    """Credential Authorization
 
-    Credential Authorization
+class CopilotSpace(GitHubModel):
+    """Space
+
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(
-        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    id: int = Field(description="The unique identifier of the space.")
+    number: int = Field(
+        description="The number that identifies the space within its owner."
     )
-    credential_type: Literal[
-        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
-    ] = Field(description="Human-readable description of the credential type.")
-    token_last_eight: Missing[str] = Field(
-        default=UNSET,
-        description="Last eight characters of the credential. Only included in responses with a credential_type of personal access token, OAuth app token, or GitHub app token.",
+    name: str = Field(description="The display name of the space.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the space."
     )
-    credential_authorized_at: _dt.datetime = Field(
-        description="Date when the credential was authorized for use."
+    general_instructions: Missing[
+        Union[Annotated[str, Field(max_length=4000)], None]
+    ] = Field(default=UNSET, description="General instructions for the Copilot Space.")
+    base_role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The base role that determines default permissions.\n- `no_access`: No default access\n- `reader`: Default read permissions\n- `writer`: Default write permissions (organization spaces only)\n- `admin`: Default admin permissions (organization spaces only)"
     )
-    scopes: Missing[list[str]] = Field(
-        default=UNSET, description="List of OAuth scopes the token has been granted."
+    owner: Union[SimpleUser, OrganizationSimple] = Field(
+        description="The user or organization that owns this space."
     )
-    fingerprint: Missing[str] = Field(
-        default=UNSET,
-        description="Unique string to distinguish the credential. Only included in responses with a credential_type of SSH key.",
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field(
+        description="The date and time the space was created."
     )
-    credential_accessed_at: Union[_dt.datetime, None] = Field(
-        description="Date when the credential was last accessed. May be null if it was never accessed"
+    updated_at: _dt.datetime = Field(
+        description="The date and time the space was last updated."
     )
-    authorized_credential_id: Union[int, None] = Field(
-        description="The ID of the underlying token or key that was authorized by the user. This will remain unchanged across authorizations of the token or key."
-    )
-    authorized_credential_title: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The title given to the ssh key. This will only be present when the credential is an ssh key.",
-    )
-    authorized_credential_note: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The note given to the token. This will only be present when the credential is a token.",
-    )
-    authorized_credential_expires_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The expiry for the token. This will only be present when the credential is a token.",
+    html_url: str = Field(description="The HTML URL of the space.")
+    api_url: str = Field(description="The API URL of the space.")
+    resources_attributes: Missing[list[CopilotSpacePropResourcesAttributesItems]] = (
+        Field(default=UNSET, description="Resources attached to the space.")
     )
 
 
-model_rebuild(CredentialAuthorization)
+class CopilotSpacePropResourcesAttributesItems(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItems"""
 
-__all__ = ("CredentialAuthorization",)
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the resource."
+    )
+    resource_type: Missing[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ] = Field(default=UNSET, description="The type of resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The unique identifier of the chat attachment for uploaded files or media content.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was last updated."
+    )
+    metadata: Missing[CopilotSpacePropResourcesAttributesItemsPropMetadata] = Field(
+        default=UNSET, description="Metadata specific to the resource type."
+    )
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadata(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: Missing[int] = Field(
+        default=UNSET, description="Repository ID for repository or file resources."
+    )
+    file_path: Missing[str] = Field(
+        default=UNSET, description="File path for file resources."
+    )
+    text: Missing[str] = Field(
+        default=UNSET, description="Text content for free text resources."
+    )
+    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
+    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    copilot_chat_attachment_id: Missing[int] = Field(
+        default=UNSET, description="Chat attachment ID for uploaded files or media."
+    )
+    media_type: Missing[str] = Field(
+        default=UNSET, description="Media type for media content resources."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="URL for media content resources."
+    )
+    height: Missing[int] = Field(
+        default=UNSET, description="Height for media content resources."
+    )
+    width: Missing[int] = Field(
+        default=UNSET, description="Width for media content resources."
+    )
+
+
+model_rebuild(CopilotSpace)
+model_rebuild(CopilotSpacePropResourcesAttributesItems)
+model_rebuild(CopilotSpacePropResourcesAttributesItemsPropMetadata)
+
+__all__ = (
+    "CopilotSpace",
+    "CopilotSpacePropResourcesAttributesItems",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadata",
+)

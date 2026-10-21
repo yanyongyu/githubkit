@@ -67,6 +67,8 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
+        ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type,
+        ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type,
         ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType,
         ReposOwnerRepoPullsPullNumberReviewsPostBodyType,
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
@@ -2200,6 +2202,7 @@ class PullsClient:
         merge_action: Missing[
             Literal["default", "direct_merge", "merge_queue"]
         ] = UNSET,
+        bypass_rules: Missing[bool] = UNSET,
     ) -> Response[
         PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
     ]: ...
@@ -2309,6 +2312,7 @@ class PullsClient:
         merge_action: Missing[
             Literal["default", "direct_merge", "merge_queue"]
         ] = UNSET,
+        bypass_rules: Missing[bool] = UNSET,
     ) -> Response[
         PullRequestMergeAsyncResult, PullRequestMergeAsyncResultTypeForResponse
     ]: ...
@@ -2932,6 +2936,228 @@ class PullsClient:
             response_model=PullRequestSimple,
             error_models={
                 "422": ValidationError,
+            },
+        )
+
+    @overload
+    def rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type,
+            ]
+        ] = UNSET,
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
+
+    @overload
+    def rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        reviewers: list[str],
+        team_reviewers: Missing[list[str]] = UNSET,
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
+
+    @overload
+    def rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        reviewers: Missing[list[str]] = UNSET,
+        team_reviewers: list[str],
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
+
+    def rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]:
+        """pulls/rerequest-reviewers
+
+        POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers/rerequest
+
+        Rerequests reviews for a pull request from a given set of users and/or teams.
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/pulls/review-requests#rerequest-reviewers-for-a-pull-request
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            PullRequestSimple,
+            ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0,
+            ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1,
+        )
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers/rerequest"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0,
+                    ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PullRequestSimple,
+            error_models={
+                "403": BasicError,
+            },
+        )
+
+    @overload
+    async def async_rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type,
+            ]
+        ] = UNSET,
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
+
+    @overload
+    async def async_rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        reviewers: list[str],
+        team_reviewers: Missing[list[str]] = UNSET,
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
+
+    @overload
+    async def async_rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        reviewers: Missing[list[str]] = UNSET,
+        team_reviewers: list[str],
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]: ...
+
+    async def async_rerequest_reviewers(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type,
+                ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[PullRequestSimple, PullRequestSimpleTypeForResponse]:
+        """pulls/rerequest-reviewers
+
+        POST /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers/rerequest
+
+        Rerequests reviews for a pull request from a given set of users and/or teams.
+        This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+
+        See also: https://docs.github.com/rest/pulls/review-requests#rerequest-reviewers-for-a-pull-request
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            PullRequestSimple,
+            ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0,
+            ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1,
+        )
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers/rerequest"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0,
+                    ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PullRequestSimple,
+            error_models={
+                "403": BasicError,
             },
         )
 

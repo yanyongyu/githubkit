@@ -124,6 +124,9 @@ class BillingClient:
 
         The total number of repositories with committer information is tracked by the `total_count` field.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
         """
 
@@ -172,6 +175,9 @@ class BillingClient:
         Each distinct user login across all repositories is counted as a single Advanced Security seat, so the `total_advanced_security_committers` is not the sum of active_users for each repository.
 
         The total number of repositories with committer information is tracked by the `total_count` field.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-github-advanced-security-active-committers-for-an-enterprise
         """
@@ -2304,6 +2310,9 @@ class BillingClient:
 
         Lists all usage report exports for an enterprise. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
 
@@ -2344,6 +2353,9 @@ class BillingClient:
         GET /enterprises/{enterprise}/settings/billing/reports
 
         Lists all usage report exports for an enterprise. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also list usage report exports.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#list-usage-report-exports
         """
@@ -2412,6 +2424,9 @@ class BillingClient:
 
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
         and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also initiate a usage report export.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#create-a-usage-report-export
         """
@@ -2492,6 +2507,9 @@ class BillingClient:
 
         Initiates the generation of a usage report export for an enterprise. The report will be processed asynchronously
         and can be downloaded once completed. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also initiate a usage report export.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#create-a-usage-report-export
         """
@@ -2547,6 +2565,9 @@ class BillingClient:
 
         Gets the status and details of a usage report export by ID. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """
 
@@ -2588,6 +2609,9 @@ class BillingClient:
         GET /enterprises/{enterprise}/settings/billing/reports/{report_id}
 
         Gets the status and details of a usage report export by ID. Completed and failed report exports are available for 31 days after completion or failure. This retention period applies only to generated report records. New reports can include eligible usage data from up to 24 months ago, subject to the enterprise's creation or migration date and the report type's date-range limits. The authenticated user must be an enterprise admin or billing manager, or a custom role holder with fine-grained read access to enterprise billing. An installation access token for a GitHub App installed on the enterprise with write access to enterprise administration, or with read access to enterprise billing, can also get a usage report export.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/usage-reports#get-a-usage-report-export
         """

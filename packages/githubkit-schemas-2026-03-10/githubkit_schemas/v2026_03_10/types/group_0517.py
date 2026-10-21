@@ -9,67 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
-    """Repository Advisory Description Validation Error
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    The description does not answer the repository's report template.
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
-    ]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
 
-class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
-    """Repository Advisory Description Validation Error
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    The description does not answer the repository's report template.
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
-    ]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
-    section: NotRequired[str]
-    option: NotRequired[str]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
-    section: NotRequired[str]
-    option: NotRequired[str]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
-    "RepositoryAdvisoryDescriptionValidationErrorType",
-    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

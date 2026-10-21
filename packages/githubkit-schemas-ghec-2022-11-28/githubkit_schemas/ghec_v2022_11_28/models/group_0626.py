@@ -9,55 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0621 import SearchResultTextMatchesItems
+
+class ScimEnterpriseUserResponseAllof1PropGroupsItems(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
 
 
-class LabelSearchResultItem(GitHubModel):
-    """Label Search Result Item
+model_rebuild(ScimEnterpriseUserResponseAllof1PropGroupsItems)
 
-    Label Search Result Item
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    color: str = Field()
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
-    )
-    archived_by: None = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
-    score: float = Field()
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
-
-
-class SearchLabelsGetResponse200(GitHubModel):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[LabelSearchResultItem] = Field()
-
-
-model_rebuild(LabelSearchResultItem)
-model_rebuild(SearchLabelsGetResponse200)
-
-__all__ = (
-    "LabelSearchResultItem",
-    "SearchLabelsGetResponse200",
-)
+__all__ = ("ScimEnterpriseUserResponseAllof1PropGroupsItems",)

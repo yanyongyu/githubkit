@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommitsResponse(GitHubModel):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAiScanEnablement(GitHubModel):
+    """CodeScanningAiScanEnablement
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    AI Scan enablement for a repository.
+    """
+
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan is enabled for the repository."
     )
-    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
 
 
-model_rebuild(CodeScanningAutofixCommitsResponse)
+model_rebuild(CodeScanningAiScanEnablement)
 
-__all__ = ("CodeScanningAutofixCommitsResponse",)
+__all__ = ("CodeScanningAiScanEnablement",)

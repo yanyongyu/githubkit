@@ -9,20 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0131 import NetworkConfiguration
+from .group_0088 import (
+    AmazonS3AccessKeysConfig,
+    AzureBlobConfig,
+    AzureHubConfig,
+    DatadogConfig,
+    HecConfig,
+)
+from .group_0089 import AmazonS3OidcConfig, SplunkConfig
+from .group_0090 import GoogleCloudConfig
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
+    enabled: bool = Field(description="This setting pauses or resumes a stream.")
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+        "Microsoft Agent 365",
+    ] = Field(
+        description="The audit log streaming provider. The name is case sensitive."
+    )
+    vendor_specific: Union[
+        AzureBlobConfig,
+        AzureHubConfig,
+        AmazonS3OidcConfig,
+        AmazonS3AccessKeysConfig,
+        SplunkConfig,
+        HecConfig,
+        GoogleCloudConfig,
+        DatadogConfig,
+        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8,
+    ] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8(
+    GitHubModel
+):
+    """MicrosoftAgent365Config
 
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+    Empty configuration used when pausing or resuming a Microsoft Agent 365 stream.
+    """
+
+
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
+model_rebuild(
+    EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8
+)
+
+__all__ = (
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8",
+)

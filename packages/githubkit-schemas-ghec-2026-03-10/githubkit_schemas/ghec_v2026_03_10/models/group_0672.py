@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,52 +18,99 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhooksLabelUnarchivedAllof1(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1"""
-
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived. This is `null` after the label is unarchived."
-    )
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedBy, None] = Field(
-        description="The user who archived the label. This is `null` after the label is unarchived."
-    )
+from .group_0010 import Integration
+from .group_0238 import PinnedIssueComment
+from .group_0239 import IssueCommentMinimized
 
 
-class WebhooksLabelUnarchivedAllof1PropArchivedBy(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+class WebhooksIssueComment(GitHubModel):
+    """issue comment
 
-    The user who archived the label. This is `null` after the label is unarchived.
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest/rest/issues/comments#get-an-issue-comment) itself.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="Contents of the issue comment")
+    created_at: _dt.datetime = Field()
     html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the issue comment")
+    issue_url: str = Field()
+    node_id: str = Field()
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    reactions: WebhooksIssueCommentPropReactions = Field(title="Reactions")
+    updated_at: _dt.datetime = Field()
+    url: str = Field(description="URL for the issue comment")
+    user: Union[WebhooksIssueCommentPropUser, None] = Field(title="User")
+    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
+    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
+
+
+class WebhooksIssueCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhooksIssueCommentPropUser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
+        default=UNSET
+    )
+    url: Missing[str] = Field(default=UNSET)
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksLabelUnarchivedAllof1)
-model_rebuild(WebhooksLabelUnarchivedAllof1PropArchivedBy)
+model_rebuild(WebhooksIssueComment)
+model_rebuild(WebhooksIssueCommentPropReactions)
+model_rebuild(WebhooksIssueCommentPropUser)
 
 __all__ = (
-    "WebhooksLabelUnarchivedAllof1",
-    "WebhooksLabelUnarchivedAllof1PropArchivedBy",
+    "WebhooksIssueComment",
+    "WebhooksIssueCommentPropReactions",
+    "WebhooksIssueCommentPropUser",
 )

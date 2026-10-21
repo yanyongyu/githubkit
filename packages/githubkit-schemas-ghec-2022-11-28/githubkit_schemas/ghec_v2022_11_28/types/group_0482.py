@@ -12,49 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    name: str
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
+    """Deployment branch policy name pattern"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
-
-
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
+    name: str
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "DeploymentBranchPolicyNamePatternType",
+    "DeploymentBranchPolicyNamePatternTypeForResponse",
 )

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0643 import EnterpriseWebhooks
-from .group_0644 import SimpleInstallation
-from .group_0645 import OrganizationSimpleWebhooks
-from .group_0646 import RepositoryWebhooks
-from .group_0867 import WebhookIssuesDeletedPropIssue
+from .group_0651 import EnterpriseWebhooks
+from .group_0652 import SimpleInstallation
+from .group_0653 import OrganizationSimpleWebhooks
+from .group_0654 import RepositoryWebhooks
+from .group_0867 import WebhookIssuesClosedPropIssue
 
 
-class WebhookIssuesDeleted(GitHubModel):
-    """issues deleted event"""
+class WebhookIssuesClosed(GitHubModel):
+    """issues closed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["closed"] = Field(description="The action that was performed.")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,9 +39,8 @@ class WebhookIssuesDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesDeletedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
+    issue: WebhookIssuesClosedPropIssue = Field(
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -55,6 +54,6 @@ class WebhookIssuesDeleted(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesDeleted)
+model_rebuild(WebhookIssuesClosed)
 
-__all__ = ("WebhookIssuesDeleted",)
+__all__ = ("WebhookIssuesClosed",)

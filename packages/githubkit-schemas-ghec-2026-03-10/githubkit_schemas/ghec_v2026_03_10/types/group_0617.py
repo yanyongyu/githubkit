@@ -12,74 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0612 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
+class GroupType(TypedDict):
+    """Group"""
 
-class UserType(TypedDict):
-    """User"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
     external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameType]
     display_name: str
-    emails: list[UserEmailsItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    members: NotRequired[list[GroupPropMembersItemsType]]
 
 
-class UserTypeForResponse(TypedDict):
-    """User"""
+class GroupTypeForResponse(TypedDict):
+    """Group"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
     external_id: str
-    active: bool
-    user_name: str
-    name: NotRequired[UserNameTypeForResponse]
     display_name: str
-    emails: list[UserEmailsItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    members: NotRequired[list[GroupPropMembersItemsTypeForResponse]]
 
 
-class UserNameType(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserNameTypeForResponse(TypedDict):
-    """UserName"""
-
-    formatted: NotRequired[str]
-    family_name: str
-    given_name: str
-    middle_name: NotRequired[str]
-
-
-class UserEmailsItemsType(TypedDict):
-    """UserEmailsItems"""
+class GroupPropMembersItemsType(TypedDict):
+    """GroupPropMembersItems"""
 
     value: str
-    type: str
-    primary: bool
+    display_name: str
 
 
-class UserEmailsItemsTypeForResponse(TypedDict):
-    """UserEmailsItems"""
+class GroupPropMembersItemsTypeForResponse(TypedDict):
+    """GroupPropMembersItems"""
 
     value: str
-    type: str
-    primary: bool
+    display_name: str
 
 
 __all__ = (
-    "UserEmailsItemsType",
-    "UserEmailsItemsTypeForResponse",
-    "UserNameType",
-    "UserNameTypeForResponse",
-    "UserType",
-    "UserTypeForResponse",
+    "GroupPropMembersItemsType",
+    "GroupPropMembersItemsTypeForResponse",
+    "GroupType",
+    "GroupTypeForResponse",
 )

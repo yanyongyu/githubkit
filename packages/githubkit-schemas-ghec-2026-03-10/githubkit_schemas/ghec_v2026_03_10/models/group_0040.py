@@ -17,7 +17,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ActionsArtifactAndLogRetentionResponse(GitHubModel):
     """ActionsArtifactAndLogRetentionResponse"""
 
-    days: int = Field(description="The number of days artifacts and logs are retained")
+    days: int = Field(
+        description="The number of days checks, workflow runs, commit statuses, artifacts, and logs are retained"
+    )
     maximum_allowed_days: int = Field(
         description="The maximum number of days that can be configured"
     )

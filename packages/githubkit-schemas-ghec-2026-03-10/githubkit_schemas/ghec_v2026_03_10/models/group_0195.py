@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RulesetVersionPropActor(GitHubModel):
-    """RulesetVersionPropActor
+class RepositoryRuleCodeQualityPropParameters(GitHubModel):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    The actor who updated the ruleset
-    """
-
-    id: Missing[int] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    severity: Literal["errors", "warnings", "notes", "all"] = Field(
+        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
+    )
 
 
-model_rebuild(RulesetVersionPropActor)
+model_rebuild(RepositoryRuleCodeQualityPropParameters)
 
-__all__ = ("RulesetVersionPropActor",)
+__all__ = ("RepositoryRuleCodeQualityPropParameters",)

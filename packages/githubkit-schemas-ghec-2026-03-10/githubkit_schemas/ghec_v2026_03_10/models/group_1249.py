@@ -13,13 +13,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
-
-    message: str = Field()
+from .group_0077 import Runner
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202)
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202",)
+    total_count: float = Field()
+    runners: list[Runner] = Field()
+
+
+model_rebuild(
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200
+)
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
+)

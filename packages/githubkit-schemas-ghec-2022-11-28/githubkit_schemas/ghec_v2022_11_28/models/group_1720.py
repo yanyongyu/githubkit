@@ -11,26 +11,30 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
+    """Package license compliance results
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
-    )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
+        Field()
     )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
+
+__all__ = (
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
+)

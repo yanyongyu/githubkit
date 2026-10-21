@@ -14,15 +14,18 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0426 import IssueEventIntent
 
 
-class TimelineDisconnectedEvent(GitHubModel):
-    """Timeline Disconnected Event
+class StateChangeIssueEvent(GitHubModel):
+    """State Change Issue Event
 
-    Timeline Disconnected Event
+    State Change Issue Event
     """
 
     id: int = Field()
@@ -34,8 +37,10 @@ class TimelineDisconnectedEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(TimelineDisconnectedEvent)
+model_rebuild(StateChangeIssueEvent)
 
-__all__ = ("TimelineDisconnectedEvent",)
+__all__ = ("StateChangeIssueEvent",)

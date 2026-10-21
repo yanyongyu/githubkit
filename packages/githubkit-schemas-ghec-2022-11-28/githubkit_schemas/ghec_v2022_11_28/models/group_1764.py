@@ -18,75 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesPostBody"""
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str = Field(description="The name of the Copilot Space.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    base_role: Missing[Literal["reader", "no_access"]] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for the space.\n- `no_access`: No default access (default)\n- `reader`: Makes the space publicly readable\nNote: User spaces do not support writer or admin base roles.",
+        description="`true` makes the release a draft, and `false` publishes the release.",
     )
-    resources_attributes: Missing[
-        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems(GitHubModel):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    prerelease: Missing[bool] = Field(
+        default=UNSET,
+        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
+        default=UNSET,
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
+    discussion_category_name: Missing[str] = Field(
+        default=UNSET,
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
     )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
 
 
-model_rebuild(UsersUsernameCopilotSpacesPostBody)
-model_rebuild(UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems)
-model_rebuild(
-    UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
-)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
 
-__all__ = (
-    "UsersUsernameCopilotSpacesPostBody",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems",
-    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)

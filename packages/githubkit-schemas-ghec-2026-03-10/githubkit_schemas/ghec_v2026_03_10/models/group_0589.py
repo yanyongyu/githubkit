@@ -9,61 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-
-class PullRequestStackMinimal(GitHubModel):
-    """Pull Request Stack Minimal"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: PullRequestStackMinimalPropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
-    )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
-
-
-class PullRequestStackMinimalPropBase(GitHubModel):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int = Field()
-    state: Literal["open", "closed"] = Field()
-    draft: bool = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-
-
-model_rebuild(PullRequestStackMinimal)
-model_rebuild(PullRequestStackMinimalPropBase)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
-
-__all__ = (
-    "PullRequestStackMinimal",
-    "PullRequestStackMinimalPropBase",
-    "PullRequestStackMinimalPropPullRequestsItems",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
+from .group_0205 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
 )
+from .group_0206 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+
+
+class SecretScanningLocation(GitHubModel):
+    """SecretScanningLocation"""
+
+    type: Missing[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
+    )
+    details: Missing[
+        Union[
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+        ]
+    ] = Field(default=UNSET)
+
+
+model_rebuild(SecretScanningLocation)
+
+__all__ = ("SecretScanningLocation",)

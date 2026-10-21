@@ -10,162 +10,215 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Any, Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0621 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
 
+class ScimUserListType(TypedDict):
+    """SCIM User List
 
-class TopicSearchResultItemType(TypedDict):
-    """Topic Search Result Item
-
-    Topic Search Result Item
+    SCIM User List
     """
 
-    name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    featured: bool
-    curated: bool
-    score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-    related: NotRequired[Union[list[TopicSearchResultItemPropRelatedItemsType], None]]
-    aliases: NotRequired[Union[list[TopicSearchResultItemPropAliasesItemsType], None]]
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserType]
 
 
-class TopicSearchResultItemTypeForResponse(TypedDict):
-    """Topic Search Result Item
+class ScimUserListTypeForResponse(TypedDict):
+    """SCIM User List
 
-    Topic Search Result Item
+    SCIM User List
     """
 
-    name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
-    created_at: str
-    updated_at: str
-    featured: bool
-    curated: bool
-    score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-    related: NotRequired[
-        Union[list[TopicSearchResultItemPropRelatedItemsTypeForResponse], None]
+    schemas: list[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: list[ScimUserTypeForResponse]
+
+
+class ScimUserType(TypedDict):
+    """SCIM /Users
+
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    profile_url: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameType]
+    emails: list[ScimUserPropEmailsItemsType]
+    active: bool
+    meta: ScimUserPropMetaType
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[list[ScimUserPropRolesItemsType]]
+
+
+class ScimUserTypeForResponse(TypedDict):
+    """SCIM /Users
+
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: list[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    profile_url: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameTypeForResponse]
+    emails: list[ScimUserPropEmailsItemsTypeForResponse]
+    active: bool
+    meta: ScimUserPropMetaTypeForResponse
+    organization_id: NotRequired[int]
+    operations: NotRequired[list[ScimUserPropOperationsItemsTypeForResponse]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsTypeForResponse]]
+    roles: NotRequired[list[ScimUserPropRolesItemsTypeForResponse]]
+
+
+class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropNameTypeForResponse(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropEmailsItemsType(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropMetaType(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[_dt.datetime]
+    last_modified: NotRequired[_dt.datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropMetaTypeForResponse(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsType(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsTypeForResponse(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsTypeForResponse(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropOperationsItemsType(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
     ]
-    aliases: NotRequired[
-        Union[list[TopicSearchResultItemPropAliasesItemsTypeForResponse], None]
+
+
+class ScimUserPropOperationsItemsTypeForResponse(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1TypeForResponse, list[Any]]
     ]
 
 
-class TopicSearchResultItemPropRelatedItemsType(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
-    ]
+class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
-class TopicSearchResultItemPropRelatedItemsTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse
-    ]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsType(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
-
-
-class SearchTopicsGetResponse200Type(TypedDict):
-    """SearchTopicsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[TopicSearchResultItemType]
-
-
-class SearchTopicsGetResponse200TypeForResponse(TypedDict):
-    """SearchTopicsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[TopicSearchResultItemTypeForResponse]
+class ScimUserPropOperationsItemsPropValueOneof1TypeForResponse(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
-    "SearchTopicsGetResponse200Type",
-    "SearchTopicsGetResponse200TypeForResponse",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationTypeForResponse",
-    "TopicSearchResultItemPropAliasesItemsType",
-    "TopicSearchResultItemPropAliasesItemsTypeForResponse",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationTypeForResponse",
-    "TopicSearchResultItemPropRelatedItemsType",
-    "TopicSearchResultItemPropRelatedItemsTypeForResponse",
-    "TopicSearchResultItemType",
-    "TopicSearchResultItemTypeForResponse",
+    "ScimUserListType",
+    "ScimUserListTypeForResponse",
+    "ScimUserPropEmailsItemsType",
+    "ScimUserPropEmailsItemsTypeForResponse",
+    "ScimUserPropGroupsItemsType",
+    "ScimUserPropGroupsItemsTypeForResponse",
+    "ScimUserPropMetaType",
+    "ScimUserPropMetaTypeForResponse",
+    "ScimUserPropNameType",
+    "ScimUserPropNameTypeForResponse",
+    "ScimUserPropOperationsItemsPropValueOneof1Type",
+    "ScimUserPropOperationsItemsPropValueOneof1TypeForResponse",
+    "ScimUserPropOperationsItemsType",
+    "ScimUserPropOperationsItemsTypeForResponse",
+    "ScimUserPropRolesItemsType",
+    "ScimUserPropRolesItemsTypeForResponse",
+    "ScimUserType",
+    "ScimUserTypeForResponse",
 )

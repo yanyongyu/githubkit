@@ -174,6 +174,807 @@ if TYPE_CHECKING or is_lazy_disabled():
         AddedToProjectIssueEventPropProjectCard as AddedToProjectIssueEventPropProjectCard,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200 as AgentsAutomationsAutomationIdGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropCreatedBy as AgentsAutomationsAutomationIdGetResponse200PropCreatedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropRepository as AgentsAutomationsAutomationIdGetResponse200PropRepository,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggers as AgentsAutomationsAutomationIdGetResponse200PropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropInterval as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse400 as AgentsAutomationsAutomationIdGetResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse400PropErrorsItems as AgentsAutomationsAutomationIdGetResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse401 as AgentsAutomationsAutomationIdGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse401PropErrorsItems as AgentsAutomationsAutomationIdGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse404 as AgentsAutomationsAutomationIdGetResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdGetResponse404PropErrorsItems as AgentsAutomationsAutomationIdGetResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200 as AgentsAutomationsAutomationIdTasksGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0 as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1 as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0 as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse401 as AgentsAutomationsAutomationIdTasksGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse401PropErrorsItems as AgentsAutomationsAutomationIdTasksGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse404 as AgentsAutomationsAutomationIdTasksGetResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItems as AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse422 as AgentsAutomationsAutomationIdTasksGetResponse422,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems as AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableToolsGetResponse200Items as AgentsAutomationsAvailableToolsGetResponse200Items,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems as AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableToolsGetResponse401 as AgentsAutomationsAvailableToolsGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableToolsGetResponse401PropErrorsItems as AgentsAutomationsAvailableToolsGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse200Items as AgentsAutomationsAvailableTriggersGetResponse200Items,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0 as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1 as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2 as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse401 as AgentsAutomationsAvailableTriggersGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsAvailableTriggersGetResponse401PropErrorsItems as AgentsAutomationsAvailableTriggersGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200Items as AgentsAutomationsGetResponse200Items,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropCreatedBy as AgentsAutomationsGetResponse200ItemsPropCreatedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropRepository as AgentsAutomationsGetResponse200ItemsPropRepository,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggers as AgentsAutomationsGetResponse200ItemsPropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted as AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval as AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded as AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun as AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse400 as AgentsAutomationsGetResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse400PropErrorsItems as AgentsAutomationsGetResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse401 as AgentsAutomationsGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsAutomationsGetResponse401PropErrorsItems as AgentsAutomationsGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBody as AgentsReposOwnerRepoAutomationsAutomationIdPatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropCreatedBy as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropCreatedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200 as AgentsReposOwnerRepoAutomationsGetResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItems as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedBy as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse400 as AgentsReposOwnerRepoAutomationsGetResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse401 as AgentsReposOwnerRepoAutomationsGetResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse404 as AgentsReposOwnerRepoAutomationsGetResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBody as AgentsReposOwnerRepoAutomationsPostBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggers as AgentsReposOwnerRepoAutomationsPostBodyPropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201 as AgentsReposOwnerRepoAutomationsPostResponse201,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy as AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse400 as AgentsReposOwnerRepoAutomationsPostResponse400,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse401 as AgentsReposOwnerRepoAutomationsPostResponse401,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse401PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse403 as AgentsReposOwnerRepoAutomationsPostResponse403,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse404 as AgentsReposOwnerRepoAutomationsPostResponse404,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse422 as AgentsReposOwnerRepoAutomationsPostResponse422,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200 as AgentsReposOwnerRepoTasksGetResponse200,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -1201,6 +2002,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        DependabotAlertWithdrawnWebhook as DependabotAlertWithdrawnWebhook,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        DependabotAlertWithdrawnWebhookPropDependency as DependabotAlertWithdrawnWebhookPropDependency,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        DependabotAlertWithdrawnWebhookPropSecurityAdvisory as DependabotAlertWithdrawnWebhookPropSecurityAdvisory,
     )
     from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithRepository as DependabotAlertWithRepository,
@@ -3173,6 +3983,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryRuleDetailedOneof22 as RepositoryRuleDetailedOneof22,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleDetailedOneof23 as RepositoryRuleDetailedOneof23,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryRuleDetailedOneof24 as RepositoryRuleDetailedOneof24,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFileExtensionRestriction as RepositoryRuleFileExtensionRestriction,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4115,6 +4931,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0 as ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberReviewsPostBody as ReposOwnerRepoPullsPullNumberReviewsPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4291,6 +5113,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequest as RuleSuitePullRequestPropPullRequest,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RuleSuitePullRequestPropPullRequestPropProofOfPresence as RuleSuitePullRequestPropPullRequestPropProofOfPresence,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier as RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier,
     )
     from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequestPropReviewsItems as RuleSuitePullRequestPropPullRequestPropReviewsItems,
@@ -5291,6 +6119,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertReopened as WebhookDependabotAlertReopened,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookDependabotAlertWithdrawn as WebhookDependabotAlertWithdrawn,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookDeployKeyCreated as WebhookDeployKeyCreated,
@@ -11949,9 +12780,9 @@ else:
             "RepositoryRuleCodeQualityPropParameters",
             "RepositoryRuleCodeCoverage",
             "RepositoryRuleCodeCoveragePropParameters",
-            "RepositoryRuleLicenseComplianceScanning",
             "RepositoryRuleCopilotCodeReview",
             "RepositoryRuleCopilotCodeReviewPropParameters",
+            "RepositoryRuleLicenseComplianceScanning",
             "RepositoryRuleFilePathRestriction",
             "RepositoryRuleFilePathRestrictionPropParameters",
             "RepositoryRuleMaxFilePathLength",
@@ -11965,17 +12796,19 @@ else:
             "RepositoryRulesetPropLinksPropSelf",
             "RepositoryRulesetPropLinksPropHtml",
             "RuleSuitesItems",
-            "RuleSuitePullRequest",
-            "RuleSuitePullRequestPropPullRequest",
-            "RuleSuitePullRequestPropPullRequestPropUser",
-            "RuleSuitePullRequestPropPullRequestPropReviewsItems",
-            "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
-            "RuleSuiteRequiredStatusChecks",
-            "RuleSuiteRequiredStatusChecksPropChecksItems",
-            "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
             "RuleSuite",
             "RuleSuitePropRuleEvaluationsItems",
             "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
+            "RuleSuiteRequiredStatusChecks",
+            "RuleSuiteRequiredStatusChecksPropChecksItems",
+            "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
+            "RuleSuitePullRequest",
+            "RuleSuitePullRequestPropPullRequest",
+            "RuleSuitePullRequestPropPullRequestPropUser",
+            "RuleSuitePullRequestPropPullRequestPropProofOfPresence",
+            "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier",
+            "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+            "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
             "RulesetVersion",
             "RulesetVersionPropActor",
             "RulesetVersionWithState",
@@ -12398,6 +13231,8 @@ else:
             "RepositoryRuleDetailedOneof20",
             "RepositoryRuleDetailedOneof21",
             "RepositoryRuleDetailedOneof22",
+            "RepositoryRuleDetailedOneof23",
+            "RepositoryRuleDetailedOneof24",
             "SecretScanningAlert",
             "SecretScanningAlertMetadataItems",
             "SecretScanningAlertWithMetadata",
@@ -12515,6 +13350,9 @@ else:
             "SimpleCheckSuite",
             "CheckRunWithSimpleCheckSuite",
             "CheckRunWithSimpleCheckSuitePropOutput",
+            "DependabotAlertWithdrawnWebhook",
+            "DependabotAlertWithdrawnWebhookPropSecurityAdvisory",
+            "DependabotAlertWithdrawnWebhookPropDependency",
             "WebhooksDeployKey",
             "WebhooksWorkflow",
             "WebhooksApprover",
@@ -12825,6 +13663,7 @@ else:
             "WebhookDependabotAlertFixed",
             "WebhookDependabotAlertReintroduced",
             "WebhookDependabotAlertReopened",
+            "WebhookDependabotAlertWithdrawn",
             "WebhookDeployKeyCreated",
             "WebhookDeployKeyDeleted",
             "WebhookDeploymentCreated",
@@ -14750,6 +15589,273 @@ else:
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+            "AgentsAutomationsGetResponse200Items",
+            "AgentsAutomationsGetResponse200ItemsPropRepository",
+            "AgentsAutomationsGetResponse200ItemsPropCreatedBy",
+            "AgentsAutomationsGetResponse200ItemsPropTriggers",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted",
+            "AgentsAutomationsGetResponse400",
+            "AgentsAutomationsGetResponse400PropErrorsItems",
+            "AgentsAutomationsGetResponse401",
+            "AgentsAutomationsGetResponse401PropErrorsItems",
+            "AgentsAutomationsAvailableToolsGetResponse200Items",
+            "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems",
+            "AgentsAutomationsAvailableToolsGetResponse401",
+            "AgentsAutomationsAvailableToolsGetResponse401PropErrorsItems",
+            "AgentsAutomationsAvailableTriggersGetResponse200Items",
+            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems",
+            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0",
+            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2",
+            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1",
+            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems",
+            "AgentsAutomationsAvailableTriggersGetResponse401",
+            "AgentsAutomationsAvailableTriggersGetResponse401PropErrorsItems",
+            "AgentsAutomationsAutomationIdGetResponse200",
+            "AgentsAutomationsAutomationIdGetResponse200PropRepository",
+            "AgentsAutomationsAutomationIdGetResponse200PropCreatedBy",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggers",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropInterval",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested",
+            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted",
+            "AgentsAutomationsAutomationIdGetResponse400",
+            "AgentsAutomationsAutomationIdGetResponse400PropErrorsItems",
+            "AgentsAutomationsAutomationIdGetResponse401",
+            "AgentsAutomationsAutomationIdGetResponse401PropErrorsItems",
+            "AgentsAutomationsAutomationIdGetResponse404",
+            "AgentsAutomationsAutomationIdGetResponse404PropErrorsItems",
+            "AgentsAutomationsAutomationIdTasksGetResponse200",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+            "AgentsAutomationsAutomationIdTasksGetResponse401",
+            "AgentsAutomationsAutomationIdTasksGetResponse401PropErrorsItems",
+            "AgentsAutomationsAutomationIdTasksGetResponse404",
+            "AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItems",
+            "AgentsAutomationsAutomationIdTasksGetResponse422",
+            "AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsGetResponse200",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItems",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedBy",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropInterval",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpened",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeled",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRun",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpened",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronize",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMerged",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueComment",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestComment",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpened",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdated",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionComment",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssigned",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssigned",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAdded",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReview",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeled",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflict",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmitted",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequested",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompleted",
+            "AgentsReposOwnerRepoAutomationsGetResponse400",
+            "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsGetResponse401",
+            "AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsGetResponse404",
+            "AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsPostBody",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggers",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted",
+            "AgentsReposOwnerRepoAutomationsPostResponse201",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted",
+            "AgentsReposOwnerRepoAutomationsPostResponse400",
+            "AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsPostResponse401",
+            "AgentsReposOwnerRepoAutomationsPostResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsPostResponse403",
+            "AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsPostResponse404",
+            "AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsPostResponse422",
+            "AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400",
+            "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401",
+            "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404",
+            "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBody",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggers",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropInterval",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueLabeled",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropWorkflowRun",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronize",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMerged",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionUpdated",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssigned",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssigned",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAdded",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReview",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeled",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMergeConflict",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmitted",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequested",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompleted",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropCreatedBy",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggers",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropInterval",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueLabeled",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropWorkflowRun",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronize",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMerged",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionOpened",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionUpdated",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionComment",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssigned",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssigned",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAdded",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReview",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeled",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMergeConflict",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmitted",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequested",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompleted",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems",
             "AgentsReposOwnerRepoTasksGetResponse200",
             "AgentsReposOwnerRepoTasksGetResponse200PropTasksItems",
             "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0",
@@ -15383,6 +16489,8 @@ else:
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",
             "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",
+            "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0",
+            "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1",
             "ReposOwnerRepoPullsPullNumberReviewsPostBody",
             "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
             "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",

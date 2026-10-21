@@ -9,35 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class Tag(GitHubModel):
-    """Tag
-
-    Tag
-    """
-
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
+from .group_0003 import SimpleUser
+from .group_0245 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
+class PullRequestStackPullRequest(GitHubModel):
+    """Pull Request Stack Pull Request"""
 
-    sha: str = Field()
+    id: int = Field()
+    number: int = Field()
     url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
+model_rebuild(PullRequestStackPullRequest)
 
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("PullRequestStackPullRequest",)

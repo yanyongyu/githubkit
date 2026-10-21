@@ -10,39 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    A response to an exemption request by a delegated bypasser.
+    Starred Repository
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class ExemptionResponseTypeForResponse(TypedDict):
-    """Exemption response
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    A response to an exemption request by a delegated bypasser.
+    Starred Repository
     """
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "ExemptionResponseType",
-    "ExemptionResponseTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

@@ -9,131 +9,167 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMergeAsyncResultType(TypedDict):
-    """Pull Request Merge Async Result
+class PagesHealthCheckType(TypedDict):
+    """Pages Health Check Status
 
-    Pull Request Merge Async Result
+    Pages Health Check Status
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsAnyof0Type,
-        PullRequestMergeAsyncResultPropDetailsAnyof1Type,
-        PullRequestMergeAsyncResultPropDetailsAnyof2Type,
-        PullRequestMergeAsyncResultPropDetailsAnyof3Type,
-    ]
+    domain: NotRequired[PagesHealthCheckPropDomainType]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
 
 
-class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
-    """Pull Request Merge Async Result
+class PagesHealthCheckTypeForResponse(TypedDict):
+    """Pages Health Check Status
 
-    Pull Request Merge Async Result
+    Pages Health Check Status
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"]
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse,
-        PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse,
-    ]
+    domain: NotRequired[PagesHealthCheckPropDomainTypeForResponse]
+    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainTypeForResponse, None]]
 
 
-class PullRequestMergeAsyncResultPropDetailsAnyof0Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof0
+class PagesHealthCheckPropDomainType(TypedDict):
+    """PagesHealthCheckPropDomain"""
 
-    When the asynchronous merge request is pending
-    """
-
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof0
-
-    When the asynchronous merge request is pending
-    """
-
-    message: str
-    uuid: str
-    merge_method: Literal["default", "merge", "squash", "rebase"]
-    merge_action: Literal["default", "merge_queue", "direct_merge"]
-    expected_head_sha: str
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof1Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof1
-
-    When the pull request is in a merge queue
-    """
-
-    message: str
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
-class PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof1
+class PagesHealthCheckPropDomainTypeForResponse(TypedDict):
+    """PagesHealthCheckPropDomain"""
 
-    When the pull request is in a merge queue
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof2Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof2
-
-    When the asynchronous merge request failed
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof2
-
-    When the asynchronous merge request failed
-    """
-
-    message: str
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof3Type(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof3
-
-    When the pull request has been merged
-    """
-
-    message: str
-    sha: str
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
-class PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse(TypedDict):
-    """PullRequestMergeAsyncResultPropDetailsAnyof3
+class PagesHealthCheckPropAltDomainType(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
 
-    When the pull request has been merged
-    """
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
-    message: str
-    sha: str
+
+class PagesHealthCheckPropAltDomainTypeForResponse(TypedDict):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: NotRequired[str]
+    uri: NotRequired[str]
+    nameservers: NotRequired[str]
+    dns_resolves: NotRequired[bool]
+    is_proxied: NotRequired[Union[bool, None]]
+    is_cloudflare_ip: NotRequired[Union[bool, None]]
+    is_fastly_ip: NotRequired[Union[bool, None]]
+    is_old_ip_address: NotRequired[Union[bool, None]]
+    is_a_record: NotRequired[Union[bool, None]]
+    has_cname_record: NotRequired[Union[bool, None]]
+    has_mx_records_present: NotRequired[Union[bool, None]]
+    is_valid_domain: NotRequired[bool]
+    is_apex_domain: NotRequired[bool]
+    should_be_a_record: NotRequired[Union[bool, None]]
+    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
+    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
+    is_cname_to_fastly: NotRequired[Union[bool, None]]
+    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
+    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
+    is_pages_domain: NotRequired[bool]
+    is_served_by_pages: NotRequired[Union[bool, None]]
+    is_valid: NotRequired[bool]
+    reason: NotRequired[Union[str, None]]
+    responds_to_https: NotRequired[bool]
+    enforces_https: NotRequired[bool]
+    https_error: NotRequired[Union[str, None]]
+    is_https_eligible: NotRequired[Union[bool, None]]
+    caa_error: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
-    "PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsAnyof1Type",
-    "PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsAnyof2Type",
-    "PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse",
-    "PullRequestMergeAsyncResultPropDetailsAnyof3Type",
-    "PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse",
-    "PullRequestMergeAsyncResultType",
-    "PullRequestMergeAsyncResultTypeForResponse",
+    "PagesHealthCheckPropAltDomainType",
+    "PagesHealthCheckPropAltDomainTypeForResponse",
+    "PagesHealthCheckPropDomainType",
+    "PagesHealthCheckPropDomainTypeForResponse",
+    "PagesHealthCheckType",
+    "PagesHealthCheckTypeForResponse",
 )

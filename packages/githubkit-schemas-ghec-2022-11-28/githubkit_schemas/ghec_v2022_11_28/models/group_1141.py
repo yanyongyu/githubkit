@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,63 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+class AgentsAutomationsAvailableToolsGetResponse200Items(GitHubModel):
+    """AgentsAutomationsAvailableToolsGetResponse200Items
 
-    A GitHub user
+    A CMC-controlled presentation category for Automation tools. Clients must not
+    depend on group identifiers, membership, or ordering remaining stable.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    id: str = Field(description="A presentation-category identifier controlled by CMC.")
+    title: str = Field(description="The human-readable group title.")
+    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems] = (
+        Field(description="The tools currently presented in this group.")
     )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems(GitHubModel):
+    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
 
-    A GitHub user
+    A tool that can be selected in an Automation.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    id: str = Field(
+        description="The exact tool identifier accepted by Automation create and edit requests. The catalog is authoritative and open-ended; clients must accept identifiers they have not seen before."
     )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: Missing[str] = Field(
+    title: str = Field(description="The human-readable tool title.")
+    description: str = Field(description="A short description of what the tool does.")
+    scope: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+        description="The tool's behavior level. `read` tools only retrieve data. `write` tools can change data. This describes tool behavior, not a specific GitHub token permission.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0)
-model_rebuild(
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
-)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent)
+model_rebuild(AgentsAutomationsAvailableToolsGetResponse200Items)
+model_rebuild(AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems",
+    "AgentsAutomationsAvailableToolsGetResponse200Items",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems",
 )

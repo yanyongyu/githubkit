@@ -9,32 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class StargazerHistory(GitHubModel):
+    """Stargazer History
 
-    Repository invitations let you manage who you collaborate with.
+    Stargazer History
     """
 
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
+    days: list[int] = Field(
+        description="The number of stars created on each day of the week, starting on Sunday."
     )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
-    )
-    reason: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+    total: int = Field(description="The number of stars created during the week.")
+    week: int = Field(description="The start of the week, given as a Unix timestamp.")
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(StargazerHistory)
 
-__all__ = ("RepositorySubscription",)
+__all__ = ("StargazerHistory",)

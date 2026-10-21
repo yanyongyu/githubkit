@@ -9,24 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0244 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0258 import (
+    PullRequestReviewEventPropReviewType,
+    PullRequestReviewEventPropReviewTypeForResponse,
+)
 
 
-class ReleaseEventPropReleaseAllof1Type(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
+class PullRequestReviewEventType(TypedDict):
+    """PullRequestReviewEvent"""
 
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    action: str
+    review: PullRequestReviewEventPropReviewType
+    pull_request: PullRequestMinimalType
 
 
-class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
-    """ReleaseEventPropReleaseAllof1"""
+class PullRequestReviewEventTypeForResponse(TypedDict):
+    """PullRequestReviewEvent"""
 
-    is_short_description_html_truncated: NotRequired[bool]
-    short_description_html: NotRequired[str]
+    action: str
+    review: PullRequestReviewEventPropReviewTypeForResponse
+    pull_request: PullRequestMinimalTypeForResponse
 
 
 __all__ = (
-    "ReleaseEventPropReleaseAllof1Type",
-    "ReleaseEventPropReleaseAllof1TypeForResponse",
+    "PullRequestReviewEventType",
+    "PullRequestReviewEventTypeForResponse",
 )

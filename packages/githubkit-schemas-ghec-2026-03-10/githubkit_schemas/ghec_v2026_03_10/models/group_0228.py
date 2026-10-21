@@ -10,41 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class UsageReportExportRequest(GitHubModel):
+    """UsageReportExportRequest"""
 
-class Milestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
+        Field(description="The type of usage report to generate")
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[SimpleUser, None] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
+    start_date: _dt.date = Field(
+        description="The start date for the report in YYYY-MM-DD format"
+    )
+    end_date: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The end date for the report in YYYY-MM-DD format. Defaults to today (UTC) if not provided.",
+    )
+    send_email: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to send an email notification to the requester when the report is ready. Defaults to false.",
+    )
 
 
-model_rebuild(Milestone)
+model_rebuild(UsageReportExportRequest)
 
-__all__ = ("Milestone",)
+__all__ = ("UsageReportExportRequest",)

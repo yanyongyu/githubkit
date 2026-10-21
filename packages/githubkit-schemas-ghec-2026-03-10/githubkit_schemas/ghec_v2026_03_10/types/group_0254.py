@@ -9,51 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0230 import ReactionRollupType, ReactionRollupTypeForResponse
 
 
-class CommitCommentEventPropCommentType(TypedDict):
-    """CommitCommentEventPropComment"""
+class MemberEventType(TypedDict):
+    """MemberEvent"""
 
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserType, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-    reactions: NotRequired[ReactionRollupType]
+    action: str
+    member: SimpleUserType
 
 
-class CommitCommentEventPropCommentTypeForResponse(TypedDict):
-    """CommitCommentEventPropComment"""
+class MemberEventTypeForResponse(TypedDict):
+    """MemberEvent"""
 
-    html_url: NotRequired[str]
-    url: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    body: NotRequired[str]
-    path: NotRequired[Union[str, None]]
-    position: NotRequired[Union[int, None]]
-    line: NotRequired[Union[int, None]]
-    commit_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
+    action: str
+    member: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "CommitCommentEventPropCommentType",
-    "CommitCommentEventPropCommentTypeForResponse",
+    "MemberEventType",
+    "MemberEventTypeForResponse",
 )

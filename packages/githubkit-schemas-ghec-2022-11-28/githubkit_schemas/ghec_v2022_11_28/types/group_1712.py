@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberAddPostBodyType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+class ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
 
-    pull_requests: list[int]
+    issue_id: int
 
 
-class ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+class ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
 
-    pull_requests: list[int]
+    issue_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostBodyType",
-    "ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyTypeForResponse",
 )

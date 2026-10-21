@@ -9,30 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0116 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class DependabotAlertWithdrawnWebhookPropDependencyType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropDependency
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    Details for the vulnerable dependency.
+    """
+
+    package: DependabotAlertPackageType
+    manifest_path: Union[str, None]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: Union[Literal["development", "runtime"], None]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesItems"""
+class DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropDependency
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    Details for the vulnerable dependency.
+    """
+
+    package: DependabotAlertPackageTypeForResponse
+    manifest_path: Union[str, None]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: Union[Literal["development", "runtime"], None]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
 __all__ = (
-    "WebhooksRepositoriesItemsType",
-    "WebhooksRepositoriesItemsTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropDependencyType",
+    "DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse",
 )

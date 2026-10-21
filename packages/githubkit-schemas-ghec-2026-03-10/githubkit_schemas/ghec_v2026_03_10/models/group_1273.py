@@ -9,23 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0203 import SecretScanningCustomPattern
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the apps layer's configured value, or `optional` if the apps layer has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the apps layer can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available apps policy controls allow the apps layer's policy to be updated."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
+)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems",
+)

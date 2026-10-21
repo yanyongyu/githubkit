@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -41,7 +41,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -68,7 +68,7 @@ class WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse(TypedD
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType(TypedDict):
     """Label"""
 
     color: str
@@ -80,7 +80,9 @@ class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType(TypedDict):
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse(
+    TypedDict
+):
     """Label"""
 
     color: str
@@ -92,8 +94,8 @@ class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse(Typ
     url: str
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
 
     diff_url: NotRequired[str]
     html_url: NotRequired[str]
@@ -102,8 +104,10 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse(TypedDict):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
 
     diff_url: NotRequired[str]
     html_url: NotRequired[str]
@@ -113,10 +117,10 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse(Typ
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropAssigneeTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequestType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequestTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse",
 )

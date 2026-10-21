@@ -14,35 +14,83 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
+class WebhooksLabelUnarchivedAllof1Type(TypedDict):
+    """WebhooksLabelUnarchivedAllof1"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
+
+
+class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelUnarchivedAllof1"""
+
+    archived_at: Union[str, None]
+    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
+
+
+class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+
+    The user who archived the label. This is `null` after the label is unarchived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
     node_id: str
-    project_url: str
-    updated_at: _dt.datetime
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksProjectColumnTypeForResponse(TypedDict):
-    """Project Column"""
+class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelUnarchivedAllof1PropArchivedBy
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: str
+    The user who archived the label. This is `null` after the label is unarchived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
     node_id: str
-    project_url: str
-    updated_at: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksProjectColumnType",
-    "WebhooksProjectColumnTypeForResponse",
+    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
+    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
+    "WebhooksLabelUnarchivedAllof1Type",
+    "WebhooksLabelUnarchivedAllof1TypeForResponse",
 )

@@ -9,44 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
-    )
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems
+    ] = Field(min_length=1 if PYDANTIC_V2 else None)
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems(
+    GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-    rors
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
+    model_name: str = Field(min_length=1)
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="Use `optional` to remove the apps policy."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems",
 )

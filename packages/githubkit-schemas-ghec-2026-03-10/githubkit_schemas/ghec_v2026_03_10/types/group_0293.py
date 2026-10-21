@@ -9,72 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, Literal, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class CopilotSpaceResourceType(TypedDict):
-    """Copilot Space Resource
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    A resource attached to a Copilot Space.
+    A description of the machine powering a codespace.
     """
 
-    id: int
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    metadata: CopilotSpaceResourcePropMetadataType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
-class CopilotSpaceResourceTypeForResponse(TypedDict):
-    """Copilot Space Resource
+class CodespaceMachineTypeForResponse(TypedDict):
+    """Codespace machine
 
-    A resource attached to a Copilot Space.
+    A description of the machine powering a codespace.
     """
 
-    id: int
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
-    ]
-    copilot_chat_attachment_id: NotRequired[Union[int, None]]
-    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
-    created_at: str
-    updated_at: str
-
-
-CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
-"""CopilotSpaceResourcePropMetadata
-
-Resource-specific metadata. The keys and values depend on the resource type.
-"""
-
-
-CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""CopilotSpaceResourcePropMetadata
-
-Resource-specific metadata. The keys and values depend on the resource type.
-"""
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
 
 
 __all__ = (
-    "CopilotSpaceResourcePropMetadataType",
-    "CopilotSpaceResourcePropMetadataTypeForResponse",
-    "CopilotSpaceResourceType",
-    "CopilotSpaceResourceTypeForResponse",
+    "CodespaceMachineType",
+    "CodespaceMachineTypeForResponse",
 )

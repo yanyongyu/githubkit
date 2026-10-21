@@ -52,6 +52,7 @@ class OrgPrivateRegistryConfigurationWithSelectedRepositories(GitHubModel):
             "oidc_jfrog",
             "oidc_cloudsmith",
             "oidc_gcp",
+            "anonymous",
         ]
     ] = Field(
         default=UNSET, description="The authentication type for the private registry."

@@ -9,31 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternToDeleteType(TypedDict):
-    """Secret Scanning Custom Pattern To Delete
+class SecretScanningCustomPatternToCreateType(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to delete in a bulk operation.
+    A custom pattern to create in a bulk operation.
     """
 
-    pattern_id: int
-    custom_pattern_version: NotRequired[Union[str, None]]
+    name: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
-class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Delete
+class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to delete in a bulk operation.
+    A custom pattern to create in a bulk operation.
     """
 
-    pattern_id: int
-    custom_pattern_version: NotRequired[Union[str, None]]
+    name: str
+    pattern: str
+    start_delimiter: NotRequired[str]
+    end_delimiter: NotRequired[str]
+    must_match: NotRequired[list[str]]
+    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "SecretScanningCustomPatternToDeleteType",
-    "SecretScanningCustomPatternToDeleteTypeForResponse",
+    "SecretScanningCustomPatternToCreateType",
+    "SecretScanningCustomPatternToCreateTypeForResponse",
 )

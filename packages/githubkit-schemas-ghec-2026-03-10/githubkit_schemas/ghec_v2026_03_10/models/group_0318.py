@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,45 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueField(GitHubModel):
-    """OrganizationCreateIssueField"""
+class ApiInsightsSummaryStats(GitHubModel):
+    """Summary Stats
 
-    name: str = Field(description="Name of the issue field.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue field."
-    )
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
-        Field(description="The data type of the issue field.")
-    )
-    visibility: Missing[Literal["organization_members_only", "all"]] = Field(
+    API Insights usage summary stats for an organization
+    """
+
+    total_request_count: Missing[int] = Field(
         default=UNSET,
-        description="The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+        description="The total number of requests within the queried time period",
     )
-    options: Missing[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
-    ] = Field(
+    rate_limited_request_count: Missing[int] = Field(
         default=UNSET,
-        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+        description="The total number of requests that were rate limited within the queried time period",
     )
 
 
-class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+model_rebuild(ApiInsightsSummaryStats)
 
-    name: str = Field(description="Name of the option.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the option."
-    )
-    color: Literal[
-        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-    ] = Field(description="Color for the option.")
-    priority: int = Field(description="Priority of the option for ordering.")
-
-
-model_rebuild(OrganizationCreateIssueField)
-model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
-
-__all__ = (
-    "OrganizationCreateIssueField",
-    "OrganizationCreateIssueFieldPropOptionsItems",
-)
+__all__ = ("ApiInsightsSummaryStats",)

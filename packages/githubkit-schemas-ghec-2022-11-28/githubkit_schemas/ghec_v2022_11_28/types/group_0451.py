@@ -9,51 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0277 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class StatusType(TypedDict):
-    """Status
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    The status of a commit.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    url: str
-    avatar_url: Union[str, None]
     id: int
+    repository: MinimalRepositoryType
+    invitee: Union[SimpleUserType, None]
+    inviter: Union[SimpleUserType, None]
+    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    created_at: _dt.datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
     node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[SimpleUserType, None]
 
 
-class StatusTypeForResponse(TypedDict):
-    """Status
+class RepositoryInvitationTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    The status of a commit.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    url: str
-    avatar_url: Union[str, None]
     id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
+    repository: MinimalRepositoryTypeForResponse
+    invitee: Union[SimpleUserTypeForResponse, None]
+    inviter: Union[SimpleUserTypeForResponse, None]
+    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
     created_at: str
-    updated_at: str
-    creator: Union[SimpleUserTypeForResponse, None]
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
 __all__ = (
-    "StatusType",
-    "StatusTypeForResponse",
+    "RepositoryInvitationType",
+    "RepositoryInvitationTypeForResponse",
 )
