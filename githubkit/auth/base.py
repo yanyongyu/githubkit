@@ -21,20 +21,13 @@ def build_request_with_options(
     request: httpx.Request | None = None,
     **kwargs: Any,
 ) -> httpx.Request:
-    """Build a request used inside auth flow, keeping the client options.
+    """Build a request used inside auth flow, keeping the client timeout.
 
-    httpx only sets extensions (e.g. timeout) on the request passed to `send`,
-    so copy them from the original request, or fall back to client config.
-    The `hishel_*` extensions are per-request cache controls and are not copied,
-    so they never leak onto the auth requests (e.g. forcing a token to be cached).
+    httpx only sets the timeout extension on the request passed to `send`,
+    not on requests yielded by an auth flow, so copy it from the original
+    request, or fall back to the client config.
     """
-    extensions = (
-        {
-            key: value
-            for key, value in request.extensions.items()
-            if not key.startswith("hishel_")
-        }
-        if request is not None
-        else {"timeout": github.config.timeout.as_dict()}
-    )
-    return httpx.Request(method, url, extensions=extensions, **kwargs)
+    timeout = (
+        request.extensions.get("timeout") if request is not None else None
+    ) or github.config.timeout.as_dict()
+    return httpx.Request(method, url, extensions={"timeout": timeout}, **kwargs)
