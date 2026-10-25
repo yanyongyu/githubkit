@@ -25,9 +25,15 @@ def build_request_with_options(
 
     httpx only sets extensions (e.g. timeout) on the request passed to `send`,
     so copy them from the original request, or fall back to client config.
+    The `hishel_*` extensions are per-request cache controls and are not copied,
+    so they never leak onto the auth requests (e.g. forcing a token to be cached).
     """
     extensions = (
-        dict(request.extensions)
+        {
+            key: value
+            for key, value in request.extensions.items()
+            if not key.startswith("hishel_")
+        }
         if request is not None
         else {"timeout": github.config.timeout.as_dict()}
     )
