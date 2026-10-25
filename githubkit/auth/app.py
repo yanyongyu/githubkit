@@ -11,7 +11,7 @@ from githubkit.exception import AuthCredentialError
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from ._url import require_app_auth, require_basic_auth, require_bypass
-from .base import BaseAuthStrategy
+from .base import BaseAuthStrategy, build_request_with_options
 from .oauth import OAuthAppAuthStrategy
 
 try:
@@ -104,7 +104,7 @@ class AppAuth(httpx.Auth):
             await cache.aset(cache_key, token, timedelta(minutes=8))
         return token
 
-    def _build_installation_auth_request(self) -> httpx.Request:
+    def _build_installation_auth_request(self, request: httpx.Request) -> httpx.Request:
         from githubkit_schemas.latest.models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
         )
@@ -130,9 +130,11 @@ class AppAuth(httpx.Auth):
                 },
             )
         )
-        return httpx.Request(
+        return build_request_with_options(
+            self.github,
             "POST",
             url,
+            request=request,
             json=exclude_unset(body),
             headers={
                 "User-Agent": self.github.config.user_agent,
@@ -207,7 +209,7 @@ class AppAuth(httpx.Auth):
         cache = self.github.config.cache_strategy.get_cache_storage()
         key = self._get_installation_cache_key()
         if not (token := cache.get(key)):
-            token_request = self._build_installation_auth_request()
+            token_request = self._build_installation_auth_request(request)
             token_request.headers["Authorization"] = f"Bearer {self.get_jwt()}"
             response = yield token_request
             response.read()
@@ -249,7 +251,7 @@ class AppAuth(httpx.Auth):
         cache = await self.github.config.cache_strategy.get_async_cache_storage()
         key = self._get_installation_cache_key()
         if not (token := await cache.aget(key)):
-            token_request = self._build_installation_auth_request()
+            token_request = self._build_installation_auth_request(request)
             token_request.headers["Authorization"] = f"Bearer {await self.aget_jwt()}"
             response = yield token_request
             await response.aread()
