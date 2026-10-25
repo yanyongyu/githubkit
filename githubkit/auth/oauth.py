@@ -11,7 +11,7 @@ from githubkit.exception import AuthCredentialError, AuthExpiredError
 from githubkit.utils import is_async
 
 from ._url import get_oauth_base_url, require_basic_auth, require_bypass
-from .base import BaseAuthStrategy, build_auth_request
+from .base import BaseAuthStrategy, build_request_with_options
 
 try:
     import anyio
@@ -38,7 +38,7 @@ def create_device_code(
     body = {"client_id": client_id}
     if scopes:
         body["scope"] = " ".join(scopes)
-    response = yield build_auth_request(
+    response = yield build_request_with_options(
         github,
         "POST",
         url,
@@ -71,7 +71,7 @@ def exchange_web_flow_code(
     }
     if redirect_uri:
         body["redirect_uri"] = redirect_uri
-    response = yield build_auth_request(
+    response = yield build_request_with_options(
         github,
         "POST",
         url,
@@ -94,7 +94,7 @@ def exchange_device_code(
     """Exchange device code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
-    response = yield build_auth_request(
+    response = yield build_request_with_options(
         github,
         "POST",
         url,
@@ -123,7 +123,7 @@ def refresh_token(
     """Refresh token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
-    response = yield build_auth_request(
+    response = yield build_request_with_options(
         github,
         "POST",
         url,

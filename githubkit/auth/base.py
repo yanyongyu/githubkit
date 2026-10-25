@@ -13,7 +13,7 @@ class BaseAuthStrategy(abc.ABC):
         raise NotImplementedError
 
 
-def build_auth_request(
+def build_request_with_options(
     github: "GitHubCore",
     method: str,
     url: httpx.URL,
