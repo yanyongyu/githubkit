@@ -104,7 +104,9 @@ class AppAuth(httpx.Auth):
             await cache.aset(cache_key, token, timedelta(minutes=8))
         return token
 
-    def _build_installation_auth_request(self) -> httpx.Request:
+    def _build_installation_auth_request(
+        self, request: httpx.Request
+    ) -> httpx.Request:
         from githubkit_schemas.latest.models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
         )
@@ -138,6 +140,7 @@ class AppAuth(httpx.Auth):
                 "User-Agent": self.github.config.user_agent,
                 "Accept": self.github.config.accept,
             },
+            extensions=dict(request.extensions),
         )
 
     def _parse_installation_auth_response(
@@ -207,7 +210,7 @@ class AppAuth(httpx.Auth):
         cache = self.github.config.cache_strategy.get_cache_storage()
         key = self._get_installation_cache_key()
         if not (token := cache.get(key)):
-            token_request = self._build_installation_auth_request()
+            token_request = self._build_installation_auth_request(request)
             token_request.headers["Authorization"] = f"Bearer {self.get_jwt()}"
             response = yield token_request
             response.read()
@@ -249,7 +252,7 @@ class AppAuth(httpx.Auth):
         cache = await self.github.config.cache_strategy.get_async_cache_storage()
         key = self._get_installation_cache_key()
         if not (token := await cache.aget(key)):
-            token_request = self._build_installation_auth_request()
+            token_request = self._build_installation_auth_request(request)
             token_request.headers["Authorization"] = f"Bearer {await self.aget_jwt()}"
             response = yield token_request
             await response.aread()
