@@ -1,5 +1,5 @@
 import abc
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import httpx
 
@@ -11,3 +11,24 @@ class BaseAuthStrategy(abc.ABC):
     @abc.abstractmethod
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         raise NotImplementedError
+
+
+def build_auth_request(
+    github: "GitHubCore",
+    method: str,
+    url: httpx.URL,
+    *,
+    request: httpx.Request | None = None,
+    **kwargs: Any,
+) -> httpx.Request:
+    """Build a request used inside auth flow, keeping the client options.
+
+    httpx only sets extensions (e.g. timeout) on the request passed to `send`,
+    so copy them from the original request, or fall back to client config.
+    """
+    extensions = (
+        dict(request.extensions)
+        if request is not None
+        else {"timeout": github.config.timeout.as_dict()}
+    )
+    return httpx.Request(method, url, extensions=extensions, **kwargs)

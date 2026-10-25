@@ -11,7 +11,7 @@ from githubkit.exception import AuthCredentialError
 from githubkit.utils import UNSET, Unset, exclude_unset
 
 from ._url import require_app_auth, require_basic_auth, require_bypass
-from .base import BaseAuthStrategy
+from .base import BaseAuthStrategy, build_auth_request
 from .oauth import OAuthAppAuthStrategy
 
 try:
@@ -132,15 +132,16 @@ class AppAuth(httpx.Auth):
                 },
             )
         )
-        return httpx.Request(
+        return build_auth_request(
+            self.github,
             "POST",
             url,
+            request=request,
             json=exclude_unset(body),
             headers={
                 "User-Agent": self.github.config.user_agent,
                 "Accept": self.github.config.accept,
             },
-            extensions=dict(request.extensions),
         )
 
     def _parse_installation_auth_response(
