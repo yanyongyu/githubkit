@@ -104,9 +104,7 @@ class AppAuth(httpx.Auth):
             await cache.aset(cache_key, token, timedelta(minutes=8))
         return token
 
-    def _build_installation_auth_request(
-        self, request: httpx.Request
-    ) -> httpx.Request:
+    def _build_installation_auth_request(self, request: httpx.Request) -> httpx.Request:
         from githubkit_schemas.latest.models import (
             AppInstallationsInstallationIdAccessTokensPostBody,
         )

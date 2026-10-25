@@ -29,7 +29,9 @@ if TYPE_CHECKING:
 
 
 def create_device_code(
-    github: "GitHubCore", client_id: str, scopes: Sequence[str] | None = None,
+    github: "GitHubCore",
+    client_id: str,
+    scopes: Sequence[str] | None = None,
     request: httpx.Request | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Create a device code for OAuth."""
@@ -87,7 +89,8 @@ def exchange_web_flow_code(
 
 
 def exchange_device_code(
-    github: "GitHubCore", client_id: str,
+    github: "GitHubCore",
+    client_id: str,
     device_code: str,
     request: httpx.Request | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
@@ -458,9 +461,7 @@ class OAuthDeviceAuth(httpx.Auth):
         # exchange token for the first time
         if (auth_strategy := self._token_auth_strategy) is None:
             # create device code
-            flow = create_device_code(
-                self.github, self.client_id, self.scopes, request
-            )
+            flow = create_device_code(self.github, self.client_id, self.scopes, request)
             create_request = next(flow)
             while True:
                 response = yield create_request
@@ -521,9 +522,7 @@ class OAuthDeviceAuth(httpx.Auth):
         # exchange token for the first time
         if (auth_strategy := self._token_auth_strategy) is None:
             # create device code
-            flow = create_device_code(
-                self.github, self.client_id, self.scopes, request
-            )
+            flow = create_device_code(self.github, self.client_id, self.scopes, request)
             create_request = next(flow)
             while True:
                 response = yield create_request
