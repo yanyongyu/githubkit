@@ -12,17 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0244 import PullRequestMinimal
+from .group_0258 import PullRequestReviewEventPropReview
 
 
-class ReleaseEventPropReleaseAllof1(GitHubModel):
-    """ReleaseEventPropReleaseAllof1"""
+class PullRequestReviewEvent(GitHubModel):
+    """PullRequestReviewEvent"""
 
-    is_short_description_html_truncated: Missing[bool] = Field(default=UNSET)
-    short_description_html: Missing[str] = Field(default=UNSET)
+    action: str = Field()
+    review: PullRequestReviewEventPropReview = Field()
+    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
 
 
-model_rebuild(ReleaseEventPropReleaseAllof1)
+model_rebuild(PullRequestReviewEvent)
 
-__all__ = ("ReleaseEventPropReleaseAllof1",)
+__all__ = ("PullRequestReviewEvent",)

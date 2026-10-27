@@ -9,31 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0277 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
+class ThreadType(TypedDict):
+    """Thread
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Thread
+    """
+
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-class ActionsOrganizationPermissionsTypeForResponse(TypedDict):
-    """ActionsOrganizationPermissions"""
+class ThreadTypeForResponse(TypedDict):
+    """Thread
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
-    sha_pinning_required: NotRequired[bool]
+    Thread
+    """
+
+    id: str
+    repository: MinimalRepositoryTypeForResponse
+    subject: ThreadPropSubjectTypeForResponse
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
+
+
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+class ThreadPropSubjectTypeForResponse(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
 
 
 __all__ = (
-    "ActionsOrganizationPermissionsType",
-    "ActionsOrganizationPermissionsTypeForResponse",
+    "ThreadPropSubjectType",
+    "ThreadPropSubjectTypeForResponse",
+    "ThreadType",
+    "ThreadTypeForResponse",
 )

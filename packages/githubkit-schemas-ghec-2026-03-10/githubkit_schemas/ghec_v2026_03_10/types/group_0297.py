@@ -9,62 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class CopilotSpaceCollaboratorAnyof0Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
-    """
-
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
-    """Organization Custom Repository Role
+class CopilotSpaceCollaboratorAnyof0TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0"""
 
-    Custom repository roles created by organization owners
-    """
-
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
+
+
+class CopilotSpaceCollaboratorAnyof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
+
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
     name: str
+    slug: str
+    type: Literal["Team"]
     description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class CopilotSpaceCollaboratorAnyof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof1"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
-
-
-class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
+    actor_type: Literal["Team"]
+    role: Literal["reader", "writer", "admin"]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    type: Literal["Team"]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    organization_id: NotRequired[int]
+    parent: NotRequired[None]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleType",
-    "OrganizationCustomRepositoryRoleTypeForResponse",
-    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
-    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Type",
+    "CopilotSpaceCollaboratorAnyof0TypeForResponse",
+    "CopilotSpaceCollaboratorAnyof1Type",
+    "CopilotSpaceCollaboratorAnyof1TypeForResponse",
 )

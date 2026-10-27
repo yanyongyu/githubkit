@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0131 import (
+    EnterpriseLicensePolicyItemPropLicensesType,
+    EnterpriseLicensePolicyItemPropLicensesTypeForResponse,
+    EnterpriseLicensePolicyItemPropPackagesItemsType,
+    EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse,
+)
 
 
-class NetworkSettingsType(TypedDict):
-    """Hosted compute network settings resource
+class EnterpriseLicensePolicyResponseType(TypedDict):
+    """Enterprise license policy
 
-    A hosted compute network settings resource.
+    The license compliance policy for an enterprise.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    licenses: EnterpriseLicensePolicyItemPropLicensesType
+    packages: list[EnterpriseLicensePolicyItemPropPackagesItemsType]
+    created_at: Union[_dt.datetime, None]
 
 
-class NetworkSettingsTypeForResponse(TypedDict):
-    """Hosted compute network settings resource
+class EnterpriseLicensePolicyResponseTypeForResponse(TypedDict):
+    """Enterprise license policy
 
-    A hosted compute network settings resource.
+    The license compliance policy for an enterprise.
     """
 
-    id: str
-    network_configuration_id: NotRequired[str]
-    name: str
-    subnet_id: str
-    region: str
+    licenses: EnterpriseLicensePolicyItemPropLicensesTypeForResponse
+    packages: list[EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse]
+    created_at: Union[str, None]
 
 
 __all__ = (
-    "NetworkSettingsType",
-    "NetworkSettingsTypeForResponse",
+    "EnterpriseLicensePolicyResponseType",
+    "EnterpriseLicensePolicyResponseTypeForResponse",
 )

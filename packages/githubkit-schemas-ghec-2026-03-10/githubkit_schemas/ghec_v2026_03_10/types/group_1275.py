@@ -10,31 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0206 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType
+    ]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse",
 )

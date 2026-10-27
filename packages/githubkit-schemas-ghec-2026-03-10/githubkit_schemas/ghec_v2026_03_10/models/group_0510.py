@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,31 +19,39 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0491 import IssueTypeWebhook
-from .group_0493 import IssueEventIntent
 
 
-class IssueTypeAddedIssueEvent(GitHubModel):
-    """Issue Type Added Issue Event
+class ReviewDismissedIssueEvent(GitHubModel):
+    """Review Dismissed Issue Event
 
-    Issue Type Added Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["review_dismissed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
-    )
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
 
 
-model_rebuild(IssueTypeAddedIssueEvent)
+class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-__all__ = ("IssueTypeAddedIssueEvent",)
+    state: str = Field()
+    review_id: int = Field()
+    dismissal_message: Union[str, None] = Field()
+    dismissal_commit_id: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReviewDismissedIssueEvent)
+model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
+
+__all__ = (
+    "ReviewDismissedIssueEvent",
+    "ReviewDismissedIssueEventPropDismissedReview",
+)

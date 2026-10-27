@@ -14,16 +14,25 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class HookResponse(GitHubModel):
-    """Hook Response"""
+class Blob(GitHubModel):
+    """Blob
 
-    code: Union[int, None] = Field()
-    status: Union[str, None] = Field()
-    message: Union[str, None] = Field()
+    Blob
+    """
+
+    content: str = Field()
+    encoding: str = Field()
+    url: str = Field()
+    sha: str = Field()
+    size: Union[int, None] = Field()
+    node_id: str = Field()
+    highlighted_content: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(HookResponse)
+model_rebuild(Blob)
 
-__all__ = ("HookResponse",)
+__all__ = ("Blob",)

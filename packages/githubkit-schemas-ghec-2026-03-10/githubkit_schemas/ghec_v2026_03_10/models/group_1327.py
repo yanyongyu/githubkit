@@ -11,17 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0210 import SecretScanningCustomPatternToCreate
 
 
-class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    selected_repository_ids: list[int] = Field(
-        description="IDs of repositories that can use repository-level self-hosted runners"
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to create (maximum 100).",
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostBody)
 
-__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostBody",)

@@ -13,75 +13,61 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksPostResponse403Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403
+class AgentsAutomationsAvailableToolsGetResponse200ItemsType(TypedDict):
+    """AgentsAutomationsAvailableToolsGetResponse200Items
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A CMC-controlled presentation category for Automation tools. Clients must not
+    depend on group identifiers, membership, or ordering remaining stable.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType]
-    ]
-    documentation_url: str
+    id: str
+    title: str
+    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType]
 
 
-class AgentsReposOwnerRepoTasksPostResponse403TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403
+class AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsAvailableToolsGetResponse200Items
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A CMC-controlled presentation category for Automation tools. Clients must not
+    depend on group identifiers, membership, or ordering remaining stable.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse]
+    id: str
+    title: str
+    tools: list[
+        AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse
     ]
-    documentation_url: str
 
 
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
+class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType(TypedDict):
+    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
 
-    A single validation error
+    A tool that can be selected in an Automation.
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: str
+    title: str
+    description: str
+    scope: NotRequired[Literal["read", "write"]]
 
 
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
+class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
 
-    A single validation error
+    A tool that can be selected in an Automation.
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: str
+    title: str
+    description: str
+    scope: NotRequired[Literal["read", "write"]]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse403Type",
-    "AgentsReposOwnerRepoTasksPostResponse403TypeForResponse",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsType",
+    "AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse",
 )

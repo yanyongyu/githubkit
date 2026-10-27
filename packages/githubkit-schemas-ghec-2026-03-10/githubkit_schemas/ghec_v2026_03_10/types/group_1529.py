@@ -9,22 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoAttestationsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    id: NotRequired[int]
+    repository_values: list[RepositoryExternalPropertyPayloadType]
 
 
-class ReposOwnerRepoAttestationsPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoAttestationsPostResponse201"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    id: NotRequired[int]
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+
+
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
+
+
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoAttestationsPostResponse201Type",
-    "ReposOwnerRepoAttestationsPostResponse201TypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

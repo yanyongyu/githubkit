@@ -9,26 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ApiInsightsTimeStatsItemsType(TypedDict):
-    """ApiInsightsTimeStatsItems"""
-
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ApiInsightsTimeStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsTimeStatsItems"""
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
 
-    timestamp: NotRequired[str]
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    Organization Invitation
+    """
+
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
+
+
+class OrganizationInvitationTypeForResponse(TypedDict):
+    """Organization Invitation
+
+    Organization Invitation
+    """
+
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserTypeForResponse
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
 __all__ = (
-    "ApiInsightsTimeStatsItemsType",
-    "ApiInsightsTimeStatsItemsTypeForResponse",
+    "OrganizationInvitationType",
+    "OrganizationInvitationTypeForResponse",
 )

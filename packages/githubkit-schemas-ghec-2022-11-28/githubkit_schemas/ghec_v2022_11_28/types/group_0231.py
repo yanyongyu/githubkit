@@ -9,46 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SubIssuesSummaryType(TypedDict):
-    """Sub-issues Summary"""
+class EnterpriseTeamWithMemberCountType(TypedDict):
+    """Enterprise Team
 
-    total: int
-    completed: int
-    percent_completed: int
+    Group of enterprise owners and/or members
+    """
+
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class SubIssuesSummaryTypeForResponse(TypedDict):
-    """Sub-issues Summary"""
+class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    total: int
-    completed: int
-    percent_completed: int
+    Group of enterprise owners and/or members
+    """
 
-
-class IssueDependenciesSummaryType(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
-
-
-class IssueDependenciesSummaryTypeForResponse(TypedDict):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int
-    blocking: int
-    total_blocked_by: int
-    total_blocking: int
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: str
+    updated_at: str
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "IssueDependenciesSummaryType",
-    "IssueDependenciesSummaryTypeForResponse",
-    "SubIssuesSummaryType",
-    "SubIssuesSummaryTypeForResponse",
+    "EnterpriseTeamWithMemberCountType",
+    "EnterpriseTeamWithMemberCountTypeForResponse",
 )

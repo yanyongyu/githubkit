@@ -13,18 +13,24 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0238 import PullRequestMinimal
-from .group_0252 import PullRequestReviewEventPropReview
+from .group_0240 import IssueComment
+from .group_0242 import Issue
 
 
-class PullRequestReviewEvent(GitHubModel):
-    """PullRequestReviewEvent"""
+class IssueCommentEvent(GitHubModel):
+    """IssueCommentEvent"""
 
     action: str = Field()
-    review: PullRequestReviewEventPropReview = Field()
-    pull_request: PullRequestMinimal = Field(title="Pull Request Minimal")
+    issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: IssueComment = Field(
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
 
 
-model_rebuild(PullRequestReviewEvent)
+model_rebuild(IssueCommentEvent)
 
-__all__ = ("PullRequestReviewEvent",)
+__all__ = ("IssueCommentEvent",)

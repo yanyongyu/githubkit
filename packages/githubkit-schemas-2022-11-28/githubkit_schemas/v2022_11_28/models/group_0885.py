@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0200 import ProjectsV2StatusUpdate
-from .group_0565 import SimpleInstallation
-from .group_0566 import OrganizationSimpleWebhooks
+from .group_0569 import SimpleInstallation
+from .group_0570 import OrganizationSimpleWebhooks
+from .group_0610 import ProjectsV2Item
 
 
-class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
-    """Projects v2 Status Update Deleted Event"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -36,13 +36,12 @@ class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_status_update: ProjectsV2StatusUpdate = Field(
-        title="Projects v2 Status Update",
-        description="An status update belonging to a project",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2StatusUpdateDeleted)
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-__all__ = ("WebhookProjectsV2StatusUpdateDeleted",)
+__all__ = ("WebhookProjectsV2ItemCreated",)

@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0569 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDiscussionEditedType(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionCategoryChangedType(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -36,11 +37,11 @@ class WebhookDiscussionEditedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionEditedTypeForResponse(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionCategoryChangedTypeForResponse(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesTypeForResponse]
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -49,51 +50,71 @@ class WebhookDiscussionEditedTypeForResponse(TypedDict):
     sender: SimpleUserTypeForResponse
 
 
-class WebhookDiscussionEditedPropChangesType(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
+class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
 
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
-
-
-class WebhookDiscussionEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
-
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyTypeForResponse]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleTypeForResponse]
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
 
 
-class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
+class WebhookDiscussionCategoryChangedPropChangesTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
 
-    from_: str
-
-
-class WebhookDiscussionEditedPropChangesPropBodyTypeForResponse(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse
 
 
-class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
 
-    from_: str
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
 
 
-class WebhookDiscussionEditedPropChangesPropTitleTypeForResponse(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
 
-    from_: str
+    from_: (
+        WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse
+    )
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: _dt.datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse(
+    TypedDict
+):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: str
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhookDiscussionEditedPropChangesPropBodyType",
-    "WebhookDiscussionEditedPropChangesPropBodyTypeForResponse",
-    "WebhookDiscussionEditedPropChangesPropTitleType",
-    "WebhookDiscussionEditedPropChangesPropTitleTypeForResponse",
-    "WebhookDiscussionEditedPropChangesType",
-    "WebhookDiscussionEditedPropChangesTypeForResponse",
-    "WebhookDiscussionEditedType",
-    "WebhookDiscussionEditedTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryTypeForResponse",
+    "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedPropChangesTypeForResponse",
+    "WebhookDiscussionCategoryChangedType",
+    "WebhookDiscussionCategoryChangedTypeForResponse",
 )

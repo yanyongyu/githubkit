@@ -9,57 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotSpaceResource(GitHubModel):
-    """Copilot Space Resource
+class CodespaceMachine(GitHubModel):
+    """Codespace machine
 
-    A resource attached to a Copilot Space.
+    A description of the machine powering a codespace.
     """
 
-    id: int = Field(description="The unique identifier of the resource.")
-    resource_type: Literal[
-        "repository",
-        "github_file",
-        "free_text",
-        "github_issue",
-        "github_pull_request",
-        "media_content",
-        "uploaded_text_file",
-    ] = Field(description="The type of the resource.")
-    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the associated chat attachment, if any."
+    name: str = Field(description="The name of the machine.")
+    display_name: str = Field(
+        description="The display name of the machine includes cores, memory, and storage."
     )
-    metadata: CopilotSpaceResourcePropMetadata = Field(
-        description="Resource-specific metadata. The keys and values depend on the resource type."
+    operating_system: str = Field(description="The operating system of the machine.")
+    storage_in_bytes: int = Field(
+        description="How much storage is available to the codespace."
     )
-    created_at: _dt.datetime = Field(
-        description="The date and time the resource was created."
+    memory_in_bytes: int = Field(
+        description="How much memory is available to the codespace."
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time the resource was last updated."
+    cpus: int = Field(description="How many cores are available to the codespace.")
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
+        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 
 
-class CopilotSpaceResourcePropMetadata(ExtraGitHubModel):
-    """CopilotSpaceResourcePropMetadata
+model_rebuild(CodespaceMachine)
 
-    Resource-specific metadata. The keys and values depend on the resource type.
-    """
-
-
-model_rebuild(CopilotSpaceResource)
-model_rebuild(CopilotSpaceResourcePropMetadata)
-
-__all__ = (
-    "CopilotSpaceResource",
-    "CopilotSpaceResourcePropMetadata",
-)
+__all__ = ("CodespaceMachine",)

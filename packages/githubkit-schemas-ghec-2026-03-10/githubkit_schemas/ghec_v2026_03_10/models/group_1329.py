@@ -9,46 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0059 import ActionsPolicyOrgConditionsOneof0
-from .group_0060 import ActionsPolicyOrgConditionsOneof1
-from .group_0061 import ActionsPolicyOrgConditionsOneof2
-from .group_0074 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
 
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-class OrgsOrgActionsPoliciesPostBody(GitHubModel):
-    """OrgsOrgActionsPoliciesPostBody"""
-
-    name: str = Field(description="The name of the policy.")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
     )
-    conditions: Missing[
-        Union[
-            ActionsPolicyOrgConditionsOneof0,
-            ActionsPolicyOrgConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof2,
-        ]
+    validation_errors: Missing[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
     ] = Field(
         default=UNSET,
-        title="Organization Actions policy conditions",
-        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(OrgsOrgActionsPoliciesPostBody)
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+    rors
 
-__all__ = ("OrgsOrgActionsPoliciesPostBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

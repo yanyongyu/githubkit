@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,23 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class InteractionLimit(GitHubModel):
-    """Interaction Restrictions
+class ApiInsightsRouteStatsItems(GitHubModel):
+    """ApiInsightsRouteStatsItems"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    http_method: Missing[str] = Field(default=UNSET, description="The HTTP method")
+    api_route: Missing[str] = Field(
+        default=UNSET, description="The API path's route template"
     )
-    expiry: Missing[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ] = Field(
+    total_request_count: Missing[int] = Field(
         default=UNSET,
-        description="The duration of the interaction restriction. Default: `one_day`.",
+        description="The total number of requests within the queried time period",
     )
+    rate_limited_request_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of requests that were rate limited within the queried time period",
+    )
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(InteractionLimit)
+model_rebuild(ApiInsightsRouteStatsItems)
 
-__all__ = ("InteractionLimit",)
+__all__ = ("ApiInsightsRouteStatsItems",)

@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,20 +16,31 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    users: Missing[list[str]] = Field(
         default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
+        description="The usernames of the users to remove from the cost center.",
     )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    organizations: Missing[list[str]] = Field(
+        default=UNSET, description="The organizations to remove from the cost center."
+    )
+    repositories: Missing[list[str]] = Field(
+        default=UNSET, description="The repositories to remove from the cost center."
+    )
+    enterprise_teams: Missing[list[str]] = Field(
         default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
+        description="The enterprise teams to remove from the cost center.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+)
 
-__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+)

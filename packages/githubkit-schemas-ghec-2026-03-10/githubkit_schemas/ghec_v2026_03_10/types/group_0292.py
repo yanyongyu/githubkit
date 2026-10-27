@@ -10,24 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    The AI Scan organization setting to apply
+    """
+
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    actor_type: Literal["User"]
-    role: Literal["reader", "writer", "admin"]
+    The AI Scan organization setting to apply
+    """
+
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CopilotSpaceCollaboratorAnyof0Allof1Type",
-    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
+    "CodeScanningAiScanOrgEnablementUpdateType",
+    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
 )

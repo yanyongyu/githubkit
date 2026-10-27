@@ -9,129 +9,191 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1050 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse,
-)
-from .group_1051 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse,
-)
-from .group_1053 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
 
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsType(TypedDict):
+    """AgentsAutomationsAvailableTriggersGetResponse200Items
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
+    A public Automation trigger and its configurable fields.
+    """
 
     id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type
+    title: str
+    description: str
+    fields: list[
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType
     ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType
-        ]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerType]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryType
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
-    custom_agent: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentType
-    ]
-    sessions: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
+    supports_run_now: NotRequired[bool]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200"""
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsAvailableTriggersGetResponse200Items
+
+    A public Automation trigger and its configurable fields.
+    """
 
     id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse
+    title: str
+    description: str
+    fields: list[
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsTypeForResponse
     ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse
-        ]
+    supports_run_now: NotRequired[bool]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
+
+    A configurable field in a public Automation trigger definition.
+    """
+
+    id: str
+    label: str
+    required: bool
+    description: NotRequired[str]
+    schema: Union[
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type,
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type,
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type,
     ]
-    owner: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwnerTypeForResponse
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
+
+    A configurable field in a public Automation trigger definition.
+    """
+
+    id: str
+    label: str
+    required: bool
+    description: NotRequired[str]
+    schema: Union[
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0TypeForResponse,
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1TypeForResponse,
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2TypeForResponse,
     ]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsTypeForResponse
-        ]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
-    custom_agent: NotRequired[
-        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse
-    ]
-    sessions: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
-        ]
-    ]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof0
+    """
+
+    type: Literal["string"]
+    enum: NotRequired[list[str]]
+    min_length: NotRequired[int]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0TypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof0
+    """
+
+    type: Literal["string"]
+    enum: NotRequired[list[str]]
+    min_length: NotRequired[int]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof2
+    """
+
+    type: Literal["integer"]
+    enum: NotRequired[list[int]]
+    minimum: NotRequired[int]
+    maximum: NotRequired[int]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2TypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof2
+    """
+
+    type: Literal["integer"]
+    enum: NotRequired[list[int]]
+    minimum: NotRequired[int]
+    maximum: NotRequired[int]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof1
+    """
+
+    type: Literal["array"]
+    items: AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType
+    min_items: NotRequired[int]
+    max_items: NotRequired[int]
+    unique_items: NotRequired[bool]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1TypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof1
+    """
+
+    type: Literal["array"]
+    items: AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsTypeForResponse
+    min_items: NotRequired[int]
+    max_items: NotRequired[int]
+    unique_items: NotRequired[bool]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof1PropItems
+    """
+
+    type: Literal["string"]
+    enum: NotRequired[list[str]]
+    min_length: NotRequired[int]
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof1PropItems
+    """
+
+    type: Literal["string"]
+    enum: NotRequired[list[str]]
+    min_length: NotRequired[int]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200TypeForResponse",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0TypeForResponse",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsTypeForResponse",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1TypeForResponse",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2TypeForResponse",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsTypeForResponse",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsType",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse",
 )

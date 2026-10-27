@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,42 +16,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportList(GitHubModel):
-    """UsageReportExportList"""
+class GetBudgetUserStates(GitHubModel):
+    """GetBudgetUserStates"""
 
-    usage_report_exports: list[UsageReportExport] = Field(
-        description="List of usage report exports"
+    user_states: list[GetBudgetUserStatesPropUserStatesItems] = Field(
+        description="Per-user state entries for the budget."
+    )
+    has_next_page: bool = Field(
+        description="Indicates if there are more pages of results available."
+    )
+    total_count: int = Field(
+        description="Total number of user state entries matching the query."
     )
 
 
-class UsageReportExport(GitHubModel):
-    """UsageReportExport"""
+class GetBudgetUserStatesPropUserStatesItems(GitHubModel):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    id: str = Field(description="Unique identifier for the usage report export")
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
-        Field(description="The type of usage report")
-    )
-    start_date: _dt.date = Field(description="The start date for the report")
-    end_date: _dt.date = Field(description="The end date for the report")
-    status: Literal["processing", "completed", "failed"] = Field(
-        description="The current status of the report export"
-    )
-    download_urls: Missing[list[str]] = Field(
+    user: Missing[str] = Field(
         default=UNSET,
-        description="URLs to download the completed report. Only present when the report status is `completed`.",
+        description="The login of the user, when the user record is available.",
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the report export was created"
+    consumed_amount: float = Field(
+        description="The amount currently consumed by this user against the budget."
     )
-    actor: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the export"
+    target_amount: float = Field(
+        description="The target amount allocated to this user within the budget."
+    )
+    override_budget_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of a user-scoped budget that overrides the per-user allocation, when present.",
     )
 
 
-model_rebuild(UsageReportExportList)
-model_rebuild(UsageReportExport)
+model_rebuild(GetBudgetUserStates)
+model_rebuild(GetBudgetUserStatesPropUserStatesItems)
 
 __all__ = (
-    "UsageReportExport",
-    "UsageReportExportList",
+    "GetBudgetUserStates",
+    "GetBudgetUserStatesPropUserStatesItems",
 )

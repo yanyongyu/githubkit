@@ -9,57 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class ActionsCacheRetentionLimitForRepositoryType(TypedDict):
+    """Actions cache retention limit for a repository
 
-    Repository actions caches
+    GitHub Actions cache retention policy for a repository.
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
+    max_cache_retention_days: NotRequired[int]
 
 
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
+class ActionsCacheRetentionLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache retention limit for a repository
 
-    Repository actions caches
+    GitHub Actions cache retention policy for a repository.
     """
 
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
-
-
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
-
-
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    max_cache_retention_days: NotRequired[int]
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "ActionsCacheRetentionLimitForRepositoryType",
+    "ActionsCacheRetentionLimitForRepositoryTypeForResponse",
 )

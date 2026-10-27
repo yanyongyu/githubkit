@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0227 import DiscussionType, DiscussionTypeForResponse
-from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0645 import (
+from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0653 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0658 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0662 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDiscussionCommentCreatedType(TypedDict):
-    """discussion_comment created event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
     action: Literal["created"]
-    comment: WebhooksCommentType
-    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
-    """discussion_comment created event"""
+class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
+    """deploy_key created event"""
 
     action: Literal["created"]
-    comment: WebhooksCommentTypeForResponse
-    discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDiscussionCommentCreatedType",
-    "WebhookDiscussionCommentCreatedTypeForResponse",
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedTypeForResponse",
 )

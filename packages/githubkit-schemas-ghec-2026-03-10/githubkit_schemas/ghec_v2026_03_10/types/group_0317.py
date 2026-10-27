@@ -9,88 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueFieldType(TypedDict):
-    """Issue Field
+class ApiInsightsSubjectStatsItemsType(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
 
-    A custom attribute defined at the organization level for attaching structured
-    data to issues.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
-class IssueFieldTypeForResponse(TypedDict):
-    """Issue Field
+class ApiInsightsSubjectStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsSubjectStatsItems"""
 
-    A custom attribute defined at the organization level for attaching structured
-    data to issues.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class IssueFieldPropOptionsItemsType(TypedDict):
-    """IssueFieldPropOptionsItems"""
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-
-
-class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """IssueFieldPropOptionsItems"""
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    subject_type: NotRequired[str]
+    subject_name: NotRequired[str]
+    subject_id: NotRequired[int]
+    total_request_count: NotRequired[int]
+    rate_limited_request_count: NotRequired[int]
+    last_rate_limited_timestamp: NotRequired[Union[str, None]]
+    last_request_timestamp: NotRequired[str]
 
 
 __all__ = (
-    "IssueFieldPropOptionsItemsType",
-    "IssueFieldPropOptionsItemsTypeForResponse",
-    "IssueFieldType",
-    "IssueFieldTypeForResponse",
+    "ApiInsightsSubjectStatsItemsType",
+    "ApiInsightsSubjectStatsItemsTypeForResponse",
 )

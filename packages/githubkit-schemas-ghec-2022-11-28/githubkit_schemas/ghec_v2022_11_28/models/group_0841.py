@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
+class WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -47,6 +47,6 @@ class WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator(GitHubM
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator)
+model_rebuild(WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator)
 
-__all__ = ("WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator",)
+__all__ = ("WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator",)

@@ -9,30 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
 )

@@ -9,18 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+from githubkit.typing import UniqueList
 
 
-class GistsGistIdStarGetResponse404TypeForResponse(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+
+    credential_id: Union[int, str]
+    credential_type: Literal["classic_pat", "ssh_key"]
+    organizations: UniqueList[str]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+
+    credential_id: Union[int, str]
+    credential_type: Literal["classic_pat", "ssh_key"]
+    organizations: UniqueList[str]
 
 
 __all__ = (
-    "GistsGistIdStarGetResponse404Type",
-    "GistsGistIdStarGetResponse404TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse",
 )

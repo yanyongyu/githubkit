@@ -18,31 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
-    commit_title: Missing[str] = Field(
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
         default=UNSET,
-        description="Title for the automatic commit message. Only supported for direct merges.",
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
     )
-    commit_message: Missing[str] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
+        description="If authentication is required, the username to provide to `vcs_url`.",
     )
-    sha: Missing[str] = Field(
+    vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
+        description="If authentication is required, the password to provide to `vcs_url`.",
     )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+    tfvc_project: Missing[str] = Field(
         default=UNSET,
-        description="The merge method to use for a direct merge. Only supported for direct merges.",
-    )
-    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
-        default=UNSET,
-        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)
+__all__ = ("ReposOwnerRepoImportPutBody",)

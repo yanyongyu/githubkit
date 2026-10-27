@@ -9,69 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class IssueReferenceType(TypedDict):
-    """Issue Reference
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    Check immutable releases
     """
 
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryType
-    issue_type: Union[IssueReferencePropIssueTypeType, None]
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class IssueReferenceTypeForResponse(TypedDict):
-    """Issue Reference
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    Check immutable releases
     """
 
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
-
-
-class IssueReferencePropIssueTypeType(TypedDict):
-    """Issue Type
-
-    The type of the referenced issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
-
-
-class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
-    """Issue Type
-
-    The type of the referenced issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "IssueReferencePropIssueTypeType",
-    "IssueReferencePropIssueTypeTypeForResponse",
-    "IssueReferenceType",
-    "IssueReferenceTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )

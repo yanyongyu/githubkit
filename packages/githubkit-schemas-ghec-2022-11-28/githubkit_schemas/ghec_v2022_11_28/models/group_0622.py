@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,47 +17,29 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0271 import MinimalRepository
-from .group_0621 import SearchResultTextMatchesItems
 
+class UserRoleItems(GitHubModel):
+    """UserRoleItems"""
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
-
-    Code Search Result Item
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[_dt.datetime] = Field(default=UNSET)
-    line_numbers: Missing[list[str]] = Field(default=UNSET)
-    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    display: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ] = Field(description="The role value representing a user role in GitHub.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Is the role a primary role for the user."
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+model_rebuild(UserRoleItems)
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: list[CodeSearchResultItem] = Field()
-
-
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
-
-__all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
-)
+__all__ = ("UserRoleItems",)

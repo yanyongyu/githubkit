@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0564 import EnterpriseWebhooks
-from .group_0565 import SimpleInstallation
-from .group_0566 import OrganizationSimpleWebhooks
-from .group_0567 import RepositoryWebhooks
-from .group_0578 import WebhooksLabel
-from .group_0903 import WebhookPullRequestLabeledPropPullRequest
+from .group_0568 import EnterpriseWebhooks
+from .group_0569 import SimpleInstallation
+from .group_0570 import OrganizationSimpleWebhooks
+from .group_0571 import RepositoryWebhooks
+from .group_0611 import PullRequestWebhook
 
 
-class WebhookPullRequestLabeled(GitHubModel):
-    """pull_request labeled event"""
+class WebhookPullRequestConvertedToDraft(GitHubModel):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["labeled"] = Field()
+    action: Literal["converted_to_draft"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,14 +39,13 @@ class WebhookPullRequestLabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestLabeledPropPullRequest = Field(title="Pull Request")
+    pull_request: PullRequestWebhook = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -55,6 +53,6 @@ class WebhookPullRequestLabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestLabeled)
+model_rebuild(WebhookPullRequestConvertedToDraft)
 
-__all__ = ("WebhookPullRequestLabeled",)
+__all__ = ("WebhookPullRequestConvertedToDraft",)

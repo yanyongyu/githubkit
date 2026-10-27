@@ -11,21 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0203 import SecretScanningCustomPattern
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

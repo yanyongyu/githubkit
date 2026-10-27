@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0645 import (
+from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0653 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0731 import (
-    WebhookCodeScanningAlertReopenedByUserPropAlertType,
-    WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse,
+    WebhookCodeScanningAlertAppearedInBranchPropAlertType,
+    WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertAppearedInBranchType(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertType
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +40,11 @@ class WebhookCodeScanningAlertReopenedByUserType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
-    """code_scanning_alert reopened_by_user event"""
+class WebhookCodeScanningAlertAppearedInBranchTypeForResponse(TypedDict):
+    """code_scanning_alert appeared_in_branch event"""
 
-    action: Literal["reopened_by_user"]
-    alert: WebhookCodeScanningAlertReopenedByUserPropAlertTypeForResponse
+    action: Literal["appeared_in_branch"]
+    alert: WebhookCodeScanningAlertAppearedInBranchPropAlertTypeForResponse
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -55,6 +55,6 @@ class WebhookCodeScanningAlertReopenedByUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserType",
-    "WebhookCodeScanningAlertReopenedByUserTypeForResponse",
+    "WebhookCodeScanningAlertAppearedInBranchType",
+    "WebhookCodeScanningAlertAppearedInBranchTypeForResponse",
 )

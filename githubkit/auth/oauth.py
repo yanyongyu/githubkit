@@ -10,7 +10,7 @@ from githubkit.exception import AuthCredentialError, AuthExpiredError
 from githubkit.utils import is_async
 
 from ._url import get_oauth_base_url, require_basic_auth, require_bypass
-from .base import BaseAuthStrategy
+from .base import BaseAuthStrategy, build_request_with_options
 
 try:
     import anyio
@@ -28,7 +28,10 @@ if TYPE_CHECKING:
 
 
 def create_device_code(
-    github: "GitHubCore", client_id: str, scopes: Sequence[str] | None = None
+    github: "GitHubCore",
+    client_id: str,
+    scopes: Sequence[str] | None = None,
+    request: httpx.Request | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Create a device code for OAuth."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -36,9 +39,11 @@ def create_device_code(
     body = {"client_id": client_id}
     if scopes:
         body["scope"] = " ".join(scopes)
-    response = yield httpx.Request(
+    response = yield build_request_with_options(
+        github,
         "POST",
         url,
+        request=request,
         json=body,
         headers={
             "User-Agent": github.config.user_agent,
@@ -55,6 +60,7 @@ def exchange_web_flow_code(
     client_secret: str,
     code: str,
     redirect_uri: str | None = None,
+    request: httpx.Request | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Exchange web flow code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -66,9 +72,11 @@ def exchange_web_flow_code(
     }
     if redirect_uri:
         body["redirect_uri"] = redirect_uri
-    response = yield httpx.Request(
+    response = yield build_request_with_options(
+        github,
         "POST",
         url,
+        request=request,
         json=body,
         headers={
             "User-Agent": github.config.user_agent,
@@ -80,14 +88,19 @@ def exchange_web_flow_code(
 
 
 def exchange_device_code(
-    github: "GitHubCore", client_id: str, device_code: str
+    github: "GitHubCore",
+    client_id: str,
+    device_code: str,
+    request: httpx.Request | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Exchange device code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
-    response = yield httpx.Request(
+    response = yield build_request_with_options(
+        github,
         "POST",
         url,
+        request=request,
         json={
             "client_id": client_id,
             "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
@@ -107,13 +120,16 @@ def refresh_token(
     client_id: str,
     client_secret: str | None,  # client secret is optional in device flow
     refresh_token: str,
+    request: httpx.Request | None = None,
 ) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Refresh token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
-    response = yield httpx.Request(
+    response = yield build_request_with_options(
+        github,
         "POST",
         url,
+        request=request,
         json={
             "client_id": client_id,
             "client_secret": client_secret,
@@ -286,6 +302,7 @@ class OAuthTokenAuth(httpx.Auth):
                 self.client_id,
                 self.client_secret,
                 cast(str, self.refresh_token),
+                request,
             )
             result = _parse_token_exchange_response(data)
             self.token = token = result["token"]
@@ -342,6 +359,7 @@ class OAuthWebAuth(httpx.Auth):
                 self.client_secret,
                 self.code,
                 self.redirect_uri,
+                request,
             )
             exchange_request = next(flow)
             while True:
@@ -373,6 +391,7 @@ class OAuthWebAuth(httpx.Auth):
                 self.client_secret,
                 self.code,
                 self.redirect_uri,
+                request,
             )
             exchange_request = next(flow)
             while True:
@@ -441,7 +460,7 @@ class OAuthDeviceAuth(httpx.Auth):
         # exchange token for the first time
         if (auth_strategy := self._token_auth_strategy) is None:
             # create device code
-            flow = create_device_code(self.github, self.client_id, self.scopes)
+            flow = create_device_code(self.github, self.client_id, self.scopes, request)
             create_request = next(flow)
             while True:
                 response = yield create_request
@@ -461,7 +480,7 @@ class OAuthDeviceAuth(httpx.Auth):
                 if datetime.now(timezone.utc) > result["expire_time"]:
                     raise AuthExpiredError("Device code expired.")
                 flow = exchange_device_code(
-                    self.github, self.client_id, result["device_code"]
+                    self.github, self.client_id, result["device_code"], request
                 )
                 auth_request = next(flow)
                 while True:
@@ -502,7 +521,7 @@ class OAuthDeviceAuth(httpx.Auth):
         # exchange token for the first time
         if (auth_strategy := self._token_auth_strategy) is None:
             # create device code
-            flow = create_device_code(self.github, self.client_id, self.scopes)
+            flow = create_device_code(self.github, self.client_id, self.scopes, request)
             create_request = next(flow)
             while True:
                 response = yield create_request
@@ -522,7 +541,7 @@ class OAuthDeviceAuth(httpx.Auth):
                 if datetime.now(timezone.utc) > result["expire_time"]:
                     raise AuthExpiredError("Device code expired.")
                 flow = exchange_device_code(
-                    self.github, self.client_id, result["device_code"]
+                    self.github, self.client_id, result["device_code"], request
                 )
                 auth_request = next(flow)
                 while True:

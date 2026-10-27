@@ -11,32 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0600 import TrafficType, TrafficTypeForResponse
 
+class StargazerHistoryType(TypedDict):
+    """Stargazer History
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
-
-    Clone Traffic
+    Stargazer History
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficType]
+    days: list[int]
+    total: int
+    week: int
 
 
-class CloneTrafficTypeForResponse(TypedDict):
-    """Clone Traffic
+class StargazerHistoryTypeForResponse(TypedDict):
+    """Stargazer History
 
-    Clone Traffic
+    Stargazer History
     """
 
-    count: int
-    uniques: int
-    clones: list[TrafficTypeForResponse]
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "CloneTrafficType",
-    "CloneTrafficTypeForResponse",
+    "StargazerHistoryType",
+    "StargazerHistoryTypeForResponse",
 )

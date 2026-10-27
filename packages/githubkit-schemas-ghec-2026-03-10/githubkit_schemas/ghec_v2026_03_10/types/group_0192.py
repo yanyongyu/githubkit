@@ -10,30 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0193 import (
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleLicenseComplianceScanningType(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleLicenseComplianceScanningType",
-    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

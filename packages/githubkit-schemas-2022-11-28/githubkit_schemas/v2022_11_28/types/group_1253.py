@@ -9,144 +9,111 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPrivateRegistriesGetResponse200Type(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationType]
-
-
-class OrgsOrgPrivateRegistriesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
-
-    total_count: int
-    configurations: list[OrgPrivateRegistryConfigurationTypeForResponse]
-
-
-class OrgPrivateRegistryConfigurationType(TypedDict):
-    """Organization private registry
-
-    Private registry configuration for an organization
-    """
-
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType]
     ]
-    auth_type: NotRequired[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
+    resources_attributes: NotRequired[
+        list[
+            OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
         ]
     ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
 
 
-class OrgPrivateRegistryConfigurationTypeForResponse(TypedDict):
-    """Organization private registry
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
 
-    Private registry configuration for an organization
-    """
-
-    name: str
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ]
-    auth_type: NotRequired[
+    resource_type: NotRequired[
         Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
         ]
     ]
-    url: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    replaces_base: NotRequired[bool]
-    visibility: Literal["all", "private", "selected"]
-    tenant_id: NotRequired[str]
-    client_id: NotRequired[str]
-    aws_region: NotRequired[str]
-    account_id: NotRequired[str]
-    role_name: NotRequired[str]
-    domain: NotRequired[str]
-    domain_owner: NotRequired[str]
-    jfrog_oidc_provider_name: NotRequired[str]
-    audience: NotRequired[str]
-    identity_mapping_name: NotRequired[str]
-    namespace: NotRequired[str]
-    service_slug: NotRequired[str]
-    api_host: NotRequired[str]
-    workload_identity_provider: NotRequired[str]
-    service_account: NotRequired[str]
-    created_at: str
-    updated_at: str
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgPrivateRegistryConfigurationType",
-    "OrgPrivateRegistryConfigurationTypeForResponse",
-    "OrgsOrgPrivateRegistriesGetResponse200Type",
-    "OrgsOrgPrivateRegistriesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse",
 )

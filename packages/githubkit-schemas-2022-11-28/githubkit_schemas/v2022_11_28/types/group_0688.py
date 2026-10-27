@@ -14,20 +14,20 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0044 import DiscussionType, DiscussionTypeForResponse
-from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0566 import (
+from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0570 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0578 import WebhooksLabelType, WebhooksLabelTypeForResponse
+from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0584 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookDiscussionUnlabeledType(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionLabeledType(TypedDict):
+    """discussion labeled event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["labeled"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -37,10 +37,10 @@ class WebhookDiscussionUnlabeledType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
-    """discussion unlabeled event"""
+class WebhookDiscussionLabeledTypeForResponse(TypedDict):
+    """discussion labeled event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["labeled"]
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookDiscussionUnlabeledTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionUnlabeledType",
-    "WebhookDiscussionUnlabeledTypeForResponse",
+    "WebhookDiscussionLabeledType",
+    "WebhookDiscussionLabeledTypeForResponse",
 )

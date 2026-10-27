@@ -10,77 +10,76 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Annotated, Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostResponse201(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
+class AgentsAutomationsGetResponse200Items(GitHubModel):
+    """AgentsAutomationsGetResponse200Items
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
+    A summary representation of an automation including repository identity (used in
+    cross-repository list responses).
+    """
+
+    id: str = Field(description="The unique identifier of the automation.")
+    repository: AgentsAutomationsGetResponse200ItemsPropRepository = Field(
+        description="Repository identity for an automation in cross-repository list responses."
     )
-    creator: Missing[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
+    name: str = Field(description="The name of the automation.")
+    enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether the automation is currently enabled."
     )
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
-    )
-    user_collaborators: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsReposOwnerRepoTasksPostResponse201PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
-    )
-    repository: Missing[AgentsReposOwnerRepoTasksPostResponse201PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
-    )
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
-    )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems]
-    ] = Field(
+    owner_type: Missing[Literal["user", "repository"]] = Field(
         default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
+        description="Who owns the automation. `user` keeps it private to its creator and its runs act as that user. `repository` makes it belong to the repository, visible to anyone with read access to the repository, and its runs act as the Copilot app rather than as a person.",
     )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
+        description="Controls which repository resources a run may modify. `trigger` limits writes to the resource that started the run, when one exists, and resources created during the run; `repository` allows writes to any resource in the repository. Supported values: `trigger`, `repository`.",
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
+    require_actor_write_permission: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, event-triggered runs require the event actor to have repo write permission, even when the org's allow_read_access_triggers policy is enabled. Does not apply to interval-scheduled runs, which always run as the automation owner.",
     )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent] = (
-        Field(
-            default=UNSET, description="Custom agent metadata associated with this task"
-        )
+    model: Missing[str] = Field(
+        default=UNSET,
+        description="The model to use for sessions triggered by this automation. Omit to use the platform default.",
+    )
+    reasoning_effort: Missing[str] = Field(
+        default=UNSET,
+        description="The reasoning effort to use for sessions triggered by this automation. Omit or leave empty for no override. Currently supported values: `none`, `low`, `medium`, `high`, `xhigh`, `max`",
+    )
+    triggers: Missing[AgentsAutomationsGetResponse200ItemsPropTriggers] = Field(
+        default=UNSET,
+        description="Public trigger configuration keyed by stable public trigger identifier. Each trigger has a closed, trigger-specific configuration schema.",
+    )
+    created_at: _dt.datetime = Field(description="When the automation was created.")
+    updated_at: _dt.datetime = Field(
+        description="When the automation was last updated."
+    )
+    created_by: AgentsAutomationsGetResponse200ItemsPropCreatedBy = Field(
+        description="A GitHub user"
     )
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
+class AgentsAutomationsGetResponse200ItemsPropRepository(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropRepository
+
+    Repository identity for an automation in cross-repository list responses.
+    """
+
+    id: int = Field(description="The unique identifier of the repository.")
+    owner: str = Field(description="The repository owner login.")
+    name: str = Field(description="The repository name.")
+
+
+class AgentsAutomationsGetResponse200ItemsPropCreatedBy(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropCreatedBy
 
     A GitHub user
     """
@@ -90,109 +89,569 @@ class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
+class AgentsAutomationsGetResponse200ItemsPropTriggers(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggers
 
-    A GitHub user
+    Public trigger configuration keyed by stable public trigger identifier. Each
+    trigger has a closed, trigger-specific configuration schema.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    interval: Missing[AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval] = (
+        Field(default=UNSET)
     )
+    issue_opened: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened
+    ] = Field(default=UNSET)
+    issue_labeled: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled
+    ] = Field(default=UNSET)
+    workflow_run: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun
+    ] = Field(default=UNSET)
+    pull_request_opened: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened
+    ] = Field(default=UNSET)
+    pull_request_synchronize: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize
+    ] = Field(default=UNSET)
+    pull_request_merged: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment
+    ] = Field(default=UNSET)
+    discussion_opened: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened
+    ] = Field(default=UNSET)
+    discussion_updated: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment
+    ] = Field(default=UNSET)
+    issue_assigned: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned
+    ] = Field(default=UNSET)
+    pull_request_assigned: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned
+    ] = Field(default=UNSET)
+    sub_issue_added: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded
+    ] = Field(default=UNSET)
+    pull_request_ready_for_review: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview
+    ] = Field(default=UNSET)
+    pull_request_labeled: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled
+    ] = Field(default=UNSET)
+    pull_request_merge_conflict: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict
+    ] = Field(default=UNSET)
+    pull_request_review_submitted: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted
+    ] = Field(default=UNSET)
+    pull_request_review_requested: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested
+    ] = Field(default=UNSET)
+    automation_completed: Missing[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted
+    ] = Field(default=UNSET)
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropOwner(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval"""
 
-    The owner of the repository
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    cadence: UniqueList[Literal["hourly", "daily", "weekly"]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="One or more schedules on which the Automation runs.",
     )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepository(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
-    )
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: Missing[str] = Field(
+    hour_utc: Missing[int] = Field(
+        le=23.0,
         default=UNSET,
-        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+        description="UTC hour anchor (0 through 23) for daily and weekly schedules. Omitted daily and weekly values default to `0` (midnight UTC).",
+    )
+    day_of_week: Missing[int] = Field(
+        le=6.0,
+        default=UNSET,
+        description="UTC weekday anchor for weekly schedules, where `0` is Sunday and `6` is Saturday. Omitted weekly values default to Monday (`1`).",
+    )
+    minute_utc: Missing[Literal[0, 15, 30, 45]] = Field(
+        default=UNSET,
+        description="UTC minute anchor for daily and weekly schedules. Omitted daily and weekly values default to `0`. Must be omitted whenever `cadence` includes `hourly`.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
     )
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened"""
 
-    A resource generated by the task
-    """
-
-    provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["pull", "branch"] = Field(
-        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
     )
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1,
-    ] = Field(description="Resource data (shape depends on type)")
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0(
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    labels: Missing[UniqueList[str]] = Field(
+        default=UNSET,
+        description="Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun"""
+
+    workflows: list[Annotated[str, Field(min_length=1)]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Workflow names matched against the name in each workflow YAML file.",
+    )
+    conclusions: list[Literal["failure"]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Workflow conclusions to match. The current trigger supports failure.",
+    )
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened"""
 
-    A GitHub resource (pull request, issue, etc.)
-    """
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
 
-    id: int = Field(description="GitHub resource ID")
-    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
 
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1(
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize"""
 
-    A Git branch reference
-    """
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
 
-    head_ref: str = Field(description="Head branch name")
-    base_ref: str = Field(description="Base branch name")
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropOwner)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropRepository)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1)
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment"""
+
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment"""
+
+    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]] = Field(
+        max_length=2 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Pull request conversation and inline review comment types to match.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened"""
+
+    categories: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Discussion category names matched case-insensitively.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated"""
+
+    categories: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Discussion category names matched case-insensitively.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment"""
+
+    comment_types: Missing[UniqueList[Literal["comment", "reply"]]] = Field(
+        max_length=2 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Top-level discussion comments and replies to match. Omit to match both.",
+    )
+    categories: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Discussion category names matched case-insensitively.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    assignees: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Affected assignee logins matched case-insensitively.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    assignees: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Affected assignee logins matched case-insensitively.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded(GitHubModel):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    labels: Missing[UniqueList[str]] = Field(
+        default=UNSET,
+        description="Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    states: UniqueList[Literal["approved", "changes_requested", "commented"]] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Submitted review states to match.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted(
+    GitHubModel
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted"""
+
+    automation_ids: UniqueList[str] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Upstream Automation IDs in the same repository.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
+    )
+
+
+model_rebuild(AgentsAutomationsGetResponse200Items)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropRepository)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropCreatedBy)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggers)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened)
+model_rebuild(
+    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize
+)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded)
+model_rebuild(
+    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview
+)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled)
+model_rebuild(
+    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict
+)
+model_rebuild(
+    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted
+)
+model_rebuild(
+    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested
+)
+model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwner",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepository",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems",
+    "AgentsAutomationsGetResponse200Items",
+    "AgentsAutomationsGetResponse200ItemsPropCreatedBy",
+    "AgentsAutomationsGetResponse200ItemsPropRepository",
+    "AgentsAutomationsGetResponse200ItemsPropTriggers",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun",
 )

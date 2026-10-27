@@ -9,41 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0521 import PullRequestStackPullRequest
+from .group_1502 import ReposOwnerRepoPagesPostBodyPropSource
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    build_type: Literal["legacy", "workflow"] = Field(
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
+        default=UNSET,
+        description="The source branch and directory used to publish your Pages site.",
+    )
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)

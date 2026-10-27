@@ -21,8 +21,8 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlert(GitHubModel):
-    """WebhookCodeScanningAlertReopenedByUserPropAlert
+class WebhookCodeScanningAlertAppearedInBranchPropAlert(GitHubModel):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlert
 
     The code scanning alert involved in the event.
     """
@@ -31,19 +31,21 @@ class WebhookCodeScanningAlertReopenedByUserPropAlert(GitHubModel):
     created_at: _dt.datetime = Field(
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
     )
-    dismissed_at: None = Field(
+    dismissed_at: Union[_dt.datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    dismissed_by: None = Field()
+    dismissed_by: Union[
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy, None
+    ] = Field(title="User")
     dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
         Field(
             default=UNSET,
             description="The dismissal comment associated with the dismissal of the alert.",
         )
     )
-    dismissed_reason: None = Field(
-        description="The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, `used in tests`, and `mitigated`."
-    )
+    dismissed_reason: Union[
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+    ] = Field(description="The reason for dismissing or closing the alert.")
     fixed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
         description="The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
@@ -51,19 +53,47 @@ class WebhookCodeScanningAlertReopenedByUserPropAlert(GitHubModel):
     html_url: str = Field(description="The GitHub URL of the alert resource.")
     most_recent_instance: Missing[
         Union[
-            WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance, None
+            WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance,
+            None,
         ]
     ] = Field(default=UNSET, title="Alert Instance")
     number: int = Field(description="The code scanning alert number.")
-    rule: WebhookCodeScanningAlertReopenedByUserPropAlertPropRule = Field()
-    state: Union[Literal["open", "fixed"], None] = Field(
+    rule: WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule = Field()
+    state: Union[Literal["open", "dismissed", "fixed"], None] = Field(
         description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
     )
-    tool: WebhookCodeScanningAlertReopenedByUserPropAlertPropTool = Field()
+    tool: WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool = Field()
     url: str = Field()
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance(
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance(
     GitHubModel
 ):
     """Alert Instance"""
@@ -81,10 +111,10 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance(
         description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
     )
     location: Missing[
-        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation
     ] = Field(default=UNSET)
     message: Missing[
-        WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage
+        WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage
     ] = Field(default=UNSET)
     ref: str = Field(
         description="The full Git reference, formatted as `refs/heads/<branch name>`."
@@ -94,11 +124,11 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance(
     )
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation(
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation(
     GitHubModel
 ):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocatio
-    n
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocat
+    ion
     """
 
     end_column: Missing[int] = Field(default=UNSET)
@@ -108,16 +138,18 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropL
     start_line: Missing[int] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage(
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage(
     GitHubModel
 ):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage"""
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessa
+    ge
+    """
 
     text: Missing[str] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropRule(GitHubModel):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropRule"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule(GitHubModel):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule"""
 
     description: str = Field(
         description="A short description of the rule used to detect the alert."
@@ -130,8 +162,8 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropRule(GitHubModel):
     )
 
 
-class WebhookCodeScanningAlertReopenedByUserPropAlertPropTool(GitHubModel):
-    """WebhookCodeScanningAlertReopenedByUserPropAlertPropTool"""
+class WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool(GitHubModel):
+    """WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool"""
 
     name: str = Field(
         description="The name of the tool used to generate the code scanning analysis alert."
@@ -141,22 +173,24 @@ class WebhookCodeScanningAlertReopenedByUserPropAlertPropTool(GitHubModel):
     )
 
 
-model_rebuild(WebhookCodeScanningAlertReopenedByUserPropAlert)
-model_rebuild(WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance)
+model_rebuild(WebhookCodeScanningAlertAppearedInBranchPropAlert)
+model_rebuild(WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy)
+model_rebuild(WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance)
 model_rebuild(
-    WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation
+    WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation
 )
 model_rebuild(
-    WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage
+    WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage
 )
-model_rebuild(WebhookCodeScanningAlertReopenedByUserPropAlertPropRule)
-model_rebuild(WebhookCodeScanningAlertReopenedByUserPropAlertPropTool)
+model_rebuild(WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule)
+model_rebuild(WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool)
 
 __all__ = (
-    "WebhookCodeScanningAlertReopenedByUserPropAlert",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropRule",
-    "WebhookCodeScanningAlertReopenedByUserPropAlertPropTool",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlert",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule",
+    "WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool",
 )

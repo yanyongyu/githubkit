@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0566 import (
+from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0570 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0570 import (
+from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0574 import (
     CheckRunWithSimpleCheckSuiteType,
     CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCheckRunRerequestedType(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunCompletedType(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["rerequested"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -38,10 +38,10 @@ class WebhookCheckRunRerequestedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunCompletedTypeForResponse(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["rerequested"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCheckRunRerequestedType",
-    "WebhookCheckRunRerequestedTypeForResponse",
+    "WebhookCheckRunCompletedType",
+    "WebhookCheckRunCompletedTypeForResponse",
 )

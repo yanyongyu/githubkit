@@ -9,36 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0226 import LabelType, LabelTypeForResponse
-from .group_0236 import IssueType, IssueTypeForResponse
-
-
-class IssuesEventType(TypedDict):
-    """IssuesEvent"""
-
-    action: str
-    issue: IssueType
-    assignee: NotRequired[SimpleUserType]
-    assignees: NotRequired[list[SimpleUserType]]
-    label: NotRequired[LabelType]
-    labels: NotRequired[list[LabelType]]
+from .group_0245 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
 
-class IssuesEventTypeForResponse(TypedDict):
-    """IssuesEvent"""
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
-    action: str
-    issue: IssueTypeForResponse
-    assignee: NotRequired[SimpleUserTypeForResponse]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    label: NotRequired[LabelTypeForResponse]
-    labels: NotRequired[list[LabelTypeForResponse]]
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
+
+
+class PullRequestMinimalTypeForResponse(TypedDict):
+    """Pull Request Minimal"""
+
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
 
 
 __all__ = (
-    "IssuesEventType",
-    "IssuesEventTypeForResponse",
+    "PullRequestMinimalType",
+    "PullRequestMinimalTypeForResponse",
 )

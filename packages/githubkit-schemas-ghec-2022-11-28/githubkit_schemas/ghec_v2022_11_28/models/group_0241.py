@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,54 +17,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0230 import ReactionRollup
-from .group_0240 import ReleaseAsset
 
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-class Release(GitHubModel):
-    """Release
-
-    A release.
+    A value assigned to an issue field
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    assets_url: str = Field()
-    upload_url: str = Field()
-    tarball_url: Union[str, None] = Field()
-    zipball_url: Union[str, None] = Field()
-    id: int = Field()
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    issue_field_name: Missing[str] = Field(
+        default=UNSET, description="The human-readable name of the issue field."
+    )
     node_id: str = Field()
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"] = (
+        Field(description="The data type of the issue field")
     )
-    name: Union[str, None] = Field()
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    draft: bool = Field(
-        description="true to create a draft (unpublished) release, false to create a published one."
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
     )
-    prerelease: bool = Field(
-        description="Whether to identify the release as a prerelease or a full release."
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
+    ] = Field(
+        default=UNSET,
+        description="Details about the selected option (only present for single_select fields)",
     )
-    immutable: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the release is immutable."
-    )
-    created_at: _dt.datetime = Field()
-    published_at: Union[_dt.datetime, None] = Field()
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: list[ReleaseAsset] = Field()
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    mentions_count: Missing[int] = Field(default=UNSET)
-    discussion_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the release discussion."
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    multi_select_options: Missing[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItems], None]
+    ] = Field(default=UNSET, description="Details about the selected options")
 
 
-model_rebuild(Release)
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
 
-__all__ = ("Release",)
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+class IssueFieldValuePropMultiSelectOptionsItems(GitHubModel):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
+model_rebuild(IssueFieldValuePropMultiSelectOptionsItems)
+
+__all__ = (
+    "IssueFieldValue",
+    "IssueFieldValuePropMultiSelectOptionsItems",
+    "IssueFieldValuePropSingleSelectOption",
+)

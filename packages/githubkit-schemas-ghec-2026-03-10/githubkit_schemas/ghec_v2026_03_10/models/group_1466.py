@@ -13,19 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0139 import CustomProperty
 
+class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+    selected_teams: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+        description="List of team names within the organization to which to grant access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)

@@ -12,35 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class ActionsCacheStorageLimitForOrganizationType(TypedDict):
+    """Actions cache storage limit for an organization
 
-    The public key used for setting Actions Secrets.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    max_cache_size_gb: NotRequired[int]
 
 
-class ActionsPublicKeyTypeForResponse(TypedDict):
-    """ActionsPublicKey
+class ActionsCacheStorageLimitForOrganizationTypeForResponse(TypedDict):
+    """Actions cache storage limit for an organization
 
-    The public key used for setting Actions Secrets.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ActionsPublicKeyType",
-    "ActionsPublicKeyTypeForResponse",
+    "ActionsCacheStorageLimitForOrganizationType",
+    "ActionsCacheStorageLimitForOrganizationTypeForResponse",
 )

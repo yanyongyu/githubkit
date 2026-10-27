@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0146 import ActionsPolicyType, ActionsPolicyTypeForResponse
+
+class CredentialsRevokePostBodyType(TypedDict):
+    """CredentialsRevokePostBody"""
+
+    credentials: list[str]
 
 
-class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
+class CredentialsRevokePostBodyTypeForResponse(TypedDict):
+    """CredentialsRevokePostBody"""
 
-    total_count: int
-    policies: list[ActionsPolicyType]
-
-
-class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+    credentials: list[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesGetResponse200Type",
-    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
+    "CredentialsRevokePostBodyType",
+    "CredentialsRevokePostBodyTypeForResponse",
 )

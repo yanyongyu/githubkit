@@ -13,81 +13,74 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
-from .group_0221 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
+from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    code_of_conduct: Union[CodeOfConductSimpleType, None]
-    code_of_conduct_file: Union[CommunityHealthFileType, None]
-    license_: Union[LicenseSimpleType, None]
-    contributing: Union[CommunityHealthFileType, None]
-    readme: Union[CommunityHealthFileType, None]
-    issue_template: Union[CommunityHealthFileType, None]
-    pull_request_template: Union[CommunityHealthFileType, None]
-
-
-class CommunityProfilePropFilesTypeForResponse(TypedDict):
-    """CommunityProfilePropFiles"""
-
-    code_of_conduct: Union[CodeOfConductSimpleTypeForResponse, None]
-    code_of_conduct_file: Union[CommunityHealthFileTypeForResponse, None]
-    license_: Union[LicenseSimpleTypeForResponse, None]
-    contributing: Union[CommunityHealthFileTypeForResponse, None]
-    readme: Union[CommunityHealthFileTypeForResponse, None]
-    issue_template: Union[CommunityHealthFileTypeForResponse, None]
-    pull_request_template: Union[CommunityHealthFileTypeForResponse, None]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityHealthFileTypeForResponse(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    Combined Commit Status
     """
 
-    health_percentage: int
-    description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[_dt.datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    state: str
+    statuses: list[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
+    url: str
 
 
-class CommunityProfileTypeForResponse(TypedDict):
-    """Community Profile
+class CombinedCommitStatusTypeForResponse(TypedDict):
+    """Combined Commit Status
 
-    Community Profile
+    Combined Commit Status
     """
 
-    health_percentage: int
+    state: str
+    statuses: list[SimpleCommitStatusTypeForResponse]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryTypeForResponse
+    commit_url: str
+    url: str
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
     description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesTypeForResponse
-    updated_at: Union[str, None]
-    content_reports_enabled: NotRequired[bool]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class SimpleCommitStatusTypeForResponse(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    context: str
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "CommunityHealthFileType",
-    "CommunityHealthFileTypeForResponse",
-    "CommunityProfilePropFilesType",
-    "CommunityProfilePropFilesTypeForResponse",
-    "CommunityProfileType",
-    "CommunityProfileTypeForResponse",
+    "CombinedCommitStatusType",
+    "CombinedCommitStatusTypeForResponse",
+    "SimpleCommitStatusType",
+    "SimpleCommitStatusTypeForResponse",
 )

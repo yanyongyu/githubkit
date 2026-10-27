@@ -9,86 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class Feed(GitHubModel):
-    """Feed
-
-    Feed
-    """
-
-    timeline_url: str = Field()
-    user_url: str = Field()
-    current_user_public_url: Missing[str] = Field(default=UNSET)
-    current_user_url: Missing[str] = Field(default=UNSET)
-    current_user_actor_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_urls: Missing[list[str]] = Field(default=UNSET)
-    security_advisories_url: Missing[str] = Field(default=UNSET)
-    repository_discussions_url: Missing[str] = Field(
-        default=UNSET, description="A feed of discussions for a given repository."
-    )
-    repository_discussions_category_url: Missing[str] = Field(
-        default=UNSET,
-        description="A feed of discussions for a given repository and category.",
-    )
-    links: FeedPropLinks = Field(alias="_links")
+from .group_0003 import SimpleUser
 
 
-class FeedPropLinks(GitHubModel):
-    """FeedPropLinks"""
+class PullRequestReviewEventPropReview(GitHubModel):
+    """PullRequestReviewEventPropReview"""
 
-    timeline: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    user: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    submitted_at: Missing[Union[str, None]] = Field(default=UNSET)
+    state: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    pull_request_url: Missing[str] = Field(default=UNSET)
+    links: Missing[PullRequestReviewEventPropReviewPropLinks] = Field(
+        default=UNSET, alias="_links"
     )
-    user: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    security_advisories: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_public: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_actor: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organization: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organizations: Missing[list[LinkWithType]] = Field(default=UNSET)
-    repository_discussions: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    repository_discussions_category: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
+    updated_at: Missing[str] = Field(default=UNSET)
 
 
-class LinkWithType(GitHubModel):
-    """Link With Type
+class PullRequestReviewEventPropReviewPropLinks(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinks"""
 
-    Hypermedia Link with Type
-    """
+    html: PullRequestReviewEventPropReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewEventPropReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
 
     href: str = Field()
-    type: str = Field()
 
 
-model_rebuild(Feed)
-model_rebuild(FeedPropLinks)
-model_rebuild(LinkWithType)
+class PullRequestReviewEventPropReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReviewEventPropReview)
+model_rebuild(PullRequestReviewEventPropReviewPropLinks)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewEventPropReviewPropLinksPropPullRequest)
 
 __all__ = (
-    "Feed",
-    "FeedPropLinks",
-    "LinkWithType",
+    "PullRequestReviewEventPropReview",
+    "PullRequestReviewEventPropReviewPropLinks",
+    "PullRequestReviewEventPropReviewPropLinksPropHtml",
+    "PullRequestReviewEventPropReviewPropLinksPropPullRequest",
 )

@@ -13,24 +13,44 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    credential_id: int = Field(
-        description="The token ID of the personal access token (classic) to authorize."
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
+        default=UNSET,
+        description="Visibility of a runner group. You can select all organizations or select individual organization.",
     )
-    credential_type: Literal["classic_pat"] = Field()
-    organizations: UniqueList[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+    selected_organization_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="List of organization IDs that can access the runner group.",
+    )
+    runners: Missing[list[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
+    )
+    allows_public_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[str] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)

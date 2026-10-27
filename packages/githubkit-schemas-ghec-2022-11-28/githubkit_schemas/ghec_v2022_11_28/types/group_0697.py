@@ -9,76 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksChanges8Type(TypedDict):
-    """WebhooksChanges8"""
+class PullRequestWebhookAllof1Type(TypedDict):
+    """PullRequestWebhookAllof1"""
 
-    tier: WebhooksChanges8PropTierType
-
-
-class WebhooksChanges8TypeForResponse(TypedDict):
-    """WebhooksChanges8"""
-
-    tier: WebhooksChanges8PropTierTypeForResponse
-
-
-class WebhooksChanges8PropTierType(TypedDict):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFromType
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhooksChanges8PropTierTypeForResponse(TypedDict):
-    """WebhooksChanges8PropTier"""
+class PullRequestWebhookAllof1TypeForResponse(TypedDict):
+    """PullRequestWebhookAllof1"""
 
-    from_: WebhooksChanges8PropTierPropFromTypeForResponse
-
-
-class WebhooksChanges8PropTierPropFromType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
-
-
-class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
 __all__ = (
-    "WebhooksChanges8PropTierPropFromType",
-    "WebhooksChanges8PropTierPropFromTypeForResponse",
-    "WebhooksChanges8PropTierType",
-    "WebhooksChanges8PropTierTypeForResponse",
-    "WebhooksChanges8Type",
-    "WebhooksChanges8TypeForResponse",
+    "PullRequestWebhookAllof1Type",
+    "PullRequestWebhookAllof1TypeForResponse",
 )

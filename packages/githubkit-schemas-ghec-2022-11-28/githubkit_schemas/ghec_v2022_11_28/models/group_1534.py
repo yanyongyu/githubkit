@@ -11,26 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0140 import CustomPropertyValue
 
 
-class ReposOwnerRepoAutolinksPostBody(GitHubModel):
-    """ReposOwnerRepoAutolinksPostBody"""
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    key_prefix: str = Field(
-        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the custom property values will be applied to.",
     )
-    url_template: str = Field(
-        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
-    )
-    is_alphanumeric: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(ReposOwnerRepoAutolinksPostBody)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoAutolinksPostBody",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

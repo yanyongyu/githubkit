@@ -9,26 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    ]
+    models: NotRequired[
+        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    ]
+    models: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
 
-    user_identifier: NotRequired[str]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
 
-    user_identifier: NotRequired[str]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse",
 )

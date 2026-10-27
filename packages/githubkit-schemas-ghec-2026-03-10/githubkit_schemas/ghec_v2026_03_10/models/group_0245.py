@@ -13,24 +13,47 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0234 import IssueComment
-from .group_0236 import Issue
+
+class PullRequestMinimalPropHead(GitHubModel):
+    """PullRequestMinimalPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropHeadPropRepo = Field()
 
 
-class IssueCommentEvent(GitHubModel):
-    """IssueCommentEvent"""
+class PullRequestMinimalPropHeadPropRepo(GitHubModel):
+    """PullRequestMinimalPropHeadPropRepo"""
 
-    action: str = Field()
-    issue: Issue = Field(
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    comment: IssueComment = Field(
-        title="Issue Comment",
-        description="Comments provide a way for people to collaborate on an issue.",
-    )
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
 
 
-model_rebuild(IssueCommentEvent)
+class PullRequestMinimalPropBase(GitHubModel):
+    """PullRequestMinimalPropBase"""
 
-__all__ = ("IssueCommentEvent",)
+    ref: str = Field()
+    sha: str = Field()
+    repo: PullRequestMinimalPropBasePropRepo = Field()
+
+
+class PullRequestMinimalPropBasePropRepo(GitHubModel):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int = Field()
+    url: str = Field()
+    name: str = Field()
+
+
+model_rebuild(PullRequestMinimalPropHead)
+model_rebuild(PullRequestMinimalPropHeadPropRepo)
+model_rebuild(PullRequestMinimalPropBase)
+model_rebuild(PullRequestMinimalPropBasePropRepo)
+
+__all__ = (
+    "PullRequestMinimalPropBase",
+    "PullRequestMinimalPropBasePropRepo",
+    "PullRequestMinimalPropHead",
+    "PullRequestMinimalPropHeadPropRepo",
+)

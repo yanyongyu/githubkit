@@ -9,28 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class CodeQualitySetupUpdateAnyof4Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "CodeQualitySetupUpdateAnyof4Type",
+    "CodeQualitySetupUpdateAnyof4TypeForResponse",
 )

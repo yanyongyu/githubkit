@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
-
-    policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
-    ] = Field(
-        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
-    )
+from .group_0075 import ActionsPolicy
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
+class EnterprisesEnterpriseActionsPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)
+    total_count: int = Field(description="The total number of Actions policies.")
+    policies: list[ActionsPolicy] = Field(description="An array of Actions policies.")
+
+
+model_rebuild(EnterprisesEnterpriseActionsPoliciesGetResponse200)
+
+__all__ = ("EnterprisesEnterpriseActionsPoliciesGetResponse200",)

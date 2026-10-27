@@ -9,58 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class ReleaseEventPropReleaseAllof1Type(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
+
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
-class GistCommitType(TypedDict):
-    """Gist Commit
+class ReleaseEventPropReleaseAllof1TypeForResponse(TypedDict):
+    """ReleaseEventPropReleaseAllof1"""
 
-    Gist Commit
-    """
-
-    url: str
-    version: str
-    user: Union[SimpleUserType, None]
-    change_status: GistCommitPropChangeStatusType
-    committed_at: _dt.datetime
-
-
-class GistCommitTypeForResponse(TypedDict):
-    """Gist Commit
-
-    Gist Commit
-    """
-
-    url: str
-    version: str
-    user: Union[SimpleUserTypeForResponse, None]
-    change_status: GistCommitPropChangeStatusTypeForResponse
-    committed_at: str
-
-
-class GistCommitPropChangeStatusType(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistCommitPropChangeStatusTypeForResponse(TypedDict):
-    """GistCommitPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
+    is_short_description_html_truncated: NotRequired[bool]
+    short_description_html: NotRequired[str]
 
 
 __all__ = (
-    "GistCommitPropChangeStatusType",
-    "GistCommitPropChangeStatusTypeForResponse",
-    "GistCommitType",
-    "GistCommitTypeForResponse",
+    "ReleaseEventPropReleaseAllof1Type",
+    "ReleaseEventPropReleaseAllof1TypeForResponse",
 )

@@ -9,48 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0645 import (
+from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0653 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0665 import WebhooksIssueType, WebhooksIssueTypeForResponse
-from .group_0668 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
+from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0892 import (
+    WebhookIssuesOpenedPropChangesType,
+    WebhookIssuesOpenedPropChangesTypeForResponse,
+)
+from .group_0894 import (
+    WebhookIssuesOpenedPropIssueType,
+    WebhookIssuesOpenedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssuesUnassignedType(TypedDict):
-    """issues unassigned event"""
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    action: Literal["unassigned"]
-    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssueType
+    issue: WebhookIssuesOpenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnassignedTypeForResponse(TypedDict):
-    """issues unassigned event"""
+class WebhookIssuesOpenedTypeForResponse(TypedDict):
+    """issues opened event"""
 
-    action: Literal["unassigned"]
-    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhooksIssueTypeForResponse
+    issue: WebhookIssuesOpenedPropIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnassignedType",
-    "WebhookIssuesUnassignedTypeForResponse",
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedTypeForResponse",
 )

@@ -13,13 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPostBody"""
-
-    head_sha: str = Field(description="The sha of the head commit.")
+from .group_0304 import Job
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)
+    total_count: int = Field()
+    jobs: list[Job] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",)

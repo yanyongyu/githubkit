@@ -9,59 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    job_id: int = Field(description="The ID of the job.")
-    status: Literal["pending", "processing", "completed", "failed"] = Field(
-        description="The current status of the job."
-    )
-    started_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="When the job started processing (only present when processing, completed, or failed).",
-    )
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of records successfully mutated (only present when completed).",
-    )
-    errors: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Processing errors (only present when completed or failed).",
-    )
+    total_count: int = Field()
+    repository_cache_usages: list[ActionsCacheUsageByRepository] = Field()
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200Pro
-    pErrorsItems
+class ActionsCacheUsageByRepository(GitHubModel):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
     """
 
+    full_name: str = Field(
+        description="The repository owner and name for the cache usage being shown."
+    )
+    active_caches_size_in_bytes: int = Field(
+        description="The sum of the size in bytes of all the active cache items in the repository."
+    )
+    active_caches_count: int = Field(
+        description="The number of active caches in the repository."
+    )
 
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200
-)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems
-)
+
+model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
+model_rebuild(ActionsCacheUsageByRepository)
 
 __all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems",
+    "ActionsCacheUsageByRepository",
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
 )

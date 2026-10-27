@@ -9,30 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any, Literal, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class CopilotSpaceResourceType(TypedDict):
+    """Copilot Space Resource
 
-    The public key used for setting Dependabot Secrets.
+    A resource attached to a Copilot Space.
     """
 
-    key_id: str
-    key: str
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class DependabotPublicKeyTypeForResponse(TypedDict):
-    """DependabotPublicKey
+class CopilotSpaceResourceTypeForResponse(TypedDict):
+    """Copilot Space Resource
 
-    The public key used for setting Dependabot Secrets.
+    A resource attached to a Copilot Space.
     """
 
-    key_id: str
-    key: str
+    id: int
+    resource_type: Literal[
+        "repository",
+        "github_file",
+        "free_text",
+        "github_issue",
+        "github_pull_request",
+        "media_content",
+        "uploaded_text_file",
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    metadata: CopilotSpaceResourcePropMetadataTypeForResponse
+    created_at: str
+    updated_at: str
+
+
+CopilotSpaceResourcePropMetadataType: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
+
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
+
+
+CopilotSpaceResourcePropMetadataTypeForResponse: TypeAlias = dict[str, Any]
+"""CopilotSpaceResourcePropMetadata
+
+Resource-specific metadata. The keys and values depend on the resource type.
+"""
 
 
 __all__ = (
-    "DependabotPublicKeyType",
-    "DependabotPublicKeyTypeForResponse",
+    "CopilotSpaceResourcePropMetadataType",
+    "CopilotSpaceResourcePropMetadataTypeForResponse",
+    "CopilotSpaceResourceType",
+    "CopilotSpaceResourceTypeForResponse",
 )

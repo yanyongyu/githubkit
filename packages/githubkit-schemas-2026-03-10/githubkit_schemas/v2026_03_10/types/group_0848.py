@@ -13,41 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0567 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0569 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0598 import (
-    PersonalAccessTokenRequestType,
-    PersonalAccessTokenRequestTypeForResponse,
+from .group_0570 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0849 import (
+    WebhookPackagePublishedPropPackageType,
+    WebhookPackagePublishedPropPackageTypeForResponse,
 )
 
 
-class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookPackagePublishedType(TypedDict):
+    """package published event"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    package: WebhookPackagePublishedPropPackageType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserType
-    installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestApprovedTypeForResponse(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookPackagePublishedTypeForResponse(TypedDict):
+    """package published event"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    package: WebhookPackagePublishedPropPackageTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
     sender: SimpleUserTypeForResponse
-    installation: SimpleInstallationTypeForResponse
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestApprovedType",
-    "WebhookPersonalAccessTokenRequestApprovedTypeForResponse",
+    "WebhookPackagePublishedType",
+    "WebhookPackagePublishedTypeForResponse",
 )

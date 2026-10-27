@@ -9,19 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-EmojisGetResponse200Type: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
-"""EmojisGetResponse200
-"""
+class AgentsReposOwnerRepoTasksGetResponse404Type(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse404
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse404TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse404
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EmojisGetResponse200Type",
-    "EmojisGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksGetResponse404PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksGetResponse404Type",
+    "AgentsReposOwnerRepoTasksGetResponse404TypeForResponse",
 )

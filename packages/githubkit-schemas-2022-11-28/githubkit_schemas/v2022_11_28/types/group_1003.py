@@ -13,73 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0564 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0565 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0566 import (
+from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0570 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0567 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0615 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_1004 import (
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType,
+    WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse,
+)
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
+    action: Literal["withdrawn"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSponsorshipEditedTypeForResponse(TypedDict):
-    """sponsorship edited event"""
+class WebhookSecurityAdvisoryWithdrawnTypeForResponse(TypedDict):
+    """security_advisory withdrawn event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesTypeForResponse
+    action: Literal["withdrawn"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
-
-
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
-
-
-class WebhookSponsorshipEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[
-        WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse
-    ]
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
+    security_advisory: (
+        WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryTypeForResponse
+    )
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelTypeForResponse",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedPropChangesTypeForResponse",
-    "WebhookSponsorshipEditedType",
-    "WebhookSponsorshipEditedTypeForResponse",
+    "WebhookSecurityAdvisoryWithdrawnType",
+    "WebhookSecurityAdvisoryWithdrawnTypeForResponse",
 )

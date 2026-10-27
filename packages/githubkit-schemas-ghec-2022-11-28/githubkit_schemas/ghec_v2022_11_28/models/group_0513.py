@@ -9,41 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0493 import IssueTypeWebhook
-from .group_0495 import IssueEventIntent
 
 
-class IssueTypeRemovedIssueEvent(GitHubModel):
-    """Issue Type Removed Issue Event
+class LockedIssueEvent(GitHubModel):
+    """Locked Issue Event
 
-    Issue Type Removed Issue Event
+    Locked Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["locked"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    prev_issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
-    )
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    lock_reason: Union[str, None] = Field()
 
 
-model_rebuild(IssueTypeRemovedIssueEvent)
+model_rebuild(LockedIssueEvent)
 
-__all__ = ("IssueTypeRemovedIssueEvent",)
+__all__ = ("LockedIssueEvent",)

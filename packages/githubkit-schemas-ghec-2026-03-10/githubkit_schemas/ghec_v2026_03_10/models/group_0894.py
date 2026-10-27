@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0642 import EnterpriseWebhooks
-from .group_0643 import SimpleInstallation
-from .group_0644 import OrganizationSimpleWebhooks
-from .group_0645 import RepositoryWebhooks
-from .group_0666 import WebhooksIssue2
+from .group_0650 import EnterpriseWebhooks
+from .group_0651 import SimpleInstallation
+from .group_0652 import OrganizationSimpleWebhooks
+from .group_0653 import RepositoryWebhooks
+from .group_0676 import WebhooksIssue2
 
 
-class WebhookIssuesUnpinned(GitHubModel):
-    """issues unpinned event"""
+class WebhookIssuesPinned(GitHubModel):
+    """issues pinned event"""
 
-    action: Literal["unpinned"] = Field()
+    action: Literal["pinned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +55,6 @@ class WebhookIssuesUnpinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesUnpinned)
+model_rebuild(WebhookIssuesPinned)
 
-__all__ = ("WebhookIssuesUnpinned",)
+__all__ = ("WebhookIssuesPinned",)

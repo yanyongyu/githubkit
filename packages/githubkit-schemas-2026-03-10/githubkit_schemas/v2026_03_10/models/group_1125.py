@@ -9,31 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0017 import AppPermissions
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsPutBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
+
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="List of repository names that the token should have access to",
     )
-    sha_pinning_required: Missing[bool] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the fine-grained access token.",
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsPutBody)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("OrgsOrgActionsPermissionsPutBody",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

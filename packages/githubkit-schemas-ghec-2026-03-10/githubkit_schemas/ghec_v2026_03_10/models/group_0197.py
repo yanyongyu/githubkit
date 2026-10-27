@@ -12,18 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0198 import RulesetVersionWithStateAllof1PropState
 
+class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-class RulesetVersionWithStateAllof1(GitHubModel):
-    """RulesetVersionWithStateAllof1"""
-
-    state: RulesetVersionWithStateAllof1PropState = Field(
-        description="The state of the ruleset version"
+    max_coverage_drop: Missing[float] = Field(
+        le=100.0,
+        default=UNSET,
+        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
+    )
+    minimum_coverage: Missing[float] = Field(
+        le=100.0,
+        default=UNSET,
+        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
     )
 
 
-model_rebuild(RulesetVersionWithStateAllof1)
+model_rebuild(RepositoryRuleCodeCoveragePropParameters)
 
-__all__ = ("RulesetVersionWithStateAllof1",)
+__all__ = ("RepositoryRuleCodeCoveragePropParameters",)

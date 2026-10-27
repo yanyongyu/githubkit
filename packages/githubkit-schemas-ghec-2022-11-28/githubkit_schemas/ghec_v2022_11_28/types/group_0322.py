@@ -9,62 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-class OrgMembershipType(TypedDict):
-    """Org Membership
-
-    Org Membership
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleType
-    user: Union[SimpleUserType, None]
-    permissions: NotRequired[OrgMembershipPropPermissionsType]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-class OrgMembershipTypeForResponse(TypedDict):
-    """Org Membership
+class InteractionLimitTypeForResponse(TypedDict):
+    """Interaction Restrictions
 
-    Org Membership
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    url: str
-    state: Literal["active", "pending"]
-    role: Literal["admin", "member", "billing_manager"]
-    direct_membership: NotRequired[bool]
-    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
-    organization_url: str
-    organization: OrganizationSimpleTypeForResponse
-    user: Union[SimpleUserTypeForResponse, None]
-    permissions: NotRequired[OrgMembershipPropPermissionsTypeForResponse]
-
-
-class OrgMembershipPropPermissionsType(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
-
-
-class OrgMembershipPropPermissionsTypeForResponse(TypedDict):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
 __all__ = (
-    "OrgMembershipPropPermissionsType",
-    "OrgMembershipPropPermissionsTypeForResponse",
-    "OrgMembershipType",
-    "OrgMembershipTypeForResponse",
+    "InteractionLimitType",
+    "InteractionLimitTypeForResponse",
 )

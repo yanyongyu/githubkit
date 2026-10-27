@@ -10,27 +10,81 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-
-
-class PullRequestStackPullRequestAllof1(GitHubModel):
-    """PullRequestStackPullRequestAllof1"""
-
-    node_id: str = Field()
-    title: str = Field()
-    state: Literal["open", "closed"] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    draft: bool = Field()
-    html_url: str = Field()
-    user: Union[SimpleUser, None] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestStackPullRequestAllof1)
+class SecretScanningScanHistory(GitHubModel):
+    """SecretScanningScanHistory"""
 
-__all__ = ("PullRequestStackPullRequestAllof1",)
+    incremental_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    pattern_update_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    backfill_scans: Missing[list[SecretScanningScan]] = Field(default=UNSET)
+    custom_pattern_backfill_scans: Missing[
+        list[SecretScanningScanHistoryPropCustomPatternBackfillScansItems]
+    ] = Field(default=UNSET)
+    generic_secrets_backfill_scans: Missing[list[SecretScanningScan]] = Field(
+        default=UNSET
+    )
+
+
+class SecretScanningScan(GitHubModel):
+    """SecretScanningScan
+
+    Information on a single scan performed by secret scanning on the repository
+    """
+
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", "pending", "failed", or "unknown".\n\n"failed": this scan type has hit its retry limit and has been marked permanently failed.\nThis usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support.\n\n"unknown": the scan is in an unrecognized or currently unhandled state.',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+
+
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItems(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItems"""
+
+    type: Missing[str] = Field(default=UNSET, description="The type of scan")
+    status: Missing[str] = Field(
+        default=UNSET,
+        description='The state of the scan. Either "completed", "running", "pending", "failed", or "unknown".\n\n"failed": this scan type has hit its retry limit and has been marked permanently failed.\nThis usually resolves on its own at the next scheduled scan attempt. If "failed" persists, contact Support.\n\n"unknown": the scan is in an unrecognized or currently unhandled state.',
+    )
+    completed_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was completed. Empty if the scan is running",
+    )
+    started_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the scan was started. Empty if the scan is pending",
+    )
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
+    )
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
+
+
+model_rebuild(SecretScanningScanHistory)
+model_rebuild(SecretScanningScan)
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItems)
+
+__all__ = (
+    "SecretScanningScan",
+    "SecretScanningScanHistory",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItems",
+)

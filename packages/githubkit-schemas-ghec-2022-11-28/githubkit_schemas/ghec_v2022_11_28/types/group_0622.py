@@ -9,78 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0271 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0621 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class UserRoleItemsType(TypedDict):
+    """UserRoleItems"""
+
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ]
+    primary: NotRequired[bool]
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class UserRoleItemsTypeForResponse(TypedDict):
+    """UserRoleItems"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[_dt.datetime]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-
-
-class CodeSearchResultItemTypeForResponse(TypedDict):
-    """Code Search Result Item
-
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[str]
-    line_numbers: NotRequired[list[str]]
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemType]
-
-
-class SearchCodeGetResponse200TypeForResponse(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CodeSearchResultItemTypeForResponse]
+    display: NotRequired[str]
+    type: NotRequired[str]
+    value: Literal[
+        "user",
+        "27d9891d-2c17-4f45-a262-781a0e55c80a",
+        "guest_collaborator",
+        "1ebc4a02-e56c-43a6-92a5-02ee09b90824",
+        "enterprise_owner",
+        "981df190-8801-4618-a08a-d91f6206c954",
+        "ba4987ab-a1c3-412a-b58c-360fc407cb10",
+        "billing_manager",
+        "0e338b8c-cc7f-498a-928d-ea3470d7e7e3",
+        "e6be2762-e4ad-4108-b72d-1bbe884a0f91",
+    ]
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "CodeSearchResultItemTypeForResponse",
-    "SearchCodeGetResponse200Type",
-    "SearchCodeGetResponse200TypeForResponse",
+    "UserRoleItemsType",
+    "UserRoleItemsTypeForResponse",
 )

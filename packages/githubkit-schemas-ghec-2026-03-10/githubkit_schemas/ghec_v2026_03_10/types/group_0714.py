@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0642 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0643 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0644 import (
+from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0652 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0645 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0650 import (
-    CheckRunWithSimpleCheckSuiteType,
-    CheckRunWithSimpleCheckSuiteTypeForResponse,
-)
+from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0656 import ExemptionRequestType, ExemptionRequestTypeForResponse
 
 
-class WebhookCheckRunRerequestedType(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookExemptionRequestCompletedType(TypedDict):
+    """Exemption request completed event"""
 
-    action: Literal["rerequested"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["completed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
     sender: SimpleUserType
 
 
-class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookExemptionRequestCompletedTypeForResponse(TypedDict):
+    """Exemption request completed event"""
 
-    action: Literal["rerequested"]
-    check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
+    action: Literal["completed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
+    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    exemption_request: ExemptionRequestTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookCheckRunRerequestedType",
-    "WebhookCheckRunRerequestedTypeForResponse",
+    "WebhookExemptionRequestCompletedType",
+    "WebhookExemptionRequestCompletedTypeForResponse",
 )

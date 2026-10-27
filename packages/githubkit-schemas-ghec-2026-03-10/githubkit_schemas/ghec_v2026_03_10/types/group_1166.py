@@ -9,29 +9,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItemsType
+        ]
+    ]
+    documentation_url: str
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AppManifestsCodeConversionsPostResponse201Allof1Type",
-    "AppManifestsCodeConversionsPostResponse201Allof1TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404TypeForResponse",
 )

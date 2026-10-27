@@ -15,14 +15,35 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_0011 import WebhookConfig
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)
+    config: Missing[WebhookConfig] = Field(
+        default=UNSET,
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
+    )
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+    )
+    add_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
+    )
+    remove_events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    )
+
+
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

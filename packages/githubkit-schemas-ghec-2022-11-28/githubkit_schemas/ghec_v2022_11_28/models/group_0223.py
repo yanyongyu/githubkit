@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,48 +18,63 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageReport(GitHubModel):
-    """BillingUsageReport"""
+class GetCostCenter(GitHubModel):
+    """GetCostCenter"""
 
-    usage_items: Missing[list[BillingUsageReportPropUsageItemsItems]] = Field(
-        default=UNSET, alias="usageItems"
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-
-
-class BillingUsageReportPropUsageItemsItems(GitHubModel):
-    """BillingUsageReportPropUsageItemsItems"""
-
-    date: str = Field(description="Date of the usage line item.")
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    quantity: int = Field(description="Quantity of the usage line item.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
+    resources: list[GetCostCenterPropResourcesItems] = Field()
+    has_next_page: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
     )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
-    organization_name: str = Field(
-        alias="organizationName", description="Name of the organization."
-    )
-    repository_name: Missing[str] = Field(
-        default=UNSET, alias="repositoryName", description="Name of the repository."
+    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
 
 
-model_rebuild(BillingUsageReport)
-model_rebuild(BillingUsageReportPropUsageItemsItems)
+class GetCostCenterPropResourcesItems(GitHubModel):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+class GetCostCenterPropAiCreditPoolState(GitHubModel):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+
+
+model_rebuild(GetCostCenter)
+model_rebuild(GetCostCenterPropResourcesItems)
+model_rebuild(GetCostCenterPropAiCreditPoolState)
 
 __all__ = (
-    "BillingUsageReport",
-    "BillingUsageReportPropUsageItemsItems",
+    "GetCostCenter",
+    "GetCostCenterPropAiCreditPoolState",
+    "GetCostCenterPropResourcesItems",
 )

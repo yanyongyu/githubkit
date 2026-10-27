@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,59 +18,62 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateCostCenter(GitHubModel):
-    """UpdateCostCenter"""
+class GetBudget(GitHubModel):
+    """GetBudget"""
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    azure_subscription: Missing[Union[str, None]] = Field(
+    id: str = Field(description="ID of the budget.")
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ] = Field(description="The type of scope for the budget")
+    budget_entity_name: str = Field(
+        description="The name of the entity to apply the budget to"
+    )
+    user: Missing[str] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="The user login when the budget is scoped to a single user (`user` scope).",
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    budget_amount: int = Field(
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
     )
-    resources: list[UpdateCostCenterPropResourcesItems] = Field()
-    ai_credit_pool_enabled: Missing[bool] = Field(
+    prevent_further_usage: bool = Field(
+        description="Whether to prevent additional spending once the budget is exceeded"
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_alerting: GetBudgetPropBudgetAlerting = Field()
+    consumed_amount: Missing[float] = Field(
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+        description="The current usage amount counted toward the budget. How usage is calculated may vary by budget type.",
     )
-    ai_credit_pool_state: Missing[UpdateCostCenterPropAiCreditPoolState] = Field(
+
+
+class GetBudgetPropBudgetAlerting(GitHubModel):
+    """GetBudgetPropBudgetAlerting"""
+
+    will_alert: Missing[bool] = Field(
         default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
     )
-
-
-class UpdateCostCenterPropResourcesItems(GitHubModel):
-    """UpdateCostCenterPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
-    """UpdateCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
+    alert_recipients: Missing[list[str]] = Field(
         default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
     )
 
 
-model_rebuild(UpdateCostCenter)
-model_rebuild(UpdateCostCenterPropResourcesItems)
-model_rebuild(UpdateCostCenterPropAiCreditPoolState)
+model_rebuild(GetBudget)
+model_rebuild(GetBudgetPropBudgetAlerting)
 
 __all__ = (
-    "UpdateCostCenter",
-    "UpdateCostCenterPropAiCreditPoolState",
-    "UpdateCostCenterPropResourcesItems",
+    "GetBudget",
+    "GetBudgetPropBudgetAlerting",
 )

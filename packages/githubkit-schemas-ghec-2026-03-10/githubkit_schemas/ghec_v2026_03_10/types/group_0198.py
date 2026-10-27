@@ -9,24 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RulesetVersionWithStateAllof1PropStateType(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
+class RepositoryRuleLicenseComplianceScanningType(TypedDict):
+    """license_compliance_scanning
 
-    The state of the ruleset version
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
 
+    type: Literal["license_compliance_scanning"]
 
-class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
-    """RulesetVersionWithStateAllof1PropState
 
-    The state of the ruleset version
+class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
+    """license_compliance_scanning
+
+    Enforce any added or changed dependencies to comply with the organization's
+    license policy.
     """
+
+    type: Literal["license_compliance_scanning"]
 
 
 __all__ = (
-    "RulesetVersionWithStateAllof1PropStateType",
-    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
+    "RepositoryRuleLicenseComplianceScanningType",
+    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

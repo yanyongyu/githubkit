@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    installation_id: NotRequired[int]
+    display_name: str
 
 
-class ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
+class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    installation_id: NotRequired[int]
+    display_name: str
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",
-    "ReposOwnerRepoActionsRunsRunIdRerunPostBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsPostBodyType",
+    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
 )

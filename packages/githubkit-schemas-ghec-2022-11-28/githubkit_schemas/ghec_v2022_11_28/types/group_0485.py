@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryHashAlgorithmType(TypedDict):
-    """Repository hash algorithm
+class ShortBlobType(TypedDict):
+    """Short Blob
 
-    Repository hash algorithm
+    Short Blob
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    url: str
+    sha: str
 
 
-class RepositoryHashAlgorithmTypeForResponse(TypedDict):
-    """Repository hash algorithm
+class ShortBlobTypeForResponse(TypedDict):
+    """Short Blob
 
-    Repository hash algorithm
+    Short Blob
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    url: str
+    sha: str
 
 
 __all__ = (
-    "RepositoryHashAlgorithmType",
-    "RepositoryHashAlgorithmTypeForResponse",
+    "ShortBlobType",
+    "ShortBlobTypeForResponse",
 )

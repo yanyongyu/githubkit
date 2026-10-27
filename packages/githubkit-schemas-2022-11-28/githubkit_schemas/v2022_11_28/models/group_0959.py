@@ -18,16 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0564 import EnterpriseWebhooks
-from .group_0565 import SimpleInstallation
-from .group_0566 import OrganizationSimpleWebhooks
-from .group_0567 import RepositoryWebhooks
+from .group_0568 import EnterpriseWebhooks
+from .group_0569 import SimpleInstallation
+from .group_0570 import OrganizationSimpleWebhooks
+from .group_0571 import RepositoryWebhooks
+from .group_0616 import WebhooksRelease
 
 
-class WebhookRepositoryArchived(GitHubModel):
-    """repository archived event"""
+class WebhookReleaseEdited(GitHubModel):
+    """release edited event"""
 
-    action: Literal["archived"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookReleaseEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,13 +45,77 @@ class WebhookRepositoryArchived(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookRepositoryArchived)
+class WebhookReleaseEditedPropChanges(GitHubModel):
+    """WebhookReleaseEditedPropChanges"""
 
-__all__ = ("WebhookRepositoryArchived",)
+    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
+    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
+    tag_name: Missing[WebhookReleaseEditedPropChangesPropTagName] = Field(default=UNSET)
+    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
+        default=UNSET
+    )
+
+
+class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropName(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropTagName(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropTagName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the tag_name if the action was `edited`.",
+    )
+
+
+class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
+    """WebhookReleaseEditedPropChangesPropMakeLatest"""
+
+    to: bool = Field(
+        description="Whether this release was explicitly `edited` to be the latest."
+    )
+
+
+model_rebuild(WebhookReleaseEdited)
+model_rebuild(WebhookReleaseEditedPropChanges)
+model_rebuild(WebhookReleaseEditedPropChangesPropBody)
+model_rebuild(WebhookReleaseEditedPropChangesPropName)
+model_rebuild(WebhookReleaseEditedPropChangesPropTagName)
+model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
+
+__all__ = (
+    "WebhookReleaseEdited",
+    "WebhookReleaseEditedPropChanges",
+    "WebhookReleaseEditedPropChangesPropBody",
+    "WebhookReleaseEditedPropChangesPropMakeLatest",
+    "WebhookReleaseEditedPropChangesPropName",
+    "WebhookReleaseEditedPropChangesPropTagName",
+)

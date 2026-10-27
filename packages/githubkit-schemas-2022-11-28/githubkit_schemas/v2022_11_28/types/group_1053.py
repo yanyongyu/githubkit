@@ -9,33 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1054 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
 
+class AgentsAutomationsAutomationIdGetResponse401Type(TypedDict):
+    """AgentsAutomationsAutomationIdGetResponse401
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    sessions: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
+    message: str
+    errors: NotRequired[
+        list[AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsType]
     ]
+    documentation_url: str
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class AgentsAutomationsAutomationIdGetResponse401TypeForResponse(TypedDict):
+    """AgentsAutomationsAutomationIdGetResponse401
 
-    sessions: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
-        ]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsTypeForResponse]
     ]
+    documentation_url: str
+
+
+class AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsAutomationsAutomationIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsAutomationIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
+    "AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsType",
+    "AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsAutomationsAutomationIdGetResponse401Type",
+    "AgentsAutomationsAutomationIdGetResponse401TypeForResponse",
 )

@@ -12,42 +12,54 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0613 import (
-    UserEmailsResponseItemsType,
-    UserEmailsResponseItemsTypeForResponse,
-    UserNameResponseType,
-    UserNameResponseTypeForResponse,
-)
-from .group_0614 import UserRoleItemsType, UserRoleItemsTypeForResponse
 
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
-
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
     external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
     display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsType]
-    roles: NotRequired[list[UserRoleItemsType]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
 
-class UserResponseTypeForResponse(TypedDict):
-    """UserResponse"""
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
 
-    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
     external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseTypeForResponse]
     display_name: NotRequired[Union[str, None]]
-    emails: list[UserEmailsResponseItemsTypeForResponse]
-    roles: NotRequired[list[UserRoleItemsTypeForResponse]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+
+
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
+
+
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "UserResponseType",
-    "UserResponseTypeForResponse",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
+    "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

@@ -9,43 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0271 import MinimalRepository
 
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-class RepositoryInvitation(GitHubModel):
-    """Repository Invitation
-
-    Repository invitations let you manage who you collaborate with.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    id: int = Field(description="Unique identifier of the repository invitation.")
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
     )
-    invitee: Union[SimpleUser, None] = Field()
-    inviter: Union[SimpleUser, None] = Field()
-    permissions: Literal[
-        "read", "write", "admin", "triage", "triage_plus", "maintain"
-    ] = Field(description="The permission associated with the invitation.")
-    created_at: _dt.datetime = Field()
-    expired: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the invitation has expired"
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
-    url: str = Field(description="URL for the repository invitation")
-    html_url: str = Field()
-    node_id: str = Field()
 
 
-model_rebuild(RepositoryInvitation)
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-__all__ = ("RepositoryInvitation",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody"""
+class AgentsReposOwnerRepoTasksPostResponse401(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse401
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
+    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
     )
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
-    )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    size: Missing[str] = Field(
-        default=UNSET,
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
-    )
-    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET,
-        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
-    )
-    image_id: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
-    )
-    image_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
-    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody)
+class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
 
-__all__ = ("EnterprisesEnterpriseActionsHostedRunnersHostedRunnerIdPatchBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse401)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems)
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksPostResponse401",
+    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems",
+)

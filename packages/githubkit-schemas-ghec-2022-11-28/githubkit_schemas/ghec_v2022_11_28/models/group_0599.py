@@ -10,31 +10,60 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
+class PullRequestStackMinimal(GitHubModel):
+    """Pull Request Stack Minimal"""
 
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
-    )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
-    )
-    reason: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    repository_url: str = Field()
+    base: PullRequestStackMinimalPropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
 
 
-model_rebuild(RepositorySubscription)
+class PullRequestStackMinimalPropBase(GitHubModel):
+    """PullRequestStackMinimalPropBase"""
 
-__all__ = ("RepositorySubscription",)
+    ref: str = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int = Field()
+    state: Literal["open", "closed"] = Field()
+    draft: bool = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestStackMinimal)
+model_rebuild(PullRequestStackMinimalPropBase)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
+
+__all__ = (
+    "PullRequestStackMinimal",
+    "PullRequestStackMinimalPropBase",
+    "PullRequestStackMinimalPropPullRequestsItems",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
+)

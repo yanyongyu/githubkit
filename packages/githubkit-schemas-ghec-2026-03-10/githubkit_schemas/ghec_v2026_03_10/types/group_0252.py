@@ -9,93 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-
-
-class PullRequestReviewEventPropReviewType(TypedDict):
-    """PullRequestReviewEventPropReview"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserType, None]]
-    body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksType]
-    updated_at: NotRequired[str]
+from .group_0253 import ForkEventPropForkeeType, ForkEventPropForkeeTypeForResponse
 
 
-class PullRequestReviewEventPropReviewTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReview"""
+class ForkEventType(TypedDict):
+    """ForkEvent"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    user: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    body: NotRequired[str]
-    commit_id: NotRequired[str]
-    submitted_at: NotRequired[Union[str, None]]
-    state: NotRequired[str]
-    html_url: NotRequired[str]
-    pull_request_url: NotRequired[str]
-    links: NotRequired[PullRequestReviewEventPropReviewPropLinksTypeForResponse]
-    updated_at: NotRequired[str]
+    action: str
+    forkee: ForkEventPropForkeeType
 
 
-class PullRequestReviewEventPropReviewPropLinksType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
+class ForkEventTypeForResponse(TypedDict):
+    """ForkEvent"""
 
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewEventPropReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewEventPropReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinks"""
-
-    html: PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse
-    pull_request: (
-        PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse
-    )
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-class PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse(
-    TypedDict
-):
-    """PullRequestReviewEventPropReviewPropLinksPropPullRequest"""
-
-    href: str
+    action: str
+    forkee: ForkEventPropForkeeTypeForResponse
 
 
 __all__ = (
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlType",
-    "PullRequestReviewEventPropReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestType",
-    "PullRequestReviewEventPropReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewEventPropReviewPropLinksType",
-    "PullRequestReviewEventPropReviewPropLinksTypeForResponse",
-    "PullRequestReviewEventPropReviewType",
-    "PullRequestReviewEventPropReviewTypeForResponse",
+    "ForkEventType",
+    "ForkEventTypeForResponse",
 )

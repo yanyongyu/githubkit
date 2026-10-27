@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,71 +19,108 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllCostCenters(GitHubModel):
-    """GetAllCostCenters"""
+class GetAllBudgets(GitHubModel):
+    """GetAllBudgets"""
 
-    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
-        default=UNSET, alias="costCenters"
+    budgets: list[Budget] = Field(
+        description="Array of budget objects for the enterprise"
     )
-
-
-class GetAllCostCentersPropCostCentersItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItems"""
-
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    azure_subscription: Missing[Union[str, None]] = Field(
+    user: Missing[str] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="User login included when the response is scoped with the `user` query parameter.",
     )
-    ai_credit_pool_enabled: Missing[bool] = Field(
+    effective_budget: Missing[GetAllBudgetsPropEffectiveBudget] = Field(
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
+        description="Effective user-level budget details returned when the response is scoped with the `user` query parameter.",
     )
-    ai_credit_pool_state: Missing[
-        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
-    ] = Field(
+    has_next_page: Missing[bool] = Field(
         default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+        description="Indicates if there are more pages of results available",
     )
-    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+    total_count: Missing[int] = Field(
+        default=UNSET, description="Total number of budgets matching the query"
+    )
 
 
-class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+class GetAllBudgetsPropEffectiveBudget(GitHubModel):
+    """GetAllBudgetsPropEffectiveBudget
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    Effective user-level budget details returned when the response is scoped with
+    the `user` query parameter.
     """
 
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    id: str = Field(description="The unique identifier of the effective budget.")
+    budget_amount: int = Field(
+        description="The budget amount for the effective budget."
     )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    consumed_amount: float = Field(
+        description="The consumed amount for the specified user within the effective budget."
     )
 
 
-class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
-    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+class Budget(GitHubModel):
+    """Budget"""
 
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
+    id: str = Field(description="The unique identifier for the budget")
+    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"] = Field(
+        description="The type of pricing for the budget"
+    )
+    budget_amount: int = Field(
+        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
+    )
+    prevent_further_usage: bool = Field(
+        description="The type of limit enforcement for the budget"
+    )
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ] = Field(description="The scope of the budget")
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the entity for the budget (enterprise does not require a name).",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The user login when the budget is scoped to a single user (`user` scope).",
+    )
+    consumed_amount: Missing[float] = Field(
+        default=UNSET,
+        description="The amount consumed for a user-scoped budget, or for a multi-user budget when filtering by user.",
+    )
+    budget_product_sku: str = Field(
+        description="A single product or sku to apply the budget to."
+    )
+    budget_alerting: BudgetPropBudgetAlerting = Field()
+    expires_at: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
+    )
 
 
-model_rebuild(GetAllCostCenters)
-model_rebuild(GetAllCostCentersPropCostCentersItems)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState)
-model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+class BudgetPropBudgetAlerting(GitHubModel):
+    """BudgetPropBudgetAlerting"""
+
+    will_alert: bool = Field(
+        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is disabled for them."
+    )
+    alert_recipients: list[str] = Field(
+        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them."
+    )
+
+
+model_rebuild(GetAllBudgets)
+model_rebuild(GetAllBudgetsPropEffectiveBudget)
+model_rebuild(Budget)
+model_rebuild(BudgetPropBudgetAlerting)
 
 __all__ = (
-    "GetAllCostCenters",
-    "GetAllCostCentersPropCostCentersItems",
-    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState",
-    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+    "Budget",
+    "BudgetPropBudgetAlerting",
+    "GetAllBudgets",
+    "GetAllBudgetsPropEffectiveBudget",
 )

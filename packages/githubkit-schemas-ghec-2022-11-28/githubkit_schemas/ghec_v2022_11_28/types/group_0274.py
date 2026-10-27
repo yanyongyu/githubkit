@@ -9,46 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0272 import (
+    MarketplaceListingPlanType,
+    MarketplaceListingPlanTypeForResponse,
+)
 
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Custom repository roles created by organization owners
-    """
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserType
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
-class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
-    """Organization Custom Repository Role
+class MarketplacePurchasePropMarketplacePendingChangeTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    Custom repository roles created by organization owners
-    """
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: list[str]
-    organization: SimpleUserTypeForResponse
-    created_at: str
-    updated_at: str
+
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
+
+
+class MarketplacePurchasePropMarketplacePurchaseTypeForResponse(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
+
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanTypeForResponse]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleType",
-    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePendingChangeTypeForResponse",
+    "MarketplacePurchasePropMarketplacePurchaseType",
+    "MarketplacePurchasePropMarketplacePurchaseTypeForResponse",
 )

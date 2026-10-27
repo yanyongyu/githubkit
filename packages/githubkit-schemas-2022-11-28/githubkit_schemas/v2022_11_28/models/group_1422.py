@@ -9,119 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0045 import Milestone
-from .group_0046 import IssueType
-from .group_0047 import ReactionRollup
-from .group_0048 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0051 import IssueComment
-from .group_0052 import IssueFieldValue
-from .group_0054 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
-from .group_1424 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
+
+class ReposOwnerRepoContentsPathPutBody(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBody"""
+
+    message: str = Field(description="The commit message.")
+    content: str = Field(description="The new file content, using Base64 encoding.")
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
+    )
+    branch: Missing[str] = Field(
+        default=UNSET,
+        description="The branch name. Default: the repository’s default branch.",
+    )
+    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
+        default=UNSET,
+        description="The person that committed the file. Default: the authenticated user.",
+    )
+    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
+        default=UNSET,
+        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+    )
+
+
+class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoContentsPathPutBody)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
+
+__all__ = (
+    "ReposOwnerRepoContentsPathPutBody",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
 )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field(description="URL for the issue")
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the issue within its repository"
-    )
-    state: str = Field(description="State of the issue; either 'open' or 'closed'")
-    state_reason: Missing[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ] = Field(default=UNSET, description="The reason for the current state")
-    title: str = Field(description="Title of the issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Contents of the issue"
-    )
-    user: Union[SimpleUser, None] = Field()
-    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
-        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
-    )
-    assignee: Union[SimpleUser, None] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    milestone: Union[Milestone, None] = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: int = Field()
-    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
-    closed_at: Union[_dt.datetime, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    closed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
-        default=UNSET,
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
-    )
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ] = Field(
-        default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    parent_issue_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="URL to get the parent issue of this issue, if it is a sub-issue",
-    )
-    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
-    ] = Field(
-        default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200)
-
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200",)

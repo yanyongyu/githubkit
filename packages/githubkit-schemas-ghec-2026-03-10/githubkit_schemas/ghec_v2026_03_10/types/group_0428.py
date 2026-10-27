@@ -10,49 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class CodeScanningAutofixType(TypedDict):
+    """CodeScanningAutofix"""
 
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: _dt.datetime
 
 
-class CodeScanningCodeqlDatabaseTypeForResponse(TypedDict):
-    """CodeQL Database
+class CodeScanningAutofixTypeForResponse(TypedDict):
+    """CodeScanningAutofix"""
 
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserTypeForResponse
-    content_type: str
-    size: int
-    created_at: str
-    updated_at: str
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    status: Literal["pending", "error", "success", "outdated"]
+    description: Union[str, None]
+    started_at: str
 
 
 __all__ = (
-    "CodeScanningCodeqlDatabaseType",
-    "CodeScanningCodeqlDatabaseTypeForResponse",
+    "CodeScanningAutofixType",
+    "CodeScanningAutofixTypeForResponse",
 )

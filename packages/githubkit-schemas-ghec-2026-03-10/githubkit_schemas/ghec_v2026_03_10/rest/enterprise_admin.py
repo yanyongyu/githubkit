@@ -52,6 +52,10 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGetResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
         EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
         EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
@@ -62,6 +66,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseEnterpriseRolesGetResponse200,
         EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1,
         EnterprisesEnterpriseNetworkConfigurationsGetResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
         EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200,
         EnterpriseTeam,
         EnterpriseTokenInventoryExport,
@@ -137,9 +143,17 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type,
         EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType,
         EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse,
-        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
-        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
+        EnterprisesEnterpriseCredentialAuthorizationsPostBodyType,
         EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
         EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType,
@@ -160,6 +174,10 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType,
         EnterprisesEnterpriseOrgPropertiesValuesPatchBodyType,
         EnterprisesEnterprisePropertiesSchemaPatchBodyType,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
         EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse,
         EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType,
         EnterpriseTeamTypeForResponse,
@@ -586,7 +604,9 @@ class EnterpriseAdminClient:
 
         GET /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
 
-        Gets artifact and log retention settings for an enterprise.
+        Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an enterprise.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
         """
@@ -624,7 +644,9 @@ class EnterpriseAdminClient:
 
         GET /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
 
-        Gets artifact and log retention settings for an enterprise.
+        Gets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an enterprise.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#get-artifact-and-log-retention-settings-for-an-enterprise
         """
@@ -682,7 +704,9 @@ class EnterpriseAdminClient:
 
         PUT /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
 
-        Sets artifact and log retention settings for an enterprise.
+        Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an enterprise.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
         """
@@ -750,7 +774,9 @@ class EnterpriseAdminClient:
 
         PUT /enterprises/{enterprise}/actions/permissions/artifact-and-log-retention
 
-        Sets artifact and log retention settings for an enterprise.
+        Sets retention settings for checks, workflow runs, commit statuses, artifacts, and logs for an enterprise.
+
+        Checks include check suites, check runs, and check annotations. These settings also apply to checks and commit statuses created by third-party integrations, and are not limited to data created by GitHub Actions.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/actions/permissions#set-artifact-and-log-retention-settings-for-an-enterprise
         """
@@ -4694,6 +4720,9 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
         """
 
@@ -4747,6 +4776,9 @@ class EnterpriseAdminClient:
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
         """
@@ -4967,7 +4999,7 @@ class EnterpriseAdminClient:
 
         Creates an audit log streaming configuration for any of the supported streaming endpoints: Azure Blob Storage, Azure Event Hubs, Amazon S3, Splunk, Google Cloud Storage, Datadog.
 
-        Microsoft Agent365 and Microsoft Purview streams require Microsoft Entra authorization and cannot be created with this endpoint. Configure those destinations from the enterprise audit log streaming settings.
+        Microsoft Agent 365 and Microsoft Purview streams require Microsoft Entra authorization and cannot be created with this endpoint. Configure those destinations from the enterprise audit log streaming settings.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
@@ -5058,7 +5090,7 @@ class EnterpriseAdminClient:
 
         Creates an audit log streaming configuration for any of the supported streaming endpoints: Azure Blob Storage, Azure Event Hubs, Amazon S3, Splunk, Google Cloud Storage, Datadog.
 
-        Microsoft Agent365 and Microsoft Purview streams require Microsoft Entra authorization and cannot be created with this endpoint. Configure those destinations from the enterprise audit log streaming settings.
+        Microsoft Agent 365 and Microsoft Purview streams require Microsoft Entra authorization and cannot be created with this endpoint. Configure those destinations from the enterprise audit log streaming settings.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
@@ -5189,7 +5221,7 @@ class EnterpriseAdminClient:
             "HTTPS Event Collector",
             "Google Cloud Storage",
             "Datadog",
-            "Microsoft Agent365",
+            "Microsoft Agent 365",
         ],
         vendor_specific: Union[
             AzureBlobConfigType,
@@ -5220,7 +5252,7 @@ class EnterpriseAdminClient:
 
         Updates an existing audit log stream configuration for an enterprise.
 
-        Microsoft Agent365 streams are configured through Microsoft Entra authorization. For those streams, this endpoint can only pause or resume the stream. Authorization-managed fields cannot be updated; delete and recreate the stream to change its Entra tenant or authorization.
+        Microsoft Agent 365 streams are configured through Microsoft Entra authorization. For those streams, this endpoint can only pause or resume the stream. Authorization-managed fields cannot be updated; delete and recreate the stream to change its Entra tenant or authorization.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
@@ -5289,7 +5321,7 @@ class EnterpriseAdminClient:
             "HTTPS Event Collector",
             "Google Cloud Storage",
             "Datadog",
-            "Microsoft Agent365",
+            "Microsoft Agent 365",
         ],
         vendor_specific: Union[
             AzureBlobConfigType,
@@ -5320,7 +5352,7 @@ class EnterpriseAdminClient:
 
         Updates an existing audit log stream configuration for an enterprise.
 
-        Microsoft Agent365 streams are configured through Microsoft Entra authorization. For those streams, this endpoint can only pause or resume the stream. Authorization-managed fields cannot be updated; delete and recreate the stream to change its Entra tenant or authorization.
+        Microsoft Agent 365 streams are configured through Microsoft Entra authorization. For those streams, this endpoint can only pause or resume the stream. Authorization-managed fields cannot be updated; delete and recreate the stream to change its Entra tenant or authorization.
 
         When using this endpoint, you must encrypt the credentials following the same encryption steps as outlined in the guide on encrypting secrets. See "[Encrypting secrets for the REST API](/rest/guides/encrypting-secrets-for-the-rest-api)."
 
@@ -5845,6 +5877,9 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
@@ -5887,6 +5922,9 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
@@ -5910,6 +5948,614 @@ class EnterpriseAdminClient:
             response_model=GetConsumedLicenses,
         )
 
+    def get_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-apps-model-policies
+
+        GET /enterprises/{enterprise}/copilot/apps/model-policies
+
+        Use this endpoint to retrieve Copilot model policies for enterprise apps.
+        The response shows which model settings can be changed and which are
+        controlled by enterprise policy.
+
+        For models whose settings can be changed, the response shows the configured
+        setting or `optional` if no setting has been configured. For models
+        controlled by enterprise policy, it shows the enterprise setting or the
+        applicable default. These settings do not necessarily determine whether
+        an individual user can access a model.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-enterprise-apps
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/apps/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-apps-model-policies
+
+        GET /enterprises/{enterprise}/copilot/apps/model-policies
+
+        Use this endpoint to retrieve Copilot model policies for enterprise apps.
+        The response shows which model settings can be changed and which are
+        controlled by enterprise policy.
+
+        For models whose settings can be changed, the response shows the configured
+        setting or `optional` if no setting has been configured. For models
+        controlled by enterprise policy, it shows the enterprise setting or the
+        applicable default. These settings do not necessarily determine whether
+        an individual user can access a model.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-enterprise-apps
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/apps/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        models: list[
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType
+        ],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-apps-model-policies
+
+        PATCH /enterprises/{enterprise}/copilot/apps/model-policies
+
+        Use this endpoint to set Copilot model policies for enterprise apps. Set a
+        model to `enabled` to configure an apps policy, or to `optional` to remove
+        the stored apps policy for that model.
+        Locked models cannot be updated.
+
+        Returns the apps policy state representation, including enterprise policy and editability.
+        These states are not a final access decision for a user.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-model-policies-for-enterprise-apps
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody,
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/apps/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        models: list[
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType
+        ],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_enterprise_apps_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-apps-model-policies
+
+        PATCH /enterprises/{enterprise}/copilot/apps/model-policies
+
+        Use this endpoint to set Copilot model policies for enterprise apps. Set a
+        model to `enabled` to configure an apps policy, or to `optional` to remove
+        the stored apps policy for that model.
+        Locked models cannot be updated.
+
+        Returns the apps policy state representation, including enterprise policy and editability.
+        These states are not a final access decision for a user.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-model-policies-for-enterprise-apps
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody,
+            EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/apps/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-model-policies
+
+        GET /enterprises/{enterprise}/copilot/model-policies
+
+        Use this endpoint to retrieve Copilot model policies for an enterprise.
+        For enterprises that manage Copilot through organizations, delegated models use the
+        policy state of `delegate_to_organizations`.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-model-policies
+
+        GET /enterprises/{enterprise}/copilot/model-policies
+
+        Use this endpoint to retrieve Copilot model policies for an enterprise.
+        For enterprises that manage Copilot through organizations, delegated models use the
+        policy state of `delegate_to_organizations`.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: Missing[
+            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+        ] = UNSET,
+        models: Missing[
+            list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-model-policies
+
+        PATCH /enterprises/{enterprise}/copilot/model-policies
+
+        Use this endpoint to update Copilot model policies for an enterprise.
+        For enterprises that manage Copilot through organizations, use
+        `delegate_to_organizations` to delegate a model or default availability.
+        Enterprises without organizations cannot use `delegate_to_organizations`.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotModelPoliciesPatchBody,
+            EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: Missing[
+            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+        ] = UNSET,
+        models: Missing[
+            list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
+        ] = UNSET,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_enterprise_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-model-policies
+
+        PATCH /enterprises/{enterprise}/copilot/model-policies
+
+        Use this endpoint to update Copilot model policies for an enterprise.
+        For enterprises that manage Copilot through organizations, use
+        `delegate_to_organizations` to delegate a model or default availability.
+        Enterprises without organizations cannot use `delegate_to_organizations`.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+         OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotModelPoliciesPatchBody,
+            EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     @overload
     def grant_credential_authorizations(
         self,
@@ -5917,10 +6563,7 @@ class EnterpriseAdminClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: Union[
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
-        ],
+        data: EnterprisesEnterpriseCredentialAuthorizationsPostBodyType,
     ) -> Response[
         Annotated[
             Union[
@@ -5943,33 +6586,8 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        credential_id: int,
-        credential_type: Literal["classic_pat"],
-        organizations: UniqueList[str],
-    ) -> Response[
-        Annotated[
-            Union[
-                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
-                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
-            ],
-            Field(discriminator="credential_type"),
-        ],
-        Union[
-            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
-            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
-        ],
-    ]: ...
-
-    @overload
-    def grant_credential_authorizations(
-        self,
-        enterprise: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-        credential_id: str,
-        credential_type: Literal["ssh_key"],
+        credential_id: Union[int, str],
+        credential_type: Literal["classic_pat", "ssh_key"],
         organizations: UniqueList[str],
     ) -> Response[
         Annotated[
@@ -5992,10 +6610,7 @@ class EnterpriseAdminClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
-            Union[
-                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
-                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
-            ]
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6032,8 +6647,7 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBody,
             EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
             EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
             ValidationError,
@@ -6050,14 +6664,7 @@ class EnterpriseAdminClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Annotated[
-                    Union[
-                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
-                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
-                    ],
-                    Field(discriminator="credential_type"),
-                ],
-                json,
+                EnterprisesEnterpriseCredentialAuthorizationsPostBody, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -6089,10 +6696,7 @@ class EnterpriseAdminClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: Union[
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
-        ],
+        data: EnterprisesEnterpriseCredentialAuthorizationsPostBodyType,
     ) -> Response[
         Annotated[
             Union[
@@ -6115,33 +6719,8 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        credential_id: int,
-        credential_type: Literal["classic_pat"],
-        organizations: UniqueList[str],
-    ) -> Response[
-        Annotated[
-            Union[
-                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
-                EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
-            ],
-            Field(discriminator="credential_type"),
-        ],
-        Union[
-            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse,
-            EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse,
-        ],
-    ]: ...
-
-    @overload
-    async def async_grant_credential_authorizations(
-        self,
-        enterprise: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-        credential_id: str,
-        credential_type: Literal["ssh_key"],
+        credential_id: Union[int, str],
+        credential_type: Literal["classic_pat", "ssh_key"],
         organizations: UniqueList[str],
     ) -> Response[
         Annotated[
@@ -6164,10 +6743,7 @@ class EnterpriseAdminClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         data: Missing[
-            Union[
-                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0Type,
-                EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1Type,
-            ]
+            EnterprisesEnterpriseCredentialAuthorizationsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[
@@ -6204,8 +6780,7 @@ class EnterpriseAdminClient:
 
         from ..models import (
             BasicError,
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
-            EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
+            EnterprisesEnterpriseCredentialAuthorizationsPostBody,
             EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0,
             EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1,
             ValidationError,
@@ -6222,14 +6797,7 @@ class EnterpriseAdminClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Annotated[
-                    Union[
-                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof0,
-                        EnterprisesEnterpriseCredentialAuthorizationsPostBodyOneof1,
-                    ],
-                    Field(discriminator="credential_type"),
-                ],
-                json,
+                EnterprisesEnterpriseCredentialAuthorizationsPostBody, json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -7206,6 +7774,7 @@ class EnterpriseAdminClient:
             },
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def list_enterprise_token_inventory(
         self,
         enterprise: str,
@@ -7225,9 +7794,12 @@ class EnterpriseAdminClient:
         list[EnterpriseTokenInventoryItem],
         list[EnterpriseTokenInventoryItemTypeForResponse],
     ]:
-        """enterprise-admin/list-enterprise-token-inventory
+        """DEPRECATED enterprise-admin/list-enterprise-token-inventory
 
         GET /enterprises/{enterprise}/credentials
+
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on October 2, 2026. Please migrate to the asynchronous export: use "[Create an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#create-an-enterprise-token-inventory-export)", which accepts the same filters in its request body, to start a CSV export, then "[Get an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-export)" to download it. For more information, see the [changelog](https://github.blog/changelog/2026-09-21-github-enterprise-adds-credential-inventory-exports/).
 
         Lists an enterprise's credential inventory: both credentials currently authorized to access the enterprise and credentials owned by enterprise members that have no current enterprise authorization. Covers personal access tokens (classic and fine-grained), OAuth App and GitHub App user tokens, SSH keys, GitHub App installations, and federated credentials, assembled on demand from the canonical sources. Results are paginated with an opaque cursor via the `Link` header; there is no total count.
 
@@ -7264,6 +7836,7 @@ class EnterpriseAdminClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_list_enterprise_token_inventory(
         self,
         enterprise: str,
@@ -7283,9 +7856,12 @@ class EnterpriseAdminClient:
         list[EnterpriseTokenInventoryItem],
         list[EnterpriseTokenInventoryItemTypeForResponse],
     ]:
-        """enterprise-admin/list-enterprise-token-inventory
+        """DEPRECATED enterprise-admin/list-enterprise-token-inventory
 
         GET /enterprises/{enterprise}/credentials
+
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on October 2, 2026. Please migrate to the asynchronous export: use "[Create an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#create-an-enterprise-token-inventory-export)", which accepts the same filters in its request body, to start a CSV export, then "[Get an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-export)" to download it. For more information, see the [changelog](https://github.blog/changelog/2026-09-21-github-enterprise-adds-credential-inventory-exports/).
 
         Lists an enterprise's credential inventory: both credentials currently authorized to access the enterprise and credentials owned by enterprise members that have no current enterprise authorization. Covers personal access tokens (classic and fine-grained), OAuth App and GitHub App user tokens, SSH keys, GitHub App installations, and federated credentials, assembled on demand from the canonical sources. Results are paginated with an opaque cursor via the `Link` header; there is no total count.
 
@@ -7572,6 +8148,7 @@ class EnterpriseAdminClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     def get_enterprise_token_inventory_item(
         self,
         enterprise: str,
@@ -7582,9 +8159,12 @@ class EnterpriseAdminClient:
     ) -> Response[
         EnterpriseTokenInventoryItem, EnterpriseTokenInventoryItemTypeForResponse
     ]:
-        """enterprise-admin/get-enterprise-token-inventory-item
+        """DEPRECATED enterprise-admin/get-enterprise-token-inventory-item
 
         GET /enterprises/{enterprise}/credentials/{inventory_id}
+
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on October 2, 2026. Please migrate to the asynchronous export: use "[Create an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#create-an-enterprise-token-inventory-export)" to start a CSV export, optionally scoped with filters such as `owner` or `application`, then "[Get an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-export)" to download it. For more information, see the [changelog](https://github.blog/changelog/2026-09-21-github-enterprise-adds-credential-inventory-exports/).
 
         Returns a single credential from the enterprise token inventory. Use the opaque `inventory_id` returned by the list endpoint for the same enterprise.
 
@@ -7610,6 +8190,7 @@ class EnterpriseAdminClient:
             error_models={},
         )
 
+    @deprecated("Deprecated API endpoint. See the docstring for more details.")
     async def async_get_enterprise_token_inventory_item(
         self,
         enterprise: str,
@@ -7620,9 +8201,12 @@ class EnterpriseAdminClient:
     ) -> Response[
         EnterpriseTokenInventoryItem, EnterpriseTokenInventoryItemTypeForResponse
     ]:
-        """enterprise-admin/get-enterprise-token-inventory-item
+        """DEPRECATED enterprise-admin/get-enterprise-token-inventory-item
 
         GET /enterprises/{enterprise}/credentials/{inventory_id}
+
+        > [!WARNING]
+        > **Closing down notice:** This operation is closing down and will be removed on October 2, 2026. Please migrate to the asynchronous export: use "[Create an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#create-an-enterprise-token-inventory-export)" to start a CSV export, optionally scoped with filters such as `owner` or `application`, then "[Get an enterprise token inventory export](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/token-inventory#get-an-enterprise-token-inventory-export)" to download it. For more information, see the [changelog](https://github.blog/changelog/2026-09-21-github-enterprise-adds-credential-inventory-exports/).
 
         Returns a single credential from the enterprise token inventory. Use the opaque `inventory_id` returned by the list endpoint for the same enterprise.
 
@@ -8887,6 +9471,9 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
@@ -8920,6 +9507,9 @@ class EnterpriseAdminClient:
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-license-sync-status
         """
@@ -11159,6 +11749,332 @@ class EnterpriseAdminClient:
             error_models={
                 "404": BasicError,
                 "500": BasicError,
+            },
+        )
+
+    def get_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-team-model-policies
+
+        GET /enterprises/{enterprise}/teams/{team_id}/copilot/model-policies
+
+        Use this endpoint to retrieve Copilot model policy states for an enterprise
+        team, along with the corresponding enterprise-level policies. The response
+        shows which model policies the team can update based on enterprise policy
+        and the available team policy controls.
+
+        For models the team can update, the response shows the team’s configured
+        value or `optional` if the team has not set one. For locked models, it shows
+        the enterprise’s explicit value or the applicable default availability for
+        eligible models. These states are not a final access decision for a user.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-an-enterprise-team
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/teams/{team_id}/copilot/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-team-model-policies
+
+        GET /enterprises/{enterprise}/teams/{team_id}/copilot/model-policies
+
+        Use this endpoint to retrieve Copilot model policy states for an enterprise
+        team, along with the corresponding enterprise-level policies. The response
+        shows which model policies the team can update based on enterprise policy
+        and the available team policy controls.
+
+        For models the team can update, the response shows the team’s configured
+        value or `optional` if the team has not set one. For locked models, it shows
+        the enterprise’s explicit value or the applicable default availability for
+        eligible models. These states are not a final access decision for a user.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-an-enterprise-team
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/teams/{team_id}/copilot/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        models: list[
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType
+        ],
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-team-model-policies
+
+        PATCH /enterprises/{enterprise}/teams/{team_id}/copilot/model-policies
+
+        Use this endpoint to update Copilot model policies for an enterprise team.
+        Only editable model policies can be updated.
+
+        Set a model to `enabled` to configure a team policy, or to `optional` to clear
+        the team’s policy for that model. Locked models cannot be updated.
+
+        The response contains the same policy state information as the corresponding
+        GET endpoint, including enterprise policies and whether each model policy
+        can be updated. These states do not necessarily determine whether an
+        individual user can access a model.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-model-policies-for-an-enterprise-team
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody,
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/teams/{team_id}/copilot/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        models: list[
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType
+        ],
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_enterprise_team_model_policies(
+        self,
+        enterprise: str,
+        team_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-team-model-policies
+
+        PATCH /enterprises/{enterprise}/teams/{team_id}/copilot/model-policies
+
+        Use this endpoint to update Copilot model policies for an enterprise team.
+        Only editable model policies can be updated.
+
+        Set a model to `enabled` to configure a team policy, or to `optional` to clear
+        the team’s policy for that model. Locked models cannot be updated.
+
+        The response contains the same policy state information as the corresponding
+        GET endpoint, including enterprise policies and whether each model policy
+        can be updated. These states do not necessarily determine whether an
+        individual user can access a model.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-model-policies-for-an-enterprise-team
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody,
+            EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/teams/{team_id}/copilot/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

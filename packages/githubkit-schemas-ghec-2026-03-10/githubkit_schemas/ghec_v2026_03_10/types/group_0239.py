@@ -9,80 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class PullRequestMinimalPropHeadType(TypedDict):
-    """PullRequestMinimalPropHead"""
+class IssueCommentMinimizedType(TypedDict):
+    """Minimized Issue Comment
 
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoType
+    Details about why an issue comment was minimized.
+    """
 
-
-class PullRequestMinimalPropHeadTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHead"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropHeadPropRepoTypeForResponse
+    reason: Union[str, None]
 
 
-class PullRequestMinimalPropHeadPropRepoType(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
+class IssueCommentMinimizedTypeForResponse(TypedDict):
+    """Minimized Issue Comment
 
-    id: int
-    url: str
-    name: str
+    Details about why an issue comment was minimized.
+    """
 
-
-class PullRequestMinimalPropHeadPropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBaseType(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoType
-
-
-class PullRequestMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBase"""
-
-    ref: str
-    sha: str
-    repo: PullRequestMinimalPropBasePropRepoTypeForResponse
-
-
-class PullRequestMinimalPropBasePropRepoType(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
-
-
-class PullRequestMinimalPropBasePropRepoTypeForResponse(TypedDict):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int
-    url: str
-    name: str
+    reason: Union[str, None]
 
 
 __all__ = (
-    "PullRequestMinimalPropBasePropRepoType",
-    "PullRequestMinimalPropBasePropRepoTypeForResponse",
-    "PullRequestMinimalPropBaseType",
-    "PullRequestMinimalPropBaseTypeForResponse",
-    "PullRequestMinimalPropHeadPropRepoType",
-    "PullRequestMinimalPropHeadPropRepoTypeForResponse",
-    "PullRequestMinimalPropHeadType",
-    "PullRequestMinimalPropHeadTypeForResponse",
+    "IssueCommentMinimizedType",
+    "IssueCommentMinimizedTypeForResponse",
 )

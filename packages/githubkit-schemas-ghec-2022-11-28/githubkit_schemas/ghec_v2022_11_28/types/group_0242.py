@@ -10,270 +10,156 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0243 import DiscussionEventType, DiscussionEventTypeForResponse
-from .group_0244 import IssuesEventType, IssuesEventTypeForResponse
-from .group_0245 import IssueCommentEventType, IssueCommentEventTypeForResponse
-from .group_0246 import ForkEventType, ForkEventTypeForResponse
-from .group_0248 import MemberEventType, MemberEventTypeForResponse
-from .group_0249 import PullRequestEventType, PullRequestEventTypeForResponse
-from .group_0250 import (
-    PullRequestReviewCommentEventType,
-    PullRequestReviewCommentEventTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0234 import MilestoneType, MilestoneTypeForResponse
+from .group_0235 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0236 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0237 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
 )
-from .group_0251 import (
-    PullRequestReviewEventType,
-    PullRequestReviewEventTypeForResponse,
+from .group_0240 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0241 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0243 import (
+    IssuePropLabelsItemsOneof1Type,
+    IssuePropLabelsItemsOneof1TypeForResponse,
+    IssuePropPullRequestType,
+    IssuePropPullRequestTypeForResponse,
 )
-from .group_0253 import CommitCommentEventType, CommitCommentEventTypeForResponse
-from .group_0255 import ReleaseEventType, ReleaseEventTypeForResponse
 
 
-class EventType(TypedDict):
-    """Event
+class IssueType(TypedDict):
+    """Issue
 
-    Event
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: Union[
-        CreateEventType,
-        DeleteEventType,
-        DiscussionEventType,
-        IssuesEventType,
-        IssueCommentEventType,
-        ForkEventType,
-        GollumEventType,
-        MemberEventType,
-        PublicEventType,
-        PushEventType,
-        PullRequestEventType,
-        PullRequestReviewCommentEventType,
-        PullRequestReviewEventType,
-        CommitCommentEventType,
-        ReleaseEventType,
-        WatchEventType,
+    id: int
+    node_id: str
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
     ]
-    public: bool
-    created_at: Union[_dt.datetime, None]
-
-
-class EventTypeForResponse(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorTypeForResponse
-    repo: EventPropRepoTypeForResponse
-    org: NotRequired[ActorTypeForResponse]
-    payload: Union[
-        CreateEventTypeForResponse,
-        DeleteEventTypeForResponse,
-        DiscussionEventTypeForResponse,
-        IssuesEventTypeForResponse,
-        IssueCommentEventTypeForResponse,
-        ForkEventTypeForResponse,
-        GollumEventTypeForResponse,
-        MemberEventTypeForResponse,
-        PublicEventTypeForResponse,
-        PushEventTypeForResponse,
-        PullRequestEventTypeForResponse,
-        PullRequestReviewCommentEventTypeForResponse,
-        PullRequestReviewEventTypeForResponse,
-        CommitCommentEventTypeForResponse,
-        ReleaseEventTypeForResponse,
-        WatchEventTypeForResponse,
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[SimpleUserType, None]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[SimpleUserType, None]
+    assignees: NotRequired[list[SimpleUserType]]
+    milestone: Union[MilestoneType, None]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[_dt.datetime, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[SimpleUserType, None]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
     ]
-    public: bool
-    created_at: Union[str, None]
+    reactions: NotRequired[ReactionRollupType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    parent_issue_url: NotRequired[Union[str, None]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
 
 
-class ActorType(TypedDict):
-    """Actor
+class IssueTypeForResponse(TypedDict):
+    """Issue
 
-    Actor
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
     id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
+    node_id: str
     url: str
-    avatar_url: str
-
-
-class ActorTypeForResponse(TypedDict):
-    """Actor
-
-    Actor
-    """
-
-    id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
-    url: str
-    avatar_url: str
-
-
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
-
-
-class EventPropRepoTypeForResponse(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
-
-
-class CreateEventType(TypedDict):
-    """CreateEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    master_branch: str
-    description: NotRequired[Union[str, None]]
-    pusher_type: str
-
-
-class CreateEventTypeForResponse(TypedDict):
-    """CreateEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    master_branch: str
-    description: NotRequired[Union[str, None]]
-    pusher_type: str
-
-
-class DeleteEventType(TypedDict):
-    """DeleteEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    pusher_type: str
-
-
-class DeleteEventTypeForResponse(TypedDict):
-    """DeleteEvent"""
-
-    ref: str
-    ref_type: str
-    full_ref: str
-    pusher_type: str
-
-
-class PublicEventType(TypedDict):
-    """PublicEvent"""
-
-
-class PublicEventTypeForResponse(TypedDict):
-    """PublicEvent"""
-
-
-class PushEventType(TypedDict):
-    """PushEvent"""
-
-    repository_id: int
-    push_id: int
-    ref: str
-    head: str
-    before: str
-
-
-class PushEventTypeForResponse(TypedDict):
-    """PushEvent"""
-
-    repository_id: int
-    push_id: int
-    ref: str
-    head: str
-    before: str
-
-
-class WatchEventType(TypedDict):
-    """WatchEvent"""
-
-    action: str
-
-
-class WatchEventTypeForResponse(TypedDict):
-    """WatchEvent"""
-
-    action: str
-
-
-class GollumEventType(TypedDict):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItemsType]
-
-
-class GollumEventTypeForResponse(TypedDict):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItemsTypeForResponse]
-
-
-class GollumEventPropPagesItemsType(TypedDict):
-    """GollumEventPropPagesItems"""
-
-    page_name: NotRequired[Union[str, None]]
-    title: NotRequired[Union[str, None]]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class GollumEventPropPagesItemsTypeForResponse(TypedDict):
-    """GollumEventPropPagesItems"""
-
-    page_name: NotRequired[Union[str, None]]
-    title: NotRequired[Union[str, None]]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[SimpleUserTypeForResponse, None]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
+    assignee: Union[SimpleUserTypeForResponse, None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    milestone: Union[MilestoneTypeForResponse, None]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestTypeForResponse]
+    closed_at: Union[str, None]
+    created_at: str
+    updated_at: str
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    repository: NotRequired[RepositoryTypeForResponse]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    author_association: NotRequired[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    parent_issue_url: NotRequired[Union[str, None]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
 
 
 __all__ = (
-    "ActorType",
-    "ActorTypeForResponse",
-    "CreateEventType",
-    "CreateEventTypeForResponse",
-    "DeleteEventType",
-    "DeleteEventTypeForResponse",
-    "EventPropRepoType",
-    "EventPropRepoTypeForResponse",
-    "EventType",
-    "EventTypeForResponse",
-    "GollumEventPropPagesItemsType",
-    "GollumEventPropPagesItemsTypeForResponse",
-    "GollumEventType",
-    "GollumEventTypeForResponse",
-    "PublicEventType",
-    "PublicEventTypeForResponse",
-    "PushEventType",
-    "PushEventTypeForResponse",
-    "WatchEventType",
-    "WatchEventTypeForResponse",
+    "IssueType",
+    "IssueTypeForResponse",
 )

@@ -9,51 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0130 import ActionsPolicyOrgConditionsOneof0
+from .group_0131 import ActionsPolicyOrgConditionsOneof1
+from .group_0132 import ActionsPolicyOrgConditionsOneof2
+from .group_0145 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200(GitHubModel):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200"""
 
-    total_count: Missing[int] = Field(
+class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="The number of storage records for this digest and organization",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
+    conditions: Missing[
+        Union[
+            ActionsPolicyOrgConditionsOneof0,
+            ActionsPolicyOrgConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof2,
         ]
-    ] = Field(default=UNSET)
+    ] = Field(
+        default=UNSET,
+        title="Organization Actions policy conditions",
+        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-class OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageReco
-    rdsItems
-    """
+model_rebuild(OrgsOrgActionsPoliciesPolicyIdPutBody)
 
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[str] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200)
-model_rebuild(
-    OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems
-)
-
-__all__ = (
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200",
-    "OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems",
-)
+__all__ = ("OrgsOrgActionsPoliciesPolicyIdPutBody",)

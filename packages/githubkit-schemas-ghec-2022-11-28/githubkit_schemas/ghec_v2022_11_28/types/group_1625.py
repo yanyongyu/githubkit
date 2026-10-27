@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0414 import CheckRunType, CheckRunTypeForResponse
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
-    include_drafts: NotRequired[bool]
+    total_count: int
+    check_runs: list[CheckRunType]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
-    include_drafts: NotRequired[bool]
+    total_count: int
+    check_runs: list[CheckRunTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
+    "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200TypeForResponse",
 )

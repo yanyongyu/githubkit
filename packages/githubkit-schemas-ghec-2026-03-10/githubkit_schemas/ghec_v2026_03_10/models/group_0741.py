@@ -18,18 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0460 import DependabotAlert
-from .group_0642 import EnterpriseWebhooks
-from .group_0643 import SimpleInstallation
-from .group_0644 import OrganizationSimpleWebhooks
-from .group_0645 import RepositoryWebhooks
+from .group_0650 import EnterpriseWebhooks
+from .group_0651 import SimpleInstallation
+from .group_0652 import OrganizationSimpleWebhooks
+from .group_0653 import RepositoryWebhooks
+from .group_0742 import WebhookCodeScanningAlertUpdatedAssignmentPropAlert
 
 
-class WebhookDependabotAlertAssigneesChanged(GitHubModel):
-    """Dependabot alert assignees changed event"""
+class WebhookCodeScanningAlertUpdatedAssignment(GitHubModel):
+    """code_scanning_alert updated_assignment event"""
 
-    action: Literal["assignees_changed"] = Field()
-    alert: DependabotAlert = Field(description="A Dependabot alert.")
+    action: Literal["updated_assignment"] = Field()
+    alert: WebhookCodeScanningAlertUpdatedAssignmentPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -40,11 +47,6 @@ class WebhookDependabotAlertAssigneesChanged(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -52,6 +54,6 @@ class WebhookDependabotAlertAssigneesChanged(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDependabotAlertAssigneesChanged)
+model_rebuild(WebhookCodeScanningAlertUpdatedAssignment)
 
-__all__ = ("WebhookDependabotAlertAssigneesChanged",)
+__all__ = ("WebhookCodeScanningAlertUpdatedAssignment",)

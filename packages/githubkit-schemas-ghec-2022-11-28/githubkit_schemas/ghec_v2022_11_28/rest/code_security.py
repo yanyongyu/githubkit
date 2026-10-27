@@ -284,6 +284,7 @@ class CodeSecurityClient:
             BasicError,
             CodeSecurityConfiguration,
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/code-security/configurations"
@@ -312,6 +313,7 @@ class CodeSecurityClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -420,6 +422,7 @@ class CodeSecurityClient:
             BasicError,
             CodeSecurityConfiguration,
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/code-security/configurations"
@@ -448,6 +451,7 @@ class CodeSecurityClient:
                 "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -803,6 +807,7 @@ class CodeSecurityClient:
             BasicError,
             CodeSecurityConfiguration,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+            ValidationErrorSimple,
         )
 
         url = (
@@ -831,9 +836,11 @@ class CodeSecurityClient:
             stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -945,6 +952,7 @@ class CodeSecurityClient:
             BasicError,
             CodeSecurityConfiguration,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
+            ValidationErrorSimple,
         )
 
         url = (
@@ -973,9 +981,11 @@ class CodeSecurityClient:
             stream=stream,
             response_model=CodeSecurityConfiguration,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -1042,6 +1052,7 @@ class CodeSecurityClient:
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/attach"
@@ -1071,6 +1082,7 @@ class CodeSecurityClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -1137,6 +1149,7 @@ class CodeSecurityClient:
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/attach"
@@ -1166,6 +1179,7 @@ class CodeSecurityClient:
                 "403": BasicError,
                 "404": BasicError,
                 "409": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -1234,6 +1248,7 @@ class CodeSecurityClient:
             BasicError,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/defaults"
@@ -1262,6 +1277,7 @@ class CodeSecurityClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -1330,6 +1346,7 @@ class CodeSecurityClient:
             BasicError,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/enterprises/{enterprise}/code-security/configurations/{configuration_id}/defaults"
@@ -1358,6 +1375,7 @@ class CodeSecurityClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -1410,6 +1428,7 @@ class CodeSecurityClient:
             stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
             },
@@ -1464,6 +1483,7 @@ class CodeSecurityClient:
             stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
             },
@@ -1680,8 +1700,10 @@ class CodeSecurityClient:
         """
 
         from ..models import (
+            BasicError,
             CodeSecurityConfiguration,
             OrgsOrgCodeSecurityConfigurationsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations"
@@ -1704,6 +1726,12 @@ class CodeSecurityClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CodeSecurityConfiguration,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     @overload
@@ -1813,8 +1841,10 @@ class CodeSecurityClient:
         """
 
         from ..models import (
+            BasicError,
             CodeSecurityConfiguration,
             OrgsOrgCodeSecurityConfigurationsPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations"
@@ -1837,6 +1867,12 @@ class CodeSecurityClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CodeSecurityConfiguration,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     def get_default_configurations(
@@ -2355,8 +2391,10 @@ class CodeSecurityClient:
         """
 
         from ..models import (
+            BasicError,
             CodeSecurityConfiguration,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}"
@@ -2381,6 +2419,13 @@ class CodeSecurityClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CodeSecurityConfiguration,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     @overload
@@ -2495,8 +2540,10 @@ class CodeSecurityClient:
         """
 
         from ..models import (
+            BasicError,
             CodeSecurityConfiguration,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}"
@@ -2521,6 +2568,13 @@ class CodeSecurityClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=CodeSecurityConfiguration,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationErrorSimple,
+            },
         )
 
     @overload
@@ -2597,6 +2651,7 @@ class CodeSecurityClient:
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/attach"
@@ -2622,7 +2677,11 @@ class CodeSecurityClient:
             stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -2700,6 +2759,7 @@ class CodeSecurityClient:
             AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             BasicError,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/attach"
@@ -2725,7 +2785,11 @@ class CodeSecurityClient:
             stream=stream,
             response_model=AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
             error_models={
+                "400": BasicError,
                 "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -2796,6 +2860,7 @@ class CodeSecurityClient:
             BasicError,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/defaults"
@@ -2823,6 +2888,7 @@ class CodeSecurityClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -2893,6 +2959,7 @@ class CodeSecurityClient:
             BasicError,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
             OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+            ValidationErrorSimple,
         )
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/defaults"
@@ -2920,6 +2987,7 @@ class CodeSecurityClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -2951,7 +3019,11 @@ class CodeSecurityClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
         """
 
-        from ..models import BasicError, CodeSecurityConfigurationRepositories
+        from ..models import (
+            BasicError,
+            CodeSecurityConfigurationRepositories,
+            ValidationErrorSimple,
+        )
 
         url = (
             f"/orgs/{org}/code-security/configurations/{configuration_id}/repositories"
@@ -2974,8 +3046,10 @@ class CodeSecurityClient:
             stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -3007,7 +3081,11 @@ class CodeSecurityClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/code-security/configurations#get-repositories-associated-with-a-code-security-configuration
         """
 
-        from ..models import BasicError, CodeSecurityConfigurationRepositories
+        from ..models import (
+            BasicError,
+            CodeSecurityConfigurationRepositories,
+            ValidationErrorSimple,
+        )
 
         url = (
             f"/orgs/{org}/code-security/configurations/{configuration_id}/repositories"
@@ -3030,8 +3108,10 @@ class CodeSecurityClient:
             stream=stream,
             response_model=list[CodeSecurityConfigurationRepositories],
             error_models={
+                "400": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 

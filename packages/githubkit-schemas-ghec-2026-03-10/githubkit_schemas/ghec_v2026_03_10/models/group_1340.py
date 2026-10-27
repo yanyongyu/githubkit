@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,20 +18,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00
+    """
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
+    message: Missing[str] = Field(default=UNSET)
+    reassigned_resources: Missing[
+        Union[
+            list[
+                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET)
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
+    00PropReassignedResourcesItems
+    """
+
+    resource_type: Missing[str] = Field(
+        default=UNSET, description="The type of resource that was reassigned."
     )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the resource that was reassigned."
+    )
+    previous_cost_center: Missing[str] = Field(
+        default=UNSET, description="The previous cost center of the resource."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
+)
 
-__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems",
+)

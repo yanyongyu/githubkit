@@ -9,20 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0247 import ForkEventPropForkee
+from .group_0003 import SimpleUser
 
 
-class ForkEvent(GitHubModel):
-    """ForkEvent"""
+class ReleaseAsset(GitHubModel):
+    """Release Asset
 
-    action: str = Field()
-    forkee: ForkEventPropForkee = Field()
+    Data related to a release.
+    """
+
+    url: str = Field()
+    browser_download_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="The file name of the asset.")
+    label: Union[str, None] = Field()
+    state: Literal["uploaded", "open"] = Field(
+        description="State of the release asset."
+    )
+    content_type: str = Field()
+    size: int = Field()
+    digest: Union[str, None] = Field()
+    download_count: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    uploader: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(ForkEvent)
+model_rebuild(ReleaseAsset)
 
-__all__ = ("ForkEvent",)
+__all__ = ("ReleaseAsset",)

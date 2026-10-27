@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,93 +19,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingAiCreditUsageReportGhe(GitHubModel):
-    """BillingAiCreditUsageReportGhe"""
+class SecretScanningCustomPattern(GitHubModel):
+    """Secret Scanning Custom Pattern
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(
-        description="The name of the enterprise for the usage report."
-    )
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    cost_center: Missing[BillingAiCreditUsageReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+    A custom pattern for secret scanning.
+    """
 
-
-class BillingAiCreditUsageReportGhePropTimePeriod(GitHubModel):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    id: int = Field(description="The ID of the custom pattern.")
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    slug: str = Field(
+        description="A URL-friendly identifier for the custom pattern, derived from its name."
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    state: Literal["published", "unpublished"] = Field(
+        description="The state of the custom pattern."
     )
-
-
-class BillingAiCreditUsageReportGhePropCostCenter(GitHubModel):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItems(GitHubModel):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    push_protection_enabled: bool = Field(
+        description="Whether push protection is enabled for this custom pattern."
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
+    start_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start delimiter regex for the custom pattern."
     )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
+    end_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The end delimiter regex for the custom pattern."
     )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
+    must_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
     )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
+    must_not_match: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
     )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
     )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was created in ISO 8601 format.",
     )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was last updated in ISO 8601 format.",
     )
 
 
-model_rebuild(BillingAiCreditUsageReportGhe)
-model_rebuild(BillingAiCreditUsageReportGhePropTimePeriod)
-model_rebuild(BillingAiCreditUsageReportGhePropCostCenter)
-model_rebuild(BillingAiCreditUsageReportGhePropUsageItemsItems)
+model_rebuild(SecretScanningCustomPattern)
 
-__all__ = (
-    "BillingAiCreditUsageReportGhe",
-    "BillingAiCreditUsageReportGhePropCostCenter",
-    "BillingAiCreditUsageReportGhePropTimePeriod",
-    "BillingAiCreditUsageReportGhePropUsageItemsItems",
-)
+__all__ = ("SecretScanningCustomPattern",)

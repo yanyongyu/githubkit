@@ -9,81 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestMergeAsyncResult(GitHubModel):
-    """Pull Request Merge Async Result
+class PagesHealthCheck(GitHubModel):
+    """Pages Health Check Status
 
-    Pull Request Merge Async Result
+    Pages Health Check Status
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsAnyof0,
-        PullRequestMergeAsyncResultPropDetailsAnyof1,
-        PullRequestMergeAsyncResultPropDetailsAnyof2,
-        PullRequestMergeAsyncResultPropDetailsAnyof3,
-    ] = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof0(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof0
-
-    When the asynchronous merge request is pending
-    """
-
-    message: str = Field()
-    uuid: str = Field()
-    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
-    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
-    expected_head_sha: str = Field(
-        description="SHA that the pull request head must match for the enqueued merge to proceed."
+    domain: Missing[PagesHealthCheckPropDomain] = Field(default=UNSET)
+    alt_domain: Missing[Union[PagesHealthCheckPropAltDomain, None]] = Field(
+        default=UNSET
     )
 
 
-class PullRequestMergeAsyncResultPropDetailsAnyof1(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof1
+class PagesHealthCheckPropDomain(GitHubModel):
+    """PagesHealthCheckPropDomain"""
 
-    When the pull request is in a merge queue
-    """
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
 
-    message: str = Field()
+
+class PagesHealthCheckPropAltDomain(GitHubModel):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class PullRequestMergeAsyncResultPropDetailsAnyof2(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof2
-
-    When the asynchronous merge request failed
-    """
-
-    message: str = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof3(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof3
-
-    When the pull request has been merged
-    """
-
-    message: str = Field()
-    sha: str = Field()
-
-
-model_rebuild(PullRequestMergeAsyncResult)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof0)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof1)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof2)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof3)
+model_rebuild(PagesHealthCheck)
+model_rebuild(PagesHealthCheckPropDomain)
+model_rebuild(PagesHealthCheckPropAltDomain)
 
 __all__ = (
-    "PullRequestMergeAsyncResult",
-    "PullRequestMergeAsyncResultPropDetailsAnyof0",
-    "PullRequestMergeAsyncResultPropDetailsAnyof1",
-    "PullRequestMergeAsyncResultPropDetailsAnyof2",
-    "PullRequestMergeAsyncResultPropDetailsAnyof3",
+    "PagesHealthCheck",
+    "PagesHealthCheckPropAltDomain",
+    "PagesHealthCheckPropDomain",
 )

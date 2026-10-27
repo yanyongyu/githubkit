@@ -10,34 +10,72 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+class OrgsOrgCopilotModelPoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
+
+    default_availability: (
+        OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType
+    )
+    models: list[OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType]
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
+
+    default_availability: OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+    models: list[
+        OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200Type",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse",
 )

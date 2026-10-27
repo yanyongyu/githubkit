@@ -9,84 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, TypeAlias, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-
-
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
-
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserType, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserType, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+from .group_0262 import (
+    ReleaseEventPropReleaseType,
+    ReleaseEventPropReleaseTypeForResponse,
+)
 
 
-class GistSimplePropForkOfTypeForResponse(TypedDict):
-    """Gist
+class ReleaseEventType(TypedDict):
+    """ReleaseEvent"""
 
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
-    node_id: str
-    git_pull_url: str
-    git_push_url: str
-    html_url: str
-    files: GistSimplePropForkOfPropFilesTypeForResponse
-    public: bool
-    created_at: str
-    updated_at: str
-    description: Union[str, None]
-    comments: int
-    comments_enabled: NotRequired[bool]
-    user: Union[SimpleUserTypeForResponse, None]
-    comments_url: str
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[list[Any]]
-    history: NotRequired[list[Any]]
+    action: str
+    release: ReleaseEventPropReleaseType
 
 
-GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+class ReleaseEventTypeForResponse(TypedDict):
+    """ReleaseEvent"""
 
-
-GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
-"""GistSimplePropForkOfPropFiles
-"""
+    action: str
+    release: ReleaseEventPropReleaseTypeForResponse
 
 
 __all__ = (
-    "GistSimplePropForkOfPropFilesType",
-    "GistSimplePropForkOfPropFilesTypeForResponse",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfTypeForResponse",
+    "ReleaseEventType",
+    "ReleaseEventTypeForResponse",
 )

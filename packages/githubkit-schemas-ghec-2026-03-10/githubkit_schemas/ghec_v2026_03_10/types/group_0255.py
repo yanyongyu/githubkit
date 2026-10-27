@@ -9,29 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0256 import (
-    ReleaseEventPropReleaseType,
-    ReleaseEventPropReleaseTypeForResponse,
-)
-
-
-class ReleaseEventType(TypedDict):
-    """ReleaseEvent"""
-
-    action: str
-    release: ReleaseEventPropReleaseType
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0232 import LabelType, LabelTypeForResponse
+from .group_0244 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
 
 
-class ReleaseEventTypeForResponse(TypedDict):
-    """ReleaseEvent"""
+class PullRequestEventType(TypedDict):
+    """PullRequestEvent"""
 
     action: str
-    release: ReleaseEventPropReleaseTypeForResponse
+    number: int
+    pull_request: PullRequestMinimalType
+    assignee: NotRequired[SimpleUserType]
+    assignees: NotRequired[list[SimpleUserType]]
+    label: NotRequired[LabelType]
+    labels: NotRequired[list[LabelType]]
+
+
+class PullRequestEventTypeForResponse(TypedDict):
+    """PullRequestEvent"""
+
+    action: str
+    number: int
+    pull_request: PullRequestMinimalTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    label: NotRequired[LabelTypeForResponse]
+    labels: NotRequired[list[LabelTypeForResponse]]
 
 
 __all__ = (
-    "ReleaseEventType",
-    "ReleaseEventTypeForResponse",
+    "PullRequestEventType",
+    "PullRequestEventTypeForResponse",
 )

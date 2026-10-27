@@ -9,53 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class LicenseType(TypedDict):
-    """License
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    License
+    Base Gist
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
     node_id: str
+    git_pull_url: str
+    git_push_url: str
     html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
 
 
-class LicenseTypeForResponse(TypedDict):
-    """License
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
 
-    License
+    Base Gist
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
     node_id: str
+    git_pull_url: str
+    git_push_url: str
     html_url: str
-    description: str
-    implementation: str
-    permissions: list[str]
-    conditions: list[str]
-    limitations: list[str]
-    body: str
-    featured: bool
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+
+
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
+
+
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "LicenseType",
-    "LicenseTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

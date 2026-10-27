@@ -9,26 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0247 import ForkEventPropForkeeType, ForkEventPropForkeeTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ForkEventType(TypedDict):
-    """ForkEvent"""
+class ReleaseAssetType(TypedDict):
+    """Release Asset
 
-    action: str
-    forkee: ForkEventPropForkeeType
+    Data related to a release.
+    """
+
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    uploader: Union[SimpleUserType, None]
 
 
-class ForkEventTypeForResponse(TypedDict):
-    """ForkEvent"""
+class ReleaseAssetTypeForResponse(TypedDict):
+    """Release Asset
 
-    action: str
-    forkee: ForkEventPropForkeeTypeForResponse
+    Data related to a release.
+    """
+
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    digest: Union[str, None]
+    download_count: int
+    created_at: str
+    updated_at: str
+    uploader: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "ForkEventType",
-    "ForkEventTypeForResponse",
+    "ReleaseAssetType",
+    "ReleaseAssetTypeForResponse",
 )

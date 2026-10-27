@@ -9,54 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType
-    ]
-    expires_at: NotRequired[Union[_dt.date, Literal[0], None]]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0
 
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_alerting: NotRequired[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse
-    ]
-    expires_at: NotRequired[Union[str, Literal[0], None]]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType(
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse(
     TypedDict
 ):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+    """AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse(
-    TypedDict
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropRepository
+
+    The repository this task belongs to
+    """
+
+    id: NotRequired[int]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlertingTypeForResponse",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyType",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0Type",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0TypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropCustomAgentTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropRepositoryTypeForResponse",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsType",
+    "AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItemsTypeForResponse",
 )

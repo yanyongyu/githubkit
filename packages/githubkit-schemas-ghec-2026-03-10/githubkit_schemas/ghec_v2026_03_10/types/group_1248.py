@@ -9,31 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
-
-    credential_id: int
-    credential_type: Literal["ssh_key"]
-    fingerprint: str
-    organizations: list[str]
-
-
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    credential_id: int
-    credential_type: Literal["ssh_key"]
-    fingerprint: str
-    organizations: list[str]
+    selected_organization_ids: list[int]
+
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+
+    selected_organization_ids: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyTypeForResponse",
 )

@@ -9,38 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0268 import (
-    MarketplacePurchasePropMarketplacePendingChange,
-    MarketplacePurchasePropMarketplacePurchase,
-)
+from .group_0003 import SimpleUser
 
 
-class MarketplacePurchase(GitHubModel):
-    """Marketplace Purchase
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
 
-    Marketplace Purchase
+    Gist
     """
 
     url: str = Field()
-    type: str = Field()
-    id: int = Field()
-    login: str = Field()
-    organization_billing_email: Missing[str] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    marketplace_pending_change: Missing[
-        Union[MarketplacePurchasePropMarketplacePendingChange, None]
-    ] = Field(default=UNSET)
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(MarketplacePurchase)
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
 
-__all__ = ("MarketplacePurchase",)
+
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
+
+__all__ = (
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
+)

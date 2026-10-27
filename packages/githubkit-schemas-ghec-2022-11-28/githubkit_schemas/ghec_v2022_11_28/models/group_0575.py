@@ -17,11 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0169 import RepositoryRuleCommitterEmailPatternPropParameters
 
-class RepositoryRuleDetailedOneof18(GitHubModel):
-    """RepositoryRuleDetailedOneof18"""
 
-    type: Literal["license_compliance_scanning"] = Field()
+class RepositoryRuleDetailedOneof12(GitHubModel):
+    """RepositoryRuleDetailedOneof12"""
+
+    type: Literal["committer_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +40,6 @@ class RepositoryRuleDetailedOneof18(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof18)
+model_rebuild(RepositoryRuleDetailedOneof12)
 
-__all__ = ("RepositoryRuleDetailedOneof18",)
+__all__ = ("RepositoryRuleDetailedOneof12",)

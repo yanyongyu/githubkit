@@ -13,48 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0564 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0565 import (
+from .group_0200 import (
+    ProjectsV2StatusUpdateType,
+    ProjectsV2StatusUpdateTypeForResponse,
+)
+from .group_0568 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0569 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0892 import (
-    WebhookPullRequestAutoMergeEnabledPropPullRequestType,
-    WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse,
-)
 
 
-class WebhookPullRequestAutoMergeEnabledType(TypedDict):
-    """pull_request auto_merge_enabled event"""
+class WebhookProjectsV2StatusUpdateDeletedType(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
 
-    action: Literal["auto_merge_enabled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestType
-    reason: NotRequired[str]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
     sender: SimpleUserType
 
 
-class WebhookPullRequestAutoMergeEnabledTypeForResponse(TypedDict):
-    """pull_request auto_merge_enabled event"""
+class WebhookProjectsV2StatusUpdateDeletedTypeForResponse(TypedDict):
+    """Projects v2 Status Update Deleted Event"""
 
-    action: Literal["auto_merge_enabled"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequestTypeForResponse
-    reason: NotRequired[str]
-    repository: RepositoryWebhooksTypeForResponse
+    organization: OrganizationSimpleWebhooksTypeForResponse
+    projects_v2_status_update: ProjectsV2StatusUpdateTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestAutoMergeEnabledType",
-    "WebhookPullRequestAutoMergeEnabledTypeForResponse",
+    "WebhookProjectsV2StatusUpdateDeletedType",
+    "WebhookProjectsV2StatusUpdateDeletedTypeForResponse",
 )

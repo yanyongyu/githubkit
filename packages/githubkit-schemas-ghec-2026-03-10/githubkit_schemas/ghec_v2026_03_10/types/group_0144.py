@@ -9,51 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0054 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
-from .group_0063 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType,
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse,
-)
-from .group_0143 import (
-    RepositoryRulesetConditionsPropRefNameType,
-    RepositoryRulesetConditionsPropRefNameTypeForResponse,
-)
 
+class RepositoryRulesetBypassActorType(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-class EnterpriseRulesetConditionsOneof0Type(TypedDict):
-    """organization_name_and_repository_name
-
-    Conditions to target organizations by name and all repositories
+    An actor that can bypass rules in a ruleset
     """
 
-    organization_name: (
-        EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType
-    )
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "EnterpriseOwner",
+        "EnterpriseRole",
+        "User",
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
-class EnterpriseRulesetConditionsOneof0TypeForResponse(TypedDict):
-    """organization_name_and_repository_name
+class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
+    """Repository Ruleset Bypass Actor
 
-    Conditions to target organizations by name and all repositories
+    An actor that can bypass rules in a ruleset
     """
 
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
-    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    actor_id: NotRequired[Union[int, None]]
+    actor_type: Literal[
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "EnterpriseOwner",
+        "EnterpriseRole",
+        "User",
+    ]
+    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOneof0Type",
-    "EnterpriseRulesetConditionsOneof0TypeForResponse",
+    "RepositoryRulesetBypassActorType",
+    "RepositoryRulesetBypassActorTypeForResponse",
 )

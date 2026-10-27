@@ -4247,8 +4247,6 @@ class AppsClient:
 
         Add a single repository to an installation. The authenticated user must have admin access to the repository.
 
-        This endpoint only works for PATs (classic) with the `repo` scope.
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#add-a-repository-to-an-app-installation
         """
 
@@ -4282,8 +4280,6 @@ class AppsClient:
         PUT /user/installations/{installation_id}/repositories/{repository_id}
 
         Add a single repository to an installation. The authenticated user must have admin access to the repository.
-
-        This endpoint only works for PATs (classic) with the `repo` scope.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#add-a-repository-to-an-app-installation
         """
@@ -4319,7 +4315,7 @@ class AppsClient:
 
         Remove a single repository from an installation. The authenticated user must have admin access to the repository. The installation must have the `repository_selection` of `selected`.
 
-        This endpoint only works for PATs (classic) with the `repo` scope.
+        To use a PAT (classic) with this endpoint, the `repo` scope is required
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#remove-a-repository-from-an-app-installation
         """
@@ -4355,7 +4351,7 @@ class AppsClient:
 
         Remove a single repository from an installation. The authenticated user must have admin access to the repository. The installation must have the `repository_selection` of `selected`.
 
-        This endpoint only works for PATs (classic) with the `repo` scope.
+        To use a PAT (classic) with this endpoint, the `repo` scope is required
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/apps/installations#remove-a-repository-from-an-app-installation
         """

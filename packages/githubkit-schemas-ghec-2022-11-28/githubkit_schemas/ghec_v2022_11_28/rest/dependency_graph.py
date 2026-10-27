@@ -31,15 +31,23 @@ if TYPE_CHECKING:
     from ..models import (
         DependencyGraphDiffItems,
         DependencyGraphSpdxSbom,
+        EnterpriseLicensePolicyResponse,
         ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
     )
     from ..types import (
         DependencyGraphDiffItemsTypeForResponse,
         DependencyGraphSpdxSbomTypeForResponse,
+        EnterpriseLicensePolicyItemPropLicensesType,
+        EnterpriseLicensePolicyItemPropPackagesItemsType,
+        EnterpriseLicensePolicyItemType,
+        EnterpriseLicensePolicyResponseTypeForResponse,
         MetadataType,
         ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse,
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201TypeForResponse,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostBodyType,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
         SnapshotPropDetectorType,
         SnapshotPropJobType,
         SnapshotPropManifestsType,
@@ -60,6 +68,256 @@ class DependencyGraphClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def get_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseLicensePolicyResponse, EnterpriseLicensePolicyResponseTypeForResponse
+    ]:
+        """dependency-graph/get-enterprise-license-policy
+
+        GET /enterprises/{enterprise}/license-compliance/policies/{policy_id}
+
+        Gets the license compliance policy for an enterprise.
+
+        Currently, only the policy with the ID `default` is supported.
+
+        The authenticated user must be an enterprise owner, or have the "View enterprise license policy" or "Edit enterprise license policy" fine-grained permission on the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/license-compliance#get-the-license-compliance-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterpriseLicensePolicyResponse,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/license-compliance/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseLicensePolicyResponse,
+            error_models={
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseLicensePolicyResponse, EnterpriseLicensePolicyResponseTypeForResponse
+    ]:
+        """dependency-graph/get-enterprise-license-policy
+
+        GET /enterprises/{enterprise}/license-compliance/policies/{policy_id}
+
+        Gets the license compliance policy for an enterprise.
+
+        Currently, only the policy with the ID `default` is supported.
+
+        The authenticated user must be an enterprise owner, or have the "View enterprise license policy" or "Edit enterprise license policy" fine-grained permission on the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/license-compliance#get-the-license-compliance-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterpriseLicensePolicyResponse,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/license-compliance/policies/{policy_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseLicensePolicyResponse,
+            error_models={
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def set_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterpriseLicensePolicyItemType,
+    ) -> Response: ...
+
+    @overload
+    def set_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        licenses: EnterpriseLicensePolicyItemPropLicensesType,
+        packages: list[EnterpriseLicensePolicyItemPropPackagesItemsType],
+    ) -> Response: ...
+
+    def set_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterpriseLicensePolicyItemType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependency-graph/set-enterprise-license-policy
+
+        PUT /enterprises/{enterprise}/license-compliance/policies/{policy_id}
+
+        Sets the license compliance policy for an enterprise.
+
+        Currently, only the policy with the ID `default` is supported.
+
+        The authenticated user must be an enterprise owner, or have the "Edit enterprise license policy" fine-grained permission on the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/license-compliance#set-the-license-compliance-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterpriseLicensePolicyItem,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/license-compliance/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(EnterpriseLicensePolicyItem, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_set_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterpriseLicensePolicyItemType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        licenses: EnterpriseLicensePolicyItemPropLicensesType,
+        packages: list[EnterpriseLicensePolicyItemPropPackagesItemsType],
+    ) -> Response: ...
+
+    async def async_set_enterprise_license_policy(
+        self,
+        enterprise: str,
+        policy_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterpriseLicensePolicyItemType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """dependency-graph/set-enterprise-license-policy
+
+        PUT /enterprises/{enterprise}/license-compliance/policies/{policy_id}
+
+        Sets the license compliance policy for an enterprise.
+
+        Currently, only the policy with the ID `default` is supported.
+
+        The authenticated user must be an enterprise owner, or have the "Edit enterprise license policy" fine-grained permission on the enterprise.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/license-compliance#set-the-license-compliance-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterpriseLicensePolicyItem,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/license-compliance/policies/{policy_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(EnterpriseLicensePolicyItem, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
         )
 
     def diff_range(
@@ -576,4 +834,188 @@ class DependencyGraphClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
+        )
+
+    @overload
+    def check_license_compliance_for_packages(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoLicenseCompliancePackageChecksPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def check_license_compliance_for_packages(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        purls: list[str],
+    ) -> Response[
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
+    ]: ...
+
+    def check_license_compliance_for_packages(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoLicenseCompliancePackageChecksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
+    ]:
+        """dependency-graph/check-license-compliance-for-packages
+
+        POST /repos/{owner}/{repo}/license-compliance/package-checks
+
+        Checks whether packages identified by the supplied package URLs (PURLs) are allowed by the repository's license compliance policy.
+
+        For requests made on behalf of a user, that user must have write access to the repository or the "View repository license policy" permission.
+        OAuth apps and classic personal access tokens require the `repo` scope.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/license-compliance#check-license-compliance-for-packages
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoLicenseCompliancePackageChecksPostBody,
+            ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/license-compliance/package-checks"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoLicenseCompliancePackageChecksPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_check_license_compliance_for_packages(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoLicenseCompliancePackageChecksPostBodyType,
+    ) -> Response[
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_check_license_compliance_for_packages(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        purls: list[str],
+    ) -> Response[
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
+    ]: ...
+
+    async def async_check_license_compliance_for_packages(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoLicenseCompliancePackageChecksPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+        ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse,
+    ]:
+        """dependency-graph/check-license-compliance-for-packages
+
+        POST /repos/{owner}/{repo}/license-compliance/package-checks
+
+        Checks whether packages identified by the supplied package URLs (PURLs) are allowed by the repository's license compliance policy.
+
+        For requests made on behalf of a user, that user must have write access to the repository or the "View repository license policy" permission.
+        OAuth apps and classic personal access tokens require the `repo` scope.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/dependency-graph/license-compliance#check-license-compliance-for-packages
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoLicenseCompliancePackageChecksPostBody,
+            ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/license-compliance/package-checks"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoLicenseCompliancePackageChecksPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
         )

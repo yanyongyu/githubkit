@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,92 +18,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportGhe(GitHubModel):
-    """BillingUsageSummaryReportGhe"""
+class UpdateCostCenter(GitHubModel):
+    """UpdateCostCenter"""
 
-    time_period: BillingUsageSummaryReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(
-        description="The name of the enterprise for the usage report."
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    azure_subscription: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
     )
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
+    resources: list[UpdateCostCenterPropResourcesItems] = Field()
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    cost_center: Missing[BillingUsageSummaryReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
+    ai_credit_pool_state: Missing[UpdateCostCenterPropAiCreditPoolState] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
 
 
-class BillingUsageSummaryReportGhePropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportGhePropTimePeriod"""
+class UpdateCostCenterPropResourcesItems(GitHubModel):
+    """UpdateCostCenterPropResourcesItems"""
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
 
 
-class BillingUsageSummaryReportGhePropCostCenter(GitHubModel):
-    """BillingUsageSummaryReportGhePropCostCenter"""
+class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
+    """UpdateCostCenterPropAiCreditPoolState
 
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
 
-
-class BillingUsageSummaryReportGhePropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
     )
 
 
-model_rebuild(BillingUsageSummaryReportGhe)
-model_rebuild(BillingUsageSummaryReportGhePropTimePeriod)
-model_rebuild(BillingUsageSummaryReportGhePropCostCenter)
-model_rebuild(BillingUsageSummaryReportGhePropUsageItemsItems)
+model_rebuild(UpdateCostCenter)
+model_rebuild(UpdateCostCenterPropResourcesItems)
+model_rebuild(UpdateCostCenterPropAiCreditPoolState)
 
 __all__ = (
-    "BillingUsageSummaryReportGhe",
-    "BillingUsageSummaryReportGhePropCostCenter",
-    "BillingUsageSummaryReportGhePropTimePeriod",
-    "BillingUsageSummaryReportGhePropUsageItemsItems",
+    "UpdateCostCenter",
+    "UpdateCostCenterPropAiCreditPoolState",
+    "UpdateCostCenterPropResourcesItems",
 )

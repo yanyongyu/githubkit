@@ -14,26 +14,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0259 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
+class RepositoryRuleCodeQualityPropParameters(GitHubModel):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and their premium requests quota has not
-    reached the limit.
-    """
-
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
+    severity: Literal["errors", "warnings", "notes", "all"] = Field(
+        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
     )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(RepositoryRuleCodeQualityPropParameters)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("RepositoryRuleCodeQualityPropParameters",)

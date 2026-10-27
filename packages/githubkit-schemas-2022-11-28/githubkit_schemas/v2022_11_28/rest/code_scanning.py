@@ -106,9 +106,6 @@ class CodeScanningClient:
 
         GET /orgs/{org}/code-scanning/ai-scan
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Gets the AI Scan setting stored on an organization.
 
         The response reports the value stored on the organization. Organization respects enterprise policy.
@@ -150,9 +147,6 @@ class CodeScanningClient:
         """code-scanning/get-ai-scan-enablement-for-org
 
         GET /orgs/{org}/code-scanning/ai-scan
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets the AI Scan setting stored on an organization.
 
@@ -222,9 +216,6 @@ class CodeScanningClient:
         """code-scanning/update-ai-scan-enablement-for-org
 
         PATCH /orgs/{org}/code-scanning/ai-scan
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates the AI Scan setting stored on an organization.
 
@@ -308,9 +299,6 @@ class CodeScanningClient:
         """code-scanning/update-ai-scan-enablement-for-org
 
         PATCH /orgs/{org}/code-scanning/ai-scan
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates the AI Scan setting stored on an organization.
 
@@ -515,9 +503,6 @@ class CodeScanningClient:
 
         GET /repos/{owner}/{repo}/code-scanning/ai-scan
 
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
-
         Gets whether AI Scan is enabled for a repository.
 
         OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
@@ -556,9 +541,6 @@ class CodeScanningClient:
         """code-scanning/get-ai-scan-enablement
 
         GET /repos/{owner}/{repo}/code-scanning/ai-scan
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Gets whether AI Scan is enabled for a repository.
 
@@ -627,9 +609,6 @@ class CodeScanningClient:
         """code-scanning/update-ai-scan-enablement
 
         PATCH /repos/{owner}/{repo}/code-scanning/ai-scan
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates whether AI Scan is enabled for a repository.
 
@@ -714,9 +693,6 @@ class CodeScanningClient:
         """code-scanning/update-ai-scan-enablement
 
         PATCH /repos/{owner}/{repo}/code-scanning/ai-scan
-
-        > [!NOTE]
-        > This endpoint is in public preview and is subject to change.
 
         Updates whether AI Scan is enabled for a repository.
 

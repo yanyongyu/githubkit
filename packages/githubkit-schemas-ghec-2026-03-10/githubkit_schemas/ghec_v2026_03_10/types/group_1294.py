@@ -9,53 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
+    ]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
+    ]
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
+    ]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
-
-
-class VisualStudioSubscriptionAssignmentType(TypedDict):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
-    """Visual Studio Subscription Assignment
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
 
-    Visual Studio Subscription Assignment
-    """
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
-    "VisualStudioSubscriptionAssignmentType",
-    "VisualStudioSubscriptionAssignmentTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse",
 )

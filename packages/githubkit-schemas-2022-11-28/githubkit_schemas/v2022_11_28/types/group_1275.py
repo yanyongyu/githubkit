@@ -9,27 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0282 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+    default_level: Literal["public", "internal"]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
+class OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    default_level: Literal["public", "internal"]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse201Type",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
+    "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyTypeForResponse",
 )

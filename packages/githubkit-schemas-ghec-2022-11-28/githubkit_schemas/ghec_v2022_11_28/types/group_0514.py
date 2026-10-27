@@ -9,56 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0493 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
-from .group_0495 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class IssueTypeChangedIssueEventType(TypedDict):
-    """Issue Type Changed Issue Event
+class AddedToProjectIssueEventType(TypedDict):
+    """Added to Project Issue Event
 
-    Issue Type Changed Issue Event
+    Added to Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["added_to_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    issue_type: Union[IssueTypeWebhookType, None]
-    prev_issue_type: Union[IssueTypeWebhookType, None]
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
 
 
-class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
-    """Issue Type Changed Issue Event
+class AddedToProjectIssueEventTypeForResponse(TypedDict):
+    """Added to Project Issue Event
 
-    Issue Type Changed Issue Event
+    Added to Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: str
+    event: Literal["added_to_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
-    prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardTypeForResponse]
+
+
+class AddedToProjectIssueEventPropProjectCardType(TypedDict):
+    """AddedToProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+class AddedToProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
+    """AddedToProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
 
 
 __all__ = (
-    "IssueTypeChangedIssueEventType",
-    "IssueTypeChangedIssueEventTypeForResponse",
+    "AddedToProjectIssueEventPropProjectCardType",
+    "AddedToProjectIssueEventPropProjectCardTypeForResponse",
+    "AddedToProjectIssueEventType",
+    "AddedToProjectIssueEventTypeForResponse",
 )

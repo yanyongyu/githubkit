@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
-
-    credential_id: int
-    credential_type: Literal["classic_pat"]
-    organizations: list[str]
+from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    credential_id: int
-    credential_type: Literal["classic_pat"]
-    organizations: list[str]
+    total_count: float
+    organizations: list[OrganizationSimpleType]
+
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: list[OrganizationSimpleTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200TypeForResponse",
 )

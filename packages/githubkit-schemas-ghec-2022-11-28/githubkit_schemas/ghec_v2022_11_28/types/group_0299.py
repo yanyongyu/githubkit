@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleUpdateSchemaType",
-    "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Allof1Type",
+    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
 )

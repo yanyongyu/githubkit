@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse400(GitHubModel):
-    """AgentsTasksTaskIdGetResponse400
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,15 +30,19 @@ class AgentsTasksTaskIdGetResponse400(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsTasksTaskIdGetResponse400PropErrorsItems]] = Field(
+    errors: Missing[
+        list[AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems]
+    ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse400PropErrorsItems
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems
 
     A single validation error
     """
@@ -57,10 +61,10 @@ class AgentsTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse400)
-model_rebuild(AgentsTasksTaskIdGetResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse400",
-    "AgentsTasksTaskIdGetResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems",
 )

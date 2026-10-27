@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
     from .actions import ActionsClient
     from .activity import ActivityClient
+    from .agent_automations import AgentAutomationsClient
     from .agent_tasks import AgentTasksClient
     from .agents import AgentsClient
     from .apps import AppsClient
@@ -84,6 +85,12 @@ class RestNamespace:
         from .security_advisories import SecurityAdvisoriesClient
 
         return SecurityAdvisoriesClient(self._github)
+
+    @cached_property
+    def agent_automations(self) -> "AgentAutomationsClient":
+        from .agent_automations import AgentAutomationsClient
+
+        return AgentAutomationsClient(self._github)
 
     @cached_property
     def agent_tasks(self) -> "AgentTasksClient":

@@ -9,32 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class CommitActivityType(TypedDict):
-    """Commit Activity
+class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    Commit Activity
+    The description does not answer the repository's report template.
     """
 
-    days: list[int]
-    total: int
-    week: int
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
+    ]
 
 
-class CommitActivityTypeForResponse(TypedDict):
-    """Commit Activity
+class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    Commit Activity
+    The description does not answer the repository's report template.
     """
 
-    days: list[int]
-    total: int
-    week: int
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
+    ]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
 
 
 __all__ = (
-    "CommitActivityType",
-    "CommitActivityTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorType",
+    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
 )

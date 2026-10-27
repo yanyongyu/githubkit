@@ -16,22 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ApiInsightsSummaryStats(GitHubModel):
-    """Summary Stats
+class ExternalGroups(GitHubModel):
+    """ExternalGroups
 
-    API Insights usage summary stats for an organization
+    A list of external groups available to be connected to a team
     """
 
-    total_request_count: Missing[int] = Field(
+    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
         default=UNSET,
-        description="The total number of requests within the queried time period",
-    )
-    rate_limited_request_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of requests that were rate limited within the queried time period",
+        description="An array of external groups available to be mapped to a team",
     )
 
 
-model_rebuild(ApiInsightsSummaryStats)
+class ExternalGroupsPropGroupsItems(GitHubModel):
+    """ExternalGroupsPropGroupsItems"""
 
-__all__ = ("ApiInsightsSummaryStats",)
+    group_id: int = Field(description="The internal ID of the group")
+    group_name: str = Field(description="The display name of the group")
+    updated_at: str = Field(description="The time of the last update for this group")
+
+
+model_rebuild(ExternalGroups)
+model_rebuild(ExternalGroupsPropGroupsItems)
+
+__all__ = (
+    "ExternalGroups",
+    "ExternalGroupsPropGroupsItems",
+)

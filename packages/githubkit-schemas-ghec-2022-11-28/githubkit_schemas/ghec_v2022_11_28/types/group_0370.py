@@ -9,57 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    Repository actions caches
-    """
-
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsType]
-
-
-class ActionsCacheListTypeForResponse(TypedDict):
-    """Repository actions caches
-
-    Repository actions caches
-    """
-
-    total_count: int
-    actions_caches: list[ActionsCacheListPropActionsCachesItemsTypeForResponse]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    size_in_bytes: NotRequired[int]
-
-
-class ActionsCacheListPropActionsCachesItemsTypeForResponse(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    size_in_bytes: NotRequired[int]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "ActionsCacheListPropActionsCachesItemsType",
-    "ActionsCacheListPropActionsCachesItemsTypeForResponse",
-    "ActionsCacheListType",
-    "ActionsCacheListTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

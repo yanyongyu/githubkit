@@ -16,21 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommits(GitHubModel):
-    """CodeScanningAutofixCommits
+class CodeQualitySetupUpdateResponse(GitHubModel):
+    """CodeQualitySetupUpdateResponse
 
-    Commit an autofix for a code scanning alert
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
     )
-    message: Missing[str] = Field(
-        default=UNSET, description="Commit message to be used."
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(CodeScanningAutofixCommits)
+model_rebuild(CodeQualitySetupUpdateResponse)
 
-__all__ = ("CodeScanningAutofixCommits",)
+__all__ = ("CodeQualitySetupUpdateResponse",)

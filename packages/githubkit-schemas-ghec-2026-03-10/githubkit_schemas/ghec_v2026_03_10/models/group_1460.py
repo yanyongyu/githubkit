@@ -15,19 +15,21 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0345 import ProjectsV2FieldSingleSelectOption
 
+class OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody"""
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2"""
-
-    name: str = Field(description="The name of the field.")
-    data_type: Literal["single_select"] = Field(description="The field's data type.")
-    single_select_options: list[ProjectsV2FieldSingleSelectOption] = Field(
-        description="The options available for single select fields. At least one option must be provided when creating a single select field."
+    actor_type: Literal["User", "Team"] = Field(
+        description="The type of actor (user or team)."
+    )
+    actor_identifier: str = Field(
+        description="The username (for users) or team slug (for teams). The numeric ID of a user or team is also accepted."
+    )
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role to grant to the collaborator."
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2",)
+__all__ = ("OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody",)

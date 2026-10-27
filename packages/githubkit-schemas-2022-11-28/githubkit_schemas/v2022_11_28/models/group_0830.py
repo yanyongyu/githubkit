@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0564 import EnterpriseWebhooks
-from .group_0565 import SimpleInstallation
-from .group_0566 import OrganizationSimpleWebhooks
-from .group_0567 import RepositoryWebhooks
-from .group_0597 import WebhooksMilestone3
+from .group_0568 import EnterpriseWebhooks
+from .group_0569 import SimpleInstallation
+from .group_0570 import OrganizationSimpleWebhooks
+from .group_0571 import RepositoryWebhooks
+from .group_0581 import WebhooksUser
 
 
-class WebhookMilestoneCreated(GitHubModel):
-    """milestone created event"""
+class WebhookMemberRemoved(GitHubModel):
+    """member removed event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,10 +39,7 @@ class WebhookMilestoneCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone3 = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -55,6 +52,6 @@ class WebhookMilestoneCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookMilestoneCreated)
+model_rebuild(WebhookMemberRemoved)
 
-__all__ = ("WebhookMilestoneCreated",)
+__all__ = ("WebhookMemberRemoved",)

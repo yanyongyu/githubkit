@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,44 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
-
-    assignees: Missing[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
     GitHubModel
 ):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    login: str = Field(description="The login of the user to assign.")
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this assignee."
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
     )
-    suggest: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.",
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
     )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this assignee choice."
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

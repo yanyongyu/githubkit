@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,71 +17,79 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class PullRequestMergeAsyncResult(GitHubModel):
+    """Pull Request Merge Async Result
 
-class PullRequestReview(GitHubModel):
-    """Pull Request Review
-
-    Pull Request Reviews are reviews on pull requests.
+    Pull Request Merge Async Result
     """
 
-    id: int = Field(description="Unique identifier of the review")
-    node_id: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    body: str = Field(description="The text of the review.")
-    state: str = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: PullRequestReviewPropLinks = Field(alias="_links")
-    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
-    commit_id: Union[str, None] = Field(
-        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
+    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0,
+        PullRequestMergeAsyncResultPropDetailsAnyof1,
+        PullRequestMergeAsyncResultPropDetailsAnyof2,
+        PullRequestMergeAsyncResultPropDetailsAnyof3,
+    ] = Field()
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof0(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
+
+    When the asynchronous merge request is pending
+    """
+
+    message: str = Field()
+    uuid: str = Field()
+    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
+    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
+    expected_head_sha: str = Field(
+        description="SHA that the pull request head must match for the enqueued merge to proceed."
     )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    bypass_rules: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the asynchronous merge request will attempt to bypass repository rules that the authenticated actor is permitted to bypass.",
     )
 
 
-class PullRequestReviewPropLinks(GitHubModel):
-    """PullRequestReviewPropLinks"""
+class PullRequestMergeAsyncResultPropDetailsAnyof1(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
 
-    html: PullRequestReviewPropLinksPropHtml = Field()
-    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
+    When the pull request is in a merge queue
+    """
 
-
-class PullRequestReviewPropLinksPropHtml(GitHubModel):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str = Field()
+    message: str = Field()
 
 
-class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class PullRequestMergeAsyncResultPropDetailsAnyof2(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
 
-    href: str = Field()
+    When the asynchronous merge request failed
+    """
+
+    message: str = Field()
 
 
-model_rebuild(PullRequestReview)
-model_rebuild(PullRequestReviewPropLinks)
-model_rebuild(PullRequestReviewPropLinksPropHtml)
-model_rebuild(PullRequestReviewPropLinksPropPullRequest)
+class PullRequestMergeAsyncResultPropDetailsAnyof3(GitHubModel):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestMergeAsyncResult)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof0)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof1)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof2)
+model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof3)
 
 __all__ = (
-    "PullRequestReview",
-    "PullRequestReviewPropLinks",
-    "PullRequestReviewPropLinksPropHtml",
-    "PullRequestReviewPropLinksPropPullRequest",
+    "PullRequestMergeAsyncResult",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3",
 )

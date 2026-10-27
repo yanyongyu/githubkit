@@ -12,16 +12,28 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
     enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
+        default=UNSET,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)

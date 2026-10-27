@@ -9,66 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
-class CodeQualitySetupType(TypedDict):
-    """CodeQualitySetup
 
-    Configuration for code quality setup.
+class CheckSuitePreferenceType(TypedDict):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ]
-    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    schedule: NotRequired[Union[Literal["weekly"], None]]
-    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
+    preferences: CheckSuitePreferencePropPreferencesType
+    repository: MinimalRepositoryType
 
 
-class CodeQualitySetupTypeForResponse(TypedDict):
-    """CodeQualitySetup
+class CheckSuitePreferenceTypeForResponse(TypedDict):
+    """Check Suite Preference
 
-    Configuration for code quality setup.
+    Check suite configuration preferences for a repository.
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
+    preferences: CheckSuitePreferencePropPreferencesTypeForResponse
+    repository: MinimalRepositoryTypeForResponse
+
+
+class CheckSuitePreferencePropPreferencesType(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
+        list[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
+    ]
+
+
+class CheckSuitePreferencePropPreferencesTypeForResponse(TypedDict):
+    """CheckSuitePreferencePropPreferences"""
+
+    auto_trigger_checks: NotRequired[
         list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
+            CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse
         ]
     ]
-    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
-    runner_label: NotRequired[Union[str, None]]
-    updated_at: NotRequired[Union[str, None]]
-    schedule: NotRequired[Union[Literal["weekly"], None]]
-    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse(
+    TypedDict
+):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "CodeQualitySetupType",
-    "CodeQualitySetupTypeForResponse",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsTypeForResponse",
+    "CheckSuitePreferencePropPreferencesType",
+    "CheckSuitePreferencePropPreferencesTypeForResponse",
+    "CheckSuitePreferenceType",
+    "CheckSuitePreferenceTypeForResponse",
 )

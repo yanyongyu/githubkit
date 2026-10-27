@@ -9,54 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0268 import (
-    MarketplacePurchasePropMarketplacePendingChangeType,
-    MarketplacePurchasePropMarketplacePendingChangeTypeForResponse,
-    MarketplacePurchasePropMarketplacePurchaseType,
-    MarketplacePurchasePropMarketplacePurchaseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class MarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
 
-    Marketplace Purchase
+    Gist
     """
 
     url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeType, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseType
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserType, None]
+    comments_url: str
+    owner: NotRequired[Union[SimpleUserType, None]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class MarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase
+class GistSimplePropForkOfTypeForResponse(TypedDict):
+    """Gist
 
-    Marketplace Purchase
+    Gist
     """
 
     url: str
-    type: str
-    id: int
-    login: str
-    organization_billing_email: NotRequired[str]
-    email: NotRequired[Union[str, None]]
-    marketplace_pending_change: NotRequired[
-        Union[MarketplacePurchasePropMarketplacePendingChangeTypeForResponse, None]
-    ]
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchaseTypeForResponse
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserTypeForResponse, None]
+    comments_url: str
+    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
+
+
+GistSimplePropForkOfPropFilesType: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
+
+
+GistSimplePropForkOfPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""GistSimplePropForkOfPropFiles
+"""
 
 
 __all__ = (
-    "MarketplacePurchaseType",
-    "MarketplacePurchaseTypeForResponse",
+    "GistSimplePropForkOfPropFilesType",
+    "GistSimplePropForkOfPropFilesTypeForResponse",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfTypeForResponse",
 )

@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0032 import ActionsHostedRunnerCustomImage
 
 
-class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200"""
 
-    selected_usernames: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The usernames of the enterprise members to be granted access to GitHub Copilot.",
-    )
+    total_count: int = Field()
+    images: list[ActionsHostedRunnerCustomImage] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody)
+model_rebuild(EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsHostedRunnersImagesCustomGetResponse200",)

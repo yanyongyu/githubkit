@@ -17,7 +17,9 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ActionsArtifactAndLogRetention(GitHubModel):
     """ActionsArtifactAndLogRetention"""
 
-    days: int = Field(description="The number of days to retain artifacts and logs")
+    days: int = Field(
+        description="The number of days to retain checks, workflow runs, commit statuses, artifacts, and logs"
+    )
 
 
 model_rebuild(ActionsArtifactAndLogRetention)

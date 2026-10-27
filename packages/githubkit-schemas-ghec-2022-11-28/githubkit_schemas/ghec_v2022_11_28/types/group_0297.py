@@ -13,52 +13,143 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0045 import OrganizationSimpleType, OrganizationSimpleTypeForResponse
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
 
-    Credential Authorization
+class CopilotSpaceType(TypedDict):
+    """Space
+
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    login: str
-    credential_id: int
-    credential_type: Literal[
-        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
+    id: int
+    number: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    general_instructions: NotRequired[Union[str, None]]
+    base_role: Literal["reader", "writer", "admin", "no_access"]
+    owner: Union[SimpleUserType, OrganizationSimpleType]
+    creator: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    api_url: str
+    resources_attributes: NotRequired[
+        list[CopilotSpacePropResourcesAttributesItemsType]
     ]
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: _dt.datetime
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[_dt.datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class CredentialAuthorizationTypeForResponse(TypedDict):
-    """Credential Authorization
+class CopilotSpaceTypeForResponse(TypedDict):
+    """Space
 
-    Credential Authorization
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    login: str
-    credential_id: int
-    credential_type: Literal[
-        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
+    id: int
+    number: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    general_instructions: NotRequired[Union[str, None]]
+    base_role: Literal["reader", "writer", "admin", "no_access"]
+    owner: Union[SimpleUserTypeForResponse, OrganizationSimpleTypeForResponse]
+    creator: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
+    html_url: str
+    api_url: str
+    resources_attributes: NotRequired[
+        list[CopilotSpacePropResourcesAttributesItemsTypeForResponse]
     ]
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: str
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[str, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[str, None]]
+
+
+class CopilotSpacePropResourcesAttributesItemsType(TypedDict):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: NotRequired[int]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+    metadata: NotRequired[CopilotSpacePropResourcesAttributesItemsPropMetadataType]
+
+
+class CopilotSpacePropResourcesAttributesItemsTypeForResponse(TypedDict):
+    """CopilotSpacePropResourcesAttributesItems"""
+
+    id: NotRequired[int]
+    resource_type: NotRequired[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ]
+    copilot_chat_attachment_id: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    metadata: NotRequired[
+        CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse
+    ]
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadataType(TypedDict):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+    copilot_chat_attachment_id: NotRequired[int]
+    media_type: NotRequired[str]
+    url: NotRequired[str]
+    height: NotRequired[int]
+    width: NotRequired[int]
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse(TypedDict):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
+    """
+
+    repository_id: NotRequired[int]
+    file_path: NotRequired[str]
+    text: NotRequired[str]
+    name: NotRequired[str]
+    number: NotRequired[int]
+    copilot_chat_attachment_id: NotRequired[int]
+    media_type: NotRequired[str]
+    url: NotRequired[str]
+    height: NotRequired[int]
+    width: NotRequired[int]
 
 
 __all__ = (
-    "CredentialAuthorizationType",
-    "CredentialAuthorizationTypeForResponse",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadataType",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "CopilotSpacePropResourcesAttributesItemsType",
+    "CopilotSpacePropResourcesAttributesItemsTypeForResponse",
+    "CopilotSpaceType",
+    "CopilotSpaceTypeForResponse",
 )

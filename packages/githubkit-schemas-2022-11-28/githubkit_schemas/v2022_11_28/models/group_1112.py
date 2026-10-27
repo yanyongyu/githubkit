@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,67 +18,76 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1113 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
+    AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent,
+    AgentsTasksTaskIdGetResponse200Allof0PropRepository,
+    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+)
+from .group_1114 import (
+    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
+    AgentsTasksTaskIdGetResponse200Allof0PropOwner,
+)
 
-class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
-    budget_amount: Missing[int] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+class AgentsTasksTaskIdGetResponse200Allof0(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof0"""
+
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
+    name: Missing[str] = Field(
+        default=UNSET, description="Human-readable name derived from the task prompt"
     )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
+    creator: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0] = Field(
+        default=UNSET, description="The entity who created this task"
     )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["organization", "repository", "multi_user_customer", "user"]
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
+    )
+    user_collaborators: Missing[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[AgentsTasksTaskIdGetResponse200Allof0PropOwner] = Field(
+        default=UNSET, description="The owner of the repository"
+    )
+    repository: Missing[AgentsTasksTaskIdGetResponse200Allof0PropRepository] = Field(
+        default=UNSET, description="The repository this task belongs to"
+    )
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems]
     ] = Field(
         default=UNSET,
-        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.\n\n`user` and `multi_user_customer` scopes are only supported when\n`budget_product_sku` is `ai_credits` or `premium_requests`.",
+        description="Resources created by this task (PRs, branches, etc.)",
     )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
-        Field(
-            default=UNSET,
-            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
-        )
-    )
-    budget_product_sku: Missing[str] = Field(
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
+        description="Timestamp when the task was archived, null if not archived",
     )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
     )
-    expires_at: Missing[_dt.date] = Field(
-        default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
-    )
-
-
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
-
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    custom_agent: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent] = Field(
+        default=UNSET, description="Custom agent metadata associated with this task"
     )
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof0)
 
-__all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsPostBody",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
-)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof0",)

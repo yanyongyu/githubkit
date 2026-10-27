@@ -9,25 +9,159 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1144 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
+
+class AgentsAutomationsAvailableTriggersGetResponse200Items(GitHubModel):
+    """AgentsAutomationsAvailableTriggersGetResponse200Items
+
+    A public Automation trigger and its configurable fields.
+    """
+
+    id: str = Field(description="The stable public trigger identifier.")
+    title: str = Field(description="The human-readable trigger title.")
+    description: str = Field(
+        description="A short description of when the trigger fires."
+    )
+    fields: list[
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
+    ] = Field(description="The trigger-specific public configuration fields.")
+    supports_run_now: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this trigger supports event-specific Run now simulation. Omit to indicate support.",
+    )
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems(GitHubModel):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
+
+    A configurable field in a public Automation trigger definition.
+    """
+
+    id: str = Field(
+        description="The stable field identifier used in configured triggers."
+    )
+    label: str = Field(description="The human-readable field label.")
+    required: bool = Field(description="Whether the field must be provided.")
+    description: Missing[str] = Field(
+        default=UNSET, description="Markdown guidance for configuring the field."
+    )
+    schema: Union[
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0,
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1,
+        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2,
+    ] = Field(
+        description="A restricted JSON Schema fragment describing the field value accepted by Automation create and update requests."
+    )
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0(
+    GitHubModel
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof0
+    """
+
+    type: Literal["string"] = Field()
+    enum: Missing[list[str]] = Field(
+        default=UNSET, description="The allowed string values."
+    )
+    min_length: Missing[int] = Field(
+        default=UNSET,
+        alias="minLength",
+        description="The minimum accepted string length.",
+    )
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2(
+    GitHubModel
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof2
+    """
+
+    type: Literal["integer"] = Field()
+    enum: Missing[list[int]] = Field(
+        default=UNSET, description="The allowed integer values."
+    )
+    minimum: Missing[int] = Field(
+        default=UNSET, description="The minimum accepted integer value."
+    )
+    maximum: Missing[int] = Field(
+        default=UNSET, description="The maximum accepted integer value."
+    )
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1(
+    GitHubModel
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof1
+    """
+
+    type: Literal["array"] = Field()
+    items: AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems = Field()
+    min_items: Missing[int] = Field(
+        default=UNSET,
+        alias="minItems",
+        description="The minimum accepted number of array items.",
+    )
+    max_items: Missing[int] = Field(
+        default=UNSET,
+        alias="maxItems",
+        description="The maximum accepted number of array items.",
+    )
+    unique_items: Missing[bool] = Field(
+        default=UNSET,
+        alias="uniqueItems",
+        description="Whether duplicate array items are rejected.",
+    )
+
+
+class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems(
+    GitHubModel
+):
+    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
+    eof1PropItems
+    """
+
+    type: Literal["string"] = Field()
+    enum: Missing[list[str]] = Field(
+        default=UNSET, description="The allowed string item values."
+    )
+    min_length: Missing[int] = Field(
+        default=UNSET,
+        alias="minLength",
+        description="The minimum accepted string item length.",
+    )
+
+
+model_rebuild(AgentsAutomationsAvailableTriggersGetResponse200Items)
+model_rebuild(AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems)
+model_rebuild(
+    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0
+)
+model_rebuild(
+    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2
+)
+model_rebuild(
+    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1
+)
+model_rebuild(
+    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems
 )
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
-
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
-
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)
+__all__ = (
+    "AgentsAutomationsAvailableTriggersGetResponse200Items",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems",
+    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2",
+)

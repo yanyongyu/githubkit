@@ -9,79 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksGetResponse422Type(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType]
+    url: NotRequired[str]
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType]
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: list[
+        WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse
     ]
-    documentation_url: str
+    url: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksGetResponse422TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
+    """Workflow Step"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
-class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse(
+    TypedDict
+):
+    """Workflow Step"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksGetResponse422PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksGetResponse422Type",
-    "AgentsReposOwnerRepoTasksGetResponse422TypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1TypeForResponse",
 )

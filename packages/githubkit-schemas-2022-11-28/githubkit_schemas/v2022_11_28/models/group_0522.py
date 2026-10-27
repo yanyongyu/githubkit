@@ -9,61 +9,128 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestStackMinimal(GitHubModel):
-    """Pull Request Stack Minimal"""
+class RepositoryAdvisoryCreate(GitHubModel):
+    """RepositoryAdvisoryCreate"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: PullRequestStackMinimalPropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
+    description: str = Field(
+        max_length=65535,
+        description="A detailed description of what the advisory impacts.",
+    )
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+        description="A product affected by the vulnerability detailed in a repository security advisory."
+    )
+    cwe_ids: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
+    )
+    severity: Missing[Union[Literal["critical", "high", "medium", "low"], None]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
+    )
+    cvss_vector_string: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+    )
+    start_private_fork: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+    )
 
 
-class PullRequestStackMinimalPropBase(GitHubModel):
-    """PullRequestStackMinimalPropBase"""
+class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    ref: str = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int = Field()
-    state: Literal["open", "closed"] = Field()
-    draft: bool = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
 
 
-model_rebuild(PullRequestStackMinimal)
-model_rebuild(PullRequestStackMinimalPropBase)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
+class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The range of the package versions affected by the vulnerability.",
+    )
+    patched_versions: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The package version(s) that resolve the vulnerability.",
+    )
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(RepositoryAdvisoryCreate)
+model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "PullRequestStackMinimal",
-    "PullRequestStackMinimalPropBase",
-    "PullRequestStackMinimalPropPullRequestsItems",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
+    "RepositoryAdvisoryCreate",
+    "RepositoryAdvisoryCreatePropCreditsItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
 )

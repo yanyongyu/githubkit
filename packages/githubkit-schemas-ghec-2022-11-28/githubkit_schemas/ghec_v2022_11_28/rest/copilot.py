@@ -54,6 +54,8 @@ if TYPE_CHECKING:
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
         OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotModelPoliciesGetResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
     )
     from ..types import (
@@ -100,6 +102,11 @@ if TYPE_CHECKING:
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
         OrgsOrgCopilotContentExclusionPutBodyType,
         OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+        OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse,
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType,
+        OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType,
+        OrgsOrgCopilotModelPoliciesPatchBodyType,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse,
     )
 
@@ -2927,6 +2934,9 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-usage-records-for-an-enterprise
         """
 
@@ -2996,6 +3006,9 @@ class CopilotClient:
         Only EMU (GHEC and GHEC with Data Residency) enterprise owners can access this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-usage-records-for-an-enterprise
         """
@@ -5734,6 +5747,326 @@ class CopilotClient:
                 "500": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def get_organization_model_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesGetResponse200,
+        OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-organization-model-policies
+
+        GET /orgs/{org}/copilot/model-policies
+
+        Use this endpoint to retrieve the effective Copilot model policy for every
+        model available to an organization, whether explicitly configured or
+        determined by default availability.
+
+        For a model without an effective explicit policy that is eligible for
+        default availability, the enterprise default is used when it is configured.
+        Otherwise, the organization's default is used. A model that is not eligible
+        for default availability and has no effective explicit policy is disabled.
+        For more information, see
+        [About default availability of Copilot models](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/default-availability#default-availability-of-models).
+
+        The organization must either be independent or belong to an enterprise that is not
+        using enterprise teams for model policy.
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions also apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-model-policy-management#get-model-policies-for-an-organization
+        """
+
+        from ..models import BasicError, OrgsOrgCopilotModelPoliciesGetResponse200
+
+        url = f"/orgs/{org}/copilot/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_organization_model_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesGetResponse200,
+        OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-organization-model-policies
+
+        GET /orgs/{org}/copilot/model-policies
+
+        Use this endpoint to retrieve the effective Copilot model policy for every
+        model available to an organization, whether explicitly configured or
+        determined by default availability.
+
+        For a model without an effective explicit policy that is eligible for
+        default availability, the enterprise default is used when it is configured.
+        Otherwise, the organization's default is used. A model that is not eligible
+        for default availability and has no effective explicit policy is disabled.
+        For more information, see
+        [About default availability of Copilot models](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/default-availability#default-availability-of-models).
+
+        The organization must either be independent or belong to an enterprise that is not
+        using enterprise teams for model policy.
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions also apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-model-policy-management#get-model-policies-for-an-organization
+        """
+
+        from ..models import BasicError, OrgsOrgCopilotModelPoliciesGetResponse200
+
+        url = f"/orgs/{org}/copilot/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_organization_model_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotModelPoliciesPatchBodyType,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_organization_model_policies(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: Missing[
+            OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+        ] = UNSET,
+        models: Missing[
+            list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]
+        ] = UNSET,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_organization_model_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotModelPoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """copilot/update-organization-model-policies
+
+        PATCH /orgs/{org}/copilot/model-policies
+
+        Use this endpoint to set explicit Copilot model policies and default
+        availability for an organization. All policies in the request are updated atomically,
+        meaning if any change in the request cannot be applied, none of the changes are saved.
+
+        Use the `model_name` values returned by the "Get model policies for an organization"
+        endpoint. Models with an inherited enterprise policy are locked and cannot be updated.
+        Default availability cannot be updated when its `editable` value is `false`.
+
+        The response contains the effective policies for all models available to the
+        organization, not only the policies updated by the request.
+
+        The organization must either be independent or belong to an enterprise that is not
+        using enterprise teams for model policy.
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-model-policy-management#update-model-policies-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotModelPoliciesPatchBody,
+            OrgsOrgCopilotModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotModelPoliciesPatchBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_organization_model_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotModelPoliciesPatchBodyType,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_organization_model_policies(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: Missing[
+            OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+        ] = UNSET,
+        models: Missing[
+            list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]
+        ] = UNSET,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_organization_model_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotModelPoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotModelPoliciesPatchResponse200,
+        OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """copilot/update-organization-model-policies
+
+        PATCH /orgs/{org}/copilot/model-policies
+
+        Use this endpoint to set explicit Copilot model policies and default
+        availability for an organization. All policies in the request are updated atomically,
+        meaning if any change in the request cannot be applied, none of the changes are saved.
+
+        Use the `model_name` values returned by the "Get model policies for an organization"
+        endpoint. Models with an inherited enterprise policy are locked and cannot be updated.
+        Default availability cannot be updated when its `editable` value is `false`.
+
+        The response contains the effective policies for all models available to the
+        organization, not only the policies updated by the request.
+
+        The organization must either be independent or belong to an enterprise that is not
+        using enterprise teams for model policy.
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-model-policy-management#update-model-policies-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotModelPoliciesPatchBody,
+            OrgsOrgCopilotModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotModelPoliciesPatchBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

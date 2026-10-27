@@ -9,34 +9,66 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateResponseType(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class CodeQualitySetupType(TypedDict):
+    """CodeQualitySetup
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Configuration for code quality setup.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
-class CodeQualitySetupUpdateResponseTypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateResponse
+class CodeQualitySetupTypeForResponse(TypedDict):
+    """CodeQualitySetup
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Configuration for code quality setup.
     """
 
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
+            ]
+        ]
+    ]
+    runner_type: NotRequired[Union[Literal["standard", "labeled"], None]]
+    runner_label: NotRequired[Union[str, None]]
+    updated_at: NotRequired[Union[str, None]]
+    schedule: NotRequired[Union[Literal["weekly"], None]]
+    ai_findings_option: NotRequired[Union[Literal["disabled", "on_push"], None]]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateResponseType",
-    "CodeQualitySetupUpdateResponseTypeForResponse",
+    "CodeQualitySetupType",
+    "CodeQualitySetupTypeForResponse",
 )

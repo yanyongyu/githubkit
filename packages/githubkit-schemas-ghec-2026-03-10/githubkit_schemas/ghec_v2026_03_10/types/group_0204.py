@@ -9,38 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningCustomPatternToCreateType(TypedDict):
-    """Secret Scanning Custom Pattern To Create
+class RulesetVersionWithStateAllof1PropStateType(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-    A custom pattern to create in a bulk operation.
+    The state of the ruleset version
     """
 
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
 
+class RulesetVersionWithStateAllof1PropStateTypeForResponse(TypedDict):
+    """RulesetVersionWithStateAllof1PropState
 
-class SecretScanningCustomPatternToCreateTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern To Create
-
-    A custom pattern to create in a bulk operation.
+    The state of the ruleset version
     """
-
-    name: str
-    pattern: str
-    start_delimiter: NotRequired[str]
-    end_delimiter: NotRequired[str]
-    must_match: NotRequired[list[str]]
-    must_not_match: NotRequired[list[str]]
 
 
 __all__ = (
-    "SecretScanningCustomPatternToCreateType",
-    "SecretScanningCustomPatternToCreateTypeForResponse",
+    "RulesetVersionWithStateAllof1PropStateType",
+    "RulesetVersionWithStateAllof1PropStateTypeForResponse",
 )

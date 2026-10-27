@@ -9,52 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportListType(TypedDict):
-    """UsageReportExportList"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    usage_report_exports: list[UsageReportExportType]
-
-
-class UsageReportExportListTypeForResponse(TypedDict):
-    """UsageReportExportList"""
-
-    usage_report_exports: list[UsageReportExportTypeForResponse]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
 
 
-class UsageReportExportType(TypedDict):
-    """UsageReportExport"""
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
 
-    id: str
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: _dt.date
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[_dt.datetime]
-    actor: NotRequired[str]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
 
 
-class UsageReportExportTypeForResponse(TypedDict):
-    """UsageReportExport"""
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    id: str
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: str
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[str]
-    actor: NotRequired[str]
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
+
+
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "UsageReportExportListType",
-    "UsageReportExportListTypeForResponse",
-    "UsageReportExportType",
-    "UsageReportExportTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

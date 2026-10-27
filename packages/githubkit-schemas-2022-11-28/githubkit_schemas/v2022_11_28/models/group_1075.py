@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse422(GitHubModel):
-    """AgentsTasksTaskIdGetResponse422
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,15 +30,21 @@ class AgentsTasksTaskIdGetResponse422(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsTasksTaskIdGetResponse422PropErrorsItems]] = Field(
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
+        ]
+    ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
 
     A single validation error
     """
@@ -57,10 +63,12 @@ class AgentsTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse422)
-model_rebuild(AgentsTasksTaskIdGetResponse422PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
+)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse422",
-    "AgentsTasksTaskIdGetResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems",
 )

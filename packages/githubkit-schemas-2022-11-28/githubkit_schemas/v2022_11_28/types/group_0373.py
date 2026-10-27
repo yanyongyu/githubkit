@@ -9,60 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0029 import (
-    CodeSecurityConfigurationType,
-    CodeSecurityConfigurationTypeForResponse,
-)
+
+class CodeScanningSarifsReceiptType(TypedDict):
+    """CodeScanningSarifsReceipt"""
+
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
-class CodeSecurityConfigurationForRepositoryType(TypedDict):
-    """CodeSecurityConfigurationForRepository
+class CodeScanningSarifsReceiptTypeForResponse(TypedDict):
+    """CodeScanningSarifsReceipt"""
 
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-            "enterprise_enforced",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
-    """CodeSecurityConfigurationForRepository
-
-    Code security configuration associated with a repository and attachment status
-    """
-
-    status: NotRequired[
-        Literal[
-            "attached",
-            "attaching",
-            "detached",
-            "removed",
-            "enforced",
-            "failed",
-            "updating",
-            "removed_by_enterprise",
-            "enterprise_enforced",
-        ]
-    ]
-    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
+    id: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "CodeSecurityConfigurationForRepositoryType",
-    "CodeSecurityConfigurationForRepositoryTypeForResponse",
+    "CodeScanningSarifsReceiptType",
+    "CodeScanningSarifsReceiptTypeForResponse",
 )

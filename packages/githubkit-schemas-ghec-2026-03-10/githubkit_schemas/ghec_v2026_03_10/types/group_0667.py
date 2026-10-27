@@ -13,7 +13,91 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksUserMannequinType(TypedDict):
+class WebhooksCommentType(TypedDict):
+    """WebhooksComment"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsType
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserType, None]
+
+
+class WebhooksCommentTypeForResponse(TypedDict):
+    """WebhooksComment"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
+    html_url: str
+    id: int
+    node_id: str
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsTypeForResponse
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserTypeForResponse, None]
+
+
+class WebhooksCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksCommentPropReactionsTypeForResponse(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhooksCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -35,12 +119,12 @@ class WebhooksUserMannequinType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksUserMannequinTypeForResponse(TypedDict):
+class WebhooksCommentPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -62,12 +146,16 @@ class WebhooksUserMannequinTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksUserMannequinType",
-    "WebhooksUserMannequinTypeForResponse",
+    "WebhooksCommentPropReactionsType",
+    "WebhooksCommentPropReactionsTypeForResponse",
+    "WebhooksCommentPropUserType",
+    "WebhooksCommentPropUserTypeForResponse",
+    "WebhooksCommentType",
+    "WebhooksCommentTypeForResponse",
 )

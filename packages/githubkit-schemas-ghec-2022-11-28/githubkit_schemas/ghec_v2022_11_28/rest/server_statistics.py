@@ -64,6 +64,9 @@ class ServerStatisticsClient:
           - the `read:enterprise` scope if you connected your GitHub Enterprise Server to an enterprise account and enabled Server Statistics
           - the `read:org` scope if you connected your GitHub Enterprise Server to an organization account and enabled Server Statistics
 
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
         """
 
@@ -109,6 +112,9 @@ class ServerStatisticsClient:
         OAuth app tokens and personal access tokens (classic) need:
           - the `read:enterprise` scope if you connected your GitHub Enterprise Server to an enterprise account and enabled Server Statistics
           - the `read:org` scope if you connected your GitHub Enterprise Server to an organization account and enabled Server Statistics
+
+        > [!NOTE]
+        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics
         """

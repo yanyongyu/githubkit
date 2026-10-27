@@ -16,17 +16,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
-        description="The reason for bypassing push protection."
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    placeholder_id: str = Field(
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
+    path: Literal["/", "/docs"] = Field(
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
 
-__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)

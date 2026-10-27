@@ -18,25 +18,66 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssueEventIntent(GitHubModel):
-    """Issue Event Intent
+class Import(GitHubModel):
+    """Import
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    A repository import from an external source.
     """
 
-    rationale: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reasoning the agent provided for the change."
-    )
-    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
-        default=UNSET,
-        description="The confidence level the agent had when performing this action.",
-    )
+    vcs: Union[str, None] = Field()
+    use_lfs: Missing[bool] = Field(default=UNSET)
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    svc_root: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ] = Field()
+    status_text: Missing[Union[str, None]] = Field(default=UNSET)
+    failed_step: Missing[Union[str, None]] = Field(default=UNSET)
+    error_message: Missing[Union[str, None]] = Field(default=UNSET)
+    import_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    commit_count: Missing[Union[int, None]] = Field(default=UNSET)
+    push_percent: Missing[Union[int, None]] = Field(default=UNSET)
+    has_large_files: Missing[bool] = Field(default=UNSET)
+    large_files_size: Missing[int] = Field(default=UNSET)
+    large_files_count: Missing[int] = Field(default=UNSET)
+    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    authors_count: Missing[Union[int, None]] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    authors_url: str = Field()
+    repository_url: str = Field()
+    svn_root: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(IssueEventIntent)
+class ImportPropProjectChoicesItems(GitHubModel):
+    """ImportPropProjectChoicesItems"""
 
-__all__ = ("IssueEventIntent",)
+    vcs: Missing[str] = Field(default=UNSET)
+    tfvc_project: Missing[str] = Field(default=UNSET)
+    human_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(Import)
+model_rebuild(ImportPropProjectChoicesItems)
+
+__all__ = (
+    "Import",
+    "ImportPropProjectChoicesItems",
+)

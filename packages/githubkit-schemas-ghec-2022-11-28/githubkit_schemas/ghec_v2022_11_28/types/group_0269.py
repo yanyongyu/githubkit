@@ -9,148 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ApiOverviewType(TypedDict):
-    """Api Overview
 
-    Api Overview
+class GistCommitType(TypedDict):
+    """Gist Commit
+
+    Gist Commit
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    commit_signing_keys: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsType]
+    url: str
+    version: str
+    user: Union[SimpleUserType, None]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: _dt.datetime
 
 
-class ApiOverviewTypeForResponse(TypedDict):
-    """Api Overview
+class GistCommitTypeForResponse(TypedDict):
+    """Gist Commit
 
-    Api Overview
+    Gist Commit
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsTypeForResponse]
-    ssh_keys: NotRequired[list[str]]
-    hooks: NotRequired[list[str]]
-    github_enterprise_importer: NotRequired[list[str]]
-    web: NotRequired[list[str]]
-    api: NotRequired[list[str]]
-    git: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    pages: NotRequired[list[str]]
-    importer: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_macos: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    dependabot: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    commit_signing_keys: NotRequired[list[str]]
-    domains: NotRequired[ApiOverviewPropDomainsTypeForResponse]
+    url: str
+    version: str
+    user: Union[SimpleUserTypeForResponse, None]
+    change_status: GistCommitPropChangeStatusTypeForResponse
+    committed_at: str
 
 
-class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
 
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
-
-
-class ApiOverviewPropSshKeyFingerprintsTypeForResponse(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
-
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
-class ApiOverviewPropDomainsType(TypedDict):
-    """ApiOverviewPropDomains"""
+class GistCommitPropChangeStatusTypeForResponse(TypedDict):
+    """GistCommitPropChangeStatus"""
 
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    storage: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[ApiOverviewPropDomainsPropActionsInboundType]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsType
-    ]
-
-
-class ApiOverviewPropDomainsTypeForResponse(TypedDict):
-    """ApiOverviewPropDomains"""
-
-    website: NotRequired[list[str]]
-    codespaces: NotRequired[list[str]]
-    copilot: NotRequired[list[str]]
-    packages: NotRequired[list[str]]
-    storage: NotRequired[list[str]]
-    actions: NotRequired[list[str]]
-    actions_inbound: NotRequired[
-        ApiOverviewPropDomainsPropActionsInboundTypeForResponse
-    ]
-    artifact_attestations: NotRequired[
-        ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse
-    ]
-
-
-class ApiOverviewPropDomainsPropActionsInboundType(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
-
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
-
-
-class ApiOverviewPropDomainsPropActionsInboundTypeForResponse(TypedDict):
-    """ApiOverviewPropDomainsPropActionsInbound"""
-
-    full_domains: NotRequired[list[str]]
-    wildcard_domains: NotRequired[list[str]]
-
-
-class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
-
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
-
-
-class ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse(TypedDict):
-    """ApiOverviewPropDomainsPropArtifactAttestations"""
-
-    trust_domain: NotRequired[str]
-    services: NotRequired[list[str]]
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
 
 
 __all__ = (
-    "ApiOverviewPropDomainsPropActionsInboundType",
-    "ApiOverviewPropDomainsPropActionsInboundTypeForResponse",
-    "ApiOverviewPropDomainsPropArtifactAttestationsType",
-    "ApiOverviewPropDomainsPropArtifactAttestationsTypeForResponse",
-    "ApiOverviewPropDomainsType",
-    "ApiOverviewPropDomainsTypeForResponse",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewPropSshKeyFingerprintsTypeForResponse",
-    "ApiOverviewType",
-    "ApiOverviewTypeForResponse",
+    "GistCommitPropChangeStatusType",
+    "GistCommitPropChangeStatusTypeForResponse",
+    "GistCommitType",
+    "GistCommitTypeForResponse",
 )

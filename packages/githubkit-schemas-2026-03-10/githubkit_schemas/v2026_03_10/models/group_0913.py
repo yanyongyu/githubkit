@@ -18,24 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0563 import EnterpriseWebhooks
-from .group_0564 import SimpleInstallation
-from .group_0565 import OrganizationSimpleWebhooks
-from .group_0566 import RepositoryWebhooks
-from .group_0582 import WebhooksChanges
-from .group_0607 import WebhooksReviewComment
-from .group_0914 import WebhookPullRequestReviewCommentEditedPropPullRequest
+from .group_0567 import EnterpriseWebhooks
+from .group_0568 import SimpleInstallation
+from .group_0569 import OrganizationSimpleWebhooks
+from .group_0570 import RepositoryWebhooks
+from .group_0610 import PullRequestWebhook
 
 
-class WebhookPullRequestReviewCommentEdited(GitHubModel):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestOpened(GitHubModel):
+    """pull_request opened event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhooksChanges = Field(description="The changes to the comment.")
-    comment: WebhooksReviewComment = Field(
-        title="Pull Request Review Comment",
-        description="The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
-    )
+    action: Literal["opened"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,12 +39,13 @@ class WebhookPullRequestReviewCommentEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequest = Field()
+    pull_request: PullRequestWebhook = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -59,6 +53,6 @@ class WebhookPullRequestReviewCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReviewCommentEdited)
+model_rebuild(WebhookPullRequestOpened)
 
-__all__ = ("WebhookPullRequestReviewCommentEdited",)
+__all__ = ("WebhookPullRequestOpened",)

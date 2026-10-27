@@ -9,60 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssuePropLabelsItemsOneof1Type(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class SubIssuesSummaryType(TypedDict):
+    """Sub-issues Summary"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
-    archived_by: NotRequired[None]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class SubIssuesSummaryTypeForResponse(TypedDict):
+    """Sub-issues Summary"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
-    archived_by: NotRequired[None]
+    total: int
+    completed: int
+    percent_completed: int
 
 
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
+class IssueDependenciesSummaryType(TypedDict):
+    """Issue Dependencies Summary"""
 
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
-class IssuePropPullRequestTypeForResponse(TypedDict):
-    """IssuePropPullRequest"""
+class IssueDependenciesSummaryTypeForResponse(TypedDict):
+    """Issue Dependencies Summary"""
 
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    blocked_by: int
+    blocking: int
+    total_blocked_by: int
+    total_blocking: int
 
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1Type",
-    "IssuePropLabelsItemsOneof1TypeForResponse",
-    "IssuePropPullRequestType",
-    "IssuePropPullRequestTypeForResponse",
+    "IssueDependenciesSummaryType",
+    "IssueDependenciesSummaryTypeForResponse",
+    "SubIssuesSummaryType",
+    "SubIssuesSummaryTypeForResponse",
 )

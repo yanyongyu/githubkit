@@ -50,7 +50,7 @@ class RepositoryRulePullRequestPropParameters(GitHubModel):
         list[RepositoryRuleParamsRequiredReviewerConfiguration]
     ] = Field(
         default=UNSET,
-        description="> [!NOTE]\n> `required_reviewers` is in beta and subject to change.\n\nA collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
+        description="A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
     )
 
 

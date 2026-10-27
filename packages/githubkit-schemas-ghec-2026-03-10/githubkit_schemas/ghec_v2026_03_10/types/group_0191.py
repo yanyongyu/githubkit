@@ -9,91 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0058 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
+from .group_0146 import (
+    RepositoryRulesetConditionsPropRefNameType,
+    RepositoryRulesetConditionsPropRefNameTypeForResponse,
+)
 
-class RepositoryRuleCodeQualityType(TypedDict):
-    """code_quality
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+class OrgRulesetConditionsOneof2Type(TypedDict):
+    """repository_property_and_ref_name
+
+    Conditions to target repositories by property and refs by name
     """
 
-    type: Literal["code_quality"]
-    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
-class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
-    """code_quality
+class OrgRulesetConditionsOneof2TypeForResponse(TypedDict):
+    """repository_property_and_ref_name
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Conditions to target repositories by property and refs by name
     """
 
-    type: Literal["code_quality"]
-    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
-
-
-class RepositoryRuleCodeQualityPropParametersType(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
-
-    severity: Literal["errors", "warnings", "notes", "all"]
-
-
-class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
-
-    severity: Literal["errors", "warnings", "notes", "all"]
-
-
-class RepositoryRuleCodeCoverageType(TypedDict):
-    """code_coverage
-
-    Enforce minimum line coverage thresholds on pull requests. When configured,
-    uploaded coverage data must meet the specified criteria before changes can be
-    merged.
-    """
-
-    type: Literal["code_coverage"]
-    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
-
-
-class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
-    """code_coverage
-
-    Enforce minimum line coverage thresholds on pull requests. When configured,
-    uploaded coverage data must meet the specified criteria before changes can be
-    merged.
-    """
-
-    type: Literal["code_coverage"]
-    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
-
-
-class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
-    """RepositoryRuleCodeCoveragePropParameters"""
-
-    max_coverage_drop: NotRequired[float]
-    minimum_coverage: NotRequired[float]
-
-
-class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeCoveragePropParameters"""
-
-    max_coverage_drop: NotRequired[float]
-    minimum_coverage: NotRequired[float]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameTypeForResponse]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
 
 
 __all__ = (
-    "RepositoryRuleCodeCoveragePropParametersType",
-    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
-    "RepositoryRuleCodeCoverageType",
-    "RepositoryRuleCodeCoverageTypeForResponse",
-    "RepositoryRuleCodeQualityPropParametersType",
-    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
-    "RepositoryRuleCodeQualityType",
-    "RepositoryRuleCodeQualityTypeForResponse",
+    "OrgRulesetConditionsOneof2Type",
+    "OrgRulesetConditionsOneof2TypeForResponse",
 )

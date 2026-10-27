@@ -9,26 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0031 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
-
-
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    total_count: int
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
+
+
+class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
+
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
 )

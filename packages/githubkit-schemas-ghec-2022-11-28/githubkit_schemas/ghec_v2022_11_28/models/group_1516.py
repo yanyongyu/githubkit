@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0375 import ActionsSecret
+
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
+    )
 
 
-class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
+model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
 
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsSecretsGetResponse200",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)

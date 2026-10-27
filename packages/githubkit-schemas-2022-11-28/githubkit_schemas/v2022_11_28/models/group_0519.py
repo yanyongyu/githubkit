@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +19,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryAdvisoryDescriptionValidationError(GitHubModel):
-    """Repository Advisory Description Validation Error
+class SecretScanningPushProtectionBypass(GitHubModel):
+    """SecretScanningPushProtectionBypass"""
 
-    The description does not answer the repository's report template.
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field(
-        description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
+    reason: Missing[Literal["false_positive", "used_in_tests", "will_fix_later"]] = (
+        Field(default=UNSET, description="The reason for bypassing push protection.")
     )
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
-    section: Missing[str] = Field(
-        default=UNSET, description="The report template section the violation concerns."
-    )
-    option: Missing[str] = Field(
+    expire_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.",
+        description="The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    token_type: Missing[str] = Field(
+        default=UNSET, description="The token type this bypass is for."
     )
 
 
-model_rebuild(RepositoryAdvisoryDescriptionValidationError)
-model_rebuild(RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems)
+model_rebuild(SecretScanningPushProtectionBypass)
 
-__all__ = (
-    "RepositoryAdvisoryDescriptionValidationError",
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
-)
+__all__ = ("SecretScanningPushProtectionBypass",)

@@ -9,41 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgCopilotCodingAgentPermissionsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotCodingAgentPermissionsGetResponse200"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`."
     )
-    validation_errors: Missing[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+        description="The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
     )
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(OrgsOrgCopilotCodingAgentPermissionsGetResponse200)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
-
-__all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("OrgsOrgCopilotCodingAgentPermissionsGetResponse200",)

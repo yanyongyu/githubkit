@@ -9,55 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class PullRequestStackPullRequestAllof1Type(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    Contributor Activity
-    """
-
-    author: Union[SimpleUserType, None]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsType]
-
-
-class ContributorActivityTypeForResponse(TypedDict):
-    """Contributor Activity
-
-    Contributor Activity
-    """
-
-    author: Union[SimpleUserTypeForResponse, None]
-    total: int
-    weeks: list[ContributorActivityPropWeeksItemsTypeForResponse]
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserType, None]
 
 
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
+class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
-
-
-class ContributorActivityPropWeeksItemsTypeForResponse(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "ContributorActivityPropWeeksItemsType",
-    "ContributorActivityPropWeeksItemsTypeForResponse",
-    "ContributorActivityType",
-    "ContributorActivityTypeForResponse",
+    "PullRequestStackPullRequestAllof1Type",
+    "PullRequestStackPullRequestAllof1TypeForResponse",
 )

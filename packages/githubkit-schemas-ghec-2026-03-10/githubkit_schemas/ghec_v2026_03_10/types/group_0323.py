@@ -10,66 +10,87 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class IssueFieldType(TypedDict):
+    """Issue Field
 
-class MigrationType(TypedDict):
-    """Migration
-
-    A migration.
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
     id: int
-    owner: Union[SimpleUserType, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[SimpleRepositoryType]
-    url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
     node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class MigrationTypeForResponse(TypedDict):
-    """Migration
+class IssueFieldTypeForResponse(TypedDict):
+    """Issue Field
 
-    A migration.
+    A custom attribute defined at the organization level for attaching structured
+    data to issues.
     """
 
     id: int
-    owner: Union[SimpleUserTypeForResponse, None]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: list[SimpleRepositoryTypeForResponse]
-    url: str
-    created_at: str
-    updated_at: str
     node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[list[str]]
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["organization_members_only", "all"]]
+    options: NotRequired[Union[list[IssueFieldPropOptionsItemsTypeForResponse], None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class IssueFieldPropOptionsItemsType(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
+
+
+class IssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldPropOptionsItems"""
+
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "MigrationType",
-    "MigrationTypeForResponse",
+    "IssueFieldPropOptionsItemsType",
+    "IssueFieldPropOptionsItemsTypeForResponse",
+    "IssueFieldType",
+    "IssueFieldTypeForResponse",
 )

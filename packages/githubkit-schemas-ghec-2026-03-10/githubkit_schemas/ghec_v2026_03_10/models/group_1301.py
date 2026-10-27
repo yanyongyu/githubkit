@@ -9,13 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import GitHubModel, model_rebuild
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class GistsGistIdStarGetResponse404(GitHubModel):
-    """GistsGistIdStarGetResponse404"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+
+    credential_id: Union[int, str] = Field()
+    credential_type: Literal["classic_pat", "ssh_key"] = Field(
+        description="The type of credential to authorize."
+    )
+    organizations: UniqueList[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+    )
 
 
-model_rebuild(GistsGistIdStarGetResponse404)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBody)
 
-__all__ = ("GistsGistIdStarGetResponse404",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBody",)

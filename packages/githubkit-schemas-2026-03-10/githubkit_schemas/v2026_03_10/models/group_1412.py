@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+from .group_0165 import CodespaceMachine
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsGetResponse200Anyof1)
+class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",)
+    total_count: int = Field()
+    machines: list[CodespaceMachine] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesMachinesGetResponse200)
+
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200",)

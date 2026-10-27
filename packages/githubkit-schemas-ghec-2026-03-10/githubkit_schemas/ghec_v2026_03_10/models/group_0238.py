@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0239 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
+from .group_0003 import SimpleUser
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class PinnedIssueComment(GitHubModel):
+    """Pinned Issue Comment
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+    Context around who pinned an issue comment and when it was pinned.
+    """
+
+    pinned_at: _dt.datetime = Field()
+    pinned_by: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(PullRequestMinimal)
+model_rebuild(PinnedIssueComment)
 
-__all__ = ("PullRequestMinimal",)
+__all__ = ("PinnedIssueComment",)

@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0564 import EnterpriseWebhooks
-from .group_0565 import SimpleInstallation
-from .group_0566 import OrganizationSimpleWebhooks
-from .group_0567 import RepositoryWebhooks
-from .group_0905 import WebhookPullRequestLockedPropPullRequest
+from .group_0568 import EnterpriseWebhooks
+from .group_0569 import SimpleInstallation
+from .group_0570 import OrganizationSimpleWebhooks
+from .group_0571 import RepositoryWebhooks
+from .group_0905 import WebhookPullRequestDequeuedPropPullRequest
 
 
-class WebhookPullRequestLocked(GitHubModel):
-    """pull_request locked event"""
+class WebhookPullRequestDequeued(GitHubModel):
+    """pull_request dequeued event"""
 
-    action: Literal["locked"] = Field()
+    action: Literal["dequeued"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +45,23 @@ class WebhookPullRequestLocked(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestLockedPropPullRequest = Field(title="Pull Request")
+    pull_request: WebhookPullRequestDequeuedPropPullRequest = Field(
+        title="Pull Request"
+    )
+    reason: Literal[
+        "UNKNOWN_REMOVAL_REASON",
+        "MANUAL",
+        "MERGE",
+        "MERGE_CONFLICT",
+        "CI_FAILURE",
+        "CI_TIMEOUT",
+        "ALREADY_MERGED",
+        "QUEUE_CLEARED",
+        "ROLL_BACK",
+        "BRANCH_PROTECTIONS",
+        "GIT_TREE_INVALID",
+        "INVALID_MERGE_COMMIT",
+    ] = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +69,6 @@ class WebhookPullRequestLocked(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestLocked)
+model_rebuild(WebhookPullRequestDequeued)
 
-__all__ = ("WebhookPullRequestLocked",)
+__all__ = ("WebhookPullRequestDequeued",)

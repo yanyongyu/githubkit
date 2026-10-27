@@ -9,42 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
+from .group_0020 import Repository
 
 
-class ProjectsV2FieldIterationConfiguration(GitHubModel):
-    """ProjectsV2FieldIterationConfiguration
+class PullRequestSimplePropHead(GitHubModel):
+    """PullRequestSimplePropHead"""
 
-    The configuration for iteration fields.
-    """
-
-    start_date: _dt.date = Field(description="The start date of the first iteration.")
-    duration: int = Field(
-        description="The default duration for iterations in days. Individual iterations can override this value."
-    )
-    iterations: Missing[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
-    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[Repository, None] = Field()
+    sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
+class PullRequestSimplePropBase(GitHubModel):
+    """PullRequestSimplePropBase"""
 
-    title: str = Field(description="The title of the iteration.")
-    start_date: _dt.date = Field(description="The start date of the iteration.")
-    duration: int = Field(description="The duration of the iteration in days.")
+    label: str = Field()
+    ref: str = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    sha: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
 
-model_rebuild(ProjectsV2FieldIterationConfiguration)
-model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
+model_rebuild(PullRequestSimplePropHead)
+model_rebuild(PullRequestSimplePropBase)
 
 __all__ = (
-    "ProjectsV2FieldIterationConfiguration",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
+    "PullRequestSimplePropBase",
+    "PullRequestSimplePropHead",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,37 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
-    ] = Field(default=UNSET)
+from .group_1502 import ReposOwnerRepoPagesPostBodyPropSource
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
 
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+        default=UNSET,
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
+    )
+    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
+        description="The source branch and directory used to publish your Pages site."
     )
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
 
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
-)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)

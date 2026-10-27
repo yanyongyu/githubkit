@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,51 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[str] = Field(default=UNSET)
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[Union[str, None]]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
+    steps: Missing[
+        list[
+            Union[WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems, None]
+        ]
+    ] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
+
+
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
 )

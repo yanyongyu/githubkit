@@ -9,60 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class DismissalRequestResponseType(TypedDict):
-    """Dismissal request response
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    A response made by a requester to dismiss the request.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerType]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[_dt.datetime]
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class DismissalRequestResponseTypeForResponse(TypedDict):
-    """Dismissal request response
+class CopilotOrganizationDetailsTypeForResponse(TypedDict):
+    """Copilot Organization Details
 
-    A response made by a requester to dismiss the request.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    id: NotRequired[int]
-    reviewer: NotRequired[DismissalRequestResponsePropReviewerTypeForResponse]
-    message: NotRequired[Union[str, None]]
-    status: NotRequired[Literal["approved", "denied", "dismissed"]]
-    created_at: NotRequired[str]
+    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise"]]
 
 
-class DismissalRequestResponsePropReviewerType(TypedDict):
-    """DismissalRequestResponsePropReviewer
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
 
-    The user who reviewed the dismissal request.
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
-class DismissalRequestResponsePropReviewerTypeForResponse(TypedDict):
-    """DismissalRequestResponsePropReviewer
+class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
+    """Copilot Seat Breakdown
 
-    The user who reviewed the dismissal request.
+    The breakdown of Copilot Business seats for the organization.
     """
 
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "DismissalRequestResponsePropReviewerType",
-    "DismissalRequestResponsePropReviewerTypeForResponse",
-    "DismissalRequestResponseType",
-    "DismissalRequestResponseTypeForResponse",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationDetailsTypeForResponse",
+    "CopilotOrganizationSeatBreakdownType",
+    "CopilotOrganizationSeatBreakdownTypeForResponse",
 )

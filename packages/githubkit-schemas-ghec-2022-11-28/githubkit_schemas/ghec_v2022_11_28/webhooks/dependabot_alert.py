@@ -22,6 +22,7 @@ from ..models import (
     WebhookDependabotAlertFixed,
     WebhookDependabotAlertReintroduced,
     WebhookDependabotAlertReopened,
+    WebhookDependabotAlertWithdrawn,
 )
 
 Event: TypeAlias = Annotated[
@@ -34,6 +35,7 @@ Event: TypeAlias = Annotated[
         WebhookDependabotAlertFixed,
         WebhookDependabotAlertReintroduced,
         WebhookDependabotAlertReopened,
+        WebhookDependabotAlertWithdrawn,
     ],
     Field(discriminator="action"),
 ]
@@ -49,6 +51,7 @@ action_types: dict[str, type[GitHubModel]] = {
     "fixed": WebhookDependabotAlertFixed,
     "reintroduced": WebhookDependabotAlertReintroduced,
     "reopened": WebhookDependabotAlertReopened,
+    "withdrawn": WebhookDependabotAlertWithdrawn,
 }  # pyright: ignore[reportAssignmentType]
 
 dependabot_alert_action_types = action_types

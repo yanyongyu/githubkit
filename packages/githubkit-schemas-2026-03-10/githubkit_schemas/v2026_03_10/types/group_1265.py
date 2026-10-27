@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    installation_id: NotRequired[int]
-    display_name: str
+    selected_usernames: list[str]
 
 
-class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    installation_id: NotRequired[int]
-    display_name: str
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsPostBodyType",
-    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

@@ -9,32 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class StargazerHistoryType(TypedDict):
-    """Stargazer History
+class PullRequestStackMinimalType(TypedDict):
+    """Pull Request Stack Minimal"""
 
-    Stargazer History
-    """
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: PullRequestStackMinimalPropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
 
-    days: list[int]
-    total: int
-    week: int
+
+class PullRequestStackMinimalTypeForResponse(TypedDict):
+    """Pull Request Stack Minimal"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: PullRequestStackMinimalPropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
 
 
-class StargazerHistoryTypeForResponse(TypedDict):
-    """Stargazer History
+class PullRequestStackMinimalPropBaseType(TypedDict):
+    """PullRequestStackMinimalPropBase"""
 
-    Stargazer History
-    """
+    ref: str
 
-    days: list[int]
-    total: int
-    week: int
+
+class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropBase"""
+
+    ref: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int
+    state: Literal["open", "closed"]
+    draft: bool
+    merged_at: Union[_dt.datetime, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
+
+
+class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int
+    state: Literal["open", "closed"]
+    draft: bool
+    merged_at: Union[str, None]
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str
+    sha: str
 
 
 __all__ = (
-    "StargazerHistoryType",
-    "StargazerHistoryTypeForResponse",
+    "PullRequestStackMinimalPropBaseType",
+    "PullRequestStackMinimalPropBaseTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
+    "PullRequestStackMinimalPropPullRequestsItemsType",
+    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
+    "PullRequestStackMinimalType",
+    "PullRequestStackMinimalTypeForResponse",
 )

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,87 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0036 import DependabotAlertPackage
 
-class WebhooksAnswer(GitHubModel):
-    """WebhooksAnswer"""
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+class DependabotAlertWithdrawnWebhookPropDependency(GitHubModel):
+    """DependabotAlertWithdrawnWebhookPropDependency
+
+    Details for the vulnerable dependency.
+    """
+
+    package: DependabotAlertPackage = Field(
+        description="Details for the vulnerable package."
+    )
+    manifest_path: Union[str, None] = Field(
+        description="The full path to the dependency manifest file, relative to the root of the repository."
+    )
+    version_requirement: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+    )
+    scope: Union[Literal["development", "runtime"], None] = Field(
+        description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
     ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
     )
-    body: str = Field()
-    child_comment_count: int = Field()
-    created_at: _dt.datetime = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: Missing[WebhooksAnswerPropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    repository_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    user: Union[WebhooksAnswerPropUser, None] = Field(title="User")
 
 
-class WebhooksAnswerPropReactions(GitHubModel):
-    """Reactions"""
+model_rebuild(DependabotAlertWithdrawnWebhookPropDependency)
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksAnswerPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhooksAnswer)
-model_rebuild(WebhooksAnswerPropReactions)
-model_rebuild(WebhooksAnswerPropUser)
-
-__all__ = (
-    "WebhooksAnswer",
-    "WebhooksAnswerPropReactions",
-    "WebhooksAnswerPropUser",
-)
+__all__ = ("DependabotAlertWithdrawnWebhookPropDependency",)

@@ -13,30 +13,44 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class LabelType(TypedDict):
+    """Label
 
-class PinnedIssueCommentType(TypedDict):
-    """Pinned Issue Comment
-
-    Context around who pinned an issue comment and when it was pinned.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    pinned_at: _dt.datetime
-    pinned_by: Union[SimpleUserType, None]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[_dt.datetime, None]
+    archived_by: None
 
 
-class PinnedIssueCommentTypeForResponse(TypedDict):
-    """Pinned Issue Comment
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    Context around who pinned an issue comment and when it was pinned.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    pinned_at: str
-    pinned_by: Union[SimpleUserTypeForResponse, None]
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[str, None]
+    archived_by: None
 
 
 __all__ = (
-    "PinnedIssueCommentType",
-    "PinnedIssueCommentTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

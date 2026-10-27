@@ -9,28 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class TopicType(TypedDict):
-    """Topic
-
-    A topic aggregates entities that are related to a subject.
-    """
-
-    names: list[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class PullRequestStackPullRequestAllof1Type(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
 
-    A topic aggregates entities that are related to a subject.
-    """
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserType, None]
 
-    names: list[str]
+
+class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
+    """PullRequestStackPullRequestAllof1"""
+
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "PullRequestStackPullRequestAllof1Type",
+    "PullRequestStackPullRequestAllof1TypeForResponse",
 )

@@ -11,40 +11,90 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class NetworkConfigurationType(TypedDict):
-    """Hosted compute network configuration
+class EnterpriseLicensePolicyItemPropLicensesType(TypedDict):
+    """EnterpriseLicensePolicyItemPropLicenses"""
 
-    A hosted compute network configuration.
-    """
+    allowed: list[EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsType]
 
-    id: str
+
+class EnterpriseLicensePolicyItemPropLicensesTypeForResponse(TypedDict):
+    """EnterpriseLicensePolicyItemPropLicenses"""
+
+    allowed: list[
+        EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsTypeForResponse
+    ]
+
+
+class EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsType(TypedDict):
+    """Allowed license"""
+
+    spdx_id: str
+    added_at: Union[_dt.datetime, None]
+
+
+class EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsTypeForResponse(TypedDict):
+    """Allowed license"""
+
+    spdx_id: str
+    added_at: Union[str, None]
+
+
+class EnterpriseLicensePolicyItemPropPackagesItemsType(TypedDict):
+    """License policy package exception"""
+
+    package_manager: Literal[
+        "unknown",
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "gomod",
+        "rust",
+        "actions",
+        "pub",
+        "swift",
+    ]
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[_dt.datetime, None]
+    action: Literal["unknown", "allowed", "private"]
+    reason: str
+    extra_allowed_spdx_ids: list[str]
+    added_at: Union[_dt.datetime, None]
 
 
-class NetworkConfigurationTypeForResponse(TypedDict):
-    """Hosted compute network configuration
+class EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse(TypedDict):
+    """License policy package exception"""
 
-    A hosted compute network configuration.
-    """
-
-    id: str
+    package_manager: Literal[
+        "unknown",
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "gomod",
+        "rust",
+        "actions",
+        "pub",
+        "swift",
+    ]
     name: str
-    compute_service: NotRequired[Literal["none", "actions", "codespaces"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-    created_on: Union[str, None]
+    action: Literal["unknown", "allowed", "private"]
+    reason: str
+    extra_allowed_spdx_ids: list[str]
+    added_at: Union[str, None]
 
 
 __all__ = (
-    "NetworkConfigurationType",
-    "NetworkConfigurationTypeForResponse",
+    "EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsType",
+    "EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsTypeForResponse",
+    "EnterpriseLicensePolicyItemPropLicensesType",
+    "EnterpriseLicensePolicyItemPropLicensesTypeForResponse",
+    "EnterpriseLicensePolicyItemPropPackagesItemsType",
+    "EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse",
 )

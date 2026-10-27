@@ -11,20 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0204 import SecretScanningCustomPatternToCreate
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
-    )
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)

@@ -9,25 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class AgentsTasksGetResponse403Type(TypedDict):
+    """AgentsTasksGetResponse403
 
-    last_read_at: NotRequired[_dt.datetime]
-    read: NotRequired[bool]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsType]]
+    documentation_url: str
 
 
-class NotificationsPutBodyTypeForResponse(TypedDict):
-    """NotificationsPutBody"""
+class AgentsTasksGetResponse403TypeForResponse(TypedDict):
+    """AgentsTasksGetResponse403
 
-    last_read_at: NotRequired[str]
-    read: NotRequired[bool]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksGetResponse403PropErrorsItemsTypeForResponse]]
+    documentation_url: str
+
+
+class AgentsTasksGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "NotificationsPutBodyType",
-    "NotificationsPutBodyTypeForResponse",
+    "AgentsTasksGetResponse403PropErrorsItemsType",
+    "AgentsTasksGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsTasksGetResponse403Type",
+    "AgentsTasksGetResponse403TypeForResponse",
 )

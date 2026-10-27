@@ -17,41 +17,26 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0426 import IssueEventIntent
 
+class IssueEventIntent(GitHubModel):
+    """Issue Event Intent
 
-class LabeledIssueEvent(GitHubModel):
-    """Labeled Issue Event
-
-    Labeled Issue Event
+    The intent behind an agent's action on an issue, including the rationale and
+    confidence. Present (and `null` when the event carried no agent intent) on
+    supported event types while the issue suggestions feature is enabled for the
+    repository; the property is omitted entirely when the feature is disabled or the
+    event type does not support intent.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["labeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: LabeledIssueEventPropLabel = Field()
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    rationale: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The reasoning the agent provided for the change."
+    )
+    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
+        default=UNSET,
+        description="The confidence level the agent had when performing this action.",
+    )
 
 
-class LabeledIssueEventPropLabel(GitHubModel):
-    """LabeledIssueEventPropLabel"""
+model_rebuild(IssueEventIntent)
 
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(LabeledIssueEvent)
-model_rebuild(LabeledIssueEventPropLabel)
-
-__all__ = (
-    "LabeledIssueEvent",
-    "LabeledIssueEventPropLabel",
-)
+__all__ = ("IssueEventIntent",)

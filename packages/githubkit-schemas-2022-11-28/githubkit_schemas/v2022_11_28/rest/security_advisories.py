@@ -1301,7 +1301,9 @@ class SecurityAdvisoriesClient:
 
         POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks
 
-        Create a temporary private fork to collaborate on fixing a security vulnerability in your repository.
+        Create a temporary private fork to collaborate on fixing a security vulnerability in a repository.
+
+        Repository administrators, organization owners, and security managers can create a temporary private fork. The original reporter of a privately reported vulnerability can also create one while they remain a collaborator on the security advisory.
 
         > [!NOTE]
         > Forking a repository happens asynchronously. You may have to wait up to 5 minutes before you can access the fork.
@@ -1342,7 +1344,9 @@ class SecurityAdvisoriesClient:
 
         POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/forks
 
-        Create a temporary private fork to collaborate on fixing a security vulnerability in your repository.
+        Create a temporary private fork to collaborate on fixing a security vulnerability in a repository.
+
+        Repository administrators, organization owners, and security managers can create a temporary private fork. The original reporter of a privately reported vulnerability can also create one while they remain a collaborator on the security advisory.
 
         > [!NOTE]
         > Forking a repository happens asynchronously. You may have to wait up to 5 minutes before you can access the fork.

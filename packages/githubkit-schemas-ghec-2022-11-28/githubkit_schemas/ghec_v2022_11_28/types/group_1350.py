@@ -9,29 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0283 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
+
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType
+    ]
 
 
-class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+    ]
 
 
-class OrgsOrgActionsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    model_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
 
 
 __all__ = (
-    "OrgsOrgActionsVariablesGetResponse200Type",
-    "OrgsOrgActionsVariablesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyTypeForResponse",
 )

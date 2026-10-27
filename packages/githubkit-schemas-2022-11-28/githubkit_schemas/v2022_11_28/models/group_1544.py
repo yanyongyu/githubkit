@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0287 import SecretScanningCustomPatternToDelete
 
-class UsersUsernameAttestationsBulkListPostBody(GitHubModel):
-    """UsersUsernameAttestationsBulkListPostBody"""
 
-    subject_digests: list[str] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of subject digests to fetch attestations for.",
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
+
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
     )
-    predicate_type: Missing[str] = Field(
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
         default=UNSET,
-        description="Optional filter for fetching attestations with a given predicate type.\nThis option accepts `provenance`, `sbom`, `release`, or freeform text\nfor custom predicate types.",
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
     )
 
 
-model_rebuild(UsersUsernameAttestationsBulkListPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
 
-__all__ = ("UsersUsernameAttestationsBulkListPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)

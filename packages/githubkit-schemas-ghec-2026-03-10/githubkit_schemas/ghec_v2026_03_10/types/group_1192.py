@@ -9,92 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0068 import (
-    ActionsPolicyEnterpriseConditionsOneof0Type,
-    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-)
-from .group_0069 import (
-    ActionsPolicyEnterpriseConditionsOneof1Type,
-    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-)
-from .group_0070 import (
-    ActionsPolicyEnterpriseConditionsOneof2Type,
-    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-)
-from .group_0071 import (
-    ActionsPolicyEnterpriseConditionsOneof3Type,
-    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-)
-from .group_0072 import (
-    ActionsPolicyEnterpriseConditionsOneof4Type,
-    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-)
-from .group_0073 import (
-    ActionsPolicyEnterpriseConditionsOneof5Type,
-    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
+from .group_1193 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
 )
 
 
-class EnterprisesEnterpriseActionsPoliciesPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0Type,
-            ActionsPolicyEnterpriseConditionsOneof1Type,
-            ActionsPolicyEnterpriseConditionsOneof2Type,
-            ActionsPolicyEnterpriseConditionsOneof3Type,
-            ActionsPolicyEnterpriseConditionsOneof4Type,
-            ActionsPolicyEnterpriseConditionsOneof5Type,
-        ]
+    sessions: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
     ]
-    rules: NotRequired[
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+
+    sessions: NotRequired[
         list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
-
-
-class EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
-
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
         ]
     ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPoliciesPostBodyType",
-    "EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
 )

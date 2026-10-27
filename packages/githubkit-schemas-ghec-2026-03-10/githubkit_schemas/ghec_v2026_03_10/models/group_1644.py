@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
+    GitHubModel
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the issue."
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
+    )
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberReactionsPostBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

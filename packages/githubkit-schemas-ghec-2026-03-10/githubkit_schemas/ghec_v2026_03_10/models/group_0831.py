@@ -18,7 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
     GitHubModel
 ):
     """User"""
@@ -47,10 +47,10 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
     GitHubModel
 ):
-    """WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    """WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -74,7 +74,9 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermi
     organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET
+    )
     organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
     organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
         default=UNSET
@@ -91,19 +93,18 @@ class WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermi
     security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
     single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
     statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
     vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
     workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
 model_rebuild(
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
 )
 model_rebuild(
-    WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
 )
 
 __all__ = (
-    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-    "WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
 )

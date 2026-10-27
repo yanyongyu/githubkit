@@ -9,90 +9,122 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0205 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0206 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
 
 
-class PullRequestStackMinimalType(TypedDict):
-    """Pull Request Stack Minimal"""
+class SecretScanningLocationType(TypedDict):
+    """SecretScanningLocation"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
-
-
-class PullRequestStackMinimalTypeForResponse(TypedDict):
-    """Pull Request Stack Minimal"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
-
-
-class PullRequestStackMinimalPropBaseType(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[_dt.datetime, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitType,
+            SecretScanningLocationWikiCommitType,
+            SecretScanningLocationIssueTitleType,
+            SecretScanningLocationIssueBodyType,
+            SecretScanningLocationIssueCommentType,
+            SecretScanningLocationDiscussionTitleType,
+            SecretScanningLocationDiscussionBodyType,
+            SecretScanningLocationDiscussionCommentType,
+            SecretScanningLocationPullRequestTitleType,
+            SecretScanningLocationPullRequestBodyType,
+            SecretScanningLocationPullRequestCommentType,
+            SecretScanningLocationPullRequestReviewType,
+            SecretScanningLocationPullRequestReviewCommentType,
+        ]
+    ]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
+class SecretScanningLocationTypeForResponse(TypedDict):
+    """SecretScanningLocation"""
 
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[str, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str
-    sha: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str
-    sha: str
+    type: NotRequired[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ]
+    details: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            SecretScanningLocationWikiCommitTypeForResponse,
+            SecretScanningLocationIssueTitleTypeForResponse,
+            SecretScanningLocationIssueBodyTypeForResponse,
+            SecretScanningLocationIssueCommentTypeForResponse,
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+        ]
+    ]
 
 
 __all__ = (
-    "PullRequestStackMinimalPropBaseType",
-    "PullRequestStackMinimalPropBaseTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsType",
-    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
-    "PullRequestStackMinimalType",
-    "PullRequestStackMinimalTypeForResponse",
+    "SecretScanningLocationType",
+    "SecretScanningLocationTypeForResponse",
 )

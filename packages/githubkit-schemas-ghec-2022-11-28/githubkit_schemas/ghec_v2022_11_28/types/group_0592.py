@@ -11,52 +11,26 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0239 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestStackPullRequestType(TypedDict):
-    """Pull Request Stack Pull Request"""
+class SecretScanningPushProtectionBypassType(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[_dt.datetime, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserType, None]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[_dt.datetime, None]]
+    token_type: NotRequired[str]
 
 
-class PullRequestStackPullRequestTypeForResponse(TypedDict):
-    """Pull Request Stack Pull Request"""
+class SecretScanningPushProtectionBypassTypeForResponse(TypedDict):
+    """SecretScanningPushProtectionBypass"""
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[str, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    reason: NotRequired[Literal["false_positive", "used_in_tests", "will_fix_later"]]
+    expire_at: NotRequired[Union[str, None]]
+    token_type: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestStackPullRequestType",
-    "PullRequestStackPullRequestTypeForResponse",
+    "SecretScanningPushProtectionBypassType",
+    "SecretScanningPushProtectionBypassTypeForResponse",
 )

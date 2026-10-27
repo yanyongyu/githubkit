@@ -21,8 +21,8 @@ from githubkit.utils import UNSET
 from .group_0003 import SimpleUser
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlert(GitHubModel):
-    """WebhookCodeScanningAlertUpdatedAssignmentPropAlert
+class WebhookCodeScanningAlertClosedByUserPropAlert(GitHubModel):
+    """WebhookCodeScanningAlertClosedByUserPropAlert
 
     The code scanning alert involved in the event.
     """
@@ -31,11 +31,11 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlert(GitHubModel):
     created_at: _dt.datetime = Field(
         description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
     )
-    dismissed_at: Union[_dt.datetime, None] = Field(
+    dismissed_at: _dt.datetime = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
     dismissed_by: Union[
-        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy, None
+        WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy, None
     ] = Field(title="User")
     dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
         Field(
@@ -52,21 +52,23 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlert(GitHubModel):
     )
     html_url: str = Field(description="The GitHub URL of the alert resource.")
     most_recent_instance: Missing[
-        Union[
-            WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance,
-            None,
-        ]
+        Union[WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance, None]
     ] = Field(default=UNSET, title="Alert Instance")
     number: int = Field(description="The code scanning alert number.")
-    rule: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule = Field()
-    state: Union[Literal["open", "dismissed", "fixed"], None] = Field(
-        description="State of a code scanning alert. Events for alerts found outside the default branch will return a `null` value until they are dismissed or fixed."
+    rule: WebhookCodeScanningAlertClosedByUserPropAlertPropRule = Field()
+    state: Literal["dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
     )
-    tool: WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool = Field()
+    tool: WebhookCodeScanningAlertClosedByUserPropAlertPropTool = Field()
     url: str = Field()
+    dismissal_approved_by: Missing[
+        Union[
+            WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy, None
+        ]
+    ] = Field(default=UNSET, title="User")
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy(GitHubModel):
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -93,9 +95,7 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy(GitHubMo
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance(
-    GitHubModel
-):
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance(GitHubModel):
     """Alert Instance"""
 
     analysis_key: str = Field(
@@ -111,10 +111,10 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance(
         description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
     )
     location: Missing[
-        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation
     ] = Field(default=UNSET)
     message: Missing[
-        WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage
+        WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage
     ] = Field(default=UNSET)
     ref: str = Field(
         description="The full Git reference, formatted as `refs/heads/<branch name>`."
@@ -124,12 +124,10 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance(
     )
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation(
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation(
     GitHubModel
 ):
-    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLoca
-    tion
-    """
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation"""
 
     end_column: Missing[int] = Field(default=UNSET)
     end_line: Missing[int] = Field(default=UNSET)
@@ -138,33 +136,40 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePr
     start_line: Missing[int] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage(
+class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage(
     GitHubModel
 ):
-    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMess
-    age
-    """
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage"""
 
     text: Missing[str] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule(GitHubModel):
-    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule"""
+class WebhookCodeScanningAlertClosedByUserPropAlertPropRule(GitHubModel):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropRule"""
 
     description: str = Field(
         description="A short description of the rule used to detect the alert."
     )
+    full_description: Missing[str] = Field(default=UNSET)
+    help_: Missing[Union[str, None]] = Field(default=UNSET, alias="help")
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
     id: str = Field(
         description="A unique identifier for the rule used to detect the alert."
     )
+    name: Missing[str] = Field(default=UNSET)
     severity: Union[Literal["none", "note", "warning", "error"], None] = Field(
         description="The severity of the alert."
     )
+    tags: Missing[Union[list[str], None]] = Field(default=UNSET)
 
 
-class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool(GitHubModel):
-    """WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool"""
+class WebhookCodeScanningAlertClosedByUserPropAlertPropTool(GitHubModel):
+    """WebhookCodeScanningAlertClosedByUserPropAlertPropTool"""
 
+    guid: Missing[Union[str, None]] = Field(default=UNSET)
     name: str = Field(
         description="The name of the tool used to generate the code scanning analysis alert."
     )
@@ -173,24 +178,53 @@ class WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool(GitHubModel):
     )
 
 
-model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlert)
-model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy)
-model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance)
+class WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookCodeScanningAlertClosedByUserPropAlert)
+model_rebuild(WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy)
+model_rebuild(WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance)
 model_rebuild(
-    WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation
+    WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation
 )
 model_rebuild(
-    WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage
+    WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage
 )
-model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule)
-model_rebuild(WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool)
+model_rebuild(WebhookCodeScanningAlertClosedByUserPropAlertPropRule)
+model_rebuild(WebhookCodeScanningAlertClosedByUserPropAlertPropTool)
+model_rebuild(WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy)
 
 __all__ = (
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlert",
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy",
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance",
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation",
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage",
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule",
-    "WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool",
+    "WebhookCodeScanningAlertClosedByUserPropAlert",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropRule",
+    "WebhookCodeScanningAlertClosedByUserPropAlertPropTool",
 )

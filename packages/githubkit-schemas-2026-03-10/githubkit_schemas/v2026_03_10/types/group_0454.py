@@ -10,43 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0455 import (
-    TimelineCrossReferencedEventPropSourceType,
-    TimelineCrossReferencedEventPropSourceTypeForResponse,
-)
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class IssueSuggestionType(TypedDict):
+    """Issue Suggestion
 
-    Timeline Cross Referenced Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
+    id: int
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    source: TimelineCrossReferencedEventPropSourceType
 
 
-class TimelineCrossReferencedEventTypeForResponse(TypedDict):
-    """Timeline Cross Referenced Event
+class IssueSuggestionTypeForResponse(TypedDict):
+    """Issue Suggestion
 
-    Timeline Cross Referenced Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserTypeForResponse]
+    id: int
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
     created_at: str
     updated_at: str
-    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "TimelineCrossReferencedEventType",
-    "TimelineCrossReferencedEventTypeForResponse",
+    "IssueSuggestionType",
+    "IssueSuggestionTypeForResponse",
 )

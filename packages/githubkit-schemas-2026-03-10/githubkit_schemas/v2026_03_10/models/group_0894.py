@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0563 import EnterpriseWebhooks
-from .group_0564 import SimpleInstallation
-from .group_0565 import OrganizationSimpleWebhooks
-from .group_0566 import RepositoryWebhooks
-from .group_0604 import PullRequestWebhook
+from .group_0567 import EnterpriseWebhooks
+from .group_0568 import SimpleInstallation
+from .group_0569 import OrganizationSimpleWebhooks
+from .group_0570 import RepositoryWebhooks
+from .group_0580 import WebhooksUser
+from .group_0895 import WebhookPullRequestAssignedPropPullRequest
 
 
-class WebhookPullRequestConvertedToDraft(GitHubModel):
-    """pull_request converted_to_draft event"""
+class WebhookPullRequestAssigned(GitHubModel):
+    """pull_request assigned event"""
 
-    action: Literal["converted_to_draft"] = Field()
+    action: Literal["assigned"] = Field()
+    assignee: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,7 +47,9 @@ class WebhookPullRequestConvertedToDraft(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: PullRequestWebhook = Field()
+    pull_request: WebhookPullRequestAssignedPropPullRequest = Field(
+        title="Pull Request"
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +57,6 @@ class WebhookPullRequestConvertedToDraft(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestConvertedToDraft)
+model_rebuild(WebhookPullRequestAssigned)
 
-__all__ = ("WebhookPullRequestConvertedToDraft",)
+__all__ = ("WebhookPullRequestAssigned",)

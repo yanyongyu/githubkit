@@ -16,33 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: Missing[int] = Field(
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
         default=UNSET,
-        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The target environment for this GitHub Pages deployment.",
-    )
-    pages_build_version: str = Field(
-        default="GITHUB_SHA",
-        description="A unique string that represents the version of the build for this deployment.",
-    )
-    oidc_token: str = Field(
-        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
 
-__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)

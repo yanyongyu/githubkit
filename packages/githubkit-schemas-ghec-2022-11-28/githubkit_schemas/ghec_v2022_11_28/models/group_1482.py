@@ -9,19 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSettingsImmutableReleasesRepositoriesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesRepositoriesPutBody"""
+class OrgsOrgCopilotModelPoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesGetResponse200"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/enterprise-cloud@latest/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints."
+    default_availability: OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The effective default availability for models reported as `delegate_to_default`."
+    )
+    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems] = Field(
+        description="The effective policies for all models available to the organization."
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesRepositoriesPutBody)
+class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesRepositoriesPutBody",)
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when it\nis configured. Otherwise, the organization's default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
+
+
+class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str = Field(description="The public identifier of the model.")
+    display_name: str = Field(description="The human-readable name of the model.")
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_default", "unconfigured"
+    ] = Field(
+        description="The policy state after applying inheritance. `enabled` and `disabled` are\nexplicit policies configured for the organization or inherited from its\nenterprise. `delegate_to_default` means the model has no explicit policy and\nfollows `default_availability`. `unconfigured` means the model has no explicit\npolicy and is not eligible for default availability, so it is disabled."
+    )
+
+
+model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems)
+
+__all__ = (
+    "OrgsOrgCopilotModelPoliciesGetResponse200",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems",
+)

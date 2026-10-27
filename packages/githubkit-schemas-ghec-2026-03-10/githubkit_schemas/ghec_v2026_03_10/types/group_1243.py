@@ -9,60 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0068 import (
+    ActionsPolicyEnterpriseConditionsOneof0Type,
+    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+)
+from .group_0069 import (
+    ActionsPolicyEnterpriseConditionsOneof1Type,
+    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+)
+from .group_0070 import (
+    ActionsPolicyEnterpriseConditionsOneof2Type,
+    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+)
+from .group_0071 import (
+    ActionsPolicyEnterpriseConditionsOneof3Type,
+    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+)
+from .group_0072 import (
+    ActionsPolicyEnterpriseConditionsOneof4Type,
+    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+)
+from .group_0073 import (
+    ActionsPolicyEnterpriseConditionsOneof5Type,
+    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
+class EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody"""
+
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyEnterpriseConditionsOneof0Type,
+            ActionsPolicyEnterpriseConditionsOneof1Type,
+            ActionsPolicyEnterpriseConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof3Type,
+            ActionsPolicyEnterpriseConditionsOneof4Type,
+            ActionsPolicyEnterpriseConditionsOneof5Type,
+        ]
+    ]
+    rules: NotRequired[
         list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
         ]
     ]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody"""
 
-    organizations: NotRequired[list[str]]
-    custom_properties: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
         ]
     ]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
-
-
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
-
-    property_name: str
-    values: list[str]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType",
+    "EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyTypeForResponse",
 )

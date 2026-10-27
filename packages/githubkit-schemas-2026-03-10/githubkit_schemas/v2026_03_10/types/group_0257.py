@@ -12,6 +12,11 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0258 import (
+    RepositoryRuleCodeQualityPropParametersType,
+    RepositoryRuleCodeQualityPropParametersTypeForResponse,
+)
+
 
 class RepositoryRuleCodeQualityType(TypedDict):
     """code_quality
@@ -37,85 +42,7 @@ class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
     parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
 
 
-class RepositoryRuleCodeQualityPropParametersType(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
-
-    severity: Literal["errors", "warnings", "notes", "all"]
-
-
-class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
-
-    severity: Literal["errors", "warnings", "notes", "all"]
-
-
-class RepositoryRuleCodeCoverageType(TypedDict):
-    """code_coverage
-
-    Enforce minimum line coverage thresholds on pull requests. When configured,
-    uploaded coverage data must meet the specified criteria before changes can be
-    merged.
-    """
-
-    type: Literal["code_coverage"]
-    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
-
-
-class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
-    """code_coverage
-
-    Enforce minimum line coverage thresholds on pull requests. When configured,
-    uploaded coverage data must meet the specified criteria before changes can be
-    merged.
-    """
-
-    type: Literal["code_coverage"]
-    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
-
-
-class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
-    """RepositoryRuleCodeCoveragePropParameters"""
-
-    max_coverage_drop: NotRequired[float]
-    minimum_coverage: NotRequired[float]
-
-
-class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeCoveragePropParameters"""
-
-    max_coverage_drop: NotRequired[float]
-    minimum_coverage: NotRequired[float]
-
-
-class RepositoryRuleLicenseComplianceScanningType(TypedDict):
-    """license_compliance_scanning
-
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
-    """
-
-    type: Literal["license_compliance_scanning"]
-
-
-class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
-    """license_compliance_scanning
-
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
-    """
-
-    type: Literal["license_compliance_scanning"]
-
-
 __all__ = (
-    "RepositoryRuleCodeCoveragePropParametersType",
-    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
-    "RepositoryRuleCodeCoverageType",
-    "RepositoryRuleCodeCoverageTypeForResponse",
-    "RepositoryRuleCodeQualityPropParametersType",
-    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
     "RepositoryRuleCodeQualityType",
     "RepositoryRuleCodeQualityTypeForResponse",
-    "RepositoryRuleLicenseComplianceScanningType",
-    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
 )

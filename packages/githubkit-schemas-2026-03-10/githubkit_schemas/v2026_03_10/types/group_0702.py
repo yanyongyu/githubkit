@@ -10,49 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0563 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0565 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0566 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0579 import (
-    WebhooksRepositoriesItemsType,
-    WebhooksRepositoriesItemsTypeForResponse,
-)
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookGithubAppAuthorizationRevokedType(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["suspend"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    action: Literal["revoked"]
     sender: SimpleUserType
 
 
-class WebhookInstallationSuspendTypeForResponse(TypedDict):
-    """installation suspend event"""
+class WebhookGithubAppAuthorizationRevokedTypeForResponse(TypedDict):
+    """github_app_authorization revoked event"""
 
-    action: Literal["suspend"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: InstallationTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repositories: NotRequired[list[WebhooksRepositoriesItemsTypeForResponse]]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    requester: NotRequired[None]
+    action: Literal["revoked"]
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookInstallationSuspendType",
-    "WebhookInstallationSuspendTypeForResponse",
+    "WebhookGithubAppAuthorizationRevokedType",
+    "WebhookGithubAppAuthorizationRevokedTypeForResponse",
 )

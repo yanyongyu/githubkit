@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,12 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class NotificationsPutResponse202(GitHubModel):
-    """NotificationsPutResponse202"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke across the enterprise.")
+    revoke_credentials: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to also destroy the actual credentials of this type owned by\nenterprise members. This option is only available for Enterprise Managed\nUser (EMU) enterprises. When set to `true`, all credentials of the given\ntype owned by enterprise members will be destroyed in addition to the\ncredential authorizations. Note that `oauth_app_token` credentials cannot\nbe destroyed; for that type only the credential authorizations are revoked.",
+    )
 
 
-model_rebuild(NotificationsPutResponse202)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody)
 
-__all__ = ("NotificationsPutResponse202",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody",)

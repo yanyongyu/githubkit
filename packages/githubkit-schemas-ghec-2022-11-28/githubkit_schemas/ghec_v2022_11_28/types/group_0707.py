@@ -9,48 +9,76 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0643 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0644 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0645 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
-)
-from .group_0646 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0648 import ExemptionResponseType, ExemptionResponseTypeForResponse
-from .group_0649 import ExemptionRequestType, ExemptionRequestTypeForResponse
+
+class WebhooksChanges8Type(TypedDict):
+    """WebhooksChanges8"""
+
+    tier: WebhooksChanges8PropTierType
 
 
-class WebhookExemptionRequestResponseDismissedType(TypedDict):
-    """Exemption response dismissed event"""
+class WebhooksChanges8TypeForResponse(TypedDict):
+    """WebhooksChanges8"""
 
-    action: Literal["response_dismissed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    exemption_response: ExemptionResponseType
-    sender: SimpleUserType
+    tier: WebhooksChanges8PropTierTypeForResponse
 
 
-class WebhookExemptionRequestResponseDismissedTypeForResponse(TypedDict):
-    """Exemption response dismissed event"""
+class WebhooksChanges8PropTierType(TypedDict):
+    """WebhooksChanges8PropTier"""
 
-    action: Literal["response_dismissed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    exemption_request: ExemptionRequestTypeForResponse
-    exemption_response: ExemptionResponseTypeForResponse
-    sender: SimpleUserTypeForResponse
+    from_: WebhooksChanges8PropTierPropFromType
+
+
+class WebhooksChanges8PropTierTypeForResponse(TypedDict):
+    """WebhooksChanges8PropTier"""
+
+    from_: WebhooksChanges8PropTierPropFromTypeForResponse
+
+
+class WebhooksChanges8PropTierPropFromType(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
+
+
+class WebhooksChanges8PropTierPropFromTypeForResponse(TypedDict):
+    """Sponsorship Tier
+
+    The `tier_changed` and `pending_tier_change` will include the original tier
+    before the change or pending change. For more information, see the pending tier
+    change payload.
+    """
+
+    created_at: str
+    description: str
+    is_custom_ammount: NotRequired[bool]
+    is_custom_amount: NotRequired[bool]
+    is_one_time: bool
+    monthly_price_in_cents: int
+    monthly_price_in_dollars: int
+    name: str
+    node_id: str
 
 
 __all__ = (
-    "WebhookExemptionRequestResponseDismissedType",
-    "WebhookExemptionRequestResponseDismissedTypeForResponse",
+    "WebhooksChanges8PropTierPropFromType",
+    "WebhooksChanges8PropTierPropFromTypeForResponse",
+    "WebhooksChanges8PropTierType",
+    "WebhooksChanges8PropTierTypeForResponse",
+    "WebhooksChanges8Type",
+    "WebhooksChanges8TypeForResponse",
 )

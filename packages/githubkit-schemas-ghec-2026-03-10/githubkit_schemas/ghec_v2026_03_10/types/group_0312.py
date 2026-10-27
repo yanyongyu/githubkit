@@ -12,27 +12,43 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsSummaryStatsType(TypedDict):
-    """Summary Stats
+class ExternalGroupsType(TypedDict):
+    """ExternalGroups
 
-    API Insights usage summary stats for an organization
+    A list of external groups available to be connected to a team
     """
 
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
-class ApiInsightsSummaryStatsTypeForResponse(TypedDict):
-    """Summary Stats
+class ExternalGroupsTypeForResponse(TypedDict):
+    """ExternalGroups
 
-    API Insights usage summary stats for an organization
+    A list of external groups available to be connected to a team
     """
 
-    total_request_count: NotRequired[int]
-    rate_limited_request_count: NotRequired[int]
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsTypeForResponse]]
+
+
+class ExternalGroupsPropGroupsItemsType(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
+
+
+class ExternalGroupsPropGroupsItemsTypeForResponse(TypedDict):
+    """ExternalGroupsPropGroupsItems"""
+
+    group_id: int
+    group_name: str
+    updated_at: str
 
 
 __all__ = (
-    "ApiInsightsSummaryStatsType",
-    "ApiInsightsSummaryStatsTypeForResponse",
+    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupsPropGroupsItemsTypeForResponse",
+    "ExternalGroupsType",
+    "ExternalGroupsTypeForResponse",
 )

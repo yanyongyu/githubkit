@@ -14,14 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody"""
+class OrgsOrgAgentsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
 
     selected_repository_ids: list[int] = Field(
-        description="List of repository IDs to enable for Copilot cloud agent."
+        description="The IDs of the repositories that can access the organization variable."
     )
 
 
-model_rebuild(OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody)
+model_rebuild(OrgsOrgAgentsVariablesNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",)
+__all__ = ("OrgsOrgAgentsVariablesNameRepositoriesPutBody",)

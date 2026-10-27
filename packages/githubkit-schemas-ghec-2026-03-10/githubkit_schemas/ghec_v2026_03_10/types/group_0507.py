@@ -10,75 +10,65 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Moved Column in Project Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    rename: RenamedIssueEventPropRenameType
 
 
-class MovedColumnInProjectIssueEventTypeForResponse(TypedDict):
-    """Moved Column in Project Issue Event
+class RenamedIssueEventTypeForResponse(TypedDict):
+    """Renamed Issue Event
 
-    Moved Column in Project Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["moved_columns_in_project"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    project_card: NotRequired[
-        MovedColumnInProjectIssueEventPropProjectCardTypeForResponse
-    ]
+    rename: RenamedIssueEventPropRenameTypeForResponse
 
 
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    from_: str
+    to: str
 
 
-class MovedColumnInProjectIssueEventPropProjectCardTypeForResponse(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class RenamedIssueEventPropRenameTypeForResponse(TypedDict):
+    """RenamedIssueEventPropRename"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    from_: str
+    to: str
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventPropProjectCardType",
-    "MovedColumnInProjectIssueEventPropProjectCardTypeForResponse",
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventTypeForResponse",
+    "RenamedIssueEventPropRenameType",
+    "RenamedIssueEventPropRenameTypeForResponse",
+    "RenamedIssueEventType",
+    "RenamedIssueEventTypeForResponse",
 )

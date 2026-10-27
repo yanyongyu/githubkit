@@ -16,20 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class ActionsCacheStorageLimitForOrganization(GitHubModel):
+    """Actions cache storage limit for an organization
 
-    The public key used for setting Actions Secrets.
+    GitHub Actions cache storage policy for an organization.
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    max_cache_size_gb: Missing[int] = Field(
+        default=UNSET,
+        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
+    )
 
 
-model_rebuild(ActionsPublicKey)
+model_rebuild(ActionsCacheStorageLimitForOrganization)
 
-__all__ = ("ActionsPublicKey",)
+__all__ = ("ActionsCacheStorageLimitForOrganization",)

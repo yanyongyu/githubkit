@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0265 import RepositoryRuleFileExtensionRestrictionPropParameters
+from .group_0262 import RepositoryRuleCopilotCodeReviewPropParameters
 
 
-class RepositoryRuleDetailedOneof21(GitHubModel):
-    """RepositoryRuleDetailedOneof21"""
+class RepositoryRuleDetailedOneof19(GitHubModel):
+    """RepositoryRuleDetailedOneof19"""
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleFileExtensionRestrictionPropParameters] = Field(
+    type: Literal["copilot_code_review"] = Field()
+    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof21(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof21)
+model_rebuild(RepositoryRuleDetailedOneof19)
 
-__all__ = ("RepositoryRuleDetailedOneof21",)
+__all__ = ("RepositoryRuleDetailedOneof19",)

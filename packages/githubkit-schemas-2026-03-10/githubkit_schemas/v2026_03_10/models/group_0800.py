@@ -18,19 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0563 import EnterpriseWebhooks
-from .group_0564 import SimpleInstallation
-from .group_0565 import OrganizationSimpleWebhooks
-from .group_0566 import RepositoryWebhooks
-from .group_0585 import WebhooksIssue2
-from .group_0801 import WebhookIssuesTransferredPropChanges
+from .group_0567 import EnterpriseWebhooks
+from .group_0568 import SimpleInstallation
+from .group_0569 import OrganizationSimpleWebhooks
+from .group_0570 import RepositoryWebhooks
+from .group_0801 import WebhookIssuesOpenedPropChanges
+from .group_0803 import WebhookIssuesOpenedPropIssue
 
 
-class WebhookIssuesTransferred(GitHubModel):
-    """issues transferred event"""
+class WebhookIssuesOpened(GitHubModel):
+    """issues opened event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookIssuesTransferredPropChanges = Field()
+    action: Literal["opened"] = Field()
+    changes: Missing[WebhookIssuesOpenedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,7 +41,7 @@ class WebhookIssuesTransferred(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhooksIssue2 = Field(
+    issue: WebhookIssuesOpenedPropIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
     )
@@ -57,6 +57,6 @@ class WebhookIssuesTransferred(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesTransferred)
+model_rebuild(WebhookIssuesOpened)
 
-__all__ = ("WebhookIssuesTransferred",)
+__all__ = ("WebhookIssuesOpened",)

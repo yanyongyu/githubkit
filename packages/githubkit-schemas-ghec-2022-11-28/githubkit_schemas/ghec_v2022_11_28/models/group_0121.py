@@ -33,6 +33,10 @@ class DependabotAlertWithRepositoryPropDependency(GitHubModel):
         default=UNSET,
         description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
+    version_requirement: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+    )
     scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
         default=UNSET, description="The execution scope of the vulnerable dependency."
     )

@@ -9,40 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class BillingUsageSummaryReportGheType(TypedDict):
+    """BillingUsageSummaryReportGhe"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    time_period: BillingUsageSummaryReportGhePropTimePeriodType
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
 
 
-class ReactionRollupTypeForResponse(TypedDict):
-    """Reaction Rollup"""
+class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhe"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+
+
+class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "ReactionRollupType",
-    "ReactionRollupTypeForResponse",
+    "BillingUsageSummaryReportGhePropCostCenterType",
+    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
+    "BillingUsageSummaryReportGhePropTimePeriodType",
+    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportGheType",
+    "BillingUsageSummaryReportGheTypeForResponse",
 )

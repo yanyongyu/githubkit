@@ -9,31 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Annotated, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1438 import OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
+class OrgsOrgCampaignsPostBodyOneof1(GitHubModel):
+    """OrgsOrgCampaignsPostBodyOneof1"""
+
+    name: str = Field(
+        min_length=1, max_length=50, description="The name of the campaign"
     )
-    max_open_pull_requests: Missing[int] = Field(
-        le=1000.0,
-        ge=1.0,
+    description: str = Field(
+        min_length=1, max_length=255, description="A description for the campaign"
+    )
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The maximum number of open pull requests a user can have at one time",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
     )
-    include_drafts: Missing[bool] = Field(
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
+        description="The slugs of the teams to set as the campaign managers.",
+    )
+    ends_at: _dt.datetime = Field(
+        description="The end date and time of the campaign. The date must be in the future."
+    )
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
+    )
+    code_scanning_alerts: Missing[
+        Union[
+            Annotated[
+                list[OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems],
+                Field(min_length=1 if PYDANTIC_V2 else None),
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The code scanning alerts to include in this campaign",
+    )
+    generate_issues: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, will automatically generate issues for the campaign. The default is false.",
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
+model_rebuild(OrgsOrgCampaignsPostBodyOneof1)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)
+__all__ = ("OrgsOrgCampaignsPostBodyOneof1",)

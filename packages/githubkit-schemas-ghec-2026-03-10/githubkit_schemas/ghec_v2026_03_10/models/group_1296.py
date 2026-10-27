@@ -9,41 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
+    default_availability: Missing[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+    ] = Field(default=UNSET)
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
     )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
     )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems)
 
 __all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems",
 )

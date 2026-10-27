@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleParamsProofOfPresenceType(TypedDict):
-    """ProofOfPresence
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    Require a fresh authentication before a pull request can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    required_authentication_level: Literal["reauth", "mfa"]
+    type: Literal["required_linear_history"]
 
 
-class RepositoryRuleParamsProofOfPresenceTypeForResponse(TypedDict):
-    """ProofOfPresence
+class RepositoryRuleRequiredLinearHistoryTypeForResponse(TypedDict):
+    """required_linear_history
 
-    Require a fresh authentication before a pull request can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    required_authentication_level: Literal["reauth", "mfa"]
+    type: Literal["required_linear_history"]
 
 
 __all__ = (
-    "RepositoryRuleParamsProofOfPresenceType",
-    "RepositoryRuleParamsProofOfPresenceTypeForResponse",
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleRequiredLinearHistoryTypeForResponse",
 )

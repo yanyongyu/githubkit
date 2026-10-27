@@ -10,277 +10,703 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from githubkit.typing import UniqueList
 
-class AgentsReposOwnerRepoTasksPostResponse201Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
+
+class AgentsAutomationsGetResponse200ItemsType(TypedDict):
+    """AgentsAutomationsGetResponse200Items
+
+    A summary representation of an automation including repository identity (used in
+    cross-repository list responses).
+    """
 
     id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropOwnerType]
-    repository: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
+    repository: AgentsAutomationsGetResponse200ItemsPropRepositoryType
+    name: str
+    enabled: NotRequired[bool]
+    owner_type: NotRequired[Literal["user", "repository"]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    require_actor_write_permission: NotRequired[bool]
+    model: NotRequired[str]
+    reasoning_effort: NotRequired[str]
+    triggers: NotRequired[AgentsAutomationsGetResponse200ItemsPropTriggersType]
     created_at: _dt.datetime
-    custom_agent: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentType
-    ]
+    updated_at: _dt.datetime
+    created_by: AgentsAutomationsGetResponse200ItemsPropCreatedByType
 
 
-class AgentsReposOwnerRepoTasksPostResponse201TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201"""
+class AgentsAutomationsGetResponse200ItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse200Items
+
+    A summary representation of an automation including repository identity (used in
+    cross-repository list responses).
+    """
 
     id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse
+    repository: AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse
+    name: str
+    enabled: NotRequired[bool]
+    owner_type: NotRequired[Literal["user", "repository"]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    require_actor_write_permission: NotRequired[bool]
+    model: NotRequired[str]
+    reasoning_effort: NotRequired[str]
+    triggers: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersTypeForResponse
     ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse]
-    repository: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
     created_at: str
-    custom_agent: NotRequired[
-        AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentTypeForResponse
-    ]
+    updated_at: str
+    created_by: AgentsAutomationsGetResponse200ItemsPropCreatedByTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
+class AgentsAutomationsGetResponse200ItemsPropRepositoryType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropRepository
 
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwnerType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type,
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse,
-        AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse,
-    ]
-
-
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
+    Repository identity for an automation in cross-repository list responses.
     """
 
     id: int
-    global_id: NotRequired[str]
+    owner: str
+    name: str
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0
+class AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropRepository
 
-    A GitHub resource (pull request, issue, etc.)
+    Repository identity for an automation in cross-repository list responses.
     """
 
     id: int
-    global_id: NotRequired[str]
+    owner: str
+    name: str
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
+class AgentsAutomationsGetResponse200ItemsPropCreatedByType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropCreatedBy
 
-    A Git branch reference
+    A GitHub user
     """
 
-    head_ref: str
-    base_ref: str
+    id: NotRequired[int]
 
 
-class AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1
+class AgentsAutomationsGetResponse200ItemsPropCreatedByTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropCreatedBy
 
-    A Git branch reference
+    A GitHub user
     """
 
-    head_ref: str
-    base_ref: str
+    id: NotRequired[int]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggers
+
+    Public trigger configuration keyed by stable public trigger identifier. Each
+    trigger has a closed, trigger-specific configuration schema.
+    """
+
+    interval: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalType
+    ]
+    issue_opened: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType
+    ]
+    issue_labeled: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledType
+    ]
+    workflow_run: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunType
+    ]
+    pull_request_opened: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedType
+    ]
+    pull_request_synchronize: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType
+    ]
+    pull_request_merged: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedType
+    ]
+    issue_comment: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType
+    ]
+    pull_request_comment: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType
+    ]
+    discussion_opened: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedType
+    ]
+    discussion_updated: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedType
+    ]
+    discussion_comment: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType
+    ]
+    issue_assigned: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType
+    ]
+    pull_request_assigned: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType
+    ]
+    sub_issue_added: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType
+    ]
+    pull_request_ready_for_review: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType
+    ]
+    pull_request_labeled: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType
+    ]
+    pull_request_merge_conflict: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType
+    ]
+    pull_request_review_submitted: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType
+    ]
+    pull_request_review_requested: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType
+    ]
+    automation_completed: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType
+    ]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggers
+
+    Public trigger configuration keyed by stable public trigger identifier. Each
+    trigger has a closed, trigger-specific configuration schema.
+    """
+
+    interval: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalTypeForResponse
+    ]
+    issue_opened: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedTypeForResponse
+    ]
+    issue_labeled: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledTypeForResponse
+    ]
+    workflow_run: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunTypeForResponse
+    ]
+    pull_request_opened: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedTypeForResponse
+    ]
+    pull_request_synchronize: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeTypeForResponse
+    ]
+    pull_request_merged: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedTypeForResponse
+    ]
+    issue_comment: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentTypeForResponse
+    ]
+    pull_request_comment: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentTypeForResponse
+    ]
+    discussion_opened: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedTypeForResponse
+    ]
+    discussion_updated: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedTypeForResponse
+    ]
+    discussion_comment: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentTypeForResponse
+    ]
+    issue_assigned: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedTypeForResponse
+    ]
+    pull_request_assigned: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedTypeForResponse
+    ]
+    sub_issue_added: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedTypeForResponse
+    ]
+    pull_request_ready_for_review: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse
+    ]
+    pull_request_labeled: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledTypeForResponse
+    ]
+    pull_request_merge_conflict: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictTypeForResponse
+    ]
+    pull_request_review_submitted: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse
+    ]
+    pull_request_review_requested: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse
+    ]
+    automation_completed: NotRequired[
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedTypeForResponse
+    ]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval"""
+
+    cadence: UniqueList[Literal["hourly", "daily", "weekly"]]
+    hour_utc: NotRequired[int]
+    day_of_week: NotRequired[int]
+    minute_utc: NotRequired[Literal[0, 15, 30, 45]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval"""
+
+    cadence: UniqueList[Literal["hourly", "daily", "weekly"]]
+    hour_utc: NotRequired[int]
+    day_of_week: NotRequired[int]
+    minute_utc: NotRequired[Literal[0, 15, 30, 45]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled"""
+
+    query: NotRequired[str]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled"""
+
+    query: NotRequired[str]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun"""
+
+    workflows: list[str]
+    conclusions: list[Literal["failure"]]
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun"""
+
+    workflows: list[str]
+    conclusions: list[Literal["failure"]]
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment"""
+
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment"""
+
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment"""
+
+    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment"""
+
+    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened"""
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened"""
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated"""
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated"""
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment"""
+
+    comment_types: NotRequired[UniqueList[Literal["comment", "reply"]]]
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment"""
+
+    comment_types: NotRequired[UniqueList[Literal["comment", "reply"]]]
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned"""
+
+    query: NotRequired[str]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned"""
+
+    query: NotRequired[str]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType(TypedDict):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    states: UniqueList[Literal["approved", "changes_requested", "commented"]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    states: UniqueList[Literal["approved", "changes_requested", "commented"]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted"""
+
+    automation_ids: UniqueList[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+
+
+class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedTypeForResponse(
+    TypedDict
+):
+    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted"""
+
+    automation_ids: UniqueList[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0Type",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0TypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropCustomAgentTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwnerType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropOwnerTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropRepositoryTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse201Type",
-    "AgentsReposOwnerRepoTasksPostResponse201TypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropCreatedByType",
+    "AgentsAutomationsGetResponse200ItemsPropCreatedByTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropRepositoryType",
+    "AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersType",
+    "AgentsAutomationsGetResponse200ItemsPropTriggersTypeForResponse",
+    "AgentsAutomationsGetResponse200ItemsType",
+    "AgentsAutomationsGetResponse200ItemsTypeForResponse",
 )

@@ -13,153 +13,58 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0301 import (
-    DismissalRequestResponseType,
-    DismissalRequestResponseTypeForResponse,
-)
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class DependabotAlertDismissalRequestType(TypedDict):
-    """Dependabot alert dismissal request
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
 
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    Custom repository roles created by organization owners
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[DependabotAlertDismissalRequestPropRepositoryType]
-    organization: NotRequired[DependabotAlertDismissalRequestPropOrganizationType]
-    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterType]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[DependabotAlertDismissalRequestPropDataItemsType], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[_dt.datetime]
-    created_at: NotRequired[_dt.datetime]
-    responses: NotRequired[Union[list[DismissalRequestResponseType], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserType
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class DependabotAlertDismissalRequestTypeForResponse(TypedDict):
-    """Dependabot alert dismissal request
+class OrganizationCustomRepositoryRoleTypeForResponse(TypedDict):
+    """Organization Custom Repository Role
 
-    Alert dismissal request made by a user asking to dismiss a Dependabot alert.
+    Custom repository roles created by organization owners
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository: NotRequired[
-        DependabotAlertDismissalRequestPropRepositoryTypeForResponse
-    ]
-    organization: NotRequired[
-        DependabotAlertDismissalRequestPropOrganizationTypeForResponse
-    ]
-    requester: NotRequired[DependabotAlertDismissalRequestPropRequesterTypeForResponse]
-    request_type: NotRequired[str]
-    data: NotRequired[
-        Union[list[DependabotAlertDismissalRequestPropDataItemsTypeForResponse], None]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "denied", "approved", "expired"]]
-    requester_comment: NotRequired[Union[str, None]]
-    expires_at: NotRequired[str]
-    created_at: NotRequired[str]
-    responses: NotRequired[Union[list[DismissalRequestResponseTypeForResponse], None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: list[str]
+    organization: SimpleUserTypeForResponse
+    created_at: str
+    updated_at: str
 
 
-class DependabotAlertDismissalRequestPropRepositoryType(TypedDict):
-    """DependabotAlertDismissalRequestPropRepository
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
-class DependabotAlertDismissalRequestPropRepositoryTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropRepository
+class OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
 
-    The repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropOrganizationType(TypedDict):
-    """DependabotAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropOrganizationTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropOrganization
-
-    The organization associated with the repository the dismissal request is for.
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRequesterType(TypedDict):
-    """DependabotAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropRequesterTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropRequester
-
-    The user who requested the dismissal request.
-    """
-
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropDataItemsType(TypedDict):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    alert_title: NotRequired[str]
-
-
-class DependabotAlertDismissalRequestPropDataItemsTypeForResponse(TypedDict):
-    """DependabotAlertDismissalRequestPropDataItems"""
-
-    reason: NotRequired[str]
-    alert_number: NotRequired[str]
-    alert_title: NotRequired[str]
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleTypeForResponse]]
 
 
 __all__ = (
-    "DependabotAlertDismissalRequestPropDataItemsType",
-    "DependabotAlertDismissalRequestPropDataItemsTypeForResponse",
-    "DependabotAlertDismissalRequestPropOrganizationType",
-    "DependabotAlertDismissalRequestPropOrganizationTypeForResponse",
-    "DependabotAlertDismissalRequestPropRepositoryType",
-    "DependabotAlertDismissalRequestPropRepositoryTypeForResponse",
-    "DependabotAlertDismissalRequestPropRequesterType",
-    "DependabotAlertDismissalRequestPropRequesterTypeForResponse",
-    "DependabotAlertDismissalRequestType",
-    "DependabotAlertDismissalRequestTypeForResponse",
+    "OrganizationCustomRepositoryRoleType",
+    "OrganizationCustomRepositoryRoleTypeForResponse",
+    "OrgsOrgCustomRepositoryRolesGetResponse200Type",
+    "OrgsOrgCustomRepositoryRolesGetResponse200TypeForResponse",
 )

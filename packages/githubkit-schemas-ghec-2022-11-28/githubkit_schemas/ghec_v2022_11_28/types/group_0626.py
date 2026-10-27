@@ -9,73 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0621 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsType(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
+
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1PropGroupsItems"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[_dt.datetime, None]
-    archived_by: None
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
-
-
-class LabelSearchResultItemTypeForResponse(TypedDict):
-    """Label Search Result Item
-
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[str, None]
-    archived_by: None
-    score: float
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemType]
-
-
-class SearchLabelsGetResponse200TypeForResponse(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[LabelSearchResultItemTypeForResponse]
+    value: NotRequired[str]
+    ref: NotRequired[str]
+    display: NotRequired[str]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "LabelSearchResultItemTypeForResponse",
-    "SearchLabelsGetResponse200Type",
-    "SearchLabelsGetResponse200TypeForResponse",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsType",
+    "ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse",
 )

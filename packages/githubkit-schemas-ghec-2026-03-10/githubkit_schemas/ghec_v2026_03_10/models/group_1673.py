@@ -9,38 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberPatchBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The title of the pull request."
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The contents of the pull request."
-    )
-    state: Missing[Literal["open", "closed"]] = Field(
-        default=UNSET,
-        description="State of this Pull Request. Either `open` or `closed`.",
-    )
-    base: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
-    )
-    maintainer_can_modify: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether [maintainers can modify](https://docs.github.com/enterprise-cloud@latest/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
-    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

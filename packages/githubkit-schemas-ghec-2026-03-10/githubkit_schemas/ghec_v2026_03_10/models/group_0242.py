@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,150 +18,104 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0243 import DiscussionEvent
-from .group_0244 import IssuesEvent
-from .group_0245 import IssueCommentEvent
-from .group_0246 import ForkEvent
-from .group_0248 import MemberEvent
-from .group_0249 import PullRequestEvent
-from .group_0250 import PullRequestReviewCommentEvent
-from .group_0251 import PullRequestReviewEvent
-from .group_0253 import CommitCommentEvent
-from .group_0255 import ReleaseEvent
+from .group_0003 import SimpleUser
+from .group_0010 import Integration
+from .group_0020 import Repository
+from .group_0234 import Milestone
+from .group_0235 import IssueType
+from .group_0236 import ReactionRollup
+from .group_0237 import IssueDependenciesSummary, SubIssuesSummary
+from .group_0240 import IssueComment
+from .group_0241 import IssueFieldValue
+from .group_0243 import IssuePropLabelsItemsOneof1, IssuePropPullRequest
 
 
-class Event(GitHubModel):
-    """Event
+class Issue(GitHubModel):
+    """Issue
 
-    Event
-    """
-
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: Union[
-        CreateEvent,
-        DeleteEvent,
-        DiscussionEvent,
-        IssuesEvent,
-        IssueCommentEvent,
-        ForkEvent,
-        GollumEvent,
-        MemberEvent,
-        PublicEvent,
-        PushEvent,
-        PullRequestEvent,
-        PullRequestReviewCommentEvent,
-        PullRequestReviewEvent,
-        CommitCommentEvent,
-        ReleaseEvent,
-        WatchEvent,
-    ] = Field()
-    public: bool = Field()
-    created_at: Union[_dt.datetime, None] = Field()
-
-
-class Actor(GitHubModel):
-    """Actor
-
-    Actor
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
     id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    avatar_url: str = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue")
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the issue within its repository"
+    )
+    state: str = Field(description="State of the issue; either 'open' or 'closed'")
+    state_reason: Missing[
+        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
+    ] = Field(default=UNSET, description="The reason for the current state")
+    title: str = Field(description="Title of the issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Contents of the issue"
+    )
+    user: Union[SimpleUser, None] = Field()
+    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
+        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
+    )
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    milestone: Union[Milestone, None] = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: int = Field()
+    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
+    closed_at: Union[_dt.datetime, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    draft: Missing[bool] = Field(default=UNSET)
+    closed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Union[IssueType, None]] = Field(
+        default=UNSET,
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    )
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    author_association: Missing[
+        Literal[
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER",
+        ]
+    ] = Field(
+        default=UNSET,
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    sub_issues_summary: Missing[SubIssuesSummary] = Field(
+        default=UNSET, title="Sub-issues Summary"
+    )
+    parent_issue_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="URL to get the parent issue of this issue, if it is a sub-issue",
+    )
+    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
+    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
+        default=UNSET, title="Issue Dependencies Summary"
+    )
+    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
 
 
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
+model_rebuild(Issue)
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class CreateEvent(GitHubModel):
-    """CreateEvent"""
-
-    ref: str = Field()
-    ref_type: str = Field()
-    full_ref: str = Field()
-    master_branch: str = Field()
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    pusher_type: str = Field()
-
-
-class DeleteEvent(GitHubModel):
-    """DeleteEvent"""
-
-    ref: str = Field()
-    ref_type: str = Field()
-    full_ref: str = Field()
-    pusher_type: str = Field()
-
-
-class PublicEvent(GitHubModel):
-    """PublicEvent"""
-
-
-class PushEvent(GitHubModel):
-    """PushEvent"""
-
-    repository_id: int = Field()
-    push_id: int = Field()
-    ref: str = Field()
-    head: str = Field()
-    before: str = Field()
-
-
-class WatchEvent(GitHubModel):
-    """WatchEvent"""
-
-    action: str = Field()
-
-
-class GollumEvent(GitHubModel):
-    """GollumEvent"""
-
-    pages: list[GollumEventPropPagesItems] = Field()
-
-
-class GollumEventPropPagesItems(GitHubModel):
-    """GollumEventPropPagesItems"""
-
-    page_name: Missing[Union[str, None]] = Field(default=UNSET)
-    title: Missing[Union[str, None]] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
-model_rebuild(CreateEvent)
-model_rebuild(DeleteEvent)
-model_rebuild(PublicEvent)
-model_rebuild(PushEvent)
-model_rebuild(WatchEvent)
-model_rebuild(GollumEvent)
-model_rebuild(GollumEventPropPagesItems)
-
-__all__ = (
-    "Actor",
-    "CreateEvent",
-    "DeleteEvent",
-    "Event",
-    "EventPropRepo",
-    "GollumEvent",
-    "GollumEventPropPagesItems",
-    "PublicEvent",
-    "PushEvent",
-    "WatchEvent",
-)
+__all__ = ("Issue",)

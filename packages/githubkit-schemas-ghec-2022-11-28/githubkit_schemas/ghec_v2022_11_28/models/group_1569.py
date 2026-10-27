@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
@@ -18,52 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    ref: Missing[str] = Field(
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+        description="The date after which this runner version can no longer register. Null if no schedule is set.",
     )
-    location: Missing[str] = Field(
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="The date after which jobs will no longer be dispatched to runners on this version.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodespacesPostBody)
+model_rebuild(ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200)
 
-__all__ = ("ReposOwnerRepoCodespacesPostBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,109 +18,77 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
-    """OrgsOrgPrivateRegistriesGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
 
-    total_count: int = Field()
-    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the Copilot Space."
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the Copilot Space."
+    )
+    general_instructions: Missing[str] = Field(
+        max_length=4000,
+        default=UNSET,
+        description="General instructions for the Copilot Space.",
+    )
+    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
+        default=UNSET,
+        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
+    )
+    resources_attributes: Missing[
+        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
+    ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-class OrgPrivateRegistryConfiguration(GitHubModel):
-    """Organization private registry
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
 
-    Private registry configuration for an organization
+    resource_type: Missing[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ] = Field(default=UNSET, description="The type of resource.")
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
+
+
+class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
+    GitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
     """
 
-    name: str = Field(description="The name of the private registry configuration.")
-    registry_type: Literal[
-        "maven_repository",
-        "nuget_feed",
-        "goproxy_server",
-        "npm_registry",
-        "rubygems_server",
-        "cargo_registry",
-        "composer_repository",
-        "docker_registry",
-        "git_source",
-        "helm_registry",
-        "hex_organization",
-        "hex_repository",
-        "pub_repository",
-        "python_index",
-        "terraform_registry",
-    ] = Field(description="The registry type.")
-    auth_type: Missing[
-        Literal[
-            "token",
-            "username_password",
-            "oidc_azure",
-            "oidc_aws",
-            "oidc_jfrog",
-            "oidc_cloudsmith",
-            "oidc_gcp",
-        ]
-    ] = Field(
-        default=UNSET, description="The authentication type for the private registry."
+    repository_id: Missing[int] = Field(
+        default=UNSET, description="Repository ID for repository or file resources."
     )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL of the private registry."
+    file_path: Missing[str] = Field(
+        default=UNSET, description="File path for file resources."
     )
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry.",
+    text: Missing[str] = Field(
+        default=UNSET, description="Text content for free text resources."
     )
-    replaces_base: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry."
-    )
-    tenant_id: Missing[str] = Field(
-        default=UNSET, description="The tenant ID of the Azure AD application."
-    )
-    client_id: Missing[str] = Field(
-        default=UNSET, description="The client ID of the Azure AD application."
-    )
-    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
-    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
-    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
-    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
-    domain_owner: Missing[str] = Field(
-        default=UNSET, description="The CodeArtifact domain owner."
-    )
-    jfrog_oidc_provider_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog OIDC provider name."
-    )
-    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
-    identity_mapping_name: Missing[str] = Field(
-        default=UNSET, description="The JFrog identity mapping name."
-    )
-    namespace: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith organization namespace."
-    )
-    service_slug: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith service account slug."
-    )
-    api_host: Missing[str] = Field(
-        default=UNSET, description="The Cloudsmith API host."
-    )
-    workload_identity_provider: Missing[str] = Field(
-        default=UNSET,
-        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
-    )
-    service_account: Missing[str] = Field(
-        default=UNSET,
-        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
-    )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
+    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
 
 
-model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
-model_rebuild(OrgPrivateRegistryConfiguration)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+)
 
 __all__ = (
-    "OrgPrivateRegistryConfiguration",
-    "OrgsOrgPrivateRegistriesGetResponse200",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
+    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
 )

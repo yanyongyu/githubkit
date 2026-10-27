@@ -9,55 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
 
     name: Missing[str] = Field(
         default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`.",
     )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="The hosted compute service to use for the network configuration.",
     )
-    enable_static_ip: Missing[bool] = Field(
+    network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    size: Missing[str] = Field(
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
+    failover_network_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
-    )
-    image_id: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
-    )
-    image_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
+        description="Indicates whether the failover network resource is enabled.",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
+model_rebuild(EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody)
 
-__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody",)

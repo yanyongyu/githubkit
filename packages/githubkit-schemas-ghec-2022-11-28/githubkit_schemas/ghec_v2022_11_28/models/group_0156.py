@@ -16,17 +16,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleParamsProofOfPresence(GitHubModel):
-    """ProofOfPresence
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-    Require a fresh authentication before a pull request can be merged.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    required_authentication_level: Literal["reauth", "mfa"] = Field(
-        description="The level of authentication required before a pull request can be merged."
-    )
+    type: Literal["required_linear_history"] = Field()
 
 
-model_rebuild(RepositoryRuleParamsProofOfPresence)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
 
-__all__ = ("RepositoryRuleParamsProofOfPresence",)
+__all__ = ("RepositoryRuleRequiredLinearHistory",)
