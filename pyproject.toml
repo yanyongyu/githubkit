@@ -11,7 +11,7 @@ dependencies = [
   "anyio >=3.6.1, <5.0.0",
   "httpx >=0.23.0, <1.0.0",
   "hishel[async,httpx] >=1.4.0, <=2.0.0",
-  "typing-extensions >=4.11.0, <5.0.0",
+  "typing-extensions >=4.13.0, <5.0.0",
   "pydantic >=1.9.1, <3.0.0, !=2.5.0, !=2.5.1",
   "githubkit-schemas >=26.5.7",
 ]
@@ -163,15 +163,15 @@ keep-runtime-typing = true
 [tool.pyright]
 typeCheckingMode = "standard"
 reportPrivateImportUsage = false
-reportShadowedImports = false
 disableBytesTypePromotions = true
 
 pythonPlatform = "All"
+pythonVersion = "3.10"
 defineConstant = { PYDANTIC_V2 = true }
 
 executionEnvironments = [
-  # disable overload check for generated version codes
-  { root = "packages/**/githubkit_schemas/", pythonVersion = "3.10", reportOverlappingOverload = false },
+  # disable overload and override checks for generated version codes
+  { root = "packages/**/githubkit_schemas/", pythonVersion = "3.10", reportOverlappingOverload = false, reportIncompatibleMethodOverride = false },
   # codegen env config for dev
   { root = "codegen", pythonVersion = "3.10" },
   { root = ".", pythonVersion = "3.10" },
