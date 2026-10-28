@@ -1,7 +1,8 @@
 import builtins
 from keyword import iskeyword
 import re
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing_extensions import TypeForm
 
 import openapi_pydantic as oas
 from pydantic import TypeAdapter
@@ -173,6 +174,8 @@ def type_ref_from_source(source: "Source", type_: type[T]) -> oas.Reference | T:
     data = source.data
 
     try:
-        return TypeAdapter(oas.Reference | type_).validate_python(data)
+        return TypeAdapter(
+            cast(TypeForm[oas.Reference | T], oas.Reference | type_)
+        ).validate_python(data)
     except Exception as e:
         raise TypeError(f"Invalid {type_} from {source.uri}") from e
