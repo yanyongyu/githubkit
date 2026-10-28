@@ -4,9 +4,9 @@ githubkit is highly configurable. You can customize its behavior by passing keyw
 
 !!! note "HTTPX and HTTPX2 compatibility"
 
-    GitHubKit installs HTTPX by default to preserve compatibility with existing transports. It prefers [HTTPX2](https://pydantic.dev/docs/httpx2/) when you install it separately. The default HTTPX path remains supported, but emits a `DeprecationWarning`. To opt in, run `pip install httpx2`, then use `import httpx2` and `httpx2.*` as in the examples below. If you remain on HTTPX, use `import httpx` and `httpx.*` instead.
+    githubkit installs HTTPX by default to preserve compatibility with existing transports. It prefers [HTTPX2](https://pydantic.dev/docs/httpx2/) when you install it separately. The default HTTPX path remains supported, but emits a `DeprecationWarning`. To opt in, run `pip install httpx2`, then use `import httpx2` and `httpx2.*` as in the examples below. If you remain on HTTPX, use `import httpx` and `httpx.*` instead.
 
-    To force HTTPX even when HTTPX2 is installed, set the environment variable `GITHUBKIT_HTTPX2_DISABLE_FLAG=1` before importing GitHubKit. Like `GITHUBKIT_LAZY_DISABLE_FLAG`, any non-empty value (including `0` or `false`) disables the feature.
+    To force HTTPX even when HTTPX2 is installed, set the environment variable `GITHUBKIT_HTTPX2_DISABLE_FLAG=1` before importing githubkit. Any non-empty value (including `0` or `false`) disables the feature.
 
     Custom timeouts, URLs, proxies, transports, and responses must come from the selected package: HTTPX2 when installed, or HTTPX on the deprecated fallback path. Objects from the two packages are not interchangeable. HTTPX2 uses the operating system's trust store by default instead of HTTPX's bundled CA certificates; its logger names are `httpx2` and `httpcore2.*`.
 

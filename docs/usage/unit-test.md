@@ -2,7 +2,7 @@
 
 If you are using githubkit in your business logic, you may want to mock the github API in your unit tests. There are two ways to reach this.
 
-These examples use HTTPX2, the preferred opt-in backend. Run `pip install httpx2` to use it. GitHubKit installs HTTPX by default; if you use that deprecated fallback, use `import httpx` and replace `httpx2.*` with `httpx.*` instead. Mock requests, responses, and transports must use the same package as GitHubKit; HTTPX and HTTPX2 objects are not interchangeable.
+These examples use HTTPX2, the preferred opt-in backend. Run `pip install httpx2` to use it. githubkit installs HTTPX by default; if you use that deprecated fallback, use `import httpx` and replace `httpx2.*` with `httpx.*` instead. Mock requests, responses, and transports must use the same package as githubkit; HTTPX and HTTPX2 objects are not interchangeable.
 
 ## Mocking the API Calls
 
