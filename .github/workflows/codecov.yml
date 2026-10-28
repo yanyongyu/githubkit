@@ -38,6 +38,7 @@ jobs:
       OS: ${{ matrix.os }}
       PYTHON_VERSION: ${{ matrix.python-version }}
       PYDANTIC_VERSION: ${{ matrix.env }}
+      GITHUBKIT_HTTPX2_DISABLE_FLAG: ${{ matrix.http-client == 'httpx' && '1' || '' }}
 
     steps:
       - uses: actions/checkout@v7
@@ -47,10 +48,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           env-group: ${{ matrix.env }}
-
-      - name: Use httpx without httpx2
-        if: matrix.http-client == 'httpx'
-        run: uv pip uninstall httpx2
 
       - name: Run Pytest
         run: |

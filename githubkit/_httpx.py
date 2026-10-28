@@ -1,16 +1,24 @@
+import os
 from typing import TYPE_CHECKING
 import warnings
+
+GITHUBKIT_HTTPX2_DISABLE_FLAG = "GITHUBKIT_HTTPX2_DISABLE_FLAG"
 
 if TYPE_CHECKING:
     from hishel.httpx2 import AsyncCacheTransport as AsyncCacheTransport
     from hishel.httpx2 import SyncCacheTransport as SyncCacheTransport
     import httpx2 as httpx
 else:
-    try:
-        from hishel.httpx2 import AsyncCacheTransport, SyncCacheTransport
-        import httpx2 as httpx
-    except ImportError:
-        # Hishel wraps a missing HTTP client in ImportError.
+    httpx = None
+    if not os.getenv(GITHUBKIT_HTTPX2_DISABLE_FLAG):
+        try:
+            from hishel.httpx2 import AsyncCacheTransport, SyncCacheTransport
+            import httpx2 as httpx
+        except ImportError:
+            # Hishel wraps a missing HTTP client in ImportError.
+            pass
+
+    if httpx is None:
         try:
             from hishel.httpx import AsyncCacheTransport as AsyncCacheTransport
             from hishel.httpx import SyncCacheTransport as SyncCacheTransport
