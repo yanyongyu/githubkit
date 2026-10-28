@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,58 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseActionsHostedRunnersPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBody"""
+class AgentsReposOwnerRepoTasksPostResponse400(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse400
 
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    image: EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
-    )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be used to generate custom images.",
-    )
-
-
-class EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
+    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems]] = (
+        Field(
+            default=UNSET,
+            description="List of validation errors (present only for 422 responses)",
+        )
     )
-    version: Missing[Union[str, None]] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+
+
+class AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
         default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBody)
-model_rebuild(EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse400)
+model_rebuild(AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseActionsHostedRunnersPostBody",
-    "EnterprisesEnterpriseActionsHostedRunnersPostBodyPropImage",
+    "AgentsReposOwnerRepoTasksPostResponse400",
+    "AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems",
 )

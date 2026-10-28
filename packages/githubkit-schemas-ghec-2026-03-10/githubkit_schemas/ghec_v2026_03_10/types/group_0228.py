@@ -9,30 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportRequestType(TypedDict):
-    """UsageReportExportRequest"""
+class GetCostCenterType(TypedDict):
+    """GetCostCenter"""
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: NotRequired[_dt.date]
-    send_email: NotRequired[bool]
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetCostCenterPropResourcesItemsType]
+    has_next_page: NotRequired[bool]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateType]
 
 
-class UsageReportExportRequestTypeForResponse(TypedDict):
-    """UsageReportExportRequest"""
+class GetCostCenterTypeForResponse(TypedDict):
+    """GetCostCenter"""
 
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: NotRequired[str]
-    send_email: NotRequired[bool]
+    id: str
+    name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
+    has_next_page: NotRequired[bool]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateTypeForResponse]
+
+
+class GetCostCenterPropResourcesItemsType(TypedDict):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """GetCostCenterPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetCostCenterPropAiCreditPoolStateType(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "UsageReportExportRequestType",
-    "UsageReportExportRequestTypeForResponse",
+    "GetCostCenterPropAiCreditPoolStateType",
+    "GetCostCenterPropAiCreditPoolStateTypeForResponse",
+    "GetCostCenterPropResourcesItemsType",
+    "GetCostCenterPropResourcesItemsTypeForResponse",
+    "GetCostCenterType",
+    "GetCostCenterTypeForResponse",
 )

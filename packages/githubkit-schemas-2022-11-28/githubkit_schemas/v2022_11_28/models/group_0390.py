@@ -14,39 +14,44 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ContentSymlink(GitHubModel):
-    """Symlink Content
+class ContentFile(GitHubModel):
+    """Content File
 
-    An object describing a symlink
+    Content File
     """
 
-    type: Literal["symlink"] = Field()
-    target: str = Field()
+    type: Literal["file"] = Field()
+    encoding: str = Field()
     size: int = Field()
     name: str = Field()
     path: str = Field()
+    content: str = Field()
     sha: str = Field()
     url: str = Field()
     git_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
-    links: ContentSymlinkPropLinks = Field(alias="_links")
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class ContentSymlinkPropLinks(GitHubModel):
-    """ContentSymlinkPropLinks"""
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
 
     git: Union[str, None] = Field()
     html: Union[str, None] = Field()
     self_: str = Field(alias="self")
 
 
-model_rebuild(ContentSymlink)
-model_rebuild(ContentSymlinkPropLinks)
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
 
 __all__ = (
-    "ContentSymlink",
-    "ContentSymlinkPropLinks",
+    "ContentFile",
+    "ContentFilePropLinks",
 )

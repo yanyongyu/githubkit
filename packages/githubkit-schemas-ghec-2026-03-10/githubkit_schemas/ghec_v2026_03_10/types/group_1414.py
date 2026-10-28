@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    selected_repository_ids: list[int]
+    ignored: NotRequired[bool]
 
 
-class OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    selected_repository_ids: list[int]
+    ignored: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyType",
-    "OrgsOrgAgentsSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyType",
+    "NotificationsThreadsThreadIdSubscriptionPutBodyTypeForResponse",
 )

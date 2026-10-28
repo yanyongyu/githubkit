@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -18,39 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200(GitHubModel):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    total_count: int = Field()
-    storage_records: Missing[
-        list[
-            OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    digest: Missing[str] = Field(default=UNSET)
-    artifact_url: Missing[Union[str, None]] = Field(default=UNSET)
-    registry_url: Missing[str] = Field(default=UNSET)
-    repository: Missing[Union[str, None]] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which this runner version can no longer register. Only set for runner versions below the minimum version required to register (currently 2.329.0); `null` for versions with no registration end date.",
+    )
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which jobs will no longer be dispatched to runners on this version. `null` when no newer runner release exists yet.",
+    )
 
 
-model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostResponse200)
-model_rebuild(
-    OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems
-)
+model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
 
-__all__ = (
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200",
-    "OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems",
-)
+__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)

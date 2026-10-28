@@ -30,6 +30,10 @@ class ApiOverview(GitHubModel):
     hooks: Missing[list[str]] = Field(default=UNSET)
     github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
     web: Missing[list[str]] = Field(default=UNSET)
+    shared_ingress: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Public destination IP ranges in CIDR notation for shared GitHub-managed ingress infrastructure.\nThese ranges may serve multiple GitHub services and are not outbound source ranges.\nUse them alongside the relevant product-specific network requirements.\nOmitted when no ranges are available.",
+    )
     api: Missing[list[str]] = Field(default=UNSET)
     git: Missing[list[str]] = Field(default=UNSET)
     packages: Missing[list[str]] = Field(default=UNSET)

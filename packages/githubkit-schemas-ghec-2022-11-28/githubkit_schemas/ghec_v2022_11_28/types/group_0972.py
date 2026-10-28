@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0653 import (
+from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0659 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0692 import WebhooksProjectType, WebhooksProjectTypeForResponse
+from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0698 import WebhooksProjectType, WebhooksProjectTypeForResponse
 
 
-class WebhookProjectReopenedType(TypedDict):
-    """project reopened event"""
+class WebhookProjectClosedType(TypedDict):
+    """project closed event"""
 
-    action: Literal["reopened"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,10 +35,10 @@ class WebhookProjectReopenedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookProjectReopenedTypeForResponse(TypedDict):
-    """project reopened event"""
+class WebhookProjectClosedTypeForResponse(TypedDict):
+    """project closed event"""
 
-    action: Literal["reopened"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -48,6 +48,6 @@ class WebhookProjectReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectReopenedType",
-    "WebhookProjectReopenedTypeForResponse",
+    "WebhookProjectClosedType",
+    "WebhookProjectClosedTypeForResponse",
 )

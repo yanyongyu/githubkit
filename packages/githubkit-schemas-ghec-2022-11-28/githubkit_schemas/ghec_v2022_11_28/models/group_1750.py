@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    reviewers: list[str] = Field(
-        description="An array of user `login`s that will be requested."
+    type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = Field(
+        default=UNSET, description="The artifact type."
     )
-    team_reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be requested."
+    name: str = Field(
+        min_length=1, description="The human-readable name of the artifact."
+    )
+    body: str = Field(
+        min_length=1,
+        description="The artifact content. For `embedded_html` artifacts, provide the HTML source.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsPostBody",)

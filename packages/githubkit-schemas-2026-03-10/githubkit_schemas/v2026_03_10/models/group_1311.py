@@ -12,25 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0088 import MinimalRepository
 
 
-class OrgsOrgPropertiesInstallationsPostBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    installation_id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the GitHub App installation to register for managing external custom properties. When authenticating as a GitHub App installation, this defaults to the authenticated installation and can be omitted. It is required for all other callers (users and fine-grained personal access tokens).",
-    )
-    display_name: str = Field(
-        min_length=1,
-        max_length=15,
-        pattern="^[a-zA-Z0-9]+$",
-        description="The display name for this app installation's external custom properties in the organization. Must be 1 to 15 characters and contain only letters and numbers. Capitalization is preserved as entered. This can't be changed after the app installation is registered.",
-    )
+    total_count: int = Field()
+    repositories: list[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgPropertiesInstallationsPostBody)
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgPropertiesInstallationsPostBody",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)

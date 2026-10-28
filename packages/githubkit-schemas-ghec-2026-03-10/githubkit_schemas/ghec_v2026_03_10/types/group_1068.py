@@ -13,41 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0199 import RepositoryRulesetType, RepositoryRulesetTypeForResponse
-from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0652 import (
+from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0658 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryRulesetCreatedType(TypedDict):
-    """repository ruleset created event"""
+class WebhookRepositoryCreatedType(TypedDict):
+    """repository created event"""
 
     action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
+    repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookRepositoryRulesetCreatedTypeForResponse(TypedDict):
-    """repository ruleset created event"""
+class WebhookRepositoryCreatedTypeForResponse(TypedDict):
+    """repository created event"""
 
     action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    repository_ruleset: RepositoryRulesetTypeForResponse
+    repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookRepositoryRulesetCreatedType",
-    "WebhookRepositoryRulesetCreatedTypeForResponse",
+    "WebhookRepositoryCreatedType",
+    "WebhookRepositoryCreatedTypeForResponse",
 )

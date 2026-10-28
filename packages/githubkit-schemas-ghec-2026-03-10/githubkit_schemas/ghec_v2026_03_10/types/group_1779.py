@@ -9,65 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    Validation Error
+    Update the source for the repository. Must include the branch name and path.
     """
 
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
-    ]
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    Validation Error
+    Update the source for the repository. Must include the branch name and path.
     """
 
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[
-            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    branch: str
+    path: Literal["/", "/docs"]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",
+    "ReposOwnerRepoPagesPutBodyPropSourceAnyof1TypeForResponse",
 )

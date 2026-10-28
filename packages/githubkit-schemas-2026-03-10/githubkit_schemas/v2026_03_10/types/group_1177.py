@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0146 import ActionsPolicyType, ActionsPolicyTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
+class EventsGetResponse503Type(TypedDict):
+    """EventsGetResponse503"""
 
-    total_count: int
-    policies: list[ActionsPolicyType]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
+class EventsGetResponse503TypeForResponse(TypedDict):
+    """EventsGetResponse503"""
 
-    total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesGetResponse200Type",
-    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
+    "EventsGetResponse503Type",
+    "EventsGetResponse503TypeForResponse",
 )

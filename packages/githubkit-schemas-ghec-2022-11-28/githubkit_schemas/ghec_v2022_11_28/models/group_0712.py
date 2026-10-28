@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,43 +18,109 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0651 import EnterpriseWebhooks
-from .group_0652 import SimpleInstallation
-from .group_0653 import OrganizationSimpleWebhooks
-from .group_0654 import RepositoryWebhooks
-from .group_0655 import WebhooksRule
+from .group_0205 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0206 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+from .group_0216 import PublicMonitoringAlertLocation, PublicMonitoringSecretAuthor
 
 
-class WebhookBranchProtectionRuleDeleted(GitHubModel):
-    """branch protection rule deleted event"""
+class PublicMonitoringAlertWebhookPropAttribution(GitHubModel):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    Attribution information for the alert.
+    """
+
+    secret_author: Missing[Union[SimpleUser, PublicMonitoringSecretAuthor, None]] = (
+        Field(default=UNSET)
+    )
+    committer_email: Missing[Union[str, None]] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+        description="The email address associated with the secret's author.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    commit: Missing[
+        Union[SecretScanningLocationCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    wiki_commit: Missing[
+        Union[SecretScanningLocationWikiCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_title: Missing[
+        Union[SecretScanningLocationIssueTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_body: Missing[
+        Union[SecretScanningLocationIssueBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        Union[SecretScanningLocationIssueComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_title: Missing[
+        Union[SecretScanningLocationPullRequestTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_body: Missing[
+        Union[SecretScanningLocationPullRequestBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        Union[SecretScanningLocationPullRequestComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_review_comment: Missing[
+        Union[
+            SecretScanningLocationPullRequestReviewComment,
+            PublicMonitoringAlertLocation,
+        ]
+    ] = Field(default=UNSET)
+    pull_request_review: Missing[
+        Union[SecretScanningLocationPullRequestReview, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_timeline_comment: Missing[PublicMonitoringAlertLocation] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="Delivered source location details for a public monitoring alert.",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    discussion_title: Missing[
+        Union[SecretScanningLocationDiscussionTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_body: Missing[
+        Union[SecretScanningLocationDiscussionBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        Union[SecretScanningLocationDiscussionComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    commit_metadata: Missing[PublicMonitoringAlertLocation] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description="Delivered source location details for a public monitoring alert.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    commit_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
     )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    actions_log: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    gist_blob: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    method: Missing[Literal["member_activity", "verified_domain"]] = Field(
+        default=UNSET,
+        description="The method used to attribute the alert to the enterprise.",
+    )
 
 
-model_rebuild(WebhookBranchProtectionRuleDeleted)
+model_rebuild(PublicMonitoringAlertWebhookPropAttribution)
 
-__all__ = ("WebhookBranchProtectionRuleDeleted",)
+__all__ = ("PublicMonitoringAlertWebhookPropAttribution",)

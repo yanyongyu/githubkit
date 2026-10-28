@@ -11,22 +11,25 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1(
+    GitHubModel
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
+    reviewers: Missing[list[str]] = Field(
+        default=UNSET,
+        description="An array of user `login`s whose reviews will be rerequested.",
+    )
+    team_reviewers: list[str] = Field(
+        description="An array of team `slug`s whose reviews will be rerequested."
     )
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1)
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1",)

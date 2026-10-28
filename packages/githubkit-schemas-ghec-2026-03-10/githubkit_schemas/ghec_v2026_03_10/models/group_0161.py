@@ -36,6 +36,10 @@ class RepositoryRulePullRequestPropParameters(GitHubModel):
     require_code_owner_review: bool = Field(
         description="Require an approving review in pull requests that modify files that have a designated code owner."
     )
+    require_extra_approval_for_unattributed_changes: Missing[bool] = Field(
+        default=UNSET,
+        description="When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.",
+    )
     require_last_push_approval: bool = Field(
         description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
     )

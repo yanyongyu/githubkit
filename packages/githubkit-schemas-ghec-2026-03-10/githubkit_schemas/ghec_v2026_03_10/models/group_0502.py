@@ -17,41 +17,25 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0499 import IssueEventIntent
 
+class IssueTypeWebhook(GitHubModel):
+    """Issue Type
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
-
-    Unlabeled Issue Event
+    The type of issue.
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    id: int = Field(description="The unique identifier of the issue type.")
+    name: str = Field(description="The name of the issue type.")
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the issue type.")
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+model_rebuild(IssueTypeWebhook)
 
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
-
-__all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
-)
+__all__ = ("IssueTypeWebhook",)

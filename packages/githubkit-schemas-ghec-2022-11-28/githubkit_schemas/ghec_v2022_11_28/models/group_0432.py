@@ -9,23 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0099 import SimpleRepository
+from .group_0240 import IssueType
 
 
-class CodeScanningAutofixCommitsResponse(GitHubModel):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAlertLinkedIssue(GitHubModel):
+    """CodeScanningAlertLinkedIssue
 
-    target_ref: Missing[str] = Field(
-        default=UNSET,
-        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int = Field(description="The issue number.")
+    title: str = Field(description="The title of the issue.")
+    state: str = Field(description="The state of the issue.")
+    url: str = Field(description="The REST API URL of the issue.")
+    html_url: str = Field(description="The URL to view the issue on GitHub.")
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
+    issue_type: Union[IssueType, None] = Field(
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    )
 
 
-model_rebuild(CodeScanningAutofixCommitsResponse)
+model_rebuild(CodeScanningAlertLinkedIssue)
 
-__all__ = ("CodeScanningAutofixCommitsResponse",)
+__all__ = ("CodeScanningAlertLinkedIssue",)

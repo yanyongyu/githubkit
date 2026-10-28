@@ -9,53 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
 
-    Marketplace Listing Plan
+class GistCommentType(TypedDict):
+    """Gist Comment
+
+    A comment made to a gist.
     """
 
-    url: str
-    accounts_url: str
     id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class MarketplaceListingPlanTypeForResponse(TypedDict):
-    """Marketplace Listing Plan
+class GistCommentTypeForResponse(TypedDict):
+    """Gist Comment
 
-    Marketplace Listing Plan
+    A comment made to a gist.
     """
 
-    url: str
-    accounts_url: str
     id: int
-    number: int
-    name: str
-    description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: list[str]
+    node_id: str
+    url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "MarketplaceListingPlanType",
-    "MarketplaceListingPlanTypeForResponse",
+    "GistCommentType",
+    "GistCommentTypeForResponse",
 )

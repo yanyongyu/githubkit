@@ -18,41 +18,57 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsAutomationsAvailableToolsGetResponse200Items(GitHubModel):
-    """AgentsAutomationsAvailableToolsGetResponse200Items
+class AgentsAutomationsGetResponse400(GitHubModel):
+    """AgentsAutomationsGetResponse400
 
-    A CMC-controlled presentation category for Automation tools. Clients must not
-    depend on group identifiers, membership, or ordering remaining stable.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: str = Field(description="A presentation-category identifier controlled by CMC.")
-    title: str = Field(description="The human-readable group title.")
-    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems] = (
-        Field(description="The tools currently presented in this group.")
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-
-
-class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems(GitHubModel):
-    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
-
-    A tool that can be selected in an Automation.
-    """
-
-    id: str = Field(
-        description="The exact tool identifier accepted by Automation create and edit requests. The catalog is authoritative and open-ended; clients must accept identifiers they have not seen before."
-    )
-    title: str = Field(description="The human-readable tool title.")
-    description: str = Field(description="A short description of what the tool does.")
-    scope: Missing[Literal["read", "write"]] = Field(
+    errors: Missing[list[AgentsAutomationsGetResponse400PropErrorsItems]] = Field(
         default=UNSET,
-        description="The tool's behavior level. `read` tools only retrieve data. `write` tools can change data. This describes tool behavior, not a specific GitHub token permission.",
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-model_rebuild(AgentsAutomationsAvailableToolsGetResponse200Items)
-model_rebuild(AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems)
+class AgentsAutomationsGetResponse400PropErrorsItems(GitHubModel):
+    """AgentsAutomationsGetResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsAutomationsGetResponse400)
+model_rebuild(AgentsAutomationsGetResponse400PropErrorsItems)
 
 __all__ = (
-    "AgentsAutomationsAvailableToolsGetResponse200Items",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems",
+    "AgentsAutomationsGetResponse400",
+    "AgentsAutomationsGetResponse400PropErrorsItems",
 )

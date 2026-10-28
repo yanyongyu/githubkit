@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoImportLfsPatchBody(GitHubModel):
-    """ReposOwnerRepoImportLfsPatchBody"""
-
-    use_lfs: Literal["opt_in", "opt_out"] = Field(
-        description="Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import."
-    )
+from .group_0297 import CodespaceMachine
 
 
-model_rebuild(ReposOwnerRepoImportLfsPatchBody)
+class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoImportLfsPatchBody",)
+    total_count: int = Field()
+    machines: list[CodespaceMachine] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesMachinesGetResponse200)
+
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200",)

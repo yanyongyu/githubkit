@@ -11,20 +11,29 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0285 import SecretScanningCustomPatternToCreate
 
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
+        default=UNSET,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)

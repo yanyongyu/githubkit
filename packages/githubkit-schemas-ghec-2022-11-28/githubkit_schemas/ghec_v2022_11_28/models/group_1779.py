@@ -10,40 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0600 import PullRequestStackPullRequest
 
+class ReposOwnerRepoMilestonesMilestoneNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
 
-class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the milestone."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="The state of the milestone. Either `open` or `closed`.",
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the milestone."
+    )
+    due_on: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+model_rebuild(ReposOwnerRepoMilestonesMilestoneNumberPatchBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",)

@@ -9,13 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0068 import ActionsPolicyEnterpriseConditionsOneof0
+from .group_0069 import ActionsPolicyEnterpriseConditionsOneof1
+from .group_0070 import ActionsPolicyEnterpriseConditionsOneof2
+from .group_0071 import ActionsPolicyEnterpriseConditionsOneof3
+from .group_0072 import ActionsPolicyEnterpriseConditionsOneof4
+from .group_0073 import ActionsPolicyEnterpriseConditionsOneof5
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutBody(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotContentExclusionPutBody"""
+class EnterprisesEnterpriseActionsPoliciesPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    conditions: Missing[
+        Union[
+            ActionsPolicyEnterpriseConditionsOneof0,
+            ActionsPolicyEnterpriseConditionsOneof1,
+            ActionsPolicyEnterpriseConditionsOneof2,
+            ActionsPolicyEnterpriseConditionsOneof3,
+            ActionsPolicyEnterpriseConditionsOneof4,
+            ActionsPolicyEnterpriseConditionsOneof5,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Enterprise Actions policy conditions",
+        description="Conditions for an enterprise Actions policy. The conditions object supports one organization\ntarget (`organization_name`, `organization_id`, or `organization_property`) combined with one\nrepository target (`repository_name` or `repository_property`), and may also contain `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(EnterprisesEnterpriseCopilotContentExclusionPutBody)
+model_rebuild(EnterprisesEnterpriseActionsPoliciesPostBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotContentExclusionPutBody",)
+__all__ = ("EnterprisesEnterpriseActionsPoliciesPostBody",)

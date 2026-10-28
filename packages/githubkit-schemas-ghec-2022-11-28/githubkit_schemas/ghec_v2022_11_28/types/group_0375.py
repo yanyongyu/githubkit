@@ -9,28 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0374 import RateLimitType, RateLimitTypeForResponse
+from .group_0376 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class ActionsCacheStorageLimitForRepositoryType(TypedDict):
-    """Actions cache storage limit for a repository
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    GitHub Actions cache storage policy for a repository.
+    Rate limit status for the applicable requester and resource category. Requests
+    authenticated as a user share the user's rate limit across credentials. Requests
+    without authentication use the requesting IP address. API requests routed
+    through
+    either an API hostname or a web hostname can count against the same applicable
+    limit.
     """
 
-    max_cache_size_gb: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
-    """Actions cache storage limit for a repository
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
 
-    GitHub Actions cache storage policy for a repository.
+    Rate limit status for the applicable requester and resource category. Requests
+    authenticated as a user share the user's rate limit across credentials. Requests
+    without authentication use the requesting IP address. API requests routed
+    through
+    either an API hostname or a web hostname can count against the same applicable
+    limit.
     """
 
-    max_cache_size_gb: NotRequired[int]
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "ActionsCacheStorageLimitForRepositoryType",
-    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

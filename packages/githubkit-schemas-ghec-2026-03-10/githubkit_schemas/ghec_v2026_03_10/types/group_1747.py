@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
+    name: str
+    body: str
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
+    name: str
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse",
 )

@@ -12,11 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
 class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
     """RepositoryRuleFilePathRestrictionPropParameters"""
 
+    ignored_file_paths: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Files matching these patterns are allowed even when they also match a restricted path.",
+    )
     restricted_file_paths: list[str] = Field(
         description="The file paths that are restricted from being pushed to the commit graph."
     )

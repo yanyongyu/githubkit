@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
+class CodeScanningAiScanEnablement(GitHubModel):
+    """CodeScanningAiScanEnablement
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+    AI Scan enablement for a repository.
+    """
+
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan is enabled for the repository."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(CodeScanningAiScanEnablement)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("CodeScanningAiScanEnablement",)

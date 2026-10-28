@@ -9,38 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+    labels: list[str]
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+    labels: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyTypeForResponse",
 )

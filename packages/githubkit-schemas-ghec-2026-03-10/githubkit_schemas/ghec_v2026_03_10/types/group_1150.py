@@ -13,8 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse404Type(TypedDict):
-    """AgentsAutomationsAutomationIdTasksGetResponse404
+class AgentsAutomationsGetResponse400Type(TypedDict):
+    """AgentsAutomationsGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsAutomationsGetResponse400PropErrorsItemsType]]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsAutomationsGetResponse400TypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -24,31 +40,15 @@ class AgentsAutomationsAutomationIdTasksGetResponse404Type(TypedDict):
 
     message: str
     errors: NotRequired[
-        list[AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType]
+        list[AgentsAutomationsGetResponse400PropErrorsItemsTypeForResponse]
     ]
     documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse404TypeForResponse(TypedDict):
-    """AgentsAutomationsAutomationIdTasksGetResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType(TypedDict):
-    """AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItems
+class AgentsAutomationsGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsAutomationsGetResponse400PropErrorsItems
 
     A single validation error
     """
@@ -64,10 +64,8 @@ class AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType(TypedD
     message: NotRequired[str]
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItems
+class AgentsAutomationsGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse400PropErrorsItems
 
     A single validation error
     """
@@ -84,8 +82,8 @@ class AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResp
 
 
 __all__ = (
-    "AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType",
-    "AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse404Type",
-    "AgentsAutomationsAutomationIdTasksGetResponse404TypeForResponse",
+    "AgentsAutomationsGetResponse400PropErrorsItemsType",
+    "AgentsAutomationsGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsAutomationsGetResponse400Type",
+    "AgentsAutomationsGetResponse400TypeForResponse",
 )

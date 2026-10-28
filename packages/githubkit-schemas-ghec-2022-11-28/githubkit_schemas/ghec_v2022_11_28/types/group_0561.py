@@ -9,30 +9,133 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
+class PullRequestMergeAsyncResultType(TypedDict):
+    """Pull Request Merge Async Result
 
-    Generated name and body describing a release
+    Pull Request Merge Async Result
     """
 
-    name: str
-    body: str
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof1Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof2Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof3Type,
+    ]
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
+    """Pull Request Merge Async Result
 
-    Generated name and body describing a release
+    Pull Request Merge Async Result
     """
 
-    name: str
-    body: str
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse,
+    ]
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof0Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
+
+    When the asynchronous merge request is pending
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+    bypass_rules: NotRequired[bool]
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
+
+    When the asynchronous merge request is pending
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+    bypass_rules: NotRequired[bool]
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof1Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
+
+    When the pull request is in a merge queue
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
+
+    When the pull request is in a merge queue
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str
+    sha: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str
+    sha: str
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse",
+    "PullRequestMergeAsyncResultType",
+    "PullRequestMergeAsyncResultTypeForResponse",
 )

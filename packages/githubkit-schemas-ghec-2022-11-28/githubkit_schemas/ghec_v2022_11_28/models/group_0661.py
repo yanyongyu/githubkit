@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,36 +18,72 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0116 import DependabotAlertPackage
 
+class WebhooksRule(GitHubModel):
+    """branch protection rule
 
-class DependabotAlertWithdrawnWebhookPropDependency(GitHubModel):
-    """DependabotAlertWithdrawnWebhookPropDependency
-
-    Details for the vulnerable dependency.
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/enterprise-cloud@latest/github/administering-
+    a-repository/defining-the-mergeability-of-pull-requests/about-protected-
+    branches#about-branch-protection-settings) applied to branches that match the
+    name. Binary settings are boolean. Multi-level configurations are one of `off`,
+    `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    admin_enforced: bool = Field()
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
     )
-    manifest_path: Union[str, None] = Field(
-        description="The full path to the dependency manifest file, relative to the root of the repository."
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
     )
-    version_requirement: Missing[Union[str, None]] = Field(
+    authorized_actor_names: list[str] = Field()
+    authorized_actors_only: bool = Field()
+    authorized_dismissal_actors_only: bool = Field()
+    create_protected: Missing[bool] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    dismiss_stale_reviews_on_push: bool = Field()
+    id: int = Field()
+    ignore_approvals_from_contributors: bool = Field()
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"] = Field(
+        description="The enforcement level of the branch lock setting. `off` means the branch is not locked, `non_admins` means the branch is read-only for non_admins, and `everyone` means the branch is read-only for everyone."
+    )
+    lock_allows_fork_sync: Missing[bool] = Field(
         default=UNSET,
-        description="The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
     )
-    scope: Union[Literal["development", "runtime"], None] = Field(
-        description="The execution scope of the vulnerable dependency."
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
+    name: str = Field()
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
     )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ] = Field(
+    repository_id: int = Field()
+    require_code_owner_review: bool = Field()
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        description="Whether the most recent push must be approved by someone other than the person who pushed it",
     )
+    required_approving_review_count: int = Field()
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
+        Field()
+    )
+    required_status_checks: list[str] = Field()
+    required_status_checks_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    signature_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ] = Field()
+    strict_required_status_checks_policy: bool = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(DependabotAlertWithdrawnWebhookPropDependency)
+model_rebuild(WebhooksRule)
 
-__all__ = ("DependabotAlertWithdrawnWebhookPropDependency",)
+__all__ = ("WebhooksRule",)

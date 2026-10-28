@@ -9,24 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanEnablement(GitHubModel):
-    """CodeScanningAiScanEnablement
+class CodeQualitySetupUpdateAnyof2(GitHubModel):
+    """CodeQualitySetupUpdateAnyof2"""
 
-    AI Scan enablement for a repository.
-    """
-
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan is enabled for the repository."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code quality setup."
+    )
+    runner_type: Missing[Literal["standard", "labeled"]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Union[str, None] = Field(
+        description="Runner label to be used if the runner type is labeled."
+    )
+    languages: Missing[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ] = Field(default=UNSET, description="Languages to be analyzed.")
+    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+        default=UNSET,
+        description="Whether AI findings run for Code Quality on this repository.",
     )
 
 
-model_rebuild(CodeScanningAiScanEnablement)
+model_rebuild(CodeQualitySetupUpdateAnyof2)
 
-__all__ = ("CodeScanningAiScanEnablement",)
+__all__ = ("CodeQualitySetupUpdateAnyof2",)

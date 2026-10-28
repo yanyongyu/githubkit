@@ -83,11 +83,54 @@ class DependabotAlertWithRepository(GitHubModel):
     assignees: Missing[list[SimpleUser]] = Field(
         default=UNSET, description="The users assigned to this alert."
     )
+    reachability: Missing[DependabotAlertWithRepositoryPropReachability] = Field(
+        default=UNSET,
+        description="The reachability result for the vulnerability that triggered the alert, indicating whether a\nvulnerable function is reachable from the repository's own code.\n",
+    )
     repository: SimpleRepository = Field(
         title="Simple Repository", description="A GitHub repository."
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
+class DependabotAlertWithRepositoryPropReachability(GitHubModel):
+    """DependabotAlertWithRepositoryPropReachability
 
-__all__ = ("DependabotAlertWithRepository",)
+    The reachability result for the vulnerability that triggered the alert,
+    indicating whether a
+    vulnerable function is reachable from the repository's own code.
+    """
+
+    verdict: Literal[
+        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
+    ] = Field(
+        description="The reachability verdict for the alert.\n\n- `reachable`: a path from the repository's code reaches a vulnerable function.\n- `unreachable`: no path from the repository's code reaches a vulnerable function.\n- `potentially_reachable`: reachability could not be determined with confidence; review manually.\n- `unavailable`: no verdict has been computed for the alert yet.\n- `disabled`: reachability analysis is not enabled for the repository.\n"
+    )
+    reason: Missing[
+        Literal[
+            "unknown",
+            "unavailable_unsupported_ecosystem",
+            "unavailable_analysis_timed_out",
+            "potentially_reachable_invalid_manifest_path",
+            "potentially_reachable_missing_vulnerable_function_annotation",
+            "potentially_reachable_dependency_not_found",
+            "potentially_reachable_dependency_analysis_incomplete",
+            "potentially_reachable_repository_analysis_incomplete",
+            "potentially_reachable_call_found_outside_manifest_scope",
+            "potentially_reachable_unclassified_analysis_state",
+            "reachable_vulnerable_function_called",
+            "unreachable_vulnerable_function_not_called",
+            "potentially_reachable_unresolved_dynamic_call",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.",
+    )
+
+
+model_rebuild(DependabotAlertWithRepository)
+model_rebuild(DependabotAlertWithRepositoryPropReachability)
+
+__all__ = (
+    "DependabotAlertWithRepository",
+    "DependabotAlertWithRepositoryPropReachability",
+)

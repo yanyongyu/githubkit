@@ -9,26 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0148 import RunnerType, RunnerTypeForResponse
+
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+
+    repository_values: list[RepositoryExternalPropertyPayloadType]
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    total_count: int
-    runners: list[RunnerType]
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
+
+
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

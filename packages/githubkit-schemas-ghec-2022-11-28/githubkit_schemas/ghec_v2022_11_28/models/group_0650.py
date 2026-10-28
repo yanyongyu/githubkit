@@ -19,18 +19,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class KeySimple(GitHubModel):
-    """Key Simple
+class Key(GitHubModel):
+    """Key
 
-    Key Simple
+    Key
     """
 
-    id: int = Field()
     key: str = Field()
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    id: int = Field()
+    url: str = Field()
+    title: str = Field()
+    created_at: _dt.datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
     last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(KeySimple)
+model_rebuild(Key)
 
-__all__ = ("KeySimple",)
+__all__ = ("Key",)

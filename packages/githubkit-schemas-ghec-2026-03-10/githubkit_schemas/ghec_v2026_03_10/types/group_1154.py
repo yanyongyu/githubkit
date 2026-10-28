@@ -27,6 +27,8 @@ class AgentsReposOwnerRepoAutomationsGetResponse401Type(TypedDict):
         list[AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItemsType]
     ]
     documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse401TypeForResponse(TypedDict):
@@ -45,6 +47,8 @@ class AgentsReposOwnerRepoAutomationsGetResponse401TypeForResponse(TypedDict):
         ]
     ]
     documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItemsType(TypedDict):

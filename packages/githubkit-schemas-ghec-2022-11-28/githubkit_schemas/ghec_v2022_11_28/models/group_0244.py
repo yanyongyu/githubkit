@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0245 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
+
+class IssueCommentMinimized(GitHubModel):
+    """Minimized Issue Comment
+
+    Details about why an issue comment was minimized.
+    """
+
+    reason: Union[str, None] = Field(
+        description="The reason the comment was minimized."
+    )
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+model_rebuild(IssueCommentMinimized)
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
-
-
-model_rebuild(PullRequestMinimal)
-
-__all__ = ("PullRequestMinimal",)
+__all__ = ("IssueCommentMinimized",)

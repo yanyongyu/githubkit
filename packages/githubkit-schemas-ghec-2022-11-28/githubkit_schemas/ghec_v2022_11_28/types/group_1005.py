@@ -13,46 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0653 import (
+from .group_0239 import MilestoneType, MilestoneTypeForResponse
+from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0659 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_1006 import (
-    WebhookPullRequestLockedPropPullRequestType,
-    WebhookPullRequestLockedPropPullRequestTypeForResponse,
-)
+from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0704 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookPullRequestLockedType(TypedDict):
-    """pull_request locked event"""
+class WebhookPullRequestDemilestonedType(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["locked"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: NotRequired[MilestoneType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestLockedPropPullRequestType
+    pull_request: WebhooksPullRequest5Type
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestLockedTypeForResponse(TypedDict):
-    """pull_request locked event"""
+class WebhookPullRequestDemilestonedTypeForResponse(TypedDict):
+    """pull_request demilestoned event"""
 
-    action: Literal["locked"]
+    action: Literal["demilestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: NotRequired[MilestoneTypeForResponse]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestLockedPropPullRequestTypeForResponse
+    pull_request: WebhooksPullRequest5TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestLockedType",
-    "WebhookPullRequestLockedTypeForResponse",
+    "WebhookPullRequestDemilestonedType",
+    "WebhookPullRequestDemilestonedTypeForResponse",
 )

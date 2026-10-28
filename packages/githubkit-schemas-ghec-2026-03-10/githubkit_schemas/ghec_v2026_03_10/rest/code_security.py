@@ -213,6 +213,9 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -238,6 +241,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -351,6 +357,9 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -376,6 +385,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -735,6 +747,9 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -760,6 +775,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -880,6 +898,9 @@ class CodeSecurityClient:
             EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -905,6 +926,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -1627,6 +1651,9 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -1661,6 +1688,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -1768,6 +1798,9 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -1802,6 +1835,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -2315,6 +2351,9 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -2349,6 +2388,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[
@@ -2464,6 +2506,9 @@ class CodeSecurityClient:
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
         ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependabot_reachability: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -2498,6 +2543,9 @@ class CodeSecurityClient:
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_generic_secrets: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_generic_secrets_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
         secret_scanning_delegated_alert_dismissal: Missing[

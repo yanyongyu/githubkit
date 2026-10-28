@@ -54,6 +54,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
         EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200,
         EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
         EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
         EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
@@ -147,6 +149,10 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType,
         EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType,
         EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType,
         EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType,
@@ -5962,7 +5968,7 @@ class EnterpriseAdminClient:
 
         GET /enterprises/{enterprise}/copilot/apps/model-policies
 
-        Use this endpoint to retrieve Copilot model policies for enterprise apps.
+        Use this endpoint to retrieve Copilot model policies for agent apps.
         The response shows which model settings can be changed and which are
         controlled by enterprise policy.
 
@@ -5976,7 +5982,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-enterprise-apps
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-agent-apps
         """
 
         from ..models import (
@@ -6017,7 +6023,7 @@ class EnterpriseAdminClient:
 
         GET /enterprises/{enterprise}/copilot/apps/model-policies
 
-        Use this endpoint to retrieve Copilot model policies for enterprise apps.
+        Use this endpoint to retrieve Copilot model policies for agent apps.
         The response shows which model settings can be changed and which are
         controlled by enterprise policy.
 
@@ -6031,7 +6037,7 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-enterprise-apps
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-model-policies-for-agent-apps
         """
 
         from ..models import (
@@ -6105,10 +6111,9 @@ class EnterpriseAdminClient:
 
         PATCH /enterprises/{enterprise}/copilot/apps/model-policies
 
-        Use this endpoint to set Copilot model policies for enterprise apps. Set a
+        Use this endpoint to set Copilot model policies for agent apps. Set a
         model to `enabled` to configure an apps policy, or to `optional` to remove
-        the stored apps policy for that model.
-        Locked models cannot be updated.
+        the stored apps policy for that model. Locked models cannot be updated.
 
         Returns the apps policy state representation, including enterprise policy and editability.
         These states are not a final access decision for a user.
@@ -6206,10 +6211,9 @@ class EnterpriseAdminClient:
 
         PATCH /enterprises/{enterprise}/copilot/apps/model-policies
 
-        Use this endpoint to set Copilot model policies for enterprise apps. Set a
+        Use this endpoint to set Copilot model policies for agent apps. Set a
         model to `enabled` to configure an apps policy, or to `optional` to remove
-        the stored apps policy for that model.
-        Locked models cannot be updated.
+        the stored apps policy for that model. Locked models cannot be updated.
 
         Returns the apps policy state representation, including enterprise policy and editability.
         These states are not a final access decision for a user.
@@ -6257,6 +6261,298 @@ class EnterpriseAdminClient:
                 "404": BasicError,
                 "422": ValidationError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-feature-policies
+
+        GET /enterprises/{enterprise}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to retrieve the Copilot default availability policy for new features and clients
+        for an enterprise. A policy state of `delegate_to_organizations` means each organization sets its
+        own default.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-feature-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/feature-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-feature-policies
+
+        GET /enterprises/{enterprise}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to retrieve the Copilot default availability policy for new features and clients
+        for an enterprise. A policy state of `delegate_to_organizations` means each organization sets its
+        own default.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-feature-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/feature-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-feature-policies
+
+        PATCH /enterprises/{enterprise}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to update the Copilot default availability policy for new features and clients
+        for an enterprise. Use `delegate_to_organizations` to let each organization set its own default.
+        Enterprises without organizations cannot use `delegate_to_organizations`.
+
+        Changing this policy does not change any Copilot feature or client policy that has already been set.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-feature-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody,
+            EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/feature-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_enterprise_feature_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-feature-policies
+
+        PATCH /enterprises/{enterprise}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to update the Copilot default availability policy for new features and clients
+        for an enterprise. Use `delegate_to_organizations` to let each organization set its own default.
+        Enterprises without organizations cannot use `delegate_to_organizations`.
+
+        Changing this policy does not change any Copilot feature or client policy that has already been set.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-feature-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody,
+            EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/feature-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

@@ -9,22 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0285 import SecretScanningCustomPatternToCreate
 
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+    The source branch and directory used to publish your Pages site.
+    """
 
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
+    )
+    path: Missing[Literal["/", "/docs"]] = Field(
+        default=UNSET,
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

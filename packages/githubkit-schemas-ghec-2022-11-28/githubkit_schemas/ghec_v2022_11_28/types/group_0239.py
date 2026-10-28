@@ -9,29 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class IssueCommentMinimizedType(TypedDict):
-    """Minimized Issue Comment
 
-    Details about why an issue comment was minimized.
+class MilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
     """
 
-    reason: Union[str, None]
+    url: str
+    html_url: str
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[SimpleUserType, None]
+    open_issues: int
+    closed_issues: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    due_on: Union[_dt.datetime, None]
 
 
-class IssueCommentMinimizedTypeForResponse(TypedDict):
-    """Minimized Issue Comment
+class MilestoneTypeForResponse(TypedDict):
+    """Milestone
 
-    Details about why an issue comment was minimized.
+    A collection of related issues and pull requests.
     """
 
-    reason: Union[str, None]
+    url: str
+    html_url: str
+    labels_url: str
+    id: int
+    node_id: str
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[SimpleUserTypeForResponse, None]
+    open_issues: int
+    closed_issues: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    due_on: Union[str, None]
 
 
 __all__ = (
-    "IssueCommentMinimizedType",
-    "IssueCommentMinimizedTypeForResponse",
+    "MilestoneType",
+    "MilestoneTypeForResponse",
 )

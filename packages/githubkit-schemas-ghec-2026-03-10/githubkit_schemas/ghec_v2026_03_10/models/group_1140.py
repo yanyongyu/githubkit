@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,41 +18,60 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsAutomationsAvailableToolsGetResponse200Items(GitHubModel):
-    """AgentsAutomationsAvailableToolsGetResponse200Items
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-    A CMC-controlled presentation category for Automation tools. Clients must not
-    depend on group identifiers, membership, or ordering remaining stable.
-    """
-
-    id: str = Field(description="A presentation-category identifier controlled by CMC.")
-    title: str = Field(description="The human-readable group title.")
-    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems] = (
-        Field(description="The tools currently presented in this group.")
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[str] = Field(default=UNSET)
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-
-
-class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems(GitHubModel):
-    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
-
-    A tool that can be selected in an Automation.
-    """
-
-    id: str = Field(
-        description="The exact tool identifier accepted by Automation create and edit requests. The catalog is authoritative and open-ended; clients must accept identifiers they have not seen before."
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[list[Union[str, None]]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    title: str = Field(description="The human-readable tool title.")
-    description: str = Field(description="A short description of what the tool does.")
-    scope: Missing[Literal["read", "write"]] = Field(
-        default=UNSET,
-        description="The tool's behavior level. `read` tools only retrieve data. `write` tools can change data. This describes tool behavior, not a specific GitHub token permission.",
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
+    steps: Missing[
+        list[
+            Union[WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems, None]
+        ]
+    ] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AgentsAutomationsAvailableToolsGetResponse200Items)
-model_rebuild(AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems)
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
+
+
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems)
 
 __all__ = (
-    "AgentsAutomationsAvailableToolsGetResponse200Items",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
 )

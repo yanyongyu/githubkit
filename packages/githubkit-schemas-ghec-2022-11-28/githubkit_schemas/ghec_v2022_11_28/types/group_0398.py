@@ -12,27 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CheckAutomatedSecurityFixesType(TypedDict):
-    """Check Dependabot security updates
+class WorkflowDispatchResponseType(TypedDict):
+    """Workflow Dispatch Response
 
-    Check Dependabot security updates
+    Response containing the workflow run ID and URLs.
     """
 
-    enabled: bool
-    paused: bool
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
-class CheckAutomatedSecurityFixesTypeForResponse(TypedDict):
-    """Check Dependabot security updates
+class WorkflowDispatchResponseTypeForResponse(TypedDict):
+    """Workflow Dispatch Response
 
-    Check Dependabot security updates
+    Response containing the workflow run ID and URLs.
     """
 
-    enabled: bool
-    paused: bool
+    workflow_run_id: int
+    run_url: str
+    html_url: str
 
 
 __all__ = (
-    "CheckAutomatedSecurityFixesType",
-    "CheckAutomatedSecurityFixesTypeForResponse",
+    "WorkflowDispatchResponseType",
+    "WorkflowDispatchResponseTypeForResponse",
 )

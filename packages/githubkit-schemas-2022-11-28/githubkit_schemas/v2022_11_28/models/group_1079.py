@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,55 +19,267 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A page of tasks created by an automation.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+    tasks: list[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems
+    ] = Field(description="Tasks created by the automation.")
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems"""
 
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    id: str = Field(description="Unique task identifier")
+    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
+    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
+    name: Missing[str] = Field(
+        default=UNSET, description="Human-readable name derived from the task prompt"
+    )
+    clients: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItems
+        ]
+    ] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="Known client products that created or participated in this task, independent of its executing agents. Omitted when no client identity is known.",
+    )
+    creator: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
+    ] = Field(default=UNSET, description="The entity who created this task")
+    creator_type: Missing[Literal["user", "organization"]] = Field(
+        default=UNSET, description="Type of the task creator"
+    )
+    user_collaborators: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+        ]
+    ] = Field(default=UNSET, description="User objects of collaborators on this task")
+    owner: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner
+    ] = Field(default=UNSET, description="The owner of the repository")
+    repository: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
+    ] = Field(default=UNSET, description="The repository this task belongs to")
+    state: Literal[
+        "queued",
+        "in_progress",
+        "completed",
+        "failed",
+        "idle",
+        "waiting_for_user",
+        "timed_out",
+        "cancelled",
+    ] = Field(
+        description="Current state of the task, derived from its most recent session"
+    )
+    session_count: Missing[int] = Field(
+        default=UNSET, description="Number of sessions in this task"
+    )
+    artifacts: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Resources created by this task (PRs, branches, etc.)",
+    )
+    archived_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="Timestamp when the task was archived, null if not archived",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="Timestamp of the most recent update"
+    )
+    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
+    custom_agent: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
+    ] = Field(
+        default=UNSET, description="Custom agent metadata associated with this task"
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400)
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    ClientsItems
+    """
+
+    integration_id: str = Field(
+        description="Server-resolved integration identity for the client product."
+    )
+    slug: str = Field(
+        description="Stable client product identifier, not an agent or host identifier. Clients must tolerate unknown future slugs."
+    )
+    creator: bool = Field(
+        description="True only when the service has explicit evidence this client created the containing session or task. False does not imply the original client is known."
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    CreatorOneof0
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    UserCollaboratorsItems
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    Owner
+
+    The owner of the repository
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    Repository
+
+    The repository this task belongs to
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the repository"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    CustomAgent
+
+    Custom agent metadata associated with this task
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET,
+        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    ArtifactsItems
+
+    A resource generated by the task
+    """
+
+    provider: Literal["github"] = Field(description="Provider namespace")
+    type: Literal["pull", "branch"] = Field(
+        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+    )
+    data: Union[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
+    ] = Field(description="Resource data (shape depends on type)")
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    ArtifactsItemsPropDataOneof0
+
+    A GitHub resource (pull request, issue, etc.)
+    """
+
+    id: int = Field(description="GitHub resource ID")
+    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsProp
+    ArtifactsItemsPropDataOneof1
+
+    A Git branch reference
+    """
+
+    head_ref: str = Field(description="Head branch name")
+    base_ref: str = Field(description="Base branch name")
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400",
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
 )

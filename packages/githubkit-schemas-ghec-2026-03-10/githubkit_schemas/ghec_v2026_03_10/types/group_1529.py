@@ -9,47 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    repository_values: list[RepositoryExternalPropertyPayloadType]
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+class OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    )
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
-
-
-class RepositoryExternalPropertyPayloadType(TypedDict):
-    """Repository External Custom Property Value Payload
-
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str
-    value: Union[str, None]
-
-
-class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
-    """Repository External Custom Property Value Payload
-
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str
-    value: Union[str, None]
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
-    "RepositoryExternalPropertyPayloadType",
-    "RepositoryExternalPropertyPayloadTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

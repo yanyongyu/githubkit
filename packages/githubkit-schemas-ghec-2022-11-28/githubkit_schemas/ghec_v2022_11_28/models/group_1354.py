@@ -16,21 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody(
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202(
     GitHubModel
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
 
-    user_identifier: Missing[str] = Field(
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
         default=UNSET,
-        description="The handle for the GitHub user account or a verified email associated with their account.",
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202)
 
-__all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202",)

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,18 +31,28 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems]
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems
+        ]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems
 
     A single validation error
     """
@@ -61,12 +71,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404",
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems",
 )

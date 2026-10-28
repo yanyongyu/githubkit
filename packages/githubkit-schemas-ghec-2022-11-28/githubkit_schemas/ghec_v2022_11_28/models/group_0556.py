@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,79 +18,103 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0107 import TeamSimple
+from .group_0239 import Milestone
+from .group_0347 import AutoMerge
+from .group_0348 import PullRequestStack
+from .group_0557 import PullRequestPropLabelsItems
+from .group_0558 import PullRequestPropBase, PullRequestPropHead
+from .group_0559 import PullRequestPropLinks
 
-class PullRequestMergeAsyncResult(GitHubModel):
-    """Pull Request Merge Async Result
 
-    Pull Request Merge Async Result
+class PullRequest(GitHubModel):
+    """Pull Request
+
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsAnyof0,
-        PullRequestMergeAsyncResultPropDetailsAnyof1,
-        PullRequestMergeAsyncResultPropDetailsAnyof2,
-        PullRequestMergeAsyncResultPropDetailsAnyof3,
-    ] = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof0(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof0
-
-    When the asynchronous merge request is pending
-    """
-
-    message: str = Field()
-    uuid: str = Field()
-    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
-    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
-    expected_head_sha: str = Field(
-        description="SHA that the pull request head must match for the enqueued merge to proceed."
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
     )
-    bypass_rules: Missing[bool] = Field(
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
+    )
+    locked: bool = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
+    milestone: Union[Milestone, None] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[SimpleUser, None] = Field()
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_teams: Missing[list[TeamSimple]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    stack: Missing[Union[PullRequestStack, None]] = Field(
         default=UNSET,
-        description="Whether the asynchronous merge request will attempt to bypass repository rules that the authenticated actor is permitted to bypass.",
+        title="Pull Request Stack",
+        description="The stack information associated with a pull request.",
     )
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether or not the pull request is a draft.",
+    )
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[SimpleUser, None] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
+    )
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
 
 
-class PullRequestMergeAsyncResultPropDetailsAnyof1(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof1
+model_rebuild(PullRequest)
 
-    When the pull request is in a merge queue
-    """
-
-    message: str = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof2(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof2
-
-    When the asynchronous merge request failed
-    """
-
-    message: str = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof3(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof3
-
-    When the pull request has been merged
-    """
-
-    message: str = Field()
-    sha: str = Field()
-
-
-model_rebuild(PullRequestMergeAsyncResult)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof0)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof1)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof2)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof3)
-
-__all__ = (
-    "PullRequestMergeAsyncResult",
-    "PullRequestMergeAsyncResultPropDetailsAnyof0",
-    "PullRequestMergeAsyncResultPropDetailsAnyof1",
-    "PullRequestMergeAsyncResultPropDetailsAnyof2",
-    "PullRequestMergeAsyncResultPropDetailsAnyof3",
-)
+__all__ = ("PullRequest",)

@@ -9,28 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgPropertiesInstallationsPostBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    installation_id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the GitHub App installation to register for managing external custom properties. When authenticating as a GitHub App installation, this defaults to the authenticated installation and can be omitted. It is required for all other callers (users and fine-grained personal access tokens).",
-    )
-    display_name: str = Field(
-        min_length=1,
-        max_length=15,
-        pattern="^[a-zA-Z0-9]+$",
-        description="The display name for this app installation's external custom properties in the organization. Must be 1 to 15 characters and contain only letters and numbers. Capitalization is preserved as entered. This can't be changed after the app installation is registered.",
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
 
 
-model_rebuild(OrgsOrgPropertiesInstallationsPostBody)
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 
-__all__ = ("OrgsOrgPropertiesInstallationsPostBody",)
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
+
+
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability)
+
+__all__ = (
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
+)

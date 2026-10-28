@@ -9,40 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class PorterAuthorType(TypedDict):
-    """Porter Author
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    Porter Author
+    Repository hash algorithm
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class PorterAuthorTypeForResponse(TypedDict):
-    """Porter Author
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    Porter Author
+    Repository hash algorithm
     """
 
-    id: int
-    remote_id: str
-    remote_name: str
-    email: str
-    name: str
-    url: str
-    import_url: str
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "PorterAuthorType",
-    "PorterAuthorTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

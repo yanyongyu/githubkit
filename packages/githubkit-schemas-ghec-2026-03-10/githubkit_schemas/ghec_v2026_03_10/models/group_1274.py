@@ -9,36 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0033 import ActionsHostedRunnerCustomImageVersion
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
-
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems
-    ] = Field(min_length=1 if PYDANTIC_V2 else None)
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems(
+class EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGe
+    tResponse200
+    """
 
-    model_name: str = Field(min_length=1)
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="Use `optional` to remove the apps policy."
-    )
+    total_count: int = Field()
+    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody)
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems)
+model_rebuild(
+    EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
+)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems",
+    "EnterprisesEnterpriseActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
 )

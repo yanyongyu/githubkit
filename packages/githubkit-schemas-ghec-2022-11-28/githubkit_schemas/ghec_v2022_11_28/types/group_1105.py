@@ -12,44 +12,42 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0653 import (
+from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0659 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0706 import WebhooksSponsorshipType, WebhooksSponsorshipTypeForResponse
+from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0711 import (
+    PublicMonitoringAlertWebhookType,
+    PublicMonitoringAlertWebhookTypeForResponse,
+)
 
 
-class WebhookSponsorshipPendingCancellationType(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSecretScanningPublicMonitoringAlertValidatedType(TypedDict):
+    """secret_scanning_public_monitoring_alert validated event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["validated"]
+    alert: PublicMonitoringAlertWebhookType
+    enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserType
-    sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipPendingCancellationTypeForResponse(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSecretScanningPublicMonitoringAlertValidatedTypeForResponse(TypedDict):
+    """secret_scanning_public_monitoring_alert validated event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["validated"]
+    alert: PublicMonitoringAlertWebhookTypeForResponse
+    enterprise: EnterpriseWebhooksTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
-    sender: SimpleUserTypeForResponse
-    sponsorship: WebhooksSponsorshipTypeForResponse
 
 
 __all__ = (
-    "WebhookSponsorshipPendingCancellationType",
-    "WebhookSponsorshipPendingCancellationTypeForResponse",
+    "WebhookSecretScanningPublicMonitoringAlertValidatedType",
+    "WebhookSecretScanningPublicMonitoringAlertValidatedTypeForResponse",
 )

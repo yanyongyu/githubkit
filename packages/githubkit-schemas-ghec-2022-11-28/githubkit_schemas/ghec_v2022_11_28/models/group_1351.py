@@ -16,46 +16,17 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
-    ] = Field()
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
-    ems
-    """
-
-    model_name: str = Field()
-    display_name: str = Field()
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    credential_id: int = Field()
+    credential_type: Literal["ssh_key"] = Field()
+    fingerprint: str = Field(
+        description="The SHA-256 fingerprint of the authorized SSH key."
     )
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ] = Field(
-        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
-    )
-    editable: bool = Field(
-        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
-    )
+    organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200)
-model_rebuild(
-    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1)
 
-__all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1",)

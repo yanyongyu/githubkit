@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,63 +17,110 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class GetBudget(GitHubModel):
-    """GetBudget"""
-
-    id: str = Field(description="ID of the budget.")
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ] = Field(description="The type of scope for the budget")
-    budget_entity_name: str = Field(
-        description="The name of the entity to apply the budget to"
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
-    )
-    budget_amount: int = Field(
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="Whether to prevent additional spending once the budget is exceeded"
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_alerting: GetBudgetPropBudgetAlerting = Field()
-    consumed_amount: Missing[float] = Field(
-        default=UNSET,
-        description="The current usage amount counted toward the budget. How usage is calculated may vary by budget type.",
-    )
-
-
-class GetBudgetPropBudgetAlerting(GitHubModel):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Present but not applicable for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Present but not applicable for user-scope as alerting is always disabled for them.",
-    )
-
-
-model_rebuild(GetBudget)
-model_rebuild(GetBudgetPropBudgetAlerting)
-
-__all__ = (
-    "GetBudget",
-    "GetBudgetPropBudgetAlerting",
+from .group_0003 import SimpleUser
+from .group_0205 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
 )
+from .group_0206 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+from .group_0216 import PublicMonitoringAlertLocation, PublicMonitoringSecretAuthor
+
+
+class PublicMonitoringAlertPropAttribution(GitHubModel):
+    """PublicMonitoringAlertPropAttribution
+
+    Attribution information for the alert.
+    """
+
+    secret_author: Missing[Union[SimpleUser, PublicMonitoringSecretAuthor, None]] = (
+        Field(default=UNSET)
+    )
+    committer_email: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The email address associated with the secret's author.",
+    )
+    method: Missing[Literal["member_activity", "verified_domain"]] = Field(
+        default=UNSET,
+        description="The method used to attribute the alert to the enterprise.",
+    )
+    commit: Missing[
+        Union[SecretScanningLocationCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    wiki_commit: Missing[
+        Union[SecretScanningLocationWikiCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_title: Missing[
+        Union[SecretScanningLocationIssueTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_body: Missing[
+        Union[SecretScanningLocationIssueBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        Union[SecretScanningLocationIssueComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_title: Missing[
+        Union[SecretScanningLocationPullRequestTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_body: Missing[
+        Union[SecretScanningLocationPullRequestBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        Union[SecretScanningLocationPullRequestComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_review_comment: Missing[
+        Union[
+            SecretScanningLocationPullRequestReviewComment,
+            PublicMonitoringAlertLocation,
+        ]
+    ] = Field(default=UNSET)
+    pull_request_review: Missing[
+        Union[SecretScanningLocationPullRequestReview, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_timeline_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    discussion_title: Missing[
+        Union[SecretScanningLocationDiscussionTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_body: Missing[
+        Union[SecretScanningLocationDiscussionBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        Union[SecretScanningLocationDiscussionComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    commit_metadata: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    commit_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    actions_log: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    gist_blob: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+
+
+model_rebuild(PublicMonitoringAlertPropAttribution)
+
+__all__ = ("PublicMonitoringAlertPropAttribution",)

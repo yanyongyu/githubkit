@@ -10,648 +10,485 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing, UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0569 import EnterpriseWebhooks
+from .group_0570 import SimpleInstallation
+from .group_0571 import OrganizationSimpleWebhooks
+from .group_0572 import RepositoryWebhooks
+from .group_0579 import WebhooksWorkflow
 
-class AgentsAutomationsGetResponse200Items(GitHubModel):
-    """AgentsAutomationsGetResponse200Items
 
-    A summary representation of an automation including repository identity (used in
-    cross-repository list responses).
+class WebhookWorkflowRunInProgress(GitHubModel):
+    """workflow_run in_progress event"""
+
+    action: Literal["in_progress"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
+    workflow_run: WebhookWorkflowRunInProgressPropWorkflowRun = Field(
+        title="Workflow Run"
+    )
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):
+    """Workflow Run"""
+
+    actor: Union[WebhookWorkflowRunInProgressPropWorkflowRunPropActor, None] = Field(
+        title="User"
+    )
+    artifacts_url: str = Field()
+    cancel_url: str = Field()
+    check_suite_id: int = Field()
+    check_suite_node_id: str = Field()
+    check_suite_url: str = Field()
+    conclusion: Union[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "skipped",
+            "stale",
+            "success",
+            "timed_out",
+        ],
+        None,
+    ] = Field()
+    created_at: _dt.datetime = Field()
+    event: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_commit: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit = Field(
+        title="SimpleCommit"
+    )
+    head_repository: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository = (
+        Field(title="Repository Lite")
+    )
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    jobs_url: str = Field()
+    logs_url: str = Field()
+    name: Union[str, None] = Field()
+    node_id: str = Field()
+    path: str = Field()
+    previous_attempt_url: Union[str, None] = Field()
+    pull_requests: list[
+        Union[WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems, None]
+    ] = Field()
+    referenced_workflows: Missing[
+        Union[
+            list[
+                WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET)
+    repository: WebhookWorkflowRunInProgressPropWorkflowRunPropRepository = Field(
+        title="Repository Lite"
+    )
+    rerun_url: str = Field()
+    run_attempt: int = Field()
+    run_number: int = Field()
+    run_started_at: _dt.datetime = Field()
+    status: Literal["requested", "in_progress", "completed", "queued", "pending"] = (
+        Field()
+    )
+    triggering_actor: Union[
+        WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor, None
+    ] = Field(title="User")
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    workflow_id: int = Field()
+    workflow_url: str = Field()
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropActor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems(
+    GitHubModel
+):
+    """WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems"""
+
+    path: str = Field()
+    ref: Missing[str] = Field(default=UNSET)
+    sha: str = Field()
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit(GitHubModel):
+    """SimpleCommit"""
+
+    author: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    committer: WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    id: str = Field()
+    message: str = Field()
+    timestamp: str = Field()
+    tree_id: str = Field()
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
     """
 
-    id: str = Field(description="The unique identifier of the automation.")
-    repository: AgentsAutomationsGetResponse200ItemsPropRepository = Field(
-        description="Repository identity for an automation in cross-repository list responses."
-    )
-    name: str = Field(description="The name of the automation.")
-    enabled: Missing[bool] = Field(
-        default=UNSET, description="Whether the automation is currently enabled."
-    )
-    owner_type: Missing[Literal["user", "repository"]] = Field(
-        default=UNSET,
-        description="Who owns the automation. `user` keeps it private to its creator and its runs act as that user. `repository` makes it belong to the repository, visible to anyone with read access to the repository, and its runs act as the Copilot app rather than as a person.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Controls which repository resources a run may modify. `trigger` limits writes to the resource that started the run, when one exists, and resources created during the run; `repository` allows writes to any resource in the repository. Supported values: `trigger`, `repository`.",
-    )
-    require_actor_write_permission: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, event-triggered runs require the event actor to have repo write permission, even when the org's allow_read_access_triggers policy is enabled. Does not apply to interval-scheduled runs, which always run as the automation owner.",
-    )
-    model: Missing[str] = Field(
-        default=UNSET,
-        description="The model to use for sessions triggered by this automation. Omit to use the platform default.",
-    )
-    reasoning_effort: Missing[str] = Field(
-        default=UNSET,
-        description="The reasoning effort to use for sessions triggered by this automation. Omit or leave empty for no override. Currently supported values: `none`, `low`, `medium`, `high`, `xhigh`, `max`",
-    )
-    triggers: Missing[AgentsAutomationsGetResponse200ItemsPropTriggers] = Field(
-        default=UNSET,
-        description="Public trigger configuration keyed by stable public trigger identifier. Each trigger has a closed, trigger-specific configuration schema.",
-    )
-    created_at: _dt.datetime = Field(description="When the automation was created.")
-    updated_at: _dt.datetime = Field(
-        description="When the automation was last updated."
-    )
-    created_by: AgentsAutomationsGetResponse200ItemsPropCreatedBy = Field(
-        description="A GitHub user"
-    )
+    date: Missing[_dt.datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
 
 
-class AgentsAutomationsGetResponse200ItemsPropRepository(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropRepository
+class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter(
+    GitHubModel
+):
+    """Committer
 
-    Repository identity for an automation in cross-repository list responses.
+    Metaproperties for Git author/committer information.
     """
 
-    id: int = Field(description="The unique identifier of the repository.")
-    owner: str = Field(description="The repository owner login.")
-    name: str = Field(description="The repository name.")
+    date: Missing[_dt.datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
 
 
-class AgentsAutomationsGetResponse200ItemsPropCreatedBy(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropCreatedBy
+class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository(GitHubModel):
+    """Repository Lite"""
 
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggers(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggers
-
-    Public trigger configuration keyed by stable public trigger identifier. Each
-    trigger has a closed, trigger-specific configuration schema.
-    """
-
-    interval: Missing[AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval] = (
-        Field(default=UNSET)
-    )
-    issue_opened: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened
-    ] = Field(default=UNSET)
-    issue_labeled: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled
-    ] = Field(default=UNSET)
-    workflow_run: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun
-    ] = Field(default=UNSET)
-    pull_request_opened: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened
-    ] = Field(default=UNSET)
-    pull_request_synchronize: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize
-    ] = Field(default=UNSET)
-    pull_request_merged: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged
-    ] = Field(default=UNSET)
-    issue_comment: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment
-    ] = Field(default=UNSET)
-    pull_request_comment: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment
-    ] = Field(default=UNSET)
-    discussion_opened: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened
-    ] = Field(default=UNSET)
-    discussion_updated: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated
-    ] = Field(default=UNSET)
-    discussion_comment: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment
-    ] = Field(default=UNSET)
-    issue_assigned: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned
-    ] = Field(default=UNSET)
-    pull_request_assigned: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned
-    ] = Field(default=UNSET)
-    sub_issue_added: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded
-    ] = Field(default=UNSET)
-    pull_request_ready_for_review: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview
-    ] = Field(default=UNSET)
-    pull_request_labeled: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled
-    ] = Field(default=UNSET)
-    pull_request_merge_conflict: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict
-    ] = Field(default=UNSET)
-    pull_request_review_submitted: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted
-    ] = Field(default=UNSET)
-    pull_request_review_requested: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested
-    ] = Field(default=UNSET)
-    automation_completed: Missing[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted
-    ] = Field(default=UNSET)
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    name: Union[str, None] = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    owner: Union[
+        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner, None
+    ] = Field(title="User")
+    private: bool = Field(description="Whether the repository is private or public.")
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    url: str = Field()
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval"""
-
-    cadence: UniqueList[Literal["hourly", "daily", "weekly"]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="One or more schedules on which the Automation runs.",
-    )
-    hour_utc: Missing[int] = Field(
-        le=23.0,
-        default=UNSET,
-        description="UTC hour anchor (0 through 23) for daily and weekly schedules. Omitted daily and weekly values default to `0` (midnight UTC).",
-    )
-    day_of_week: Missing[int] = Field(
-        le=6.0,
-        default=UNSET,
-        description="UTC weekday anchor for weekly schedules, where `0` is Sunday and `6` is Saturday. Omitted weekly values default to Monday (`1`).",
-    )
-    minute_utc: Missing[Literal[0, 15, 30, 45]] = Field(
-        default=UNSET,
-        description="UTC minute anchor for daily and weekly schedules. Omitted daily and weekly values default to `0`. Must be omitted whenever `cadence` includes `hourly`.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    labels: Missing[UniqueList[str]] = Field(
-        default=UNSET,
-        description="Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun"""
-
-    workflows: list[Annotated[str, Field(min_length=1)]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Workflow names matched against the name in each workflow YAML file.",
-    )
-    conclusions: list[Literal["failure"]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Workflow conclusions to match. The current trigger supports failure.",
-    )
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened(
+class WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner(
     GitHubModel
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened"""
+    """User"""
 
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize(
+class WebhookWorkflowRunInProgressPropWorkflowRunPropRepository(GitHubModel):
+    """Repository Lite"""
+
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    owner: Union[
+        WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner, None
+    ] = Field(title="User")
+    private: bool = Field(description="Whether the repository is private or public.")
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems(GitHubModel):
+    """WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems"""
+
+    base: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase = (
+        Field()
+    )
+    head: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead = (
+        Field()
+    )
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase(
     GitHubModel
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize"""
+    """WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase"""
 
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
+    ref: str = Field()
+    repo: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
+        title="Repo Ref"
     )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
+    sha: str = Field()
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged(
+class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
     GitHubModel
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged"""
+    """Repo Ref"""
 
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment"""
-
-    body_substring: Missing[str] = Field(
-        default=UNSET,
-        description="A case-insensitive substring matched against the event body.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment(
+class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead(
     GitHubModel
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment"""
+    """WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead"""
 
-    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]] = Field(
-        max_length=2 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Pull request conversation and inline review comment types to match.",
+    ref: str = Field()
+    repo: WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
+        title="Repo Ref"
     )
-    body_substring: Missing[str] = Field(
-        default=UNSET,
-        description="A case-insensitive substring matched against the event body.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
+    sha: str = Field()
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened"""
-
-    categories: Missing[UniqueList[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Discussion category names matched case-insensitively.",
-    )
-    body_substring: Missing[str] = Field(
-        default=UNSET,
-        description="A case-insensitive substring matched against the event body.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated(
+class WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
     GitHubModel
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated"""
+    """Repo Ref"""
 
-    categories: Missing[UniqueList[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Discussion category names matched case-insensitively.",
-    )
-    body_substring: Missing[str] = Field(
-        default=UNSET,
-        description="A case-insensitive substring matched against the event body.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment"""
-
-    comment_types: Missing[UniqueList[Literal["comment", "reply"]]] = Field(
-        max_length=2 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Top-level discussion comments and replies to match. Omit to match both.",
-    )
-    categories: Missing[UniqueList[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Discussion category names matched case-insensitively.",
-    )
-    body_substring: Missing[str] = Field(
-        default=UNSET,
-        description="A case-insensitive substring matched against the event body.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    assignees: Missing[UniqueList[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Affected assignee logins matched case-insensitively.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    assignees: Missing[UniqueList[str]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Affected assignee logins matched case-insensitively.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded(GitHubModel):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    labels: Missing[UniqueList[str]] = Field(
-        default=UNSET,
-        description="Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    states: UniqueList[Literal["approved", "changes_requested", "commented"]] = Field(
-        max_length=3 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Submitted review states to match.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted(
-    GitHubModel
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted"""
-
-    automation_ids: UniqueList[str] = Field(
-        max_length=3 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Upstream Automation IDs in the same repository.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`.",
-    )
-
-
-model_rebuild(AgentsAutomationsGetResponse200Items)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropRepository)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropCreatedBy)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggers)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened)
+model_rebuild(WebhookWorkflowRunInProgress)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRun)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropActor)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropRepository)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase)
 model_rebuild(
-    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize
+    WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
 )
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded)
+model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead)
 model_rebuild(
-    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview
+    WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
 )
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled)
-model_rebuild(
-    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict
-)
-model_rebuild(
-    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted
-)
-model_rebuild(
-    AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested
-)
-model_rebuild(AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted)
 
 __all__ = (
-    "AgentsAutomationsGetResponse200Items",
-    "AgentsAutomationsGetResponse200ItemsPropCreatedBy",
-    "AgentsAutomationsGetResponse200ItemsPropRepository",
-    "AgentsAutomationsGetResponse200ItemsPropTriggers",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun",
+    "WebhookWorkflowRunInProgress",
+    "WebhookWorkflowRunInProgressPropWorkflowRun",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropActor",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropRepository",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner",
+    "WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor",
 )

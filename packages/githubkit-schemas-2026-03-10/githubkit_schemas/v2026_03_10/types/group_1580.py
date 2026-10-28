@@ -10,32 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType: TypeAlias = dict[
+
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
+
+
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
     str, Any
 ]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
 """
 
 
-UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse: TypeAlias = dict[
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
-lof1PropCustomProperties
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-The custom properties that were defined for the repository. The keys are the
-custom property names, and the values are the corresponding custom property
-values. Present for org repos only.
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
 """
 
 
 __all__ = (
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType",
-    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

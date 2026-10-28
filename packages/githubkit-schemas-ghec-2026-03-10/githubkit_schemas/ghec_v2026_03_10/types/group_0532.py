@@ -11,120 +11,56 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing_extensions import TypedDict
 
 
-class TimelineReviewedEventType(TypedDict):
-    """Timeline Reviewed Event
+class IssueSuggestionType(TypedDict):
+    """Issue Suggestion
 
-    Timeline Reviewed Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["reviewed"]
     id: int
-    node_id: str
-    user: SimpleUserType
-    body: Union[str, None]
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[Union[_dt.datetime, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
     ]
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class TimelineReviewedEventTypeForResponse(TypedDict):
-    """Timeline Reviewed Event
+class IssueSuggestionTypeForResponse(TypedDict):
+    """Issue Suggestion
 
-    Timeline Reviewed Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["reviewed"]
     id: int
-    node_id: str
-    user: SimpleUserTypeForResponse
-    body: Union[str, None]
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: TimelineReviewedEventPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    updated_at: NotRequired[Union[str, None]]
-    commit_id: str
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    issue_id: int
+    action: Literal["set_type", "add_label", "add_field", "add_assignee", "close_issue"]
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
     ]
-
-
-class TimelineReviewedEventPropLinksType(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlType
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
-
-
-class TimelineReviewedEventPropLinksTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinks"""
-
-    html: TimelineReviewedEventPropLinksPropHtmlTypeForResponse
-    pull_request: TimelineReviewedEventPropLinksPropPullRequestTypeForResponse
-
-
-class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropHtmlTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
-
-
-class TimelineReviewedEventPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str
+    target_id: Union[int, None]
+    target_value: Union[str, float, bool, list[str], None]
+    rationale: Union[str, None]
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None]
+    actor_id: Union[int, None]
+    issue_event_id: Union[int, None]
+    resolved_by: Union[int, None]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "TimelineReviewedEventPropLinksPropHtmlType",
-    "TimelineReviewedEventPropLinksPropHtmlTypeForResponse",
-    "TimelineReviewedEventPropLinksPropPullRequestType",
-    "TimelineReviewedEventPropLinksPropPullRequestTypeForResponse",
-    "TimelineReviewedEventPropLinksType",
-    "TimelineReviewedEventPropLinksTypeForResponse",
-    "TimelineReviewedEventType",
-    "TimelineReviewedEventTypeForResponse",
+    "IssueSuggestionType",
+    "IssueSuggestionTypeForResponse",
 )

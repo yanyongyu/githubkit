@@ -9,33 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1153 import (
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType,
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse,
-)
+
+class AgentsTasksTaskIdGetResponse401Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse401PropErrorsItemsType]]
+    documentation_url: str
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type(TypedDict):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class AgentsTasksTaskIdGetResponse401TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse401
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesType
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse]
     ]
+    documentation_url: str
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1"""
+class AgentsTasksTaskIdGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
 
-    custom_properties: NotRequired[
-        InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPropertiesTypeForResponse
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse401PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1Type",
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1TypeForResponse",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse401Type",
+    "AgentsTasksTaskIdGetResponse401TypeForResponse",
 )

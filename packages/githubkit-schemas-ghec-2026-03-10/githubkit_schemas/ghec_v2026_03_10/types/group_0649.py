@@ -14,31 +14,39 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class KeyType(TypedDict):
+    """Key
 
-    Key Simple
+    Key
     """
 
-    id: int
     key: str
-    created_at: NotRequired[_dt.datetime]
+    id: int
+    url: str
+    title: str
+    created_at: _dt.datetime
+    verified: bool
+    read_only: bool
     last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class KeyTypeForResponse(TypedDict):
+    """Key
 
-    Key Simple
+    Key
     """
 
-    id: int
     key: str
-    created_at: NotRequired[str]
+    id: int
+    url: str
+    title: str
+    created_at: str
+    verified: bool
+    read_only: bool
     last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "KeyType",
+    "KeyTypeForResponse",
 )

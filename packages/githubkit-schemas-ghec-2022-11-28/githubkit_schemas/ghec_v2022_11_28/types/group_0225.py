@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class DeleteCostCenterType(TypedDict):
-    """DeleteCostCenter"""
+class DeleteBudgetType(TypedDict):
+    """DeleteBudget"""
 
     message: str
     id: str
-    name: str
-    cost_center_state: Literal["CostCenterArchived"]
 
 
-class DeleteCostCenterTypeForResponse(TypedDict):
-    """DeleteCostCenter"""
+class DeleteBudgetTypeForResponse(TypedDict):
+    """DeleteBudget"""
 
     message: str
     id: str
-    name: str
-    cost_center_state: Literal["CostCenterArchived"]
 
 
 __all__ = (
-    "DeleteCostCenterType",
-    "DeleteCostCenterTypeForResponse",
+    "DeleteBudgetType",
+    "DeleteBudgetTypeForResponse",
 )

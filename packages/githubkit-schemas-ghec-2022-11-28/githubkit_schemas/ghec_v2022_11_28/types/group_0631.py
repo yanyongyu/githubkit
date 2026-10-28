@@ -9,99 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0277 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0404 import GitUserType, GitUserTypeForResponse
-from .group_0629 import (
-    SearchResultTextMatchesItemsType,
-    SearchResultTextMatchesItemsTypeForResponse,
-)
+from .group_0622 import MetaType, MetaTypeForResponse
 from .group_0632 import (
-    CommitSearchResultItemPropCommitType,
-    CommitSearchResultItemPropCommitTypeForResponse,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsType,
+    ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse,
 )
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class ScimEnterpriseUserResponseAllof1Type(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[SimpleUserType, None]
-    committer: Union[GitUserType, None]
-    parents: list[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    id: str
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class CommitSearchResultItemTypeForResponse(TypedDict):
-    """Commit Search Result Item
+class ScimEnterpriseUserResponseAllof1TypeForResponse(TypedDict):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitTypeForResponse
-    author: Union[SimpleUserTypeForResponse, None]
-    committer: Union[GitUserTypeForResponse, None]
-    parents: list[CommitSearchResultItemPropParentsItemsTypeForResponse]
-    repository: MinimalRepositoryTypeForResponse
-    score: float
-    node_id: str
-    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
-
-
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class CommitSearchResultItemPropParentsItemsTypeForResponse(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemType]
-
-
-class SearchCommitsGetResponse200TypeForResponse(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: list[CommitSearchResultItemTypeForResponse]
+    id: str
+    groups: NotRequired[
+        list[ScimEnterpriseUserResponseAllof1PropGroupsItemsTypeForResponse]
+    ]
+    meta: MetaTypeForResponse
 
 
 __all__ = (
-    "CommitSearchResultItemPropParentsItemsType",
-    "CommitSearchResultItemPropParentsItemsTypeForResponse",
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemTypeForResponse",
-    "SearchCommitsGetResponse200Type",
-    "SearchCommitsGetResponse200TypeForResponse",
+    "ScimEnterpriseUserResponseAllof1Type",
+    "ScimEnterpriseUserResponseAllof1TypeForResponse",
 )

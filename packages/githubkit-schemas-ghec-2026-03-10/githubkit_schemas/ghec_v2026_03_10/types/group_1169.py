@@ -9,89 +9,1254 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from githubkit.typing import UniqueList
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200
+
+    A full representation of an automation including all configuration fields.
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsType
-        ]
+    id: str
+    name: str
+    enabled: NotRequired[bool]
+    type: NotRequired[Literal["personal", "shared"]]
+    require_actor_write_permission: NotRequired[bool]
+    continuous_history: NotRequired[bool]
+    triggers: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersType
     ]
-    documentation_url: str
+    prompt: str
+    tools: NotRequired[list[str]]
+    model: NotRequired[str]
+    reasoning_effort: NotRequired[str]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    created_by: (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByType
+    )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A full representation of an automation including all configuration fields.
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsTypeForResponse
-        ]
+    id: str
+    name: str
+    enabled: NotRequired[bool]
+    type: NotRequired[Literal["personal", "shared"]]
+    require_actor_write_permission: NotRequired[bool]
+    continuous_history: NotRequired[bool]
+    triggers: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersTypeForResponse
     ]
-    documentation_url: str
+    prompt: str
+    tools: NotRequired[list[str]]
+    model: NotRequired[str]
+    reasoning_effort: NotRequired[str]
+    created_at: str
+    updated_at: str
+    created_by: AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByTypeForResponse
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsType(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy
 
-    A single validation error
+    A GitHub user
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: NotRequired[int]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy
 
-    A single validation error
+    A GitHub user
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers
+
+    Trigger configuration for the automation.
+    """
+
+    interval: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIntervalType
     ]
-    message: NotRequired[str]
+    issue_opened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType
+    ]
+    issue_labeled: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledType
+    ]
+    workflow_run: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunType
+    ]
+    pull_request_opened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedType
+    ]
+    pull_request_synchronize: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType
+    ]
+    pull_request_merged: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedType
+    ]
+    issue_comment: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType
+    ]
+    pull_request_comment: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType
+    ]
+    discussion_opened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedType
+    ]
+    discussion_updated: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedType
+    ]
+    discussion_comment: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType
+    ]
+    issue_assigned: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType
+    ]
+    pull_request_assigned: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType
+    ]
+    sub_issue_added: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType
+    ]
+    pull_request_ready_for_review: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType
+    ]
+    pull_request_labeled: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType
+    ]
+    pull_request_merge_conflict: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType
+    ]
+    pull_request_review_submitted: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType
+    ]
+    pull_request_review_requested: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType
+    ]
+    issue_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedType
+    ]
+    issue_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedType
+    ]
+    pull_request_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedType
+    ]
+    pull_request_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedType
+    ]
+    pull_request_converted_to_draft: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftType
+    ]
+    pull_request_review_dismissed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedType
+    ]
+    pull_request_review_thread_resolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedType
+    ]
+    pull_request_review_thread_unresolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType
+    ]
+    automation_completed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType
+    ]
+    automation_failed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedType
+    ]
+    code_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertType
+    ]
+    secret_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertType
+    ]
+    dependabot_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertType
+    ]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers
+
+    Trigger configuration for the automation.
+    """
+
+    interval: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIntervalTypeForResponse
+    ]
+    issue_opened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedTypeForResponse
+    ]
+    issue_labeled: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledTypeForResponse
+    ]
+    workflow_run: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunTypeForResponse
+    ]
+    pull_request_opened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedTypeForResponse
+    ]
+    pull_request_synchronize: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeTypeForResponse
+    ]
+    pull_request_merged: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedTypeForResponse
+    ]
+    issue_comment: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentTypeForResponse
+    ]
+    pull_request_comment: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentTypeForResponse
+    ]
+    discussion_opened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedTypeForResponse
+    ]
+    discussion_updated: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedTypeForResponse
+    ]
+    discussion_comment: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentTypeForResponse
+    ]
+    issue_assigned: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedTypeForResponse
+    ]
+    pull_request_assigned: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedTypeForResponse
+    ]
+    sub_issue_added: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedTypeForResponse
+    ]
+    pull_request_ready_for_review: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewTypeForResponse
+    ]
+    pull_request_labeled: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledTypeForResponse
+    ]
+    pull_request_merge_conflict: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictTypeForResponse
+    ]
+    pull_request_review_submitted: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedTypeForResponse
+    ]
+    pull_request_review_requested: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedTypeForResponse
+    ]
+    issue_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedTypeForResponse
+    ]
+    issue_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedTypeForResponse
+    ]
+    pull_request_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedTypeForResponse
+    ]
+    pull_request_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedTypeForResponse
+    ]
+    pull_request_converted_to_draft: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftTypeForResponse
+    ]
+    pull_request_review_dismissed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedTypeForResponse
+    ]
+    pull_request_review_thread_resolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedTypeForResponse
+    ]
+    pull_request_review_thread_unresolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse
+    ]
+    automation_completed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedTypeForResponse
+    ]
+    automation_failed: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedTypeForResponse
+    ]
+    code_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertTypeForResponse
+    ]
+    secret_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertTypeForResponse
+    ]
+    dependabot_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertTypeForResponse
+    ]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIntervalType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterva
+    l
+    """
+
+    cadence: UniqueList[Literal["hourly", "daily", "weekly"]]
+    hour_utc: NotRequired[int]
+    day_of_week: NotRequired[int]
+    minute_utc: NotRequired[Literal[0, 15, 30, 45]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIntervalTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterva
+    l
+    """
+
+    cadence: UniqueList[Literal["hourly", "daily", "weekly"]]
+    hour_utc: NotRequired[int]
+    day_of_week: NotRequired[int]
+    minute_utc: NotRequired[Literal[0, 15, 30, 45]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOp
+    ened
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOp
+    ened
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLa
+    beled
+    """
+
+    query: NotRequired[str]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLa
+    beled
+    """
+
+    query: NotRequired[str]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflo
+    wRun
+    """
+
+    workflows: list[str]
+    conclusions: list[Literal["failure"]]
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflo
+    wRun
+    """
+
+    workflows: list[str]
+    conclusions: list[Literal["failure"]]
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestOpened
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestOpened
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestSynchronize
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestSynchronize
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestMerged
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestMerged
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCo
+    mment
+    """
+
+    query: NotRequired[str]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCo
+    mment
+    """
+
+    query: NotRequired[str]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestComment
+    """
+
+    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestComment
+    """
+
+    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionOpened
+    """
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionOpened
+    """
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionUpdated
+    """
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionUpdated
+    """
+
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionComment
+    """
+
+    comment_types: NotRequired[UniqueList[Literal["comment", "reply"]]]
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionComment
+    """
+
+    comment_types: NotRequired[UniqueList[Literal["comment", "reply"]]]
+    categories: NotRequired[UniqueList[str]]
+    body_substring: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAs
+    signed
+    """
+
+    query: NotRequired[str]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAs
+    signed
+    """
+
+    query: NotRequired[str]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestAssigned
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestAssigned
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    assignees: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssu
+    eAdded
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssu
+    eAdded
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReadyForReview
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReadyForReview
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestLabeled
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestLabeled
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    labels: NotRequired[UniqueList[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestMergeConflict
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestMergeConflict
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewSubmitted
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    states: UniqueList[Literal["approved", "changes_requested", "commented"]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewSubmitted
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    states: UniqueList[Literal["approved", "changes_requested", "commented"]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewRequested
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewRequested
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCl
+    osed
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCl
+    osed
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueRe
+    opened
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueRe
+    opened
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestClosed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestClosed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReopened
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReopened
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestConvertedToDraft
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestConvertedToDraft
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewDismissed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewDismissed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewThreadResolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewThreadResolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewThreadUnresolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewThreadUnresolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomat
+    ionCompleted
+    """
+
+    automation_ids: UniqueList[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomat
+    ionCompleted
+    """
+
+    automation_ids: UniqueList[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomat
+    ionFailed
+    """
+
+    automation_ids: UniqueList[str]
+    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomat
+    ionFailed
+    """
+
+    automation_ids: UniqueList[str]
+    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeSca
+    nningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeSca
+    nningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretS
+    canningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretS
+    canningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependa
+    botAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependa
+    botAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIntervalType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIntervalTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200TypeForResponse",
 )

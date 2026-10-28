@@ -9,28 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0110 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
+
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
+
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    model_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse",
 )

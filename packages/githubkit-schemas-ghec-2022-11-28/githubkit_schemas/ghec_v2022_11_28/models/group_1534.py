@@ -9,26 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0140 import CustomPropertyValue
 
+class OrgsOrgCopilotModelPoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
+    default_availability: Missing[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+    ] = Field(
+        default=UNSET,
+        description="The organization's default availability for eligible models without an explicit\npolicy. It cannot be updated when it is inherited from the enterprise.",
+    )
+    models: Missing[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+        default=UNSET,
+        description="The model policies to update. Each `model_name` must be unique.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field()
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(
+        min_length=1,
+        description="The public identifier of a model returned by the get endpoint.",
+    )
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The explicit policy state to set for the organization."
+    )
+
+
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems)
+
+__all__ = (
+    "OrgsOrgCopilotModelPoliciesPatchBody",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems",
+)

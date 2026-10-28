@@ -9,29 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryHashAlgorithmType(TypedDict):
-    """Repository hash algorithm
+class BlobType(TypedDict):
+    """Blob
 
-    Repository hash algorithm
+    Blob
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
-class RepositoryHashAlgorithmTypeForResponse(TypedDict):
-    """Repository hash algorithm
+class BlobTypeForResponse(TypedDict):
+    """Blob
 
-    Repository hash algorithm
+    Blob
     """
 
-    hash_algorithm: Literal["sha1", "sha256"]
+    content: str
+    encoding: str
+    url: str
+    sha: str
+    size: Union[int, None]
+    node_id: str
+    highlighted_content: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryHashAlgorithmType",
-    "RepositoryHashAlgorithmTypeForResponse",
+    "BlobType",
+    "BlobTypeForResponse",
 )

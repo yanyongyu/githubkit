@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,44 +17,52 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0068 import ActionsPolicyEnterpriseConditionsOneof0
-from .group_0069 import ActionsPolicyEnterpriseConditionsOneof1
-from .group_0070 import ActionsPolicyEnterpriseConditionsOneof2
-from .group_0071 import ActionsPolicyEnterpriseConditionsOneof3
-from .group_0072 import ActionsPolicyEnterpriseConditionsOneof4
-from .group_0073 import ActionsPolicyEnterpriseConditionsOneof5
-from .group_0074 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-class EnterprisesEnterpriseActionsPoliciesPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    name: str = Field(description="The name of the policy.")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    conditions: Missing[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0,
-            ActionsPolicyEnterpriseConditionsOneof1,
-            ActionsPolicyEnterpriseConditionsOneof2,
-            ActionsPolicyEnterpriseConditionsOneof3,
-            ActionsPolicyEnterpriseConditionsOneof4,
-            ActionsPolicyEnterpriseConditionsOneof5,
-        ]
+    errors: Missing[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems]
     ] = Field(
         default=UNSET,
-        title="Enterprise Actions policy conditions",
-        description="Conditions for an enterprise Actions policy. The conditions object supports one organization\ntarget (`organization_name`, `organization_id`, or `organization_property`) combined with one\nrepository target (`repository_name` or `repository_property`), and may also contain `workflow_path`.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-model_rebuild(EnterprisesEnterpriseActionsPoliciesPostBody)
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
 
-__all__ = ("EnterprisesEnterpriseActionsPoliciesPostBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse422)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems)
+
+__all__ = (
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems",
+)

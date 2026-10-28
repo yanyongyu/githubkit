@@ -9,39 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    repository_values: list[RepositoryExternalPropertyPayload] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories and the values that the named external custom property will be set to.",
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
 
 
-class RepositoryExternalPropertyPayload(GitHubModel):
-    """Repository External Custom Property Value Payload
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    Repository name and associated external custom property value
+    The default policy applied to newly released Copilot features and clients.
     """
 
-    repository_name: str = Field(description="The name of the repository")
-    value: Union[str, None] = Field(
-        description="The value assigned to the repository. Set to `null` to unset the value for this repository."
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
     )
 
 
-model_rebuild(OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody)
-model_rebuild(RepositoryExternalPropertyPayload)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability)
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
-    "RepositoryExternalPropertyPayload",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
 )

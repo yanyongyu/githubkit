@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,44 +18,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0650 import EnterpriseWebhooks
-from .group_0651 import SimpleInstallation
-from .group_0652 import OrganizationSimpleWebhooks
-from .group_0653 import RepositoryWebhooks
-from .group_0654 import WebhooksRule
+from .group_0099 import SimpleRepository
+from .group_0214 import PublicMonitoringRepository
+from .group_0215 import BaseGist
+from .group_0711 import PublicMonitoringAlertWebhookPropAttribution
 
 
-class WebhookBranchProtectionRuleCreated(GitHubModel):
-    """branch protection rule created event"""
+class PublicMonitoringAlertWebhook(GitHubModel):
+    """Public Monitoring Alert Webhook
 
-    action: Literal["created"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    A public monitoring alert as delivered via webhook.
+    """
+
+    number: int = Field(
+        ge=1.0,
+        description="The enterprise-scoped number of the public monitoring alert.",
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    url: str = Field(description="The REST API URL of the alert resource.")
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected."
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    secret_type_display_name: str = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."'
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    created_at: _dt.datetime = Field(
+        description="The time that the secret was detected in ISO 8601 format."
     )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    validity: Literal["active", "inactive", "unknown"] = Field(
+        description="The validity status of the secret as of the latest validity check for the enterprise alert."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    repository: Union[SimpleRepository, PublicMonitoringRepository, None] = Field()
+    gist: Missing[Union[BaseGist, None]] = Field(default=UNSET)
+    attribution: PublicMonitoringAlertWebhookPropAttribution = Field(
+        description="Attribution information for the alert."
+    )
 
 
-model_rebuild(WebhookBranchProtectionRuleCreated)
+model_rebuild(PublicMonitoringAlertWebhook)
 
-__all__ = ("WebhookBranchProtectionRuleCreated",)
+__all__ = ("PublicMonitoringAlertWebhook",)

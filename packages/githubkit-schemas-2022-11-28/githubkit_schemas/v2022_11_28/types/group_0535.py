@@ -12,49 +12,21 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TagType(TypedDict):
-    """Tag
+class ParticipationStatsType(TypedDict):
+    """Participation Stats"""
 
-    Tag
-    """
-
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
+    all_: list[int]
+    owner: list[int]
 
 
-class TagTypeForResponse(TypedDict):
-    """Tag
+class ParticipationStatsTypeForResponse(TypedDict):
+    """Participation Stats"""
 
-    Tag
-    """
-
-    name: str
-    commit: TagPropCommitTypeForResponse
-    zipball_url: str
-    tarball_url: str
-    node_id: str
-
-
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
-
-
-class TagPropCommitTypeForResponse(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = (
-    "TagPropCommitType",
-    "TagPropCommitTypeForResponse",
-    "TagType",
-    "TagTypeForResponse",
+    "ParticipationStatsType",
+    "ParticipationStatsTypeForResponse",
 )

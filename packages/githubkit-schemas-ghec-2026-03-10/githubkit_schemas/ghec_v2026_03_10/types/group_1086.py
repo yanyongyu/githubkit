@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0652 import (
+from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0658 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0703 import (
-    SecretScanningAlertWebhookType,
-    SecretScanningAlertWebhookTypeForResponse,
-)
+from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0708 import WebhooksAlertType, WebhooksAlertTypeForResponse
 
 
-class WebhookSecretScanningAlertMetadataCreatedType(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["metadata_created"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["create"]
+    alert: WebhooksAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserType]
+    sender: SimpleUserType
 
 
-class WebhookSecretScanningAlertMetadataCreatedTypeForResponse(TypedDict):
-    """secret_scanning_alert metadata created event"""
+class WebhookRepositoryVulnerabilityAlertCreateTypeForResponse(TypedDict):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["metadata_created"]
-    alert: SecretScanningAlertWebhookTypeForResponse
+    action: Literal["create"]
+    alert: WebhooksAlertTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
-    sender: NotRequired[SimpleUserTypeForResponse]
+    sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookSecretScanningAlertMetadataCreatedType",
-    "WebhookSecretScanningAlertMetadataCreatedTypeForResponse",
+    "WebhookRepositoryVulnerabilityAlertCreateType",
+    "WebhookRepositoryVulnerabilityAlertCreateTypeForResponse",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0651 import EnterpriseWebhooks
-from .group_0652 import SimpleInstallation
-from .group_0653 import OrganizationSimpleWebhooks
-from .group_0654 import RepositoryWebhooks
-from .group_0789 import WebhookForkPropForkee
+from .group_0238 import Discussion
+from .group_0657 import EnterpriseWebhooks
+from .group_0658 import SimpleInstallation
+from .group_0659 import OrganizationSimpleWebhooks
+from .group_0660 import RepositoryWebhooks
 
 
-class WebhookFork(GitHubModel):
-    """fork event
+class WebhookDiscussionPinned(GitHubModel):
+    """discussion pinned event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["pinned"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
-    )
-    forkee: WebhookForkPropForkee = Field(
-        description="The created [`repository`](https://docs.github.com/enterprise-cloud@latest/rest/repos/repos#get-a-repository) resource."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -54,6 +54,6 @@ class WebhookFork(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookFork)
+model_rebuild(WebhookDiscussionPinned)
 
-__all__ = ("WebhookFork",)
+__all__ = ("WebhookDiscussionPinned",)

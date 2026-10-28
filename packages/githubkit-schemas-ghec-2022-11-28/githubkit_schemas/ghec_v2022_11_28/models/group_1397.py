@@ -9,20 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0077 import Runner
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
+
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems
+    ] = Field()
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
+    s
+    """
 
-    total_count: float = Field()
-    runners: list[Runner] = Field()
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
+    )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200)
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems
+)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",)
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems",
+)

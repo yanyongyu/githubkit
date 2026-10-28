@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,41 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
 
-    total_count: int = Field()
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignment] = Field()
-
-
-class VisualStudioSubscriptionAssignment(GitHubModel):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: Missing[str] = Field(
+    revoke_credentials: Missing[bool] = Field(
         default=UNSET,
-        description="The email associated with the Visual Studio subscription assignment in the visual studio portal.",
-    )
-    subscription_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the Visual Studio Subscription. This is a GUID that comes from the Visual Studio management portal.",
-    )
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The GitHub username of the user associated with the Visual Studio subscription assignment.",
-    )
-    manual_match: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if the Visual Studio subscription assignment was manually matched to a user.",
+        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nenterprise members. This option is only available for Enterprise Managed User\n(EMU) enterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby enterprise members will be destroyed in addition to the credential authorizations.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200)
-model_rebuild(VisualStudioSubscriptionAssignment)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200",
-    "VisualStudioSubscriptionAssignment",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody",)

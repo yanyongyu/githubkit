@@ -13,50 +13,46 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0652 import (
+from .group_0239 import MilestoneType, MilestoneTypeForResponse
+from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0658 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0673 import WebhooksChangesType, WebhooksChangesTypeForResponse
-from .group_0698 import WebhooksReviewCommentType, WebhooksReviewCommentTypeForResponse
-from .group_1015 import (
-    WebhookPullRequestReviewCommentEditedPropPullRequestType,
-    WebhookPullRequestReviewCommentEditedPropPullRequestTypeForResponse,
-)
+from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0703 import WebhooksPullRequest5Type, WebhooksPullRequest5TypeForResponse
 
 
-class WebhookPullRequestReviewCommentEditedType(TypedDict):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestMilestonedType(TypedDict):
+    """pull_request milestoned event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesType
-    comment: WebhooksReviewCommentType
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: NotRequired[MilestoneType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequestType
+    pull_request: WebhooksPullRequest5Type
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookPullRequestReviewCommentEditedTypeForResponse(TypedDict):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestMilestonedTypeForResponse(TypedDict):
+    """pull_request milestoned event"""
 
-    action: Literal["edited"]
-    changes: WebhooksChangesTypeForResponse
-    comment: WebhooksReviewCommentTypeForResponse
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
+    milestone: NotRequired[MilestoneTypeForResponse]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequestTypeForResponse
+    pull_request: WebhooksPullRequest5TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookPullRequestReviewCommentEditedType",
-    "WebhookPullRequestReviewCommentEditedTypeForResponse",
+    "WebhookPullRequestMilestonedType",
+    "WebhookPullRequestMilestonedTypeForResponse",
 )

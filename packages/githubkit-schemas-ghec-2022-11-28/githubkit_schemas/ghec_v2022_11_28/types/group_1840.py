@@ -9,27 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 from typing_extensions import TypedDict
 
-
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
-
-    name: str
-    data_type: Literal["text", "number", "date"]
+from .group_0606 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    ref: str
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
 )

@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class SecretScanningAlertMetadataItemsType(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    key: str
+    value: str
 
 
-class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
-    TypedDict
-):
-    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
+class SecretScanningAlertMetadataItemsTypeForResponse(TypedDict):
+    """SecretScanningAlertMetadataItems"""
 
-    pattern_name: NotRequired[str]
-    pattern_scope: NotRequired[str]
+    key: str
+    value: str
 
 
 __all__ = (
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
-    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
+    "SecretScanningAlertMetadataItemsType",
+    "SecretScanningAlertMetadataItemsTypeForResponse",
 )

@@ -9,124 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetAllBudgetsType(TypedDict):
-    """GetAllBudgets"""
+class PublicMonitoringSecretAuthorType(TypedDict):
+    """PublicMonitoringSecretAuthor
 
-    budgets: list[BudgetType]
-    user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetType]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
-
-
-class GetAllBudgetsTypeForResponse(TypedDict):
-    """GetAllBudgets"""
-
-    budgets: list[BudgetTypeForResponse]
-    user: NotRequired[str]
-    effective_budget: NotRequired[GetAllBudgetsPropEffectiveBudgetTypeForResponse]
-    has_next_page: NotRequired[bool]
-    total_count: NotRequired[int]
-
-
-class GetAllBudgetsPropEffectiveBudgetType(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
-
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
+    Delivered public details for the user attributed as the secret author.
     """
 
-    id: str
-    budget_amount: int
-    consumed_amount: float
+    login: str
+    avatar_url: NotRequired[Union[str, None]]
+    html_url: NotRequired[Union[str, None]]
 
 
-class GetAllBudgetsPropEffectiveBudgetTypeForResponse(TypedDict):
-    """GetAllBudgetsPropEffectiveBudget
+class PublicMonitoringSecretAuthorTypeForResponse(TypedDict):
+    """PublicMonitoringSecretAuthor
 
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
+    Delivered public details for the user attributed as the secret author.
     """
 
-    id: str
-    budget_amount: int
-    consumed_amount: float
+    login: str
+    avatar_url: NotRequired[Union[str, None]]
+    html_url: NotRequired[Union[str, None]]
 
 
-class BudgetType(TypedDict):
-    """Budget"""
+class PublicMonitoringAlertLocationType(TypedDict):
+    """PublicMonitoringAlertLocation
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    consumed_amount: NotRequired[float]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingType
-    expires_at: NotRequired[_dt.date]
+    Delivered source location details for a public monitoring alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    blob_sha: NotRequired[str]
+    commit_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    content_number: NotRequired[int]
+    content_id: NotRequired[int]
 
 
-class BudgetTypeForResponse(TypedDict):
-    """Budget"""
+class PublicMonitoringAlertLocationTypeForResponse(TypedDict):
+    """PublicMonitoringAlertLocation
 
-    id: str
-    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    user: NotRequired[str]
-    consumed_amount: NotRequired[float]
-    budget_product_sku: str
-    budget_alerting: BudgetPropBudgetAlertingTypeForResponse
-    expires_at: NotRequired[str]
+    Delivered source location details for a public monitoring alert.
+    """
 
-
-class BudgetPropBudgetAlertingType(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
-
-
-class BudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool
-    alert_recipients: list[str]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    blob_sha: NotRequired[str]
+    commit_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    content_number: NotRequired[int]
+    content_id: NotRequired[int]
 
 
 __all__ = (
-    "BudgetPropBudgetAlertingType",
-    "BudgetPropBudgetAlertingTypeForResponse",
-    "BudgetType",
-    "BudgetTypeForResponse",
-    "GetAllBudgetsPropEffectiveBudgetType",
-    "GetAllBudgetsPropEffectiveBudgetTypeForResponse",
-    "GetAllBudgetsType",
-    "GetAllBudgetsTypeForResponse",
+    "PublicMonitoringAlertLocationType",
+    "PublicMonitoringAlertLocationTypeForResponse",
+    "PublicMonitoringSecretAuthorType",
+    "PublicMonitoringSecretAuthorTypeForResponse",
 )

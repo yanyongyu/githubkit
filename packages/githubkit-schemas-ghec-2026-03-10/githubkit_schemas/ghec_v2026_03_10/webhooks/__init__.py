@@ -284,6 +284,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .secret_scanning_alert_location import (
         secret_scanning_alert_location_action_types as secret_scanning_alert_location_action_types,
     )
+    from .secret_scanning_public_monitoring_alert import (
+        SecretScanningPublicMonitoringAlertEvent as SecretScanningPublicMonitoringAlertEvent,
+    )
+    from .secret_scanning_public_monitoring_alert import (
+        secret_scanning_public_monitoring_alert_action_types as secret_scanning_public_monitoring_alert_action_types,
+    )
     from .secret_scanning_scan import SecretScanningScanEvent as SecretScanningScanEvent
     from .secret_scanning_scan import (
         secret_scanning_scan_action_types as secret_scanning_scan_action_types,
@@ -491,6 +497,10 @@ else:
         ".secret_scanning_alert_location": (
             "SecretScanningAlertLocationEvent",
             "secret_scanning_alert_location_action_types",
+        ),
+        ".secret_scanning_public_monitoring_alert": (
+            "SecretScanningPublicMonitoringAlertEvent",
+            "secret_scanning_public_monitoring_alert_action_types",
         ),
         ".secret_scanning_scan": (
             "SecretScanningScanEvent",

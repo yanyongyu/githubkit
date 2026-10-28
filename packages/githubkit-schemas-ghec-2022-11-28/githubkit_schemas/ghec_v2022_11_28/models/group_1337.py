@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,80 +16,78 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    id: Missing[str] = Field(
-        default=UNSET, description="Unique identifier for the cost center"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
-    azure_subscription: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
-    )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: Missing[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-        ]
-    ] = Field(
-        default=UNSET, description="List of resources assigned to this cost center"
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
-    )
-    ai_credit_pool_state: Missing[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
+    organization: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
+    ] = Field(default=UNSET)
+    ruleset: Missing[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
     ] = Field(
         default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+        description="The created or existing ruleset (if create_ruleset was true).",
     )
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
 
-    type: Missing[str] = Field(
-        default=UNSET, description="Type of resource (User, Org, or Repo)"
+    id: Missing[int] = Field(default=UNSET, description="The ID of the organization.")
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the organization."
     )
-    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
+    avatar_url: Missing[str] = Field(
+        default=UNSET, description="The avatar URL of the organization."
+    )
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the .github-private repository."
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    full_name: Missing[str] = Field(
+        default=UNSET, description="The full name of the repository (owner/name)."
+    )
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
     """
 
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
+    id: Missing[int] = Field(default=UNSET, description="The ID of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    enforcement: Missing[str] = Field(
+        default=UNSET, description="The enforcement level of the ruleset."
     )
 
 
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization
 )
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
+    EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository
 )
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset",
 )

@@ -9,25 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1193 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
 )
 
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
-
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
-
-
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
-
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems",
+)

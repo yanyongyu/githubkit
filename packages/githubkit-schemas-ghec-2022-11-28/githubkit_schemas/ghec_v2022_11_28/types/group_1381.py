@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse(TypedDict):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsOidcCustomizationSubPutBodyType",
-    "OrgsOrgActionsOidcCustomizationSubPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType",
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse",
 )

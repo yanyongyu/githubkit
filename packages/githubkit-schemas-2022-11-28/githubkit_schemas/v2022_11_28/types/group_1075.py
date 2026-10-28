@@ -13,8 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -25,16 +25,18 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401Type(TypedDict
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItemsType
+            AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType
         ]
     ]
     documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -45,16 +47,18 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401TypeForRespons
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItemsTypeForResponse
+            AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItemsType(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
 
     A single validation error
     """
@@ -70,10 +74,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItem
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
 
     A single validation error
     """
@@ -90,8 +94,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItem
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400TypeForResponse",
 )

@@ -9,34 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0577 import DependabotAlertWithdrawnWebhookPropDependency
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class DependabotAlertWithdrawnWebhook(GitHubModel):
+    """DependabotAlertWithdrawnWebhook
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+    id: int = Field(description="The unique identifier of the withdrawn alert.")
+    node_id: str = Field(description="The GraphQL node ID of the withdrawn alert.")
+    number: int = Field(description="The security alert number.")
+    state: Literal["withdrawn"] = Field(
+        description="The state of the Dependabot alert."
+    )
+    dependency: DependabotAlertWithdrawnWebhookPropDependency = Field(
+        description="Details for the vulnerable dependency."
+    )
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisory = Field(
+        description="Identifiers of the advisory that produced the withdrawn alert."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    withdrawn_at: _dt.datetime = Field(
+        description="The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time."
+    )
 
 
-model_rebuild(WebhooksDeployKey)
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisory(GitHubModel):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
 
-__all__ = ("WebhooksDeployKey",)
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub identifier assigned to the advisory."
+    )
+    cve_id: Union[str, None] = Field(
+        description="The CVE identifier assigned to the advisory, if any."
+    )
+
+
+model_rebuild(DependabotAlertWithdrawnWebhook)
+model_rebuild(DependabotAlertWithdrawnWebhookPropSecurityAdvisory)
+
+__all__ = (
+    "DependabotAlertWithdrawnWebhook",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisory",
+)

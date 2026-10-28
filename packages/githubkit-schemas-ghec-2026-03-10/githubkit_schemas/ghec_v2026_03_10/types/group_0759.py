@@ -13,24 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0652 import (
+from .group_0471 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0658 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0659 import (
-    DependabotAlertWithdrawnWebhookType,
-    DependabotAlertWithdrawnWebhookTypeForResponse,
-)
+from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDependabotAlertWithdrawnType(TypedDict):
-    """Dependabot alert withdrawn event"""
+class WebhookDependabotAlertAssigneesChangedType(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["withdrawn"]
-    alert: DependabotAlertWithdrawnWebhookType
+    action: Literal["assignees_changed"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -38,11 +35,11 @@ class WebhookDependabotAlertWithdrawnType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDependabotAlertWithdrawnTypeForResponse(TypedDict):
-    """Dependabot alert withdrawn event"""
+class WebhookDependabotAlertAssigneesChangedTypeForResponse(TypedDict):
+    """Dependabot alert assignees changed event"""
 
-    action: Literal["withdrawn"]
-    alert: DependabotAlertWithdrawnWebhookTypeForResponse
+    action: Literal["assignees_changed"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
@@ -51,6 +48,6 @@ class WebhookDependabotAlertWithdrawnTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDependabotAlertWithdrawnType",
-    "WebhookDependabotAlertWithdrawnTypeForResponse",
+    "WebhookDependabotAlertAssigneesChangedType",
+    "WebhookDependabotAlertAssigneesChangedTypeForResponse",
 )

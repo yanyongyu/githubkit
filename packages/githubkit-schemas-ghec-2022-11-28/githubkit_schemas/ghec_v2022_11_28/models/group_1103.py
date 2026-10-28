@@ -18,19 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0651 import EnterpriseWebhooks
-from .group_0652 import SimpleInstallation
-from .group_0653 import OrganizationSimpleWebhooks
-from .group_0654 import RepositoryWebhooks
-from .group_0706 import WebhooksSponsorship
+from .group_0657 import EnterpriseWebhooks
+from .group_0658 import SimpleInstallation
+from .group_0659 import OrganizationSimpleWebhooks
+from .group_0660 import RepositoryWebhooks
+from .group_0711 import PublicMonitoringAlertWebhook
 
 
-class WebhookSponsorshipCreated(GitHubModel):
-    """sponsorship created event"""
+class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
+    """secret_scanning_public_monitoring_alert dismissed event"""
 
-    action: Literal["created"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
+    action: Literal["dismissed"] = Field()
+    alert: PublicMonitoringAlertWebhook = Field(
+        title="Public Monitoring Alert Webhook",
+        description="A public monitoring alert as delivered via webhook.",
+    )
+    enterprise: EnterpriseWebhooks = Field(
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
@@ -49,10 +52,11 @@ class WebhookSponsorshipCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    sponsorship: WebhooksSponsorship = Field()
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookSponsorshipCreated)
+model_rebuild(WebhookSecretScanningPublicMonitoringAlertDismissed)
 
-__all__ = ("WebhookSponsorshipCreated",)
+__all__ = ("WebhookSecretScanningPublicMonitoringAlertDismissed",)

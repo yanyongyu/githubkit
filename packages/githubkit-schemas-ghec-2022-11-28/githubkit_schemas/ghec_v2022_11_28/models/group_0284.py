@@ -9,28 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
 
-    Actions OIDC Subject customization
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
+
+    Custom repository roles created by organization owners
     """
 
-    include_claim_keys: list[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
-    )
-    use_immutable_subject: Missing[bool] = Field(
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
+    )
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(OrganizationCustomRepositoryRole)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("OrganizationCustomRepositoryRole",)

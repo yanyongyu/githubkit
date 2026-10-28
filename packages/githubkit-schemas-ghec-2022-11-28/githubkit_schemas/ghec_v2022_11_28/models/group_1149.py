@@ -18,227 +18,485 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0657 import EnterpriseWebhooks
+from .group_0658 import SimpleInstallation
+from .group_0659 import OrganizationSimpleWebhooks
+from .group_0660 import RepositoryWebhooks
+from .group_0669 import WebhooksWorkflow
 
-class AgentsAutomationsAutomationIdTasksGetResponse200(GitHubModel):
-    """AgentsAutomationsAutomationIdTasksGetResponse200
 
-    A page of tasks created by an automation.
-    """
+class WebhookWorkflowRunRequested(GitHubModel):
+    """workflow_run requested event"""
 
-    tasks: list[AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems] = Field(
-        description="Tasks created by the automation."
+    action: Literal["requested"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
+    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRun = Field(
+        title="Workflow Run"
     )
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems(GitHubModel):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems"""
+class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
+    """Workflow Run"""
 
-    id: str = Field(description="Unique task identifier")
-    url: Missing[str] = Field(default=UNSET, description="API URL for this task")
-    html_url: Missing[str] = Field(default=UNSET, description="Web URL for this task")
-    name: Missing[str] = Field(
-        default=UNSET, description="Human-readable name derived from the task prompt"
+    actor: Union[WebhookWorkflowRunRequestedPropWorkflowRunPropActor, None] = Field(
+        title="User"
     )
-    creator: Missing[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
-    ] = Field(default=UNSET, description="The entity who created this task")
-    creator_type: Missing[Literal["user", "organization"]] = Field(
-        default=UNSET, description="Type of the task creator"
+    artifacts_url: str = Field()
+    cancel_url: str = Field()
+    check_suite_id: int = Field()
+    check_suite_node_id: str = Field()
+    check_suite_url: str = Field()
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            "startup_failure",
+        ],
+        None,
+    ] = Field()
+    created_at: _dt.datetime = Field()
+    event: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit = Field(
+        title="SimpleCommit"
     )
-    user_collaborators: Missing[
-        list[
-            AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
+    head_repository: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository = (
+        Field(title="Repository Lite")
+    )
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    jobs_url: str = Field()
+    logs_url: str = Field()
+    name: Union[str, None] = Field()
+    node_id: str = Field()
+    path: str = Field()
+    previous_attempt_url: Union[str, None] = Field()
+    pull_requests: list[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems
+    ] = Field()
+    referenced_workflows: Missing[
+        Union[
+            list[
+                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems
+            ],
+            None,
         ]
-    ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner
-    ] = Field(default=UNSET, description="The owner of the repository")
-    repository: Missing[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
-    ] = Field(default=UNSET, description="The repository this task belongs to")
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ] = Field(
-        description="Current state of the task, derived from its most recent session"
+    ] = Field(default=UNSET)
+    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepository = Field(
+        title="Repository Lite"
     )
-    session_count: Missing[int] = Field(
-        default=UNSET, description="Number of sessions in this task"
-    )
-    artifacts: Missing[
-        list[
-            AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Resources created by this task (PRs, branches, etc.)",
-    )
-    archived_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp when the task was archived, null if not archived",
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="Timestamp of the most recent update"
-    )
-    created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
-    ] = Field(
-        default=UNSET, description="Custom agent metadata associated with this task"
-    )
+    rerun_url: str = Field()
+    run_attempt: int = Field()
+    run_number: int = Field()
+    run_started_at: _dt.datetime = Field()
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "pending", "waiting"
+    ] = Field()
+    triggering_actor: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor, None
+    ] = Field(title="User")
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    workflow_id: int = Field()
+    workflow_url: str = Field()
+    display_title: str = Field()
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropActor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems(
     GitHubModel
 ):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
 
-    A GitHub user
-    """
+    path: str = Field()
+    ref: Missing[str] = Field(default=UNSET)
+    sha: str = Field()
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit(GitHubModel):
+    """SimpleCommit"""
+
+    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
     )
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems(
-    GitHubModel
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaborat
-    orsItems
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter = (
+        Field(
+            title="Committer",
+            description="Metaproperties for Git author/committer information.",
+        )
     )
+    id: str = Field()
+    message: str = Field()
+    timestamp: str = Field()
+    tree_id: str = Field()
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner(
-    GitHubModel
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
+    """Committer
 
-    The owner of the repository
+    Metaproperties for Git author/committer information.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    date: Missing[_dt.datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter(
+    GitHubModel
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[_dt.datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository(GitHubModel):
+    """Repository Lite"""
+
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner, None
+    ] = Field(title="User")
+    private: bool = Field(description="Whether the repository is private or public.")
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner(
+    GitHubModel
+):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepository(GitHubModel):
+    """Repository Lite"""
+
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner, None
+    ] = Field(title="User")
+    private: bool = Field(description="Whether the repository is private or public.")
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems(GitHubModel):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
+
+    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase = (
+        Field()
     )
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository(
-    GitHubModel
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
-
-    The repository this task belongs to
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the repository"
+    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead = (
+        Field()
     )
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase(
     GitHubModel
 ):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
-    Custom agent metadata associated with this task
-    """
-
-    id: Missing[str] = Field(
-        default=UNSET,
-        description="The custom agent's filename without the extension - for example, `performance-optimizer` for a `.github/agents/performance-optimizer.agent.md` custom agent.",
+    ref: str = Field()
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
+        title="Repo Ref"
     )
+    sha: str = Field()
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
     GitHubModel
 ):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
+    """Repo Ref"""
 
-    A resource generated by the task
-    """
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
 
-    provider: Literal["github"] = Field(description="Provider namespace")
-    type: Literal["pull", "branch"] = Field(
-        description="Type of artifact. Available Values: `pull`, `branch`.\n"
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead(
+    GitHubModel
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
+        title="Repo Ref"
     )
-    data: Union[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
-    ] = Field(description="Resource data (shape depends on type)")
+    sha: str = Field()
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
     GitHubModel
 ):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-    PropDataOneof0
+    """Repo Ref"""
 
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int = Field(description="GitHub resource ID")
-    global_id: Missing[str] = Field(default=UNSET, description="GraphQL global ID")
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1(
-    GitHubModel
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-    PropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str = Field(description="Head branch name")
-    base_ref: str = Field(description="Base branch name")
-
-
-model_rebuild(AgentsAutomationsAutomationIdTasksGetResponse200)
-model_rebuild(AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems)
+model_rebuild(WebhookWorkflowRunRequested)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRun)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropActor)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepository)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase)
 model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
+    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
 )
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead)
 model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems
-)
-model_rebuild(AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner)
-model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
-)
-model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
-)
-model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-)
-model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0
-)
-model_rebuild(
-    AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1
+    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
 )
 
 __all__ = (
-    "AgentsAutomationsAutomationIdTasksGetResponse200",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems",
+    "WebhookWorkflowRunRequested",
+    "WebhookWorkflowRunRequestedPropWorkflowRun",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropActor",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepository",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor",
 )

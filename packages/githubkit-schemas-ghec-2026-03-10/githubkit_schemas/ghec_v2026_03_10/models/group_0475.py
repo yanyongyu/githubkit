@@ -9,26 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class DeploymentBranchPolicySettings(GitHubModel):
-    """DeploymentBranchPolicySettings
+class Metadata(ExtraGitHubModel):
+    """metadata
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
-    protected_branches: bool = Field(
-        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
-    )
-    custom_branch_policies: bool = Field(
-        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
-    )
 
+model_rebuild(Metadata)
 
-model_rebuild(DeploymentBranchPolicySettings)
-
-__all__ = ("DeploymentBranchPolicySettings",)
+__all__ = ("Metadata",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0567 import EnterpriseWebhooks
-from .group_0568 import SimpleInstallation
-from .group_0569 import OrganizationSimpleWebhooks
-from .group_0570 import RepositoryWebhooks
-from .group_0583 import WebhooksLabel
-from .group_0946 import WebhookPullRequestUnlabeledPropPullRequest
+from .group_0569 import EnterpriseWebhooks
+from .group_0570 import SimpleInstallation
+from .group_0571 import OrganizationSimpleWebhooks
+from .group_0572 import RepositoryWebhooks
+from .group_0594 import WebhooksUserMannequin
+from .group_0946 import WebhookPullRequestUnassignedPropPullRequest
 
 
-class WebhookPullRequestUnlabeled(GitHubModel):
-    """pull_request unlabeled event"""
+class WebhookPullRequestUnassigned(GitHubModel):
+    """pull_request unassigned event"""
 
-    action: Literal["unlabeled"] = Field()
+    action: Literal["unassigned"] = Field()
+    assignee: Missing[Union[WebhooksUserMannequin, None]] = Field(
+        default=UNSET, title="User"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,14 +43,13 @@ class WebhookPullRequestUnlabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
     number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestUnlabeledPropPullRequest = Field(
+    pull_request: WebhookPullRequestUnassignedPropPullRequest = Field(
         title="Pull Request"
     )
     repository: RepositoryWebhooks = Field(
@@ -57,6 +59,6 @@ class WebhookPullRequestUnlabeled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestUnlabeled)
+model_rebuild(WebhookPullRequestUnassigned)
 
-__all__ = ("WebhookPullRequestUnlabeled",)
+__all__ = ("WebhookPullRequestUnassigned",)

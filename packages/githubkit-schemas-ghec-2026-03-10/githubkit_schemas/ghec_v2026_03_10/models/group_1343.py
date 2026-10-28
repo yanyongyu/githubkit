@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,35 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsPostBody"""
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A description of the team."
+    default_availability: Missing[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+    ] = Field(default=UNSET)
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
     )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
-        default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be set.\n",
-    )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments) endpoint.\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The ID of the IdP group to assign team membership with. You can get this value from the [REST API endpoints for SCIM](https://docs.github.com/enterprise-cloud@latest/rest/scim#list-provisioned-scim-groups-for-an-enterprise).",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
     ] = Field(
-        default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n\nDefault: `notifications_enabled`\n",
+        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems)
 
-__all__ = ("EnterprisesEnterpriseTeamsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems",
+)

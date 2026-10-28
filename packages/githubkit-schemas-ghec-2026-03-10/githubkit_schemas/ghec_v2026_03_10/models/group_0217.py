@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,76 +18,77 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0099 import SimpleRepository
+from .group_0214 import PublicMonitoringRepository
+from .group_0215 import BaseGist
+from .group_0218 import PublicMonitoringAlertPropAttribution
 
-class CreateBudget(GitHubModel):
-    """CreateBudget"""
 
-    message: str = Field(
-        description="A message indicating the result of the create operation"
+class PublicMonitoringAlert(GitHubModel):
+    """PublicMonitoringAlert"""
+
+    number: int = Field(
+        ge=1.0, description="The enterprise-scoped public monitoring alert number."
     )
-    budget: CreateBudgetPropBudget = Field()
-
-
-class CreateBudgetPropBudget(GitHubModel):
-    """CreateBudgetPropBudget"""
-
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_scope: Missing[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ] = Field(default=UNSET, description="The type of scope for the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
+    url: str = Field(description="The REST API URL of the alert resource.")
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
     )
-    budget_amount: Missing[int] = Field(
+    secret_type_display_name: Missing[str] = Field(
         default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
-    prevent_further_usage: Missing[bool] = Field(
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
         default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
+        description="The validity status of the secret as of the latest validity check.",
     )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET, description="A single product or sku to apply the budget to."
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing", "BundlePricing"]] = (
-        Field(default=UNSET, description="The type of pricing for the budget")
-    )
-    budget_alerting: Missing[CreateBudgetPropBudgetPropBudgetAlerting] = Field(
-        default=UNSET
-    )
-    expires_at: Missing[_dt.date] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
+        description="The time that the secret was detected in ISO 8601 format.",
     )
-
-
-class CreateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
-
-    will_alert: Missing[bool] = Field(
+    state: Missing[Literal["open", "resolved"]] = Field(
         default=UNSET,
-        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
     )
-    alert_recipients: Missing[list[str]] = Field(
+    resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = Field(
         default=UNSET,
-        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when resolving or reopening an alert.",
+    )
+    secret: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[Union[SimpleRepository, PublicMonitoringRepository, None]] = (
+        Field(default=UNSET)
+    )
+    gist: Missing[Union[BaseGist, PublicMonitoringAlertPropGistAnyof1, None]] = Field(
+        default=UNSET, description="The gist the secret was found in."
+    )
+    attribution: Missing[PublicMonitoringAlertPropAttribution] = Field(
+        default=UNSET, description="Attribution information for the alert."
     )
 
 
-model_rebuild(CreateBudget)
-model_rebuild(CreateBudgetPropBudget)
-model_rebuild(CreateBudgetPropBudgetPropBudgetAlerting)
+class PublicMonitoringAlertPropGistAnyof1(GitHubModel):
+    """PublicMonitoringAlertPropGistAnyof1"""
+
+    id: str = Field()
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(PublicMonitoringAlert)
+model_rebuild(PublicMonitoringAlertPropGistAnyof1)
 
 __all__ = (
-    "CreateBudget",
-    "CreateBudgetPropBudget",
-    "CreateBudgetPropBudgetPropBudgetAlerting",
+    "PublicMonitoringAlert",
+    "PublicMonitoringAlertPropGistAnyof1",
 )

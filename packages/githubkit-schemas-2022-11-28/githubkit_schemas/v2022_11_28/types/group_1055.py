@@ -9,340 +9,87 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200Type(TypedDict):
-    """AgentsAutomationsAutomationIdTasksGetResponse200
+class AgentsReposOwnerRepoAutomationsPostResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse400
 
-    A page of tasks created by an automation.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    tasks: list[AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsType]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse200TypeForResponse(TypedDict):
-    """AgentsAutomationsAutomationIdTasksGetResponse200
+class AgentsReposOwnerRepoAutomationsPostResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse400
 
-    A page of tasks created by an automation.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    tasks: list[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsTypeForResponse
-    ]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsType(TypedDict):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
+    message: str
+    errors: NotRequired[
         list[
-            AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType
+            AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsTypeForResponse
         ]
     ]
-    owner: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    repository: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[
-            AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType
-        ]
-    ]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    updated_at: NotRequired[_dt.datetime]
-    created_at: _dt.datetime
-    custom_agent: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType
-    ]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItems"""
-
-    id: str
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    name: NotRequired[str]
-    creator: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse
-    ]
-    creator_type: NotRequired[Literal["user", "organization"]]
-    user_collaborators: NotRequired[
-        list[
-            AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse
-        ]
-    ]
-    owner: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse
-    ]
-    repository: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse
-    ]
-    state: Literal[
-        "queued",
-        "in_progress",
-        "completed",
-        "failed",
-        "idle",
-        "waiting_for_user",
-        "timed_out",
-        "cancelled",
-    ]
-    session_count: NotRequired[int]
-    artifacts: NotRequired[
-        list[
-            AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse
-        ]
-    ]
-    archived_at: NotRequired[Union[str, None]]
-    updated_at: NotRequired[str]
-    created_at: str
-    custom_agent: NotRequired[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentTypeForResponse
-    ]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaborat
-    orsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaborat
-    orsItems
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner
-
-    The owner of the repository
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository
-
-    The repository this task belongs to
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent
-
-    Custom agent metadata associated with this task
-    """
-
-    id: NotRequired[str]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
-    ]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-
-    A resource generated by the task
-    """
-
-    provider: Literal["github"]
-    type: Literal["pull", "branch"]
-    data: Union[
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse,
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse,
-    ]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-    PropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int
-    global_id: NotRequired[str]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-    PropDataOneof0
-
-    A GitHub resource (pull request, issue, etc.)
-    """
-
-    id: int
-    global_id: NotRequired[str]
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-    PropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
-
-
-class AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems
-    PropDataOneof1
-
-    A Git branch reference
-    """
-
-    head_ref: str
-    base_ref: str
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0TypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1TypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0TypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsType",
-    "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsTypeForResponse",
-    "AgentsAutomationsAutomationIdTasksGetResponse200Type",
-    "AgentsAutomationsAutomationIdTasksGetResponse200TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostResponse400Type",
+    "AgentsReposOwnerRepoAutomationsPostResponse400TypeForResponse",
 )

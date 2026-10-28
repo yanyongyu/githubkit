@@ -9,56 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0525 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
+class ReposOwnerRepoPullsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
-class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+class ReposOwnerRepoPullsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPostBody"""
 
-    ref: str
-
-
-class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
-
-    ref: str
+    title: NotRequired[str]
+    head: str
+    head_repo: NotRequired[str]
+    base: str
+    body: NotRequired[str]
+    maintainer_can_modify: NotRequired[bool]
+    draft: NotRequired[bool]
+    issue: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse201PropBaseType",
-    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse201Type",
-    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
+    "ReposOwnerRepoPullsPostBodyType",
+    "ReposOwnerRepoPullsPostBodyTypeForResponse",
 )

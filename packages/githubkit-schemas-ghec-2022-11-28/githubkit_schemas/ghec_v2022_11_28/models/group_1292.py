@@ -12,22 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0045 import OrganizationSimple
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-    organization_id: int = Field(
-        description="The ID of the organization to use as the custom agents source."
-    )
-    create_ruleset: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
-    )
+    total_count: float = Field()
+    organizations: list[OrganizationSimple] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
+model_rebuild(
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200
+)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200",
+)

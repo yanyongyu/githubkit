@@ -9,37 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0245 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
+
+class IssueCommentMinimizedType(TypedDict):
+    """Minimized Issue Comment
+
+    Details about why an issue comment was minimized.
+    """
+
+    reason: Union[str, None]
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class IssueCommentMinimizedTypeForResponse(TypedDict):
+    """Minimized Issue Comment
 
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+    Details about why an issue comment was minimized.
+    """
 
-
-class PullRequestMinimalTypeForResponse(TypedDict):
-    """Pull Request Minimal"""
-
-    id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
+    reason: Union[str, None]
 
 
 __all__ = (
-    "PullRequestMinimalType",
-    "PullRequestMinimalTypeForResponse",
+    "IssueCommentMinimizedType",
+    "IssueCommentMinimizedTypeForResponse",
 )

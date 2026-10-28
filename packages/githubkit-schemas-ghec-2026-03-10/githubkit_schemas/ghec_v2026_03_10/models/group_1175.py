@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,18 +31,28 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems]
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
+        ]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
 
     A single validation error
     """
@@ -61,12 +71,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422",
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems",
 )

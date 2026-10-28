@@ -9,31 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
-    )
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
+    total_count: int = Field()
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignment] = Field()
+
+
+class VisualStudioSubscriptionAssignment(GitHubModel):
+    """Visual Studio Subscription Assignment
+
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: Missing[str] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="The email associated with the Visual Studio subscription assignment in the visual studio portal.",
+    )
+    subscription_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the Visual Studio Subscription. This is a GUID that comes from the Visual Studio management portal.",
+    )
+    username: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GitHub username of the user associated with the Visual Studio subscription assignment.",
+    )
+    manual_match: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if the Visual Studio subscription assignment was manually matched to a user.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200)
+model_rebuild(VisualStudioSubscriptionAssignment)
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200",
+    "VisualStudioSubscriptionAssignment",
+)

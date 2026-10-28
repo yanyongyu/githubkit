@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,23 +18,65 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AppHookConfigPatchBody(GitHubModel):
-    """AppHookConfigPatchBody"""
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    content_type: Missing[str] = Field(
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems
+        ]
+    ] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="List of validation errors (present only for 422 responses)",
     )
-    secret: Missing[str] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
         default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-model_rebuild(AppHookConfigPatchBody)
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems
 
-__all__ = ("AppHookConfigPatchBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422)
+model_rebuild(
+    AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems",
+)

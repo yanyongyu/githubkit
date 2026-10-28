@@ -9,151 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody(GitHubModel):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody"""
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    vulnerabilities: list[OsvVulnerability] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Array of vulnerabilities in OSV format to synchronize",
-    )
-
-
-class OsvVulnerability(GitHubModel):
-    """OSV Vulnerability
-
-    A vulnerability in OSV (Open Source Vulnerability) format
-    """
-
-    id: str = Field(
-        description="Unique identifier for the vulnerability from the external system"
-    )
-    schema_version: Missing[str] = Field(
-        default=UNSET, description="The OSV schema version"
-    )
-    summary: Missing[str] = Field(
-        default=UNSET, description="A short summary of the vulnerability"
-    )
-    details: Missing[str] = Field(
-        default=UNSET, description="Detailed description of the vulnerability"
-    )
-    aliases: Missing[list[str]] = Field(
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="IDs for the same vulnerability in other databases. Only CVE IDs are used (to populate the vulnerability's CVE identifier); other aliases are ignored.",
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
     )
-    severity: Missing[list[OsvVulnerabilityPropSeverityItems]] = Field(
-        default=UNSET, description="Severity information for the vulnerability"
-    )
-    affected: Missing[list[OsvVulnerabilityPropAffectedItems]] = Field(
-        default=UNSET, description="Packages and versions affected by the vulnerability"
-    )
-    references: Missing[list[OsvVulnerabilityPropReferencesItems]] = Field(
-        default=UNSET, description="URLs for more information about the vulnerability"
-    )
-    published: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the vulnerability was first published"
-    )
-    modified: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the vulnerability was last modified"
-    )
-    withdrawn: Missing[_dt.datetime] = Field(
+    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
         default=UNSET,
-        description="When the vulnerability was withdrawn. If present, the vulnerability will be marked as withdrawn.",
+        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
     )
-
-
-class OsvVulnerabilityPropSeverityItems(GitHubModel):
-    """OsvVulnerabilityPropSeverityItems"""
-
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of severity scoring (e.g., CVSS_V3)"
-    )
-    score: Missing[str] = Field(
-        default=UNSET, description="The severity score or vector string"
-    )
-
-
-class OsvVulnerabilityPropReferencesItems(GitHubModel):
-    """OsvVulnerabilityPropReferencesItems"""
-
-    type: Missing[str] = Field(
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="The type of reference. Supported values: PACKAGE, ADVISORY, WEB, FIX, ARTICLE, REPORT, EVIDENCE. References with other types are ignored.",
+        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
     )
-    url: Missing[str] = Field(default=UNSET, description="The reference URL")
-
-
-class OsvVulnerabilityPropAffectedItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItems"""
-
-    package: Missing[OsvVulnerabilityPropAffectedItemsPropPackage] = Field(
-        default=UNSET
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/about-secret-scanning)."',
     )
-    ranges: Missing[list[OsvVulnerabilityPropAffectedItemsPropRangesItems]] = Field(
-        default=UNSET
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
     )
-
-
-class OsvVulnerabilityPropAffectedItemsPropPackage(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropPackage"""
-
-    ecosystem: Missing[str] = Field(
-        default=UNSET, description="The package ecosystem (e.g., npm, pip, maven)"
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
     )
-    name: Missing[str] = Field(default=UNSET, description="The package name")
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItems"""
-
-    type: Missing[str] = Field(default=UNSET)
-    events: Missing[
-        list[OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems]
-    ] = Field(default=UNSET)
-
-
-class OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems(GitHubModel):
-    """OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems"""
-
-    introduced: Missing[str] = Field(
-        default=UNSET, description="The version that introduced the vulnerability"
-    )
-    fixed: Missing[str] = Field(
-        default=UNSET, description="The version that fixed the vulnerability"
-    )
-    last_affected: Missing[str] = Field(
-        default=UNSET, description="The last affected version"
-    )
-    limit: Missing[str] = Field(
-        default=UNSET, description="The upper limit of the affected range"
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        Union[bool, None]
+    ] = Field(
+        default=UNSET,
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody)
-model_rebuild(OsvVulnerability)
-model_rebuild(OsvVulnerabilityPropSeverityItems)
-model_rebuild(OsvVulnerabilityPropReferencesItems)
-model_rebuild(OsvVulnerabilityPropAffectedItems)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropPackage)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItems)
-model_rebuild(OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems)
+model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncPostBody",
-    "OsvVulnerability",
-    "OsvVulnerabilityPropAffectedItems",
-    "OsvVulnerabilityPropAffectedItemsPropPackage",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItems",
-    "OsvVulnerabilityPropAffectedItemsPropRangesItemsPropEventsItems",
-    "OsvVulnerabilityPropReferencesItems",
-    "OsvVulnerabilityPropSeverityItems",
-)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)

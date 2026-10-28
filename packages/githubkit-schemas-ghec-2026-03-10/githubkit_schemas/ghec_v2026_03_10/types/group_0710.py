@@ -9,45 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0652 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0214 import (
+    PublicMonitoringRepositoryType,
+    PublicMonitoringRepositoryTypeForResponse,
 )
-from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0654 import WebhooksRuleType, WebhooksRuleTypeForResponse
+from .group_0215 import BaseGistType, BaseGistTypeForResponse
+from .group_0711 import (
+    PublicMonitoringAlertWebhookPropAttributionType,
+    PublicMonitoringAlertWebhookPropAttributionTypeForResponse,
+)
 
 
-class WebhookBranchProtectionRuleCreatedType(TypedDict):
-    """branch protection rule created event"""
+class PublicMonitoringAlertWebhookType(TypedDict):
+    """Public Monitoring Alert Webhook
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
+    A public monitoring alert as delivered via webhook.
+    """
+
+    number: int
+    url: str
+    secret_type: str
+    secret_type_display_name: str
+    created_at: _dt.datetime
+    validity: Literal["active", "inactive", "unknown"]
+    repository: Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
+    gist: NotRequired[Union[BaseGistType, None]]
+    attribution: PublicMonitoringAlertWebhookPropAttributionType
 
 
-class WebhookBranchProtectionRuleCreatedTypeForResponse(TypedDict):
-    """branch protection rule created event"""
+class PublicMonitoringAlertWebhookTypeForResponse(TypedDict):
+    """Public Monitoring Alert Webhook
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
-    sender: SimpleUserTypeForResponse
+    A public monitoring alert as delivered via webhook.
+    """
+
+    number: int
+    url: str
+    secret_type: str
+    secret_type_display_name: str
+    created_at: str
+    validity: Literal["active", "inactive", "unknown"]
+    repository: Union[
+        SimpleRepositoryTypeForResponse, PublicMonitoringRepositoryTypeForResponse, None
+    ]
+    gist: NotRequired[Union[BaseGistTypeForResponse, None]]
+    attribution: PublicMonitoringAlertWebhookPropAttributionTypeForResponse
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleCreatedType",
-    "WebhookBranchProtectionRuleCreatedTypeForResponse",
+    "PublicMonitoringAlertWebhookType",
+    "PublicMonitoringAlertWebhookTypeForResponse",
 )

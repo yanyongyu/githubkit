@@ -60,6 +60,10 @@ class CodeSecurityConfiguration(GitHubModel):
     dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of Dependabot alerts"
     )
+    dependabot_reachability: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET,
+        description="The enablement status of reachability analysis for Dependabot. Only returned for organizations and enterprises with access to reachability analysis.",
+    )
     dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
             default=UNSET,
@@ -129,6 +133,12 @@ class CodeSecurityConfiguration(GitHubModel):
         Literal["enabled", "disabled", "not_set"]
     ] = Field(
         default=UNSET, description="The enablement status of Copilot secret scanning"
+    )
+    secret_scanning_generic_secrets_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of generic secrets push protection",
     )
     secret_scanning_delegated_alert_dismissal: Missing[
         Literal["enabled", "disabled", "not_set"]

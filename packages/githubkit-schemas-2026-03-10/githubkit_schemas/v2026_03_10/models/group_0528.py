@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class StargazerHistory(GitHubModel):
-    """Stargazer History
-
-    Stargazer History
-    """
-
-    days: list[int] = Field(
-        description="The number of stars created on each day of the week, starting on Sunday."
-    )
-    total: int = Field(description="The number of stars created during the week.")
-    week: int = Field(description="The start of the week, given as a Unix timestamp.")
+from .group_0003 import SimpleUser
 
 
-model_rebuild(StargazerHistory)
+class PullRequestStackPullRequestAllof1(GitHubModel):
+    """PullRequestStackPullRequestAllof1"""
 
-__all__ = ("StargazerHistory",)
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
+
+
+model_rebuild(PullRequestStackPullRequestAllof1)
+
+__all__ = ("PullRequestStackPullRequestAllof1",)

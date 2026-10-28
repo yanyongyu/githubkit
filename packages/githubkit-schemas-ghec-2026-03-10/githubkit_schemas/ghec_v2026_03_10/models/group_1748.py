@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,17 +19,135 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1"""
 
-    reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of user `login`s that will be requested."
+    artifact: IssueArtifact = Field(
+        title="Issue artifact",
+        description="Issue artifacts are named, typed pieces of content attached to an issue.\nThey give people and agents a durable place to preserve context and\nsupporting material alongside the work. Each artifact has a number unique\nwithin the issue.",
     )
-    team_reviewers: list[str] = Field(
-        description="An array of team `slug`s that will be requested."
+    versions: list[
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
+    ] = Field(
+        description="The artifact version history, ordered from newest to oldest."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
+class IssueArtifact(GitHubModel):
+    """Issue artifact
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)
+    Issue artifacts are named, typed pieces of content attached to an issue.
+    They give people and agents a durable place to preserve context and
+    supporting material alongside the work. Each artifact has a number unique
+    within the issue.
+    """
+
+    id: int = Field(description="The globally unique identifier of the artifact.")
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The canonical browser URL for the artifact in its issue context.",
+    )
+    number: int = Field(description="The artifact number within the issue.")
+    type: str = Field(
+        description="The artifact type. The types supported for external creation and filtering are:\n\n- `generic` is a general-purpose Markdown document.\n- `link` represents a named link.\n- `plan` is a Markdown plan.\n- `embedded_html` is a self-contained HTML document. Its `body` contains the HTML source."
+    )
+    name: str = Field(description="The human-readable name of the artifact.")
+    body: str = Field(
+        description="The artifact content. For `embedded_html` artifacts, this is the HTML source."
+    )
+    body_html: Union[str, None] = Field(
+        description="The artifact content rendered as HTML, or `null` if rendering times out or is skipped\nto protect the response's time budget. The raw content remains available in `body`."
+    )
+    description: str = Field(description="A short, generated summary of the artifact.")
+    creator: Union[IssueArtifactPropCreator, None] = Field(
+        description="The user or integration that created the artifact."
+    )
+    updated_by_actor: Union[IssueArtifactPropUpdatedByActor, None] = Field(
+        description="The user or integration that most recently updated the artifact."
+    )
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The time the artifact was created."
+    )
+    updated_at: Union[_dt.datetime, None] = Field(
+        description="The time the artifact was last updated."
+    )
+
+
+class IssueArtifactPropCreator(GitHubModel):
+    """IssueArtifactPropCreator
+
+    The user or integration that created the artifact.
+    """
+
+    login: str = Field()
+    id: int = Field()
+
+
+class IssueArtifactPropUpdatedByActor(GitHubModel):
+    """IssueArtifactPropUpdatedByActor
+
+    The user or integration that most recently updated the artifact.
+    """
+
+    login: str = Field()
+    id: int = Field()
+
+
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
+    rsionsItems
+    """
+
+    version: int = Field(description="The sequential version number.")
+    name: str = Field(description="The artifact name at this version.")
+    body: str = Field(description="The artifact content at this version.")
+    body_html: Union[str, None] = Field(
+        description="The artifact content at this version rendered as HTML, or `null` if rendering times out\nor is skipped to protect the response's time budget. The raw content remains available in `body`."
+    )
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The time this version was created."
+    )
+    actor: Union[
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor,
+        None,
+    ] = Field(description="The user or integration that created this version.")
+
+
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
+    rsionsItemsPropActor
+
+    The user or integration that created this version.
+    """
+
+    login: str = Field()
+    id: int = Field()
+
+
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1
+)
+model_rebuild(IssueArtifact)
+model_rebuild(IssueArtifactPropCreator)
+model_rebuild(IssueArtifactPropUpdatedByActor)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
+)
+model_rebuild(
+    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor
+)
+
+__all__ = (
+    "IssueArtifact",
+    "IssueArtifactPropCreator",
+    "IssueArtifactPropUpdatedByActor",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor",
+)

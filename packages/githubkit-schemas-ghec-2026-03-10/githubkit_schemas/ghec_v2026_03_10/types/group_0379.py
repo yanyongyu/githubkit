@@ -10,32 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ActionsSecretType(TypedDict):
-    """Actions Secret
+class ConcurrencyGroupListType(TypedDict):
+    """Concurrency Group List
 
-    Set secrets for GitHub Actions.
+    A list of active concurrency groups for a repository.
     """
 
-    name: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
 
 
-class ActionsSecretTypeForResponse(TypedDict):
-    """Actions Secret
+class ConcurrencyGroupListTypeForResponse(TypedDict):
+    """Concurrency Group List
 
-    Set secrets for GitHub Actions.
+    A list of active concurrency groups for a repository.
     """
 
-    name: str
-    created_at: str
-    updated_at: str
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[_dt.datetime, None]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[str, None]
 
 
 __all__ = (
-    "ActionsSecretType",
-    "ActionsSecretTypeForResponse",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupListType",
+    "ConcurrencyGroupListTypeForResponse",
 )

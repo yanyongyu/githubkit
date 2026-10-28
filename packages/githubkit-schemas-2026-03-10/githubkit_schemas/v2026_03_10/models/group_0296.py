@@ -120,7 +120,10 @@ class TeamRepository(GitHubModel):
     allow_rebase_merge: Missing[bool] = Field(
         default=UNSET, description="Whether to allow rebase merges for pull requests."
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+    )
     allow_squash_merge: Missing[bool] = Field(
         default=UNSET, description="Whether to allow squash merges for pull requests."
     )

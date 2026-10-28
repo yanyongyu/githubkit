@@ -9,85 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0045 import OrganizationSimple
 
-class CopilotOrganizationDetails(ExtraGitHubModel):
-    """Copilot Organization Details
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business or Copilot Enterprise subscription.
+class CopilotSpace(GitHubModel):
+    """Space
+
+    A GitHub Copilot Space represents an interactive AI workspace where users can
+    ask questions and get assistance.
     """
 
-    seat_breakdown: CopilotOrganizationSeatBreakdown = Field(
-        title="Copilot Seat Breakdown",
-        description="The breakdown of Copilot Business seats for the organization.",
+    id: int = Field(description="The unique identifier of the space.")
+    number: int = Field(
+        description="The number that identifies the space within its owner."
     )
-    public_code_suggestions: Literal["allow", "block", "unconfigured"] = Field(
-        description="The organization policy for allowing or blocking suggestions matching public code (duplication detection filter)."
+    name: str = Field(description="The display name of the space.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A description of the space."
     )
-    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot Chat in the IDE.",
+    general_instructions: Missing[
+        Union[Annotated[str, Field(max_length=4000)], None]
+    ] = Field(default=UNSET, description="General instructions for the Copilot Space.")
+    base_role: Literal["reader", "writer", "admin", "no_access"] = Field(
+        description="The base role that determines default permissions.\n- `no_access`: No default access\n- `reader`: Default read permissions\n- `writer`: Default write permissions (organization spaces only)\n- `admin`: Default admin permissions (organization spaces only)"
     )
-    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot features on GitHub.com.",
+    owner: Union[SimpleUser, OrganizationSimple] = Field(
+        description="The user or organization that owns this space."
     )
-    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
-        default=UNSET,
-        description="The organization policy for allowing or disallowing Copilot CLI.",
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: _dt.datetime = Field(
+        description="The date and time the space was created."
     )
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ] = Field(description="The mode of assigning new seats.")
-    plan_type: Missing[Literal["business", "enterprise"]] = Field(
-        default=UNSET,
-        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    updated_at: _dt.datetime = Field(
+        description="The date and time the space was last updated."
+    )
+    html_url: str = Field(description="The HTML URL of the space.")
+    api_url: str = Field(description="The API URL of the space.")
+    resources_attributes: Missing[list[CopilotSpacePropResourcesAttributesItems]] = (
+        Field(default=UNSET, description="Resources attached to the space.")
     )
 
 
-class CopilotOrganizationSeatBreakdown(GitHubModel):
-    """Copilot Seat Breakdown
+class CopilotSpacePropResourcesAttributesItems(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItems"""
 
-    The breakdown of Copilot Business seats for the organization.
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the resource."
+    )
+    resource_type: Missing[
+        Literal[
+            "repository",
+            "github_file",
+            "free_text",
+            "github_issue",
+            "github_pull_request",
+            "media_content",
+            "uploaded_text_file",
+        ]
+    ] = Field(default=UNSET, description="The type of resource.")
+    copilot_chat_attachment_id: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The unique identifier of the chat attachment for uploaded files or media content.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The date and time the resource was last updated."
+    )
+    metadata: Missing[CopilotSpacePropResourcesAttributesItemsPropMetadata] = Field(
+        default=UNSET, description="Metadata specific to the resource type."
+    )
+
+
+class CopilotSpacePropResourcesAttributesItemsPropMetadata(GitHubModel):
+    """CopilotSpacePropResourcesAttributesItemsPropMetadata
+
+    Metadata specific to the resource type.
     """
 
-    total: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of seats being billed for the organization as of the current billing cycle.",
+    repository_id: Missing[int] = Field(
+        default=UNSET, description="Repository ID for repository or file resources."
     )
-    added_this_cycle: Missing[int] = Field(
-        default=UNSET, description="Seats added during the current billing cycle."
+    file_path: Missing[str] = Field(
+        default=UNSET, description="File path for file resources."
     )
-    pending_cancellation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that are pending cancellation at the end of the current billing cycle.",
+    text: Missing[str] = Field(
+        default=UNSET, description="Text content for free text resources."
     )
-    pending_invitation: Missing[int] = Field(
-        default=UNSET,
-        description="The number of users who have been invited to receive a Copilot seat through this organization.",
+    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
+    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    copilot_chat_attachment_id: Missing[int] = Field(
+        default=UNSET, description="Chat attachment ID for uploaded files or media."
     )
-    active_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have used Copilot during the current billing cycle.",
+    media_type: Missing[str] = Field(
+        default=UNSET, description="Media type for media content resources."
     )
-    inactive_this_cycle: Missing[int] = Field(
-        default=UNSET,
-        description="The number of seats that have not used Copilot during the current billing cycle.",
+    url: Missing[str] = Field(
+        default=UNSET, description="URL for media content resources."
+    )
+    height: Missing[int] = Field(
+        default=UNSET, description="Height for media content resources."
+    )
+    width: Missing[int] = Field(
+        default=UNSET, description="Width for media content resources."
     )
 
 
-model_rebuild(CopilotOrganizationDetails)
-model_rebuild(CopilotOrganizationSeatBreakdown)
+model_rebuild(CopilotSpace)
+model_rebuild(CopilotSpacePropResourcesAttributesItems)
+model_rebuild(CopilotSpacePropResourcesAttributesItemsPropMetadata)
 
 __all__ = (
-    "CopilotOrganizationDetails",
-    "CopilotOrganizationSeatBreakdown",
+    "CopilotSpace",
+    "CopilotSpacePropResourcesAttributesItems",
+    "CopilotSpacePropResourcesAttributesItemsPropMetadata",
 )

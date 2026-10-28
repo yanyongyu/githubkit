@@ -9,67 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0122 import (
-    ActionsPolicyRepoConditionsOneof0Type,
-    ActionsPolicyRepoConditionsOneof0TypeForResponse,
-)
-from .group_0123 import (
-    ActionsPolicyRepoConditionsOneof1Type,
-    ActionsPolicyRepoConditionsOneof1TypeForResponse,
-)
-from .group_0145 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+from .group_0217 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgPropertiesInstallationsValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0TypeForResponse,
-            ActionsPolicyRepoConditionsOneof1TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse",
 )

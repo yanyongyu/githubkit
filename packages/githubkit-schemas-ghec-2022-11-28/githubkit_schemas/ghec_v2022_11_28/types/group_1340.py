@@ -9,32 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: (
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
+    )
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    users: NotRequired[list[str]]
-    organizations: NotRequired[list[str]]
-    repositories: NotRequired[list[str]]
-    enterprise_teams: NotRequired[list[str]]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

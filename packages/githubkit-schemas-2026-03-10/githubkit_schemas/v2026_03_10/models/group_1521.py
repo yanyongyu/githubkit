@@ -12,21 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberRelatesToPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
 
-    reviewers: list[str] = Field(
-        description="An array of user `login`s that will be removed."
-    )
-    team_reviewers: Missing[list[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be removed."
+    issue_id: int = Field(
+        description="The id of the issue to mark as related to the current issue"
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberRelatesToPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberRelatesToPostBody",)

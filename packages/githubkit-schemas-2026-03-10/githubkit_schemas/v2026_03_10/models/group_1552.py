@@ -9,41 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0525 import PullRequestStackPullRequest
+
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
+
+    body: str = Field(description="The text of the review comment.")
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
-    )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
-
-
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
-
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)

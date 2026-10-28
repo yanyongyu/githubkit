@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,22 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    use_immutable_subject: Missing[bool] = Field(
+    resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = Field(
         default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
 
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody
+)
 
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody",
+)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,99 +18,79 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0010 import Integration
+from .group_0249 import PullRequestMinimal
+from .group_0415 import DeploymentSimple
 
-class CodeQualityFinding(GitHubModel):
-    """CodeQualityFinding
 
-    Code quality finding
+class CheckRun(GitHubModel):
+    """CheckRun
+
+    A check performed on the code of a given code change
     """
 
-    number: int = Field(description="The finding number.")
-    state: Literal["open", "dismissed"] = Field(
-        description="State of the code quality finding."
+    id: int = Field(description="The id of the check.")
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    node_id: str = Field()
+    external_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    details_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ] = Field(
+        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
     )
-    url: str = Field(
-        description="The REST API URL of the code quality finding resource."
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+        None,
+    ] = Field()
+    started_at: Union[_dt.datetime, None] = Field()
+    completed_at: Union[_dt.datetime, None] = Field()
+    output: CheckRunPropOutput = Field()
+    name: str = Field(description="The name of the check.")
+    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
+    app: Union[None, Integration, None] = Field()
+    pull_requests: list[PullRequestMinimal] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
     )
-    rule: CodeQualityFindingRule = Field(description="Code quality rule")
-    location: CodeQualityFindingLocation = Field(
-        description="Code quality file location"
-    )
-    message: CodeQualityFindingMessage = Field(
-        description="Code quality finding message"
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the code quality finding was created."
-    )
-
-
-class CodeQualityFindingRule(GitHubModel):
-    """CodeQualityFindingRule
-
-    Code quality rule
-    """
-
-    id: str = Field(
-        description="A unique identifier for the rule used to detect the finding."
-    )
-    title: str = Field(description="The name of the rule used to detect the finding.")
-    description: str = Field(
-        description="A short description of the rule used to detect the finding."
-    )
-    help_: Missing[str] = Field(
+    deployment: Missing[DeploymentSimple] = Field(
         default=UNSET,
-        alias="help",
-        description="A detailed description of the rule used to detect the finding.",
-    )
-    severity: Literal["error", "warning", "note", "none"] = Field(
-        description="The severity of the rule used to detect the finding."
-    )
-    category: Literal["none", "maintainability", "reliability"] = Field(
-        description="The category of the rule used to detect the finding."
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
 
 
-class CodeQualityFindingLocation(GitHubModel):
-    """CodeQualityFindingLocation
+class CheckRunPropOutput(GitHubModel):
+    """CheckRunPropOutput"""
 
-    Code quality file location
-    """
-
-    path: str = Field(description="The file path where the finding was detected.")
-    start_line: Missing[int] = Field(
-        default=UNSET, description="The line number where the finding starts."
-    )
-    start_column: Missing[int] = Field(
-        default=UNSET, description="The column number where the finding starts."
-    )
-    end_line: Missing[int] = Field(
-        default=UNSET, description="The line number where the finding ends."
-    )
-    end_column: Missing[int] = Field(
-        default=UNSET, description="The column number where the finding ends."
-    )
+    title: Union[str, None] = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    annotations_count: int = Field()
+    annotations_url: str = Field()
 
 
-class CodeQualityFindingMessage(GitHubModel):
-    """CodeQualityFindingMessage
+class CheckRunPropCheckSuite(GitHubModel):
+    """CheckRunPropCheckSuite"""
 
-    Code quality finding message
-    """
-
-    text: str = Field(description="The message text of the code quality finding.")
-    markdown: str = Field(
-        description="The message text of the code quality finding in markdown format."
-    )
+    id: int = Field()
 
 
-model_rebuild(CodeQualityFinding)
-model_rebuild(CodeQualityFindingRule)
-model_rebuild(CodeQualityFindingLocation)
-model_rebuild(CodeQualityFindingMessage)
+model_rebuild(CheckRun)
+model_rebuild(CheckRunPropOutput)
+model_rebuild(CheckRunPropCheckSuite)
 
 __all__ = (
-    "CodeQualityFinding",
-    "CodeQualityFindingLocation",
-    "CodeQualityFindingMessage",
-    "CodeQualityFindingRule",
+    "CheckRun",
+    "CheckRunPropCheckSuite",
+    "CheckRunPropOutput",
 )

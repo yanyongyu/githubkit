@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1(
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field()
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The new name for the cost center"
-    )
-    ai_credit_pool_enabled: bool = Field(
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements."
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
     )
 
 
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1
+    EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
 )

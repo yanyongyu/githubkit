@@ -9,35 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class MetaType(TypedDict):
-    """Meta
+class TrafficType(TypedDict):
+    """Traffic"""
 
-    The metadata associated with the creation/updates to the user.
-    """
-
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    timestamp: _dt.datetime
+    uniques: int
+    count: int
 
 
-class MetaTypeForResponse(TypedDict):
-    """Meta
+class TrafficTypeForResponse(TypedDict):
+    """Traffic"""
 
-    The metadata associated with the creation/updates to the user.
-    """
-
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+    timestamp: str
+    uniques: int
+    count: int
 
 
 __all__ = (
-    "MetaType",
-    "MetaTypeForResponse",
+    "TrafficType",
+    "TrafficTypeForResponse",
 )

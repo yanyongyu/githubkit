@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0600 import PullRequestStackPullRequest
 
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-class ReposOwnerRepoStacksPostResponse201(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET,
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+    )
 
 
-class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse201)
-model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse201",
-    "ReposOwnerRepoStacksPostResponse201PropBase",
-)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

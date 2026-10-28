@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    attestation_ids: list[int]
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof1"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    attestation_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type",
-    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1Type",
+    "OrgsOrgAttestationsDeleteRequestPostBodyOneof1TypeForResponse",
 )

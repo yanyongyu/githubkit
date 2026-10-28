@@ -18,51 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksPostResponse403(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse403
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Request body for requesting an automation run.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    event: Literal["manual"] = Field(
+        description="The event to trigger. Only `manual` is supported."
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    context: Missing[str] = Field(
+        max_length=10000,
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="Additional context for this automation run, up to 10,000 characters. Supported only when `event` is `manual`. The context supplements the automation's configured instructions.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse403)
-model_rebuild(AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody)
 
-__all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse403",
-    "AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems",
-)
+__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody",)

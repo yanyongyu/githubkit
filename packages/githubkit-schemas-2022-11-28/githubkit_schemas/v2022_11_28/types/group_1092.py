@@ -9,79 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoTasksPostResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType]
-    ]
-    documentation_url: str
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserType
 
 
-class AgentsReposOwnerRepoTasksPostResponse401TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse]
-    ]
-    documentation_url: str
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    created_at: str
+    updated_at: str
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserTypeForResponse
 
 
-class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUser
 
-    A single validation error
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: int
 
 
-class AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUser
 
-    A single validation error
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: int
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksPostResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksPostResponse401Type",
-    "AgentsReposOwnerRepoTasksPostResponse401TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200Type",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200TypeForResponse",
 )

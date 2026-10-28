@@ -11,79 +11,92 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0576 import (
-    DependabotAlertWithdrawnWebhookPropDependencyType,
-    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0055 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
 
 
-class DependabotAlertWithdrawnWebhookType(TypedDict):
-    """DependabotAlertWithdrawnWebhook
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
 
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    A suite of checks performed on the code of a given code change
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
-    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    withdrawn_at: _dt.datetime
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+            None,
+        ]
+    ]
+    created_at: NotRequired[_dt.datetime]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[_dt.datetime]
+    url: NotRequired[str]
 
 
-class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhook
+class SimpleCheckSuiteTypeForResponse(TypedDict):
+    """SimpleCheckSuite
 
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    A suite of checks performed on the code of a given code change
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
-    security_advisory: (
-        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
-    )
-    url: str
-    html_url: str
-    created_at: str
-    withdrawn_at: str
-
-
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
-
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-
-
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
-
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+            None,
+        ]
+    ]
+    created_at: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[list[PullRequestMinimalTypeForResponse]]
+    repository: NotRequired[MinimalRepositoryTypeForResponse]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
-    "DependabotAlertWithdrawnWebhookType",
-    "DependabotAlertWithdrawnWebhookTypeForResponse",
+    "SimpleCheckSuiteType",
+    "SimpleCheckSuiteTypeForResponse",
 )

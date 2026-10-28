@@ -11,27 +11,28 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0210 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
+
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreateType]
-
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

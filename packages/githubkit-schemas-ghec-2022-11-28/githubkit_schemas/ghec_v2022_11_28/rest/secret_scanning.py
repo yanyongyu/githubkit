@@ -33,6 +33,7 @@ if TYPE_CHECKING:
         OrganizationSecretScanningAlert,
         OrgsOrgSecretScanningCustomPatternsPostResponse201,
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
+        PublicMonitoringAlert,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchResponse200,
         ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
@@ -54,6 +55,7 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchBodyType,
         EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
+        EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType,
         OrganizationSecretScanningAlertTypeForResponse,
         OrgsOrgSecretScanningCustomPatternsDeleteBodyType,
         OrgsOrgSecretScanningCustomPatternsPostBodyType,
@@ -62,6 +64,7 @@ if TYPE_CHECKING:
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItemsType,
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyType,
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200TypeForResponse,
+        PublicMonitoringAlertTypeForResponse,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBodyType,
         ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200TypeForResponse,
         ReposOwnerRepoDismissalRequestsSecretScanningAlertNumberPatchBodyType,
@@ -1363,6 +1366,434 @@ class SecretScanningClient:
                 "404": BasicError,
                 "409": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def list_public_monitoring_alerts_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        before: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        repository: Missing[str] = UNSET,
+        secret_author: Missing[str] = UNSET,
+        secret_type: Missing[str] = UNSET,
+        attribution: Missing[Literal["member_activity", "verified_domain"]] = UNSET,
+        validity: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[PublicMonitoringAlert], list[PublicMonitoringAlertTypeForResponse]
+    ]:
+        """secret-scanning/list-public-monitoring-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts
+
+        Lists public monitoring alerts for an enterprise, from newest to oldest by default.
+
+        GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.
+
+        The authenticated user must be an enterprise owner or enterprise security manager.
+
+        Public monitoring must be enabled for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) must have the `repo` or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-public-monitoring-alerts-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            PublicMonitoringAlert,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts"
+
+        params = {
+            "per_page": per_page,
+            "after": after,
+            "before": before,
+            "direction": direction,
+            "repository": repository,
+            "secret_author": secret_author,
+            "secret_type": secret_type,
+            "attribution": attribution,
+            "validity": validity,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[PublicMonitoringAlert],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_list_public_monitoring_alerts_for_enterprise(
+        self,
+        enterprise: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        after: Missing[str] = UNSET,
+        before: Missing[str] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        repository: Missing[str] = UNSET,
+        secret_author: Missing[str] = UNSET,
+        secret_type: Missing[str] = UNSET,
+        attribution: Missing[Literal["member_activity", "verified_domain"]] = UNSET,
+        validity: Missing[str] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[PublicMonitoringAlert], list[PublicMonitoringAlertTypeForResponse]
+    ]:
+        """secret-scanning/list-public-monitoring-alerts-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts
+
+        Lists public monitoring alerts for an enterprise, from newest to oldest by default.
+
+        GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.
+
+        The authenticated user must be an enterprise owner or enterprise security manager.
+
+        Public monitoring must be enabled for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) must have the `repo` or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#list-public-monitoring-alerts-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            PublicMonitoringAlert,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts"
+
+        params = {
+            "per_page": per_page,
+            "after": after,
+            "before": before,
+            "direction": direction,
+            "repository": repository,
+            "secret_author": secret_author,
+            "secret_type": secret_type,
+            "attribution": attribution,
+            "validity": validity,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[PublicMonitoringAlert],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]:
+        """secret-scanning/get-public-monitoring-alert-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}
+
+        Gets a single public monitoring alert for an enterprise.
+
+        GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.
+
+        The authenticated user must be an enterprise owner or enterprise security manager.
+
+        Public monitoring must be enabled for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) must have the `repo` or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#get-a-public-monitoring-alert-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            PublicMonitoringAlert,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PublicMonitoringAlert,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]:
+        """secret-scanning/get-public-monitoring-alert-for-enterprise
+
+        GET /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}
+
+        Gets a single public monitoring alert for an enterprise.
+
+        GitHub monitors secrets leaked across GitHub in real time. These findings may be associated with your enterprise.
+
+        The authenticated user must be an enterprise owner or enterprise security manager.
+
+        Public monitoring must be enabled for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) must have the `repo` or `security_events` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#get-a-public-monitoring-alert-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            PublicMonitoringAlert,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PublicMonitoringAlert,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]: ...
+
+    @overload
+    def update_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        state: Literal["open", "resolved"],
+        resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]: ...
+
+    def update_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]:
+        """secret-scanning/update-public-monitoring-alert-for-enterprise
+
+        PATCH /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}
+
+        Updates the status of a public monitoring alert for an enterprise.
+
+        The authenticated user must be an enterprise owner or enterprise security manager.
+
+        Public monitoring must be enabled for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) must have the `repo` or `security_events` scope to use this endpoint.
+
+        Resolution comments must be 280 characters or fewer.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#update-a-public-monitoring-alert-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody,
+            PublicMonitoringAlert,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PublicMonitoringAlert,
+            error_models={
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]: ...
+
+    @overload
+    async def async_update_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        state: Literal["open", "resolved"],
+        resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = UNSET,
+        resolution_comment: Missing[Union[str, None]] = UNSET,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]: ...
+
+    async def async_update_public_monitoring_alert_for_enterprise(
+        self,
+        enterprise: str,
+        alert_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[PublicMonitoringAlert, PublicMonitoringAlertTypeForResponse]:
+        """secret-scanning/update-public-monitoring-alert-for-enterprise
+
+        PATCH /enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}
+
+        Updates the status of a public monitoring alert for an enterprise.
+
+        The authenticated user must be an enterprise owner or enterprise security manager.
+
+        Public monitoring must be enabled for the enterprise.
+
+        OAuth app tokens and personal access tokens (classic) must have the `repo` or `security_events` scope to use this endpoint.
+
+        Resolution comments must be 280 characters or fewer.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#update-a-public-monitoring-alert-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody,
+            PublicMonitoringAlert,
+        )
+
+        url = f"/enterprises/{enterprise}/secret-scanning/public-monitoring-alerts/{alert_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody,
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=PublicMonitoringAlert,
+            error_models={
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

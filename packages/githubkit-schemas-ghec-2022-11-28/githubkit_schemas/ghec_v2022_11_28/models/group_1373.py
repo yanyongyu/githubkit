@@ -17,59 +17,95 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBody"""
-
-    name: str = Field(
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
-    )
-    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
-        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
-    )
-    size: str = Field(
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
-    )
-    runner_group_id: int = Field(
-        description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
-    )
-    enable_static_ip: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
-    )
-    image_gen: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this runner should be used to generate custom images.",
-    )
-
-
-class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
-    """OrgsOrgActionsHostedRunnersPostBodyPropImage
-
-    The image of runner. To list all available images, use `GET /actions/hosted-
-    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
-    """
-
-    id: Missing[str] = Field(
-        default=UNSET, description="The unique identifier of the runner image."
-    )
-    source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET, description="The source of the runner image."
-    )
-    version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
-    )
-
-
-model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
-model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
-
-__all__ = (
-    "OrgsOrgActionsHostedRunnersPostBody",
-    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
+from .group_0144 import RepositoryRulesetBypassActor
+from .group_0147 import EnterpriseRulesetConditionsOneof0
+from .group_0148 import EnterpriseRulesetConditionsOneof1
+from .group_0149 import EnterpriseRulesetConditionsOneof2
+from .group_0150 import EnterpriseRulesetConditionsOneof3
+from .group_0151 import EnterpriseRulesetConditionsOneof4
+from .group_0152 import EnterpriseRulesetConditionsOneof5
+from .group_0153 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
+from .group_0154 import RepositoryRuleUpdate
+from .group_0156 import RepositoryRuleRequiredLinearHistory
+from .group_0157 import RepositoryRuleRequiredDeployments
+from .group_0160 import RepositoryRulePullRequest
+from .group_0162 import RepositoryRuleRequiredStatusChecks
+from .group_0164 import RepositoryRuleCommitMessagePattern
+from .group_0166 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0168 import RepositoryRuleCommitterEmailPattern
+from .group_0170 import RepositoryRuleBranchNamePattern
+from .group_0172 import RepositoryRuleTagNamePattern
+from .group_0174 import RepositoryRuleFilePathRestriction
+from .group_0176 import RepositoryRuleMaxFilePathLength
+from .group_0178 import RepositoryRuleFileExtensionRestriction
+from .group_0180 import RepositoryRuleMaxFileSize
+from .group_0183 import RepositoryRuleWorkflows
+from .group_0185 import RepositoryRuleCodeScanning
+from .group_0187 import RepositoryRuleCopilotCodeReview
+
+
+class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            EnterpriseRulesetConditionsOneof0,
+            EnterpriseRulesetConditionsOneof1,
+            EnterpriseRulesetConditionsOneof2,
+            EnterpriseRulesetConditionsOneof3,
+            EnterpriseRulesetConditionsOneof4,
+            EnterpriseRulesetConditionsOneof5,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Enterprise ruleset conditions",
+        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+
+
+model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+
+__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)

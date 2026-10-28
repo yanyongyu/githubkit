@@ -11,30 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
-    """Package license compliance results
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
-        Field()
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-environment-public-key) endpoint.",
     )
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
 
-
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
-
-__all__ = (
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
-)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)

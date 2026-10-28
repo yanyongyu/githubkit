@@ -10,93 +10,95 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class CreateBudgetType(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetType
-
-
-class CreateBudgetTypeForResponse(TypedDict):
-    """CreateBudget"""
-
-    message: str
-    budget: CreateBudgetPropBudgetTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0214 import (
+    PublicMonitoringRepositoryType,
+    PublicMonitoringRepositoryTypeForResponse,
+)
+from .group_0215 import BaseGistType, BaseGistTypeForResponse
+from .group_0218 import (
+    PublicMonitoringAlertPropAttributionType,
+    PublicMonitoringAlertPropAttributionTypeForResponse,
+)
 
 
-class CreateBudgetPropBudgetType(TypedDict):
-    """CreateBudgetPropBudget"""
+class PublicMonitoringAlertType(TypedDict):
+    """PublicMonitoringAlert"""
 
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
+    number: int
+    url: str
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    created_at: NotRequired[_dt.datetime]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolved_by: NotRequired[Union[SimpleUserType, None]]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret: NotRequired[Union[str, None]]
+    repository: NotRequired[
+        Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
+    ]
+    gist: NotRequired[
+        Union[BaseGistType, PublicMonitoringAlertPropGistAnyof1Type, None]
+    ]
+    attribution: NotRequired[PublicMonitoringAlertPropAttributionType]
+
+
+class PublicMonitoringAlertTypeForResponse(TypedDict):
+    """PublicMonitoringAlert"""
+
+    number: int
+    url: str
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    created_at: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    resolved_at: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret: NotRequired[Union[str, None]]
+    repository: NotRequired[
+        Union[
+            SimpleRepositoryTypeForResponse,
+            PublicMonitoringRepositoryTypeForResponse,
+            None,
         ]
     ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[CreateBudgetPropBudgetPropBudgetAlertingType]
-    expires_at: NotRequired[_dt.date]
-
-
-class CreateBudgetPropBudgetTypeForResponse(TypedDict):
-    """CreateBudgetPropBudget"""
-
-    id: NotRequired[str]
-    budget_scope: NotRequired[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
+    gist: NotRequired[
+        Union[
+            BaseGistTypeForResponse,
+            PublicMonitoringAlertPropGistAnyof1TypeForResponse,
+            None,
         ]
     ]
-    budget_entity_name: NotRequired[str]
-    budget_amount: NotRequired[int]
-    prevent_further_usage: NotRequired[bool]
-    budget_product_sku: NotRequired[str]
-    budget_type: NotRequired[Literal["ProductPricing", "SkuPricing", "BundlePricing"]]
-    budget_alerting: NotRequired[
-        CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse
-    ]
-    expires_at: NotRequired[str]
+    attribution: NotRequired[PublicMonitoringAlertPropAttributionTypeForResponse]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingType(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class PublicMonitoringAlertPropGistAnyof1Type(TypedDict):
+    """PublicMonitoringAlertPropGistAnyof1"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    id: str
+    html_url: NotRequired[Union[str, None]]
 
 
-class CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """CreateBudgetPropBudgetPropBudgetAlerting"""
+class PublicMonitoringAlertPropGistAnyof1TypeForResponse(TypedDict):
+    """PublicMonitoringAlertPropGistAnyof1"""
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    id: str
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CreateBudgetPropBudgetPropBudgetAlertingType",
-    "CreateBudgetPropBudgetPropBudgetAlertingTypeForResponse",
-    "CreateBudgetPropBudgetType",
-    "CreateBudgetPropBudgetTypeForResponse",
-    "CreateBudgetType",
-    "CreateBudgetTypeForResponse",
+    "PublicMonitoringAlertPropGistAnyof1Type",
+    "PublicMonitoringAlertPropGistAnyof1TypeForResponse",
+    "PublicMonitoringAlertType",
+    "PublicMonitoringAlertTypeForResponse",
 )

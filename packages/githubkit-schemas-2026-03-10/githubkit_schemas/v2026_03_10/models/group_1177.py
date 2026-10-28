@@ -12,17 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0146 import ActionsPolicy
-
-
-class OrgsOrgActionsPoliciesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPoliciesGetResponse200"""
-
-    total_count: int = Field(description="The total number of Actions policies.")
-    policies: list[ActionsPolicy] = Field(description="An array of Actions policies.")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsPoliciesGetResponse200)
+class EventsGetResponse503(GitHubModel):
+    """EventsGetResponse503"""
 
-__all__ = ("OrgsOrgActionsPoliciesGetResponse200",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(EventsGetResponse503)
+
+__all__ = ("EventsGetResponse503",)

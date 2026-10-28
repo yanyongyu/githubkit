@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,37 +18,115 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0036 import DependabotAlertPackage
+from .group_0003 import SimpleUser
+from .group_0037 import DependabotAlertSecurityVulnerability
+from .group_0038 import DependabotAlertSecurityAdvisory
+from .group_0039 import DependabotAlertDismissalRequestSimple
+from .group_0397 import DependabotAlertPropDependency
 
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
+class DependabotAlert(GitHubModel):
+    """DependabotAlert
 
-    Details for the vulnerable dependency.
+    A Dependabot alert.
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
+    number: int = Field(description="The security alert number.")
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
+        description="The state of the Dependabot alert."
     )
-    manifest_path: Missing[str] = Field(
+    dependency: DependabotAlertPropDependency = Field(
+        description="Details for the vulnerable dependency."
+    )
+    security_advisory: DependabotAlertSecurityAdvisory = Field(
+        description="Details for the GitHub Security Advisory."
+    )
+    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
+        description="Details pertaining to one vulnerable version range for the advisory."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_by: Union[SimpleUser, None] = Field()
+    dismissed_reason: Union[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+        None,
+    ] = Field(description="The reason that the alert was dismissed.")
+    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
+        description="An optional comment associated with the alert's dismissal."
+    )
+    fixed_at: Union[_dt.datetime, None] = Field(
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
+        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    version_requirement: Missing[Union[str, None]] = Field(
+    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
+        Field(
+            default=UNSET,
+            title="Dependabot alert dismissal request",
+            description="Information about an active dismissal request for this Dependabot alert.",
+        )
+    )
+    assignees: Missing[list[SimpleUser]] = Field(
+        default=UNSET, description="The users assigned to this alert."
+    )
+    reachability: Missing[DependabotAlertPropReachability] = Field(
         default=UNSET,
-        description="The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+        description="The reachability result for the vulnerability that triggered the alert, indicating whether a\nvulnerable function is reachable from the repository's own code.\n",
     )
-    scope: Missing[Union[Literal["development", "runtime"], None]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
+
+
+class DependabotAlertPropReachability(GitHubModel):
+    """DependabotAlertPropReachability
+
+    The reachability result for the vulnerability that triggered the alert,
+    indicating whether a
+    vulnerable function is reachable from the repository's own code.
+    """
+
+    verdict: Literal[
+        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
+    ] = Field(
+        description="The reachability verdict for the alert.\n\n- `reachable`: a path from the repository's code reaches a vulnerable function.\n- `unreachable`: no path from the repository's code reaches a vulnerable function.\n- `potentially_reachable`: reachability could not be determined with confidence; review manually.\n- `unavailable`: no verdict has been computed for the alert yet.\n- `disabled`: reachability analysis is not enabled for the repository.\n"
     )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    reason: Missing[
+        Literal[
+            "unknown",
+            "unavailable_unsupported_ecosystem",
+            "unavailable_analysis_timed_out",
+            "potentially_reachable_invalid_manifest_path",
+            "potentially_reachable_missing_vulnerable_function_annotation",
+            "potentially_reachable_dependency_not_found",
+            "potentially_reachable_dependency_analysis_incomplete",
+            "potentially_reachable_repository_analysis_incomplete",
+            "potentially_reachable_call_found_outside_manifest_scope",
+            "potentially_reachable_unclassified_analysis_state",
+            "reachable_vulnerable_function_called",
+            "unreachable_vulnerable_function_not_called",
+            "potentially_reachable_unresolved_dynamic_call",
+        ]
     ] = Field(
         default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+        description="The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.",
     )
 
 
-model_rebuild(DependabotAlertPropDependency)
+model_rebuild(DependabotAlert)
+model_rebuild(DependabotAlertPropReachability)
 
-__all__ = ("DependabotAlertPropDependency",)
+__all__ = (
+    "DependabotAlert",
+    "DependabotAlertPropReachability",
+)

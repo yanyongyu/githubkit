@@ -35,6 +35,7 @@ class CodeSecurityConfigurationType(TypedDict):
         CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_reachability: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_delegated_alert_dismissal: NotRequired[
         Union[Literal["enabled", "disabled", "not_set"], None]
@@ -66,6 +67,9 @@ class CodeSecurityConfigurationType(TypedDict):
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets_push_protection: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_delegated_alert_dismissal: NotRequired[
@@ -105,6 +109,7 @@ class CodeSecurityConfigurationTypeForResponse(TypedDict):
         CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsTypeForResponse
     ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_reachability: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_delegated_alert_dismissal: NotRequired[
         Union[Literal["enabled", "disabled", "not_set"], None]
@@ -139,6 +144,9 @@ class CodeSecurityConfigurationTypeForResponse(TypedDict):
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_generic_secrets: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_generic_secrets_push_protection: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
     secret_scanning_delegated_alert_dismissal: NotRequired[

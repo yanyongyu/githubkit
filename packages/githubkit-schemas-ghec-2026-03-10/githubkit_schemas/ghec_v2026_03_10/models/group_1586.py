@@ -11,18 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0380 import ActionsVariable
-
-
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+from .group_0210 import SecretScanningCustomPatternToCreate
 
 
-model_rebuild(ReposOwnerRepoAgentsOrganizationVariablesGetResponse200)
+class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsPostBody"""
 
-__all__ = ("ReposOwnerRepoAgentsOrganizationVariablesGetResponse200",)
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to create (maximum 100).",
+    )
+
+
+model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
+
+__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)

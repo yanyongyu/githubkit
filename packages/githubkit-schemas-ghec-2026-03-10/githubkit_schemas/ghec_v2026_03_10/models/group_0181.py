@@ -12,11 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
 class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
     """RepositoryRuleMaxFileSizePropParameters"""
 
+    ignored_file_paths: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Files matching these patterns may exceed the maximum size.",
+    )
     max_file_size: int = Field(
         le=100.0,
         ge=1.0,

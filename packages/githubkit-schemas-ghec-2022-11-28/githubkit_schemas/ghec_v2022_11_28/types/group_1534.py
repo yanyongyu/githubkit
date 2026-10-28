@@ -9,26 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0140 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgCopilotModelPoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    ]
+    models: NotRequired[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    ]
+    models: NotRequired[
+        list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse]
+    ]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse",
 )

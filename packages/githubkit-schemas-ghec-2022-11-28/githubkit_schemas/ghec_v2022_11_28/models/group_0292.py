@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanOrgSettings(GitHubModel):
-    """Code scanning AI Scan organization settings
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
 
-    The AI Scan organization setting
+    The public key used for setting Actions Secrets.
     """
 
-    pr_scan: Literal["enabled", "disabled"] = Field(
-        description="Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out."
-    )
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAiScanOrgSettings)
+model_rebuild(ActionsPublicKey)
 
-__all__ = ("CodeScanningAiScanOrgSettings",)
+__all__ = ("ActionsPublicKey",)

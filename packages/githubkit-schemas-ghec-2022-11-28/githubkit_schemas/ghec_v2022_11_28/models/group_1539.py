@@ -15,17 +15,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0209 import SecretScanningCustomPattern
 
+class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
+model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202",)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,80 +16,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
     )
+    name: str = Field(description="The name of the new repository.")
     description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
+        default=UNSET, description="A short description of the new repository."
     )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+    include_all_branches: Missing[bool] = Field(
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
     )
-    base_role: Missing[Literal["reader", "no_access"]] = Field(
+    private: Missing[bool] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for the space. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Makes the space publicly readable\nNote: User spaces do not support writer or admin base roles.",
+        description="Either `true` to create a new private repository or `false` to create a new public one.",
     )
-    resources_attributes: Missing[
-        list[UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
 
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
-    )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
-    )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
-
-
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberPutBody)
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
-model_rebuild(
-    UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-)
-
-__all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBody",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)

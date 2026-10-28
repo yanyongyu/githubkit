@@ -11,50 +11,72 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupListType(TypedDict):
-    """Concurrency Group List
+class ArtifactType(TypedDict):
+    """Artifact
 
-    A list of active concurrency groups for a repository.
+    An artifact
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[_dt.datetime, None]
+    expires_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class ConcurrencyGroupListTypeForResponse(TypedDict):
-    """Concurrency Group List
+class ArtifactTypeForResponse(TypedDict):
+    """Artifact
 
-    A list of active concurrency groups for a repository.
+    An artifact
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
-    ]
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[str, None]
+    expires_at: Union[str, None]
+    updated_at: Union[str, None]
+    digest: NotRequired[Union[str, None]]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunTypeForResponse, None]]
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[_dt.datetime, None]
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class ArtifactPropWorkflowRunTypeForResponse(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[str, None]
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupListType",
-    "ConcurrencyGroupListTypeForResponse",
+    "ArtifactPropWorkflowRunType",
+    "ArtifactPropWorkflowRunTypeForResponse",
+    "ArtifactType",
+    "ArtifactTypeForResponse",
 )

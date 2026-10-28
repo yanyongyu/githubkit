@@ -9,54 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
-        None,
-    ] = Field()
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
-    ] = Field()
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
-
-    id: int = Field(description="Unique identifier of the organization")
-    login: str = Field(description="Login of the organization")
-
-
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="Name of the repository")
-    full_name: str = Field(description="Full name of the repository including owner")
+    name: Missing[str] = Field(default=UNSET, description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
+        default=UNSET,
+        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
+    )
+    allows_public_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
-)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",)

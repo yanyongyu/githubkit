@@ -15,74 +15,51 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class TimelineReviewedEvent(GitHubModel):
-    """Timeline Reviewed Event
+class IssueSuggestion(GitHubModel):
+    """Issue Suggestion
 
-    Timeline Reviewed Event
+    An agent-proposed change to an issue that a maintainer can approve or dismiss.
     """
 
-    event: Literal["reviewed"] = Field()
-    id: int = Field(description="Unique identifier of the review")
-    node_id: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field(description="The text of the review.")
-    state: str = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: TimelineReviewedEventPropLinks = Field(alias="_links")
-    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    commit_id: str = Field(description="A commit SHA for the review.")
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    id: int = Field(description="The unique identifier of the suggestion.")
+    issue_id: int = Field(
+        description="The unique identifier of the issue the suggestion applies to."
+    )
+    action: Literal[
+        "set_type", "add_label", "add_field", "add_assignee", "close_issue"
+    ] = Field(description="The kind of change proposed.")
+    state: Literal[
+        "pending", "applied", "approved", "dismissed", "replaced", "invalidated"
+    ] = Field(description="The suggestion's lifecycle state.")
+    target_id: Union[int, None] = Field(
+        description="The identifier of the target the change applies to (issue type, label, field, assignee, or duplicate issue), when applicable."
+    )
+    target_value: Union[str, float, bool, list[str], None] = Field(
+        description="The proposed value, when applicable. An array for multi-select field suggestions."
+    )
+    rationale: Union[str, None] = Field(
+        description="The rationale the actor provided for the suggestion."
+    )
+    confidence: Union[Literal["LOW", "MEDIUM", "HIGH"], None] = Field(
+        description="The actor's confidence level in the suggestion."
+    )
+    actor_id: Union[int, None] = Field(
+        description="The unique identifier of the actor that proposed the suggestion."
+    )
+    issue_event_id: Union[int, None] = Field(
+        description="The identifier of the timeline event created when the suggestion was approved, when applicable."
+    )
+    resolved_by: Union[int, None] = Field(
+        description="The unique identifier of the user who approved or dismissed the suggestion."
+    )
+    created_at: _dt.datetime = Field(description="The time the suggestion was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time the suggestion was last updated."
     )
 
 
-class TimelineReviewedEventPropLinks(GitHubModel):
-    """TimelineReviewedEventPropLinks"""
+model_rebuild(IssueSuggestion)
 
-    html: TimelineReviewedEventPropLinksPropHtml = Field()
-    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
-
-
-class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(TimelineReviewedEvent)
-model_rebuild(TimelineReviewedEventPropLinks)
-model_rebuild(TimelineReviewedEventPropLinksPropHtml)
-model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
-
-__all__ = (
-    "TimelineReviewedEvent",
-    "TimelineReviewedEventPropLinks",
-    "TimelineReviewedEventPropLinksPropHtml",
-    "TimelineReviewedEventPropLinksPropPullRequest",
-)
+__all__ = ("IssueSuggestion",)

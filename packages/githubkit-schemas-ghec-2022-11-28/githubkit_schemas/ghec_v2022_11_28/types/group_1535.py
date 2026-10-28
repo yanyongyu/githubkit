@@ -9,95 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgReposPostBodyType(TypedDict):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgCopilotModelPoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    custom_properties: NotRequired[OrgsOrgReposPostBodyPropCustomPropertiesType]
+    default_availability: (
+        OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType
+    )
+    models: list[OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType]
 
 
-class OrgsOrgReposPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgReposPostBody"""
+class OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
 
-    name: str
-    description: NotRequired[str]
-    homepage: NotRequired[str]
-    private: NotRequired[bool]
-    visibility: NotRequired[Literal["public", "private", "internal"]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    is_template: NotRequired[bool]
-    team_id: NotRequired[int]
-    auto_init: NotRequired[bool]
-    gitignore_template: NotRequired[str]
-    license_template: NotRequired[str]
-    allow_squash_merge: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    custom_properties: NotRequired[
-        OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse
+    default_availability: OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+    models: list[
+        OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
     ]
 
 
-OrgsOrgReposPostBodyPropCustomPropertiesType: TypeAlias = dict[str, Any]
-"""OrgsOrgReposPostBodyPropCustomProperties
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
 
-The custom properties for the new repository. The keys are the custom property
-names, and the values are the corresponding custom property values.
-"""
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
-OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
-"""OrgsOrgReposPostBodyPropCustomProperties
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
 
-The custom properties for the new repository. The keys are the custom property
-names, and the values are the corresponding custom property values.
-"""
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
 
 
 __all__ = (
-    "OrgsOrgReposPostBodyPropCustomPropertiesType",
-    "OrgsOrgReposPostBodyPropCustomPropertiesTypeForResponse",
-    "OrgsOrgReposPostBodyType",
-    "OrgsOrgReposPostBodyTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200Type",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse",
 )

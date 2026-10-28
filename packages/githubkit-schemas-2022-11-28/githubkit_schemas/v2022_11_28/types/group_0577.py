@@ -9,49 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0578 import (
+    DependabotAlertWithdrawnWebhookPropDependencyType,
+    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
+)
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class DependabotAlertWithdrawnWebhookType(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
     id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
     url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    html_url: str
+    created_at: _dt.datetime
+    withdrawn_at: _dt.datetime
 
 
-class WebhooksDeployKeyTypeForResponse(TypedDict):
-    """WebhooksDeployKey
+class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
     id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
+    security_advisory: (
+        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
+    )
     url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    html_url: str
+    created_at: str
+    withdrawn_at: str
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
 
 
 __all__ = (
-    "WebhooksDeployKeyType",
-    "WebhooksDeployKeyTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
+    "DependabotAlertWithdrawnWebhookType",
+    "DependabotAlertWithdrawnWebhookTypeForResponse",
 )

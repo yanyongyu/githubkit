@@ -15,17 +15,24 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0284 import SecretScanningCustomPattern
 
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse201)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)

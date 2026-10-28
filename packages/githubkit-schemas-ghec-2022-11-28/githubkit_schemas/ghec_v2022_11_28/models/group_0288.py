@@ -16,20 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    The public key used for setting Actions Secrets.
+    Actions OIDC Subject customization
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    )
+    use_immutable_subject: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
+    )
 
 
-model_rebuild(ActionsPublicKey)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("ActionsPublicKey",)
+__all__ = ("OidcCustomSub",)

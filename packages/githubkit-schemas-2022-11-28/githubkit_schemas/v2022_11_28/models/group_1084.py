@@ -14,55 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse400
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Response from accepting an automation run request.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    task_id: str = Field(
+        description="The preallocated ID of the accepted run. The task may not yet be readable, and downstream skips or failures can prevent its creation."
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
+    automation_id: str = Field(
+        description="The ID of the automation that was triggered."
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-
-
-class AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    event: Literal["manual"] = Field(
+        description='The trigger event name, always "manual" for public API runs.'
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse400)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202)
 
-__all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse400",
-    "AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems",
-)
+__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202",)

@@ -9,24 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesPostBody"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    name: str
-    value: str
+    repository_values: list[RepositoryExternalPropertyPayloadType]
 
 
-class ReposOwnerRepoActionsVariablesPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesPostBody"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    name: str
-    value: str
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+
+
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
+
+
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesPostBodyType",
-    "ReposOwnerRepoActionsVariablesPostBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

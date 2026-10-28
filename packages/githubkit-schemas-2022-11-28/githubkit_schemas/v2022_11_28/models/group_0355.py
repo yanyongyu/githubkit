@@ -9,66 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0160 import CodeScanningAlertRuleSummary
-from .group_0161 import CodeScanningAnalysisTool
-from .group_0163 import CodeScanningAlertInstance
+from .group_0032 import SimpleRepository
+from .group_0046 import IssueType
 
 
-class CodeScanningAlertItems(GitHubModel):
-    """CodeScanningAlertItems"""
+class CodeScanningAlertLinkedIssue(GitHubModel):
+    """CodeScanningAlertLinkedIssue
 
-    number: int = Field(description="The security alert number.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int = Field(description="The issue number.")
+    title: str = Field(description="The title of the issue.")
+    state: str = Field(description="The state of the issue.")
+    url: str = Field(description="The REST API URL of the issue.")
+    html_url: str = Field(description="The URL to view the issue on GitHub.")
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    issue_type: Union[IssueType, None] = Field(
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert."
-    )
-    state: Union[Literal["open", "dismissed", "fixed"], None] = Field(
-        description="State of a code scanning alert."
-    )
-    fixed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissed_by: Union[SimpleUser, None] = Field()
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_reason: Union[
-        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-    ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    rule: CodeScanningAlertRuleSummary = Field()
-    tool: CodeScanningAnalysisTool = Field()
-    most_recent_instance: CodeScanningAlertInstance = Field()
-    dismissal_approved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAlertItems)
+model_rebuild(CodeScanningAlertLinkedIssue)
 
-__all__ = ("CodeScanningAlertItems",)
+__all__ = ("CodeScanningAlertLinkedIssue",)

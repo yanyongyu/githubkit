@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse422(GitHubModel):
-    """AgentsTasksTaskIdGetResponse422
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,15 +30,29 @@ class AgentsTasksTaskIdGetResponse422(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsTasksTaskIdGetResponse422PropErrorsItems]] = Field(
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems
+        ]
+    ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse422PropErrorsItems
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems
 
     A single validation error
     """
@@ -57,10 +71,12 @@ class AgentsTasksTaskIdGetResponse422PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse422)
-model_rebuild(AgentsTasksTaskIdGetResponse422PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403)
+model_rebuild(
+    AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems
+)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse422",
-    "AgentsTasksTaskIdGetResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems",
 )

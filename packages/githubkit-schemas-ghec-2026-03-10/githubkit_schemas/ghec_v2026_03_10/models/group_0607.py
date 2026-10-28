@@ -14,15 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Topic(GitHubModel):
-    """Topic
+class StargazerHistory(GitHubModel):
+    """Stargazer History
 
-    A topic aggregates entities that are related to a subject.
+    Stargazer History
     """
 
-    names: list[str] = Field()
+    days: list[int] = Field(
+        description="The number of stars created on each day of the week, starting on Sunday."
+    )
+    total: int = Field(description="The number of stars created during the week.")
+    week: int = Field(description="The start of the week, given as a Unix timestamp.")
 
 
-model_rebuild(Topic)
+model_rebuild(StargazerHistory)
 
-__all__ = ("Topic",)
+__all__ = ("StargazerHistory",)

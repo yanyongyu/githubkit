@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,20 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+
+    default_availability: Missing[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability
+    ] = Field(default=UNSET)
+    models: Missing[
+        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems]
+    ] = Field(default=UNSET)
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
-    """
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
 
-    message: Missing[str] = Field(default=UNSET)
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="`delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
+    )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
-)
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(min_length=1)
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+    ] = Field(
+        description="`delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBody",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems",
 )

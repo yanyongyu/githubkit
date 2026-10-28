@@ -9,55 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhooksMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
-
-    account: WebhooksMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhooksMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+from .group_0587 import WebhooksLabelPropArchivedBy
 
 
-class WebhooksMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksMarketplacePurchasePropAccount"""
+class WebhooksLabelUnarchived(GitHubModel):
+    """Unarchived label"""
 
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    archived_at: Union[Union[_dt.datetime, None], None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: Union[Union[None, WebhooksLabelPropArchivedBy], None] = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
     id: int = Field()
-    login: str = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-class WebhooksMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksMarketplacePurchasePropPlan"""
+model_rebuild(WebhooksLabelUnarchived)
 
-    bullets: list[Union[str, None]] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhooksMarketplacePurchase)
-model_rebuild(WebhooksMarketplacePurchasePropAccount)
-model_rebuild(WebhooksMarketplacePurchasePropPlan)
-
-__all__ = (
-    "WebhooksMarketplacePurchase",
-    "WebhooksMarketplacePurchasePropAccount",
-    "WebhooksMarketplacePurchasePropPlan",
-)
+__all__ = ("WebhooksLabelUnarchived",)

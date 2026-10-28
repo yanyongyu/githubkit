@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0148 import Runner
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    total_count: int = Field()
-    runners: list[Runner] = Field()
+    repository_values: list[RepositoryExternalPropertyPayload] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories and the values that the named external custom property will be set to.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
+class RepositoryExternalPropertyPayload(GitHubModel):
+    """Repository External Custom Property Value Payload
 
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str = Field(description="The name of the repository")
+    value: Union[str, None] = Field(
+        description="The value assigned to the repository. Set to `null` to unset the value for this repository."
+    )
+
+
+model_rebuild(OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody)
+model_rebuild(RepositoryExternalPropertyPayload)
+
+__all__ = (
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
+    "RepositoryExternalPropertyPayload",
+)

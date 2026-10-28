@@ -29,11 +29,10 @@ class AgentsReposOwnerRepoAutomationsPostBodyType(TypedDict):
         Literal["", "none", "low", "medium", "high", "xhigh", "max"]
     ]
     tools: NotRequired[list[str]]
-    allowed_custom_agents: NotRequired[list[str]]
     enabled: NotRequired[bool]
-    owner_type: NotRequired[Literal["user", "repository"]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
+    type: NotRequired[Literal["personal", "shared"]]
     require_actor_write_permission: NotRequired[bool]
+    continuous_history: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyTypeForResponse(TypedDict):
@@ -52,18 +51,16 @@ class AgentsReposOwnerRepoAutomationsPostBodyTypeForResponse(TypedDict):
         Literal["", "none", "low", "medium", "high", "xhigh", "max"]
     ]
     tools: NotRequired[list[str]]
-    allowed_custom_agents: NotRequired[list[str]]
     enabled: NotRequired[bool]
-    owner_type: NotRequired[Literal["user", "repository"]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
+    type: NotRequired[Literal["personal", "shared"]]
     require_actor_write_permission: NotRequired[bool]
+    continuous_history: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersType(TypedDict):
     """AgentsReposOwnerRepoAutomationsPostBodyPropTriggers
 
-    Public trigger configuration keyed by stable public trigger identifier. Each
-    trigger has a closed, trigger-specific configuration schema.
+    Trigger configuration for the automation.
     """
 
     interval: NotRequired[
@@ -126,16 +123,51 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersType(TypedDict):
     pull_request_review_requested: NotRequired[
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedType
     ]
+    issue_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedType
+    ]
+    issue_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedType
+    ]
+    pull_request_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedType
+    ]
+    pull_request_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedType
+    ]
+    pull_request_converted_to_draft: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftType
+    ]
+    pull_request_review_dismissed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedType
+    ]
+    pull_request_review_thread_resolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedType
+    ]
+    pull_request_review_thread_unresolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedType
+    ]
     automation_completed: NotRequired[
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedType
+    ]
+    automation_failed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedType
+    ]
+    code_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertType
+    ]
+    secret_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertType
+    ]
+    dependabot_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertType
     ]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersTypeForResponse(TypedDict):
     """AgentsReposOwnerRepoAutomationsPostBodyPropTriggers
 
-    Public trigger configuration keyed by stable public trigger identifier. Each
-    trigger has a closed, trigger-specific configuration schema.
+    Trigger configuration for the automation.
     """
 
     interval: NotRequired[
@@ -198,8 +230,44 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersTypeForResponse(TypedDi
     pull_request_review_requested: NotRequired[
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedTypeForResponse
     ]
+    issue_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedTypeForResponse
+    ]
+    issue_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedTypeForResponse
+    ]
+    pull_request_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedTypeForResponse
+    ]
+    pull_request_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedTypeForResponse
+    ]
+    pull_request_converted_to_draft: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftTypeForResponse
+    ]
+    pull_request_review_dismissed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedTypeForResponse
+    ]
+    pull_request_review_thread_resolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse
+    ]
+    pull_request_review_thread_unresolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse
+    ]
     automation_completed: NotRequired[
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedTypeForResponse
+    ]
+    automation_failed: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedTypeForResponse
+    ]
+    code_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertTypeForResponse
+    ]
+    secret_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertTypeForResponse
+    ]
+    dependabot_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertTypeForResponse
     ]
 
 
@@ -211,6 +279,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIntervalType(TypedD
     day_of_week: NotRequired[int]
     minute_utc: NotRequired[Literal[0, 15, 30, 45]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIntervalTypeForResponse(
@@ -223,6 +292,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIntervalTypeForResp
     day_of_week: NotRequired[int]
     minute_utc: NotRequired[Literal[0, 15, 30, 45]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedType(TypedDict):
@@ -230,6 +300,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedType(Typ
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedTypeForResponse(
@@ -239,6 +310,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedTypeForR
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeledType(
@@ -249,6 +321,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeledType(
     query: NotRequired[str]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeledTypeForResponse(
@@ -259,6 +332,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeledTypeFor
     query: NotRequired[str]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRunType(TypedDict):
@@ -268,6 +342,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRunType(Typ
     conclusions: list[Literal["failure"]]
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRunTypeForResponse(
@@ -279,6 +354,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRunTypeForR
     conclusions: list[Literal["failure"]]
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpenedType(
@@ -289,6 +365,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpenedTy
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpenedTypeForResponse(
@@ -299,6 +376,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpenedTy
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronizeType(
@@ -309,6 +387,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchron
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronizeTypeForResponse(
@@ -319,6 +398,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchron
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergedType(
@@ -329,6 +409,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergedTy
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergedTypeForResponse(
@@ -339,6 +420,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergedTy
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentType(
@@ -346,8 +428,10 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentType(
 ):
     """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment"""
 
+    query: NotRequired[str]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentTypeForResponse(
@@ -355,8 +439,10 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentTypeFor
 ):
     """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment"""
 
+    query: NotRequired[str]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentType(
@@ -365,8 +451,11 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentT
     """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment"""
 
     comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentTypeForResponse(
@@ -375,8 +464,11 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentT
     """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment"""
 
     comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpenedType(
@@ -387,6 +479,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpenedTyp
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpenedTypeForResponse(
@@ -397,6 +490,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpenedTyp
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdatedType(
@@ -407,6 +501,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdatedTy
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdatedTypeForResponse(
@@ -417,6 +512,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdatedTy
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentType(
@@ -428,6 +524,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentTy
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentTypeForResponse(
@@ -439,6 +536,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentTy
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedType(
@@ -449,6 +547,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedType(
     query: NotRequired[str]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedTypeForResponse(
@@ -459,6 +558,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedTypeFo
     query: NotRequired[str]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssignedType(
@@ -470,6 +570,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned
     paths: NotRequired[list[str]]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssignedTypeForResponse(
@@ -481,6 +582,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned
     paths: NotRequired[list[str]]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedType(
@@ -490,6 +592,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedType(
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedTypeForResponse(
@@ -499,6 +602,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedTypeFo
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReviewType(
@@ -509,6 +613,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyFor
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReviewTypeForResponse(
@@ -519,6 +624,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyFor
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledType(
@@ -530,6 +636,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledT
     paths: NotRequired[list[str]]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledTypeForResponse(
@@ -541,6 +648,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledT
     paths: NotRequired[list[str]]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflictType(
@@ -551,6 +659,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeCon
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflictTypeForResponse(
@@ -561,6 +670,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeCon
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedType(
@@ -574,6 +684,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSu
     paths: NotRequired[list[str]]
     states: UniqueList[Literal["approved", "changes_requested", "commented"]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedTypeForResponse(
@@ -587,6 +698,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSu
     paths: NotRequired[list[str]]
     states: UniqueList[Literal["approved", "changes_requested", "commented"]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedType(
@@ -599,6 +711,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRe
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedTypeForResponse(
@@ -611,6 +724,193 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRe
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened"""
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened"""
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDra
+    ft
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDra
+    ft
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismisse
+    d
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismisse
+    d
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadRe
+    solved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadRe
+    solved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUn
+    resolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUn
+    resolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedType(
@@ -620,6 +920,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted
 
     automation_ids: UniqueList[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedTypeForResponse(
@@ -629,11 +930,124 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted
 
     automation_ids: UniqueList[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed"""
+
+    automation_ids: UniqueList[str]
+    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed"""
+
+    automation_ids: UniqueList[str]
+    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 __all__ = (
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpenedType",
@@ -644,16 +1058,24 @@ __all__ = (
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIntervalTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeledType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeledTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssignedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssignedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflictType",
@@ -664,12 +1086,22 @@ __all__ = (
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpenedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReviewType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReviewTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronizeType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronizeTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertType",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedType",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRunType",

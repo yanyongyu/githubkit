@@ -9,56 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
+class CopilotSpaceCollaboratorAnyof0Allof1Type(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    Credential Authorization
-    """
-
-    login: str
-    credential_id: int
-    credential_type: Literal[
-        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
-    ]
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: _dt.datetime
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[_dt.datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[_dt.datetime, None]]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
-class CredentialAuthorizationTypeForResponse(TypedDict):
-    """Credential Authorization
+class CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse(TypedDict):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    Credential Authorization
-    """
-
-    login: str
-    credential_id: int
-    credential_type: Literal[
-        "personal access token", "SSH key", "OAuth app token", "GitHub app token"
-    ]
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: str
-    scopes: NotRequired[list[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[str, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[str, None]]
+    actor_type: Literal["User"]
+    role: Literal["reader", "writer", "admin"]
 
 
 __all__ = (
-    "CredentialAuthorizationType",
-    "CredentialAuthorizationTypeForResponse",
+    "CopilotSpaceCollaboratorAnyof0Allof1Type",
+    "CopilotSpaceCollaboratorAnyof0Allof1TypeForResponse",
 )

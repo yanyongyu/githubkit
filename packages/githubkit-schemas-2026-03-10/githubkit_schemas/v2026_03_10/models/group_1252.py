@@ -9,86 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
-    )
-    description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
-        default=UNSET,
-        description="General instructions for the Copilot Space.",
-    )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
-        default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
-    )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
+from .group_0154 import ArtifactDeploymentRecord
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207(
     GitHubModel
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207"""
 
-    Metadata specific to the resource type.
+    total_count: int = Field(
+        description="The number of deployment records created or updated."
+    )
+    deployment_records: Missing[list[ArtifactDeploymentRecord]] = Field(default=UNSET)
+    errors: Missing[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="A list of errors for deployments that could not be processed.",
+    )
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
+    tems
     """
 
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    cause: Missing[Literal["unauthorized", "not_found"]] = Field(
+        default=UNSET, description="The reason the deployment failed processing."
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    deployment: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
+    ] = Field(
+        default=UNSET, description="The deployment payload that could not be processed."
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
+    temsPropDeployment
+
+    The deployment payload that could not be processed.
+    """
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the artifact.")
+    digest: Missing[str] = Field(
+        default=UNSET, description="The digest of the artifact."
+    )
+    deployment_name: Missing[str] = Field(
+        default=UNSET, description="The name of the deployment that failed processing."
+    )
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The version of the deployment."
+    )
+    status: Missing[str] = Field(default=UNSET, description="The deployment status.")
+    github_repository: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The repository associated with the deployment."
+    )
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
+    ] = Field(default=UNSET, description="Custom metadata tags for the deployment.")
+    runtime_risks: Missing[list[str]] = Field(
+        default=UNSET, description="Runtime risk classifications for the deployment."
+    )
+
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags(
+    ExtraGitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsI
+    temsPropDeploymentPropTags
+
+    Custom metadata tags for the deployment.
+    """
+
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207)
 model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment
+)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags
 )
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags",
 )

@@ -9,33 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0017 import AppPermissions
 
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503
 
-class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    repositories: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of repository names that the token should have access to",
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    repository_ids: Missing[list[int]] = Field(
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems
+        ]
+    ] = Field(
         default=UNSET,
-        description="List of repository IDs that the token should have access to",
+        description="List of validation errors (present only for 422 responses)",
     )
-    permissions: Missing[AppPermissions] = Field(
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
         default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the fine-grained access token.",
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems
 
-__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503)
+model_rebuild(
+    AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems",
+)

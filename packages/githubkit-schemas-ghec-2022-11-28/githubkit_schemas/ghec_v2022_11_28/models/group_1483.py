@@ -9,59 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotModelPoliciesPatchBody(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchBody"""
+class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    default_availability: Missing[
-        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
-    ] = Field(
-        default=UNSET,
-        description="The organization's default availability for eligible models without an explicit\npolicy. It cannot be updated when it is inherited from the enterprise.",
-    )
-    models: Missing[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The model policies to update. Each `model_name` must be unique.",
+    attestations_subject_digests: Missing[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
+        default=UNSET, description="Information about the current page."
     )
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    The organization's default availability for eligible models without an explicit
-    policy. It cannot be updated when it is inherited from the enterprise.
+    Mapping of subject digest to bundles.
     """
 
-    policy_state: Literal["enabled", "disabled"] = Field()
 
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
 
-class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+    Information about the current page.
+    """
 
-    model_name: str = Field(
-        min_length=1,
-        description="The public identifier of a model returned by the get endpoint.",
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
     )
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The explicit policy state to set for the organization."
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
+    )
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
     )
 
 
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchBody)
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability)
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesPatchBody",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems",
+    "OrgsOrgAttestationsBulkListPostResponse200",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
 )

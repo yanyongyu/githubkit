@@ -9,83 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType]
-    ]
-    documentation_url: str
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
 
-    A single validation error
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    created_at: str
+    updated_at: str
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse
+
+
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
+
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
+    """
+
+    id: int
+
+
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
+
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
+    """
+
+    id: int
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse",
 )

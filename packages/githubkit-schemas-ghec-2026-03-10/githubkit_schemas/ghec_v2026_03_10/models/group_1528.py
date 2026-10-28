@@ -9,26 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0140 import CustomPropertyValue
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesInstallationsValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the external custom property values will be applied to.",
-    )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of external custom property names and associated values to apply to the repositories."
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
 
 
-model_rebuild(OrgsOrgPropertiesInstallationsValuesPatchBody)
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 
-__all__ = ("OrgsOrgPropertiesInstallationsValuesPatchBody",)
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
+
+
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability)
+
+__all__ = (
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
+)

@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0570 import (
+from .group_0570 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0571 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0572 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0571 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0619 import (
+from .group_0573 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0621 import (
     SecretScanningAlertWebhookType,
     SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertMetadataRemovedType(TypedDict):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["reopened"]
+    action: Literal["metadata_removed"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningAlertReopenedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertMetadataRemovedTypeForResponse(TypedDict):
+    """secret_scanning_alert metadata removed event"""
 
-    action: Literal["reopened"]
+    action: Literal["metadata_removed"]
     alert: SecretScanningAlertWebhookTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningAlertReopenedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookSecretScanningAlertReopenedType",
-    "WebhookSecretScanningAlertReopenedTypeForResponse",
+    "WebhookSecretScanningAlertMetadataRemovedType",
+    "WebhookSecretScanningAlertMetadataRemovedTypeForResponse",
 )

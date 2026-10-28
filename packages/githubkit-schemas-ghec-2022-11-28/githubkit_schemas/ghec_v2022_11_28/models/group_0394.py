@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WorkflowDispatchResponse(GitHubModel):
-    """Workflow Dispatch Response
+class ReviewCustomGatesStateRequired(GitHubModel):
+    """ReviewCustomGatesStateRequired"""
 
-    Response containing the workflow run ID and URLs.
-    """
-
-    workflow_run_id: int = Field(
-        title="Workflow Run ID", description="The ID of the workflow run."
+    environment_name: str = Field(
+        description="The name of the environment to approve or reject."
     )
-    run_url: str = Field(description="The URL to the workflow run.")
-    html_url: str = Field()
+    state: Literal["approved", "rejected"] = Field(
+        description="Whether to approve or reject deployment to the specified environments."
+    )
+    comment: Missing[str] = Field(
+        default=UNSET, description="Optional comment to include with the review."
+    )
 
 
-model_rebuild(WorkflowDispatchResponse)
+model_rebuild(ReviewCustomGatesStateRequired)
 
-__all__ = ("WorkflowDispatchResponse",)
+__all__ = ("ReviewCustomGatesStateRequired",)

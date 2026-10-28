@@ -9,39 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    repository_values: list[RepositoryExternalPropertyPayload] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories and the values that the named external custom property will be set to.",
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The organization default policy applied to newly released Copilot features and clients."
     )
 
 
-class RepositoryExternalPropertyPayload(GitHubModel):
-    """Repository External Custom Property Value Payload
-
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str = Field(description="The name of the repository")
-    value: Union[str, None] = Field(
-        description="The value assigned to the repository. Set to `null` to unset the value for this repository."
-    )
-
-
-model_rebuild(OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody)
-model_rebuild(RepositoryExternalPropertyPayload)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability)
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
-    "RepositoryExternalPropertyPayload",
+    "OrgsOrgCopilotFeaturePoliciesPatchBody",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
 )

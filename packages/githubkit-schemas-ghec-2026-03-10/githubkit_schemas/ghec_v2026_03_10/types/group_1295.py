@@ -9,75 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
-
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
-    ]
-    models: NotRequired[
-        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
-    ]
+from .group_0077 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
-    ]
-    models: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
-        ]
-    ]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerType]]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
-    ]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
 )

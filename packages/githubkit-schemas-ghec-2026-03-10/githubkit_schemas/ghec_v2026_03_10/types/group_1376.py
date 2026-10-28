@@ -9,29 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0030 import (
-    ActionsHostedRunnerMachineSpecType,
-    ActionsHostedRunnerMachineSpecTypeForResponse,
-)
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecType]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    total_count: int
-    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

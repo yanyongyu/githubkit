@@ -54,6 +54,8 @@ if TYPE_CHECKING:
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
         OrgsOrgCopilotContentExclusionPutResponse200,
+        OrgsOrgCopilotFeaturePoliciesGetResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
         OrgsOrgCopilotModelPoliciesGetResponse200,
         OrgsOrgCopilotModelPoliciesPatchResponse200,
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
@@ -102,6 +104,10 @@ if TYPE_CHECKING:
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
         OrgsOrgCopilotContentExclusionPutBodyType,
         OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+        OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse,
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
+        OrgsOrgCopilotFeaturePoliciesPatchBodyType,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
         OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse,
         OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType,
         OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType,
@@ -5159,6 +5165,306 @@ class CopilotClient:
                 "404": BasicError,
                 "413": BasicError,
                 "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesGetResponse200,
+        OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-organization-feature-policies
+
+        GET /orgs/{org}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to retrieve the Copilot default availability policy for new features and
+        clients for an organization.
+
+        The enterprise default is used when the enterprise has set one. Otherwise, the organization's
+        own default is used, and an organization that has not enabled a default is reported as
+        `disabled`. For more information, see
+        [About default availability](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/default-availability).
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions also apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-feature-policy-management#get-feature-policies-for-an-organization
+        """
+
+        from ..models import BasicError, OrgsOrgCopilotFeaturePoliciesGetResponse200
+
+        url = f"/orgs/{org}/copilot/feature-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotFeaturePoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesGetResponse200,
+        OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse,
+    ]:
+        """copilot/get-organization-feature-policies
+
+        GET /orgs/{org}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to retrieve the Copilot default availability policy for new features and
+        clients for an organization.
+
+        The enterprise default is used when the enterprise has set one. Otherwise, the organization's
+        own default is used, and an organization that has not enabled a default is reported as
+        `disabled`. For more information, see
+        [About default availability](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/default-availability).
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions also apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-feature-policy-management#get-feature-policies-for-an-organization
+        """
+
+        from ..models import BasicError, OrgsOrgCopilotFeaturePoliciesGetResponse200
+
+        url = f"/orgs/{org}/copilot/feature-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotFeaturePoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotFeaturePoliciesPatchBodyType,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotFeaturePoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]:
+        """copilot/update-organization-feature-policies
+
+        PATCH /orgs/{org}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to update the Copilot default availability policy for new features and
+        clients for an organization.
+
+        An organization can only set its own default while its enterprise has not set one. For more
+        information, see
+        [About default availability](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/default-availability).
+
+        Changing this policy does not change any Copilot feature or client policy that has already been set.
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions also apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-feature-policy-management#update-feature-policies-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotFeaturePoliciesPatchBody,
+            OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/feature-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotFeaturePoliciesPatchBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotFeaturePoliciesPatchBodyType,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_organization_feature_policies(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotFeaturePoliciesPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+    ]:
+        """copilot/update-organization-feature-policies
+
+        PATCH /orgs/{org}/copilot/feature-policies
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Use this endpoint to update the Copilot default availability policy for new features and
+        clients for an organization.
+
+        An organization can only set its own default while its enterprise has not set one. For more
+        information, see
+        [About default availability](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/default-availability).
+
+        Changing this policy does not change any Copilot feature or client policy that has already been set.
+
+        Organization owners can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
+        Organization SAML authorization and OAuth app access restrictions also apply.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-feature-policy-management#update-feature-policies-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotFeaturePoliciesPatchBody,
+            OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/orgs/{org}/copilot/feature-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotFeaturePoliciesPatchBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrgsOrgCopilotFeaturePoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

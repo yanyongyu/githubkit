@@ -9,82 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class BillingAiCreditUsageReportUserType(TypedDict):
-    """BillingAiCreditUsageReportUser"""
+class HovercardType(TypedDict):
+    """Hovercard
 
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodType
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsType]
+    Hovercard
+    """
 
-
-class BillingAiCreditUsageReportUserTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUser"""
-
-    time_period: BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse
-    user: str
-    product: NotRequired[str]
-    model: NotRequired[str]
-    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse]
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class BillingAiCreditUsageReportUserPropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    Hovercard
+    """
 
-
-class BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    message: str
+    octicon: str
 
 
-class BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "BillingAiCreditUsageReportUserPropTimePeriodType",
-    "BillingAiCreditUsageReportUserPropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsType",
-    "BillingAiCreditUsageReportUserPropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportUserType",
-    "BillingAiCreditUsageReportUserTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

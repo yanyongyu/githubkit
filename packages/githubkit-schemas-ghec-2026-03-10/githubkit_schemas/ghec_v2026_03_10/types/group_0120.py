@@ -63,6 +63,7 @@ class DependabotAlertWithRepositoryType(TypedDict):
         Union[DependabotAlertDismissalRequestSimpleType, None]
     ]
     assignees: NotRequired[list[SimpleUserType]]
+    reachability: NotRequired[DependabotAlertWithRepositoryPropReachabilityType]
     repository: SimpleRepositoryType
 
 
@@ -96,10 +97,75 @@ class DependabotAlertWithRepositoryTypeForResponse(TypedDict):
         Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
     ]
     assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    reachability: NotRequired[
+        DependabotAlertWithRepositoryPropReachabilityTypeForResponse
+    ]
     repository: SimpleRepositoryTypeForResponse
 
 
+class DependabotAlertWithRepositoryPropReachabilityType(TypedDict):
+    """DependabotAlertWithRepositoryPropReachability
+
+    The reachability result for the vulnerability that triggered the alert,
+    indicating whether a
+    vulnerable function is reachable from the repository's own code.
+    """
+
+    verdict: Literal[
+        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
+    ]
+    reason: NotRequired[
+        Literal[
+            "unknown",
+            "unavailable_unsupported_ecosystem",
+            "unavailable_analysis_timed_out",
+            "potentially_reachable_invalid_manifest_path",
+            "potentially_reachable_missing_vulnerable_function_annotation",
+            "potentially_reachable_dependency_not_found",
+            "potentially_reachable_dependency_analysis_incomplete",
+            "potentially_reachable_repository_analysis_incomplete",
+            "potentially_reachable_call_found_outside_manifest_scope",
+            "potentially_reachable_unclassified_analysis_state",
+            "reachable_vulnerable_function_called",
+            "unreachable_vulnerable_function_not_called",
+            "potentially_reachable_unresolved_dynamic_call",
+        ]
+    ]
+
+
+class DependabotAlertWithRepositoryPropReachabilityTypeForResponse(TypedDict):
+    """DependabotAlertWithRepositoryPropReachability
+
+    The reachability result for the vulnerability that triggered the alert,
+    indicating whether a
+    vulnerable function is reachable from the repository's own code.
+    """
+
+    verdict: Literal[
+        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
+    ]
+    reason: NotRequired[
+        Literal[
+            "unknown",
+            "unavailable_unsupported_ecosystem",
+            "unavailable_analysis_timed_out",
+            "potentially_reachable_invalid_manifest_path",
+            "potentially_reachable_missing_vulnerable_function_annotation",
+            "potentially_reachable_dependency_not_found",
+            "potentially_reachable_dependency_analysis_incomplete",
+            "potentially_reachable_repository_analysis_incomplete",
+            "potentially_reachable_call_found_outside_manifest_scope",
+            "potentially_reachable_unclassified_analysis_state",
+            "reachable_vulnerable_function_called",
+            "unreachable_vulnerable_function_not_called",
+            "potentially_reachable_unresolved_dynamic_call",
+        ]
+    ]
+
+
 __all__ = (
+    "DependabotAlertWithRepositoryPropReachabilityType",
+    "DependabotAlertWithRepositoryPropReachabilityTypeForResponse",
     "DependabotAlertWithRepositoryType",
     "DependabotAlertWithRepositoryTypeForResponse",
 )

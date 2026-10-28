@@ -9,101 +9,115 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0651 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0652 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0653 import (
+from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0659 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0654 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0666 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0675 import WebhooksLabelType, WebhooksLabelTypeForResponse
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
     action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhooksUserType, None]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookMemberEditedTypeForResponse(TypedDict):
-    """member edited event"""
+class WebhookLabelEditedTypeForResponse(TypedDict):
+    """label edited event"""
 
     action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesTypeForResponse
+    changes: NotRequired[WebhookLabelEditedPropChangesTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    member: Union[WebhooksUserTypeForResponse, None]
+    label: WebhooksLabelTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    The changes to the collaborator permissions
+    The changes to the label if the action was `edited`.
     """
 
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
 
 
-class WebhookMemberEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookMemberEditedPropChanges
+class WebhookLabelEditedPropChangesTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    The changes to the collaborator permissions
+    The changes to the label if the action was `edited`.
     """
 
-    old_permission: NotRequired[
-        WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorTypeForResponse]
+    description: NotRequired[
+        WebhookLabelEditedPropChangesPropDescriptionTypeForResponse
     ]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionTypeForResponse]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameTypeForResponse]
 
 
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
 
     from_: str
 
 
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
+class WebhookLabelEditedPropChangesPropColorTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    from_: str
 
 
-class WebhookMemberEditedPropChangesPropPermissionTypeForResponse(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameTypeForResponse(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropOldPermissionTypeForResponse",
-    "WebhookMemberEditedPropChangesPropPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionTypeForResponse",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedPropChangesTypeForResponse",
-    "WebhookMemberEditedType",
-    "WebhookMemberEditedTypeForResponse",
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropColorTypeForResponse",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropDescriptionTypeForResponse",
+    "WebhookLabelEditedPropChangesPropNameType",
+    "WebhookLabelEditedPropChangesPropNameTypeForResponse",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesTypeForResponse",
+    "WebhookLabelEditedType",
+    "WebhookLabelEditedTypeForResponse",
 )

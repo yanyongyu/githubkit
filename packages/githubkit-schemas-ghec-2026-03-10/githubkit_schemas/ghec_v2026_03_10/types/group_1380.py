@@ -9,27 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
-class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsPutBodyType",
-    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType",
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse",
 )

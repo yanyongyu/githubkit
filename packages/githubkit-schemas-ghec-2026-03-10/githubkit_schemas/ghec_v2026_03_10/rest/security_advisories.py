@@ -20,6 +20,7 @@ from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
+    import datetime as _dt
     from typing import Literal, Union
 
     from githubkit import GitHubCore
@@ -32,6 +33,7 @@ if TYPE_CHECKING:
         FullRepository,
         GlobalAdvisory,
         RepositoryAdvisory,
+        RepositoryAdvisoryComment,
     )
     from ..types import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
@@ -39,6 +41,7 @@ if TYPE_CHECKING:
         GlobalAdvisoryTypeForResponse,
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType,
         PrivateVulnerabilityReportCreateType,
+        RepositoryAdvisoryCommentTypeForResponse,
         RepositoryAdvisoryCreatePropCreditsItemsType,
         RepositoryAdvisoryCreatePropVulnerabilitiesItemsType,
         RepositoryAdvisoryCreateType,
@@ -46,6 +49,8 @@ if TYPE_CHECKING:
         RepositoryAdvisoryUpdatePropCreditsItemsType,
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType,
         RepositoryAdvisoryUpdateType,
+        ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType,
     )
 
 
@@ -1179,6 +1184,572 @@ class SecurityAdvisoriesClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=RepositoryAdvisory,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_repository_advisory_comments(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        since: Missing[_dt.datetime] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[RepositoryAdvisoryComment], list[RepositoryAdvisoryCommentTypeForResponse]
+    ]:
+        """security-advisories/list-repository-advisory-comments
+
+        GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments
+
+        Lists comments on a repository security advisory.
+
+        Accessing internal comments requires write access to the advisory.
+
+        Callers with read-only access to the advisory receive only eligible post-publication comments. For unpublished advisories, these callers receive an empty list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#list-repository-security-advisory-comments
+        """
+
+        from ..models import BasicError, RepositoryAdvisoryComment
+
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments"
+
+        params = {
+            "since": since,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[RepositoryAdvisoryComment],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_repository_advisory_comments(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        since: Missing[_dt.datetime] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[RepositoryAdvisoryComment], list[RepositoryAdvisoryCommentTypeForResponse]
+    ]:
+        """security-advisories/list-repository-advisory-comments
+
+        GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments
+
+        Lists comments on a repository security advisory.
+
+        Accessing internal comments requires write access to the advisory.
+
+        Callers with read-only access to the advisory receive only eligible post-publication comments. For unpublished advisories, these callers receive an empty list.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#list-repository-security-advisory-comments
+        """
+
+        from ..models import BasicError, RepositoryAdvisoryComment
+
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments"
+
+        params = {
+            "since": since,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[RepositoryAdvisoryComment],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    @overload
+    def create_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        body: str,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    def create_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse]:
+        """security-advisories/create-repository-advisory-comment
+
+        POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments
+
+        Creates a comment on a repository security advisory.
+
+        In order to create a comment, the authenticated user must be an advisory collaborator, security manager, or repository administrator.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#create-a-repository-advisory-comment
+        """
+
+        from ..models import (
+            BasicError,
+            RepositoryAdvisoryComment,
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryAdvisoryComment,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_create_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_create_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        body: str,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    async def async_create_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse]:
+        """security-advisories/create-repository-advisory-comment
+
+        POST /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments
+
+        Creates a comment on a repository security advisory.
+
+        In order to create a comment, the authenticated user must be an advisory collaborator, security manager, or repository administrator.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#create-a-repository-advisory-comment
+        """
+
+        from ..models import (
+            BasicError,
+            RepositoryAdvisoryComment,
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryAdvisoryComment,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def get_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse]:
+        """security-advisories/get-repository-advisory-comment
+
+        GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}
+
+        Get a comment on a repository security advisory using the comment's ID.
+
+        Advisory collaborators can view all non-confidential comments on advisories they have access to.
+        Other users can only view comments that are not considered internal.
+
+        GitHub Apps and fine-grained personal access tokens with the `repository_advisories: read` permission can view all non-confidential comments, including internal comments.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to get a comment on a security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#get-a-repository-advisory-comment
+        """
+
+        from ..models import BasicError, RepositoryAdvisoryComment
+
+        url = (
+            f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryAdvisoryComment,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse]:
+        """security-advisories/get-repository-advisory-comment
+
+        GET /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}
+
+        Get a comment on a repository security advisory using the comment's ID.
+
+        Advisory collaborators can view all non-confidential comments on advisories they have access to.
+        Other users can only view comments that are not considered internal.
+
+        GitHub Apps and fine-grained personal access tokens with the `repository_advisories: read` permission can view all non-confidential comments, including internal comments.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:read` scope to get a comment on a security advisory in a private repository, or any unpublished security advisory that the authenticated user has access to.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#get-a-repository-advisory-comment
+        """
+
+        from ..models import BasicError, RepositoryAdvisoryComment
+
+        url = (
+            f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}"
+        )
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryAdvisoryComment,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    @overload
+    def update_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        body: str,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    def update_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse]:
+        """security-advisories/update-repository-advisory-comment
+
+        PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}
+
+        Update the body of a comment on a repository security advisory using the comment's ID.
+
+        In order to update a comment, the authenticated user must be the author of the comment, or a security manager or administrator of the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#update-a-repository-advisory-comment
+        """
+
+        from ..models import (
+            BasicError,
+            RepositoryAdvisoryComment,
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody,
+            ValidationError,
+        )
+
+        url = (
+            f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryAdvisoryComment,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_update_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_update_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        body: str,
+    ) -> Response[
+        RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse
+    ]: ...
+
+    async def async_update_repository_advisory_comment(
+        self,
+        owner: str,
+        repo: str,
+        ghsa_id: str,
+        comment_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[RepositoryAdvisoryComment, RepositoryAdvisoryCommentTypeForResponse]:
+        """security-advisories/update-repository-advisory-comment
+
+        PATCH /repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}
+
+        Update the body of a comment on a repository security advisory using the comment's ID.
+
+        In order to update a comment, the authenticated user must be the author of the comment, or a security manager or administrator of the repository.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` or `repository_advisories:write` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/security-advisories/repository-advisories#update-a-repository-advisory-comment
+        """
+
+        from ..models import (
+            BasicError,
+            RepositoryAdvisoryComment,
+            ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody,
+            ValidationError,
+        )
+
+        url = (
+            f"/repos/{owner}/{repo}/security-advisories/{ghsa_id}/comments/{comment_id}"
+        )
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryAdvisoryComment,
             error_models={
                 "403": BasicError,
                 "404": BasicError,

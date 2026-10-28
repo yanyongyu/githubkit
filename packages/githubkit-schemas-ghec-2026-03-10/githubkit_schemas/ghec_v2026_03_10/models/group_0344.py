@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +18,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class PullRequestStack(GitHubModel):
-    """Pull Request Stack
 
-    The stack information associated with a pull request.
+class ProjectsV2StatusUpdate(GitHubModel):
+    """Projects v2 Status Update
+
+    An status update belonging to a project
     """
 
-    base: PullRequestStackPropBase = Field()
-    size: Missing[int] = Field(
-        default=UNSET, description="The total number of pull requests in the stack."
-    )
-    position: Missing[int] = Field(
+    id: float = Field(description="The unique identifier of the status update.")
+    node_id: str = Field(description="The node ID of the status update.")
+    project_node_id: Missing[str] = Field(
         default=UNSET,
-        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
+        description="The node ID of the project that this status update belongs to.",
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the stack that this pull request belongs to.",
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number of the stack that this pull request belongs to.",
+    created_at: _dt.datetime = Field(
+        description="The time when the status update was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time when the status update was last updated."
+    )
+    status: Missing[
+        Union[Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"], None]
+    ] = Field(default=UNSET, description="The current status.")
+    start_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The start date of the period covered by the update."
+    )
+    target_date: Missing[_dt.date] = Field(
+        default=UNSET, description="The target date associated with the update."
+    )
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the status update"
     )
 
 
-class PullRequestStackPropBase(GitHubModel):
-    """PullRequestStackPropBase"""
+model_rebuild(ProjectsV2StatusUpdate)
 
-    ref: str = Field(
-        description="The base ref of the stack this pull request belongs to."
-    )
-    sha: Union[str, None] = Field(
-        description="The base SHA of the stack this pull request belongs to."
-    )
-
-
-model_rebuild(PullRequestStack)
-model_rebuild(PullRequestStackPropBase)
-
-__all__ = (
-    "PullRequestStack",
-    "PullRequestStackPropBase",
-)
+__all__ = ("ProjectsV2StatusUpdate",)

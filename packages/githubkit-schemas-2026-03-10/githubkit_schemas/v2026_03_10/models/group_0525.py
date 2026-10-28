@@ -17,26 +17,38 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
-from .group_0056 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-class PullRequestStackPullRequest(GitHubModel):
-    """Pull Request Stack Pull Request"""
+class RepositoryAdvisoryComment(GitHubModel):
+    """Repository Advisory Comment
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+    A comment on a repository security advisory.
+    """
+
+    id: int = Field(description="Unique identifier of the advisory comment.")
     node_id: str = Field()
-    title: str = Field()
-    state: Literal["open", "closed"] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    draft: bool = Field()
-    html_url: str = Field()
+    url: str = Field(description="API URL for the advisory comment.")
+    html_url: str = Field(description="Web URL for the advisory comment.")
+    body: str = Field(description="Contents of the advisory comment.")
     user: Union[SimpleUser, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    advisory_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-model_rebuild(PullRequestStackPullRequest)
+model_rebuild(RepositoryAdvisoryComment)
 
-__all__ = ("PullRequestStackPullRequest",)
+__all__ = ("RepositoryAdvisoryComment",)

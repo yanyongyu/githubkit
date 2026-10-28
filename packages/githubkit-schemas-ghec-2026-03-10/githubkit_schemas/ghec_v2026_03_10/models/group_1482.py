@@ -9,56 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
+class OrgsOrgAttestationsDeleteRequestPostBodyOneof0(GitHubModel):
+    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
 
-    default_availability: OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability = Field(
-        description="The effective default availability for models reported as `delegate_to_default`."
-    )
-    models: list[OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems] = Field(
-        description="The effective policies for all models available to the organization."
-    )
-
-
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
-
-    The effective default availability for models reported as `delegate_to_default`.
-    """
-
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The effective default availability. The enterprise default is used when it\nis configured. Otherwise, the organization's default is used."
-    )
-    editable: bool = Field(
-        description="Whether the organization can update its default availability."
+    subject_digests: list[str] = Field(
+        max_length=1024 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of subject digests associated with the artifact attestations to delete.",
     )
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+model_rebuild(OrgsOrgAttestationsDeleteRequestPostBodyOneof0)
 
-    model_name: str = Field(description="The public identifier of the model.")
-    display_name: str = Field(description="The human-readable name of the model.")
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_default", "unconfigured"
-    ] = Field(
-        description="The policy state after applying inheritance. `enabled` and `disabled` are\nexplicit policies configured for the organization or inherited from its\nenterprise. `delegate_to_default` means the model has no explicit policy and\nfollows `default_availability`. `unconfigured` means the model has no explicit\npolicy and is not eligible for default availability, so it is disabled."
-    )
-
-
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchResponse200)
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability)
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems)
-
-__all__ = (
-    "OrgsOrgCopilotModelPoliciesPatchResponse200",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems",
-)
+__all__ = ("OrgsOrgAttestationsDeleteRequestPostBodyOneof0",)

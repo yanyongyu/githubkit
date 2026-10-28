@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse422(GitHubModel):
-    """AgentsAutomationsAutomationIdTasksGetResponse422
+class AgentsAutomationsGetResponse401(GitHubModel):
+    """AgentsAutomationsGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,17 +30,23 @@ class AgentsAutomationsAutomationIdTasksGetResponse422(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[
-        list[AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems]
-    ] = Field(
+    errors: Missing[list[AgentsAutomationsGetResponse401PropErrorsItems]] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems(GitHubModel):
-    """AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems
+class AgentsAutomationsGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsAutomationsGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +65,10 @@ class AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems(GitHubMode
     )
 
 
-model_rebuild(AgentsAutomationsAutomationIdTasksGetResponse422)
-model_rebuild(AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems)
+model_rebuild(AgentsAutomationsGetResponse401)
+model_rebuild(AgentsAutomationsGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsAutomationsAutomationIdTasksGetResponse422",
-    "AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItems",
+    "AgentsAutomationsGetResponse401",
+    "AgentsAutomationsGetResponse401PropErrorsItems",
 )

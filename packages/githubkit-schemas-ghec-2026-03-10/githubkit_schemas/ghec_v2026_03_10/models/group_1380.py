@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,22 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsPutBody"""
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    sha_pinning_required: Missing[bool] = Field(
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsPutBody)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody
+)
 
-__all__ = ("OrgsOrgActionsPermissionsPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody",
+)

@@ -28,7 +28,7 @@ class CopilotOrganizationDetailsType(TypedDict):
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    plan_type: NotRequired[Literal["business", "enterprise", "access"]]
 
 
 class CopilotOrganizationDetailsTypeForResponse(TypedDict):
@@ -46,7 +46,7 @@ class CopilotOrganizationDetailsTypeForResponse(TypedDict):
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
-    plan_type: NotRequired[Literal["business", "enterprise"]]
+    plan_type: NotRequired[Literal["business", "enterprise", "access"]]
 
 
 class CopilotOrganizationSeatBreakdownType(TypedDict):

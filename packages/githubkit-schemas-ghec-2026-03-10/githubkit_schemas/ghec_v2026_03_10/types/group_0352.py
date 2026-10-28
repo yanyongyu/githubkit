@@ -10,56 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ProjectsV2FieldIterationConfigurationType(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
 
-    The configuration for iteration fields.
+class ProjectsV2DraftIssueType(TypedDict):
+    """Draft Issue
+
+    A draft issue in a project
     """
 
-    start_date: _dt.date
-    duration: int
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
-    ]
+    id: float
+    node_id: str
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
-    """ProjectsV2FieldIterationConfiguration
+class ProjectsV2DraftIssueTypeForResponse(TypedDict):
+    """Draft Issue
 
-    The configuration for iteration fields.
+    A draft issue in a project
     """
 
-    start_date: str
-    duration: int
-    iterations: NotRequired[
-        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
-    ]
-
-
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
-
+    id: float
+    node_id: str
     title: str
-    start_date: _dt.date
-    duration: int
-
-
-class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
-    TypedDict
-):
-    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
-
-    title: str
-    start_date: str
-    duration: int
+    body: NotRequired[Union[str, None]]
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
-    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
-    "ProjectsV2FieldIterationConfigurationType",
-    "ProjectsV2FieldIterationConfigurationTypeForResponse",
+    "ProjectsV2DraftIssueType",
+    "ProjectsV2DraftIssueTypeForResponse",
 )

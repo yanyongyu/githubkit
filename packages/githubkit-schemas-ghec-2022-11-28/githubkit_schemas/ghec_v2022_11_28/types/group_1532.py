@@ -9,47 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    repository_values: list[RepositoryExternalPropertyPayloadType]
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
-
-
-class RepositoryExternalPropertyPayloadType(TypedDict):
-    """Repository External Custom Property Value Payload
-
-    Repository name and associated external custom property value
+    The default policy applied to newly released Copilot features and clients.
     """
 
-    repository_name: str
-    value: Union[str, None]
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
-class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
-    """Repository External Custom Property Value Payload
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    Repository name and associated external custom property value
+    The default policy applied to newly released Copilot features and clients.
     """
 
-    repository_name: str
-    value: Union[str, None]
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
-    "RepositoryExternalPropertyPayloadType",
-    "RepositoryExternalPropertyPayloadTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
 )

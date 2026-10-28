@@ -18,35 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
 
-    commit_title: Missing[str] = Field(
-        default=UNSET,
-        description="Title for the automatic commit message. Only supported for direct merges.",
+    name: str = Field()
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for adding this label."
     )
-    commit_message: Missing[str] = Field(
+    suggest: Missing[bool] = Field(
         default=UNSET,
-        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
+        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
     )
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
-    )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET,
-        description="The merge method to use for a direct merge. Only supported for direct merges.",
-    )
-    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
-        default=UNSET,
-        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
-    )
-    bypass_rules: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to bypass repository rules that the authenticated actor is permitted to bypass.",
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items",)

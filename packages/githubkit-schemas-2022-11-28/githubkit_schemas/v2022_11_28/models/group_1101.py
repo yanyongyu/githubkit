@@ -9,60 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The set of actions which Copilot may perform on the pull request.",
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+    created_at: _dt.datetime = Field(
+        description="Timestamp when the pull request was enrolled for Agent Merge."
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+    updated_at: _dt.datetime = Field(
+        description="Timestamp when the Agent Merge enrollment was last updated."
+    )
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser = Field(
+        description="The user who most recently enabled Agent Merge for the pull request"
+    )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
 
-    A single validation error
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
-    )
+    id: int = Field(ge=1.0, description="The unique identifier of the user")
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse400)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser",
 )

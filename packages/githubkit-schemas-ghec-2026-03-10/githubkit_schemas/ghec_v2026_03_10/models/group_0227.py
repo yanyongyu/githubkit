@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,42 +18,71 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UsageReportExportList(GitHubModel):
-    """UsageReportExportList"""
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
 
-    usage_report_exports: list[UsageReportExport] = Field(
-        description="List of usage report exports"
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
     )
 
 
-class UsageReportExport(GitHubModel):
-    """UsageReportExport"""
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
-    id: str = Field(description="Unique identifier for the usage report export")
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"] = (
-        Field(description="The type of usage report")
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    state: Missing[Literal["active", "deleted"]] = Field(
+        default=UNSET, description="State of the cost center."
     )
-    start_date: _dt.date = Field(description="The start date for the report")
-    end_date: _dt.date = Field(description="The end date for the report")
-    status: Literal["processing", "completed", "failed"] = Field(
-        description="The current status of the report export"
-    )
-    download_urls: Missing[list[str]] = Field(
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="URLs to download the completed report. Only present when the report status is `completed`.",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="When the report export was created"
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
-    actor: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the export"
+    ai_credit_pool_state: Missing[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+    ] = Field(
+        default=UNSET,
+        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    )
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    )
+    current_amount: Missing[Union[float, None]] = Field(
+        default=UNSET,
+        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
     )
 
 
-model_rebuild(UsageReportExportList)
-model_rebuild(UsageReportExport)
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
 
 __all__ = (
-    "UsageReportExport",
-    "UsageReportExportList",
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
 )

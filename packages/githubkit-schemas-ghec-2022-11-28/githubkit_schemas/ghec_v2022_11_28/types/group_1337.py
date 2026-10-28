@@ -9,99 +9,112 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    id: NotRequired[str]
-    name: NotRequired[str]
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: NotRequired[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
-        ]
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
     ]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
     ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    id: NotRequired[str]
-    name: NotRequired[str]
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: NotRequired[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
-        ]
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
     ]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
 
-    type: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
     name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
 
-    type: NotRequired[str]
+    id: NotRequired[int]
     name: NotRequired[str]
+    full_name: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    The created or existing ruleset (if create_ruleset was true).
     """
 
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
+    The created or existing ruleset (if create_ruleset was true).
     """
 
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
 )

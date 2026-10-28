@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0210 import SecretScanningCustomPatternToCreate
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
-    )
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke across the organization.")
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostBody)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsPostBody",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody",)

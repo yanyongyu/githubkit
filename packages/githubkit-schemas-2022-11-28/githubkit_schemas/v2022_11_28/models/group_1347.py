@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0122 import ActionsPolicyRepoConditionsOneof0
-from .group_0123 import ActionsPolicyRepoConditionsOneof1
-from .group_0145 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
+from .group_0217 import CustomPropertyValue
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgPropertiesInstallationsValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories that the external custom property values will be applied to.",
     )
-    conditions: Missing[
-        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
-    ] = Field(
-        default=UNSET,
-        title="Repository Actions policy conditions",
-        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+    properties: list[CustomPropertyValue] = Field(
+        description="List of external custom property names and associated values to apply to the repositories."
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
+model_rebuild(OrgsOrgPropertiesInstallationsValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)
+__all__ = ("OrgsOrgPropertiesInstallationsValuesPatchBody",)

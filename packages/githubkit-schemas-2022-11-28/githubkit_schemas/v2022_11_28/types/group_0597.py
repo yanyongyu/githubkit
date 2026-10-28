@@ -10,44 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0585 import (
-    WebhooksLabelPropArchivedByType,
-    WebhooksLabelPropArchivedByTypeForResponse,
+from .group_0598 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
 )
 
 
-class WebhooksLabelUnarchivedType(TypedDict):
-    """Unarchived label"""
+class WebhooksLabelArchivedAllof1Type(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[Union[_dt.datetime, None], None]
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedByType], None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
 
 
-class WebhooksLabelUnarchivedTypeForResponse(TypedDict):
-    """Unarchived label"""
+class WebhooksLabelArchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: Union[Union[str, None], None]
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedByTypeForResponse], None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedType",
-    "WebhooksLabelUnarchivedTypeForResponse",
+    "WebhooksLabelArchivedAllof1Type",
+    "WebhooksLabelArchivedAllof1TypeForResponse",
 )

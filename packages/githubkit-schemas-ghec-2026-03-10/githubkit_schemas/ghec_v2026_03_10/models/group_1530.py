@@ -9,23 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0142 import CustomProperty
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    properties: list[CustomProperty] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The array of custom properties to create or update.",
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
+
+
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability)
+
+__all__ = (
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
+)

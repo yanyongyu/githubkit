@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0651 import EnterpriseWebhooks
-from .group_0652 import SimpleInstallation
-from .group_0653 import OrganizationSimpleWebhooks
-from .group_0654 import RepositoryWebhooks
-from .group_0682 import WebhooksLabelUnarchived
+from .group_0657 import EnterpriseWebhooks
+from .group_0658 import SimpleInstallation
+from .group_0659 import OrganizationSimpleWebhooks
+from .group_0660 import RepositoryWebhooks
+from .group_0913 import WebhookIssuesUnlockedPropIssue
 
 
-class WebhookLabelUnarchived(GitHubModel):
-    """label unarchived event"""
+class WebhookIssuesUnlocked(GitHubModel):
+    """issues unlocked event"""
 
-    action: Literal["unarchived"] = Field()
+    action: Literal["unlocked"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,10 @@ class WebhookLabelUnarchived(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabelUnarchived = Field(title="Unarchived label")
+    issue: WebhookIssuesUnlockedPropIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,6 +55,6 @@ class WebhookLabelUnarchived(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelUnarchived)
+model_rebuild(WebhookIssuesUnlocked)
 
-__all__ = ("WebhookLabelUnarchived",)
+__all__ = ("WebhookIssuesUnlocked",)

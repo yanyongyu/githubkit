@@ -9,45 +9,229 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0650 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0651 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0652 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0205 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
 )
-from .group_0653 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0654 import WebhooksRuleType, WebhooksRuleTypeForResponse
+from .group_0206 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
+from .group_0216 import (
+    PublicMonitoringAlertLocationType,
+    PublicMonitoringAlertLocationTypeForResponse,
+    PublicMonitoringSecretAuthorType,
+    PublicMonitoringSecretAuthorTypeForResponse,
+)
 
 
-class WebhookBranchProtectionRuleDeletedType(TypedDict):
-    """branch protection rule deleted event"""
+class PublicMonitoringAlertWebhookPropAttributionType(TypedDict):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    rule: WebhooksRuleType
-    sender: SimpleUserType
+    Attribution information for the alert.
+    """
+
+    secret_author: NotRequired[
+        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
+    ]
+    committer_email: NotRequired[Union[str, None]]
+    commit: NotRequired[
+        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
+    ]
+    wiki_commit: NotRequired[
+        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
+    ]
+    issue_title: NotRequired[
+        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
+    ]
+    issue_body: NotRequired[
+        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
+    ]
+    issue_comment: NotRequired[
+        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
+    actions_log: NotRequired[PublicMonitoringAlertLocationType]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
 
 
-class WebhookBranchProtectionRuleDeletedTypeForResponse(TypedDict):
-    """branch protection rule deleted event"""
+class PublicMonitoringAlertWebhookPropAttributionTypeForResponse(TypedDict):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    rule: WebhooksRuleTypeForResponse
-    sender: SimpleUserTypeForResponse
+    Attribution information for the alert.
+    """
+
+    secret_author: NotRequired[
+        Union[
+            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
+        ]
+    ]
+    committer_email: NotRequired[Union[str, None]]
+    commit: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    wiki_commit: NotRequired[
+        Union[
+            SecretScanningLocationWikiCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_title: NotRequired[
+        Union[
+            SecretScanningLocationIssueTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_body: NotRequired[
+        Union[
+            SecretScanningLocationIssueBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_comment: NotRequired[
+        Union[
+            SecretScanningLocationIssueCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[
+        PublicMonitoringAlertLocationTypeForResponse
+    ]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleDeletedType",
-    "WebhookBranchProtectionRuleDeletedTypeForResponse",
+    "PublicMonitoringAlertWebhookPropAttributionType",
+    "PublicMonitoringAlertWebhookPropAttributionTypeForResponse",
 )

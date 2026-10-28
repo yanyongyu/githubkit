@@ -9,29 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from githubkit.typing import UniqueList
+
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
+
+    labels: list[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    credential_id: Union[int, str]
-    credential_type: Literal["classic_pat", "ssh_key"]
-    organizations: UniqueList[str]
-
-
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
-
-    credential_id: Union[int, str]
-    credential_type: Literal["classic_pat", "ssh_key"]
-    organizations: UniqueList[str]
+    labels: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",
+    "EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyTypeForResponse",
 )

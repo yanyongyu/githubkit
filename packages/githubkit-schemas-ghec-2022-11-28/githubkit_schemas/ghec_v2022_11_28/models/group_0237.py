@@ -9,32 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class Label(GitHubModel):
+    """Label
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
+    """
+
+    id: int = Field(description="Unique identifier for the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
+    )
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: None = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
 
 
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
+model_rebuild(Label)
 
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
-
-
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
-
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("Label",)

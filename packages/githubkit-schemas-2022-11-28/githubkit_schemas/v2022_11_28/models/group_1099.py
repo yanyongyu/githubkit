@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_1100 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-)
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
 
-    sessions: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems]
-    ] = Field(default=UNSET, description="Sessions associated with this task")
+    The Agent Merge enrollment configuration
+
+    Examples:
+        {'allowed_actions': ['fix_ci']}
+    """
+
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The set of actions that Copilot may perform on the pull request.",
+    )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody)
 
-__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1",)
+__all__ = ("AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody",)

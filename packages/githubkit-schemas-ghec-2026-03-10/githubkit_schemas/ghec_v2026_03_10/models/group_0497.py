@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueTypeWebhook(GitHubModel):
-    """Issue Type
+class CheckImmutableReleases(GitHubModel):
+    """Check immutable releases
 
-    The type of issue.
+    Check immutable releases
     """
 
-    id: int = Field(description="The unique identifier of the issue type.")
-    name: str = Field(description="The name of the issue type.")
-    color: Missing[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="The color of the issue type.")
+    enabled: bool = Field(
+        description="Whether immutable releases are enabled for the repository."
+    )
+    enforced_by_owner: bool = Field(
+        description="Whether immutable releases are enforced by the repository owner."
+    )
 
 
-model_rebuild(IssueTypeWebhook)
+model_rebuild(CheckImmutableReleases)
 
-__all__ = ("IssueTypeWebhook",)
+__all__ = ("CheckImmutableReleases",)

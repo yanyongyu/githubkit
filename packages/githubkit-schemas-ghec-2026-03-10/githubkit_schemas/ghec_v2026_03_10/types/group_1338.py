@@ -9,28 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type(
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
 
-    name: NotRequired[str]
-    ai_credit_pool_enabled: bool
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
 
-    name: NotRequired[str]
-    ai_credit_pool_enabled: bool
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse",
 )

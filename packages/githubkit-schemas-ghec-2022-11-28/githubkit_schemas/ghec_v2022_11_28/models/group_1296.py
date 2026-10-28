@@ -9,53 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
-
-    default_availability: Missing[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability
-    ] = Field(default=UNSET)
-    models: Missing[
-        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems]
-    ] = Field(default=UNSET)
+from .group_0077 import Runner
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="`delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
-    )
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[list[Runner]] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
 
-    model_name: str = Field(min_length=1)
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
-    ] = Field(
-        description="`delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBody)
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability)
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

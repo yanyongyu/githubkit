@@ -60,7 +60,7 @@ class CopilotSeatDetails(GitHubModel):
         default=UNSET,
         description="**Closing down notice:** This field is no longer relevant and is closing down. Use the `created_at` field to determine when the assignee was last granted access to GitHub Copilot. Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
     )
-    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+    plan_type: Missing[Literal["business", "enterprise", "unknown", "access"]] = Field(
         default=UNSET,
         description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )

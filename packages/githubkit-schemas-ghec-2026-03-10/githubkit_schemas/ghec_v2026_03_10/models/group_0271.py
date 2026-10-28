@@ -9,34 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class License(GitHubModel):
-    """License
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
 
-    License
+    Gist
     """
 
-    key: str = Field()
-    name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
     node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
     html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: list[str] = Field()
-    conditions: list[str] = Field()
-    limitations: list[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(License)
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
 
-__all__ = ("License",)
+
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
+
+__all__ = (
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
+)

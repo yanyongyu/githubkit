@@ -9,30 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAutofixCommitsType(TypedDict):
-    """CodeScanningAutofixCommits
+class CodeScanningAiScanEnablementUpdateType(TypedDict):
+    """CodeScanningAiScanEnablementUpdate
 
-    Commit an autofix for a code scanning alert
+    AI Scan enablement update for a repository.
     """
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeScanningAutofixCommitsTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommits
+class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablementUpdate
 
-    Commit an autofix for a code scanning alert
+    AI Scan enablement update for a repository.
     """
 
-    target_ref: NotRequired[str]
-    message: NotRequired[str]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsType",
-    "CodeScanningAutofixCommitsTypeForResponse",
+    "CodeScanningAiScanEnablementUpdateType",
+    "CodeScanningAiScanEnablementUpdateTypeForResponse",
 )

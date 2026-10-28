@@ -9,53 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems
-    ] = Field()
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
-    s
-    """
-
-    model_name: str = Field()
-    display_name: str = Field()
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    credential_id: Union[int, str] = Field()
+    credential_type: Literal["classic_pat", "ssh_key"] = Field(
+        description="The type of credential to authorize."
     )
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ] = Field(
-        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
-    )
-    editable: bool = Field(
-        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
+    organizations: UniqueList[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBody",)

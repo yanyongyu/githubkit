@@ -13,61 +13,77 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsType(TypedDict):
-    """AgentsAutomationsAvailableToolsGetResponse200Items
+class AgentsAutomationsGetResponse400Type(TypedDict):
+    """AgentsAutomationsGetResponse400
 
-    A CMC-controlled presentation category for Automation tools. Clients must not
-    depend on group identifiers, membership, or ordering remaining stable.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: str
-    title: str
-    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType]
+    message: str
+    errors: NotRequired[list[AgentsAutomationsGetResponse400PropErrorsItemsType]]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse(TypedDict):
-    """AgentsAutomationsAvailableToolsGetResponse200Items
+class AgentsAutomationsGetResponse400TypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse400
 
-    A CMC-controlled presentation category for Automation tools. Clients must not
-    depend on group identifiers, membership, or ordering remaining stable.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: str
-    title: str
-    tools: list[
-        AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse
+    message: str
+    errors: NotRequired[
+        list[AgentsAutomationsGetResponse400PropErrorsItemsTypeForResponse]
     ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType(TypedDict):
-    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
+class AgentsAutomationsGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsAutomationsGetResponse400PropErrorsItems
 
-    A tool that can be selected in an Automation.
+    A single validation error
     """
 
-    id: str
-    title: str
-    description: str
-    scope: NotRequired[Literal["read", "write"]]
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
+class AgentsAutomationsGetResponse400PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse400PropErrorsItems
 
-    A tool that can be selected in an Automation.
+    A single validation error
     """
 
-    id: str
-    title: str
-    description: str
-    scope: NotRequired[Literal["read", "write"]]
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsType",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse",
+    "AgentsAutomationsGetResponse400PropErrorsItemsType",
+    "AgentsAutomationsGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsAutomationsGetResponse400Type",
+    "AgentsAutomationsGetResponse400TypeForResponse",
 )

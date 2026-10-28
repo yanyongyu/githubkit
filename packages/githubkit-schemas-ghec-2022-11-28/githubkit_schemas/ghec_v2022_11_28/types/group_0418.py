@@ -10,121 +10,127 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0249 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0417 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
 
-class CodeQualityFindingType(TypedDict):
-    """CodeQualityFinding
 
-    Code quality finding
+class CheckRunType(TypedDict):
+    """CheckRun
+
+    A check performed on the code of a given code change
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
+    id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
     url: str
-    rule: CodeQualityFindingRuleType
-    location: CodeQualityFindingLocationType
-    message: CodeQualityFindingMessageType
-    created_at: NotRequired[_dt.datetime]
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+        None,
+    ]
+    started_at: Union[_dt.datetime, None]
+    completed_at: Union[_dt.datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: list[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-class CodeQualityFindingTypeForResponse(TypedDict):
-    """CodeQualityFinding
+class CheckRunTypeForResponse(TypedDict):
+    """CheckRun
 
-    Code quality finding
+    A check performed on the code of a given code change
     """
 
-    number: int
-    state: Literal["open", "dismissed"]
+    id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
     url: str
-    rule: CodeQualityFindingRuleTypeForResponse
-    location: CodeQualityFindingLocationTypeForResponse
-    message: CodeQualityFindingMessageTypeForResponse
-    created_at: NotRequired[str]
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+        None,
+    ]
+    started_at: Union[str, None]
+    completed_at: Union[str, None]
+    output: CheckRunPropOutputTypeForResponse
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
+    app: Union[None, IntegrationTypeForResponse, None]
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
 
 
-class CodeQualityFindingRuleType(TypedDict):
-    """CodeQualityFindingRule
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
 
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
 
 
-class CodeQualityFindingRuleTypeForResponse(TypedDict):
-    """CodeQualityFindingRule
+class CheckRunPropOutputTypeForResponse(TypedDict):
+    """CheckRunPropOutput"""
 
-    Code quality rule
-    """
-
-    id: str
-    title: str
-    description: str
-    help_: NotRequired[str]
-    severity: Literal["error", "warning", "note", "none"]
-    category: Literal["none", "maintainability", "reliability"]
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
 
 
-class CodeQualityFindingLocationType(TypedDict):
-    """CodeQualityFindingLocation
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
 
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
+    id: int
 
 
-class CodeQualityFindingLocationTypeForResponse(TypedDict):
-    """CodeQualityFindingLocation
+class CheckRunPropCheckSuiteTypeForResponse(TypedDict):
+    """CheckRunPropCheckSuite"""
 
-    Code quality file location
-    """
-
-    path: str
-    start_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_line: NotRequired[int]
-    end_column: NotRequired[int]
-
-
-class CodeQualityFindingMessageType(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
-
-
-class CodeQualityFindingMessageTypeForResponse(TypedDict):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str
-    markdown: str
+    id: int
 
 
 __all__ = (
-    "CodeQualityFindingLocationType",
-    "CodeQualityFindingLocationTypeForResponse",
-    "CodeQualityFindingMessageType",
-    "CodeQualityFindingMessageTypeForResponse",
-    "CodeQualityFindingRuleType",
-    "CodeQualityFindingRuleTypeForResponse",
-    "CodeQualityFindingType",
-    "CodeQualityFindingTypeForResponse",
+    "CheckRunPropCheckSuiteType",
+    "CheckRunPropCheckSuiteTypeForResponse",
+    "CheckRunPropOutputType",
+    "CheckRunPropOutputTypeForResponse",
+    "CheckRunType",
+    "CheckRunTypeForResponse",
 )

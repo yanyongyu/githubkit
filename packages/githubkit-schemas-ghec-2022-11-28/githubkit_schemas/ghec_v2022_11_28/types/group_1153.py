@@ -49,8 +49,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsType(Type
     id: str
     name: str
     enabled: NotRequired[bool]
-    owner_type: NotRequired[Literal["user", "repository"]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
+    type: NotRequired[Literal["personal", "shared"]]
     require_actor_write_permission: NotRequired[bool]
     model: NotRequired[str]
     reasoning_effort: NotRequired[str]
@@ -73,8 +72,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsTypeForRe
     id: str
     name: str
     enabled: NotRequired[bool]
-    owner_type: NotRequired[Literal["user", "repository"]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
+    type: NotRequired[Literal["personal", "shared"]]
     require_actor_write_permission: NotRequired[bool]
     model: NotRequired[str]
     reasoning_effort: NotRequired[str]
@@ -113,8 +111,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 ):
     """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers
 
-    Public trigger configuration keyed by stable public trigger identifier. Each
-    trigger has a closed, trigger-specific configuration schema.
+    Trigger configuration for the automation.
     """
 
     interval: NotRequired[
@@ -177,8 +174,44 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     pull_request_review_requested: NotRequired[
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedType
     ]
+    issue_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedType
+    ]
+    issue_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedType
+    ]
+    pull_request_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedType
+    ]
+    pull_request_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedType
+    ]
+    pull_request_converted_to_draft: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftType
+    ]
+    pull_request_review_dismissed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedType
+    ]
+    pull_request_review_thread_resolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedType
+    ]
+    pull_request_review_thread_unresolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedType
+    ]
     automation_completed: NotRequired[
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedType
+    ]
+    automation_failed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedType
+    ]
+    code_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertType
+    ]
+    secret_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertType
+    ]
+    dependabot_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertType
     ]
 
 
@@ -187,8 +220,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 ):
     """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers
 
-    Public trigger configuration keyed by stable public trigger identifier. Each
-    trigger has a closed, trigger-specific configuration schema.
+    Trigger configuration for the automation.
     """
 
     interval: NotRequired[
@@ -251,8 +283,44 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     pull_request_review_requested: NotRequired[
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse
     ]
+    issue_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedTypeForResponse
+    ]
+    issue_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedTypeForResponse
+    ]
+    pull_request_closed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedTypeForResponse
+    ]
+    pull_request_reopened: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedTypeForResponse
+    ]
+    pull_request_converted_to_draft: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftTypeForResponse
+    ]
+    pull_request_review_dismissed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedTypeForResponse
+    ]
+    pull_request_review_thread_resolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse
+    ]
+    pull_request_review_thread_unresolved: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse
+    ]
     automation_completed: NotRequired[
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedTypeForResponse
+    ]
+    automation_failed: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedTypeForResponse
+    ]
+    code_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertTypeForResponse
+    ]
+    secret_scanning_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertTypeForResponse
+    ]
+    dependabot_alert: NotRequired[
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertTypeForResponse
     ]
 
 
@@ -268,6 +336,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     day_of_week: NotRequired[int]
     minute_utc: NotRequired[Literal[0, 15, 30, 45]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIntervalTypeForResponse(
@@ -282,6 +351,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     day_of_week: NotRequired[int]
     minute_utc: NotRequired[Literal[0, 15, 30, 45]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpenedType(
@@ -293,6 +363,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpenedTypeForResponse(
@@ -304,6 +375,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeledType(
@@ -316,6 +388,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeledTypeForResponse(
@@ -328,6 +401,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRunType(
@@ -341,6 +415,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     conclusions: list[Literal["failure"]]
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRunTypeForResponse(
@@ -354,6 +429,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     conclusions: list[Literal["failure"]]
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpenedType(
@@ -366,6 +442,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpenedTypeForResponse(
@@ -378,6 +455,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronizeType(
@@ -390,6 +468,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronizeTypeForResponse(
@@ -402,6 +481,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergedType(
@@ -414,6 +494,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergedTypeForResponse(
@@ -426,6 +507,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueCommentType(
@@ -435,8 +517,10 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     pIssueComment
     """
 
+    query: NotRequired[str]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueCommentTypeForResponse(
@@ -446,8 +530,10 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     pIssueComment
     """
 
+    query: NotRequired[str]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestCommentType(
@@ -458,8 +544,11 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     """
 
     comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestCommentTypeForResponse(
@@ -470,8 +559,11 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     """
 
     comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpenedType(
@@ -484,6 +576,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpenedTypeForResponse(
@@ -496,6 +589,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdatedType(
@@ -508,6 +602,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdatedTypeForResponse(
@@ -520,6 +615,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionCommentType(
@@ -533,6 +629,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionCommentTypeForResponse(
@@ -546,6 +643,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     categories: NotRequired[UniqueList[str]]
     body_substring: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssignedType(
@@ -558,6 +656,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssignedTypeForResponse(
@@ -570,6 +669,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssignedType(
@@ -583,6 +683,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     paths: NotRequired[list[str]]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssignedTypeForResponse(
@@ -596,6 +697,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     paths: NotRequired[list[str]]
     assignees: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAddedType(
@@ -607,6 +709,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAddedTypeForResponse(
@@ -618,6 +721,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 
     query: NotRequired[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReviewType(
@@ -630,6 +734,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse(
@@ -642,6 +747,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeledType(
@@ -655,6 +761,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     paths: NotRequired[list[str]]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeledTypeForResponse(
@@ -668,6 +775,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     paths: NotRequired[list[str]]
     labels: NotRequired[UniqueList[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflictType(
@@ -680,6 +788,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflictTypeForResponse(
@@ -692,6 +801,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedType(
@@ -705,6 +815,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     paths: NotRequired[list[str]]
     states: UniqueList[Literal["approved", "changes_requested", "commented"]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse(
@@ -718,6 +829,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     paths: NotRequired[list[str]]
     states: UniqueList[Literal["approved", "changes_requested", "commented"]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedType(
@@ -730,6 +842,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse(
@@ -742,6 +855,211 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
     query: NotRequired[str]
     paths: NotRequired[list[str]]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pIssueClosed
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pIssueClosed
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pIssueReopened
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pIssueReopened
+    """
+
+    query: NotRequired[str]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestClosed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestClosed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReopened
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReopened
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestConvertedToDraft
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestConvertedToDraft
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReviewDismissed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReviewDismissed
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReviewThreadResolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReviewThreadResolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReviewThreadUnresolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pPullRequestReviewThreadUnresolved
+    """
+
+    query: NotRequired[str]
+    paths: NotRequired[list[str]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedType(
@@ -753,6 +1071,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 
     automation_ids: UniqueList[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedTypeForResponse(
@@ -764,6 +1083,123 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTrigg
 
     automation_ids: UniqueList[str]
     write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pAutomationFailed
+    """
+
+    automation_ids: UniqueList[str]
+    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pAutomationFailed
+    """
+
+    automation_ids: UniqueList[str]
+    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pCodeScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pCodeScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pSecretScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pSecretScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pDependabotAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPro
+    pDependabotAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: NotRequired[Literal["trigger", "repository"]]
+    allow_copilot_triggers: NotRequired[bool]
 
 
 __all__ = (
@@ -771,6 +1207,12 @@ __all__ = (
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedByTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionCommentType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionCommentTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpenedType",
@@ -781,16 +1223,24 @@ __all__ = (
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIntervalTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssignedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssignedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueCommentType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueCommentTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeledType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeledTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpenedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssignedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssignedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestCommentType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestCommentTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeledType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeledTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflictType",
@@ -801,12 +1251,22 @@ __all__ = (
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpenedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReviewType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronizeType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronizeTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertType",
+    "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAddedType",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAddedTypeForResponse",
     "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRunType",

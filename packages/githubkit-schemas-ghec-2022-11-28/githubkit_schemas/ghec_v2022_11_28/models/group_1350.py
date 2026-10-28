@@ -13,34 +13,17 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
-    ] = Field(min_length=1 if PYDANTIC_V2 else None)
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str = Field(min_length=1)
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="Use `optional` to remove the team's policy."
-    )
+    credential_id: int = Field()
+    credential_type: Literal["classic_pat"] = Field()
+    organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody)
-model_rebuild(
-    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
-)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
 
-__all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)

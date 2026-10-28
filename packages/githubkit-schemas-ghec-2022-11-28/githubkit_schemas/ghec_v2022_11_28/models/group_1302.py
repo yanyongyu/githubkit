@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    credential_id: Union[int, str] = Field()
-    credential_type: Literal["classic_pat", "ssh_key"] = Field(
-        description="The type of credential to authorize."
-    )
-    organizations: UniqueList[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    labels: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
-        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+        description="The names of the custom labels to add to the runner.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",)

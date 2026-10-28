@@ -9,38 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestStackPullRequestAllof1Type(TypedDict):
-    """PullRequestStackPullRequestAllof1"""
+class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[_dt.datetime, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserType, None]
+    The description does not answer the repository's report template.
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
+    ]
 
 
-class PullRequestStackPullRequestAllof1TypeForResponse(TypedDict):
-    """PullRequestStackPullRequestAllof1"""
+class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
+    """Repository Advisory Description Validation Error
 
-    node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[str, None]
-    draft: bool
-    html_url: str
-    user: Union[SimpleUserTypeForResponse, None]
+    The description does not answer the repository's report template.
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
+    ]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
+
+
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    section: NotRequired[str]
+    option: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestStackPullRequestAllof1Type",
-    "PullRequestStackPullRequestAllof1TypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
+    "RepositoryAdvisoryDescriptionValidationErrorType",
+    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
 )

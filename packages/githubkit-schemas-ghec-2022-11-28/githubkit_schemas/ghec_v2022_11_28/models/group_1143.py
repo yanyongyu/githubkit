@@ -14,154 +14,73 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class AgentsAutomationsAvailableTriggersGetResponse200Items(GitHubModel):
-    """AgentsAutomationsAvailableTriggersGetResponse200Items
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
+    """Workflow Job
 
-    A public Automation trigger and its configurable fields.
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    id: str = Field(description="The stable public trigger identifier.")
-    title: str = Field(description="The human-readable trigger title.")
-    description: str = Field(
-        description="A short description of when the trigger fires."
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
+        Field()
     )
-    fields: list[
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
-    ] = Field(description="The trigger-specific public configuration fields.")
-    supports_run_now: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this trigger supports event-specific Run now simulation. Omit to indicate support.",
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: list[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
     )
-
-
-class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems(GitHubModel):
-    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
-
-    A configurable field in a public Automation trigger definition.
-    """
-
-    id: str = Field(
-        description="The stable field identifier used in configured triggers."
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    label: str = Field(description="The human-readable field label.")
-    required: bool = Field(description="Whether the field must be provided.")
-    description: Missing[str] = Field(
-        default=UNSET, description="Markdown guidance for configuring the field."
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    schema: Union[
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0,
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1,
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2,
-    ] = Field(
-        description="A restricted JSON Schema fragment describing the field value accepted by Automation create and update requests."
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-
-
-class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0(
-    GitHubModel
-):
-    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
-    eof0
-    """
-
-    type: Literal["string"] = Field()
-    enum: Missing[list[str]] = Field(
-        default=UNSET, description="The allowed string values."
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    min_length: Missing[int] = Field(
-        default=UNSET,
-        alias="minLength",
-        description="The minimum accepted string length.",
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
     )
-
-
-class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2(
-    GitHubModel
-):
-    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
-    eof2
-    """
-
-    type: Literal["integer"] = Field()
-    enum: Missing[list[int]] = Field(
-        default=UNSET, description="The allowed integer values."
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
     )
-    minimum: Missing[int] = Field(
-        default=UNSET, description="The minimum accepted integer value."
+    url: str = Field()
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
+        Field()
     )
-    maximum: Missing[int] = Field(
-        default=UNSET, description="The maximum accepted integer value."
-    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
 
 
-class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1(
-    GitHubModel
-):
-    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
-    eof1
-    """
-
-    type: Literal["array"] = Field()
-    items: AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems = Field()
-    min_items: Missing[int] = Field(
-        default=UNSET,
-        alias="minItems",
-        description="The minimum accepted number of array items.",
-    )
-    max_items: Missing[int] = Field(
-        default=UNSET,
-        alias="maxItems",
-        description="The maximum accepted number of array items.",
-    )
-    unique_items: Missing[bool] = Field(
-        default=UNSET,
-        alias="uniqueItems",
-        description="Whether duplicate array items are rejected.",
-    )
-
-
-class AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems(
-    GitHubModel
-):
-    """AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOn
-    eof1PropItems
-    """
-
-    type: Literal["string"] = Field()
-    enum: Missing[list[str]] = Field(
-        default=UNSET, description="The allowed string item values."
-    )
-    min_length: Missing[int] = Field(
-        default=UNSET,
-        alias="minLength",
-        description="The minimum accepted string item length.",
-    )
-
-
-model_rebuild(AgentsAutomationsAvailableTriggersGetResponse200Items)
-model_rebuild(AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems)
-model_rebuild(
-    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0
-)
-model_rebuild(
-    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2
-)
-model_rebuild(
-    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1
-)
-model_rebuild(
-    AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems
-)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems)
 
 __all__ = (
-    "AgentsAutomationsAvailableTriggersGetResponse200Items",
-    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems",
-    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0",
-    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1",
-    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems",
-    "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
 )

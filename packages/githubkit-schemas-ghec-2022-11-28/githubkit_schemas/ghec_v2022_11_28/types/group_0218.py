@@ -9,73 +9,229 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0205 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0206 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
+from .group_0216 import (
+    PublicMonitoringAlertLocationType,
+    PublicMonitoringAlertLocationTypeForResponse,
+    PublicMonitoringSecretAuthorType,
+    PublicMonitoringSecretAuthorTypeForResponse,
+)
 
-class GetBudgetType(TypedDict):
-    """GetBudget"""
 
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
+class PublicMonitoringAlertPropAttributionType(TypedDict):
+    """PublicMonitoringAlertPropAttribution
+
+    Attribution information for the alert.
+    """
+
+    secret_author: NotRequired[
+        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
     ]
-    budget_entity_name: str
-    user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingType
-    consumed_amount: NotRequired[float]
-
-
-class GetBudgetTypeForResponse(TypedDict):
-    """GetBudget"""
-
-    id: str
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
+    committer_email: NotRequired[Union[str, None]]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
+    commit: NotRequired[
+        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
     ]
-    budget_entity_name: str
-    user: NotRequired[str]
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_product_sku: str
-    budget_type: Literal["ProductPricing", "SkuPricing", "BundlePricing"]
-    budget_alerting: GetBudgetPropBudgetAlertingTypeForResponse
-    consumed_amount: NotRequired[float]
+    wiki_commit: NotRequired[
+        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
+    ]
+    issue_title: NotRequired[
+        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
+    ]
+    issue_body: NotRequired[
+        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
+    ]
+    issue_comment: NotRequired[
+        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
+    actions_log: NotRequired[PublicMonitoringAlertLocationType]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
 
 
-class GetBudgetPropBudgetAlertingType(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
+class PublicMonitoringAlertPropAttributionTypeForResponse(TypedDict):
+    """PublicMonitoringAlertPropAttribution
 
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    Attribution information for the alert.
+    """
 
-
-class GetBudgetPropBudgetAlertingTypeForResponse(TypedDict):
-    """GetBudgetPropBudgetAlerting"""
-
-    will_alert: NotRequired[bool]
-    alert_recipients: NotRequired[list[str]]
+    secret_author: NotRequired[
+        Union[
+            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
+        ]
+    ]
+    committer_email: NotRequired[Union[str, None]]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
+    commit: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    wiki_commit: NotRequired[
+        Union[
+            SecretScanningLocationWikiCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_title: NotRequired[
+        Union[
+            SecretScanningLocationIssueTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_body: NotRequired[
+        Union[
+            SecretScanningLocationIssueBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_comment: NotRequired[
+        Union[
+            SecretScanningLocationIssueCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[
+        PublicMonitoringAlertLocationTypeForResponse
+    ]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
 
 
 __all__ = (
-    "GetBudgetPropBudgetAlertingType",
-    "GetBudgetPropBudgetAlertingTypeForResponse",
-    "GetBudgetType",
-    "GetBudgetTypeForResponse",
+    "PublicMonitoringAlertPropAttributionType",
+    "PublicMonitoringAlertPropAttributionTypeForResponse",
 )

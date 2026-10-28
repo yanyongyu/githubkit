@@ -98,6 +98,9 @@ if TYPE_CHECKING:
     from .repository_vulnerability_alert import RepositoryVulnerabilityAlertEvent
     from .secret_scanning_alert import SecretScanningAlertEvent
     from .secret_scanning_alert_location import SecretScanningAlertLocationEvent
+    from .secret_scanning_public_monitoring_alert import (
+        SecretScanningPublicMonitoringAlertEvent,
+    )
     from .secret_scanning_scan import SecretScanningScanEvent
     from .security_advisory import SecurityAdvisoryEvent
     from .security_and_analysis import SecurityAndAnalysisEvent
@@ -185,6 +188,7 @@ EventNameType: TypeAlias = Literal[
     "repository_vulnerability_alert",
     "secret_scanning_alert",
     "secret_scanning_alert_location",
+    "secret_scanning_public_monitoring_alert",
     "secret_scanning_scan",
     "security_advisory",
     "security_and_analysis",
@@ -271,6 +275,7 @@ VALID_EVENT_NAMES: set[EventNameType] = {
     "repository_vulnerability_alert",
     "secret_scanning_alert",
     "secret_scanning_alert_location",
+    "secret_scanning_public_monitoring_alert",
     "secret_scanning_scan",
     "security_advisory",
     "security_and_analysis",
@@ -626,6 +631,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["secret_scanning_alert_location"], payload: str | bytes
     ) -> "SecretScanningAlertLocationEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["secret_scanning_public_monitoring_alert"], payload: str | bytes
+    ) -> "SecretScanningPublicMonitoringAlertEvent": ...
     @overload
     @staticmethod
     def parse(
@@ -1070,6 +1080,12 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["secret_scanning_alert_location"], payload: Mapping[str, Any]
     ) -> "SecretScanningAlertLocationEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["secret_scanning_public_monitoring_alert"],
+        payload: Mapping[str, Any],
+    ) -> "SecretScanningPublicMonitoringAlertEvent": ...
     @overload
     @staticmethod
     def parse_obj(

@@ -9,55 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
 
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    seats_cancelled: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

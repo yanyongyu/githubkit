@@ -9,42 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0666 import DependabotAlertWithdrawnWebhookPropDependency
 
 
-class WebhooksUser(GitHubModel):
-    """User"""
+class DependabotAlertWithdrawnWebhook(GitHubModel):
+    """DependabotAlertWithdrawnWebhook
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
+    """
+
+    id: int = Field(description="The unique identifier of the withdrawn alert.")
+    node_id: str = Field(description="The GraphQL node ID of the withdrawn alert.")
+    number: int = Field(description="The security alert number.")
+    state: Literal["withdrawn"] = Field(
+        description="The state of the Dependabot alert."
+    )
+    dependency: DependabotAlertWithdrawnWebhookPropDependency = Field(
+        description="Details for the vulnerable dependency."
+    )
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisory = Field(
+        description="Identifiers of the advisory that produced the withdrawn alert."
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    withdrawn_at: _dt.datetime = Field(
+        description="The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time."
+    )
 
 
-model_rebuild(WebhooksUser)
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisory(GitHubModel):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
 
-__all__ = ("WebhooksUser",)
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub identifier assigned to the advisory."
+    )
+    cve_id: Union[str, None] = Field(
+        description="The CVE identifier assigned to the advisory, if any."
+    )
+
+
+model_rebuild(DependabotAlertWithdrawnWebhook)
+model_rebuild(DependabotAlertWithdrawnWebhookPropSecurityAdvisory)
+
+__all__ = (
+    "DependabotAlertWithdrawnWebhook",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisory",
+)

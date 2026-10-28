@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,16 +31,26 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse401(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems]
+        list[AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +69,12 @@ class AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400)
+model_rebuild(
+    AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems",
 )

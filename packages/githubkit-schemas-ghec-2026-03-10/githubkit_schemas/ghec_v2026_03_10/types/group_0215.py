@@ -9,104 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class BillingAiCreditUsageReportGheType(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
-
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterType]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsType]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class BillingAiCreditUsageReportGheTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhe"""
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    time_period: BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingAiCreditUsageReportGhePropCostCenterTypeForResponse]
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse]
+    Base Gist
+    """
 
-
-class BillingAiCreditUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingAiCreditUsageReportGhePropCostCenterType(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
+    url: str
+    forks_url: str
+    commits_url: str
     id: str
-    name: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
 
 
-class BillingAiCreditUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
 
+    Base Gist
+    """
+
+    url: str
+    forks_url: str
+    commits_url: str
     id: str
-    name: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
 
 
-class BillingAiCreditUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
-class BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "BillingAiCreditUsageReportGhePropCostCenterType",
-    "BillingAiCreditUsageReportGhePropCostCenterTypeForResponse",
-    "BillingAiCreditUsageReportGhePropTimePeriodType",
-    "BillingAiCreditUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsType",
-    "BillingAiCreditUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingAiCreditUsageReportGheType",
-    "BillingAiCreditUsageReportGheTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

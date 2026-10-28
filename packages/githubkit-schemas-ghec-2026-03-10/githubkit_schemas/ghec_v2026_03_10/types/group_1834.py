@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0299 import CopilotSpaceResourceType, CopilotSpaceResourceTypeForResponse
+
+class ReposOwnerRepoStacksStackNumberAddPostBodyType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+
+    pull_requests: list[int]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
+class ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    resources: list[CopilotSpaceResourceType]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200"""
-
-    resources: list[CopilotSpaceResourceTypeForResponse]
+    pull_requests: list[int]
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200Type",
-    "UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostBodyType",
+    "ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse",
 )

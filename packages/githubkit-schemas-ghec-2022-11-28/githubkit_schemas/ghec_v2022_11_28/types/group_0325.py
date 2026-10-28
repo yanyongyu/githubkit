@@ -9,53 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrganizationUpdateIssueFieldType(TypedDict):
-    """OrganizationUpdateIssueField"""
+class InteractionLimitResponseType(TypedDict):
+    """Interaction Limits
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[list[OrganizationUpdateIssueFieldPropOptionsItemsType]]
+    Interaction limit settings.
+    """
 
-
-class OrganizationUpdateIssueFieldTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueField"""
-
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    visibility: NotRequired[Literal["organization_members_only", "all"]]
-    options: NotRequired[
-        list[OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse]
-    ]
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: _dt.datetime
 
 
-class OrganizationUpdateIssueFieldPropOptionsItemsType(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
+class InteractionLimitResponseTypeForResponse(TypedDict):
+    """Interaction Limits
 
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    Interaction limit settings.
+    """
 
-
-class OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
-
-    id: NotRequired[int]
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    origin: str
+    expires_at: str
 
 
 __all__ = (
-    "OrganizationUpdateIssueFieldPropOptionsItemsType",
-    "OrganizationUpdateIssueFieldPropOptionsItemsTypeForResponse",
-    "OrganizationUpdateIssueFieldType",
-    "OrganizationUpdateIssueFieldTypeForResponse",
+    "InteractionLimitResponseType",
+    "InteractionLimitResponseTypeForResponse",
 )

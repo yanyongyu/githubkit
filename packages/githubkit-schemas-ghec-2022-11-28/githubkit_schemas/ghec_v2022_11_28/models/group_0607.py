@@ -10,31 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
-
-    Repository invitations let you manage who you collaborate with.
-    """
-
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
-    )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
-    )
-    reason: Union[str, None] = Field()
-    created_at: _dt.datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+from .group_0003 import SimpleUser
 
 
-model_rebuild(RepositorySubscription)
+class PullRequestStackPullRequestAllof1(GitHubModel):
+    """PullRequestStackPullRequestAllof1"""
 
-__all__ = ("RepositorySubscription",)
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
+
+
+model_rebuild(PullRequestStackPullRequestAllof1)
+
+__all__ = ("PullRequestStackPullRequestAllof1",)

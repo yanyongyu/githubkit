@@ -9,29 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0008 import Enterprise
+from .group_0009 import IntegrationPropPermissions
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    client_id: str = Field(description="The Client ID of the GitHub App to install.")
-    repository_selection: Literal["all", "selected", "none"] = Field(
-        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
+class AppManifestsCodeConversionsPostResponse201(GitHubModel):
+    """AppManifestsCodeConversionsPostResponse201"""
+
+    id: int = Field(description="Unique identifier of the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    repositories: Missing[list[str]] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    node_id: str = Field()
+    client_id: str = Field()
+    owner: Union[SimpleUser, Enterprise] = Field()
+    name: str = Field(description="The name of the GitHub app")
+    description: Union[str, None] = Field()
+    external_url: str = Field()
+    html_url: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    permissions: IntegrationPropPermissions = Field(
+        description="The set of permissions for the GitHub app"
+    )
+    events: list[str] = Field(
+        description="The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation."
+    )
+    installations_count: Missing[int] = Field(
         default=UNSET,
-        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
+        description="The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
     )
+    client_secret: str = Field()
+    webhook_secret: Union[str, None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
+model_rebuild(AppManifestsCodeConversionsPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201",)

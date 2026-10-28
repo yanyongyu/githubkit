@@ -14,49 +14,63 @@ from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0056 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
 
 
-class PullRequestStackPullRequestType(TypedDict):
-    """Pull Request Stack Pull Request"""
+class RepositoryAdvisoryCommentType(TypedDict):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
+    """
 
     id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
     node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[_dt.datetime, None]
-    draft: bool
+    url: str
     html_url: str
+    body: str
     user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    advisory_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class PullRequestStackPullRequestTypeForResponse(TypedDict):
-    """Pull Request Stack Pull Request"""
+class RepositoryAdvisoryCommentTypeForResponse(TypedDict):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
+    """
 
     id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
     node_id: str
-    title: str
-    state: Literal["open", "closed"]
-    merged_at: Union[str, None]
-    draft: bool
+    url: str
     html_url: str
+    body: str
     user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    advisory_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "PullRequestStackPullRequestType",
-    "PullRequestStackPullRequestTypeForResponse",
+    "RepositoryAdvisoryCommentType",
+    "RepositoryAdvisoryCommentTypeForResponse",
 )

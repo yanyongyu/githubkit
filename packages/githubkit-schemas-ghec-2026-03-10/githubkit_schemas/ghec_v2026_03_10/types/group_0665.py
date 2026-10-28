@@ -9,65 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0666 import (
+    DependabotAlertWithdrawnWebhookPropDependencyType,
+    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
+)
 
 
-class WebhooksUserType(TypedDict):
-    """User"""
+class DependabotAlertWithdrawnWebhookType(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
+    """
+
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    withdrawn_at: _dt.datetime
 
 
-class WebhooksUserTypeForResponse(TypedDict):
-    """User"""
+class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
+    """
+
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
+    security_advisory: (
+        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
+    )
+    url: str
+    html_url: str
+    created_at: str
+    withdrawn_at: str
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
 
 
 __all__ = (
-    "WebhooksUserType",
-    "WebhooksUserTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
+    "DependabotAlertWithdrawnWebhookType",
+    "DependabotAlertWithdrawnWebhookTypeForResponse",
 )

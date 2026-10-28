@@ -9,40 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationExternalPropertyInstallation(GitHubModel):
-    """Organization External Custom Property Installation
+class ProjectsV2FieldSingleSelectOption(GitHubModel):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
-    """
-
-    display_name: str = Field(
-        description="The display name assigned to the app installation's external custom properties in the organization."
+    name: Missing[str] = Field(
+        default=UNSET, description="The display name of the option."
     )
-    installation: OrganizationExternalPropertyInstallationPropInstallation = Field(
-        description="The GitHub App installation that was registered."
+    color: Missing[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ] = Field(default=UNSET, description="The color associated with the option.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the option."
     )
 
 
-class OrganizationExternalPropertyInstallationPropInstallation(GitHubModel):
-    """OrganizationExternalPropertyInstallationPropInstallation
+model_rebuild(ProjectsV2FieldSingleSelectOption)
 
-    The GitHub App installation that was registered.
-    """
-
-    id: int = Field(description="The unique identifier of the GitHub App installation.")
-
-
-model_rebuild(OrganizationExternalPropertyInstallation)
-model_rebuild(OrganizationExternalPropertyInstallationPropInstallation)
-
-__all__ = (
-    "OrganizationExternalPropertyInstallation",
-    "OrganizationExternalPropertyInstallationPropInstallation",
-)
+__all__ = ("ProjectsV2FieldSingleSelectOption",)

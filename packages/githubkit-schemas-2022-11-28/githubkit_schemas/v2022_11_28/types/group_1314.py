@@ -10,46 +10,58 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    repository_values: list[RepositoryExternalPropertyPayloadType]
-
-
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
-
-    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
-class RepositoryExternalPropertyPayloadType(TypedDict):
-    """Repository External Custom Property Value Payload
+class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-    Repository name and associated external custom property value
+    name: str
+    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
+    events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
     """
 
-    repository_name: str
-    value: Union[str, None]
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
-class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
-    """Repository External Custom Property Value Payload
+class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
 
-    Repository name and associated external custom property value
+    Key/value pairs to provide settings for this webhook.
     """
 
-    repository_name: str
-    value: Union[str, None]
+    url: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
-    "RepositoryExternalPropertyPayloadType",
-    "RepositoryExternalPropertyPayloadTypeForResponse",
+    "OrgsOrgHooksPostBodyPropConfigType",
+    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
+    "OrgsOrgHooksPostBodyType",
+    "OrgsOrgHooksPostBodyTypeForResponse",
 )

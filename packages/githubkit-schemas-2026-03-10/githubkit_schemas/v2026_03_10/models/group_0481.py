@@ -9,87 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class PullRequestMergeAsyncResult(GitHubModel):
-    """Pull Request Merge Async Result
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
 
-    Pull Request Merge Async Result
+    Pull Request Merge Result
     """
 
-    status: Literal["pending", "merged", "enqueued", "failed"] = Field()
-    details: Union[
-        PullRequestMergeAsyncResultPropDetailsAnyof0,
-        PullRequestMergeAsyncResultPropDetailsAnyof1,
-        PullRequestMergeAsyncResultPropDetailsAnyof2,
-        PullRequestMergeAsyncResultPropDetailsAnyof3,
-    ] = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof0(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof0
-
-    When the asynchronous merge request is pending
-    """
-
-    message: str = Field()
-    uuid: str = Field()
-    merge_method: Literal["default", "merge", "squash", "rebase"] = Field()
-    merge_action: Literal["default", "merge_queue", "direct_merge"] = Field()
-    expected_head_sha: str = Field(
-        description="SHA that the pull request head must match for the enqueued merge to proceed."
-    )
-    bypass_rules: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the asynchronous merge request will attempt to bypass repository rules that the authenticated actor is permitted to bypass.",
-    )
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof1(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof1
-
-    When the pull request is in a merge queue
-    """
-
-    message: str = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof2(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof2
-
-    When the asynchronous merge request failed
-    """
-
-    message: str = Field()
-
-
-class PullRequestMergeAsyncResultPropDetailsAnyof3(GitHubModel):
-    """PullRequestMergeAsyncResultPropDetailsAnyof3
-
-    When the pull request has been merged
-    """
-
-    message: str = Field()
     sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-model_rebuild(PullRequestMergeAsyncResult)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof0)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof1)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof2)
-model_rebuild(PullRequestMergeAsyncResultPropDetailsAnyof3)
+model_rebuild(PullRequestMergeResult)
 
-__all__ = (
-    "PullRequestMergeAsyncResult",
-    "PullRequestMergeAsyncResultPropDetailsAnyof0",
-    "PullRequestMergeAsyncResultPropDetailsAnyof1",
-    "PullRequestMergeAsyncResultPropDetailsAnyof2",
-    "PullRequestMergeAsyncResultPropDetailsAnyof3",
-)
+__all__ = ("PullRequestMergeResult",)

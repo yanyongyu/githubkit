@@ -12,19 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicyNamePatternType(TypedDict):
-    """Deployment branch policy name pattern"""
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    name: str
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-class DeploymentBranchPolicyNamePatternTypeForResponse(TypedDict):
-    """Deployment branch policy name pattern"""
+class DeploymentBranchPolicySettingsTypeForResponse(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    name: str
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
 __all__ = (
-    "DeploymentBranchPolicyNamePatternType",
-    "DeploymentBranchPolicyNamePatternTypeForResponse",
+    "DeploymentBranchPolicySettingsType",
+    "DeploymentBranchPolicySettingsTypeForResponse",
 )

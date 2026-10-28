@@ -9,69 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
+class ImportType(TypedDict):
+    """Import
 
-class IssueReferenceType(TypedDict):
-    """Issue Reference
-
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    A repository import from an external source.
     """
 
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryType
-    issue_type: Union[IssueReferencePropIssueTypeType, None]
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ]
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
+    url: str
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
 
 
-class IssueReferenceTypeForResponse(TypedDict):
-    """Issue Reference
+class ImportTypeForResponse(TypedDict):
+    """Import
 
-    A minimal reference to an issue linked from a timeline event (e.g. sub-issue,
-    parent-issue, or dependency events).
+    A repository import from an external source.
     """
 
-    number: int
-    title: str
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueReferencePropIssueTypeTypeForResponse, None]
+    vcs: Union[str, None]
+    use_lfs: NotRequired[bool]
+    vcs_url: str
+    svc_root: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    status: Literal[
+        "auth",
+        "error",
+        "none",
+        "detecting",
+        "choose",
+        "auth_failed",
+        "importing",
+        "mapping",
+        "waiting_to_push",
+        "pushing",
+        "complete",
+        "setup",
+        "unknown",
+        "detection_found_multiple",
+        "detection_found_nothing",
+        "detection_needs_auth",
+    ]
+    status_text: NotRequired[Union[str, None]]
+    failed_step: NotRequired[Union[str, None]]
+    error_message: NotRequired[Union[str, None]]
+    import_percent: NotRequired[Union[int, None]]
+    commit_count: NotRequired[Union[int, None]]
+    push_percent: NotRequired[Union[int, None]]
+    has_large_files: NotRequired[bool]
+    large_files_size: NotRequired[int]
+    large_files_count: NotRequired[int]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsTypeForResponse]]
+    message: NotRequired[str]
+    authors_count: NotRequired[Union[int, None]]
+    url: str
+    html_url: str
+    authors_url: str
+    repository_url: str
+    svn_root: NotRequired[str]
 
 
-class IssueReferencePropIssueTypeType(TypedDict):
-    """Issue Type
+class ImportPropProjectChoicesItemsType(TypedDict):
+    """ImportPropProjectChoicesItems"""
 
-    The type of the referenced issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
 
 
-class IssueReferencePropIssueTypeTypeForResponse(TypedDict):
-    """Issue Type
+class ImportPropProjectChoicesItemsTypeForResponse(TypedDict):
+    """ImportPropProjectChoicesItems"""
 
-    The type of the referenced issue.
-    """
-
-    id: int
-    node_id: str
-    name: str
-    color: NotRequired[Union[str, None]]
+    vcs: NotRequired[str]
+    tfvc_project: NotRequired[str]
+    human_name: NotRequired[str]
 
 
 __all__ = (
-    "IssueReferencePropIssueTypeType",
-    "IssueReferencePropIssueTypeTypeForResponse",
-    "IssueReferenceType",
-    "IssueReferenceTypeForResponse",
+    "ImportPropProjectChoicesItemsType",
+    "ImportPropProjectChoicesItemsTypeForResponse",
+    "ImportType",
+    "ImportTypeForResponse",
 )

@@ -9,24 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0240 import IssueTypeType, IssueTypeTypeForResponse
 
 
-class CodeScanningAutofixCommitsResponseType(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAlertLinkedIssueType(TypedDict):
+    """CodeScanningAlertLinkedIssue
 
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int
+    title: str
+    state: str
+    url: str
+    html_url: str
+    repository: SimpleRepositoryType
+    issue_type: Union[IssueTypeType, None]
 
 
-class CodeScanningAutofixCommitsResponseTypeForResponse(TypedDict):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAlertLinkedIssueTypeForResponse(TypedDict):
+    """CodeScanningAlertLinkedIssue
 
-    target_ref: NotRequired[str]
-    sha: NotRequired[str]
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int
+    title: str
+    state: str
+    url: str
+    html_url: str
+    repository: SimpleRepositoryTypeForResponse
+    issue_type: Union[IssueTypeTypeForResponse, None]
 
 
 __all__ = (
-    "CodeScanningAutofixCommitsResponseType",
-    "CodeScanningAutofixCommitsResponseTypeForResponse",
+    "CodeScanningAlertLinkedIssueType",
+    "CodeScanningAlertLinkedIssueTypeForResponse",
 )

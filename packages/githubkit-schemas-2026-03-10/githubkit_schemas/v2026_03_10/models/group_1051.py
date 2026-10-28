@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsAutomationsAutomationIdGetResponse400(GitHubModel):
-    """AgentsAutomationsAutomationIdGetResponse400
+class AgentsReposOwnerRepoAutomationsGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,16 +31,24 @@ class AgentsAutomationsAutomationIdGetResponse400(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsAutomationsAutomationIdGetResponse400PropErrorsItems]
+        list[AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsAutomationsAutomationIdGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsAutomationsAutomationIdGetResponse400PropErrorsItems
+class AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +67,10 @@ class AgentsAutomationsAutomationIdGetResponse400PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsAutomationsAutomationIdGetResponse400)
-model_rebuild(AgentsAutomationsAutomationIdGetResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems)
 
 __all__ = (
-    "AgentsAutomationsAutomationIdGetResponse400",
-    "AgentsAutomationsAutomationIdGetResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsGetResponse404",
+    "AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems",
 )

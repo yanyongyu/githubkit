@@ -38,6 +38,7 @@ if TYPE_CHECKING:
         ConvertedNoteToIssueIssueEvent,
         DemilestonedIssueEvent,
         Issue,
+        IssueArtifact,
         IssueComment,
         IssueEvent,
         IssueFieldValue,
@@ -55,6 +56,7 @@ if TYPE_CHECKING:
         ParentIssueRemovedIssueEvent,
         RemovedFromProjectIssueEvent,
         RenamedIssueEvent,
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
         ReposOwnerRepoIssuesIssueNumberPatchResponse200,
         ReviewDismissedIssueEvent,
         ReviewRequestedIssueEvent,
@@ -85,6 +87,7 @@ if TYPE_CHECKING:
         BlockingRemovedIssueEventTypeForResponse,
         ConvertedNoteToIssueIssueEventTypeForResponse,
         DemilestonedIssueEventTypeForResponse,
+        IssueArtifactTypeForResponse,
         IssueCommentTypeForResponse,
         IssueEventTypeForResponse,
         IssueFieldValueTypeForResponse,
@@ -104,6 +107,10 @@ if TYPE_CHECKING:
         RemovedFromProjectIssueEventTypeForResponse,
         RenamedIssueEventTypeForResponse,
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1TypeForResponse,
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type,
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type,
+        ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type,
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
@@ -2084,6 +2091,778 @@ class IssuesClient:
                 "403": BasicError,
                 "404": BasicError,
                 "410": BasicError,
+            },
+        )
+
+    def list_issue_artifacts(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[IssueArtifact], list[IssueArtifactTypeForResponse]]:
+        """issues/list-issue-artifacts
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/artifacts
+
+        Lists artifacts attached to an issue. Results are ordered by artifact number.
+
+        The `type` parameter filters the response to artifacts of one type.
+        Results can be requested by page. The page defaults to `1`; the page size
+        defaults to `30` and can be set from `1` to `100`.
+
+        The response is a bare array and does not include pagination metadata such as
+        a `Link` header, a total count, or the service's `has_next_page` signal.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#list-issue-artifacts
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts"
+
+        params = {
+            "type": type,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueArtifact],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_list_issue_artifacts(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = UNSET,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[IssueArtifact], list[IssueArtifactTypeForResponse]]:
+        """issues/list-issue-artifacts
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/artifacts
+
+        Lists artifacts attached to an issue. Results are ordered by artifact number.
+
+        The `type` parameter filters the response to artifacts of one type.
+        Results can be requested by page. The page defaults to `1`; the page size
+        defaults to `30` and can be set from `1` to `100`.
+
+        The response is a bare array and does not include pagination metadata such as
+        a `Link` header, a total count, or the service's `has_next_page` signal.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#list-issue-artifacts
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts"
+
+        params = {
+            "type": type,
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[IssueArtifact],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def create_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    @overload
+    def create_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = UNSET,
+        name: str,
+        body: str,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    def create_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]:
+        """issues/create-issue-artifact
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/artifacts
+
+        Creates an artifact attached to an issue.
+
+        The artifact type defaults to `generic` when omitted. Creating an artifact
+        requires permission to update the issue.
+
+        The request can return `403` if the repository is read-only or locked, or a
+        GitHub App installation has only `issues: read` permission.
+
+        To create an HTML artifact, set `type` to `embedded_html` and provide the HTML source
+        in `body`. Open the returned `html_url` to inspect the source, then select
+        **Preview** to view the rendered artifact. Select **Show source** to return
+        to the HTML source.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#create-an-issue-artifact
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberArtifactsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueArtifact,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "429": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_create_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    @overload
+    async def async_create_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = UNSET,
+        name: str,
+        body: str,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    async def async_create_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]:
+        """issues/create-issue-artifact
+
+        POST /repos/{owner}/{repo}/issues/{issue_number}/artifacts
+
+        Creates an artifact attached to an issue.
+
+        The artifact type defaults to `generic` when omitted. Creating an artifact
+        requires permission to update the issue.
+
+        The request can return `403` if the repository is read-only or locked, or a
+        GitHub App installation has only `issues: read` permission.
+
+        To create an HTML artifact, set `type` to `embedded_html` and provide the HTML source
+        in `body`. Open the returned `html_url` to inspect the source, then select
+        **Preview** to view the rendered artifact. Select **Show source** to return
+        to the HTML source.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#create-an-issue-artifact
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsPostBody,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoIssuesIssueNumberArtifactsPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueArtifact,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "429": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        Union[
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
+        ],
+        Union[
+            IssueArtifactTypeForResponse,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1TypeForResponse,
+        ],
+    ]:
+        """issues/get-issue-artifact
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+
+        Returns an artifact attached to an issue by its per-issue artifact number,
+        along with its version history ordered from newest to oldest.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#get-an-issue-artifact
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[
+                IssueArtifact,
+                ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
+            ],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        Union[
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
+        ],
+        Union[
+            IssueArtifactTypeForResponse,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1TypeForResponse,
+        ],
+    ]:
+        """issues/get-issue-artifact
+
+        GET /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+
+        Returns an artifact attached to an issue by its per-issue artifact number,
+        along with its version history ordered from newest to oldest.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#get-an-issue-artifact
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[
+                IssueArtifact,
+                ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
+            ],
+            error_models={
+                "404": BasicError,
+                "410": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    def delete_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-artifact
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+
+        Permanently deletes an artifact attached to an issue.
+
+        Deleting an artifact requires permission to update the issue.
+
+        The request can return `403` if the repository is read-only or locked, or a
+        GitHub App installation has only `issues: read` permission.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#delete-an-issue-artifact
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "429": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_delete_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """issues/delete-issue-artifact
+
+        DELETE /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+
+        Permanently deletes an artifact attached to an issue.
+
+        Deleting an artifact requires permission to update the issue.
+
+        The request can return `403` if the repository is read-only or locked, or a
+        GitHub App installation has only `issues: read` permission.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#delete-an-issue-artifact
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "429": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type,
+        ],
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    @overload
+    def update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        body: Missing[str] = UNSET,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    @overload
+    def update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        body: str,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    def update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]:
+        """issues/update-issue-artifact
+
+        PATCH /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+
+        Updates the name, body, or both for an artifact attached to an issue.
+
+        Updating an artifact requires permission to update the issue.
+
+        The request can return `403` if the repository is read-only or locked, or a
+        GitHub App installation has only `issues: read` permission.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#update-an-issue-artifact
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0,
+                    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueArtifact,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "429": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Union[
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type,
+        ],
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    @overload
+    async def async_update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        body: Missing[str] = UNSET,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    @overload
+    async def async_update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        body: str,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]: ...
+
+    async def async_update_issue_artifact(
+        self,
+        owner: str,
+        repo: str,
+        issue_number: int,
+        artifact_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[
+                ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type,
+                ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[IssueArtifact, IssueArtifactTypeForResponse]:
+        """issues/update-issue-artifact
+
+        PATCH /repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}
+
+        Updates the name, body, or both for an artifact attached to an issue.
+
+        Updating an artifact requires permission to update the issue.
+
+        The request can return `403` if the repository is read-only or locked, or a
+        GitHub App installation has only `issues: read` permission.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/issues/artifacts#update-an-issue-artifact
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            IssueArtifact,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0,
+            ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0,
+                    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1,
+                ],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=IssueArtifact,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "410": BasicError,
+                "422": ValidationError,
+                "429": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

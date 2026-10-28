@@ -110,7 +110,10 @@ class MinimalRepository(GitHubModel):
     updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
     permissions: Missing[MinimalRepositoryPropPermissions] = Field(default=UNSET)
     role_name: Missing[str] = Field(default=UNSET)
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
+    )
     delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
     subscribers_count: Missing[int] = Field(default=UNSET)
     network_count: Missing[int] = Field(default=UNSET)

@@ -9,57 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GroupResponseType(TypedDict):
-    """GroupResponse"""
+class TopicType(TypedDict):
+    """Topic
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsType]]
+    A topic aggregates entities that are related to a subject.
+    """
+
+    names: list[str]
 
 
-class GroupResponseTypeForResponse(TypedDict):
-    """GroupResponse"""
+class TopicTypeForResponse(TypedDict):
+    """Topic
 
-    schemas: list[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
+    A topic aggregates entities that are related to a subject.
+    """
 
-
-class GroupResponsePropMembersItemsType(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
-    """GroupResponsePropMembersItems"""
-
-    value: str
-    ref: str
-    display: NotRequired[str]
+    names: list[str]
 
 
 __all__ = (
-    "GroupResponsePropMembersItemsType",
-    "GroupResponsePropMembersItemsTypeForResponse",
-    "GroupResponseType",
-    "GroupResponseTypeForResponse",
+    "TopicType",
+    "TopicTypeForResponse",
 )

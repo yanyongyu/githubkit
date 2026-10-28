@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class CodeScanningAiScanOrgSettingsType(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    The public key used for setting Codespaces secrets.
+    The AI Scan organization setting
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    pr_scan: Literal["enabled", "disabled"]
 
 
-class CodespacesPublicKeyTypeForResponse(TypedDict):
-    """CodespacesPublicKey
+class CodeScanningAiScanOrgSettingsTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    The public key used for setting Codespaces secrets.
+    The AI Scan organization setting
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    pr_scan: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "CodespacesPublicKeyType",
-    "CodespacesPublicKeyTypeForResponse",
+    "CodeScanningAiScanOrgSettingsType",
+    "CodeScanningAiScanOrgSettingsTypeForResponse",
 )

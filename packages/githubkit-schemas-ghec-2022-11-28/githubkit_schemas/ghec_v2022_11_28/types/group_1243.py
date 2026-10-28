@@ -9,92 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0068 import (
-    ActionsPolicyEnterpriseConditionsOneof0Type,
-    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-)
-from .group_0069 import (
-    ActionsPolicyEnterpriseConditionsOneof1Type,
-    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-)
-from .group_0070 import (
-    ActionsPolicyEnterpriseConditionsOneof2Type,
-    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-)
-from .group_0071 import (
-    ActionsPolicyEnterpriseConditionsOneof3Type,
-    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-)
-from .group_0072 import (
-    ActionsPolicyEnterpriseConditionsOneof4Type,
-    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-)
-from .group_0073 import (
-    ActionsPolicyEnterpriseConditionsOneof5Type,
-    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
 
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
 
-class EnterprisesEnterpriseActionsPoliciesPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0Type,
-            ActionsPolicyEnterpriseConditionsOneof1Type,
-            ActionsPolicyEnterpriseConditionsOneof2Type,
-            ActionsPolicyEnterpriseConditionsOneof3Type,
-            ActionsPolicyEnterpriseConditionsOneof4Type,
-            ActionsPolicyEnterpriseConditionsOneof5Type,
-        ]
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType]
     ]
-    rules: NotRequired[
+    documentation_url: str
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
         list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
+            AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse
         ]
     ]
+    documentation_url: str
 
 
-class EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPostBody"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-        ]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPoliciesPostBodyType",
-    "EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422Type",
+    "AgentsReposOwnerRepoTasksTaskIdGetResponse422TypeForResponse",
 )

@@ -9,27 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DeleteCostCenter(GitHubModel):
-    """DeleteCostCenter"""
+class DeleteBudget(GitHubModel):
+    """DeleteBudget"""
 
     message: str = Field(
         description="A message indicating the result of the deletion operation"
     )
-    id: str = Field(description="The unique identifier of the deleted cost center")
-    name: str = Field(description="The name of the deleted cost center")
-    cost_center_state: Literal["CostCenterArchived"] = Field(
-        alias="costCenterState",
-        description="The state of the cost center after deletion",
-    )
+    id: str = Field(description="The ID of the deleted budget")
 
 
-model_rebuild(DeleteCostCenter)
+model_rebuild(DeleteBudget)
 
-__all__ = ("DeleteCostCenter",)
+__all__ = ("DeleteBudget",)

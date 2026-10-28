@@ -12,22 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0374 import RateLimit
+from .group_0376 import RateLimitOverviewPropResources
 
 
-class ActionsCacheStorageLimitForRepository(GitHubModel):
-    """Actions cache storage limit for a repository
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    GitHub Actions cache storage policy for a repository.
+    Rate limit status for the applicable requester and resource category. Requests
+    authenticated as a user share the user's rate limit across credentials. Requests
+    without authentication use the requesting IP address. API requests routed
+    through
+    either an API hostname or a web hostname can count against the same applicable
+    limit.
     """
 
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum total cache size for this repository, in gigabytes.",
-    )
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(ActionsCacheStorageLimitForRepository)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("ActionsCacheStorageLimitForRepository",)
+__all__ = ("RateLimitOverview",)

@@ -13,21 +13,26 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0287 import SecretScanningCustomPatternToDelete
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class OrgsOrgSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
 
-    environment_ids: list[int] = Field(
-        description="The list of environment ids to approve or reject"
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+        default=UNSET,
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
     )
-    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(OrgsOrgSecretScanningCustomPatternsDeleteBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("OrgsOrgSecretScanningCustomPatternsDeleteBody",)

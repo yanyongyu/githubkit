@@ -9,65 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsType(TypedDict):
-    """AgentsAutomationsAvailableToolsGetResponse200Items
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-    A CMC-controlled presentation category for Automation tools. Clients must not
-    depend on group identifiers, membership, or ordering remaining stable.
-    """
-
-    id: str
-    title: str
-    tools: list[AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType]
-
-
-class AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse(TypedDict):
-    """AgentsAutomationsAvailableToolsGetResponse200Items
-
-    A CMC-controlled presentation category for Automation tools. Clients must not
-    depend on group identifiers, membership, or ordering remaining stable.
-    """
-
-    id: str
-    title: str
-    tools: list[
-        AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[str]
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
     ]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[Union[str, None]]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: NotRequired[
+        list[
+            Union[
+                WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType, None
+            ]
+        ]
+    ]
+    url: NotRequired[str]
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType(TypedDict):
-    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1TypeForResponse(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-    A tool that can be selected in an Automation.
-    """
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[str]
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[list[Union[str, None]]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: NotRequired[
+        list[
+            Union[
+                WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsTypeForResponse,
+                None,
+            ]
+        ]
+    ]
+    url: NotRequired[str]
 
-    id: str
-    title: str
-    description: str
-    scope: NotRequired[Literal["read", "write"]]
+
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
 
 
-class AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse(
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItems
-
-    A tool that can be selected in an Automation.
-    """
-
-    id: str
-    title: str
-    description: str
-    scope: NotRequired[Literal["read", "write"]]
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
 
 
 __all__ = (
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsTypeForResponse",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsType",
-    "AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1TypeForResponse",
 )

@@ -180,183 +180,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         AddedToProjectIssueEventType as AddedToProjectIssueEventType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropCreatedByType as AgentsAutomationsAutomationIdGetResponse200PropCreatedByType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropRepositoryType as AgentsAutomationsAutomationIdGetResponse200PropRepositoryType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIntervalType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIntervalType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunType as AgentsAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200PropTriggersType as AgentsAutomationsAutomationIdGetResponse200PropTriggersType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse200Type as AgentsAutomationsAutomationIdGetResponse200Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse400PropErrorsItemsType as AgentsAutomationsAutomationIdGetResponse400PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse400Type as AgentsAutomationsAutomationIdGetResponse400Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsType as AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse401Type as AgentsAutomationsAutomationIdGetResponse401Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse404PropErrorsItemsType as AgentsAutomationsAutomationIdGetResponse404PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdGetResponse404Type as AgentsAutomationsAutomationIdGetResponse404Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsType as AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse200Type as AgentsAutomationsAutomationIdTasksGetResponse200Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse401PropErrorsItemsType as AgentsAutomationsAutomationIdTasksGetResponse401PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse401Type as AgentsAutomationsAutomationIdTasksGetResponse401Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType as AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse404Type as AgentsAutomationsAutomationIdTasksGetResponse404Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType as AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAutomationIdTasksGetResponse422Type as AgentsAutomationsAutomationIdTasksGetResponse422Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType as AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableToolsGetResponse200ItemsType as AgentsAutomationsAvailableToolsGetResponse200ItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableToolsGetResponse401PropErrorsItemsType as AgentsAutomationsAvailableToolsGetResponse401PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableToolsGetResponse401Type as AgentsAutomationsAvailableToolsGetResponse401Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType as AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsType as AgentsAutomationsAvailableTriggersGetResponse200ItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse401PropErrorsItemsType as AgentsAutomationsAvailableTriggersGetResponse401PropErrorsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        AgentsAutomationsAvailableTriggersGetResponse401Type as AgentsAutomationsAvailableTriggersGetResponse401Type,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropCreatedByType as AgentsAutomationsGetResponse200ItemsPropCreatedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -364,6 +187,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertType as AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertType as AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType,
@@ -381,6 +213,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -390,10 +225,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType,
@@ -411,13 +255,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertType as AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType as AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType,
@@ -468,6 +327,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -483,6 +351,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -492,10 +363,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType,
@@ -513,13 +393,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType,
@@ -555,6 +450,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompletedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompletedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationFailedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropCodeScanningAlertType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDependabotAlertType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDependabotAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionCommentType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -570,6 +474,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssignedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueClosedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueCommentType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -579,10 +486,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpenedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueReopenedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssignedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestClosedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestCommentType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestConvertedToDraftType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeledType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeledType,
@@ -600,13 +516,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReviewType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReopenedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewDismissedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequestedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmittedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadResolvedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronizeType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSecretScanningAlertType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAddedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAddedType,
@@ -627,6 +558,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompletedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompletedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationFailedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropCodeScanningAlertType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDependabotAlertType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDependabotAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionCommentType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -642,6 +582,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssignedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueClosedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueCommentType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -651,10 +594,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpenedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueReopenedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssignedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestClosedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestCommentType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestConvertedToDraftType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeledType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeledType,
@@ -672,13 +624,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReviewType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReopenedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewDismissedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequestedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmittedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadResolvedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronizeType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSecretScanningAlertType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAddedType as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAddedType,
@@ -717,10 +684,175 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422Type as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503Type as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsType as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsType as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsType as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsType as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200Type as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401Type as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404Type as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsType as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItemsType as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404Type as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedByType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionCommentType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionCommentType,
@@ -738,6 +870,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssignedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueCommentType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -747,10 +882,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpenedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssignedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestCommentType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeledType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeledType,
@@ -768,13 +912,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReviewType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronizeType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAddedType as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAddedType,
@@ -813,6 +972,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -828,6 +996,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -837,10 +1008,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssignedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeledType,
@@ -858,13 +1038,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReviewType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronizeType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedType as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAddedType,
@@ -885,6 +1080,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompletedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompletedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlertType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlertType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlertType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionCommentType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -900,6 +1104,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssignedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueCommentType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueCommentType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -909,10 +1116,19 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpenedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpenedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopenedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssignedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssignedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestCommentType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraftType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraftType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeledType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeledType,
@@ -930,13 +1146,28 @@ if TYPE_CHECKING or is_lazy_disabled():
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReviewType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReviewType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopenedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequestedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequestedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmittedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmittedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolvedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolvedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolvedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronizeType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronizeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlertType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlertType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAddedType as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAddedType,
@@ -979,6 +1210,153 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoAutomationsPostResponse422Type as AgentsReposOwnerRepoAutomationsPostResponse422Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503Type as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503PropErrorsItemsType as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503PropErrorsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503Type as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type,
@@ -1650,6 +2028,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         CodeScanningAlertItemsType as CodeScanningAlertItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        CodeScanningAlertLinkedIssueType as CodeScanningAlertLinkedIssueType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         CodeScanningAlertLocationType as CodeScanningAlertLocationType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2015,6 +2396,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         DependabotAlertPropDependencyType as DependabotAlertPropDependencyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        DependabotAlertPropReachabilityType as DependabotAlertPropReachabilityType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         DependabotAlertSecurityAdvisoryPropCwesItemsType as DependabotAlertSecurityAdvisoryPropCwesItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2046,6 +2430,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         DependabotAlertWithRepositoryPropDependencyType as DependabotAlertWithRepositoryPropDependencyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        DependabotAlertWithRepositoryPropReachabilityType as DependabotAlertWithRepositoryPropReachabilityType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         DependabotAlertWithRepositoryType as DependabotAlertWithRepositoryType,
@@ -2449,6 +2836,15 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         InteractionLimitType as InteractionLimitType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueArtifactPropCreatorType as IssueArtifactPropCreatorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueArtifactPropUpdatedByActorType as IssueArtifactPropUpdatedByActorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueArtifactType as IssueArtifactType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         IssueCommentEventType as IssueCommentEventType,
@@ -3877,6 +4273,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepoSearchResultItemType as RepoSearchResultItemType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryAdvisoryCommentType as RepositoryAdvisoryCommentType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryAdvisoryCreatePropCreditsItemsType as RepositoryAdvisoryCreatePropCreditsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4766,6 +5165,24 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType as ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorType as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsType as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1Type as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType as ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType as ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -5094,6 +5511,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType as ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType as ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoStacksPostBodyType as ReposOwnerRepoStacksPostBodyType,
@@ -7149,9 +7572,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesClosedPropIssueAllof0PropAssigneeType as WebhookIssuesClosedPropIssueAllof0PropAssigneeType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType as WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType as WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -7207,9 +7627,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesClosedPropIssueMergedAssigneeType as WebhookIssuesClosedPropIssueMergedAssigneeType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        WebhookIssuesClosedPropIssueMergedLabelsType as WebhookIssuesClosedPropIssueMergedLabelsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesClosedPropIssueMergedMilestoneType as WebhookIssuesClosedPropIssueMergedMilestoneType,
@@ -7321,9 +7738,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesEditedPropIssuePropAssigneeType as WebhookIssuesEditedPropIssuePropAssigneeType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        WebhookIssuesEditedPropIssuePropLabelsItemsType as WebhookIssuesEditedPropIssuePropLabelsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesEditedPropIssuePropMilestonePropCreatorType as WebhookIssuesEditedPropIssuePropMilestonePropCreatorType,
@@ -11633,9 +12047,6 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhooksIssue2PropAssigneeType as WebhooksIssue2PropAssigneeType,
     )
     from githubkit_schemas.v2026_03_10.types import (
-        WebhooksIssue2PropLabelsItemsType as WebhooksIssue2PropLabelsItemsType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
         WebhooksIssue2PropMilestonePropCreatorType as WebhooksIssue2PropMilestonePropCreatorType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -11676,9 +12087,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhooksIssuePropAssigneeType as WebhooksIssuePropAssigneeType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        WebhooksIssuePropLabelsItemsType as WebhooksIssuePropLabelsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhooksIssuePropMilestonePropCreatorType as WebhooksIssuePropMilestonePropCreatorType,
@@ -12573,6 +12981,7 @@ else:
             "DependabotAlertDismissalRequestSimpleType",
             "DependabotAlertDismissalRequestSimplePropRequesterType",
             "DependabotAlertWithRepositoryType",
+            "DependabotAlertWithRepositoryPropReachabilityType",
             "DependabotAlertWithRepositoryPropDependencyType",
             "DependabotRepositoryAccessDetailsType",
             "LabelType",
@@ -13132,6 +13541,7 @@ else:
             "CodeQualitySetupUpdateResponseType",
             "CodeScanningAiScanEnablementType",
             "CodeScanningAiScanEnablementUpdateType",
+            "CodeScanningAlertLinkedIssueType",
             "CodeScanningAlertItemsType",
             "CodeScanningAlertType",
             "CodeScanningAlertRuleType",
@@ -13202,6 +13612,7 @@ else:
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
             "ContributorType",
             "DependabotAlertType",
+            "DependabotAlertPropReachabilityType",
             "DependabotAlertPropDependencyType",
             "DependencyGraphDiffItemsType",
             "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
@@ -13411,6 +13822,7 @@ else:
             "RepositoryAdvisoryUpdatePropCreditsItemsType",
             "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
             "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
+            "RepositoryAdvisoryCommentType",
             "PullRequestStackMinimalType",
             "PullRequestStackMinimalPropBaseType",
             "PullRequestStackMinimalPropPullRequestsItemsType",
@@ -13534,7 +13946,6 @@ else:
             "WebhooksIssueType",
             "WebhooksIssuePropAssigneeType",
             "WebhooksIssuePropAssigneesItemsType",
-            "WebhooksIssuePropLabelsItemsType",
             "WebhooksIssuePropMilestoneType",
             "WebhooksIssuePropMilestonePropCreatorType",
             "WebhooksIssuePropPerformedViaGithubAppType",
@@ -13548,7 +13959,6 @@ else:
             "WebhooksIssue2Type",
             "WebhooksIssue2PropAssigneeType",
             "WebhooksIssue2PropAssigneesItemsType",
-            "WebhooksIssue2PropLabelsItemsType",
             "WebhooksIssue2PropMilestoneType",
             "WebhooksIssue2PropMilestonePropCreatorType",
             "WebhooksIssue2PropPerformedViaGithubAppType",
@@ -14123,13 +14533,11 @@ else:
             "WebhookIssuesClosedPropIssueType",
             "WebhookIssuesClosedPropIssueMergedAssigneeType",
             "WebhookIssuesClosedPropIssueMergedAssigneesType",
-            "WebhookIssuesClosedPropIssueMergedLabelsType",
             "WebhookIssuesClosedPropIssueMergedReactionsType",
             "WebhookIssuesClosedPropIssueMergedUserType",
             "WebhookIssuesClosedPropIssueAllof0Type",
             "WebhookIssuesClosedPropIssueAllof0PropAssigneeType",
             "WebhookIssuesClosedPropIssueAllof0PropAssigneesItemsType",
-            "WebhookIssuesClosedPropIssueAllof0PropLabelsItemsType",
             "WebhookIssuesClosedPropIssueAllof0PropReactionsType",
             "WebhookIssuesClosedPropIssueAllof0PropUserType",
             "WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType",
@@ -14138,10 +14546,10 @@ else:
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType",
             "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+            "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
             "WebhookIssuesClosedPropIssueAllof1Type",
             "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
             "WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType",
-            "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
             "WebhookIssuesClosedPropIssueAllof1PropMilestoneType",
             "WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubAppType",
             "WebhookIssuesClosedPropIssueAllof1PropReactionsType",
@@ -14181,7 +14589,6 @@ else:
             "WebhookIssuesEditedPropIssueType",
             "WebhookIssuesEditedPropIssuePropAssigneeType",
             "WebhookIssuesEditedPropIssuePropAssigneesItemsType",
-            "WebhookIssuesEditedPropIssuePropLabelsItemsType",
             "WebhookIssuesEditedPropIssuePropMilestoneType",
             "WebhookIssuesEditedPropIssuePropMilestonePropCreatorType",
             "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType",
@@ -15769,70 +16176,23 @@ else:
             "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType",
             "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType",
             "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertType",
+            "AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertType",
             "AgentsAutomationsGetResponse400Type",
             "AgentsAutomationsGetResponse400PropErrorsItemsType",
             "AgentsAutomationsGetResponse401Type",
             "AgentsAutomationsGetResponse401PropErrorsItemsType",
-            "AgentsAutomationsAvailableToolsGetResponse200ItemsType",
-            "AgentsAutomationsAvailableToolsGetResponse200ItemsPropToolsItemsType",
-            "AgentsAutomationsAvailableToolsGetResponse401Type",
-            "AgentsAutomationsAvailableToolsGetResponse401PropErrorsItemsType",
-            "AgentsAutomationsAvailableTriggersGetResponse200ItemsType",
-            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType",
-            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type",
-            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type",
-            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type",
-            "AgentsAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType",
-            "AgentsAutomationsAvailableTriggersGetResponse401Type",
-            "AgentsAutomationsAvailableTriggersGetResponse401PropErrorsItemsType",
-            "AgentsAutomationsAutomationIdGetResponse200Type",
-            "AgentsAutomationsAutomationIdGetResponse200PropRepositoryType",
-            "AgentsAutomationsAutomationIdGetResponse200PropCreatedByType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIntervalType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpenedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeledType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRunType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpenedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronizeType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueCommentType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestCommentType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpenedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdatedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionCommentType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssignedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssignedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAddedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReviewType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeledType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType",
-            "AgentsAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType",
-            "AgentsAutomationsAutomationIdGetResponse400Type",
-            "AgentsAutomationsAutomationIdGetResponse400PropErrorsItemsType",
-            "AgentsAutomationsAutomationIdGetResponse401Type",
-            "AgentsAutomationsAutomationIdGetResponse401PropErrorsItemsType",
-            "AgentsAutomationsAutomationIdGetResponse404Type",
-            "AgentsAutomationsAutomationIdGetResponse404PropErrorsItemsType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse401Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse401PropErrorsItemsType",
-            "AgentsAutomationsAutomationIdTasksGetResponse404Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType",
-            "AgentsAutomationsAutomationIdTasksGetResponse422Type",
-            "AgentsAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsGetResponse200Type",
             "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsType",
             "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedByType",
@@ -15857,7 +16217,19 @@ else:
             "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflictType",
             "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmittedType",
             "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequestedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopenedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopenedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompletedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailedType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlertType",
             "AgentsReposOwnerRepoAutomationsGetResponse400Type",
             "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsGetResponse401Type",
@@ -15886,7 +16258,19 @@ else:
             "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflictType",
             "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmittedType",
             "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequestedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopenedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopenedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompletedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailedType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlertType",
             "AgentsReposOwnerRepoAutomationsPostResponse201Type",
             "AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedByType",
             "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersType",
@@ -15910,7 +16294,19 @@ else:
             "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflictType",
             "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmittedType",
             "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequestedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopenedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopenedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompletedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailedType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlertType",
             "AgentsReposOwnerRepoAutomationsPostResponse400Type",
             "AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsPostResponse401Type",
@@ -15921,6 +16317,25 @@ else:
             "AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsPostResponse422Type",
             "AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200Type",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401Type",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404Type",
+            "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404Type",
+            "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200Type",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedByType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersType",
@@ -15944,7 +16359,19 @@ else:
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflictType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmittedType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequestedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopenedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopenedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompletedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlertType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400Type",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401Type",
@@ -15979,7 +16406,19 @@ else:
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMergeConflictType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmittedType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequestedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueClosedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueReopenedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestClosedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReopenedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewDismissedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompletedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationFailedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropCodeScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSecretScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDependabotAlertType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200Type",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropCreatedByType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersType",
@@ -16003,7 +16442,19 @@ else:
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMergeConflictType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmittedType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequestedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueClosedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueReopenedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestClosedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReopenedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestConvertedToDraftType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewDismissedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadResolvedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadUnresolvedType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompletedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationFailedType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropCodeScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSecretScanningAlertType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDependabotAlertType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400Type",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401Type",
@@ -16012,6 +16463,88 @@ else:
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItemsType",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422Type",
             "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwnerType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepositoryType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgentType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503Type",
+            "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUserType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429PropErrorsItemsType",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503Type",
+            "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItemsType",
             "AgentsReposOwnerRepoTasksGetResponse200Type",
             "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsType",
             "AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0Type",
@@ -16588,6 +17121,15 @@ else:
             "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType",
             "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType",
             "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType",
+            "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType",
+            "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1Type",
+            "IssueArtifactType",
+            "IssueArtifactPropCreatorType",
+            "IssueArtifactPropUpdatedByActorType",
+            "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsType",
+            "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorType",
+            "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type",
+            "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type",
             "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",
             "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1Type",
             "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
@@ -16670,6 +17212,8 @@ else:
             "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
             "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
             "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
+            "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType",
+            "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType",
             "ReposOwnerRepoStacksPostBodyType",
             "ReposOwnerRepoStacksPostResponse201Type",
             "ReposOwnerRepoStacksPostResponse201PropBaseType",

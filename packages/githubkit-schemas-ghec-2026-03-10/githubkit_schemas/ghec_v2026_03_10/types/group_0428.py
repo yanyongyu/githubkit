@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
+class CodeScanningAiScanEnablementType(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+    AI Scan enablement for a repository.
+    """
+
+    pr_scan: Literal["enabled", "disabled"]
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    AI Scan enablement for a repository.
+    """
+
+    pr_scan: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "CodeScanningAiScanEnablementType",
+    "CodeScanningAiScanEnablementTypeForResponse",
 )

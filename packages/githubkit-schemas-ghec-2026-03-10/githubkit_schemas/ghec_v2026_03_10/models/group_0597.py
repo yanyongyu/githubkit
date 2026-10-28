@@ -9,61 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestStackMinimal(GitHubModel):
-    """Pull Request Stack Minimal"""
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1(GitHubModel):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: PullRequestStackMinimalPropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    pattern_name: Missing[str] = Field(
+        default=UNSET, description="Name of the custom pattern for custom pattern scans"
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
+    pattern_scope: Missing[str] = Field(
+        default=UNSET,
+        description='Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise"',
+    )
 
 
-class PullRequestStackMinimalPropBase(GitHubModel):
-    """PullRequestStackMinimalPropBase"""
+model_rebuild(SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1)
 
-    ref: str = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int = Field()
-    state: Literal["open", "closed"] = Field()
-    draft: bool = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-
-
-model_rebuild(PullRequestStackMinimal)
-model_rebuild(PullRequestStackMinimalPropBase)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
-
-__all__ = (
-    "PullRequestStackMinimal",
-    "PullRequestStackMinimalPropBase",
-    "PullRequestStackMinimalPropPullRequestsItems",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
-)
+__all__ = ("SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1",)

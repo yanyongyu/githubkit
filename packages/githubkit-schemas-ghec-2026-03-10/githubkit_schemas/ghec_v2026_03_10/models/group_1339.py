@@ -9,37 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    users: Missing[list[str]] = Field(
-        default=UNSET,
-        description="The usernames of the users to add to the cost center.",
-    )
-    organizations: Missing[list[str]] = Field(
-        default=UNSET, description="The organizations to add to the cost center."
-    )
-    repositories: Missing[list[str]] = Field(
-        default=UNSET, description="The repositories to add to the cost center."
-    )
-    enterprise_teams: Missing[list[str]] = Field(
-        default=UNSET, description="The enterprise teams to add to the cost center."
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
     )
 
 
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
+    EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
 )

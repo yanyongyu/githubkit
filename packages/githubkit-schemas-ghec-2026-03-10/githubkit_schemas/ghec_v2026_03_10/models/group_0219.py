@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,83 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateBudget(GitHubModel):
-    """UpdateBudget"""
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-    message: str = Field(
-        description="A message indicating the result of the update operation"
-    )
-    budget: UpdateBudgetPropBudget = Field()
-
-
-class UpdateBudgetPropBudget(GitHubModel):
-    """UpdateBudgetPropBudget"""
-
-    id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
-    budget_scope: Missing[
-        Literal[
-            "enterprise",
-            "organization",
-            "repository",
-            "cost_center",
-            "multi_user_customer",
-            "multi_user_cost_center",
-            "user",
-        ]
-    ] = Field(default=UNSET, description="The type of scope for the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    user: Missing[str] = Field(
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
         default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-    consumed_amount: Missing[float] = Field(
+    purchased_advanced_security_committers: Missing[int] = Field(
         default=UNSET,
-        description="The consumed amount for the specified user within the budget. Only included for `user`-scoped budgets.",
+        description="The total number of GitHub Advanced Security licences purchased",
     )
-    budget_amount: Missing[int] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
-    )
-    prevent_further_usage: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded",
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET, description="A single product or sku to apply the budget to."
-    )
-    budget_type: Missing[Literal["ProductPricing", "SkuPricing", "BundlePricing"]] = (
-        Field(default=UNSET, description="The type of pricing for the budget")
-    )
-    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
-        default=UNSET
-    )
-    expires_at: Missing[_dt.date] = Field(
-        default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
-    )
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them.",
-    )
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
 
 
-model_rebuild(UpdateBudget)
-model_rebuild(UpdateBudgetPropBudget)
-model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
+
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
+
+
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
 
 __all__ = (
-    "UpdateBudget",
-    "UpdateBudgetPropBudget",
-    "UpdateBudgetPropBudgetPropBudgetAlerting",
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
 )

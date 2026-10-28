@@ -9,100 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Any, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class BillingAiCreditUsageReportGhe(GitHubModel):
-    """BillingAiCreditUsageReportGhe"""
-
-    time_period: BillingAiCreditUsageReportGhePropTimePeriod = Field(alias="timePeriod")
-    enterprise: str = Field(
-        description="The name of the enterprise for the usage report."
-    )
-    user: Missing[str] = Field(
-        default=UNSET, description="The name of the user for the usage report."
-    )
-    organization: Missing[str] = Field(
-        default=UNSET, description="The name of the organization for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model for the usage report."
-    )
-    cost_center: Missing[BillingAiCreditUsageReportGhePropCostCenter] = Field(
-        default=UNSET, alias="costCenter"
-    )
-    usage_items: list[BillingAiCreditUsageReportGhePropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+from .group_0003 import SimpleUser
 
 
-class BillingAiCreditUsageReportGhePropTimePeriod(GitHubModel):
-    """BillingAiCreditUsageReportGhePropTimePeriod"""
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
-    )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
-    )
+    Base Gist
+    """
 
-
-class BillingAiCreditUsageReportGhePropCostCenter(GitHubModel):
-    """BillingAiCreditUsageReportGhePropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-class BillingAiCreditUsageReportGhePropUsageItemsItems(GitHubModel):
-    """BillingAiCreditUsageReportGhePropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    model: str = Field(description="Model name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
-    )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
-    )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
-    )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(BillingAiCreditUsageReportGhe)
-model_rebuild(BillingAiCreditUsageReportGhePropTimePeriod)
-model_rebuild(BillingAiCreditUsageReportGhePropCostCenter)
-model_rebuild(BillingAiCreditUsageReportGhePropUsageItemsItems)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
+
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "BillingAiCreditUsageReportGhe",
-    "BillingAiCreditUsageReportGhePropCostCenter",
-    "BillingAiCreditUsageReportGhePropTimePeriod",
-    "BillingAiCreditUsageReportGhePropUsageItemsItems",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

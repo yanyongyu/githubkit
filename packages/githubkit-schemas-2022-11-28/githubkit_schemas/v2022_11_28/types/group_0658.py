@@ -14,18 +14,18 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0218 import CustomPropertyType, CustomPropertyTypeForResponse
-from .group_0568 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0569 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0570 import (
+from .group_0570 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0571 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0572 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
 
 
-class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
-    """custom property promoted to business event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["promote_to_enterprise"]
+    action: Literal["created"]
     definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,10 +33,10 @@ class WebhookCustomPropertyPromotedToEnterpriseType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
-    """custom property promoted to business event"""
+class WebhookCustomPropertyCreatedTypeForResponse(TypedDict):
+    """custom property created event"""
 
-    action: Literal["promote_to_enterprise"]
+    action: Literal["created"]
     definition: CustomPropertyTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -45,6 +45,6 @@ class WebhookCustomPropertyPromotedToEnterpriseTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCustomPropertyPromotedToEnterpriseType",
-    "WebhookCustomPropertyPromotedToEnterpriseTypeForResponse",
+    "WebhookCustomPropertyCreatedType",
+    "WebhookCustomPropertyCreatedTypeForResponse",
 )

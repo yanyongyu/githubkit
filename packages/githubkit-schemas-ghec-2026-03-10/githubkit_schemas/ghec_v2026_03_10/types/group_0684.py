@@ -9,87 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0686 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
+)
 
 
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class WebhooksLabelArchivedType(TypedDict):
+    """Archived label"""
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
-
-
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
     id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    node_id: str
+    url: str
 
 
-class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
+class WebhooksLabelArchivedTypeForResponse(TypedDict):
+    """Archived label"""
 
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
     id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    node_id: str
+    url: str
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
-    "WebhooksPreviousMarketplacePurchaseType",
-    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
+    "WebhooksLabelArchivedType",
+    "WebhooksLabelArchivedTypeForResponse",
 )

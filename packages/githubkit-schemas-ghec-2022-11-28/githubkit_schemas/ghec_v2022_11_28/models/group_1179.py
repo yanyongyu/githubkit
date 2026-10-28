@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,17 +30,27 @@ class AgentsReposOwnerRepoTasksGetResponse401(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems]] = (
-        Field(
-            default=UNSET,
-            description="List of validation errors (present only for 422 responses)",
-        )
+    errors: Missing[
+        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
 
     A single validation error
     """
@@ -59,10 +69,12 @@ class AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401)
-model_rebuild(AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksGetResponse401",
-    "AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems",
 )

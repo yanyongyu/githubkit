@@ -9,56 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0525 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
-
-    ref: str
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberGetResponse200Type",
-    "ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse",
+    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +18,179 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0001 import CvssSeverities
+from .group_0003 import SimpleUser
+from .group_0108 import Team
+from .group_0366 import RepositoryAdvisoryCredit
 
-class TeamMember(GitHubModel):
-    """Team Member
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+class RepositoryAdvisory(GitHubModel):
+    """RepositoryAdvisory
+
+    A repository security advisory.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET,
-        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
+    cve_id: Union[str, None] = Field(
+        description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    inherited: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    url: str = Field(description="The API URL for the advisory.")
+    html_url: str = Field(description="The URL for the advisory.")
+    summary: str = Field(
+        max_length=1024, description="A short summary of the advisory."
+    )
+    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
+        description="A detailed description of what the advisory entails."
+    )
+    severity: Union[Literal["critical", "high", "medium", "low"], None] = Field(
+        description="The severity of the advisory."
+    )
+    author: None = Field(description="The author of the advisory.")
+    publisher: None = Field(description="The publisher of the advisory.")
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
+    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
+        description="The state of the advisory."
+    )
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was created, in ISO 8601 format."
+    )
+    updated_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was last updated, in ISO 8601 format."
+    )
+    published_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was published, in ISO 8601 format."
+    )
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was closed, in ISO 8601 format."
+    )
+    withdrawn_at: Union[_dt.datetime, None] = Field(
+        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
+    )
+    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
+    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
+    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
+    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
+        alias="credits"
+    )
+    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
+    collaborating_users: Union[list[SimpleUser], None] = Field(
+        description="A list of users that collaborate on the advisory."
+    )
+    collaborating_teams: Union[list[Team], None] = Field(
+        description="A list of teams that collaborate on the advisory."
+    )
+    private_fork: None = Field(
+        description="A temporary private fork of the advisory's repository for collaborating on a fix."
     )
 
 
-model_rebuild(TeamMember)
+class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
+    """RepositoryAdvisoryPropIdentifiersItems"""
 
-__all__ = ("TeamMember",)
+    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
+    value: str = Field(description="The identifier value.")
+
+
+class RepositoryAdvisoryPropSubmission(GitHubModel):
+    """RepositoryAdvisoryPropSubmission"""
+
+    accepted: bool = Field(
+        description="Whether a private vulnerability report was accepted by the repository's administrators."
+    )
+
+
+class RepositoryAdvisoryPropCwesItems(GitHubModel):
+    """RepositoryAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
+    name: str = Field(description="The name of the CWE.")
+
+
+class RepositoryAdvisoryPropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryPropCreditsItems"""
+
+    login: Missing[str] = Field(
+        default=UNSET, description="The username of the user credited."
+    )
+    type: Missing[
+        Literal[
+            "analyst",
+            "finder",
+            "reporter",
+            "coordinator",
+            "remediation_developer",
+            "remediation_reviewer",
+            "remediation_verifier",
+            "tool",
+            "sponsor",
+            "other",
+        ]
+    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryVulnerability(GitHubModel):
+    """RepositoryAdvisoryVulnerability
+
+    A product affected by the vulnerability detailed in a repository security
+    advisory.
+    """
+
+    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
+        description="The name of the package affected by the vulnerability."
+    )
+    vulnerable_version_range: Union[str, None] = Field(
+        description="The range of the package versions affected by the vulnerability."
+    )
+    patched_versions: Union[str, None] = Field(
+        description="The package version(s) that resolve the vulnerability."
+    )
+    vulnerable_functions: Union[list[str], None] = Field(
+        description="The functions in the package that are affected."
+    )
+
+
+class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
+    """RepositoryAdvisoryVulnerabilityPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ] = Field(description="The package's language or package management ecosystem.")
+    name: Union[str, None] = Field(
+        description="The unique package name within its ecosystem."
+    )
+
+
+model_rebuild(RepositoryAdvisory)
+model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
+model_rebuild(RepositoryAdvisoryPropSubmission)
+model_rebuild(RepositoryAdvisoryPropCwesItems)
+model_rebuild(RepositoryAdvisoryPropCreditsItems)
+model_rebuild(RepositoryAdvisoryVulnerability)
+model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
+
+__all__ = (
+    "RepositoryAdvisory",
+    "RepositoryAdvisoryPropCreditsItems",
+    "RepositoryAdvisoryPropCwesItems",
+    "RepositoryAdvisoryPropIdentifiersItems",
+    "RepositoryAdvisoryPropSubmission",
+    "RepositoryAdvisoryVulnerability",
+    "RepositoryAdvisoryVulnerabilityPropPackage",
+)

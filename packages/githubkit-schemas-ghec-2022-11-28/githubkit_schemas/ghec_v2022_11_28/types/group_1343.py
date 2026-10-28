@@ -9,30 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    ]
+    models: NotRequired[
+        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    ]
+    models: NotRequired[
+        list[
+            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+        ]
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
-    """
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
 
-    message: NotRequired[str]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
-    """
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
 
-    message: NotRequired[str]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse",
 )

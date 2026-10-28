@@ -9,58 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationExternalPropertyInstallationType(TypedDict):
-    """Organization External Custom Property Installation
+class ProjectsV2FieldSingleSelectOptionType(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
-    """
-
-    display_name: str
-    installation: OrganizationExternalPropertyInstallationPropInstallationType
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
-class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
-    """Organization External Custom Property Installation
+class ProjectsV2FieldSingleSelectOptionTypeForResponse(TypedDict):
+    """ProjectsV2FieldSingleSelectOption"""
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
-    """
-
-    display_name: str
-    installation: (
-        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
-    )
-
-
-class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
-    """OrganizationExternalPropertyInstallationPropInstallation
-
-    The GitHub App installation that was registered.
-    """
-
-    id: int
-
-
-class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
-    TypedDict
-):
-    """OrganizationExternalPropertyInstallationPropInstallation
-
-    The GitHub App installation that was registered.
-    """
-
-    id: int
+    name: NotRequired[str]
+    color: NotRequired[
+        Literal["BLUE", "GRAY", "GREEN", "ORANGE", "PINK", "PURPLE", "RED", "YELLOW"]
+    ]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "OrganizationExternalPropertyInstallationPropInstallationType",
-    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
-    "OrganizationExternalPropertyInstallationType",
-    "OrganizationExternalPropertyInstallationTypeForResponse",
+    "ProjectsV2FieldSingleSelectOptionType",
+    "ProjectsV2FieldSingleSelectOptionTypeForResponse",
 )

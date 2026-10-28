@@ -9,41 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0122 import ActionsPolicyRepoConditionsOneof0
-from .group_0123 import ActionsPolicyRepoConditionsOneof1
-from .group_0145 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
 
+class OrgsOrgPropertiesInstallationsPostBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPostBody"""
-
-    name: str = Field(description="The name of the policy.")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    conditions: Missing[
-        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
-    ] = Field(
+    installation_id: Missing[int] = Field(
         default=UNSET,
-        title="Repository Actions policy conditions",
-        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+        description="The unique identifier of the GitHub App installation to register for managing external custom properties. When authenticating as a GitHub App installation, this defaults to the authenticated installation and can be omitted. It is required for all other callers (users and fine-grained personal access tokens).",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    display_name: str = Field(
+        min_length=1,
+        max_length=15,
+        pattern="^[a-zA-Z0-9]+$",
+        description="The display name for this app installation's external custom properties in the organization. Must be 1 to 15 characters and contain only letters and numbers. Capitalization is preserved as entered. This can't be changed after the app installation is registered.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
+model_rebuild(OrgsOrgPropertiesInstallationsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)
+__all__ = ("OrgsOrgPropertiesInstallationsPostBody",)

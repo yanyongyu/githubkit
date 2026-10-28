@@ -15,14 +15,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoPullsPullNumberMergePutResponse409(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse409"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_1749 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
+)
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse409)
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse409",)
+    suggestions: Missing[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+    ] = Field(
+        default=UNSET,
+        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
+
+__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)

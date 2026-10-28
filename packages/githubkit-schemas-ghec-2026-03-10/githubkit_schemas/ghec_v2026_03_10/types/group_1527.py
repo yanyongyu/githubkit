@@ -12,21 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    installation_id: NotRequired[int]
-    display_name: str
+    message: NotRequired[str]
 
 
-class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    installation_id: NotRequired[int]
-    display_name: str
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsPostBodyType",
-    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

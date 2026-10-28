@@ -9,27 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody"""
+class ReposOwnerRepoStacksPostResponse422(GitHubModel):
+    """Validation Error
 
-    actor_type: Literal["User", "Team"] = Field(
-        description="The type of actor (must be `User` for user-owned spaces; `Team` will be rejected)."
+    Validation Error
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
+        default=UNSET
     )
-    actor_identifier: str = Field(
-        description="The username of the collaborator. The numeric user ID is also accepted."
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
     )
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role to grant to the collaborator."
-    )
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody)
+model_rebuild(ReposOwnerRepoStacksPostResponse422)
+model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody",)
+__all__ = (
+    "ReposOwnerRepoStacksPostResponse422",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
+)

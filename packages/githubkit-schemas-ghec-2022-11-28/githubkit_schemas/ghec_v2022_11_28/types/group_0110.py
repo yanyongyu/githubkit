@@ -35,7 +35,7 @@ class CopilotSeatDetailsType(TypedDict):
     last_authenticated_at: NotRequired[Union[_dt.datetime, None]]
     created_at: _dt.datetime
     updated_at: NotRequired[_dt.datetime]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown", "access"]]
 
 
 class CopilotSeatDetailsTypeForResponse(TypedDict):
@@ -56,7 +56,7 @@ class CopilotSeatDetailsTypeForResponse(TypedDict):
     last_authenticated_at: NotRequired[Union[str, None]]
     created_at: str
     updated_at: NotRequired[str]
-    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown", "access"]]
 
 
 __all__ = (

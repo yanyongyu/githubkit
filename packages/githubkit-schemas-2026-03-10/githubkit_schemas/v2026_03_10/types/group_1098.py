@@ -9,33 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
-from .group_1099 import (
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType,
-    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse,
-)
+from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
 
-    sessions: NotRequired[
-        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsType]
-    ]
+    The Agent Merge enrollment configuration
+
+    Examples:
+        {'allowed_actions': ['fix_ci']}
+    """
+
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
 
 
-class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1"""
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
 
-    sessions: NotRequired[
-        list[
-            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsTypeForResponse
-        ]
-    ]
+    The Agent Merge enrollment configuration
+
+    Examples:
+        {'allowed_actions': ['fix_ci']}
+    """
+
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1Type",
-    "AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse",
 )

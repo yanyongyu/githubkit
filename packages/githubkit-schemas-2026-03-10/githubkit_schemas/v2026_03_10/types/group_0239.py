@@ -20,6 +20,7 @@ class RepositoryRulePullRequestPropParametersType(TypedDict):
     dismiss_stale_reviews_on_push: bool
     dismissal_restriction: NotRequired[RepositoryRuleParamsDismissalRestrictionType]
     require_code_owner_review: bool
+    require_extra_approval_for_unattributed_changes: NotRequired[bool]
     require_last_push_approval: bool
     required_approving_review_count: int
     required_review_thread_resolution: bool
@@ -37,6 +38,7 @@ class RepositoryRulePullRequestPropParametersTypeForResponse(TypedDict):
         RepositoryRuleParamsDismissalRestrictionTypeForResponse
     ]
     require_code_owner_review: bool
+    require_extra_approval_for_unattributed_changes: NotRequired[bool]
     require_last_push_approval: bool
     required_approving_review_count: int
     required_review_thread_resolution: bool

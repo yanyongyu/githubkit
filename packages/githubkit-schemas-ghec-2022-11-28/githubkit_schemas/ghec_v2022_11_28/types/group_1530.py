@@ -9,24 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    installation_id: NotRequired[int]
-    display_name: str
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesInstallationsPostBody"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    installation_id: NotRequired[int]
-    display_name: str
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
+
+
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsPostBodyType",
-    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200Type",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse",
 )

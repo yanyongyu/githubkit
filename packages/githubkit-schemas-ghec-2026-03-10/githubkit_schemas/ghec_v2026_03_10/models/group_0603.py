@@ -9,41 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
 
 
-class ContributorActivity(GitHubModel):
-    """Contributor Activity
+class PullRequestStackMinimal(GitHubModel):
+    """Pull Request Stack Minimal"""
 
-    Contributor Activity
-    """
-
-    author: Union[SimpleUser, None] = Field()
-    total: int = Field()
-    weeks: list[ContributorActivityPropWeeksItems] = Field()
-
-
-class ContributorActivityPropWeeksItems(GitHubModel):
-    """ContributorActivityPropWeeksItems"""
-
-    w: Missing[int] = Field(default=UNSET)
-    a: Missing[int] = Field(default=UNSET)
-    d: Missing[int] = Field(default=UNSET)
-    c: Missing[int] = Field(default=UNSET)
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: PullRequestStackMinimalPropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
 
 
-model_rebuild(ContributorActivity)
-model_rebuild(ContributorActivityPropWeeksItems)
+class PullRequestStackMinimalPropBase(GitHubModel):
+    """PullRequestStackMinimalPropBase"""
+
+    ref: str = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int = Field()
+    state: Literal["open", "closed"] = Field()
+    draft: bool = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestStackMinimal)
+model_rebuild(PullRequestStackMinimalPropBase)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
 
 __all__ = (
-    "ContributorActivity",
-    "ContributorActivityPropWeeksItems",
+    "PullRequestStackMinimal",
+    "PullRequestStackMinimalPropBase",
+    "PullRequestStackMinimalPropPullRequestsItems",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
 )

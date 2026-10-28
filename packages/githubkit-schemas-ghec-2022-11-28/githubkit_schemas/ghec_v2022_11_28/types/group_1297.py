@@ -9,89 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
-
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType
-    ]
-    models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
-    ]
-    models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
-    ]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType(
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200Type",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

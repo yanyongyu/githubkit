@@ -33,7 +33,9 @@ else:
     _VersionProxy = object
 
 class RestVersionSwitcher(_VersionProxy):
-    _cached_namespaces: "WeakKeyDictionary[GitHubCore, dict[VERSION_TYPE, Any]]" = WeakKeyDictionary()
+    _cached_namespaces: "WeakKeyDictionary[GitHubCore, dict[VERSION_TYPE, Any]]" = (
+        WeakKeyDictionary()  # noqa: RUF012
+    )
 
     if not TYPE_CHECKING:
         def __getattr__(self, name: str) -> Any:

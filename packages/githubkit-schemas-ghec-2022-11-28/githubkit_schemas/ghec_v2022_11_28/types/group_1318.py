@@ -10,32 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
+
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    ]
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse",
 )

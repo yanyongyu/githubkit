@@ -14,16 +14,19 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0500 import IssueReference
+from .group_0504 import IssueTypeWebhook
+from .group_0506 import IssueEventIntent
 
 
-class ParentIssueAddedIssueEvent(GitHubModel):
-    """Parent-issue Added Issue Event
+class IssueTypeAddedIssueEvent(GitHubModel):
+    """Issue Type Added Issue Event
 
-    Parent-issue Added Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int = Field()
@@ -35,9 +38,12 @@ class ParentIssueAddedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    parent_issue: Union[None, IssueReference, None] = Field()
+    issue_type: Union[IssueTypeWebhook, None] = Field(
+        title="Issue Type", description="The type of issue."
+    )
+    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
 
 
-model_rebuild(ParentIssueAddedIssueEvent)
+model_rebuild(IssueTypeAddedIssueEvent)
 
-__all__ = ("ParentIssueAddedIssueEvent",)
+__all__ = ("IssueTypeAddedIssueEvent",)

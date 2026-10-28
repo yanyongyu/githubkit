@@ -9,57 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0529 import PullRequestStackPullRequest
 
 
-class UsersUserIdProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """UsersUserIdProjectsV2ProjectNumberViewsPostBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    filter_: Missing[str] = Field(
-        default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
-    )
-    visible_fields: Missing[list[int]] = Field(
-        default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
-    )
-    sort_by: Missing[
-        list[
-            Annotated[
-                list[Union[int, str]],
-                Field(
-                    max_length=2 if PYDANTIC_V2 else None,
-                    min_length=2 if PYDANTIC_V2 else None,
-                ),
-            ]
-        ]
-    ] = Field(
-        default=UNSET,
-        description='Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order.',
-    )
-    group_by: Missing[list[int]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
-    )
-    vertical_group_by: Missing[list[int]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UsersUserIdProjectsV2ProjectNumberViewsPostBody)
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
 
-__all__ = ("UsersUserIdProjectsV2ProjectNumberViewsPostBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
+)

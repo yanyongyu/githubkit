@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoAutolinksPostBody(GitHubModel):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    key_prefix: str = Field(
-        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    url_template: str = Field(
-        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
-    )
-    is_alphanumeric: Missing[bool] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(ReposOwnerRepoAutolinksPostBody)
+model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
 
-__all__ = ("ReposOwnerRepoAutolinksPostBody",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)

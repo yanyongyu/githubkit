@@ -2103,7 +2103,11 @@ class AppsClient:
         See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation
         """
 
-        from ..models import BasicError, InstallationRepositoriesGetResponse200
+        from ..models import (
+            BasicError,
+            InstallationRepositoriesGetResponse200,
+            ValidationErrorSimple,
+        )
 
         url = "/installation/repositories"
 
@@ -2124,6 +2128,7 @@ class AppsClient:
             error_models={
                 "403": BasicError,
                 "401": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -2147,7 +2152,11 @@ class AppsClient:
         See also: https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation
         """
 
-        from ..models import BasicError, InstallationRepositoriesGetResponse200
+        from ..models import (
+            BasicError,
+            InstallationRepositoriesGetResponse200,
+            ValidationErrorSimple,
+        )
 
         url = "/installation/repositories"
 
@@ -2168,6 +2177,7 @@ class AppsClient:
             error_models={
                 "403": BasicError,
                 "401": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 

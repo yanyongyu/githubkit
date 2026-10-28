@@ -9,34 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class IssueEventIntent(GitHubModel):
-    """Issue Event Intent
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    Porter Author
     """
 
-    rationale: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The reasoning the agent provided for the change."
-    )
-    confidence: Missing[Union[Literal["LOW", "MEDIUM", "HIGH"], None]] = Field(
-        default=UNSET,
-        description="The confidence level the agent had when performing this action.",
-    )
+    id: int = Field()
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
+    name: str = Field()
+    url: str = Field()
+    import_url: str = Field()
 
 
-model_rebuild(IssueEventIntent)
+model_rebuild(PorterAuthor)
 
-__all__ = ("IssueEventIntent",)
+__all__ = ("PorterAuthor",)

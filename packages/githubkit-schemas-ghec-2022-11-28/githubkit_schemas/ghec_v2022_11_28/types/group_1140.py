@@ -9,77 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class AgentsAutomationsGetResponse401Type(TypedDict):
-    """AgentsAutomationsGetResponse401
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
+    """Workflow Job
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    message: str
-    errors: NotRequired[list[AgentsAutomationsGetResponse401PropErrorsItemsType]]
-    documentation_url: str
-
-
-class AgentsAutomationsGetResponse401TypeForResponse(TypedDict):
-    """AgentsAutomationsGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[AgentsAutomationsGetResponse401PropErrorsItemsTypeForResponse]
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+        None,
     ]
-    documentation_url: str
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
+    url: str
 
 
-class AgentsAutomationsGetResponse401PropErrorsItemsType(TypedDict):
-    """AgentsAutomationsGetResponse401PropErrorsItems
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse(TypedDict):
+    """Workflow Job
 
-    A single validation error
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+        None,
     ]
-    message: NotRequired[str]
-
-
-class AgentsAutomationsGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
-    """AgentsAutomationsGetResponse401PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    created_at: str
+    head_sha: str
+    html_url: str
+    id: int
+    labels: list[str]
+    name: str
+    node_id: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: list[
+        WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse
     ]
-    message: NotRequired[str]
+    url: str
+
+
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
+
+
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse(
+    TypedDict
+):
+    """Workflow Step"""
+
+    completed_at: Union[str, None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "AgentsAutomationsGetResponse401PropErrorsItemsType",
-    "AgentsAutomationsGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsAutomationsGetResponse401Type",
-    "AgentsAutomationsGetResponse401TypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0TypeForResponse",
 )

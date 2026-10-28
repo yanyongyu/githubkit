@@ -9,75 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
+class OrgsOrgAttestationsBulkListPostBodyType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    default_availability: (
-        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
-    )
-    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
+class OrgsOrgAttestationsBulkListPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostBody"""
 
-    default_availability: (
-        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-    )
-    models: list[
-        OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
-
-    The effective default availability for models reported as `delegate_to_default`.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
-
-    The effective default availability for models reported as `delegate_to_default`.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+    subject_digests: list[str]
+    predicate_type: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesGetResponse200Type",
-    "OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse",
+    "OrgsOrgAttestationsBulkListPostBodyType",
+    "OrgsOrgAttestationsBulkListPostBodyTypeForResponse",
 )

@@ -9,27 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type(TypedDict):
+    """Package license compliance results
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType
 
 
-class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse(
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
+    """Package license compliance results
 
-    reason: Literal["false_positive", "used_in_tests", "will_fix_later"]
-    placeholder_id: str
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse
+
+
+ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
+"""
+
+
+ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType",
-    "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyTypeForResponse",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse",
 )

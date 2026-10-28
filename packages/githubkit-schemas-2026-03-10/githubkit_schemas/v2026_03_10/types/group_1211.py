@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0146 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
-class OrgsOrgAgentsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    policies: list[ActionsPolicyType]
 
 
-class OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[list[int]]
+    total_count: int
+    policies: list[ActionsPolicyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNamePatchBodyType",
-    "OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse",
+    "OrgsOrgActionsPoliciesGetResponse200Type",
+    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
 )

@@ -13,79 +13,165 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsGetResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsGetResponse400
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Tools available to the authenticated caller for configuring automations in a
+    repository.
     """
 
-    message: str
-    errors: NotRequired[
-        list[AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType]
+    tool_groups: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsType
     ]
-    documentation_url: str
-
-
-class AgentsReposOwnerRepoAutomationsGetResponse400TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoAutomationsGetResponse400
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsTypeForResponse
-        ]
+    mcp_servers: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsType
     ]
-    documentation_url: str
 
 
-class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200
 
-    A single validation error
+    Tools available to the authenticated caller for configuring automations in a
+    repository.
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
+    tool_groups: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsTypeForResponse
     ]
-    message: NotRequired[str]
+    mcp_servers: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsTypeForResponse
+    ]
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
+
+    A group of tools available for use in automations
+    """
+
+    id: str
+    title: str
+    tools: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsType
+    ]
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
+
+    A group of tools available for use in automations
+    """
+
+    id: str
+    title: str
+    tools: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsTypeForResponse
+    ]
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPr
+    opToolsItems
+
+    A tool that can be selected for use in an automation.
+    """
+
+    id: str
+    title: str
+    description: str
+    scope: NotRequired[Literal["read", "write"]]
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPr
+    opToolsItems
+
+    A tool that can be selected for use in an automation.
+    """
+
+    id: str
+    title: str
+    description: str
+    scope: NotRequired[Literal["read", "write"]]
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
+
+    A projection of a repository MCP server's configured tool allowlist, not live
+    tool discovery or a guarantee of runtime availability.
+    """
+
+    name: str
+    tools: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsType
+    ]
+    supports_wildcard: bool
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
+
+    A projection of a repository MCP server's configured tool allowlist, not live
+    tool discovery or a guarantee of runtime availability.
+    """
+
+    name: str
+    tools: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsTypeForResponse
+    ]
+    supports_wildcard: bool
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPr
+    opToolsItems
+
+    An explicitly configured MCP tool with a server-qualified ID. Descriptions and
+    input schemas are not discovered.
+    """
+
+    id: str
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPr
+    opToolsItems
+
+    An explicitly configured MCP tool with a server-qualified ID. Descriptions and
+    input schemas are not discovered.
+    """
+
+    id: str
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsGetResponse400Type",
-    "AgentsReposOwnerRepoAutomationsGetResponse400TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsType",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsType",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsType",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsType",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200Type",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200TypeForResponse",
 )

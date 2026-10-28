@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0033 import ActionsHostedRunnerCustomImageVersion
-
-
-class OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200(
-    GitHubModel
-):
-    """OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200"""
-
-    total_count: int = Field()
-    image_versions: list[ActionsHostedRunnerCustomImageVersion] = Field()
+from .group_0210 import SecretScanningCustomPatternToCreate
 
 
-model_rebuild(
-    OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200
-)
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBody(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-__all__ = (
-    "OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200",
-)
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to create (maximum 100).",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostBody)
+
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostBody",)

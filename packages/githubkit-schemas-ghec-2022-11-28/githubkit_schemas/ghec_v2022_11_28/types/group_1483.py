@@ -9,71 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBody"""
+class OrgsOrgAttestationsBulkListPostResponse200Type(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    default_availability: NotRequired[
-        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType
     ]
-    models: NotRequired[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]]
+    page_info: NotRequired[OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType]
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBody"""
+class OrgsOrgAttestationsBulkListPostResponse200TypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    default_availability: NotRequired[
-        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    attestations_subject_digests: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse
     ]
-    models: NotRequired[
-        list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse]
+    page_info: NotRequired[
+        OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse
     ]
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-    The organization's default availability for eligible models without an explicit
-    policy. It cannot be updated when it is inherited from the enterprise.
+Mapping of subject digest to bundles.
+"""
+
+
+OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+
+Mapping of subject digest to bundles.
+"""
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
     """
 
-    policy_state: Literal["enabled", "disabled"]
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse(TypedDict):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
 
-    The organization's default availability for eligible models without an explicit
-    policy. It cannot be updated when it is inherited from the enterprise.
+    Information about the current page.
     """
 
-    policy_state: Literal["enabled", "disabled"]
-
-
-class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled"]
-
-
-class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled"]
+    has_next: NotRequired[bool]
+    has_previous: NotRequired[bool]
+    next_: NotRequired[str]
+    previous: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesPatchBodyType",
-    "OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigestsTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoType",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfoTypeForResponse",
+    "OrgsOrgAttestationsBulkListPostResponse200Type",
+    "OrgsOrgAttestationsBulkListPostResponse200TypeForResponse",
 )

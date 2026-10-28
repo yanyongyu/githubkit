@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksGetResponse401(GitHubModel):
-    """AgentsTasksGetResponse401
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,15 +30,27 @@ class AgentsTasksGetResponse401(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsTasksGetResponse401PropErrorsItems]] = Field(
+    errors: Missing[
+        list[AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems]
+    ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
+    )
 
 
-class AgentsTasksGetResponse401PropErrorsItems(GitHubModel):
-    """AgentsTasksGetResponse401PropErrorsItems
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems
 
     A single validation error
     """
@@ -57,10 +69,12 @@ class AgentsTasksGetResponse401PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsTasksGetResponse401)
-model_rebuild(AgentsTasksGetResponse401PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503)
+model_rebuild(
+    AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems
+)
 
 __all__ = (
-    "AgentsTasksGetResponse401",
-    "AgentsTasksGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems",
 )

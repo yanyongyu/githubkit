@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0651 import EnterpriseWebhooks
-from .group_0652 import SimpleInstallation
-from .group_0653 import OrganizationSimpleWebhooks
-from .group_0654 import RepositoryWebhooks
-from .group_1049 import WebhookRegistryPackageUpdatedPropRegistryPackage
+from .group_0657 import EnterpriseWebhooks
+from .group_0658 import SimpleInstallation
+from .group_0659 import OrganizationSimpleWebhooks
+from .group_0660 import RepositoryWebhooks
+from .group_0675 import WebhooksLabel
+from .group_1049 import WebhookPullRequestUnlabeledPropPullRequest
 
 
-class WebhookRegistryPackageUpdated(GitHubModel):
-    """WebhookRegistryPackageUpdated"""
+class WebhookPullRequestUnlabeled(GitHubModel):
+    """pull_request unlabeled event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["unlabeled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,20 +40,23 @@ class WebhookRegistryPackageUpdated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    label: Missing[WebhooksLabel] = Field(default=UNSET, title="Label")
+    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    pull_request: WebhookPullRequestUnlabeledPropPullRequest = Field(
+        title="Pull Request"
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookRegistryPackageUpdated)
+model_rebuild(WebhookPullRequestUnlabeled)
 
-__all__ = ("WebhookRegistryPackageUpdated",)
+__all__ = ("WebhookPullRequestUnlabeled",)

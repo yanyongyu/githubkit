@@ -9,30 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1254 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
-class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which this runner version can no longer register. Null if no schedule is set.",
-    )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version.",
+class AgentsTasksTaskIdGetResponse200Allof1(GitHubModel):
+    """AgentsTasksTaskIdGetResponse200Allof1"""
+
+    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
+        Field(default=UNSET, description="Sessions associated with this task")
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200)
+model_rebuild(AgentsTasksTaskIdGetResponse200Allof1)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200",)
+__all__ = ("AgentsTasksTaskIdGetResponse200Allof1",)

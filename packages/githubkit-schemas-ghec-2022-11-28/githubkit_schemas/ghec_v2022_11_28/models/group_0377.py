@@ -15,30 +15,47 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupList(GitHubModel):
-    """Concurrency Group List
+class Artifact(GitHubModel):
+    """Artifact
 
-    A list of active concurrency groups for a repository.
+    An artifact
     """
 
-    total_count: int = Field()
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItems] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field(description="The name of the artifact.")
+    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
+    url: str = Field()
+    archive_download_url: str = Field()
+    expired: bool = Field(description="Whether or not the artifact has expired.")
+    created_at: Union[_dt.datetime, None] = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    digest: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
+    )
+    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-class ConcurrencyGroupListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+class ArtifactPropWorkflowRun(GitHubModel):
+    """ArtifactPropWorkflowRun"""
 
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(description="API URL for this concurrency group.")
-    last_acquired_at: Union[_dt.datetime, None] = Field()
+    id: Missing[int] = Field(default=UNSET)
+    repository_id: Missing[int] = Field(default=UNSET)
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    head_branch: Missing[str] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ConcurrencyGroupList)
-model_rebuild(ConcurrencyGroupListPropConcurrencyGroupsItems)
+model_rebuild(Artifact)
+model_rebuild(ArtifactPropWorkflowRun)
 
 __all__ = (
-    "ConcurrencyGroupList",
-    "ConcurrencyGroupListPropConcurrencyGroupsItems",
+    "Artifact",
+    "ArtifactPropWorkflowRun",
 )

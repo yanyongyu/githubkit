@@ -17,13 +17,13 @@ from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0498 import IssueReference
+from .group_0503 import IssueReference
 
 
-class BlockedByRemovedIssueEvent(GitHubModel):
-    """Blocked-by Removed Issue Event
+class SubIssueAddedIssueEvent(GitHubModel):
+    """Sub-issue Added Issue Event
 
-    Blocked-by Removed Issue Event
+    Sub-issue Added Issue Event
     """
 
     id: int = Field()
@@ -35,9 +35,9 @@ class BlockedByRemovedIssueEvent(GitHubModel):
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    blocked_by: Union[None, IssueReference, None] = Field()
+    sub_issue: Union[None, IssueReference, None] = Field()
 
 
-model_rebuild(BlockedByRemovedIssueEvent)
+model_rebuild(SubIssueAddedIssueEvent)
 
-__all__ = ("BlockedByRemovedIssueEvent",)
+__all__ = ("SubIssueAddedIssueEvent",)

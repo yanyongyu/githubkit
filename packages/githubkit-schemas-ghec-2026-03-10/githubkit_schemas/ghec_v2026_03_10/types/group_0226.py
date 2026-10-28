@@ -12,105 +12,43 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportGheType(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
-    enterprise: str
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
+
+
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
+
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
+
+
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
+
     user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
-    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
-class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
     user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[
-        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
-    ]
-    usage_items: list[
-        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
-    ]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportGhePropCostCenterType",
-    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportGheType",
-    "BillingPremiumRequestUsageReportGheTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

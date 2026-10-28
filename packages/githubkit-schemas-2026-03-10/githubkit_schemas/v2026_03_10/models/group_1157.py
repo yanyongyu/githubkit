@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,66 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
+class AppHookConfigPatchBody(GitHubModel):
+    """AppHookConfigPatchBody"""
 
-    budget_amount: Missing[int] = Field(
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
+    content_type: Missing[str] = Field(
         default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    prevent_further_usage: Missing[bool] = Field(
+    secret: Missing[str] = Field(
         default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
     )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    budget_scope: Missing[
-        Literal["organization", "repository", "multi_user_customer", "user"]
-    ] = Field(
-        default=UNSET,
-        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.\n\n`user` and `multi_user_customer` scopes are only supported when\n`budget_product_sku` is `ai_credits` or `premium_requests`.",
-    )
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET, description="The name of the entity to apply the budget to"
-    )
-    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
-        Field(
-            default=UNSET,
-            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
-        )
-    )
-    budget_product_sku: Missing[str] = Field(
-        default=UNSET,
-        description="A single product or SKU that will be covered in the budget",
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
-    )
-    expires_at: Missing[_dt.date] = Field(
-        default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
-    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+model_rebuild(AppHookConfigPatchBody)
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
-    )
-
-
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
-
-__all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsPostBody",
-    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
-)
+__all__ = ("AppHookConfigPatchBody",)

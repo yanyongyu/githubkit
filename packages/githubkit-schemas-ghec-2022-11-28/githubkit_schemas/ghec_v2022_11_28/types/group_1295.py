@@ -9,87 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
-
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
-    ]
-    models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
-
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-    ]
-    models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    runners: list[int]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
+    runners: list[int]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyTypeForResponse",
 )

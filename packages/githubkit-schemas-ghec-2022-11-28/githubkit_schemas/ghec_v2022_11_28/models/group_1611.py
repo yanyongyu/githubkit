@@ -12,18 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody
+class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
+    )
+    enable_debugger: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to enable the debugger for the re-run of this job.",
+    )
 
-    users: list[str] = Field(description="The username for users")
 
+model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody)
-
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",)
+__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)

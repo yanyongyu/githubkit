@@ -18,51 +18,113 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsGetResponse400
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Tools available to the authenticated caller for configuring automations in a
+    repository.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems]
+    tool_groups: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
+    ] = Field(description="Caller-filtered built-in automation tool groups.")
+    mcp_servers: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
     ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
+        description="Configured repository MCP servers, sorted by name. Empty when repository MCP is disabled or unconfigured."
     )
-    documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
 
-    A single validation error
+    A group of tools available for use in automations
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    id: str = Field(description="The unique identifier of the group.")
+    title: str = Field(description="The human-readable name of the group.")
+    tools: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems
+    ] = Field(description="The tools currently available in this group.")
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPr
+    opToolsItems
+
+    A tool that can be selected for use in an automation.
+    """
+
+    id: str = Field(
+        description="The unique identifier of the tool accepted when creating or updating an automation."
+    )
+    title: str = Field(description="The human-readable name of the tool.")
+    description: str = Field(description="A short description of what the tool does.")
+    scope: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="The tool's behavior level. `read` tools only retrieve data. `write` tools can change data. This is not a GitHub token permission.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse400)
-model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems)
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
+
+    A projection of a repository MCP server's configured tool allowlist, not live
+    tool discovery or a guarantee of runtime availability.
+    """
+
+    name: str = Field(
+        description="The server name from the repository MCP configuration."
+    )
+    tools: list[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems
+    ] = Field(
+        description='Explicitly configured tools with server-qualified IDs, in configuration order. Empty when the server\'s allowlist is ["*"].'
+    )
+    supports_wildcard: bool = Field(
+        description='Whether the effective repository configuration permits selecting all tools on this server using ["*"], including future tools. Mutually exclusive with a non-empty tools list.'
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPr
+    opToolsItems
+
+    An explicitly configured MCP tool with a server-qualified ID. Descriptions and
+    input schemas are not discovered.
+    """
+
+    id: str = Field(
+        description="The tool identifier in <server-name>/<tool-name> format, for example sentry/list_issues."
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsGetResponse400",
-    "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems",
+    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems",
 )

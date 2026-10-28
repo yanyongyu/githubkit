@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0651 import EnterpriseWebhooks
-from .group_0652 import SimpleInstallation
-from .group_0653 import OrganizationSimpleWebhooks
-from .group_0654 import RepositoryWebhooks
-from .group_1002 import WebhookPullRequestEnqueuedPropPullRequest
+from .group_0657 import EnterpriseWebhooks
+from .group_0658 import SimpleInstallation
+from .group_0659 import OrganizationSimpleWebhooks
+from .group_0660 import RepositoryWebhooks
+from .group_1002 import WebhookPullRequestAutoMergeEnabledPropPullRequest
 
 
-class WebhookPullRequestEnqueued(GitHubModel):
-    """pull_request enqueued event"""
+class WebhookPullRequestAutoMergeEnabled(GitHubModel):
+    """pull_request auto_merge_enabled event"""
 
-    action: Literal["enqueued"] = Field()
+    action: Literal["auto_merge_enabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,9 +45,10 @@ class WebhookPullRequestEnqueued(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestEnqueuedPropPullRequest = Field(
+    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequest = Field(
         title="Pull Request"
     )
+    reason: Missing[str] = Field(default=UNSET)
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -55,6 +56,6 @@ class WebhookPullRequestEnqueued(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestEnqueued)
+model_rebuild(WebhookPullRequestAutoMergeEnabled)
 
-__all__ = ("WebhookPullRequestEnqueued",)
+__all__ = ("WebhookPullRequestAutoMergeEnabled",)

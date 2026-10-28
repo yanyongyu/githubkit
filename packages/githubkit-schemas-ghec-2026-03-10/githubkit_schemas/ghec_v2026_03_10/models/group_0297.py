@@ -14,68 +14,31 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CopilotSpaceCollaboratorAnyof0(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof0"""
+class CodespaceMachine(GitHubModel):
+    """Codespace machine
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
+    A description of the machine powering a codespace.
+    """
+
+    name: str = Field(description="The name of the machine.")
+    display_name: str = Field(
+        description="The display name of the machine includes cores, memory, and storage."
+    )
+    operating_system: str = Field(description="The operating system of the machine.")
+    storage_in_bytes: int = Field(
+        description="How much storage is available to the codespace."
+    )
+    memory_in_bytes: int = Field(
+        description="How much memory is available to the codespace."
+    )
+    cpus: int = Field(description="How many cores are available to the codespace.")
+    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None] = Field(
+        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
     )
 
 
-class CopilotSpaceCollaboratorAnyof1(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof1"""
+model_rebuild(CodespaceMachine)
 
-    actor_type: Literal["Team"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
-    )
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    type: Literal["Team"] = Field()
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    members_url: Missing[str] = Field(default=UNSET)
-    repositories_url: Missing[str] = Field(default=UNSET)
-    organization_id: Missing[int] = Field(default=UNSET)
-    parent: Missing[None] = Field(default=UNSET)
-
-
-model_rebuild(CopilotSpaceCollaboratorAnyof0)
-model_rebuild(CopilotSpaceCollaboratorAnyof1)
-
-__all__ = (
-    "CopilotSpaceCollaboratorAnyof0",
-    "CopilotSpaceCollaboratorAnyof1",
-)
+__all__ = ("CodespaceMachine",)

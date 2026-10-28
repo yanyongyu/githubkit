@@ -9,52 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsageReportExportListType(TypedDict):
-    """UsageReportExportList"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    usage_report_exports: list[UsageReportExportType]
-
-
-class UsageReportExportListTypeForResponse(TypedDict):
-    """UsageReportExportList"""
-
-    usage_report_exports: list[UsageReportExportTypeForResponse]
+    cost_centers: NotRequired[list[GetAllCostCentersPropCostCentersItemsType]]
 
 
-class UsageReportExportType(TypedDict):
-    """UsageReportExport"""
+class GetAllCostCentersTypeForResponse(TypedDict):
+    """GetAllCostCenters"""
 
-    id: str
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: _dt.date
-    end_date: _dt.date
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[_dt.datetime]
-    actor: NotRequired[str]
+    cost_centers: NotRequired[
+        list[GetAllCostCentersPropCostCentersItemsTypeForResponse]
+    ]
 
 
-class UsageReportExportTypeForResponse(TypedDict):
-    """UsageReportExport"""
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str
-    report_type: Literal["detailed", "summarized", "premium_request", "ai_credit"]
-    start_date: str
-    end_date: str
-    status: Literal["processing", "completed", "failed"]
-    download_urls: NotRequired[list[str]]
-    created_at: NotRequired[str]
-    actor: NotRequired[str]
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType
+    ]
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+
+
+class GetAllCostCentersPropCostCentersItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
+
+    id: str
+    name: str
+    state: NotRequired[Literal["active", "deleted"]]
+    azure_subscription: NotRequired[Union[str, None]]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse
+    ]
+    resources: list[
+        GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse
+    ]
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse(
+    TypedDict
+):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "UsageReportExportListType",
-    "UsageReportExportListTypeForResponse",
-    "UsageReportExportType",
-    "UsageReportExportTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateType",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolStateTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsTypeForResponse",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsTypeForResponse",
+    "GetAllCostCentersType",
+    "GetAllCostCentersTypeForResponse",
 )

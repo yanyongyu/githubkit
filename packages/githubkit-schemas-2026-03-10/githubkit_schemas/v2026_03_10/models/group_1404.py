@@ -9,45 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoAgentsSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoAgentsSecretsSecretNamePutBody"""
 
-    state: Missing[Literal["open", "dismissed"]] = Field(
-        default=UNSET,
-        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/agents/secrets#get-a-repository-public-key) endpoint.",
     )
-    dismissed_reason: Missing[
-        Union[
-            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    create_request: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, attempt to create an alert dismissal request.",
-    )
-    assignees: list[str] = Field(
-        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
-    )
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoAgentsSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoAgentsSecretsSecretNamePutBody",)

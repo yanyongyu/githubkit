@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,53 +18,149 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    An available trigger for automations
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    id: str = Field(description="The unique identifier of the trigger.")
+    title: str = Field(description="The human-readable name of the trigger.")
+    description: str = Field(
+        description="A short description of when the trigger fires."
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
+    fields: list[
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
+    ] = Field(description="The fields that can be specified to configure this trigger.")
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
+    ms
 
-    A single validation error
+    A filter that can be configured when using a trigger in an automation.
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    id: str = Field(description="The stable identifier of the field.")
+    label: str = Field(description="The human-readable name of the field.")
+    required: bool = Field(description="Whether the field must be provided.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The human-readable description of the field."
+    )
+    schema: Union[
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0,
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1,
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2,
+    ] = Field(
+        description="A JSON Schema fragment describing the expected structure of the field value."
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404)
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems)
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
+    msPropSchemaOneof0
+    """
+
+    type: Literal["string"] = Field()
+    enum: Missing[list[str]] = Field(
+        default=UNSET, description="The allowed string values."
+    )
+    min_length: Missing[int] = Field(
+        default=UNSET,
+        alias="minLength",
+        description="The minimum accepted string length.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
+    msPropSchemaOneof2
+    """
+
+    type: Literal["integer"] = Field()
+    enum: Missing[list[int]] = Field(
+        default=UNSET, description="The allowed integer values."
+    )
+    minimum: Missing[int] = Field(
+        default=UNSET, description="The minimum accepted integer value."
+    )
+    maximum: Missing[int] = Field(
+        default=UNSET, description="The maximum accepted integer value."
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
+    msPropSchemaOneof1
+    """
+
+    type: Literal["array"] = Field()
+    items: AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems = Field()
+    min_items: Missing[int] = Field(
+        default=UNSET,
+        alias="minItems",
+        description="The minimum accepted number of array items.",
+    )
+    max_items: Missing[int] = Field(
+        default=UNSET,
+        alias="maxItems",
+        description="The maximum accepted number of array items.",
+    )
+    unique_items: Missing[bool] = Field(
+        default=UNSET,
+        alias="uniqueItems",
+        description="Whether duplicate array items are rejected.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
+    msPropSchemaOneof1PropItems
+    """
+
+    type: Literal["string"] = Field()
+    enum: Missing[list[str]] = Field(
+        default=UNSET, description="The allowed string item values."
+    )
+    min_length: Missing[int] = Field(
+        default=UNSET,
+        alias="minLength",
+        description="The minimum accepted string item length.",
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404",
-    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2",
 )

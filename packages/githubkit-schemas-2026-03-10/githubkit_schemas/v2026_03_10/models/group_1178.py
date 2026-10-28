@@ -13,42 +13,37 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0130 import ActionsPolicyOrgConditionsOneof0
-from .group_0131 import ActionsPolicyOrgConditionsOneof1
-from .group_0132 import ActionsPolicyOrgConditionsOneof2
-from .group_0145 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
+
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
+
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
+    )
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
+    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
+
+
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
+
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
 )
-
-
-class OrgsOrgActionsPoliciesPostBody(GitHubModel):
-    """OrgsOrgActionsPoliciesPostBody"""
-
-    name: str = Field(description="The name of the policy.")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    conditions: Missing[
-        Union[
-            ActionsPolicyOrgConditionsOneof0,
-            ActionsPolicyOrgConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof2,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Organization Actions policy conditions",
-        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
-    )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
-
-
-model_rebuild(OrgsOrgActionsPoliciesPostBody)
-
-__all__ = ("OrgsOrgActionsPoliciesPostBody",)

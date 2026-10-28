@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0212 import SecretScanningCustomPatternToDelete
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof1(GitHubModel):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof1"""
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
 
-    attestation_ids: list[int] = Field(
-        max_length=1024 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of unique IDs associated with the artifact attestations to delete.",
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
+    )
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+        default=UNSET,
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
     )
 
 
-model_rebuild(UsersUsernameAttestationsDeleteRequestPostBodyOneof1)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
 
-__all__ = ("UsersUsernameAttestationsDeleteRequestPostBodyOneof1",)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)

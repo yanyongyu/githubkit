@@ -28,26 +28,27 @@ if TYPE_CHECKING:
     from githubkit.utils import UNSET
 
     from ..models import (
-        AgentsAutomationsAutomationIdGetResponse200,
-        AgentsAutomationsAutomationIdTasksGetResponse200,
-        AgentsAutomationsAvailableToolsGetResponse200Items,
-        AgentsAutomationsAvailableTriggersGetResponse200Items,
         AgentsAutomationsGetResponse200Items,
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200,
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items,
         AgentsReposOwnerRepoAutomationsGetResponse200,
         AgentsReposOwnerRepoAutomationsPostResponse201,
     )
     from ..types import (
-        AgentsAutomationsAutomationIdGetResponse200TypeForResponse,
-        AgentsAutomationsAutomationIdTasksGetResponse200TypeForResponse,
-        AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse,
-        AgentsAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse,
         AgentsAutomationsGetResponse200ItemsTypeForResponse,
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200TypeForResponse,
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersType,
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyType,
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200TypeForResponse,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200TypeForResponse,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200TypeForResponse,
+        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse,
         AgentsReposOwnerRepoAutomationsGetResponse200TypeForResponse,
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersType,
         AgentsReposOwnerRepoAutomationsPostBodyType,
@@ -75,7 +76,7 @@ class AgentAutomationsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        owner_type: Missing[Literal["user", "repository"]] = UNSET,
+        type: Missing[Literal["personal", "shared"]] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -86,13 +87,20 @@ class AgentAutomationsClient:
 
         GET /agents/automations
 
-        Returns automations whose `created_by` user is the authenticated caller, across
-        repositories the caller can read. This includes both user-owned and repository-owned
-        automations created by the caller but excludes repository-owned automations created by
-        someone else even if the caller has write access to the repository.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        Use the repository-scoped list operation for those automations. The `owner_type` filter
+        Lists automations created by the authenticated user across repositories they can read.
+        This includes both personal and shared automations created by the caller, but excludes
+        shared automations created by another user.
+
+        Use the repository-scoped list operation for those automations. The `type` filter
         only narrows this creator-scoped collection.
+
+        To call this endpoint, OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
 
         **Fine-grained access tokens for "List automations for user"**
 
@@ -101,14 +109,9 @@ class AgentAutomationsClient:
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
         * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
 
         GitHub App installation access tokens are not supported for this endpoint.
 
@@ -127,7 +130,7 @@ class AgentAutomationsClient:
         params = {
             "page": page,
             "per_page": per_page,
-            "owner_type": owner_type,
+            "type": type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -150,7 +153,7 @@ class AgentAutomationsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        owner_type: Missing[Literal["user", "repository"]] = UNSET,
+        type: Missing[Literal["personal", "shared"]] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -161,13 +164,20 @@ class AgentAutomationsClient:
 
         GET /agents/automations
 
-        Returns automations whose `created_by` user is the authenticated caller, across
-        repositories the caller can read. This includes both user-owned and repository-owned
-        automations created by the caller but excludes repository-owned automations created by
-        someone else even if the caller has write access to the repository.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        Use the repository-scoped list operation for those automations. The `owner_type` filter
+        Lists automations created by the authenticated user across repositories they can read.
+        This includes both personal and shared automations created by the caller, but excludes
+        shared automations created by another user.
+
+        Use the repository-scoped list operation for those automations. The `type` filter
         only narrows this creator-scoped collection.
+
+        To call this endpoint, OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
 
         **Fine-grained access tokens for "List automations for user"**
 
@@ -176,14 +186,9 @@ class AgentAutomationsClient:
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
         * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
 
         GitHub App installation access tokens are not supported for this endpoint.
 
@@ -202,7 +207,7 @@ class AgentAutomationsClient:
         params = {
             "page": page,
             "per_page": per_page,
-            "owner_type": owner_type,
+            "type": type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -220,510 +225,6 @@ class AgentAutomationsClient:
             },
         )
 
-    def list_available_automation_tools(
-        self,
-        *,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        list[AgentsAutomationsAvailableToolsGetResponse200Items],
-        list[AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse],
-    ]:
-        """agent-automations/list-available-automation-tools
-
-        GET /agents/automations/available-tools
-
-        Returns the tools available to the authenticated caller for use when creating or updating an automation.
-
-        **Fine-grained access tokens for "List available automation tools"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        This endpoint does not require repository permissions.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-tools
-        """
-
-        from ..models import (
-            AgentsAutomationsAvailableToolsGetResponse200Items,
-            AgentsAutomationsAvailableToolsGetResponse401,
-        )
-
-        url = "/agents/automations/available-tools"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[AgentsAutomationsAvailableToolsGetResponse200Items],
-            error_models={
-                "401": AgentsAutomationsAvailableToolsGetResponse401,
-            },
-        )
-
-    async def async_list_available_automation_tools(
-        self,
-        *,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        list[AgentsAutomationsAvailableToolsGetResponse200Items],
-        list[AgentsAutomationsAvailableToolsGetResponse200ItemsTypeForResponse],
-    ]:
-        """agent-automations/list-available-automation-tools
-
-        GET /agents/automations/available-tools
-
-        Returns the tools available to the authenticated caller for use when creating or updating an automation.
-
-        **Fine-grained access tokens for "List available automation tools"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        This endpoint does not require repository permissions.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-tools
-        """
-
-        from ..models import (
-            AgentsAutomationsAvailableToolsGetResponse200Items,
-            AgentsAutomationsAvailableToolsGetResponse401,
-        )
-
-        url = "/agents/automations/available-tools"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[AgentsAutomationsAvailableToolsGetResponse200Items],
-            error_models={
-                "401": AgentsAutomationsAvailableToolsGetResponse401,
-            },
-        )
-
-    def list_available_automation_triggers(
-        self,
-        *,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        list[AgentsAutomationsAvailableTriggersGetResponse200Items],
-        list[AgentsAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse],
-    ]:
-        """agent-automations/list-available-automation-triggers
-
-        GET /agents/automations/available-triggers
-
-        Returns the triggers available to the authenticated caller, including machine-readable schemas for their configurable fields.
-
-        **Fine-grained access tokens for "List available automation triggers"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        This endpoint does not require repository permissions.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-triggers
-        """
-
-        from ..models import (
-            AgentsAutomationsAvailableTriggersGetResponse200Items,
-            AgentsAutomationsAvailableTriggersGetResponse401,
-        )
-
-        url = "/agents/automations/available-triggers"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[AgentsAutomationsAvailableTriggersGetResponse200Items],
-            error_models={
-                "401": AgentsAutomationsAvailableTriggersGetResponse401,
-            },
-        )
-
-    async def async_list_available_automation_triggers(
-        self,
-        *,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        list[AgentsAutomationsAvailableTriggersGetResponse200Items],
-        list[AgentsAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse],
-    ]:
-        """agent-automations/list-available-automation-triggers
-
-        GET /agents/automations/available-triggers
-
-        Returns the triggers available to the authenticated caller, including machine-readable schemas for their configurable fields.
-
-        **Fine-grained access tokens for "List available automation triggers"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        This endpoint does not require repository permissions.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-triggers
-        """
-
-        from ..models import (
-            AgentsAutomationsAvailableTriggersGetResponse200Items,
-            AgentsAutomationsAvailableTriggersGetResponse401,
-        )
-
-        url = "/agents/automations/available-triggers"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=list[AgentsAutomationsAvailableTriggersGetResponse200Items],
-            error_models={
-                "401": AgentsAutomationsAvailableTriggersGetResponse401,
-            },
-        )
-
-    def get_automation(
-        self,
-        automation_id: str,
-        *,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        AgentsAutomationsAutomationIdGetResponse200,
-        AgentsAutomationsAutomationIdGetResponse200TypeForResponse,
-    ]:
-        """agent-automations/get-automation
-
-        GET /agents/automations/{automation_id}
-
-        Returns an automation by ID without requiring repository context when its `created_by`
-        user is the authenticated caller and the caller can read its repository. This includes
-        both user-owned and repository-owned automations created by the caller but excludes
-        repository-owned automations created by someone else even if the caller has write
-        access to the repository.
-
-        Use the repository-scoped get operation for those automations. The response includes
-        repository identity so clients can link back to the repository.
-
-        **Fine-grained access tokens for "Get an automation by ID"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
-
-        * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#get-an-automation-by-id
-        """
-
-        from ..models import (
-            AgentsAutomationsAutomationIdGetResponse200,
-            AgentsAutomationsAutomationIdGetResponse400,
-            AgentsAutomationsAutomationIdGetResponse401,
-            AgentsAutomationsAutomationIdGetResponse404,
-        )
-
-        url = f"/agents/automations/{automation_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=AgentsAutomationsAutomationIdGetResponse200,
-            error_models={
-                "400": AgentsAutomationsAutomationIdGetResponse400,
-                "401": AgentsAutomationsAutomationIdGetResponse401,
-                "404": AgentsAutomationsAutomationIdGetResponse404,
-            },
-        )
-
-    async def async_get_automation(
-        self,
-        automation_id: str,
-        *,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        AgentsAutomationsAutomationIdGetResponse200,
-        AgentsAutomationsAutomationIdGetResponse200TypeForResponse,
-    ]:
-        """agent-automations/get-automation
-
-        GET /agents/automations/{automation_id}
-
-        Returns an automation by ID without requiring repository context when its `created_by`
-        user is the authenticated caller and the caller can read its repository. This includes
-        both user-owned and repository-owned automations created by the caller but excludes
-        repository-owned automations created by someone else even if the caller has write
-        access to the repository.
-
-        Use the repository-scoped get operation for those automations. The response includes
-        repository identity so clients can link back to the repository.
-
-        **Fine-grained access tokens for "Get an automation by ID"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
-
-        * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#get-an-automation-by-id
-        """
-
-        from ..models import (
-            AgentsAutomationsAutomationIdGetResponse200,
-            AgentsAutomationsAutomationIdGetResponse400,
-            AgentsAutomationsAutomationIdGetResponse401,
-            AgentsAutomationsAutomationIdGetResponse404,
-        )
-
-        url = f"/agents/automations/{automation_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=AgentsAutomationsAutomationIdGetResponse200,
-            error_models={
-                "400": AgentsAutomationsAutomationIdGetResponse400,
-                "401": AgentsAutomationsAutomationIdGetResponse401,
-                "404": AgentsAutomationsAutomationIdGetResponse404,
-            },
-        )
-
-    def list_automation_tasks(
-        self,
-        automation_id: str,
-        *,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        sort: Missing[Literal["updated_at", "created_at"]] = UNSET,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        state: Missing[str] = UNSET,
-        is_archived: Missing[bool] = UNSET,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        AgentsAutomationsAutomationIdTasksGetResponse200,
-        AgentsAutomationsAutomationIdTasksGetResponse200TypeForResponse,
-    ]:
-        """agent-automations/list-automation-tasks
-
-        GET /agents/automations/{automation_id}/tasks
-
-        Returns a list of tasks triggered by the specified automation.
-
-        User-owned automation history is available only to its creator, while repository-owned automation
-        history is available to anyone with read access to the repository. Deleted and unlisted tasks are excluded.
-        Tasks produced by private-session agents are excluded unless the caller created the task,
-        is a task collaborator, or the task is shared.
-
-        **Fine-grained access tokens for "List tasks for an automation"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
-
-        * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-tasks-for-an-automation
-        """
-
-        from ..models import (
-            AgentsAutomationsAutomationIdTasksGetResponse200,
-            AgentsAutomationsAutomationIdTasksGetResponse401,
-            AgentsAutomationsAutomationIdTasksGetResponse404,
-            AgentsAutomationsAutomationIdTasksGetResponse422,
-        )
-
-        url = f"/agents/automations/{automation_id}/tasks"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "sort": sort,
-            "direction": direction,
-            "state": state,
-            "is_archived": is_archived,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=AgentsAutomationsAutomationIdTasksGetResponse200,
-            error_models={
-                "401": AgentsAutomationsAutomationIdTasksGetResponse401,
-                "404": AgentsAutomationsAutomationIdTasksGetResponse404,
-                "422": AgentsAutomationsAutomationIdTasksGetResponse422,
-            },
-        )
-
-    async def async_list_automation_tasks(
-        self,
-        automation_id: str,
-        *,
-        per_page: Missing[int] = UNSET,
-        page: Missing[int] = UNSET,
-        sort: Missing[Literal["updated_at", "created_at"]] = UNSET,
-        direction: Missing[Literal["asc", "desc"]] = UNSET,
-        state: Missing[str] = UNSET,
-        is_archived: Missing[bool] = UNSET,
-        headers: Mapping[str, str] | None = None,
-        stream: bool = False,
-    ) -> Response[
-        AgentsAutomationsAutomationIdTasksGetResponse200,
-        AgentsAutomationsAutomationIdTasksGetResponse200TypeForResponse,
-    ]:
-        """agent-automations/list-automation-tasks
-
-        GET /agents/automations/{automation_id}/tasks
-
-        Returns a list of tasks triggered by the specified automation.
-
-        User-owned automation history is available only to its creator, while repository-owned automation
-        history is available to anyone with read access to the repository. Deleted and unlisted tasks are excluded.
-        Tasks produced by private-session agents are excluded unless the caller created the task,
-        is a task collaborator, or the task is shared.
-
-        **Fine-grained access tokens for "List tasks for an automation"**
-
-        This endpoint works with the following fine-grained token types:
-
-        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
-        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
-
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
-
-        * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
-
-
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-tasks-for-an-automation
-        """
-
-        from ..models import (
-            AgentsAutomationsAutomationIdTasksGetResponse200,
-            AgentsAutomationsAutomationIdTasksGetResponse401,
-            AgentsAutomationsAutomationIdTasksGetResponse404,
-            AgentsAutomationsAutomationIdTasksGetResponse422,
-        )
-
-        url = f"/agents/automations/{automation_id}/tasks"
-
-        params = {
-            "per_page": per_page,
-            "page": page,
-            "sort": sort,
-            "direction": direction,
-            "state": state,
-            "is_archived": is_archived,
-        }
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            params=exclude_unset(parse_query_params(params)),
-            headers=exclude_unset(headers),
-            stream=stream,
-            response_model=AgentsAutomationsAutomationIdTasksGetResponse200,
-            error_models={
-                "401": AgentsAutomationsAutomationIdTasksGetResponse401,
-                "404": AgentsAutomationsAutomationIdTasksGetResponse404,
-                "422": AgentsAutomationsAutomationIdTasksGetResponse422,
-            },
-        )
-
     def list_repo_automations(
         self,
         owner: str,
@@ -731,7 +232,7 @@ class AgentAutomationsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        owner_type: Missing[Literal["user", "repository"]] = UNSET,
+        type: Missing[Literal["personal", "shared"]] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -742,30 +243,35 @@ class AgentAutomationsClient:
 
         GET /agents/repos/{owner}/{repo}/automations
 
-        Returns a paginated list of the authenticated user's automations for a repository,
-        together with every repository-owned automation in it. `total_count` is the number of
-        caller-visible automations matching the supplied filters across all pages.
-        Repository-owned automations are visible to anyone with read access to the repository,
-        so the results are not limited to automations the caller created. Use the `owner_type`
-        field on each automation to tell the two apart.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Returns a paginated list of automations for a repository, including shared
+        automations and personal automations created by the caller.
+        `total_count` is the number of caller-visible automations matching the supplied
+        filters across all pages. Use the `type` field to distinguish personal and shared
+        automations.
+
+        GitHub App installation access tokens can list shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read). Personal automations require a user token.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
 
         **Fine-grained access tokens for "List automations for a repository"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
         * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
 
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-automations-for-a-repository
@@ -783,7 +289,7 @@ class AgentAutomationsClient:
         params = {
             "page": page,
             "per_page": per_page,
-            "owner_type": owner_type,
+            "type": type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -809,7 +315,7 @@ class AgentAutomationsClient:
         *,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
-        owner_type: Missing[Literal["user", "repository"]] = UNSET,
+        type: Missing[Literal["personal", "shared"]] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -820,30 +326,35 @@ class AgentAutomationsClient:
 
         GET /agents/repos/{owner}/{repo}/automations
 
-        Returns a paginated list of the authenticated user's automations for a repository,
-        together with every repository-owned automation in it. `total_count` is the number of
-        caller-visible automations matching the supplied filters across all pages.
-        Repository-owned automations are visible to anyone with read access to the repository,
-        so the results are not limited to automations the caller created. Use the `owner_type`
-        field on each automation to tell the two apart.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Returns a paginated list of automations for a repository, including shared
+        automations and personal automations created by the caller.
+        `total_count` is the number of caller-visible automations matching the supplied
+        filters across all pages. Use the `type` field to distinguish personal and shared
+        automations.
+
+        GitHub App installation access tokens can list shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read). Personal automations require a user token.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
 
         **Fine-grained access tokens for "List automations for a repository"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
         * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
 
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-automations-for-a-repository
@@ -861,7 +372,7 @@ class AgentAutomationsClient:
         params = {
             "page": page,
             "per_page": per_page,
-            "owner_type": owner_type,
+            "type": type,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -913,11 +424,10 @@ class AgentAutomationsClient:
             Literal["", "none", "low", "medium", "high", "xhigh", "max"]
         ] = UNSET,
         tools: Missing[list[str]] = UNSET,
-        allowed_custom_agents: Missing[list[str]] = UNSET,
         enabled: Missing[bool] = UNSET,
-        owner_type: Missing[Literal["user", "repository"]] = UNSET,
-        write_scope: Missing[Literal["trigger", "repository"]] = UNSET,
+        type: Missing[Literal["personal", "shared"]] = UNSET,
         require_actor_write_permission: Missing[bool] = UNSET,
+        continuous_history: Missing[bool] = UNSET,
     ) -> Response[
         AgentsReposOwnerRepoAutomationsPostResponse201,
         AgentsReposOwnerRepoAutomationsPostResponse201TypeForResponse,
@@ -940,27 +450,38 @@ class AgentAutomationsClient:
 
         POST /agents/repos/{owner}/{repo}/automations
 
-        Creates a new automation in a repository. User-owned automations remain private to
-        their creator. Repository-owned automations are visible to anyone with read access to
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Creates a new automation in a repository. Personal automations are private to
+        their creator. Shared automations are visible to anyone with read access to
         the repository and manageable by anyone with write access to the repository.
+
+        GitHub App installation access tokens can create shared automations by setting
+        `type` to `shared`. The installation must belong to the repository owner and
+        the token must have "Agent tasks"
+        repository permissions (write). Personal automations require a user token.
+        For installation tokens, `created_by` identifies the App's bot account.
+
+        To call this endpoint, you must have write access to the repository and the
+        "Allow automations" setting must be enabled for the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
 
         **Fine-grained access tokens for "Create an automation for a repository"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
-        * "Agent tasks" repository permissions (read and write)
-        * "Contents" repository permissions (read and write)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
+        * "Agent tasks" repository permissions (write)
 
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#create-an-automation-for-a-repository
@@ -1038,11 +559,10 @@ class AgentAutomationsClient:
             Literal["", "none", "low", "medium", "high", "xhigh", "max"]
         ] = UNSET,
         tools: Missing[list[str]] = UNSET,
-        allowed_custom_agents: Missing[list[str]] = UNSET,
         enabled: Missing[bool] = UNSET,
-        owner_type: Missing[Literal["user", "repository"]] = UNSET,
-        write_scope: Missing[Literal["trigger", "repository"]] = UNSET,
+        type: Missing[Literal["personal", "shared"]] = UNSET,
         require_actor_write_permission: Missing[bool] = UNSET,
+        continuous_history: Missing[bool] = UNSET,
     ) -> Response[
         AgentsReposOwnerRepoAutomationsPostResponse201,
         AgentsReposOwnerRepoAutomationsPostResponse201TypeForResponse,
@@ -1065,27 +585,38 @@ class AgentAutomationsClient:
 
         POST /agents/repos/{owner}/{repo}/automations
 
-        Creates a new automation in a repository. User-owned automations remain private to
-        their creator. Repository-owned automations are visible to anyone with read access to
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Creates a new automation in a repository. Personal automations are private to
+        their creator. Shared automations are visible to anyone with read access to
         the repository and manageable by anyone with write access to the repository.
+
+        GitHub App installation access tokens can create shared automations by setting
+        `type` to `shared`. The installation must belong to the repository owner and
+        the token must have "Agent tasks"
+        repository permissions (write). Personal automations require a user token.
+        For installation tokens, `created_by` identifies the App's bot account.
+
+        To call this endpoint, you must have write access to the repository and the
+        "Allow automations" setting must be enabled for the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
 
         **Fine-grained access tokens for "Create an automation for a repository"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
-        * "Agent tasks" repository permissions (read and write)
-        * "Contents" repository permissions (read and write)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
+        * "Agent tasks" repository permissions (write)
 
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#create-an-automation-for-a-repository
@@ -1130,6 +661,318 @@ class AgentAutomationsClient:
             },
         )
 
+    def list_available_repo_automation_tools(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200TypeForResponse,
+    ]:
+        """agent-automations/list-available-repo-automation-tools
+
+        GET /agents/repos/{owner}/{repo}/automations/available-tools
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists available tools for automations in a repository, including both
+        GitHub-provided tools and tools provided by custom MCP servers.
+
+        GitHub-provided tools are returned in named groups, with a name and
+        description provided for each tool.
+
+        MCP entries describe configured tool selection, not live discovery or runtime
+        availability. An explicit allowlist is returned in `tools`, with each `id` in
+        `<server-name>/<tool-name>` format, for example `sentry/list_issues`. An allowlist of
+        `["*"]` is returned as `supports_wildcard: true` with an empty `tools` array. Server URLs,
+        authentication headers, environment variables, and credentials are never returned.
+
+        For MCP tools, a list of configured MCP servers is provided, along with
+        the tools allowlisted for each server. Where `supports_wildcard` is true,
+        any tool that exists on the server can be used.
+
+        GitHub App installation access tokens can list available automation tools.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read).
+
+        To call this endpoint, OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "List available automation tools for a repository"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (read)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-tools-for-a-repository
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+            AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401,
+            AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/available-tools"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+            error_models={
+                "401": AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401,
+                "404": AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404,
+            },
+        )
+
+    async def async_list_available_repo_automation_tools(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200TypeForResponse,
+    ]:
+        """agent-automations/list-available-repo-automation-tools
+
+        GET /agents/repos/{owner}/{repo}/automations/available-tools
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists available tools for automations in a repository, including both
+        GitHub-provided tools and tools provided by custom MCP servers.
+
+        GitHub-provided tools are returned in named groups, with a name and
+        description provided for each tool.
+
+        MCP entries describe configured tool selection, not live discovery or runtime
+        availability. An explicit allowlist is returned in `tools`, with each `id` in
+        `<server-name>/<tool-name>` format, for example `sentry/list_issues`. An allowlist of
+        `["*"]` is returned as `supports_wildcard: true` with an empty `tools` array. Server URLs,
+        authentication headers, environment variables, and credentials are never returned.
+
+        For MCP tools, a list of configured MCP servers is provided, along with
+        the tools allowlisted for each server. Where `supports_wildcard` is true,
+        any tool that exists on the server can be used.
+
+        GitHub App installation access tokens can list available automation tools.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read).
+
+        To call this endpoint, OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "List available automation tools for a repository"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (read)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-tools-for-a-repository
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+            AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401,
+            AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/available-tools"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
+            error_models={
+                "401": AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401,
+                "404": AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404,
+            },
+        )
+
+    def list_available_repo_automation_triggers(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items],
+        list[
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse
+        ],
+    ]:
+        """agent-automations/list-available-repo-automation-triggers
+
+        GET /agents/repos/{owner}/{repo}/automations/available-triggers
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists available triggers for automations in a repository.
+
+        Each available trigger includes a title and description that can be presented
+        in user interfaces, plus a machine-readable schema of filters supported by the
+        trigger.
+
+        GitHub App installation access tokens can list available automation triggers.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read).
+
+        To call this endpoint, OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "List available automation triggers for a repository"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (read)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-triggers-for-a-repository
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items,
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401,
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/available-triggers"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[
+                AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items
+            ],
+            error_models={
+                "401": AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401,
+                "404": AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404,
+            },
+        )
+
+    async def async_list_available_repo_automation_triggers(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items],
+        list[
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse
+        ],
+    ]:
+        """agent-automations/list-available-repo-automation-triggers
+
+        GET /agents/repos/{owner}/{repo}/automations/available-triggers
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Lists available triggers for automations in a repository.
+
+        Each available trigger includes a title and description that can be presented
+        in user interfaces, plus a machine-readable schema of filters supported by the
+        trigger.
+
+        GitHub App installation access tokens can list available automation triggers.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read).
+
+        To call this endpoint, OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "List available automation triggers for a repository"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (read)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-available-automation-triggers-for-a-repository
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items,
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401,
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/available-triggers"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[
+                AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items
+            ],
+            error_models={
+                "401": AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401,
+                "404": AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404,
+            },
+        )
+
     def get_repo_automation(
         self,
         owner: str,
@@ -1146,33 +989,39 @@ class AgentAutomationsClient:
 
         GET /agents/repos/{owner}/{repo}/automations/{automation_id}
 
-        Returns an automation by ID in a repository.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        User-owned automations are visible only to their creator. Repository-owned
-        automations are visible to anyone with read access to the repository. The
-        `created_by` field identifies the creator and is distinct from the automation's
-        `owner_type`.
+        Fetches a repository automation by ID. The automation must be a personal
+        automation belonging to you or a shared automation.
 
-        **Fine-grained access tokens for "Get an automation for a repository"**
+        Shared automations are visible to anyone with read access to the repository.
+        The `created_by` field identifies the creator and is distinct from the automation's
+        `type`.
+
+        GitHub App installation access tokens can access shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read). Personal automations require a user token.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Get an automation"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
         * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#get-an-automation-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#get-an-automation
         """
 
         from ..models import (
@@ -1215,33 +1064,39 @@ class AgentAutomationsClient:
 
         GET /agents/repos/{owner}/{repo}/automations/{automation_id}
 
-        Returns an automation by ID in a repository.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        User-owned automations are visible only to their creator. Repository-owned
-        automations are visible to anyone with read access to the repository. The
-        `created_by` field identifies the creator and is distinct from the automation's
-        `owner_type`.
+        Fetches a repository automation by ID. The automation must be a personal
+        automation belonging to you or a shared automation.
 
-        **Fine-grained access tokens for "Get an automation for a repository"**
+        Shared automations are visible to anyone with read access to the repository.
+        The `created_by` field identifies the creator and is distinct from the automation's
+        `type`.
+
+        GitHub App installation access tokens can access shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read). Personal automations require a user token.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Get an automation"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
         * "Agent tasks" repository permissions (read)
-        * "Contents" repository permissions (read)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#get-an-automation-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#get-an-automation
         """
 
         from ..models import (
@@ -1281,28 +1136,38 @@ class AgentAutomationsClient:
 
         DELETE /agents/repos/{owner}/{repo}/automations/{automation_id}
 
-        Deletes an automation in a repository.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        **Fine-grained access tokens for "Delete an automation for a repository"**
+        Deletes an automation in a repository. The automation must be a personal
+        automation belonging to you or a shared automation.
+
+        GitHub App installation access tokens can delete shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (write). Personal automations require a user token.
+
+        To call this endpoint, you must have write access to the repository and the
+        "Allow automations" setting must be enabled for the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Delete an automation"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
-        * "Agent tasks" repository permissions (read and write)
-        * "Contents" repository permissions (read and write)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
+        * "Agent tasks" repository permissions (write)
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#delete-an-automation-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#delete-an-automation
         """
 
         from ..models import (
@@ -1340,28 +1205,38 @@ class AgentAutomationsClient:
 
         DELETE /agents/repos/{owner}/{repo}/automations/{automation_id}
 
-        Deletes an automation in a repository.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        **Fine-grained access tokens for "Delete an automation for a repository"**
+        Deletes an automation in a repository. The automation must be a personal
+        automation belonging to you or a shared automation.
+
+        GitHub App installation access tokens can delete shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (write). Personal automations require a user token.
+
+        To call this endpoint, you must have write access to the repository and the
+        "Allow automations" setting must be enabled for the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Delete an automation"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
-        * "Agent tasks" repository permissions (read and write)
-        * "Contents" repository permissions (read and write)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
+        * "Agent tasks" repository permissions (write)
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#delete-an-automation-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#delete-an-automation
         """
 
         from ..models import (
@@ -1413,8 +1288,8 @@ class AgentAutomationsClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         enabled: Missing[bool] = UNSET,
-        write_scope: Missing[Literal["trigger", "repository"]] = UNSET,
         require_actor_write_permission: Missing[bool] = UNSET,
+        continuous_history: Missing[bool] = UNSET,
         model: Missing[str] = UNSET,
         reasoning_effort: Missing[
             Literal["", "none", "low", "medium", "high", "xhigh", "max"]
@@ -1424,7 +1299,6 @@ class AgentAutomationsClient:
         ] = UNSET,
         prompt: Missing[str] = UNSET,
         tools: Missing[list[str]] = UNSET,
-        allowed_custom_agents: Missing[list[str]] = UNSET,
     ) -> Response[
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200,
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200TypeForResponse,
@@ -1448,30 +1322,39 @@ class AgentAutomationsClient:
 
         PATCH /agents/repos/{owner}/{repo}/automations/{automation_id}
 
-        Edits specified fields on an existing automation in a repository. Omitted fields
-        are left unchanged.
-        The automation's `owner_type` is immutable and cannot be changed by this operation.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        **Fine-grained access tokens for "Edit an automation for a repository"**
+        Updates an existing automation in a repository. The automation
+        must be a personal automation belonging to you or a shared automation.
+        Omitted fields are left unchanged. The automation's `type` is immutable.
+
+        GitHub App installation access tokens can update shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (write). Personal automations require a user token.
+
+        To call this endpoint, you must have write access to the repository and the
+        "Allow automations" setting must be enabled for the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Update an automation"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
-        * "Agent tasks" repository permissions (read and write)
-        * "Contents" repository permissions (read and write)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
+        * "Agent tasks" repository permissions (write)
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#edit-an-automation-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#update-an-automation
         """
 
         from ..models import (
@@ -1540,8 +1423,8 @@ class AgentAutomationsClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         enabled: Missing[bool] = UNSET,
-        write_scope: Missing[Literal["trigger", "repository"]] = UNSET,
         require_actor_write_permission: Missing[bool] = UNSET,
+        continuous_history: Missing[bool] = UNSET,
         model: Missing[str] = UNSET,
         reasoning_effort: Missing[
             Literal["", "none", "low", "medium", "high", "xhigh", "max"]
@@ -1551,7 +1434,6 @@ class AgentAutomationsClient:
         ] = UNSET,
         prompt: Missing[str] = UNSET,
         tools: Missing[list[str]] = UNSET,
-        allowed_custom_agents: Missing[list[str]] = UNSET,
     ) -> Response[
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200,
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200TypeForResponse,
@@ -1575,30 +1457,39 @@ class AgentAutomationsClient:
 
         PATCH /agents/repos/{owner}/{repo}/automations/{automation_id}
 
-        Edits specified fields on an existing automation in a repository. Omitted fields
-        are left unchanged.
-        The automation's `owner_type` is immutable and cannot be changed by this operation.
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
 
-        **Fine-grained access tokens for "Edit an automation for a repository"**
+        Updates an existing automation in a repository. The automation
+        must be a personal automation belonging to you or a shared automation.
+        Omitted fields are left unchanged. The automation's `type` is immutable.
+
+        GitHub App installation access tokens can update shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (write). Personal automations require a user token.
+
+        To call this endpoint, you must have write access to the repository and the
+        "Allow automations" setting must be enabled for the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Update an automation"**
 
         This endpoint works with the following fine-grained token types:
 
         * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
         * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
 
-        The fine-grained token must have one of the following permission sets for each
-        repository accessed by this request:
+        The fine-grained token must have the following permission set:
 
-        * "Agent tasks" repository permissions (read and write)
-        * "Contents" repository permissions (read and write)
-
-        The required permission set depends on each repository's Automation permission
-        configuration.
-
-        GitHub App installation access tokens are not supported for this endpoint.
+        * "Agent tasks" repository permissions (write)
 
 
-        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#edit-an-automation-for-a-repository
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#update-an-automation
         """
 
         from ..models import (
@@ -1637,5 +1528,469 @@ class AgentAutomationsClient:
                 "401": AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401,
                 "404": AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404,
                 "422": AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422,
+            },
+        )
+
+    def list_repo_automation_tasks(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        sort: Missing[Literal["updated_at", "created_at"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        state: Missing[str] = UNSET,
+        is_archived: Missing[bool] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200TypeForResponse,
+    ]:
+        """agent-automations/list-repo-automation-tasks
+
+        GET /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Returns a paginated list of tasks created by an automation in the specified
+        repository. The automation must belong to that exact repository.
+
+        User-owned automation history is visible only to the automation's creator.
+        Repository-owned automation history is visible to callers with read access to
+        repository automations. Deleted and unlisted tasks are excluded. Tasks produced
+        by private-session agents are excluded unless the caller created the task, is a
+        task collaborator, or the task is shared.
+
+        A missing repository, an inaccessible repository, or an automation that does not
+        belong to the specified repository returns `404` without revealing which condition
+        occurred.
+
+        GitHub App installation access tokens can list tasks for shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read). Personal automations require a user token.
+
+        **Fine-grained access tokens for "List tasks for an automation in a repository"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (read)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-tasks-for-an-automation-in-a-repository
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/{automation_id}/tasks"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "sort": sort,
+            "direction": direction,
+            "state": state,
+            "is_archived": is_archived,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+            error_models={
+                "401": AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401,
+                "404": AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404,
+                "422": AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422,
+            },
+        )
+
+    async def async_list_repo_automation_tasks(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        sort: Missing[Literal["updated_at", "created_at"]] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        state: Missing[str] = UNSET,
+        is_archived: Missing[bool] = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200TypeForResponse,
+    ]:
+        """agent-automations/list-repo-automation-tasks
+
+        GET /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Returns a paginated list of tasks created by an automation in the specified
+        repository. The automation must belong to that exact repository.
+
+        User-owned automation history is visible only to the automation's creator.
+        Repository-owned automation history is visible to callers with read access to
+        repository automations. Deleted and unlisted tasks are excluded. Tasks produced
+        by private-session agents are excluded unless the caller created the task, is a
+        task collaborator, or the task is shared.
+
+        A missing repository, an inaccessible repository, or an automation that does not
+        belong to the specified repository returns `404` without revealing which condition
+        occurred.
+
+        GitHub App installation access tokens can list tasks for shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (read). Personal automations require a user token.
+
+        **Fine-grained access tokens for "List tasks for an automation in a repository"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (read)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#list-tasks-for-an-automation-in-a-repository
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/{automation_id}/tasks"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "sort": sort,
+            "direction": direction,
+            "state": state,
+            "is_archived": is_archived,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
+            error_models={
+                "401": AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401,
+                "404": AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404,
+                "422": AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422,
+            },
+        )
+
+    @overload
+    def create_repo_automation_task(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    def create_repo_automation_task(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        event: Literal["manual"],
+        context: Missing[str] = UNSET,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+    ]: ...
+
+    def create_repo_automation_task(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+    ]:
+        """agent-automations/create-repo-automation-task
+
+        POST /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Runs an automation in a repository. Set `event` to `manual` and optionally include
+        `context` of up to 10,000 characters, which will be injected into the automation's
+        prompt.
+
+        The repository must have the "Allow automations" setting enabled, and the automation
+        must be a personal automation belonging to you or a shared automation.
+
+        GitHub App installation access tokens can run shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (write). Personal automations require a user token.
+
+        A successful response accepts the run request and includes a preallocated
+        `task_id`, which can be fetched with the "Get a task by repo" Agent tasks API.
+        It does not confirm execution or task creation. Task creation is asynchronous,
+        so fetching the task immediately may return `404 Not Found`, and downstream
+        skips or failures can prevent its creation.
+
+        To call this endpoint, you must have write access to the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Run an automation"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (write)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#run-an-automation
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/{automation_id}/tasks"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+            error_models={
+                "400": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400,
+                "401": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401,
+                "403": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403,
+                "404": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404,
+                "409": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409,
+                "422": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422,
+                "503": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503,
+            },
+        )
+
+    @overload
+    async def async_create_repo_automation_task(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_create_repo_automation_task(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        event: Literal["manual"],
+        context: Missing[str] = UNSET,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+    ]: ...
+
+    async def async_create_repo_automation_task(
+        self,
+        owner: str,
+        repo: str,
+        automation_id: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+        AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse,
+    ]:
+        """agent-automations/create-repo-automation-task
+
+        POST /agents/repos/{owner}/{repo}/automations/{automation_id}/tasks
+
+        > [!NOTE]
+        > This endpoint is in public preview and is subject to change.
+
+        Runs an automation in a repository. Set `event` to `manual` and optionally include
+        `context` of up to 10,000 characters, which will be injected into the automation's
+        prompt.
+
+        The repository must have the "Allow automations" setting enabled, and the automation
+        must be a personal automation belonging to you or a shared automation.
+
+        GitHub App installation access tokens can run shared automations.
+        The installation must belong to the repository owner and the token must have
+        "Agent tasks" repository permissions (write). Personal automations require a user token.
+
+        A successful response accepts the run request and includes a preallocated
+        `task_id`, which can be fetched with the "Get a task by repo" Agent tasks API.
+        It does not confirm execution or task creation. Task creation is asynchronous,
+        so fetching the task immediately may return `404 Not Found`, and downstream
+        skips or failures can prevent its creation.
+
+        To call this endpoint, you must have write access to the repository.
+
+        OAuth app tokens and personal access tokens (classic) need:
+
+        * the `repo` scope for private or internal repositories
+        * the `repo` scope or `public_repo` scope for public repositories
+
+        **Fine-grained access tokens for "Run an automation"**
+
+        This endpoint works with the following fine-grained token types:
+
+        * [GitHub App user access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app)
+        * [GitHub App installation access tokens](https://docs.github.com/enterprise-cloud@latest/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app)
+        * [Fine-grained personal access tokens](https://docs.github.com/enterprise-cloud@latest/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token)
+
+        The fine-grained token must have the following permission set:
+
+        * "Agent tasks" repository permissions (write)
+
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/agent-automations/agent-automations#run-an-automation
+        """
+
+        from ..models import (
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422,
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503,
+        )
+
+        url = f"/agents/repos/{owner}/{repo}/automations/{automation_id}/tasks"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
+            error_models={
+                "400": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400,
+                "401": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401,
+                "403": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403,
+                "404": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404,
+                "409": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409,
+                "422": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422,
+                "503": AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503,
             },
         )

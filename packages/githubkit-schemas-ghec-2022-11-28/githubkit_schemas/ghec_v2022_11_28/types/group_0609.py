@@ -12,25 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class StargazerHistoryType(TypedDict):
+    """Stargazer History
 
-    A topic aggregates entities that are related to a subject.
+    Stargazer History
     """
 
-    names: list[str]
+    days: list[int]
+    total: int
+    week: int
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class StargazerHistoryTypeForResponse(TypedDict):
+    """Stargazer History
 
-    A topic aggregates entities that are related to a subject.
+    Stargazer History
     """
 
-    names: list[str]
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "StargazerHistoryType",
+    "StargazerHistoryTypeForResponse",
 )

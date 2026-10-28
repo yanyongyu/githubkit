@@ -9,26 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0140 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgPropertiesInstallationsValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    )
 
 
-class OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

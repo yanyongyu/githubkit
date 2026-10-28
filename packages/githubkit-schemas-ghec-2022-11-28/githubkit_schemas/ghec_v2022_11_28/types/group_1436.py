@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
-
-    subject_digests: list[str]
+from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
-    subject_digests: list[str]
+    total_count: int
+    policies: list[ActionsPolicyType]
+
+
+class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
+
+    total_count: int
+    policies: list[ActionsPolicyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "OrgsOrgActionsPoliciesGetResponse200Type",
+    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
 )

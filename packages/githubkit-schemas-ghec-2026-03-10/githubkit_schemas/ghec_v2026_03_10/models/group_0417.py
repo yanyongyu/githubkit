@@ -9,56 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeQualitySetup(GitHubModel):
-    """CodeQualitySetup
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    Configuration for code quality setup.
+    Check Annotation
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="Code quality setup has been configured or not."
-    )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[Literal["standard", "labeled"], None]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
-    )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[Literal["weekly"], None]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
-    ai_findings_option: Missing[Union[Literal["disabled", "on_push"], None]] = Field(
-        default=UNSET, description="The AI findings configuration for the repository."
-    )
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-model_rebuild(CodeQualitySetup)
+model_rebuild(CheckAnnotation)
 
-__all__ = ("CodeQualitySetup",)
+__all__ = ("CheckAnnotation",)

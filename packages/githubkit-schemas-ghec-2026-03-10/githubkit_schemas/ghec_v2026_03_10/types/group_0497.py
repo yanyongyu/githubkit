@@ -9,47 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueTypeWebhookType(TypedDict):
-    """Issue Type
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    The type of issue.
+    Check immutable releases
     """
 
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class IssueTypeWebhookTypeForResponse(TypedDict):
-    """Issue Type
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    The type of issue.
+    Check immutable releases
     """
 
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "IssueTypeWebhookType",
-    "IssueTypeWebhookTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )
