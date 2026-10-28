@@ -15,7 +15,7 @@ on:
       - "uv.lock"
       - "packages/**/*.py"
       - "packages/**/pyproject.toml"
-      - "packages/pyproject.toml"
+      - "packages/pyrightconfig.json"
 
 jobs:
   lint-githubkit:

@@ -169,6 +169,14 @@ pythonPlatform = "All"
 pythonVersion = "3.10"
 defineConstant = { PYDANTIC_V2 = true }
 
+executionEnvironments = [
+  # disable overload and override checks for generated version codes
+  { root = "packages/**/githubkit_schemas/", pythonVersion = "3.10", reportOverlappingOverload = false, reportIncompatibleMethodOverride = false },
+  # codegen env config for dev
+  { root = "codegen", pythonVersion = "3.10" },
+  { root = ".", pythonVersion = "3.10" },
+]
+
 [tool.codegen]
 schemas_output_dir = "packages/githubkit-schemas/githubkit_schemas/"
 

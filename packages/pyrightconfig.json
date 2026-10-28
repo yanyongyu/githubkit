@@ -1,0 +1,5 @@
+{
+  "extends": "../pyproject.toml",
+  "reportOverlappingOverload": false,
+  "reportIncompatibleMethodOverride": false
+}
