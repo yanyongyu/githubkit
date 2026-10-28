@@ -1,5 +1,5 @@
 from collections.abc import Callable, Generator
-from typing import TYPE_CHECKING, Any, Protocol, TypeVar
+from typing import TYPE_CHECKING, Any, Protocol, TypeVar, cast
 from typing_extensions import TypeForm
 
 from pydantic import VERSION
@@ -85,10 +85,10 @@ else:  # pragma: pydantic-v1
             extra = Extra.allow
 
     def type_validate_python(type_: TypeForm[T], data: Any) -> T:
-        return parse_obj_as(type_, data)
+        return parse_obj_as(cast(type[T], type_), data)
 
     def type_validate_json(type_: TypeForm[T], data: Any) -> T:
-        return parse_raw_as(type_, data)
+        return parse_raw_as(cast(type[T], type_), data)
 
     def to_jsonable_python(obj: Any) -> Any:
         if isinstance(obj, dict):

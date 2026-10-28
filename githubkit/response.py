@@ -1,7 +1,7 @@
 from collections.abc import AsyncIterator, Iterator
 from contextlib import asynccontextmanager, contextmanager
 from typing import Any, Generic
-from typing_extensions import TypeVar
+from typing_extensions import TypeForm, TypeVar
 
 from githubkit._httpx import httpx
 
@@ -15,7 +15,7 @@ JT = TypeVar("JT", default=Any)  # pyright: ignore[reportGeneralTypeIssues]
 class Response(Generic[MT, JT]):
     """A wrapper around httpx.Response that provides data model validation."""
 
-    def __init__(self, response: httpx.Response, data_model: type[MT]):
+    def __init__(self, response: httpx.Response, data_model: TypeForm[MT]):
         self._response = response
         self._data_model = data_model
         self._cached_parsed_data: MT | None = None

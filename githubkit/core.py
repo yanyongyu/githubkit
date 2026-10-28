@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import time
 from types import TracebackType
 from typing import TYPE_CHECKING, Any, Generic, TypeVar, overload
+from typing_extensions import TypeForm
 
 import anyio
 
@@ -396,12 +397,16 @@ class GitHubCore(Generic[A]):
                     raise RequestError(e) from e
 
     # check and parse response
+    def _check_is_error(self, response: httpx.Response) -> bool:
+        """Check if the response is an error."""
+        return response.is_error
+
     @overload
     def _check(
         self,
         response: httpx.Response,
-        response_model: type[T],
-        error_models: Mapping[str, type] | None = None,
+        response_model: TypeForm[T],
+        error_models: Mapping[str, Any] | None = None,
     ) -> Response[T]: ...
 
     @overload
@@ -409,17 +414,13 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: UnsetType = UNSET,
-        error_models: Mapping[str, type] | None = None,
+        error_models: Mapping[str, Any] | None = None,
     ) -> Response[Any]: ...
-
-    def _check_is_error(self, response: httpx.Response) -> bool:
-        """Check if the response is an error."""
-        return response.is_error
 
     def _check(
         self,
         response: httpx.Response,
-        response_model: type[T] | UnsetType = UNSET,
+        response_model: TypeForm[T] | UnsetType = UNSET,
         error_models: Mapping[str, Any] | None = None,
     ) -> Response[T] | Response[Any]:
         if self._check_is_error(response):
@@ -510,7 +511,7 @@ class GitHubCore(Generic[A]):
         headers: HeaderTypes | None = None,
         cookies: CookieTypes | None = None,
         stream: bool = False,
-        response_model: type[T],
+        response_model: TypeForm[T],
         error_models: Mapping[str, Any] | None = None,
     ) -> Response[T]: ...
 
@@ -545,7 +546,7 @@ class GitHubCore(Generic[A]):
         headers: HeaderTypes | None = None,
         cookies: CookieTypes | None = None,
         stream: bool = False,
-        response_model: type[T] | UnsetType = UNSET,
+        response_model: TypeForm[T] | UnsetType = UNSET,
         error_models: Mapping[str, Any] | None = None,
     ) -> Response[T] | Response[Any]:
         """Send a request.
@@ -600,7 +601,7 @@ class GitHubCore(Generic[A]):
         headers: HeaderTypes | None = None,
         cookies: CookieTypes | None = None,
         stream: bool = False,
-        response_model: type[T],
+        response_model: TypeForm[T],
         error_models: Mapping[str, Any] | None = None,
     ) -> Response[T]: ...
 
@@ -635,7 +636,7 @@ class GitHubCore(Generic[A]):
         headers: HeaderTypes | None = None,
         cookies: CookieTypes | None = None,
         stream: bool = False,
-        response_model: type[T] | UnsetType = UNSET,
+        response_model: TypeForm[T] | UnsetType = UNSET,
         error_models: Mapping[str, Any] | None = None,
     ) -> Response[T] | Response[Any]:
         """Asynchronously send a request.
