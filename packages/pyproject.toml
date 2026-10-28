@@ -1,0 +1,10 @@
+[tool.pyright]
+extends = "../pyproject.toml"
+
+# disable overload check for generated version codes
+reportOverlappingOverload = false
+reportIncompatibleMethodOverride = false
+
+executionEnvironments = [
+  { root = ".", pythonVersion = "3.10" },
+]

@@ -15,6 +15,7 @@ on:
       - "uv.lock"
       - "packages/**/*.py"
       - "packages/**/pyproject.toml"
+      - "packages/pyproject.toml"
 
 jobs:
   lint-githubkit:
@@ -47,7 +48,15 @@ jobs:
         uses: jakebailey/pyright-action@v3
         with:
           pylance-version: latest-release
-          extra-args: githubkit packages
+          extra-args: githubkit
+        env:
+          NODE_OPTIONS: --max-old-space-size=12288
+
+      - name: Run Pyright on generated schemas
+        uses: jakebailey/pyright-action@v3
+        with:
+          working-directory: packages
+          pylance-version: latest-release
         env:
           NODE_OPTIONS: --max-old-space-size=12288
 
