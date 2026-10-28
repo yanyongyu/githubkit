@@ -2,10 +2,10 @@ from functools import partial
 
 from githubkit_schemas.core import LATEST_VERSION
 from githubkit_schemas.latest.models import FullRepository, Issue
-import httpx
 import pytest
 
 from githubkit import GitHub
+from githubkit._httpx import httpx
 from tests.utils import get_mock_github
 
 OWNER = "yanyongyu"

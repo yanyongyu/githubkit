@@ -4,8 +4,7 @@ from datetime import datetime, timedelta, timezone
 from typing import TYPE_CHECKING, ClassVar
 from typing_extensions import LiteralString
 
-import httpx
-
+from githubkit._httpx import httpx
 from githubkit.compat import model_dump, type_validate_python
 from githubkit.exception import AuthCredentialError
 from githubkit.utils import UNSET, Unset, exclude_unset

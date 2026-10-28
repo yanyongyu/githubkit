@@ -6,7 +6,8 @@ from typing import Any
 from typing_extensions import override
 
 import anyio
-import httpx
+
+from githubkit._httpx import httpx
 
 
 class BaseThrottler(abc.ABC):

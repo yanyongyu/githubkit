@@ -3,10 +3,10 @@ from pathlib import Path
 from typing import Any, TypeVar
 
 from githubkit_schemas.latest.models import FullRepository
-import httpx
 import pytest
 
 from githubkit import GitHub
+from githubkit._httpx import httpx
 from githubkit.response import Response
 from githubkit.typing import UnsetType, URLTypes
 from githubkit.utils import UNSET

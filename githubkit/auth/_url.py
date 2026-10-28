@@ -1,6 +1,6 @@
 import re
 
-import httpx
+from githubkit._httpx import httpx
 
 APP_ROUTES = {
     r"/app",

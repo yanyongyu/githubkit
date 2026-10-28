@@ -2,8 +2,7 @@ from collections.abc import Generator
 import os
 from typing import TYPE_CHECKING
 
-import httpx
-
+from githubkit._httpx import httpx
 from githubkit.exception import AuthCredentialError
 
 from .base import BaseAuthStrategy

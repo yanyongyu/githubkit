@@ -5,8 +5,7 @@ from time import sleep
 from typing import TYPE_CHECKING, Any, ClassVar, TypedDict, cast
 from typing_extensions import Self
 
-import httpx
-
+from githubkit._httpx import httpx
 from githubkit.exception import AuthCredentialError, AuthExpiredError
 from githubkit.utils import is_async
 

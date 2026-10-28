@@ -1,6 +1,6 @@
 # Reusing Client
 
-githubkit manages an underlying [HTTPX](https://www.python-httpx.org/) client for making HTTP requests. You can use a **context manager** to ensure the HTTP client is properly created, reused, and closed when you're done.
+githubkit manages an underlying HTTPX client by default, preferring [HTTPX2](https://pydantic.dev/docs/httpx2/) when you install it separately. You can use a **context manager** to ensure the HTTP client is properly created, reused, and closed when you're done.
 
 <!-- https://github.com/yanyongyu/githubkit/issues/285 -->
 

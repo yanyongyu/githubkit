@@ -11,8 +11,7 @@ from typing import (
 )
 from typing_extensions import ParamSpec, Self
 
-import httpx
-
+from githubkit._httpx import httpx
 from githubkit.response import Response
 from githubkit.typing import HeaderTypes
 from githubkit.utils import is_async
