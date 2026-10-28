@@ -56,7 +56,7 @@ else:
 
 class RestVersionSwitcher(_VersionProxy):
     _cached_namespaces: "WeakKeyDictionary[GitHubCore, dict[VERSION_TYPE, Any]]" = (
-        WeakKeyDictionary()
+        WeakKeyDictionary()  # noqa: RUF012
     )
 
     if not TYPE_CHECKING:
