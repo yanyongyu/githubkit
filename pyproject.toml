@@ -163,8 +163,8 @@ keep-runtime-typing = true
 [tool.pyright]
 typeCheckingMode = "standard"
 reportPrivateImportUsage = false
-reportShadowedImports = false
 disableBytesTypePromotions = true
+enableExperimentalFeatures = true
 
 pythonPlatform = "All"
 defineConstant = { PYDANTIC_V2 = true }
