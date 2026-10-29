@@ -129,7 +129,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse(TypedDict):
@@ -140,7 +140,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsTypeForResponse(Typed
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (

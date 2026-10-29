@@ -3,7 +3,11 @@ from pathlib import Path
 from typing import Any
 
 from githubkit_schemas.core import LATEST_VERSION
-from githubkit_schemas.latest.models import WebhookPullRequestOpened, WebhookPush
+from githubkit_schemas.latest.models import (
+    WebhookPullRequestOpened,
+    WebhookPush,
+    WebhookWorkflowJobCompleted,
+)
 from githubkit_schemas.latest.webhooks import EventNameType
 import pytest
 
@@ -27,6 +31,13 @@ TEST_CASES: list[tuple[EventNameType, str, type[GitHubModel]]] = [
             encoding="utf-8"
         ),
         WebhookPullRequestOpened,
+    ),
+    (
+        "workflow_job",
+        (Path(__file__).parent / "assets/workflow_job_completed.json").read_text(
+            encoding="utf-8"
+        ),
+        WebhookWorkflowJobCompleted,
     ),
 ]
 

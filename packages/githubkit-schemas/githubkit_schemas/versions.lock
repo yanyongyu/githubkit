@@ -165,6 +165,7 @@ target_descriptions = ["ghec-2022-11-28", "ghec-2026-03-10"]
 "/components/schemas/webhook-workflow-job-in-progress/properties/workflow_job/allOf/0/properties/run_id" = {type = "integer"}
 "/components/schemas/webhook-workflow-job-queued/properties/workflow_job/properties/run_id" = {type = "integer"}
 "/components/schemas/webhook-workflow-job-waiting/properties/workflow_job/properties/run_id" = {type = "integer"}
+"/components/schemas/webhook-workflow-job-completed/properties/workflow_job/allOf/0/properties/steps/items/properties/status/enum" = {"<add>" = ["pending"]}
 "/components/schemas/webhook-workflow-job-completed/properties/workflow_job/allOf/1/properties/runner_id" = {type = ["integer", "null"]}
 "/components/schemas/webhook-workflow-job-in-progress/properties/workflow_job/allOf/1/properties/runner_id" = {type = ["integer", "null"]}
 "/components/schemas/webhook-workflow-job-completed/properties/workflow_job/allOf/1/properties/runner_group_id" = {type = ["integer", "null"]}

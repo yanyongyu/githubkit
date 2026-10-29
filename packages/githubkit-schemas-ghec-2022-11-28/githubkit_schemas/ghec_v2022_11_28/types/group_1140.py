@@ -109,7 +109,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDi
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForResponse(
@@ -122,7 +122,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsTypeForRespo
     name: str
     number: int
     started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "queued"]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
