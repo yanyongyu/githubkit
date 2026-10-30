@@ -119,7 +119,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps(GitHubModel):
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()
-    status: Literal["in_progress", "completed", "queued"] = Field()
+    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
 
 
 model_rebuild(WebhookWorkflowJobCompleted)
