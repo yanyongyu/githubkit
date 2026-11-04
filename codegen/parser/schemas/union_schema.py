@@ -89,7 +89,9 @@ def build_union_schema(
         )
 
     types = data.type or (base_schema and base_schema.type)
-    can_be_object = bool(data.properties or data.allOf)
+    can_be_object = bool(data.properties or data.allOf) and not bool(
+        data.anyOf or data.oneOf
+    )
     if isinstance(types, list):
         for type in types:
             if type not in TYPES_MAP:
