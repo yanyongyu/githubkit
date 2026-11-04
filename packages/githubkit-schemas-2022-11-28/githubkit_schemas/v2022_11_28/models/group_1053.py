@@ -217,7 +217,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened(GitHubM
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -239,7 +239,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled(GitHub
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -266,7 +266,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun(GitHubM
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -291,7 +291,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -316,7 +316,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchron
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -341,7 +341,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -363,7 +363,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment(GitHub
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -397,7 +397,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -421,7 +421,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -445,7 +445,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -475,7 +475,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -498,7 +498,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned(GitHu
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -528,7 +528,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -546,7 +546,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded(GitHu
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -571,7 +571,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyFor
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -600,7 +600,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -625,7 +625,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeCon
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -657,7 +657,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSu
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -684,7 +684,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRe
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -702,7 +702,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed(GitHubM
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -720,7 +720,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened(GitHu
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -745,7 +745,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -770,7 +770,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -797,7 +797,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConverte
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -824,7 +824,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDi
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -851,7 +851,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewTh
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -878,7 +878,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewTh
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -898,7 +898,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -924,7 +924,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed(
     )
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -944,7 +944,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert(
 
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -964,7 +964,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert
 
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,
@@ -984,7 +984,7 @@ class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert(
 
     write_scope: Missing[Literal["trigger", "repository"]] = Field(
         default=UNSET,
-        description="Override the Automation `write_scope` for runs started by this trigger. If omitted, the automation's `write_scope` is used. Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
     )
     allow_copilot_triggers: Missing[bool] = Field(
         default=UNSET,

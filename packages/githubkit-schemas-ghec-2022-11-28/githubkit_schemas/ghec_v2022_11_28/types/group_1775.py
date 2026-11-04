@@ -9,47 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type(TypedDict):
-    """Package license compliance results
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse(
-    TypedDict
-):
-    """Package license compliance results
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse
-
-
-ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
-"""
-
-
-ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
-"""
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",
+    "ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyTypeForResponse",
 )

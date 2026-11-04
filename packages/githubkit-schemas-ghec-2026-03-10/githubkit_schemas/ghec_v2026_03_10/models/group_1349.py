@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    credential_id: int = Field()
-    credential_type: Literal["classic_pat"] = Field()
-    organizations: list[str] = Field()
+    organization_id: int = Field(
+        description="The ID of the organization to use as the custom agents source."
+    )
+    create_ruleset: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)

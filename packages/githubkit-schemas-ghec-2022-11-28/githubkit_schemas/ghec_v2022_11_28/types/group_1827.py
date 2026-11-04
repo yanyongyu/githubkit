@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0209 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
+
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyTypeForResponse",
 )

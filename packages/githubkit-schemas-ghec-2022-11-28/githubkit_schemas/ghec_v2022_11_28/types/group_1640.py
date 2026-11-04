@@ -9,26 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0386 import ActionsVariableType, ActionsVariableTypeForResponse
-
-
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: list[ActionsVariableType]
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoAgentsOrganizationVariablesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoAgentsOrganizationVariablesGetResponse200"""
+class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    total_count: int
-    variables: list[ActionsVariableTypeForResponse]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+
+
+class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoAgentsOrganizationVariablesGetResponse200Type",
-    "ReposOwnerRepoAgentsOrganizationVariablesGetResponse200TypeForResponse",
+    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

@@ -9,55 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgCopilotModelPoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotModelPoliciesGetResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
-
-
-class OrgsOrgHooksHookIdPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
-
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse]
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    default_availability: (
+        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
+    )
+    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesGetResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
+    default_availability: (
+        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
+    )
+    models: list[
+        OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
+
+    The effective default availability for models reported as `delegate_to_default`.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
 
-    Key/value pairs to provide settings for this webhook.
+    The effective default availability for models reported as `delegate_to_default`.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+
+
+class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesGetResponse200Type",
+    "OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse",
 )

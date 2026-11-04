@@ -11,17 +11,42 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to be removed from the team."
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
+        default=UNSET,
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody)
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+    rors
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",)
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
+    """
+
+
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+)

@@ -9,20 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
-
-
-class OrgsOrgInstallationsGetResponse200(GitHubModel):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgInstallationsGetResponse200)
+class OrgsOrgCopilotModelPoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-__all__ = ("OrgsOrgInstallationsGetResponse200",)
+    default_availability: Missing[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+    ] = Field(
+        default=UNSET,
+        description="The organization's default availability for eligible models without an explicit\npolicy. It cannot be updated when it is inherited from the enterprise.",
+    )
+    models: Missing[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The model policies to update. Each `model_name` must be unique.",
+    )
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field()
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(
+        min_length=1,
+        description="The public identifier of a model returned by the get endpoint.",
+    )
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The explicit policy state to set for the organization."
+    )
+
+
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems)
+
+__all__ = (
+    "OrgsOrgCopilotModelPoliciesPatchBody",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems",
+)

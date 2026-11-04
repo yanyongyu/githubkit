@@ -103,7 +103,7 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersI
     """
 
     id: str = Field(
-        description="The tool identifier in <server-name>/<tool-name> format, for example sentry/list_issues."
+        description="The tool identifier in `<server-name>/<tool-name>` format, for example `sentry/list_issues`."
     )
 
 

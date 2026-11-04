@@ -11,18 +11,63 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0148 import Runner
-
-
-class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: list[Runner] = Field()
+from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200(ExtraGitHubModel):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
 
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+    ] = Field(
+        default=UNSET,
+        alias="pluginAssignments",
+        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
+    )
+    extra_known_marketplaces: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces
+    ] = Field(
+        default=UNSET,
+        alias="extraKnownMarketplaces",
+        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
+    )
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+
+    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+    """
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
+    s
+
+    Additional plugin marketplaces available to the team, keyed by marketplace name.
+    """
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces
+)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments",
+)

@@ -13,35 +13,43 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssueEventIntentType(TypedDict):
-    """Issue Event Intent
+class IssueTypeWebhookType(TypedDict):
+    """Issue Type
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    The type of issue.
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    id: int
+    name: str
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
-class IssueEventIntentTypeForResponse(TypedDict):
-    """Issue Event Intent
+class IssueTypeWebhookTypeForResponse(TypedDict):
+    """Issue Type
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    The type of issue.
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    id: int
+    name: str
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
 __all__ = (
-    "IssueEventIntentType",
-    "IssueEventIntentTypeForResponse",
+    "IssueTypeWebhookType",
+    "IssueTypeWebhookTypeForResponse",
 )

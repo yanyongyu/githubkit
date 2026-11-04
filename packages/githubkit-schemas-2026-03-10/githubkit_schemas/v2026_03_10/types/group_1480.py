@@ -9,89 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
-    signature: NotRequired[str]
-
-
-class ReposOwnerRepoGitCommitsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBody"""
-
-    message: str
-    tree: str
-    parents: NotRequired[list[str]]
-    author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse]
-    committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse]
-    signature: NotRequired[str]
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
+    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+class ReposOwnerRepoDeploymentsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[_dt.datetime]
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
-
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[str]
+    ref: str
+    task: NotRequired[str]
+    auto_merge: NotRequired[bool]
+    required_contexts: NotRequired[list[str]]
+    payload: NotRequired[
+        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse, str]
+    ]
+    environment: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[_dt.datetime]
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse(TypedDict):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthorTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitterTypeForResponse",
-    "ReposOwnerRepoGitCommitsPostBodyType",
-    "ReposOwnerRepoGitCommitsPostBodyTypeForResponse",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse",
+    "ReposOwnerRepoDeploymentsPostBodyType",
+    "ReposOwnerRepoDeploymentsPostBodyTypeForResponse",
 )

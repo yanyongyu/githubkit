@@ -9,29 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0209 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
-)
 
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
-
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
+    """
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
+    y
+    """
+
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
 )

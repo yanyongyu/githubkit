@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,18 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SelfHostedRunnersSettings(GitHubModel):
-    """SelfHostedRunnersSettings"""
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    enabled_repositories: Literal["all", "selected", "none"] = Field(
-        description="The policy that controls whether self-hosted runners can be used by repositories in the organization"
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
-    selected_repositories_url: Missing[str] = Field(
+    use_immutable_subject: Missing[bool] = Field(
         default=UNSET,
-        description="The URL to the endpoint for managing selected repositories for self-hosted runners in the organization",
+        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
     )
 
 
-model_rebuild(SelfHostedRunnersSettings)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("SelfHostedRunnersSettings",)
+__all__ = ("OidcCustomSub",)

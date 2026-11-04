@@ -9,51 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType]
+
+
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
+
+    fields: list[
+        OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse
     ]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
+    id: int
+    value: Union[str, float, None]
 
 
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    id: int
+    value: Union[str, float, None]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItemsTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyType",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyTypeForResponse",
 )

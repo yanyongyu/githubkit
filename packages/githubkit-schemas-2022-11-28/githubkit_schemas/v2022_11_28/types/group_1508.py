@@ -9,28 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
-
-    name: NotRequired[str]
-    body: str
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
-
-    name: NotRequired[str]
-    body: str
+class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",
+    "ReposOwnerRepoInteractionLimitsGetResponse200Anyof1TypeForResponse",
 )

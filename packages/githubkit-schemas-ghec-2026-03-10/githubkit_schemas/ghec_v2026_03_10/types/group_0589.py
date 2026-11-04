@@ -12,28 +12,28 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0179 import (
-    RepositoryRuleFileExtensionRestrictionPropParametersType,
-    RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse,
+from .group_0175 import (
+    RepositoryRuleFilePathRestrictionPropParametersType,
+    RepositoryRuleFilePathRestrictionPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleDetailedOneof23Type(TypedDict):
-    """RepositoryRuleDetailedOneof23"""
+class RepositoryRuleDetailedOneof21Type(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleFileExtensionRestrictionPropParametersType]
+    type: Literal["file_path_restriction"]
+    parameters: NotRequired[RepositoryRuleFilePathRestrictionPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-class RepositoryRuleDetailedOneof23TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof23"""
+class RepositoryRuleDetailedOneof21TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof21"""
 
-    type: Literal["file_extension_restriction"]
+    type: Literal["file_path_restriction"]
     parameters: NotRequired[
-        RepositoryRuleFileExtensionRestrictionPropParametersTypeForResponse
+        RepositoryRuleFilePathRestrictionPropParametersTypeForResponse
     ]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
@@ -41,6 +41,6 @@ class RepositoryRuleDetailedOneof23TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof23Type",
-    "RepositoryRuleDetailedOneof23TypeForResponse",
+    "RepositoryRuleDetailedOneof21Type",
+    "RepositoryRuleDetailedOneof21TypeForResponse",
 )

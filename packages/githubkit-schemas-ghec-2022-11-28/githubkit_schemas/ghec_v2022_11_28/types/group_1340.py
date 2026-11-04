@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
-
-    default_availability: (
-        EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
-    )
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
-
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202TypeForResponse",
 )

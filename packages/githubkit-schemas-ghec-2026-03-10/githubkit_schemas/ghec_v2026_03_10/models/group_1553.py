@@ -16,23 +16,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
     )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
-    include_drafts: Missing[bool] = Field(
+    warning: Missing[str] = Field(
         default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202",)

@@ -9,88 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
-        None,
+    state: Literal["open", "dismissed"] = Field(
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
+    )
+    dismissed_reason: Missing[
+        Union[
+            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+        ]
     ] = Field(
-        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
+        default=UNSET,
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
     )
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
-        description="The enabled review tools for Copilot cloud agent."
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
-    require_actions_workflow_approval: bool = Field(
-        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    create_request: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, attempt to create an alert dismissal request.",
     )
-    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
-    is_firewall_recommended_allowlist_enabled: bool = Field(
-        description="Whether the firewall recommended allowlist is enabled."
-    )
-    custom_allowlist: list[str] = Field(
-        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
-    )
-    is_automations_enabled: bool = Field(
-        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
-    )
-    require_write_access_for_automation_triggers: bool = Field(
-        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert.",
     )
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0)
 
-    The user-supplied MCP server configuration for the repository, as a free-form
-    JSON object. This will be set to `null` if no configuration has been set.
-
-    The shape of a valid MCP configuration may evolve over time, so this property is
-    intentionally not strictly typed. Clients should not assume a fixed schema.
-    """
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
-    GitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-
-    The enabled review tools for Copilot cloud agent.
-    """
-
-    codeql: bool = Field(
-        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
-    )
-    copilot_code_review: bool = Field(
-        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
-    )
-    secret_scanning: bool = Field(
-        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
-    )
-    dependency_vulnerability_checks: bool = Field(
-        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
-    )
-
-
-model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-)
-
-__all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
-)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0",)

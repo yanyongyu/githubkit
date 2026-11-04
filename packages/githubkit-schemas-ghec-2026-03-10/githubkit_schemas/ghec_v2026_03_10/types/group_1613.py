@@ -9,26 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
-
-
-class ReposOwnerRepoActionsPoliciesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPoliciesGetResponse200"""
+class OrgsOrgSettingsNetworkConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
 
-    total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
+
+
+class OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgSettingsNetworkConfigurationsPostBody"""
+
+    name: str
+    compute_service: NotRequired[Literal["none", "actions"]]
+    network_settings_ids: list[str]
+    failover_network_settings_ids: NotRequired[list[str]]
+    failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPoliciesGetResponse200Type",
-    "ReposOwnerRepoActionsPoliciesGetResponse200TypeForResponse",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyType",
+    "OrgsOrgSettingsNetworkConfigurationsPostBodyTypeForResponse",
 )

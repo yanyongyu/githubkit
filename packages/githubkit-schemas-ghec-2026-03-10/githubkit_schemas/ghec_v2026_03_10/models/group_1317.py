@@ -13,47 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
-    ] = Field()
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str = Field()
-    display_name: str = Field()
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="When editable, the agent apps policy's configured value, or `optional` if no agent apps policy has been configured for this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    client_id: str = Field(description="The Client ID of the GitHub App to install.")
+    repository_selection: Literal["all", "selected", "none"] = Field(
+        description="The repository selection for the GitHub App. Must be one of:\n* `all` - the installation can access all repositories in the organization.\n* `selected` - the installation can access only the listed repositories.\n* `none` - no repository permissions are requested. Only use when the app does not request repository permissions."
     )
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ] = Field(
-        description="The separately read enterprise-layer policy for this model, used to determine whether the agent apps policy can be edited."
-    )
-    editable: bool = Field(
-        description="Whether the enterprise policy and available apps policy controls allow the agent apps policy to be updated."
+    repositories: Missing[list[str]] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The names of the repositories to which the installation will be granted access. This is the simple name of the repository, not the full name (e.g., `hello-world` not `octocat/hello-world`). This is only required when `repository_selection` is `selected`.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
-)
+model_rebuild(EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseAppsOrganizationsOrgInstallationsPostBody",)

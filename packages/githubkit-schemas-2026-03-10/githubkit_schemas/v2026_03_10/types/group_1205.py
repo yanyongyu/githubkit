@@ -13,23 +13,83 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class OrgsOrgPatchBodyType(TypedDict):
+    """OrgsOrgPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    billing_email: NotRequired[str]
+    company: NotRequired[str]
+    email: NotRequired[str]
+    twitter_username: NotRequired[str]
+    location: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    default_repository_permission: NotRequired[
+        Literal["read", "write", "admin", "none"]
+    ]
+    members_can_create_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_allowed_repository_creation_type: NotRequired[
+        Literal["all", "private", "none"]
+    ]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    blog: NotRequired[str]
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
+    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[str]
+    deploy_keys_enabled_for_repositories: NotRequired[bool]
 
 
-class OrgsOrgActionsPermissionsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class OrgsOrgPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPatchBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    sha_pinning_required: NotRequired[bool]
+    billing_email: NotRequired[str]
+    company: NotRequired[str]
+    email: NotRequired[str]
+    twitter_username: NotRequired[str]
+    location: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    has_organization_projects: NotRequired[bool]
+    has_repository_projects: NotRequired[bool]
+    default_repository_permission: NotRequired[
+        Literal["read", "write", "admin", "none"]
+    ]
+    members_can_create_repositories: NotRequired[bool]
+    members_can_create_internal_repositories: NotRequired[bool]
+    members_can_create_private_repositories: NotRequired[bool]
+    members_can_create_public_repositories: NotRequired[bool]
+    members_allowed_repository_creation_type: NotRequired[
+        Literal["all", "private", "none"]
+    ]
+    members_can_create_pages: NotRequired[bool]
+    members_can_create_public_pages: NotRequired[bool]
+    members_can_create_private_pages: NotRequired[bool]
+    members_can_fork_private_repositories: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    blog: NotRequired[str]
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    dependabot_security_updates_enabled_for_new_repositories: NotRequired[bool]
+    dependency_graph_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[str]
+    deploy_keys_enabled_for_repositories: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgActionsPermissionsPutBodyType",
-    "OrgsOrgActionsPermissionsPutBodyTypeForResponse",
+    "OrgsOrgPatchBodyType",
+    "OrgsOrgPatchBodyTypeForResponse",
 )

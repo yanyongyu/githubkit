@@ -9,22 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    selected_repository_ids: list[int]
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    selected_repository_ids: list[int]
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    )
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

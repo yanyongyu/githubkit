@@ -9,37 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
-
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: NotRequired[Union[Literal["active", "inactive"], None]]
-
-
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
-    ]
-    resolution_comment: NotRequired[Union[str, None]]
-    assignee: NotRequired[Union[str, None]]
-    validity: NotRequired[Union[Literal["active", "inactive"], None]]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
+
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
+
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse",
 )

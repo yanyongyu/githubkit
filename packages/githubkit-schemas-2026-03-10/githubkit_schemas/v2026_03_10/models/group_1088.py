@@ -18,8 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -32,7 +34,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409(GitHubMode
     )
     errors: Missing[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
@@ -49,10 +51,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409(GitHubMode
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401Prop
+    ErrorsItems
 
     A single validation error
     """
@@ -71,12 +74,14 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsI
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems",
 )

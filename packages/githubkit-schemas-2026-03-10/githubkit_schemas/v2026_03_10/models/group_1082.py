@@ -18,22 +18,66 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400
 
-    Request body for requesting an automation run.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    event: Literal["manual"] = Field(
-        description="The event to trigger. Only `manual` is supported."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    context: Missing[str] = Field(
-        max_length=10000,
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItems
+        ]
+    ] = Field(
         default=UNSET,
-        description="Additional context for this automation run, up to 10,000 characters. Supported only when `event` is `manual`. The context supplements the automation's configured instructions.",
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody)
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItem
+    s
 
-__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItems
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItems",
+)

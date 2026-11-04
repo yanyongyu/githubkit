@@ -9,108 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingPremiumRequestUsageReportGheType(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
-
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
-    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
-
-
-class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
-
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[
-        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
-    ]
-    usage_items: list[
-        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
-    ]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class UpdateCostCenterType(TypedDict):
+    """UpdateCostCenter"""
 
     id: str
     name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsType]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[UpdateCostCenterPropAiCreditPoolStateType]
 
 
-class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class UpdateCostCenterTypeForResponse(TypedDict):
+    """UpdateCostCenter"""
 
     id: str
     name: str
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        UpdateCostCenterPropAiCreditPoolStateTypeForResponse
+    ]
 
 
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+class UpdateCostCenterPropResourcesItemsType(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    type: str
+    name: str
 
 
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
+class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """UpdateCostCenterPropResourcesItems"""
 
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    type: str
+    name: str
+
+
+class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
+
+
+class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """UpdateCostCenterPropAiCreditPoolState
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
+    """
+
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportGhePropCostCenterType",
-    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportGheType",
-    "BillingPremiumRequestUsageReportGheTypeForResponse",
+    "UpdateCostCenterPropAiCreditPoolStateType",
+    "UpdateCostCenterPropAiCreditPoolStateTypeForResponse",
+    "UpdateCostCenterPropResourcesItemsType",
+    "UpdateCostCenterPropResourcesItemsTypeForResponse",
+    "UpdateCostCenterType",
+    "UpdateCostCenterTypeForResponse",
 )

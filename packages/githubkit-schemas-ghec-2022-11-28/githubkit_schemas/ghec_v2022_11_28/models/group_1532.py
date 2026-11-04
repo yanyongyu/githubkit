@@ -9,39 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0110 import CopilotSeatDetails
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field(
-        description="The default policy applied to newly released Copilot features and clients."
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
-    )
-    editable: bool = Field(
-        description="Whether the organization can update its default availability."
-    )
-
-
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200)
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability)
-
-__all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
-)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

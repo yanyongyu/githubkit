@@ -9,40 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
+
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse]
+    schemas: NotRequired[list[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
     Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    emails: list[str]
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
 
 
-class UserEmailsDeleteBodyOneof0TypeForResponse(TypedDict):
-    """UserEmailsDeleteBodyOneof0
-
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
+class ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
     Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    emails: list[str]
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "UserEmailsDeleteBodyOneof0Type",
-    "UserEmailsDeleteBodyOneof0TypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse",
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyTypeForResponse",
 )

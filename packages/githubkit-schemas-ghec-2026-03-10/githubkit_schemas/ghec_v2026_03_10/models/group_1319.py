@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
-
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems
-    ] = Field()
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
 
-    model_name: str = Field()
-    display_name: str = Field()
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="When editable, the agent apps policy's configured value, or `optional` if no agent apps policy has been configured for this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
-    )
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ] = Field(
-        description="The separately read enterprise-layer policy for this model, used to determine whether the agent apps policy can be edited."
-    )
-    editable: bool = Field(
-        description="Whether the enterprise policy and available apps policy controls allow the agent apps policy to be updated."
+    repositories: list[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        description="The repository names to add to the installation.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBody",
 )

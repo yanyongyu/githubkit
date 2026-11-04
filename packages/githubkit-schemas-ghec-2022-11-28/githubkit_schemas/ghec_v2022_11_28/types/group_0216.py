@@ -9,71 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class PublicMonitoringSecretAuthorType(TypedDict):
-    """PublicMonitoringSecretAuthor
 
-    Delivered public details for the user attributed as the secret author.
+class BaseGistType(TypedDict):
+    """Base Gist
+
+    Base Gist
     """
 
-    login: str
-    avatar_url: NotRequired[Union[str, None]]
-    html_url: NotRequired[Union[str, None]]
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserType, None]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class PublicMonitoringSecretAuthorTypeForResponse(TypedDict):
-    """PublicMonitoringSecretAuthor
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
 
-    Delivered public details for the user attributed as the secret author.
+    Base Gist
     """
 
-    login: str
-    avatar_url: NotRequired[Union[str, None]]
-    html_url: NotRequired[Union[str, None]]
+    url: str
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    user: Union[SimpleUserTypeForResponse, None]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
+    forks: NotRequired[list[Any]]
+    history: NotRequired[list[Any]]
 
 
-class PublicMonitoringAlertLocationType(TypedDict):
-    """PublicMonitoringAlertLocation
-
-    Delivered source location details for a public monitoring alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    blob_sha: NotRequired[str]
-    commit_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    content_number: NotRequired[int]
-    content_id: NotRequired[int]
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
-class PublicMonitoringAlertLocationTypeForResponse(TypedDict):
-    """PublicMonitoringAlertLocation
-
-    Delivered source location details for a public monitoring alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    blob_sha: NotRequired[str]
-    commit_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    content_number: NotRequired[int]
-    content_id: NotRequired[int]
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "PublicMonitoringAlertLocationType",
-    "PublicMonitoringAlertLocationTypeForResponse",
-    "PublicMonitoringSecretAuthorType",
-    "PublicMonitoringSecretAuthorTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

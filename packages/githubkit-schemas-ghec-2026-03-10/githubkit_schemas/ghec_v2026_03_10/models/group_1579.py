@@ -9,26 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0140 import CustomPropertyValue
 
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-class OrgsOrgPropertiesInstallationsValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
-
-    repository_names: list[str] = Field(
-        max_length=30 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories that the external custom property values will be applied to.",
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
     )
-    properties: list[CustomPropertyValue] = Field(
-        description="List of external custom property names and associated values to apply to the repositories."
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the request. Max 1024 characters.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesInstallationsValuesPatchBody)
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
 
-__all__ = ("OrgsOrgPropertiesInstallationsValuesPatchBody",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

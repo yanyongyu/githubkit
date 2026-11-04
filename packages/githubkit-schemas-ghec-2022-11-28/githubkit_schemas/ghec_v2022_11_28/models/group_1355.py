@@ -14,24 +14,32 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field()
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
+    ty
+    """
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke across the enterprise.")
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credentials of this type owned by\nenterprise members. This option is only available for Enterprise Managed\nUser (EMU) enterprises. When set to `true`, all credentials of the given\ntype owned by enterprise members will be destroyed in addition to the\ncredential authorizations. Note that `oauth_app_token` credentials cannot\nbe destroyed; for that type only the credential authorizations are revoked.",
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody)
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
+)

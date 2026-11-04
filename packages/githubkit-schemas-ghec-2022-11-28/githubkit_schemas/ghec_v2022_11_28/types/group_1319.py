@@ -10,46 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
-
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
-
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse
-    ]
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    model_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    model_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
+    repository_selection: Literal["all", "selected"]
+    repositories: NotRequired[list[str]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBodyTypeForResponse",
 )

@@ -13,106 +13,9 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof1Type(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1"""
-
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType, None]
-    assignees: NotRequired[
-        list[
-            Union[
-                WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType, None
-            ]
-        ]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: list[WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType]
-    labels_url: NotRequired[str]
-    locked: bool
-    milestone: NotRequired[
-        Union[WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType, None]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType,
-            None,
-        ]
-    ]
-    reactions: NotRequired[WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType]
-    repository_url: NotRequired[str]
-    state: Literal["open", "closed"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1TypeForResponse(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1"""
-
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: Union[
-        WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse, None
-    ]
-    assignees: NotRequired[
-        list[
-            Union[
-                WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsTypeForResponse,
-                None,
-            ]
-        ]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: list[
-        WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsTypeForResponse
-    ]
-    labels_url: NotRequired[str]
-    locked: bool
-    milestone: NotRequired[
-        Union[
-            WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneTypeForResponse, None
-        ]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse,
-            None,
-        ]
-    ]
-    reactions: NotRequired[
-        WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsTypeForResponse
-    ]
-    repository_url: NotRequired[str]
-    state: Literal["open", "closed"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssueCommentUnpinnedPropIssueAllof1PropUserTypeForResponse]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType(TypedDict):
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -134,12 +37,14 @@ class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse(TypedDict):
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -161,160 +66,106 @@ class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse(Type
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsTypeForResponse(
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
     TypedDict
 ):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems"""
+    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissio
+    ns
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsTypeForResponse(
+class WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse(
     TypedDict
 ):
-    """Label"""
+    """WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissio
+    ns
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
+    The set of permissions for the GitHub app
+    """
 
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneTypeForResponse(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType(
-    TypedDict
-):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse(
-    TypedDict
-):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsTypeForResponse(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhookIssueCommentUnpinnedPropIssueAllof1PropUserTypeForResponse(TypedDict):
-    """WebhookIssueCommentUnpinnedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
 
 
 __all__ = (
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneeTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItemsTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItemsTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestoneTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubAppTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropReactionsTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropUserType",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1PropUserTypeForResponse",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1Type",
-    "WebhookIssueCommentUnpinnedPropIssueAllof1TypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwnerTypeForResponse",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsTypeForResponse",
 )

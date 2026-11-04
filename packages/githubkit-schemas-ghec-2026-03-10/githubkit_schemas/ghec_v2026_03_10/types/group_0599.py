@@ -9,67 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
-    """Repository Advisory Description Validation Error
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type(TypedDict):
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    The description does not answer the repository's report template.
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
-    ]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
-class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
-    """Repository Advisory Description Validation Error
-
-    The description does not answer the repository's report template.
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
-    ]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
-    section: NotRequired[str]
-    option: NotRequired[str]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
+class SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse(
     TypedDict
 ):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
+    """SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
-    section: NotRequired[str]
-    option: NotRequired[str]
+    pattern_name: NotRequired[str]
+    pattern_scope: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
-    "RepositoryAdvisoryDescriptionValidationErrorType",
-    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1Type",
+    "SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1TypeForResponse",
 )

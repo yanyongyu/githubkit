@@ -9,34 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0017 import AppPermissionsType, AppPermissionsTypeForResponse
+
+class AgentsTasksTaskIdGetResponse403Type(TypedDict):
+    """AgentsTasksTaskIdGetResponse403
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[list[AgentsTasksTaskIdGetResponse403PropErrorsItemsType]]
+    documentation_url: str
 
 
-class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AgentsTasksTaskIdGetResponse403TypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse403
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsType]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse]
+    ]
+    documentation_url: str
 
 
-class ApplicationsClientIdTokenScopedPostBodyTypeForResponse(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AgentsTasksTaskIdGetResponse403PropErrorsItemsType(TypedDict):
+    """AgentsTasksTaskIdGetResponse403PropErrorsItems
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[list[str]]
-    repository_ids: NotRequired[list[int]]
-    permissions: NotRequired[AppPermissionsTypeForResponse]
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsTasksTaskIdGetResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "ApplicationsClientIdTokenScopedPostBodyType",
-    "ApplicationsClientIdTokenScopedPostBodyTypeForResponse",
+    "AgentsTasksTaskIdGetResponse403PropErrorsItemsType",
+    "AgentsTasksTaskIdGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsTasksTaskIdGetResponse403Type",
+    "AgentsTasksTaskIdGetResponse403TypeForResponse",
 )

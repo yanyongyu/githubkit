@@ -13,89 +13,29 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404Type(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Request body for requesting an automation run.
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsType
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
+    event: Literal["manual"]
+    context: NotRequired[str]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Request body for requesting an automation run.
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
-
-
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    event: Literal["manual"]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404Type",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse",
 )

@@ -9,74 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0059 import (
-    ActionsPolicyOrgConditionsOneof0Type,
-    ActionsPolicyOrgConditionsOneof0TypeForResponse,
-)
-from .group_0060 import (
-    ActionsPolicyOrgConditionsOneof1Type,
-    ActionsPolicyOrgConditionsOneof1TypeForResponse,
-)
-from .group_0061 import (
-    ActionsPolicyOrgConditionsOneof2Type,
-    ActionsPolicyOrgConditionsOneof2TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+from .group_0031 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class OrgsOrgActionsPoliciesPostBodyType(TypedDict):
-    """OrgsOrgActionsPoliciesPostBody"""
+class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0Type,
-            ActionsPolicyOrgConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    total_count: int
+    runners: list[ActionsHostedRunnerType]
 
 
-class OrgsOrgActionsPoliciesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesPostBody"""
+class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersGetResponse200"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0TypeForResponse,
-            ActionsPolicyOrgConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof2TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    total_count: int
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesPostBodyType",
-    "OrgsOrgActionsPoliciesPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
 )

@@ -9,67 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
-    ActionsPolicyRepoConditionsOneof0Type,
-    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType
+    ]
+    extra_known_marketplaces: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType
+    ]
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse
+    ]
+    extra_known_marketplaces: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse
+    ]
+
+
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType: TypeAlias = (
+    dict[str, Any]
 )
-from .group_0123 import (
-    ActionsPolicyRepoConditionsOneof1Type,
-    ActionsPolicyRepoConditionsOneof1TypeForResponse,
-)
-from .group_0145 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
+
+Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+"""
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+"""
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0TypeForResponse,
-            ActionsPolicyRepoConditionsOneof1TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+Additional plugin marketplaces available to the team, keyed by marketplace name.
+"""
+
+
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+
+Additional plugin marketplaces available to the team, keyed by marketplace name.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse",
 )

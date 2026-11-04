@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserEmailVisibilityPatchBody(GitHubModel):
-    """UserEmailVisibilityPatchBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    visibility: Literal["public", "private"] = Field(
-        description="Denotes whether an email is publicly visible."
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
+    )
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
+    )
+    team_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
     )
 
 
-model_rebuild(UserEmailVisibilityPatchBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("UserEmailVisibilityPatchBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

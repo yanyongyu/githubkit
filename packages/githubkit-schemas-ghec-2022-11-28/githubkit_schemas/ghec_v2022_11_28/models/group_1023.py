@@ -18,20 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0657 import EnterpriseWebhooks
-from .group_0658 import SimpleInstallation
-from .group_0659 import OrganizationSimpleWebhooks
-from .group_0660 import RepositoryWebhooks
-from .group_0680 import WebhooksChanges
-from .group_0705 import WebhooksReviewComment
-from .group_1024 import WebhookPullRequestReviewCommentEditedPropPullRequest
+from .group_0659 import EnterpriseWebhooks
+from .group_0660 import SimpleInstallation
+from .group_0661 import OrganizationSimpleWebhooks
+from .group_0662 import RepositoryWebhooks
+from .group_0707 import WebhooksReviewComment
+from .group_1024 import WebhookPullRequestReviewCommentDeletedPropPullRequest
 
 
-class WebhookPullRequestReviewCommentEdited(GitHubModel):
-    """pull_request_review_comment edited event"""
+class WebhookPullRequestReviewCommentDeleted(GitHubModel):
+    """pull_request_review_comment deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhooksChanges = Field(description="The changes to the comment.")
+    action: Literal["deleted"] = Field()
     comment: WebhooksReviewComment = Field(
         title="Pull Request Review Comment",
         description="The [comment](https://docs.github.com/enterprise-cloud@latest/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.",
@@ -51,7 +49,7 @@ class WebhookPullRequestReviewCommentEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestReviewCommentEditedPropPullRequest = Field()
+    pull_request: WebhookPullRequestReviewCommentDeletedPropPullRequest = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -59,6 +57,6 @@ class WebhookPullRequestReviewCommentEdited(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestReviewCommentEdited)
+model_rebuild(WebhookPullRequestReviewCommentDeleted)
 
-__all__ = ("WebhookPullRequestReviewCommentEdited",)
+__all__ = ("WebhookPullRequestReviewCommentDeleted",)

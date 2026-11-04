@@ -9,47 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueTypeWebhookType(TypedDict):
-    """Issue Type
+class PorterLargeFileType(TypedDict):
+    """Porter Large File
 
-    The type of issue.
+    Porter Large File
     """
 
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
-class IssueTypeWebhookTypeForResponse(TypedDict):
-    """Issue Type
+class PorterLargeFileTypeForResponse(TypedDict):
+    """Porter Large File
 
-    The type of issue.
+    Porter Large File
     """
 
-    id: int
-    name: str
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
 __all__ = (
-    "IssueTypeWebhookType",
-    "IssueTypeWebhookTypeForResponse",
+    "PorterLargeFileType",
+    "PorterLargeFileTypeForResponse",
 )

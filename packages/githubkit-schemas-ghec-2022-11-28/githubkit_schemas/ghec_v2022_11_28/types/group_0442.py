@@ -9,40 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
 
-class CodeScanningVariantAnalysisRepositoryType(TypedDict):
-    """Repository Identifier
+class CodeScanningAnalysisDeletionType(TypedDict):
+    """Analysis deletion
 
-    Repository Identifier
+    Successful deletion of a code scanning analysis
     """
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[_dt.datetime, None]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
-class CodeScanningVariantAnalysisRepositoryTypeForResponse(TypedDict):
-    """Repository Identifier
+class CodeScanningAnalysisDeletionTypeForResponse(TypedDict):
+    """Analysis deletion
 
-    Repository Identifier
+    Successful deletion of a code scanning analysis
     """
 
-    id: int
-    name: str
-    full_name: str
-    private: bool
-    stargazers_count: int
-    updated_at: Union[str, None]
+    next_analysis_url: Union[str, None]
+    confirm_delete_url: Union[str, None]
 
 
 __all__ = (
-    "CodeScanningVariantAnalysisRepositoryType",
-    "CodeScanningVariantAnalysisRepositoryTypeForResponse",
+    "CodeScanningAnalysisDeletionType",
+    "CodeScanningAnalysisDeletionTypeForResponse",
 )

@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0217 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
+
+    key_id: str
+    key: str
 
 
-class OrgsOrgPropertiesInstallationsValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+class OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgPrivateRegistriesPublicKeyGetResponse200"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
-
-
-class OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200Type",
+    "OrgsOrgPrivateRegistriesPublicKeyGetResponse200TypeForResponse",
 )

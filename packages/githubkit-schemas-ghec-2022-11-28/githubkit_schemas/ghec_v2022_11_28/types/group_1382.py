@@ -9,78 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
-
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: (
-        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
-    )
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-    expires_at: NotRequired[_dt.date]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
-
-    budget_amount: int
-    prevent_further_usage: bool
-    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ]
-    budget_entity_name: NotRequired[str]
-    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
-    budget_product_sku: NotRequired[str]
-    user: NotRequired[str]
-    expires_at: NotRequired[str]
-
-
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
 
-    will_alert: bool
-    alert_recipients: list[str]
+    status: NotRequired[Literal["error"]]
+    error: NotRequired[str]
 
 
-class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
+class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
+    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
+    f1
+    """
 
-    will_alert: bool
-    alert_recipients: list[str]
+    status: NotRequired[Literal["error"]]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
-    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
+    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
 )

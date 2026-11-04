@@ -9,174 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0281 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
-from .group_0297 import CodespaceMachineType, CodespaceMachineTypeForResponse
 
+class CodeScanningAiScanOrgEnablementUpdateType(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-class CodespaceType(TypedDict):
-    """Codespace
-
-    A codespace.
+    The AI Scan organization setting to apply
     """
 
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserType
-    billable_owner: SimpleUserType
-    repository: MinimalRepositoryType
-    machine: Union[CodespaceMachineType, None]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    last_used_at: _dt.datetime
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespacePropGitStatusType
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[_dt.datetime, None]]
-    last_known_stop_notice: NotRequired[Union[str, None]]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodespaceTypeForResponse(TypedDict):
-    """Codespace
+class CodeScanningAiScanOrgEnablementUpdateTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings update
 
-    A codespace.
+    The AI Scan organization setting to apply
     """
 
-    id: int
-    name: str
-    display_name: NotRequired[Union[str, None]]
-    environment_id: Union[str, None]
-    owner: SimpleUserTypeForResponse
-    billable_owner: SimpleUserTypeForResponse
-    repository: MinimalRepositoryTypeForResponse
-    machine: Union[CodespaceMachineTypeForResponse, None]
-    devcontainer_path: NotRequired[Union[str, None]]
-    prebuild: Union[bool, None]
-    created_at: str
-    updated_at: str
-    last_used_at: str
-    state: Literal[
-        "Unknown",
-        "Created",
-        "Queued",
-        "Provisioning",
-        "Available",
-        "Awaiting",
-        "Unavailable",
-        "Deleted",
-        "Moved",
-        "Shutdown",
-        "Archived",
-        "Starting",
-        "ShuttingDown",
-        "Failed",
-        "Exporting",
-        "Updating",
-        "Rebuilding",
-    ]
-    url: str
-    git_status: CodespacePropGitStatusTypeForResponse
-    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
-    idle_timeout_minutes: Union[int, None]
-    web_url: str
-    machines_url: str
-    start_url: str
-    stop_url: str
-    publish_url: NotRequired[Union[str, None]]
-    pulls_url: Union[str, None]
-    recent_folders: list[str]
-    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsTypeForResponse]
-    pending_operation: NotRequired[Union[bool, None]]
-    pending_operation_disabled_reason: NotRequired[Union[str, None]]
-    idle_timeout_notice: NotRequired[Union[str, None]]
-    retention_period_minutes: NotRequired[Union[int, None]]
-    retention_expires_at: NotRequired[Union[str, None]]
-    last_known_stop_notice: NotRequired[Union[str, None]]
-
-
-class CodespacePropGitStatusType(TypedDict):
-    """CodespacePropGitStatus
-
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespacePropGitStatusTypeForResponse(TypedDict):
-    """CodespacePropGitStatus
-
-    Details about the codespace's git repository.
-    """
-
-    ahead: NotRequired[int]
-    behind: NotRequired[int]
-    has_unpushed_changes: NotRequired[bool]
-    has_uncommitted_changes: NotRequired[bool]
-    ref: NotRequired[str]
-
-
-class CodespacePropRuntimeConstraintsType(TypedDict):
-    """CodespacePropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
-
-
-class CodespacePropRuntimeConstraintsTypeForResponse(TypedDict):
-    """CodespacePropRuntimeConstraints"""
-
-    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodespacePropGitStatusType",
-    "CodespacePropGitStatusTypeForResponse",
-    "CodespacePropRuntimeConstraintsType",
-    "CodespacePropRuntimeConstraintsTypeForResponse",
-    "CodespaceType",
-    "CodespaceTypeForResponse",
+    "CodeScanningAiScanOrgEnablementUpdateType",
+    "CodeScanningAiScanOrgEnablementUpdateTypeForResponse",
 )

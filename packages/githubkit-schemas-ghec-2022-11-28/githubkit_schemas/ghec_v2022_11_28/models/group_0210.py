@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,30 +19,50 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPatternToCreate(GitHubModel):
-    """Secret Scanning Custom Pattern To Create
+class SecretScanningCustomPattern(GitHubModel):
+    """Secret Scanning Custom Pattern
 
-    A custom pattern to create in a bulk operation.
+    A custom pattern for secret scanning.
     """
 
+    id: int = Field(description="The ID of the custom pattern.")
     name: str = Field(description="The name of the custom pattern.")
     pattern: str = Field(description="The regular expression of the custom pattern.")
-    start_delimiter: Missing[str] = Field(
-        default=UNSET,
-        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
+    slug: str = Field(
+        description="A URL-friendly identifier for the custom pattern, derived from its name."
     )
-    end_delimiter: Missing[str] = Field(
-        default=UNSET,
-        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
+    state: Literal["published", "unpublished"] = Field(
+        description="The state of the custom pattern."
     )
-    must_match: Missing[list[str]] = Field(
+    push_protection_enabled: bool = Field(
+        description="Whether push protection is enabled for this custom pattern."
+    )
+    start_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The start delimiter regex for the custom pattern."
+    )
+    end_delimiter: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The end delimiter regex for the custom pattern."
+    )
+    must_match: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="List of regexes that the secret must match."
     )
-    must_not_match: Missing[list[str]] = Field(
+    must_not_match: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="List of regexes that the secret must not match."
+    )
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was created in ISO 8601 format.",
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the custom pattern was last updated in ISO 8601 format.",
     )
 
 
-model_rebuild(SecretScanningCustomPatternToCreate)
+model_rebuild(SecretScanningCustomPattern)
 
-__all__ = ("SecretScanningCustomPatternToCreate",)
+__all__ = ("SecretScanningCustomPattern",)

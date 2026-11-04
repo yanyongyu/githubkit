@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,135 +18,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1"""
+class ReposOwnerRepoHooksPostBody(GitHubModel):
+    """ReposOwnerRepoHooksPostBody"""
 
-    artifact: IssueArtifact = Field(
-        title="Issue artifact",
-        description="Issue artifacts are named, typed pieces of content attached to an issue.\nThey give people and agents a durable place to preserve context and\nsupporting material alongside the work. Each artifact has a number unique\nwithin the issue.",
-    )
-    versions: list[
-        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
-    ] = Field(
-        description="The artifact version history, ordered from newest to oldest."
-    )
-
-
-class IssueArtifact(GitHubModel):
-    """Issue artifact
-
-    Issue artifacts are named, typed pieces of content attached to an issue.
-    They give people and agents a durable place to preserve context and
-    supporting material alongside the work. Each artifact has a number unique
-    within the issue.
-    """
-
-    id: int = Field(description="The globally unique identifier of the artifact.")
-    html_url: Missing[str] = Field(
+    name: Missing[str] = Field(
         default=UNSET,
-        description="The canonical browser URL for the artifact in its issue context.",
+        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
     )
-    number: int = Field(description="The artifact number within the issue.")
-    type: str = Field(
-        description="The artifact type. The types supported for external creation and filtering are:\n\n- `generic` is a general-purpose Markdown document.\n- `link` represents a named link.\n- `plan` is a Markdown plan.\n- `embedded_html` is a self-contained HTML document. Its `body` contains the HTML source."
+    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
+        default=UNSET,
+        description="Key/value pairs to provide settings for this webhook.",
     )
-    name: str = Field(description="The human-readable name of the artifact.")
-    body: str = Field(
-        description="The artifact content. For `embedded_html` artifacts, this is the HTML source."
+    events: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for.",
     )
-    body_html: Union[str, None] = Field(
-        description="The artifact content rendered as HTML, or `null` if rendering times out or is skipped\nto protect the response's time budget. The raw content remains available in `body`."
-    )
-    description: str = Field(description="A short, generated summary of the artifact.")
-    creator: Union[IssueArtifactPropCreator, None] = Field(
-        description="The user or integration that created the artifact."
-    )
-    updated_by_actor: Union[IssueArtifactPropUpdatedByActor, None] = Field(
-        description="The user or integration that most recently updated the artifact."
-    )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The time the artifact was created."
-    )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The time the artifact was last updated."
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-class IssueArtifactPropCreator(GitHubModel):
-    """IssueArtifactPropCreator
+class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
+    """ReposOwnerRepoHooksPostBodyPropConfig
 
-    The user or integration that created the artifact.
+    Key/value pairs to provide settings for this webhook.
     """
 
-    login: str = Field()
-    id: int = Field()
-
-
-class IssueArtifactPropUpdatedByActor(GitHubModel):
-    """IssueArtifactPropUpdatedByActor
-
-    The user or integration that most recently updated the artifact.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
-    rsionsItems
-    """
-
-    version: int = Field(description="The sequential version number.")
-    name: str = Field(description="The artifact name at this version.")
-    body: str = Field(description="The artifact content at this version.")
-    body_html: Union[str, None] = Field(
-        description="The artifact content at this version rendered as HTML, or `null` if rendering times out\nor is skipped to protect the response's time budget. The raw content remains available in `body`."
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The time this version was created."
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    actor: Union[
-        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor,
-        None,
-    ] = Field(description="The user or integration that created this version.")
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
-    rsionsItemsPropActor
-
-    The user or integration that created this version.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1
-)
-model_rebuild(IssueArtifact)
-model_rebuild(IssueArtifactPropCreator)
-model_rebuild(IssueArtifactPropUpdatedByActor)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor
-)
+model_rebuild(ReposOwnerRepoHooksPostBody)
+model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
 
 __all__ = (
-    "IssueArtifact",
-    "IssueArtifactPropCreator",
-    "IssueArtifactPropUpdatedByActor",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor",
+    "ReposOwnerRepoHooksPostBody",
+    "ReposOwnerRepoHooksPostBodyPropConfig",
 )

@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1805 import ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1(
-    GitHubModel
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
 
-    reviewers: Missing[list[str]] = Field(
+class ReposOwnerRepoPagesPostBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
-        description="An array of user `login`s whose reviews will be rerequested.",
+        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.',
     )
-    team_reviewers: list[str] = Field(
-        description="An array of team `slug`s whose reviews will be rerequested."
+    source: ReposOwnerRepoPagesPostBodyPropSource = Field(
+        description="The source branch and directory used to publish your Pages site."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoPagesPostBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0",)

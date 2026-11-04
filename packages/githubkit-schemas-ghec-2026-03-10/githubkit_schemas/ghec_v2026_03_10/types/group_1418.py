@@ -9,26 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0031 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerType]
+    user_identifier: NotRequired[str]
 
 
-class OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-    total_count: int
-    runners: list[ActionsHostedRunnerTypeForResponse]
+    user_identifier: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgActionsHostedRunnersGetResponse200Type",
-    "OrgsOrgActionsHostedRunnersGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyType",
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBodyTypeForResponse",
 )

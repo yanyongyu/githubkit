@@ -9,25 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0110 import CopilotSeatDetails
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
 
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot seats the enterprise is being billed for. Users with access through enterprise, enterprise teams or multiple organizations are only counted once.",
+    credential_id: Union[int, str] = Field()
+    credential_type: Literal["classic_pat", "ssh_key"] = Field(
+        description="The type of credential to authorize."
     )
-    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
+    organizations: UniqueList[str] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseMembersUsernameCopilotGetResponse200)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBody)
 
-__all__ = ("EnterprisesEnterpriseMembersUsernameCopilotGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBody",)

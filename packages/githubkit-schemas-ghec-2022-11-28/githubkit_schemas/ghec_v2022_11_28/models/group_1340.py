@@ -9,35 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
-
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability
+    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse202",
 )

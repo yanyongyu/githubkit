@@ -9,30 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0287 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
+    sort_by: NotRequired[list[list[Union[int, str]]]]
+    group_by: NotRequired[list[int]]
+    vertical_group_by: NotRequired[list[int]]
 
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
+class OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
-
-
-class OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    name: str
+    layout: Literal["table", "board", "roadmap"]
+    filter_: NotRequired[str]
+    visible_fields: NotRequired[list[int]]
+    sort_by: NotRequired[list[list[Union[int, str]]]]
+    group_by: NotRequired[list[int]]
+    vertical_group_by: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsDeleteBodyType",
-    "OrgsOrgSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberViewsPostBodyTypeForResponse",
 )

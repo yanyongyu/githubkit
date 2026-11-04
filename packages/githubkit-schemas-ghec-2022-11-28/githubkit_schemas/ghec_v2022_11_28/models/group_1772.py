@@ -16,22 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
 
     name: str = Field(
-        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
+        min_length=1, description="The new human-readable name of the artifact."
     )
-    color: Missing[str] = Field(
-        default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+    body: Missing[str] = Field(
+        min_length=1, default=UNSET, description="The new artifact content."
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoLabelsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0",)

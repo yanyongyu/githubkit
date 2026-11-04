@@ -9,88 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200(GitHubModel):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+class ReposOwnerRepoCodeScanningSarifsPostBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    mcp_configuration: Union[
-        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
-        None,
-    ] = Field(
-        description="The user-supplied MCP server configuration for the repository, as a free-form JSON object. This will be set to `null` if no configuration has been set.\n\nThe shape of a valid MCP configuration may evolve over time, so this property is intentionally not strictly typed. Clients should not assume a fixed schema."
+    commit_sha: str = Field(
+        min_length=40,
+        max_length=64,
+        pattern="^([0-9a-fA-F]{40}(?:[0-9a-fA-F]{24})?)$",
+        description="The SHA of the commit to which the analysis you are uploading relates.",
     )
-    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools = Field(
-        description="The enabled review tools for Copilot cloud agent."
+    ref: str = Field(
+        pattern="^refs/(heads|tags|pull)/.*$",
+        description="The full Git reference, formatted as `refs/heads/<branch name>`,\n`refs/tags/<tag>`, `refs/pull/<number>/merge`, or `refs/pull/<number>/head`.",
     )
-    require_actions_workflow_approval: bool = Field(
-        description="Whether Actions workflow approval is required for Copilot cloud agent pull requests."
+    sarif: str = Field(
+        description='A Base64 string representing the SARIF file to upload. You must first compress your SARIF file using [`gzip`](http://www.gnu.org/software/gzip/manual/gzip.html) and then translate the contents of the file into a Base64 encoding string. For more information, see "[SARIF support for code scanning](https://docs.github.com/code-security/secure-coding/sarif-support-for-code-scanning)."'
     )
-    is_firewall_enabled: bool = Field(description="Whether the firewall is enabled.")
-    is_firewall_recommended_allowlist_enabled: bool = Field(
-        description="Whether the firewall recommended allowlist is enabled."
+    checkout_uri: Missing[str] = Field(
+        default=UNSET,
+        description="The base directory used in the analysis, as it appears in the SARIF file.\nThis property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
     )
-    custom_allowlist: list[str] = Field(
-        description="A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access."
+    started_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    is_automations_enabled: bool = Field(
-        description="Whether automations are enabled in this repository. When true, users can create automations that automatically run agents on a schedule or in response to events like new issues or updated pull requests."
+    tool_name: Missing[str] = Field(
+        default=UNSET,
+        description='The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.',
     )
-    require_write_access_for_automation_triggers: bool = Field(
-        description="Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access."
-    )
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-
-    The user-supplied MCP server configuration for the repository, as a free-form
-    JSON object. This will be set to `null` if no configuration has been set.
-
-    The shape of a valid MCP configuration may evolve over time, so this property is
-    intentionally not strictly typed. Clients should not assume a fixed schema.
-    """
-
-
-class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools(
-    GitHubModel
-):
-    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-
-    The enabled review tools for Copilot cloud agent.
-    """
-
-    codeql: bool = Field(
-        description="Whether the CodeQL tool is enabled for the Copilot cloud agent."
-    )
-    copilot_code_review: bool = Field(
-        description="Whether the Copilot code review tool is enabled for the Copilot cloud agent."
-    )
-    secret_scanning: bool = Field(
-        description="Whether the secret scanning tool is enabled for the Copilot cloud agent."
-    )
-    dependency_vulnerability_checks: bool = Field(
-        description="Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent."
+    validate_: Missing[bool] = Field(
+        default=UNSET,
+        alias="validate",
+        description="Whether the SARIF file will be validated according to the code scanning specifications.\nThis parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
     )
 
 
-model_rebuild(ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
-)
-model_rebuild(
-    ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
-)
+model_rebuild(ReposOwnerRepoCodeScanningSarifsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
-    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
-)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBody",)

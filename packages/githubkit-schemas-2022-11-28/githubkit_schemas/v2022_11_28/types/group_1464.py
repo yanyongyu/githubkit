@@ -9,24 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type(TypedDict):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    sbom_url: NotRequired[str]
+    total_count: int
+    secrets: list[RepoCodespacesSecretType]
 
 
-class ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    sbom_url: NotRequired[str]
+    total_count: int
+    secrets: list[RepoCodespacesSecretTypeForResponse]
+
+
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+
+
+class RepoCodespacesSecretTypeForResponse(TypedDict):
+    """Codespaces Secret
+
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str
+    created_at: str
+    updated_at: str
 
 
 __all__ = (
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201Type",
-    "ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201TypeForResponse",
+    "RepoCodespacesSecretType",
+    "RepoCodespacesSecretTypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200TypeForResponse",
 )

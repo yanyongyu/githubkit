@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
 
-    issue_id: int
+    name: str
+    body: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
 
-    issue_id: int
+    name: str
+    body: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0TypeForResponse",
 )

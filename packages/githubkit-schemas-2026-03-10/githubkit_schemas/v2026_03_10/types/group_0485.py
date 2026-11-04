@@ -27,6 +27,10 @@ class ReviewCommentType(TypedDict):
     Legacy Review Comment
     """
 
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_sources: NotRequired[
+        list[ReviewCommentPropCopilotCodeReviewSourcesItemsType]
+    ]
     url: str
     pull_request_review_id: Union[int, None]
     id: int
@@ -73,6 +77,10 @@ class ReviewCommentTypeForResponse(TypedDict):
     Legacy Review Comment
     """
 
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_sources: NotRequired[
+        list[ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse]
+    ]
     url: str
     pull_request_review_id: Union[int, None]
     id: int
@@ -113,7 +121,25 @@ class ReviewCommentTypeForResponse(TypedDict):
     subject_type: NotRequired[Literal["line", "file"]]
 
 
+class ReviewCommentPropCopilotCodeReviewSourcesItemsType(TypedDict):
+    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
+    name: str
+    path: NotRequired[str]
+
+
+class ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse(TypedDict):
+    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
+    name: str
+    path: NotRequired[str]
+
+
 __all__ = (
+    "ReviewCommentPropCopilotCodeReviewSourcesItemsType",
+    "ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse",
     "ReviewCommentType",
     "ReviewCommentTypeForResponse",
 )

@@ -9,56 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import TypedDict
-
-from .group_0606 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
+class ReposOwnerRepoReleasesPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+class ReposOwnerRepoReleasesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesPostBody"""
 
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
-
-    ref: str
+    tag_name: str
+    target_commitish: NotRequired[str]
+    name: NotRequired[str]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    discussion_category_name: NotRequired[str]
+    generate_release_notes: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberGetResponse200Type",
-    "ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse",
+    "ReposOwnerRepoReleasesPostBodyType",
+    "ReposOwnerRepoReleasesPostBodyTypeForResponse",
 )

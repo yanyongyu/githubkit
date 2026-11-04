@@ -9,28 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0281 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class OrgsOrgCopilotFeaturePoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
 __all__ = (
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
-    "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200Type",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse",
 )

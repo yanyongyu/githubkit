@@ -9,31 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1504 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
-)
+
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
-
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
-    ]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyType",
+    "ReposOwnerRepoHooksHookIdConfigPatchBodyTypeForResponse",
 )

@@ -9,26 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+
+    models: list[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType
+    ]
+
+
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
 
-    revoke_credentials: NotRequired[bool]
+    models: list[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
 
-    revoke_credentials: NotRequired[bool]
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
+
+
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyTypeForResponse",
 )

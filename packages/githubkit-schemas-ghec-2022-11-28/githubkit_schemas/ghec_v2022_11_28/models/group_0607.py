@@ -16,21 +16,54 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
 
+class PullRequestStackMinimal(GitHubModel):
+    """Pull Request Stack Minimal"""
 
-class PullRequestStackPullRequestAllof1(GitHubModel):
-    """PullRequestStackPullRequestAllof1"""
-
+    id: int = Field()
+    number: int = Field()
     node_id: str = Field()
-    title: str = Field()
+    url: str = Field()
+    base: PullRequestStackMinimalPropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
+
+
+class PullRequestStackMinimalPropBase(GitHubModel):
+    """PullRequestStackMinimalPropBase"""
+
+    ref: str = Field()
+
+
+class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItems"""
+
+    number: int = Field()
     state: Literal["open", "closed"] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
     draft: bool = Field()
-    html_url: str = Field()
-    user: Union[SimpleUser, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
 
 
-model_rebuild(PullRequestStackPullRequestAllof1)
+class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
+    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
 
-__all__ = ("PullRequestStackPullRequestAllof1",)
+    ref: str = Field()
+    sha: str = Field()
+
+
+model_rebuild(PullRequestStackMinimal)
+model_rebuild(PullRequestStackMinimalPropBase)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
+model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
+
+__all__ = (
+    "PullRequestStackMinimal",
+    "PullRequestStackMinimalPropBase",
+    "PullRequestStackMinimalPropPullRequestsItems",
+    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
+)

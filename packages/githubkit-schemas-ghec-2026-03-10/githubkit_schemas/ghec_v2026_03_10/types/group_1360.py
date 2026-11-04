@@ -13,37 +13,85 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType
     ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
-
-
-class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsType
     ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+    ]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
-    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200TypeForResponse",
 )

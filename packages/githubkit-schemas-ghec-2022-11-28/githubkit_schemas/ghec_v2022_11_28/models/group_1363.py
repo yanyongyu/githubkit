@@ -9,21 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody"""
 
-    default_level: Literal["public", "internal"] = Field(
-        description="The default repository access level for Dependabot updates."
+    organizations: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of organization logins within the enterprise to enable Copilot cloud agent for.",
+    )
+    custom_properties: Missing[
+        list[
+            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody)
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPr
+    opertiesItems
+    """
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",)
+    property_name: str = Field(
+        description="The name of the custom property to filter by."
+    )
+    values: list[str] = Field(description="The values of the custom property to match.")
+
+
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
+)

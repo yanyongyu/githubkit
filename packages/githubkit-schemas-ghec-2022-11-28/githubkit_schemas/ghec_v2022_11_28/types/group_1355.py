@@ -10,32 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
-    revoke_credentials: NotRequired[bool]
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
+    ty
+    """
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
-    revoke_credentials: NotRequired[bool]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
+    ty
+    """
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse",
 )

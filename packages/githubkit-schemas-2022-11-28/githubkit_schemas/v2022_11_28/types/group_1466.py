@@ -9,57 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
-    ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
+    permission: NotRequired[str]
 
 
-class ReposOwnerRepoDeploymentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[list[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse, str]
-    ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-
-
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type: TypeAlias = dict[str, Any]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
-
-
-ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0
-"""
+    permission: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0TypeForResponse",
-    "ReposOwnerRepoDeploymentsPostBodyType",
-    "ReposOwnerRepoDeploymentsPostBodyTypeForResponse",
+    "ReposOwnerRepoCollaboratorsUsernamePutBodyType",
+    "ReposOwnerRepoCollaboratorsUsernamePutBodyTypeForResponse",
 )

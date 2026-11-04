@@ -10,36 +10,92 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
-
-from githubkit.typing import UniqueList
+from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403
 
-    The Agent Merge enrollment configuration
-
-    Examples:
-        {'allowed_actions': ['fix_ci']}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsType
+        ]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403
 
-    The Agent Merge enrollment configuration
-
-    Examples:
-        {'allowed_actions': ['fix_ci']}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403TypeForResponse",
 )

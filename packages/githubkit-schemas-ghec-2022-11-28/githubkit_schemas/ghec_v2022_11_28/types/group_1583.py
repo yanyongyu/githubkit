@@ -9,47 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    repository_values: list[RepositoryExternalPropertyPayloadType]
-
-
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
-
-    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
-class RepositoryExternalPropertyPayloadType(TypedDict):
-    """Repository External Custom Property Value Payload
+class OrgsOrgPersonalAccessTokensPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str
-    value: Union[str, None]
-
-
-class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
-    """Repository External Custom Property Value Payload
-
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str
-    value: Union[str, None]
+    action: Literal["revoke"]
+    pat_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
-    "RepositoryExternalPropertyPayloadType",
-    "RepositoryExternalPropertyPayloadTypeForResponse",
+    "OrgsOrgPersonalAccessTokensPostBodyType",
+    "OrgsOrgPersonalAccessTokensPostBodyTypeForResponse",
 )

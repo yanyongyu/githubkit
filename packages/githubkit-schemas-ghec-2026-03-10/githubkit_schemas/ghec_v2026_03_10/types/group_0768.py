@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0658 import (
+from .group_0473 import DependabotAlertType, DependabotAlertTypeForResponse
+from .group_0658 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0659 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0660 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0667 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
+from .group_0661 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertReopenedType(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["reopened"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertReopenedTypeForResponse(TypedDict):
+    """Dependabot alert reopened event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["reopened"]
+    alert: DependabotAlertTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    key: WebhooksDeployKeyTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookDeployKeyCreatedType",
-    "WebhookDeployKeyCreatedTypeForResponse",
+    "WebhookDependabotAlertReopenedType",
+    "WebhookDependabotAlertReopenedTypeForResponse",
 )

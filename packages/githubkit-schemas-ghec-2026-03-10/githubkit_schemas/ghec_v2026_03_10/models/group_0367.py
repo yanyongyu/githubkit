@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,179 +18,302 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
-from .group_0003 import SimpleUser
-from .group_0108 import Team
-from .group_0366 import RepositoryAdvisoryCredit
 
+class RuleSuite(GitHubModel):
+    """Rule Suite
 
-class RepositoryAdvisory(GitHubModel):
-    """RepositoryAdvisory
-
-    A repository security advisory.
+    Response
     """
 
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
     )
-    url: str = Field(description="The API URL for the advisory.")
-    html_url: str = Field(description="The URL for the advisory.")
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+    actor_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The number that identifies the user."
     )
-    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
-        description="A detailed description of what the advisory entails."
+    actor_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
     )
-    severity: Union[Literal["critical", "high", "medium", "low"], None] = Field(
-        description="The severity of the advisory."
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The previous commit SHA of the ref."
     )
-    author: None = Field(description="The author of the advisory.")
-    publisher: None = Field(description="The publisher of the advisory.")
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory."
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The new commit SHA of the ref."
     )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format."
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
     )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format."
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
     )
-    published_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format."
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
     )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format."
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
     )
-    withdrawn_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
+    evaluation_result: Missing[Union[Literal["pass", "fail", "bypass"], None]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
     )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        alias="credits"
-    )
-    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[list[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory."
-    )
-    collaborating_teams: Union[list[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory."
-    )
-    private_fork: None = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix."
+    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
+        default=UNSET, description="Details on the evaluated rules."
     )
 
 
-class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
+class RuleSuitePropRuleEvaluationsItems(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
-    value: str = Field(description="The identifier value.")
-
-
-class RepositoryAdvisoryPropSubmission(GitHubModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators."
+    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
+        default=UNSET, description="The enforcement level of this rule source."
+    )
+    result: Missing[Literal["pass", "fail"]] = Field(
+        default=UNSET,
+        description="The result of the evaluation of the individual rule.",
+    )
+    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
+    metadata: Missing[
+        Union[RuleSuitePullRequest, RuleSuiteRequiredStatusChecks, None]
+    ] = Field(
+        default=UNSET, description="Additional metadata about the rule evaluation."
+    )
+    details: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The detailed failure message for the rule. Null if the rule passed.",
     )
 
 
-class RepositoryAdvisoryPropCwesItems(GitHubModel):
-    """RepositoryAdvisoryPropCwesItems"""
+class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
-    name: str = Field(description="The name of the CWE.")
+    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the rule source."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the rule source."
+    )
 
 
-class RepositoryAdvisoryPropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryPropCreditsItems"""
+class RuleSuiteRequiredStatusChecks(GitHubModel):
+    """Required status checks rule suite metadata
 
+    Metadata for a required status checks rule evaluation result.
+    """
+
+    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
+        default=UNSET,
+        description="The status checks associated with the rule evaluation.",
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the status check."
+    )
+    context: Missing[str] = Field(
+        default=UNSET, description="The context name of the status check."
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the status check."
+    )
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of the status check."
+    )
+    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
+        Field(
+            default=UNSET,
+            description="The GitHub App associated with the status check.",
+        )
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the GitHub App."
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+
+
+class RuleSuitePullRequest(GitHubModel):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
+        default=UNSET,
+        description="The pull request associated with the rule evaluation.",
+    )
+
+
+class RuleSuitePullRequestPropPullRequest(GitHubModel):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the pull request."
+    )
+    number: Missing[int] = Field(
+        default=UNSET, description="The number of the pull request."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
+        default=UNSET, description="The user who created the pull request."
+    )
+    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
+        default=UNSET, description="The reviews associated with the pull request."
+    )
+    proof_of_presence: Missing[
+        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresence, None]
+    ] = Field(
+        default=UNSET,
+        description="The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.",
+    )
+
+
+class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
     login: Missing[str] = Field(
-        default=UNSET, description="The username of the user credited."
+        default=UNSET, description="The handle for the GitHub user account."
     )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
 
 
-class RepositoryAdvisoryVulnerability(GitHubModel):
-    """RepositoryAdvisoryVulnerability
+class RuleSuitePullRequestPropPullRequestPropProofOfPresence(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
 
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
+    The proof of presence evaluation for the pull request. Null if proof of presence
+    was not evaluated.
     """
 
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability."
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the proof of presence evaluation."
     )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability."
+    code: Missing[str] = Field(
+        default=UNSET,
+        description="A code describing the reason for the proof of presence state.",
     )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability."
+    base_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The base commit SHA the proof of presence evaluation applies to. Empty if unavailable.",
     )
-    vulnerable_functions: Union[list[str], None] = Field(
-        description="The functions in the package that are affected."
+    head_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The head commit SHA the proof of presence evaluation applies to. Empty if unavailable.",
+    )
+    required_level: Missing[str] = Field(
+        default=UNSET,
+        description="The authentication level required by the rule. Empty if unavailable.",
+    )
+    verified_level: Missing[str] = Field(
+        default=UNSET,
+        description="The authentication level that was verified. Empty if proof of presence has not been completed.",
+    )
+    verified_at: Missing[str] = Field(
+        default=UNSET,
+        description="The time proof of presence was verified, in ISO 8601 format. Empty if proof of presence has not been completed.",
+    )
+    verifier: Missing[
+        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier, None]
+    ] = Field(
+        default=UNSET,
+        description="The user who provided proof of presence. Null if no proof of presence was recorded.",
     )
 
 
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
 
-    The name of the package affected by the vulnerability.
+    The user who provided proof of presence. Null if no proof of presence was
+    recorded.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
     )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
 
 
-model_rebuild(RepositoryAdvisory)
-model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
-model_rebuild(RepositoryAdvisoryPropSubmission)
-model_rebuild(RepositoryAdvisoryPropCwesItems)
-model_rebuild(RepositoryAdvisoryPropCreditsItems)
-model_rebuild(RepositoryAdvisoryVulnerability)
-model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
+class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the review."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
+        default=UNSET, description="The user who submitted the review."
+    )
+    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+model_rebuild(RuleSuite)
+model_rebuild(RuleSuitePropRuleEvaluationsItems)
+model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
+model_rebuild(RuleSuiteRequiredStatusChecks)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
+model_rebuild(RuleSuitePullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropProofOfPresence)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
 
 __all__ = (
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropCreditsItems",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
+    "RuleSuite",
+    "RuleSuitePropRuleEvaluationsItems",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
+    "RuleSuitePullRequest",
+    "RuleSuitePullRequestPropPullRequest",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresence",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+    "RuleSuitePullRequestPropPullRequestPropUser",
+    "RuleSuiteRequiredStatusChecks",
+    "RuleSuiteRequiredStatusChecksPropChecksItems",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
 )

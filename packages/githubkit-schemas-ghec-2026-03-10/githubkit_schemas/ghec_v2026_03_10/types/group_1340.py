@@ -9,47 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+    selected_usernames: list[str]
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
-    ty
-    """
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
-    ty
-    """
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

@@ -9,25 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
-    ExtraGitHubModel
-):
-    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
-    rties
+class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values. Present for org repos only.
-    """
+    usernames: list[str] = Field(
+        description="The GitHub user handles to be removed from the team."
+    )
 
 
-model_rebuild(
-    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
-)
+model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody)
 
-__all__ = (
-    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
-)
+__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody",)

@@ -38,11 +38,11 @@ from .group_0207 import (
     SecretScanningLocationDiscussionBody,
     SecretScanningLocationPullRequestComment,
 )
-from .group_0592 import SecretScanningAlertMetadataItems
+from .group_0208 import SecretScanningLocationActionsLog
 
 
-class SecretScanningAlertWithMetadata(GitHubModel):
-    """SecretScanningAlertWithMetadata"""
+class SecretScanningAlert(GitHubModel):
+    """SecretScanningAlert"""
 
     number: Missing[int] = Field(
         default=UNSET, description="The security alert number."
@@ -149,6 +149,7 @@ class SecretScanningAlertWithMetadata(GitHubModel):
             SecretScanningLocationPullRequestComment,
             SecretScanningLocationPullRequestReview,
             SecretScanningLocationPullRequestReviewComment,
+            SecretScanningLocationActionsLog,
             None,
         ]
     ] = Field(default=UNSET)
@@ -166,12 +167,8 @@ class SecretScanningAlertWithMetadata(GitHubModel):
         description="An optional comment from the closure request reviewer.",
     )
     closure_request_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    metadata: Missing[list[SecretScanningAlertMetadataItems]] = Field(
-        default=UNSET,
-        description="A list of metadata key/value pairs associated with the secret scanning alert.",
-    )
 
 
-model_rebuild(SecretScanningAlertWithMetadata)
+model_rebuild(SecretScanningAlert)
 
-__all__ = ("SecretScanningAlertWithMetadata",)
+__all__ = ("SecretScanningAlert",)

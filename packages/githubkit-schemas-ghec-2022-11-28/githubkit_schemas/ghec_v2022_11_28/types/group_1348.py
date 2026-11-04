@@ -12,35 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
 
-    type: NotRequired[str]
-    user_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-    github_request_id: NotRequired[str]
-    endpoint: NotRequired[str]
-    body: NotRequired[str]
-    timestamp: NotRequired[int]
-    event_id: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
-    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
 )

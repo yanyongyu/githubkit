@@ -9,73 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200Type(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: (
+        EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType
+    )
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+    expires_at: NotRequired[_dt.date]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBody"""
+
+    budget_amount: int
+    prevent_further_usage: bool
+    budget_alerting: EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse
+    budget_scope: Literal[
+        "enterprise",
+        "organization",
+        "repository",
+        "cost_center",
+        "multi_user_customer",
+        "multi_user_cost_center",
+        "user",
+    ]
+    budget_entity_name: NotRequired[str]
+    budget_type: Literal["BundlePricing", "ProductPricing", "SkuPricing"]
+    budget_product_sku: NotRequired[str]
+    user: NotRequired[str]
+    expires_at: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType
-    ]
+    will_alert: bool
+    alert_recipients: list[str]
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+    """EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
-    ]
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
-    ems
-    """
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
-    ems
-    """
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
+    will_alert: bool
+    alert_recipients: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200Type",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyPropBudgetAlertingTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingBudgetsPostBodyTypeForResponse",
 )

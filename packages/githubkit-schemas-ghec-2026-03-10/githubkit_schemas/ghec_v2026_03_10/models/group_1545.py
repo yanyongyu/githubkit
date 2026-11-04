@@ -9,19 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
+
+
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability)
+
+__all__ = (
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
+)

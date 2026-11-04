@@ -12,19 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class EventsGetResponse503Type(TypedDict):
+    """EventsGetResponse503"""
 
+    code: NotRequired[str]
     message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class NotificationsPutResponse202TypeForResponse(TypedDict):
-    """NotificationsPutResponse202"""
+class EventsGetResponse503TypeForResponse(TypedDict):
+    """EventsGetResponse503"""
 
+    code: NotRequired[str]
     message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "NotificationsPutResponse202Type",
-    "NotificationsPutResponse202TypeForResponse",
+    "EventsGetResponse503Type",
+    "EventsGetResponse503TypeForResponse",
 )

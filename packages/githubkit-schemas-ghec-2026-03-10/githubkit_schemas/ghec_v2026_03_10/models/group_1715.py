@@ -15,29 +15,27 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0486 import CustomDeploymentRuleApp
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
     GitHubModel
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
     """
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of custom deployment protection rule integrations available for this environment.",
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
     )
-    available_custom_deployment_protection_rule_integrations: Missing[
-        list[CustomDeploymentRuleApp]
-    ] = Field(default=UNSET)
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
+    )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
-)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

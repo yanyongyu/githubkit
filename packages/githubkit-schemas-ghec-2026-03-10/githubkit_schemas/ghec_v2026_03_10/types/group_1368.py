@@ -9,35 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
+
+    message: str
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
-
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    message: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse",
 )

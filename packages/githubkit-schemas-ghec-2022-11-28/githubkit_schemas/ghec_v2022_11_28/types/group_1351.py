@@ -9,31 +9,112 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    credential_id: int
-    credential_type: Literal["ssh_key"]
-    fingerprint: str
-    organizations: list[str]
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType
+    ]
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200"""
 
-    credential_id: int
-    credential_type: Literal["ssh_key"]
-    fingerprint: str
-    organizations: list[str]
+    organization: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse
+    ]
+    repository: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse
+    ]
+    ruleset: NotRequired[
+        EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganization"""
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    avatar_url: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepository"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    full_name: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRuleset
+
+    The created or existing ruleset (if create_ruleset was true).
+    """
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200PropRulesetTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse200TypeForResponse",
 )

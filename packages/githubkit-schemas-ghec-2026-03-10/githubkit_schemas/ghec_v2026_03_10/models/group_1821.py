@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,32 +18,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    state: Missing[Literal["open", "resolved"]] = Field(
+    commit_title: Missing[str] = Field(
         default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+        description="Title for the automatic commit message. Only supported for direct merges.",
     )
-    resolution: Missing[
-        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
-    ] = Field(
+    commit_message: Missing[str] = Field(
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
     )
-    resolution_comment: Missing[Union[str, None]] = Field(
+    sha: Missing[str] = Field(
         default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
     )
-    assignee: Union[str, None] = Field(
-        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
-    )
-    validity: Missing[Union[Literal["active", "inactive"], None]] = Field(
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
         default=UNSET,
-        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
+        description="The merge method to use for a direct merge. Only supported for direct merges.",
+    )
+    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
+        default=UNSET,
+        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
+    )
+    bypass_rules: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to bypass repository rules that the authenticated actor is permitted to bypass.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)

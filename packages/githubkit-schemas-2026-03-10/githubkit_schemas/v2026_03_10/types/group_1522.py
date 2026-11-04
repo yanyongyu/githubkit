@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
 
-    sub_issue_id: int
+    name: NotRequired[str]
+    body: str
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
 
-    sub_issue_id: int
+    name: NotRequired[str]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1TypeForResponse",
 )

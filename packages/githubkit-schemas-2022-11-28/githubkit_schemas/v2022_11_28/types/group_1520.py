@@ -13,19 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
+    name: str
+    body: str
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    lock_reason: NotRequired[Literal["off-topic", "too heated", "resolved", "spam"]]
+    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
+    name: str
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyType",
-    "ReposOwnerRepoIssuesIssueNumberLockPutBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse",
 )

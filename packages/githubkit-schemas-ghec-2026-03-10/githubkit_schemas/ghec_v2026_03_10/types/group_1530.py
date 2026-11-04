@@ -9,51 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0110 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
-    )
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
-
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
 )

@@ -148,6 +148,31 @@ class SecretScanningLocationPullRequestReview(GitHubModel):
     )
 
 
+class SecretScanningLocationActionsLog(GitHubModel):
+    """SecretScanningLocationActionsLog
+
+    Represents an 'actions_log' secret scanning location type. The path identifies
+    the workflow definition, while line and column positions identify the secret in
+    the raw job log, not in the workflow file.
+    """
+
+    path: str = Field(
+        description="The workflow definition path. Dynamically generated workflows can have a synthetic path."
+    )
+    start_line: float = Field(
+        description="Line number at which the secret starts in the raw job log."
+    )
+    end_line: float = Field(
+        description="Line number at which the secret ends in the raw job log."
+    )
+    start_column: float = Field(
+        description="The one-based column at which the secret starts within the start line of the raw job log."
+    )
+    end_column: float = Field(
+        description="The one-based column at which the secret ends within the end line of the raw job log."
+    )
+
+
 model_rebuild(SecretScanningLocationCommit)
 model_rebuild(SecretScanningLocationWikiCommit)
 model_rebuild(SecretScanningLocationIssueBody)
@@ -155,8 +180,10 @@ model_rebuild(SecretScanningLocationDiscussionTitle)
 model_rebuild(SecretScanningLocationDiscussionComment)
 model_rebuild(SecretScanningLocationPullRequestBody)
 model_rebuild(SecretScanningLocationPullRequestReview)
+model_rebuild(SecretScanningLocationActionsLog)
 
 __all__ = (
+    "SecretScanningLocationActionsLog",
     "SecretScanningLocationCommit",
     "SecretScanningLocationDiscussionComment",
     "SecretScanningLocationDiscussionTitle",

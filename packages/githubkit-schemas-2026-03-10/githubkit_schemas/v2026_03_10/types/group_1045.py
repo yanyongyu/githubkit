@@ -23,6 +23,7 @@ class AgentsAutomationsGetResponse200ItemsType(TypedDict):
     cross-repository list responses).
     """
 
+    tools: NotRequired[list[str]]
     id: str
     repository: AgentsAutomationsGetResponse200ItemsPropRepositoryType
     name: str
@@ -44,6 +45,7 @@ class AgentsAutomationsGetResponse200ItemsTypeForResponse(TypedDict):
     cross-repository list responses).
     """
 
+    tools: NotRequired[list[str]]
     id: str
     repository: AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse
     name: str

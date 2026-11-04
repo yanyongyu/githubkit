@@ -12,19 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    labels: NotRequired[list[str]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
+    include_drafts: NotRequired[bool]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
 
-    labels: NotRequired[list[str]]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0TypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

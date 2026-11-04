@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
     date: str
     email: NotRequired[str]
     name: NotRequired[str]
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
     date: str
     email: NotRequired[str]
@@ -29,6 +29,6 @@ class WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse(TypedD
 
 
 __all__ = (
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",
-    "WebhookStatusPropCommitPropCommitPropCommitterAllof1TypeForResponse",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",
+    "WebhookStatusPropCommitPropCommitPropAuthorAllof1TypeForResponse",
 )

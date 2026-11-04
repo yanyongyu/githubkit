@@ -13,270 +13,58 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0237 import LabelType, LabelTypeForResponse
 
+class EnterpriseTeamWithMemberCountType(TypedDict):
+    """Enterprise Team
 
-class DiscussionType(TypedDict):
-    """Discussion
-
-    A Discussion in a repository.
+    Group of enterprise owners and/or members
     """
 
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    body: str
-    category: DiscussionPropCategoryType
-    comments: int
-    created_at: _dt.datetime
-    html_url: str
     id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsType]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
-    timeline_url: NotRequired[str]
-    title: str
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
+    html_url: str
+    members_url: str
+    members_count: int
+    created_at: _dt.datetime
     updated_at: _dt.datetime
-    user: Union[DiscussionPropUserType, None]
-    labels: NotRequired[list[LabelType]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class DiscussionTypeForResponse(TypedDict):
-    """Discussion
+class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
+    """Enterprise Team
 
-    A Discussion in a repository.
+    Group of enterprise owners and/or members
     """
 
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByTypeForResponse, None]
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ]
-    body: str
-    category: DiscussionPropCategoryTypeForResponse
-    comments: int
-    created_at: str
+    id: int
+    name: str
+    description: NotRequired[str]
+    slug: str
+    url: str
+    sync_to_organizations: NotRequired[str]
+    organization_selection_type: NotRequired[str]
+    group_id: Union[str, None]
+    group_name: NotRequired[Union[str, None]]
     html_url: str
-    id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsTypeForResponse]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[Literal["resolved", "outdated", "duplicate", "reopened"], None]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: str
-    user: Union[DiscussionPropUserTypeForResponse, None]
-    labels: NotRequired[list[LabelTypeForResponse]]
-
-
-class DiscussionPropAnswerChosenByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropAnswerChosenByTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropCategoryType(TypedDict):
-    """DiscussionPropCategory"""
-
-    created_at: _dt.datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-class DiscussionPropCategoryTypeForResponse(TypedDict):
-    """DiscussionPropCategory"""
-
+    members_url: str
+    members_count: int
     created_at: str
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
     updated_at: str
-
-
-class DiscussionPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class DiscussionPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class DiscussionPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class DiscussionPropUserTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "DiscussionPropAnswerChosenByType",
-    "DiscussionPropAnswerChosenByTypeForResponse",
-    "DiscussionPropCategoryType",
-    "DiscussionPropCategoryTypeForResponse",
-    "DiscussionPropReactionsType",
-    "DiscussionPropReactionsTypeForResponse",
-    "DiscussionPropUserType",
-    "DiscussionPropUserTypeForResponse",
-    "DiscussionType",
-    "DiscussionTypeForResponse",
+    "EnterpriseTeamWithMemberCountType",
+    "EnterpriseTeamWithMemberCountTypeForResponse",
 )

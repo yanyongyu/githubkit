@@ -12,25 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoGitBlobsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
-    include_drafts: NotRequired[bool]
+    content: str
+    encoding: NotRequired[str]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoGitBlobsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: NotRequired[int]
-    include_drafts: NotRequired[bool]
+    content: str
+    encoding: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyType",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
+    "ReposOwnerRepoGitBlobsPostBodyType",
+    "ReposOwnerRepoGitBlobsPostBodyTypeForResponse",
 )

@@ -13,26 +13,22 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The unique identifier of the issue or pull request to add to the project.",
+    pat_ids: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The IDs of the fine-grained personal access tokens.",
     )
-    owner: str = Field(description="The repository owner login.")
-    repo: str = Field(description="The repository name.")
-    number: int = Field(description="The issue or pull request number.")
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

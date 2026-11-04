@@ -9,29 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksLabelUnarchivedAllof1Type(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksLabelArchivedAllof1PropArchivedByType(TypedDict):
+    """WebhooksLabelArchivedAllof1PropArchivedBy
 
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
-
-
-class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
-
-    archived_at: Union[str, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
+    The user who archived the label.
     """
 
     name: NotRequired[Union[str, None]]
@@ -58,10 +43,10 @@ class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+class WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelArchivedAllof1PropArchivedBy
 
-    The user who archived the label. This is `null` after the label is unarchived.
+    The user who archived the label.
     """
 
     name: NotRequired[Union[str, None]]
@@ -89,8 +74,6 @@ class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
-    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
-    "WebhooksLabelUnarchivedAllof1Type",
-    "WebhooksLabelUnarchivedAllof1TypeForResponse",
+    "WebhooksLabelArchivedAllof1PropArchivedByType",
+    "WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse",
 )

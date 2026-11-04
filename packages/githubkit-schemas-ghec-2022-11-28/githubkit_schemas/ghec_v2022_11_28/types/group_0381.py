@@ -9,52 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ConcurrencyGroupListType(TypedDict):
-    """Concurrency Group List
+class ActionsCacheStorageLimitForRepositoryType(TypedDict):
+    """Actions cache storage limit for a repository
 
-    A list of active concurrency groups for a repository.
+    GitHub Actions cache storage policy for a repository.
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
+    max_cache_size_gb: NotRequired[int]
 
 
-class ConcurrencyGroupListTypeForResponse(TypedDict):
-    """Concurrency Group List
+class ActionsCacheStorageLimitForRepositoryTypeForResponse(TypedDict):
+    """Actions cache storage limit for a repository
 
-    A list of active concurrency groups for a repository.
+    GitHub Actions cache storage policy for a repository.
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
-    ]
-
-
-class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[_dt.datetime, None]
-
-
-class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    last_acquired_at: Union[str, None]
+    max_cache_size_gb: NotRequired[int]
 
 
 __all__ = (
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupListType",
-    "ConcurrencyGroupListTypeForResponse",
+    "ActionsCacheStorageLimitForRepositoryType",
+    "ActionsCacheStorageLimitForRepositoryTypeForResponse",
 )

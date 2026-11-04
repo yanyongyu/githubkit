@@ -12,42 +12,45 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0659 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0659 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0660 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0661 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0711 import (
+from .group_0662 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0713 import (
     PublicMonitoringAlertWebhookType,
     PublicMonitoringAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningPublicMonitoringAlertValidatedType(TypedDict):
-    """secret_scanning_public_monitoring_alert validated event"""
+class WebhookSecretScanningPublicMonitoringAlertDismissedType(TypedDict):
+    """secret_scanning_public_monitoring_alert dismissed event"""
 
-    action: Literal["validated"]
+    action: Literal["dismissed"]
     alert: PublicMonitoringAlertWebhookType
     enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningPublicMonitoringAlertValidatedTypeForResponse(TypedDict):
-    """secret_scanning_public_monitoring_alert validated event"""
+class WebhookSecretScanningPublicMonitoringAlertDismissedTypeForResponse(TypedDict):
+    """secret_scanning_public_monitoring_alert dismissed event"""
 
-    action: Literal["validated"]
+    action: Literal["dismissed"]
     alert: PublicMonitoringAlertWebhookTypeForResponse
     enterprise: EnterpriseWebhooksTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecretScanningPublicMonitoringAlertValidatedType",
-    "WebhookSecretScanningPublicMonitoringAlertValidatedTypeForResponse",
+    "WebhookSecretScanningPublicMonitoringAlertDismissedType",
+    "WebhookSecretScanningPublicMonitoringAlertDismissedTypeForResponse",
 )

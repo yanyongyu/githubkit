@@ -11,26 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
-
-    name: str
-    body: NotRequired[str]
+from .group_0011 import WebhookConfigType, WebhookConfigTypeForResponse
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
 
-    name: str
-    body: NotRequired[str]
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
+
+
+class ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigTypeForResponse]
+    events: NotRequired[list[str]]
+    add_events: NotRequired[list[str]]
+    remove_events: NotRequired[list[str]]
+    active: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoHooksHookIdPatchBodyType",
+    "ReposOwnerRepoHooksHookIdPatchBodyTypeForResponse",
 )

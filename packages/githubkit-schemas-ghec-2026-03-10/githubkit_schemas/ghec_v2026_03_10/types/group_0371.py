@@ -9,77 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class TeamMemberType(TypedDict):
-    """Team Member
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    External Groups to be mapped to a team for membership
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    role: NotRequired[Literal["member", "maintainer"]]
-    inherited: NotRequired[bool]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsType]]
 
 
-class TeamMemberTypeForResponse(TypedDict):
-    """Team Member
+class GroupMappingTypeForResponse(TypedDict):
+    """GroupMapping
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    External Groups to be mapped to a team for membership
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-    role: NotRequired[Literal["member", "maintainer"]]
-    inherited: NotRequired[bool]
+    groups: NotRequired[list[GroupMappingPropGroupsItemsTypeForResponse]]
+
+
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+class GroupMappingPropGroupsItemsTypeForResponse(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "TeamMemberType",
-    "TeamMemberTypeForResponse",
+    "GroupMappingPropGroupsItemsType",
+    "GroupMappingPropGroupsItemsTypeForResponse",
+    "GroupMappingType",
+    "GroupMappingTypeForResponse",
 )

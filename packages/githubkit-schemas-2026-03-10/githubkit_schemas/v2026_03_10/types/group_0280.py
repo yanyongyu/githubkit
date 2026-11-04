@@ -192,7 +192,39 @@ class SecretScanningLocationPullRequestReviewTypeForResponse(TypedDict):
     html_url: NotRequired[str]
 
 
+class SecretScanningLocationActionsLogType(TypedDict):
+    """SecretScanningLocationActionsLog
+
+    Represents an 'actions_log' secret scanning location type. The path identifies
+    the workflow definition, while line and column positions identify the secret in
+    the raw job log, not in the workflow file.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+
+
+class SecretScanningLocationActionsLogTypeForResponse(TypedDict):
+    """SecretScanningLocationActionsLog
+
+    Represents an 'actions_log' secret scanning location type. The path identifies
+    the workflow definition, while line and column positions identify the secret in
+    the raw job log, not in the workflow file.
+    """
+
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
+
+
 __all__ = (
+    "SecretScanningLocationActionsLogType",
+    "SecretScanningLocationActionsLogTypeForResponse",
     "SecretScanningLocationCommitType",
     "SecretScanningLocationCommitTypeForResponse",
     "SecretScanningLocationDiscussionCommentType",

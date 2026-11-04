@@ -9,37 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0606 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserPatchBodyType(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksPostResponse201Type(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class UserPatchBodyTypeForResponse(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksPostResponse201TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "UserPatchBodyType",
-    "UserPatchBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201PropBaseType",
+    "ReposOwnerRepoStacksPostResponse201PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse201Type",
+    "ReposOwnerRepoStacksPostResponse201TypeForResponse",
 )

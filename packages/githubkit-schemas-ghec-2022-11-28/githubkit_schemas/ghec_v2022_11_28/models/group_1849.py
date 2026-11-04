@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,71 +17,22 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0213 import SecretScanningCustomPatternToDelete
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    operations: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-    ] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        alias="Operations",
-        description="Set of operations to be performed",
+class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
+
+    patterns: list[SecretScanningCustomPatternToDelete] = Field(
+        max_length=500 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to delete.",
+    )
+    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+        default=UNSET,
+        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
 
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            list[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-            ],
-            str,
-        ]
-    ] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: Missing[Union[bool, None]] = Field(default=UNSET)
-    user_name: Missing[Union[str, None]] = Field(default=UNSET, alias="userName")
-    external_id: Missing[Union[str, None]] = Field(default=UNSET, alias="externalId")
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0
-)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
-)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)

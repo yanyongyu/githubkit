@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0287 import SecretScanningCustomPatternToDelete
 
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
-    )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+    expected_head_sha: Missing[str] = Field(
         default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsDeleteBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsDeleteBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)

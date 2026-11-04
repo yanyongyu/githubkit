@@ -56,6 +56,8 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200,
         EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200,
         EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
         EnterprisesEnterpriseCopilotModelPoliciesGetResponse200,
         EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200,
         EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202,
@@ -153,6 +155,10 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType,
         EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType,
         EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse,
         EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType,
         EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType,
@@ -6553,6 +6559,324 @@ class EnterpriseAdminClient:
                 "403": BasicError,
                 "404": BasicError,
                 "422": ValidationError,
+            },
+        )
+
+    def get_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-fusion-model-policies
+
+        GET /enterprises/{enterprise}/copilot/fusion/model-policies
+
+        Gets model policy states for the enterprise GitHub Copilot Fusion layer and the separately read enterprise-layer policies.
+        Identifies which models the Copilot Fusion layer can edit based on the enterprise policy.
+
+        Editable models show the Copilot Fusion layer's configured value. When the Copilot Fusion layer has not set a value, they show `enabled`,
+        because Copilot Fusion only restricts models it explicitly disables.
+        Locked models show the enterprise's explicit value or the applied default availability for eligible models.
+        When the default availability is applied and delegated to organizations, models that follow it show `enabled`.
+        Models not supported by Copilot Fusion are omitted.
+        These states are not a final access decision for a user. An `enabled` Copilot Fusion policy does not grant access to a model
+        that the user's applicable model policies deny.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-copilot-fusion-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/fusion/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/get-enterprise-fusion-model-policies
+
+        GET /enterprises/{enterprise}/copilot/fusion/model-policies
+
+        Gets model policy states for the enterprise GitHub Copilot Fusion layer and the separately read enterprise-layer policies.
+        Identifies which models the Copilot Fusion layer can edit based on the enterprise policy.
+
+        Editable models show the Copilot Fusion layer's configured value. When the Copilot Fusion layer has not set a value, they show `enabled`,
+        because Copilot Fusion only restricts models it explicitly disables.
+        Locked models show the enterprise's explicit value or the applied default availability for eligible models.
+        When the default availability is applied and delegated to organizations, models that follow it show `enabled`.
+        Models not supported by Copilot Fusion are omitted.
+        These states are not a final access decision for a user. An `enabled` Copilot Fusion policy does not grant access to a model
+        that the user's applicable model policies deny.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#get-copilot-fusion-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/fusion/model-policies"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    def update_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        models: list[
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType
+        ],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    def update_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-fusion-model-policies
+
+        PATCH /enterprises/{enterprise}/copilot/fusion/model-policies
+
+        Updates editable model policies for the enterprise GitHub Copilot Fusion layer.
+
+        `enabled` and `disabled` set a Copilot Fusion policy.
+        An `enabled` policy adds no Copilot Fusion restriction; it does not grant access to a model that the user's applicable model policies deny.
+        A `disabled` policy prevents Copilot Fusion from using that model.
+        Locked models and models not supported by Copilot Fusion cannot be updated. Models not supported by Copilot Fusion are omitted from the response.
+
+        Returns the Copilot Fusion policy state representation, including enterprise policy and editability.
+        These states are not a final access decision for a user.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-copilot-fusion-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody,
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/fusion/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        models: list[
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType
+        ],
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
+    ]: ...
+
+    async def async_update_enterprise_fusion_model_policies(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse,
+    ]:
+        """enterprise-admin/update-enterprise-fusion-model-policies
+
+        PATCH /enterprises/{enterprise}/copilot/fusion/model-policies
+
+        Updates editable model policies for the enterprise GitHub Copilot Fusion layer.
+
+        `enabled` and `disabled` set a Copilot Fusion policy.
+        An `enabled` policy adds no Copilot Fusion restriction; it does not grant access to a model that the user's applicable model policies deny.
+        A `disabled` policy prevents Copilot Fusion from using that model.
+        Locked models and models not supported by Copilot Fusion cannot be updated. Models not supported by Copilot Fusion are omitted from the response.
+
+        Returns the Copilot Fusion policy state representation, including enterprise policy and editability.
+        These states are not a final access decision for a user.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/ai-controls#update-copilot-fusion-model-policies-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody,
+            EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+            ValidationError,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/fusion/model-policies"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

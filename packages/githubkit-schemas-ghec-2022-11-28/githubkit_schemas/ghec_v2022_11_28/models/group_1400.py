@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,37 +19,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody"""
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
+        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    budget_alerting: Missing[
+        EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    expires_at: Missing[Union[_dt.date, Literal[0], None]] = Field(
         default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set.\n\nOnly supported for existing user-scoped budgets.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+class EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them.",
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them.",
+    )
+
+
+model_rebuild(EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+)
+
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBody",
+    "EnterprisesEnterpriseSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+)

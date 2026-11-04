@@ -9,165 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0215 import (
+    PublicMonitoringRepositoryType,
+    PublicMonitoringRepositoryTypeForResponse,
+)
+from .group_0216 import BaseGistType, BaseGistTypeForResponse
+from .group_0713 import (
+    PublicMonitoringAlertWebhookPropAttributionType,
+    PublicMonitoringAlertWebhookPropAttributionTypeForResponse,
+)
 
 
-class WebhooksSecurityAdvisoryType(TypedDict):
-    """WebhooksSecurityAdvisory
+class PublicMonitoringAlertWebhookType(TypedDict):
+    """Public Monitoring Alert Webhook
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    A public monitoring alert as delivered via webhook.
     """
 
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
-    withdrawn_at: Union[str, None]
+    number: int
+    url: str
+    secret_type: str
+    secret_type_display_name: str
+    created_at: _dt.datetime
+    validity: Literal["active", "inactive", "unknown"]
+    repository: Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
+    gist: NotRequired[Union[BaseGistType, None]]
+    attribution: PublicMonitoringAlertWebhookPropAttributionType
 
 
-class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisory
+class PublicMonitoringAlertWebhookTypeForResponse(TypedDict):
+    """Public Monitoring Alert Webhook
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    A public monitoring alert as delivered via webhook.
     """
 
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
-    ]
-    withdrawn_at: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
+    number: int
     url: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
+    secret_type: str
+    secret_type_display_name: str
+    created_at: str
+    validity: Literal["active", "inactive", "unknown"]
+    repository: Union[
+        SimpleRepositoryTypeForResponse, PublicMonitoringRepositoryTypeForResponse, None
     ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
-        None,
-    ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
-    name: str
+    gist: NotRequired[Union[BaseGistTypeForResponse, None]]
+    attribution: PublicMonitoringAlertWebhookPropAttributionTypeForResponse
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryPropCwesItemsType",
-    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryType",
-    "WebhooksSecurityAdvisoryTypeForResponse",
+    "PublicMonitoringAlertWebhookType",
+    "PublicMonitoringAlertWebhookTypeForResponse",
 )

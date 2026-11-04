@@ -32,6 +32,14 @@ class PullRequestReview(GitHubModel):
     user: Union[SimpleUser, None] = Field()
     body: str = Field(description="The text of the review.")
     state: str = Field()
+    is_copilot_code_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this review was produced by Copilot code review. Bot authorship alone does not establish provenance.",
+    )
+    copilot_code_review_effort: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The persisted effective effort used to produce this Copilot code review, or null if unavailable. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
+    )
     html_url: str = Field()
     pull_request_url: str = Field()
     links: PullRequestReviewPropLinks = Field(alias="_links")

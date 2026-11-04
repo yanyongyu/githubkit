@@ -18,21 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
+    """Validation Error
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
+    Validation Error
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
+    ] = Field(default=UNSET)
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    selected_repository_ids: Missing[list[Union[int, str]]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
-    )
 
 
-model_rebuild(UserCodespacesSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBody",)
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
+)

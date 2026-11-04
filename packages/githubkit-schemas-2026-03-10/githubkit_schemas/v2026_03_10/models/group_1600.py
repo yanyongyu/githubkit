@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class ReposOwnerRepoStacksPostBody(GitHubModel):
+    """ReposOwnerRepoStacksPostBody"""
 
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET, description="The role that this user should have in the team."
+    pull_requests: list[int] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=2 if PYDANTIC_V2 else None,
+        description="An ordered list of pull request numbers forming the stack from bottom to top.",
     )
 
 
-model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
+model_rebuild(ReposOwnerRepoStacksPostBody)
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)
+__all__ = ("ReposOwnerRepoStacksPostBody",)

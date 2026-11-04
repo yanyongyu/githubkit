@@ -11,24 +11,29 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0146 import ActionsPolicyType, ActionsPolicyTypeForResponse
+from .group_0107 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
+)
 
 
-class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyType]
-
-
-class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
 
     total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+    images: list[ActionsHostedRunnerCuratedImageType]
+
+
+class OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200"""
+
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesGetResponse200Type",
-    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200TypeForResponse",
 )

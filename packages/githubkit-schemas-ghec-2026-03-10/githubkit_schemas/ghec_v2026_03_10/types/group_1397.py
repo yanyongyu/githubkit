@@ -9,49 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
-
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
-    ]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType(
+class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
 
-    model_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType",
+    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse",
 )

@@ -13,33 +13,29 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    bypass_rules: NotRequired[bool]
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    name: NotRequired[str]
-    body: NotRequired[str]
-    draft: NotRequired[bool]
-    prerelease: NotRequired[bool]
-    make_latest: NotRequired[Literal["true", "false", "legacy"]]
-    discussion_category_name: NotRequired[str]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+    merge_action: NotRequired[Literal["default", "direct_merge", "merge_queue"]]
+    bypass_rules: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyType",
-    "ReposOwnerRepoReleasesReleaseIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType",
+    "ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyTypeForResponse",
 )

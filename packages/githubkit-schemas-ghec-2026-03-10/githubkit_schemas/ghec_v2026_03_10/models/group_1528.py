@@ -13,35 +13,31 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field(
-        description="The default policy applied to newly released Copilot features and clients."
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ] = Field(description="The type of resource to create.")
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
+        description="Resource-specific metadata."
     )
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-    The default policy applied to newly released Copilot features and clients.
+    Resource-specific metadata.
     """
 
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
-    )
-    editable: bool = Field(
-        description="Whether the organization can update its default availability."
-    )
 
-
-model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200)
-model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
 )

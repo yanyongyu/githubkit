@@ -9,21 +9,98 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0223 import RepositoryRulesetBypassActor
+from .group_0224 import RepositoryRulesetConditions
+from .group_0229 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0230 import RepositoryRuleUpdate
+from .group_0232 import RepositoryRuleRequiredLinearHistory
+from .group_0233 import RepositoryRuleMergeQueue
+from .group_0235 import RepositoryRuleRequiredDeployments
+from .group_0238 import RepositoryRulePullRequest
+from .group_0240 import RepositoryRuleRequiredStatusChecks
+from .group_0242 import RepositoryRuleCommitMessagePattern
+from .group_0244 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0246 import RepositoryRuleCommitterEmailPattern
+from .group_0248 import RepositoryRuleBranchNamePattern
+from .group_0250 import RepositoryRuleTagNamePattern
+from .group_0253 import RepositoryRuleWorkflows
+from .group_0255 import RepositoryRuleCodeScanning
+from .group_0257 import RepositoryRuleCodeQuality
+from .group_0259 import RepositoryRuleCodeCoverage
+from .group_0261 import RepositoryRuleCopilotCodeReview
+from .group_0263 import RepositoryRuleLicenseComplianceScanning
+from .group_0264 import RepositoryRuleFilePathRestriction
+from .group_0266 import RepositoryRuleMaxFilePathLength
+from .group_0268 import RepositoryRuleFileExtensionRestriction
+from .group_0270 import RepositoryRuleMaxFileSize
 
 
-class ReposOwnerRepoStacksStackNumberAddPostBody(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    pull_requests: list[int] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="An ordered list of pull request numbers to append to the stack, from the current top upward.",
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCodeQuality,
+                RepositoryRuleCodeCoverage,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoStacksStackNumberAddPostBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

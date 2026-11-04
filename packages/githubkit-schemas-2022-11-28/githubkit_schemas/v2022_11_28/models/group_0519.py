@@ -18,6 +18,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0280 import (
+    SecretScanningLocationActionsLog,
     SecretScanningLocationCommit,
     SecretScanningLocationDiscussionComment,
     SecretScanningLocationDiscussionTitle,
@@ -56,6 +57,7 @@ class SecretScanningLocation(GitHubModel):
             "pull_request_comment",
             "pull_request_review",
             "pull_request_review_comment",
+            "actions_log",
         ]
     ] = Field(
         default=UNSET,
@@ -76,6 +78,7 @@ class SecretScanningLocation(GitHubModel):
             SecretScanningLocationPullRequestComment,
             SecretScanningLocationPullRequestReview,
             SecretScanningLocationPullRequestReviewComment,
+            SecretScanningLocationActionsLog,
         ]
     ] = Field(default=UNSET)
 

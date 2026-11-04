@@ -9,62 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseTeamWithMemberCountType(TypedDict):
-    """Enterprise Team
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    members_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
-class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
-    """Enterprise Team
+class BillingUsageReportTypeForResponse(TypedDict):
+    """BillingUsageReport"""
 
-    Group of enterprise owners and/or members
-    """
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsTypeForResponse]]
 
-    id: int
-    name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    members_count: int
-    created_at: str
-    updated_at: str
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
+
+
+class BillingUsageReportPropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
 
 
 __all__ = (
-    "EnterpriseTeamWithMemberCountType",
-    "EnterpriseTeamWithMemberCountTypeForResponse",
+    "BillingUsageReportPropUsageItemsItemsType",
+    "BillingUsageReportPropUsageItemsItemsTypeForResponse",
+    "BillingUsageReportType",
+    "BillingUsageReportTypeForResponse",
 )

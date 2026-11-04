@@ -9,23 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0302 import CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1
-
-
-class UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200(GitHubModel):
-    """UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200"""
-
-    collaborators: list[
-        Union[CopilotSpaceCollaboratorAnyof0, CopilotSpaceCollaboratorAnyof1]
-    ] = Field(description="The list of collaborators for this Copilot Space.")
+from .group_1892 import (
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
+)
 
 
-model_rebuild(UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200)
+class UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1(
+    GitHubModel
+):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAl
+    lof1
+    """
 
-__all__ = ("UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200",)
+    custom_properties: Missing[
+        UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+    ] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. Present for org repos only.",
+    )
+
+
+model_rebuild(
+    UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1
+)
+
+__all__ = (
+    "UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1",
+)

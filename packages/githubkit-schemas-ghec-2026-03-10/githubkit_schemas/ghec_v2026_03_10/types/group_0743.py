@@ -13,24 +13,24 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0658 import (
+from .group_0658 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0659 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0660 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0661 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 from .group_0744 import (
-    WebhookCodeScanningAlertFixedPropAlertType,
-    WebhookCodeScanningAlertFixedPropAlertTypeForResponse,
+    WebhookCodeScanningAlertCreatedPropAlertType,
+    WebhookCodeScanningAlertCreatedPropAlertTypeForResponse,
 )
 
 
-class WebhookCodeScanningAlertFixedType(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookCodeScanningAlertCreatedType(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertType
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertType
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -40,11 +40,11 @@ class WebhookCodeScanningAlertFixedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
-    """code_scanning_alert fixed event"""
+class WebhookCodeScanningAlertCreatedTypeForResponse(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["fixed"]
-    alert: WebhookCodeScanningAlertFixedPropAlertTypeForResponse
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertTypeForResponse
     commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -55,6 +55,6 @@ class WebhookCodeScanningAlertFixedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookCodeScanningAlertFixedType",
-    "WebhookCodeScanningAlertFixedTypeForResponse",
+    "WebhookCodeScanningAlertCreatedType",
+    "WebhookCodeScanningAlertCreatedTypeForResponse",
 )

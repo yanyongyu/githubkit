@@ -9,53 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
-
-
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
-
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+    name: str
+    ai_credit_pool_enabled: NotRequired[bool]
 
 
-class VisualStudioSubscriptionAssignmentType(TypedDict):
-    """Visual Studio Subscription Assignment
+class EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostBody"""
 
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
-
-
-class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    name: str
+    ai_credit_pool_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
-    "VisualStudioSubscriptionAssignmentType",
-    "VisualStudioSubscriptionAssignmentTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostBodyTypeForResponse",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,69 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBody(GitHubModel):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBody"""
+class OrgsOrgPropertiesInstallationsPostBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    pattern_config_version: Missing[Union[str, None]] = Field(
+    installation_id: Missing[int] = Field(
         default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+        description="The unique identifier of the GitHub App installation to register for managing external custom properties. When authenticating as a GitHub App installation, this defaults to the authenticated installation and can be omitted. It is required for all other callers (users and fine-grained personal access tokens).",
     )
-    provider_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for provider patterns.")
-    custom_pattern_settings: Missing[
-        list[
-            OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-        ]
-    ] = Field(default=UNSET, description="Pattern settings for custom patterns.")
-
-
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsIt
-    ems
-    """
-
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    push_protection_setting: Missing[Literal["not-set", "disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
+    display_name: str = Field(
+        min_length=1,
+        max_length=15,
+        pattern="^[a-zA-Z0-9]+$",
+        description="The display name for this app installation's external custom properties in the organization. Must be 1 to 15 characters and contain only letters and numbers. Capitalization is preserved as entered. This can't be changed after the app installation is registered.",
     )
 
 
-class OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems(
-    GitHubModel
-):
-    """OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItem
-    s
-    """
+model_rebuild(OrgsOrgPropertiesInstallationsPostBody)
 
-    token_type: Missing[str] = Field(
-        default=UNSET, description="The ID of the pattern to configure."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    push_protection_setting: Missing[Literal["disabled", "enabled"]] = Field(
-        default=UNSET, description="Push protection setting to set for the pattern."
-    )
-
-
-model_rebuild(OrgsOrgSecretScanningPatternConfigurationsPatchBody)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems
-)
-model_rebuild(
-    OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems
-)
-
-__all__ = (
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBody",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems",
-    "OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems",
-)
+__all__ = ("OrgsOrgPropertiesInstallationsPostBody",)

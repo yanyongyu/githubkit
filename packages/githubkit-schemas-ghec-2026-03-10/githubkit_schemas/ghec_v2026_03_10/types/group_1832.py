@@ -9,59 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
-
-
-class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
-    ]
-
-
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
     message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    url: NotRequired[str]
 
 
-class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
     message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksPostResponse422Type",
-    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202TypeForResponse",
 )

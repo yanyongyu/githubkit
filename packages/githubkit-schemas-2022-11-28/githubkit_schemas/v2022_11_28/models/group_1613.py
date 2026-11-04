@@ -16,17 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
     )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
+    )
+    team_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

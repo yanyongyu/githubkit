@@ -9,35 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+
+    repository_values: list[RepositoryExternalPropertyPayloadType]
+
+
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
 
 
-class OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
 
-    name: NotRequired[str]
-    compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
-    failover_network_settings_ids: NotRequired[list[str]]
-    failover_network_enabled: NotRequired[bool]
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
+
+
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

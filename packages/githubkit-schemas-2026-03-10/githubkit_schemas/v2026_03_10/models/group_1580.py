@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
+    body: Missing[str] = Field(
+        default=UNSET, description="The body text of the pull request review"
     )
-    validation_errors: Missing[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
+        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
     )
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
-
-
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
-
-__all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)

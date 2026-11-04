@@ -9,42 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhooksChangesPropBodyType]
-
-
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
-
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
 
 
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
+class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    from_: str
-
-
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "WebhooksRepositoriesAddedItemsType",
+    "WebhooksRepositoriesAddedItemsTypeForResponse",
 )

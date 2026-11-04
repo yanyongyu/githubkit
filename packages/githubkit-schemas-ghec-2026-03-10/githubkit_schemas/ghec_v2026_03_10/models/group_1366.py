@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0134 import NetworkConfiguration
+
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+
+    credential_id: int = Field()
+    credential_type: Literal["classic_pat"] = Field()
+    organizations: list[str] = Field()
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
 
-    total_count: int = Field()
-    network_configurations: list[NetworkConfiguration] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseNetworkConfigurationsGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseNetworkConfigurationsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse422(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsPostResponse422
+class AgentsReposOwnerRepoAutomationsPostResponse403(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoAutomationsPostResponse422(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems]
+        list[AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,8 +47,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse422(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems
+class AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems
 
     A single validation error
     """
@@ -67,10 +67,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems(GitHubModel)
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse422)
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse403)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsPostResponse422",
-    "AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsPostResponse403",
+    "AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems",
 )

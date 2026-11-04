@@ -9,33 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type(
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
+
+
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
-
-
-class EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneo
-    f1
-    """
-
-    status: NotRequired[Literal["error"]]
-    error: NotRequired[str]
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1Type",
-    "EnterprisesEnterpriseInnersourceVulnerabilitiesSyncStatusJobIdGetResponse200Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
 )

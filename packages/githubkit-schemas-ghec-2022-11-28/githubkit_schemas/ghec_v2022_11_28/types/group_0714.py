@@ -12,234 +12,226 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class WebhooksSponsorshipType(TypedDict):
-    """WebhooksSponsorship"""
-
-    created_at: str
-    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerType]
-    node_id: str
-    privacy_level: str
-    sponsor: Union[WebhooksSponsorshipPropSponsorType, None]
-    sponsorable: Union[WebhooksSponsorshipPropSponsorableType, None]
-    tier: WebhooksSponsorshipPropTierType
-
-
-class WebhooksSponsorshipTypeForResponse(TypedDict):
-    """WebhooksSponsorship"""
-
-    created_at: str
-    maintainer: NotRequired[WebhooksSponsorshipPropMaintainerTypeForResponse]
-    node_id: str
-    privacy_level: str
-    sponsor: Union[WebhooksSponsorshipPropSponsorTypeForResponse, None]
-    sponsorable: Union[WebhooksSponsorshipPropSponsorableTypeForResponse, None]
-    tier: WebhooksSponsorshipPropTierTypeForResponse
-
-
-class WebhooksSponsorshipPropMaintainerType(TypedDict):
-    """WebhooksSponsorshipPropMaintainer"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0205 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0206 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
+from .group_0217 import (
+    PublicMonitoringAlertLocationType,
+    PublicMonitoringAlertLocationTypeForResponse,
+    PublicMonitoringSecretAuthorType,
+    PublicMonitoringSecretAuthorTypeForResponse,
+)
 
 
-class WebhooksSponsorshipPropMaintainerTypeForResponse(TypedDict):
-    """WebhooksSponsorshipPropMaintainer"""
+class PublicMonitoringAlertWebhookPropAttributionType(TypedDict):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorableType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropSponsorableTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class WebhooksSponsorshipPropTierType(TypedDict):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    Attribution information for the alert.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
+    secret_author: NotRequired[
+        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
+    ]
+    committer_email: NotRequired[Union[str, None]]
+    commit: NotRequired[
+        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
+    ]
+    wiki_commit: NotRequired[
+        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
+    ]
+    issue_title: NotRequired[
+        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
+    ]
+    issue_body: NotRequired[
+        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
+    ]
+    issue_comment: NotRequired[
+        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
+    actions_log: NotRequired[PublicMonitoringAlertLocationType]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
 
 
-class WebhooksSponsorshipPropTierTypeForResponse(TypedDict):
-    """Sponsorship Tier
+class PublicMonitoringAlertWebhookPropAttributionTypeForResponse(TypedDict):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    Attribution information for the alert.
     """
 
-    created_at: str
-    description: str
-    is_custom_ammount: NotRequired[bool]
-    is_custom_amount: NotRequired[bool]
-    is_one_time: bool
-    monthly_price_in_cents: int
-    monthly_price_in_dollars: int
-    name: str
-    node_id: str
+    secret_author: NotRequired[
+        Union[
+            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
+        ]
+    ]
+    committer_email: NotRequired[Union[str, None]]
+    commit: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    wiki_commit: NotRequired[
+        Union[
+            SecretScanningLocationWikiCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_title: NotRequired[
+        Union[
+            SecretScanningLocationIssueTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_body: NotRequired[
+        Union[
+            SecretScanningLocationIssueBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_comment: NotRequired[
+        Union[
+            SecretScanningLocationIssueCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[
+        PublicMonitoringAlertLocationTypeForResponse
+    ]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
 
 
 __all__ = (
-    "WebhooksSponsorshipPropMaintainerType",
-    "WebhooksSponsorshipPropMaintainerTypeForResponse",
-    "WebhooksSponsorshipPropSponsorType",
-    "WebhooksSponsorshipPropSponsorTypeForResponse",
-    "WebhooksSponsorshipPropSponsorableType",
-    "WebhooksSponsorshipPropSponsorableTypeForResponse",
-    "WebhooksSponsorshipPropTierType",
-    "WebhooksSponsorshipPropTierTypeForResponse",
-    "WebhooksSponsorshipType",
-    "WebhooksSponsorshipTypeForResponse",
+    "PublicMonitoringAlertWebhookPropAttributionType",
+    "PublicMonitoringAlertWebhookPropAttributionTypeForResponse",
 )

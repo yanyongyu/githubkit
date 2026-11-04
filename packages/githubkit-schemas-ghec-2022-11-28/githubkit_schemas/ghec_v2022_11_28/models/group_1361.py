@@ -18,32 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
+    default_availability: Missing[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+    ] = Field(default=UNSET)
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
 
-    token_types: Missing[list[str]] = Field(
-        default=UNSET, description="The credential types to include."
-    )
-    authorization_state: Missing[
-        Literal["currently_authorized", "member_owned_only"]
-    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
-    owner: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials owned by this user, given as a login.",
-    )
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
-    )
-    application: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
 
-__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems",
+)

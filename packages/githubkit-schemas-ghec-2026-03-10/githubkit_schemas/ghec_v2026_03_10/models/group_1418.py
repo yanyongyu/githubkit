@@ -12,17 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0031 import ActionsHostedRunner
-
-
-class OrgsOrgActionsHostedRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsHostedRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: list[ActionsHostedRunner] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersGetResponse200)
+class EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersGetResponse200",)
+    user_identifier: Missing[str] = Field(
+        default=UNSET,
+        description="The handle for the GitHub user account or a verified email associated with their account.",
+    )
+
+
+model_rebuild(
+    EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody
+)
+
+__all__ = (
+    "EnterprisesEnterpriseVisualStudioSubscriptionsVisualStudioSubscriptionIdPutBody",
+)

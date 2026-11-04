@@ -13,8 +13,10 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Type(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -25,7 +27,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type(TypedD
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsType
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType
         ]
     ]
     documentation_url: str
@@ -33,10 +35,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type(TypedD
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -47,7 +49,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422TypeForResp
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsTypeForResponse
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -55,10 +57,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422TypeForResp
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsType(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Prop
+    ErrorsItems
 
     A single validation error
     """
@@ -74,10 +77,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsI
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Prop
+    ErrorsItems
 
     A single validation error
     """
@@ -94,8 +98,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsI
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404TypeForResponse",
 )

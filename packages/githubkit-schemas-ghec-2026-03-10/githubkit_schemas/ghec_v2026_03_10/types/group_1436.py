@@ -12,71 +12,58 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0059 import (
-    ActionsPolicyOrgConditionsOneof0Type,
-    ActionsPolicyOrgConditionsOneof0TypeForResponse,
-)
-from .group_0060 import (
-    ActionsPolicyOrgConditionsOneof1Type,
-    ActionsPolicyOrgConditionsOneof1TypeForResponse,
-)
-from .group_0061 import (
-    ActionsPolicyOrgConditionsOneof2Type,
-    ActionsPolicyOrgConditionsOneof2TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
+
+class OrgsOrgActionsHostedRunnersPostBodyType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
+
+    name: str
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageType
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsHostedRunnersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0Type,
-            ActionsPolicyOrgConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    name: str
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse
+    size: str
+    runner_group_id: int
+    maximum_runners: NotRequired[int]
+    enable_static_ip: NotRequired[bool]
+    image_gen: NotRequired[bool]
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsHostedRunnersPostBodyPropImageType(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0TypeForResponse,
-            ActionsPolicyOrgConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof2TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: NotRequired[str]
+    source: NotRequired[Literal["github", "partner", "custom"]]
+    version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageType",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImageTypeForResponse",
+    "OrgsOrgActionsHostedRunnersPostBodyType",
+    "OrgsOrgActionsHostedRunnersPostBodyTypeForResponse",
 )

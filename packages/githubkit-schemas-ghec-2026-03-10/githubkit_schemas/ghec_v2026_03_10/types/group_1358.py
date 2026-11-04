@@ -13,33 +13,83 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
+    ]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+
+    default_availability: NotRequired[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
+    ]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
-    revoke_credentials: NotRequired[bool]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
     ]
-    revoke_credentials: NotRequired[bool]
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse",
 )

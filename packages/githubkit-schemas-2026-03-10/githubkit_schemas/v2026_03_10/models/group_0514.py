@@ -20,6 +20,7 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0280 import (
+    SecretScanningLocationActionsLog,
     SecretScanningLocationCommit,
     SecretScanningLocationDiscussionComment,
     SecretScanningLocationDiscussionTitle,
@@ -148,6 +149,7 @@ class SecretScanningAlert(GitHubModel):
             SecretScanningLocationPullRequestComment,
             SecretScanningLocationPullRequestReview,
             SecretScanningLocationPullRequestReviewComment,
+            SecretScanningLocationActionsLog,
             None,
         ]
     ] = Field(default=UNSET)

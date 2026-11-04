@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoTransferPostBodyType(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: Union[Literal["active", "inactive"], None]
 
 
-class ReposOwnerRepoTransferPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2"""
 
-    new_owner: str
-    new_name: NotRequired[str]
-    team_ids: NotRequired[list[int]]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    validity: Union[Literal["active", "inactive"], None]
 
 
 __all__ = (
-    "ReposOwnerRepoTransferPostBodyType",
-    "ReposOwnerRepoTransferPostBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2TypeForResponse",
 )

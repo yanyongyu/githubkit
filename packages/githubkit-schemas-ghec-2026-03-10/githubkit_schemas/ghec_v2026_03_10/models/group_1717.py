@@ -9,21 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_1715 import (
+    ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
+)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest/rest/actions/secrets#get-an-environment-public-key) endpoint.",
+    state: Missing[Literal["dismissed", "open"]] = Field(
+        default=UNSET,
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`.",
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
+        default=UNSET,
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
+    )
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
+        default=UNSET,
+        description="An optional comment associated with dismissing the alert.",
+    )
+    assignees: list[str] = Field(
+        description="Usernames to assign to this Dependabot Alert.\nPass one or more user logins to _replace_ the set of assignees on this alert.\nSend an empty array (`[]`) to clear all assignees from the alert.\nTo assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`)."
+    )
+    agent_assignment: Missing[
+        ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+    ] = Field(
+        default=UNSET,
+        description="Parameters for AI agent assignment. Only used when an agent bot login is\nincluded in `assignees`. Ignored when no agent is being assigned.",
+    )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",)

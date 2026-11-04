@@ -11,15 +11,30 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubModel):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
+    """Package license compliance results
 
-    body: str = Field(description="The text of the reply to the review comment.")
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
+        Field()
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsCommentsCommentIdPatchBody)
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",)
+
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
+
+__all__ = (
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
+)

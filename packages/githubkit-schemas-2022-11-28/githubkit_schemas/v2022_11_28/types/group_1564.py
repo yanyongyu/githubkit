@@ -9,22 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    body: str
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    body: str
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",
-    "ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyTypeForResponse",
+    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",
+    "ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyTypeForResponse",
 )

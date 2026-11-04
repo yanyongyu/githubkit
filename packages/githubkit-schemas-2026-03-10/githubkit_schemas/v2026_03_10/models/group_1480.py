@@ -9,83 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    message: str = Field(description="The commit message")
-    tree: str = Field(description="The SHA of the tree object this commit points to")
-    parents: Missing[list[str]] = Field(
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or SHA."
+    )
+    task: Missing[str] = Field(
         default=UNSET,
-        description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
+        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
     )
-    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
+    auto_merge: Missing[bool] = Field(
         default=UNSET,
-        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
+        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
     )
-    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
+    required_contexts: Missing[list[str]] = Field(
         default=UNSET,
-        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
+        description="The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
     )
-    signature: Missing[str] = Field(
+    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
+        Field(default=UNSET)
+    )
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
+        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
     )
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
-
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str = Field(description="The name of the author (or committer) of the commit")
-    email: str = Field(
-        description="The email of the author (or committer) of the commit"
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the deployment."
     )
-    date: Missing[_dt.datetime] = Field(
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
     )
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
+    production_environment: Missing[bool] = Field(
         default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-    date: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitCommitsPostBody)
-model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
-model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
+class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
+    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+
+
+model_rebuild(ReposOwnerRepoDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
 
 __all__ = (
-    "ReposOwnerRepoGitCommitsPostBody",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
+    "ReposOwnerRepoDeploymentsPostBody",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
 )

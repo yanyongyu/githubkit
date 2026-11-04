@@ -9,42 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0122 import ActionsPolicyRepoConditionsOneof0
-from .group_0123 import ActionsPolicyRepoConditionsOneof1
-from .group_0145 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
 
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody(ExtraGitHubModel):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
-    )
-    conditions: Missing[
-        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    plugin_assignments: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
     ] = Field(
         default=UNSET,
-        title="Repository Actions policy conditions",
-        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+        alias="pluginAssignments",
+        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    extra_known_marketplaces: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+    ] = Field(
+        default=UNSET,
+        alias="extraKnownMarketplaces",
+        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)
+    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+    """
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+
+    Additional plugin marketplaces available to the team, keyed by marketplace name.
+    """
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments",
+)

@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0134 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200Type(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
+    installation_id: NotRequired[int]
+    display_name: str
 
 
-class OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    installation_id: NotRequired[int]
+    display_name: str
 
 
 __all__ = (
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200Type",
-    "OrgsOrgSettingsNetworkConfigurationsGetResponse200TypeForResponse",
+    "OrgsOrgPropertiesInstallationsPostBodyType",
+    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
 )

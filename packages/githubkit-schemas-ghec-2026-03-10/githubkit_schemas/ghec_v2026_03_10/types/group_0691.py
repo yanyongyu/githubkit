@@ -10,106 +10,86 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksTeamType(TypedDict):
-    """Team
+class WebhooksMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
+    account: WebhooksMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhooksMarketplacePurchasePropPlanType
+    unit_count: int
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
+
+class WebhooksMarketplacePurchaseTypeForResponse(TypedDict):
+    """Marketplace Purchase"""
+
+    account: WebhooksMarketplacePurchasePropAccountTypeForResponse
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhooksMarketplacePurchasePropPlanTypeForResponse
+    unit_count: int
+
+
+class WebhooksMarketplacePurchasePropAccountType(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
+
     id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class WebhooksTeamTypeForResponse(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeamPropParentTypeForResponse, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
-    type: NotRequired[Literal["enterprise", "organization"]]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
-
-
-class WebhooksTeamPropParentType(TypedDict):
-    """WebhooksTeamPropParent"""
-
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
+    login: str
     node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhooksTeamPropParentTypeForResponse(TypedDict):
-    """WebhooksTeamPropParent"""
+class WebhooksMarketplacePurchasePropAccountTypeForResponse(TypedDict):
+    """WebhooksMarketplacePurchasePropAccount"""
 
-    description: Union[str, None]
-    html_url: str
     id: int
-    members_url: str
-    name: str
+    login: str
     node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
-    type: Literal["enterprise", "organization"]
-    organization_id: NotRequired[int]
-    enterprise_id: NotRequired[int]
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhooksMarketplacePurchasePropPlanType(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
+
+    bullets: list[Union[str, None]]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
+
+
+class WebhooksMarketplacePurchasePropPlanTypeForResponse(TypedDict):
+    """WebhooksMarketplacePurchasePropPlan"""
+
+    bullets: list[Union[str, None]]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhooksTeamPropParentType",
-    "WebhooksTeamPropParentTypeForResponse",
-    "WebhooksTeamType",
-    "WebhooksTeamTypeForResponse",
+    "WebhooksMarketplacePurchasePropAccountType",
+    "WebhooksMarketplacePurchasePropAccountTypeForResponse",
+    "WebhooksMarketplacePurchasePropPlanType",
+    "WebhooksMarketplacePurchasePropPlanTypeForResponse",
+    "WebhooksMarketplacePurchaseType",
+    "WebhooksMarketplacePurchaseTypeForResponse",
 )

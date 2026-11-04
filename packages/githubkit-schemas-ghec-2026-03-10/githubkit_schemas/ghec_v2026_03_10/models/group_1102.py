@@ -18,22 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0656 import EnterpriseWebhooks
-from .group_0657 import SimpleInstallation
-from .group_0658 import OrganizationSimpleWebhooks
-from .group_0659 import RepositoryWebhooks
-from .group_0710 import PublicMonitoringAlertWebhook
+from .group_0658 import EnterpriseWebhooks
+from .group_0659 import SimpleInstallation
+from .group_0660 import OrganizationSimpleWebhooks
+from .group_0661 import RepositoryWebhooks
+from .group_0711 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
-    """secret_scanning_public_monitoring_alert dismissed event"""
+class WebhookSecretScanningAlertValidated(GitHubModel):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["dismissed"] = Field()
-    alert: PublicMonitoringAlertWebhook = Field(
-        title="Public Monitoring Alert Webhook",
-        description="A public monitoring alert as delivered via webhook.",
-    )
-    enterprise: EnterpriseWebhooks = Field(
+    action: Literal["validated"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
@@ -47,8 +45,7 @@ class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -57,6 +54,6 @@ class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningPublicMonitoringAlertDismissed)
+model_rebuild(WebhookSecretScanningAlertValidated)
 
-__all__ = ("WebhookSecretScanningPublicMonitoringAlertDismissed",)
+__all__ = ("WebhookSecretScanningAlertValidated",)

@@ -9,24 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
 
-    revoke_credentials: NotRequired[bool]
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
 
-    revoke_credentials: NotRequired[bool]
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse",
 )

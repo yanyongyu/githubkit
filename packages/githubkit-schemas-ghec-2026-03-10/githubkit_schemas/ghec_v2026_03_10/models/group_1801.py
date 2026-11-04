@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,36 +17,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1799 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-    commit_title: Missing[str] = Field(
+class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
+
+    cname: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Title for the automatic commit message. Only supported for direct merges.",
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
     )
-    commit_message: Missing[str] = Field(
+    https_enforced: Missing[bool] = Field(
         default=UNSET,
-        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
+        description="Specify whether HTTPS should be enforced for the repository.",
     )
-    sha: Missing[str] = Field(
+    build_type: Missing[Literal["legacy", "workflow"]] = Field(
         default=UNSET,
-        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
     )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+    ] = Field()
+    public: Missing[bool] = Field(
         default=UNSET,
-        description="The merge method to use for a direct merge. Only supported for direct merges.",
-    )
-    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
-        default=UNSET,
-        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
-    )
-    bypass_rules: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to bypass repository rules that the authenticated actor is permitted to bypass.",
+        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)

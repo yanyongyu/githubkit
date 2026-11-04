@@ -9,21 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
 
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
+    ] = Field(min_length=1 if PYDANTIC_V2 else None)
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(min_length=1)
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="Use `optional` to remove the team's policy."
     )
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
+)
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems",
+)

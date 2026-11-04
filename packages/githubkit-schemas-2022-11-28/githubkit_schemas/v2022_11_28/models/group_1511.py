@@ -12,14 +12,27 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    body: str = Field(description="The contents of the comment.")
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
+    )
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberCommentsPostBody)
+model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",)
+__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200",)

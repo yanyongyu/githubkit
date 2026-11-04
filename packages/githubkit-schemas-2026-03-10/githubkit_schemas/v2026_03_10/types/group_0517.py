@@ -13,6 +13,8 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0280 import (
+    SecretScanningLocationActionsLogType,
+    SecretScanningLocationActionsLogTypeForResponse,
     SecretScanningLocationCommitType,
     SecretScanningLocationCommitTypeForResponse,
     SecretScanningLocationDiscussionCommentType,
@@ -64,6 +66,7 @@ class SecretScanningLocationType(TypedDict):
             "pull_request_comment",
             "pull_request_review",
             "pull_request_review_comment",
+            "actions_log",
         ]
     ]
     details: NotRequired[
@@ -81,6 +84,7 @@ class SecretScanningLocationType(TypedDict):
             SecretScanningLocationPullRequestCommentType,
             SecretScanningLocationPullRequestReviewType,
             SecretScanningLocationPullRequestReviewCommentType,
+            SecretScanningLocationActionsLogType,
         ]
     ]
 
@@ -103,6 +107,7 @@ class SecretScanningLocationTypeForResponse(TypedDict):
             "pull_request_comment",
             "pull_request_review",
             "pull_request_review_comment",
+            "actions_log",
         ]
     ]
     details: NotRequired[
@@ -120,6 +125,7 @@ class SecretScanningLocationTypeForResponse(TypedDict):
             SecretScanningLocationPullRequestCommentTypeForResponse,
             SecretScanningLocationPullRequestReviewTypeForResponse,
             SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            SecretScanningLocationActionsLogTypeForResponse,
         ]
     ]
 

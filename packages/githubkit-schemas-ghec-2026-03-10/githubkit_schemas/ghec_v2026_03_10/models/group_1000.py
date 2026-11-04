@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0656 import EnterpriseWebhooks
-from .group_0657 import SimpleInstallation
-from .group_0658 import OrganizationSimpleWebhooks
-from .group_0659 import RepositoryWebhooks
-from .group_1001 import WebhookPullRequestAutoMergeEnabledPropPullRequest
+from .group_0658 import EnterpriseWebhooks
+from .group_0659 import SimpleInstallation
+from .group_0660 import OrganizationSimpleWebhooks
+from .group_0661 import RepositoryWebhooks
+from .group_1001 import WebhookPullRequestAutoMergeDisabledPropPullRequest
 
 
-class WebhookPullRequestAutoMergeEnabled(GitHubModel):
-    """pull_request auto_merge_enabled event"""
+class WebhookPullRequestAutoMergeDisabled(GitHubModel):
+    """pull_request auto_merge_disabled event"""
 
-    action: Literal["auto_merge_enabled"] = Field()
+    action: Literal["auto_merge_disabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,10 +45,10 @@ class WebhookPullRequestAutoMergeEnabled(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestAutoMergeEnabledPropPullRequest = Field(
+    pull_request: WebhookPullRequestAutoMergeDisabledPropPullRequest = Field(
         title="Pull Request"
     )
-    reason: Missing[str] = Field(default=UNSET)
+    reason: str = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -56,6 +56,6 @@ class WebhookPullRequestAutoMergeEnabled(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestAutoMergeEnabled)
+model_rebuild(WebhookPullRequestAutoMergeDisabled)
 
-__all__ = ("WebhookPullRequestAutoMergeEnabled",)
+__all__ = ("WebhookPullRequestAutoMergeDisabled",)

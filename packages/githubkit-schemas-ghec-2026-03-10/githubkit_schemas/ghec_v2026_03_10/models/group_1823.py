@@ -11,20 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0210 import SecretScanningCustomPatternToCreate
 
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
+    reviewers: Missing[list[str]] = Field(
+        default=UNSET, description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: list[str] = Field(
+        description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)

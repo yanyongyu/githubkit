@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Annotated, Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
-    GitHubModel
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
+    state: Missing[Literal["open", "dismissed"]] = Field(
+        default=UNSET,
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.",
     )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
+    dismissed_reason: Missing[
+        Union[
+            Literal["false positive", "won't fix", "used in tests", "mitigated"], None
+        ]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
     )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    create_request: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, attempt to create an alert dismissal request.",
+    )
+    assignees: list[str] = Field(
+        description="The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert."
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1",)

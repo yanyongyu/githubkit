@@ -14,7 +14,7 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
@@ -29,6 +29,17 @@ class PullRequestReviewComment(GitHubModel):
     diff.
     """
 
+    is_copilot_code_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this comment was produced by Copilot code review. Not returned for issue timeline events.",
+    )
+    copilot_code_review_sources: Missing[
+        list[PullRequestReviewCommentPropCopilotCodeReviewSourcesItems]
+    ] = Field(
+        max_length=16 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Sources reported as contributing to this comment; may be incomplete. Not returned for issue timeline events.",
+    )
     url: str = Field(description="URL for the pull request review comment")
     pull_request_review_id: Union[int, None] = Field(
         description="The ID of the pull request review to which the comment belongs."
@@ -113,6 +124,21 @@ class PullRequestReviewComment(GitHubModel):
     body_text: Missing[str] = Field(default=UNSET)
 
 
+class PullRequestReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
+    """PullRequestReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
+        description="The kind of contributing source."
+    )
+    name: str = Field(
+        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS.'
+    )
+    path: Missing[str] = Field(
+        default=UNSET,
+        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
+    )
+
+
 class PullRequestReviewCommentPropLinks(GitHubModel):
     """PullRequestReviewCommentPropLinks"""
 
@@ -151,6 +177,7 @@ class TimelineLineCommentedEvent(GitHubModel):
 
 
 model_rebuild(PullRequestReviewComment)
+model_rebuild(PullRequestReviewCommentPropCopilotCodeReviewSourcesItems)
 model_rebuild(PullRequestReviewCommentPropLinks)
 model_rebuild(PullRequestReviewCommentPropLinksPropSelf)
 model_rebuild(PullRequestReviewCommentPropLinksPropHtml)
@@ -159,6 +186,7 @@ model_rebuild(TimelineLineCommentedEvent)
 
 __all__ = (
     "PullRequestReviewComment",
+    "PullRequestReviewCommentPropCopilotCodeReviewSourcesItems",
     "PullRequestReviewCommentPropLinks",
     "PullRequestReviewCommentPropLinksPropHtml",
     "PullRequestReviewCommentPropLinksPropPullRequest",

@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    issue_field_id: int
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
-class OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    issue_field_id: int
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
 )

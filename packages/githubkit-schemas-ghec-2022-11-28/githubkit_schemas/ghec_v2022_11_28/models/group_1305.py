@@ -9,36 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
-    PatchBody
-    """
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    repository_selection: Literal["all", "selected"] = Field(
-        description="One of either 'all' or 'selected'"
-    )
-    repositories: Missing[list[str]] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
+    name: Missing[str] = Field(default=UNSET, description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
         default=UNSET,
-        description="The repository names to add to the installation. Only required when repository_selection is 'selected'",
+        description="Visibility of a runner group. You can select all organizations or select individual organizations.",
+    )
+    allows_public_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
+    network_configuration_id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The identifier of a hosted compute network configuration.",
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody
-)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody",)

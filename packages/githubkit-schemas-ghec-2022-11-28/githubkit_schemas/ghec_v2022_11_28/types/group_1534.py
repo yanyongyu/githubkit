@@ -9,71 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    default_availability: NotRequired[
-        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
-    ]
-    models: NotRequired[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]]
-
-
-class OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBody"""
-
-    default_availability: NotRequired[
-        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
-    ]
-    models: NotRequired[
-        list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse]
-    ]
-
-
-class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
-
-    The organization's default availability for eligible models without an explicit
-    policy. It cannot be updated when it is inherited from the enterprise.
+    The total number of seats created for members of the specified team(s).
     """
 
-    policy_state: Literal["enabled", "disabled"]
+    seats_created: int
 
 
-class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    The organization's default availability for eligible models without an explicit
-    policy. It cannot be updated when it is inherited from the enterprise.
+    The total number of seats created for members of the specified team(s).
     """
 
-    policy_state: Literal["enabled", "disabled"]
-
-
-class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled"]
-
-
-class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled"]
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType",
-    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesPatchBodyType",
-    "OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

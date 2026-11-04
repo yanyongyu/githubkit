@@ -31,6 +31,7 @@ if TYPE_CHECKING:
     from ..models import (
         AdvancedSecurityActiveCommitters,
         BillingAiCreditUsageReportGhe,
+        BillingCostCenterMembership,
         BillingPremiumRequestUsageReportGhe,
         BillingUsageReport,
         BillingUsageSummaryReportGhe,
@@ -53,6 +54,7 @@ if TYPE_CHECKING:
     from ..types import (
         AdvancedSecurityActiveCommittersTypeForResponse,
         BillingAiCreditUsageReportGheTypeForResponse,
+        BillingCostCenterMembershipTypeForResponse,
         BillingPremiumRequestUsageReportGheTypeForResponse,
         BillingUsageReportTypeForResponse,
         BillingUsageSummaryReportGheTypeForResponse,
@@ -1358,6 +1360,112 @@ class BillingClient:
                 "400": BasicError,
                 "409": BasicError,
                 "500": BasicError,
+            },
+        )
+
+    def get_cost_center_membership(
+        self,
+        enterprise: str,
+        *,
+        resource_type: Literal["user", "repository", "organization", "team"],
+        name: str,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingCostCenterMembership, BillingCostCenterMembershipTypeForResponse
+    ]:
+        """billing/get-cost-center-membership
+
+        GET /enterprises/{enterprise}/settings/billing/cost-centers/memberships
+
+        Gets the cost center membership information for a specified resource (user, organization, repository, or enterprise team).
+        Enterprise owners, billing managers, and organization owners in the enterprise can view membership information. A custom role holder with fine-grained read access to enterprise billing can also view membership information. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get cost center membership information for any resource in the enterprise.
+        Organization owners are limited to organizations they own, users who belong to those organizations, repositories they can see, and enterprise teams visible to them.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-cost-center-membership-for-a-resource
+        """
+
+        from ..models import (
+            BasicError,
+            BillingCostCenterMembership,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers/memberships"
+
+        params = {
+            "resource_type": resource_type,
+            "name": name,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingCostCenterMembership,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_cost_center_membership(
+        self,
+        enterprise: str,
+        *,
+        resource_type: Literal["user", "repository", "organization", "team"],
+        name: str,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        BillingCostCenterMembership, BillingCostCenterMembershipTypeForResponse
+    ]:
+        """billing/get-cost-center-membership
+
+        GET /enterprises/{enterprise}/settings/billing/cost-centers/memberships
+
+        Gets the cost center membership information for a specified resource (user, organization, repository, or enterprise team).
+        Enterprise owners, billing managers, and organization owners in the enterprise can view membership information. A custom role holder with fine-grained read access to enterprise billing can also view membership information. An installation access token for a GitHub App installed on the enterprise with read access to enterprise billing can get cost center membership information for any resource in the enterprise.
+        Organization owners are limited to organizations they own, users who belong to those organizations, repositories they can see, and enterprise teams visible to them.
+
+        See also: https://docs.github.com/enterprise-cloud@latest/rest/billing/cost-centers#get-cost-center-membership-for-a-resource
+        """
+
+        from ..models import (
+            BasicError,
+            BillingCostCenterMembership,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers/memberships"
+
+        params = {
+            "resource_type": resource_type,
+            "name": name,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(parse_query_params(params)),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=BillingCostCenterMembership,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
         )
 

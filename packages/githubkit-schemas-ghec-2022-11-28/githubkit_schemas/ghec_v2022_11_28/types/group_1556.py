@@ -12,25 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202Type(TypedDict):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse(
     TypedDict
 ):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+    """OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200Type",
-    "OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202Type",
+    "OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse",
 )

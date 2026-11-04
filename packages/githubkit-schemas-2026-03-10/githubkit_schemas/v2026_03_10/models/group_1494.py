@@ -16,24 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: Missing[int] = Field(
-        le=1000.0,
-        ge=1.0,
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
         default=UNSET,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
-    include_drafts: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
     )
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

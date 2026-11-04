@@ -9,31 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
+    body: str
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    name: str
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsType",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2ItemsTypeForResponse",
+    "ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoIssuesCommentsCommentIdPatchBodyTypeForResponse",
 )

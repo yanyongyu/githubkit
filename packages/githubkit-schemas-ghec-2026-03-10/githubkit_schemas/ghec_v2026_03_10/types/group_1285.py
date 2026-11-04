@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
+from .group_0031 import ActionsHostedRunnerType, ActionsHostedRunnerTypeForResponse
 
 
-class EnterprisesEnterpriseActionsPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyType]
-
-
-class EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
 
     total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+    runners: list[ActionsHostedRunnerType]
+
+
+class EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsHostedRunnersGetResponse200"""
+
+    total_count: int
+    runners: list[ActionsHostedRunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsHostedRunnersGetResponse200TypeForResponse",
 )

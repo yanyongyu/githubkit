@@ -9,55 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgCopilotModelPoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesGetResponse200"""
 
-    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+    default_availability: OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The effective default availability for models reported as `delegate_to_default`."
     )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads) the hook is triggered for.",
+    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems] = Field(
+        description="The effective policies for all models available to the organization."
     )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
-    )
-    name: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
 
-    Key/value pairs to provide settings for this webhook.
+    The effective default availability for models reported as `delegate_to_default`.
     """
 
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when it\nis configured. Otherwise, the organization's default is used."
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdPatchBody)
-model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
+class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str = Field(description="The public identifier of the model.")
+    display_name: str = Field(description="The human-readable name of the model.")
+    policy_state: Literal[
+        "enabled", "disabled", "delegate_to_default", "unconfigured"
+    ] = Field(
+        description="The policy state after applying inheritance. `enabled` and `disabled` are\nexplicit policies configured for the organization or inherited from its\nenterprise. `delegate_to_default` means the model has no explicit policy and\nfollows `default_availability`. `unconfigured` means the model has no explicit\npolicy and is not eligible for default availability, so it is disabled."
+    )
+
+
+model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems)
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBody",
-    "OrgsOrgHooksHookIdPatchBodyPropConfig",
+    "OrgsOrgCopilotModelPoliciesGetResponse200",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems",
 )

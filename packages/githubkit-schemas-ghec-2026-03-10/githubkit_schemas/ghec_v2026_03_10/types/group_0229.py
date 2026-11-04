@@ -13,73 +13,149 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UpdateCostCenterType(TypedDict):
-    """UpdateCostCenter"""
+class BillingCostCenterMembershipType(TypedDict):
+    """BillingCostCenterMembership"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsType]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[UpdateCostCenterPropAiCreditPoolStateType]
+    resource: BillingCostCenterMembershipPropResourceType
+    memberships: list[BillingCostCenterMembershipPropMembershipsItemsType]
 
 
-class UpdateCostCenterTypeForResponse(TypedDict):
-    """UpdateCostCenter"""
+class BillingCostCenterMembershipTypeForResponse(TypedDict):
+    """BillingCostCenterMembership"""
 
-    id: str
-    name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        UpdateCostCenterPropAiCreditPoolStateTypeForResponse
+    resource: BillingCostCenterMembershipPropResourceTypeForResponse
+    memberships: list[BillingCostCenterMembershipPropMembershipsItemsTypeForResponse]
+
+
+class BillingCostCenterMembershipPropResourceType(TypedDict):
+    """BillingCostCenterMembershipPropResource"""
+
+    type: Literal["user", "organization", "repository", "team"]
+    identifier: Union[
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type,
     ]
 
 
-class UpdateCostCenterPropResourcesItemsType(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
+class BillingCostCenterMembershipPropResourceTypeForResponse(TypedDict):
+    """BillingCostCenterMembershipPropResource"""
 
-    type: str
+    type: Literal["user", "organization", "repository", "team"]
+    identifier: Union[
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse,
+    ]
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
+
+    login: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
+
+    login: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
+
     name: str
 
 
-class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
 
-    type: str
     name: str
 
 
-class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
-    """UpdateCostCenterPropAiCreditPoolState
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+    owner: str
+    name: str
 
 
-class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
-    """UpdateCostCenterPropAiCreditPoolState
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
 
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
+    owner: str
+    name: str
 
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
+
+    slug: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
+
+    slug: str
+
+
+class BillingCostCenterMembershipPropMembershipsItemsType(TypedDict):
+    """BillingCostCenterMembershipPropMembershipsItems"""
+
+    cost_center: NotRequired[
+        BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType
+    ]
+
+
+class BillingCostCenterMembershipPropMembershipsItemsTypeForResponse(TypedDict):
+    """BillingCostCenterMembershipPropMembershipsItems"""
+
+    cost_center: NotRequired[
+        BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse
+    ]
+
+
+class BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType(TypedDict):
+    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
+
+    id: str
+    name: str
+
+
+class BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
+
+    id: str
+    name: str
 
 
 __all__ = (
-    "UpdateCostCenterPropAiCreditPoolStateType",
-    "UpdateCostCenterPropAiCreditPoolStateTypeForResponse",
-    "UpdateCostCenterPropResourcesItemsType",
-    "UpdateCostCenterPropResourcesItemsTypeForResponse",
-    "UpdateCostCenterType",
-    "UpdateCostCenterTypeForResponse",
+    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType",
+    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse",
+    "BillingCostCenterMembershipPropMembershipsItemsType",
+    "BillingCostCenterMembershipPropMembershipsItemsTypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse",
+    "BillingCostCenterMembershipPropResourceType",
+    "BillingCostCenterMembershipPropResourceTypeForResponse",
+    "BillingCostCenterMembershipType",
+    "BillingCostCenterMembershipTypeForResponse",
 )

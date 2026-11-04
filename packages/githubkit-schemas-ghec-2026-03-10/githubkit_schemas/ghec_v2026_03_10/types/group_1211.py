@@ -13,8 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -25,7 +25,7 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type(TypedDict)
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsType
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsType
         ]
     ]
     documentation_url: str
@@ -33,10 +33,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type(TypedDict)
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429TypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -47,7 +47,7 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429TypeForResponse
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsTypeForResponse
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -55,10 +55,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429TypeForResponse
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsType(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItems
 
     A single validation error
     """
@@ -74,10 +74,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItems
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItems
 
     A single validation error
     """
@@ -94,8 +94,8 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItems
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429Type",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403Type",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403TypeForResponse",
 )

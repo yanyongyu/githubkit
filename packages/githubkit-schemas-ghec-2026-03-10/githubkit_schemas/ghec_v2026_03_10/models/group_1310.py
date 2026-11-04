@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,14 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which this runner version can no longer register. Only set for runner versions below the minimum version required to register (currently 2.329.0); `null` for versions with no registration end date.",
+    )
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which jobs will no longer be dispatched to runners on this version. `null` when no newer runner release exists yet.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+model_rebuild(EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200",)

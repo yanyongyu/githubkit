@@ -9,89 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200(GitHubModel):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
-    id: Missing[str] = Field(
-        default=UNSET, description="Unique identifier for the cost center"
+    name: str = Field(
+        description="Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, `.`, `-`, and `_`."
     )
-    name: Missing[str] = Field(default=UNSET, description="Name of the cost center")
-    azure_subscription: Missing[Union[str, None]] = Field(
+    compute_service: Missing[Literal["none", "actions"]] = Field(
         default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
+        description="The hosted compute service to use for the network configuration.",
     )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
+    network_settings_ids: list[str] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="A list of identifiers of the network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    resources: Missing[
-        list[
-            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-        ]
-    ] = Field(
-        default=UNSET, description="List of resources assigned to this cost center"
-    )
-    ai_credit_pool_enabled: Missing[bool] = Field(
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="Whether the cost center draws from the AI credit pool (capped from member license entitlements).",
+        description="A list of identifiers of the failover network settings resources to use for the network configuration. Exactly one resource identifier must be specified in the list.",
     )
-    ai_credit_pool_state: Missing[
-        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
-    ] = Field(
+    failover_network_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+        description="Indicates whether the failover network resource is enabled.",
     )
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+model_rebuild(EnterprisesEnterpriseNetworkConfigurationsPostBody)
 
-    type: Missing[str] = Field(
-        default=UNSET, description="Type of resource (User, Org, or Repo)"
-    )
-    name: Missing[str] = Field(default=UNSET, description="Name/login of the resource")
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
-    ate
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
-
-
-model_rebuild(EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState
-)
-
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolState",
-    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems",
-)
+__all__ = ("EnterprisesEnterpriseNetworkConfigurationsPostBody",)

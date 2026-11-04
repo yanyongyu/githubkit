@@ -9,29 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC Subject customization
+class InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties(
+    ExtraGitHubModel
+):
+    """InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomPrope
+    rties
 
-    Actions OIDC Subject customization
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values. Present for org repos only.
     """
 
-    include_claim_keys: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
-    use_immutable_subject: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to opt in to the immutable OIDC subject claim format for the organization. When `true`, new OIDC tokens will use a stable, repository-ID-based `sub` claim instead of the name-based format.",
-    )
 
+model_rebuild(
+    InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties
+)
 
-model_rebuild(OrgsOrgActionsOidcCustomizationSubPutBody)
-
-__all__ = ("OrgsOrgActionsOidcCustomizationSubPutBody",)
+__all__ = (
+    "InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties",
+)

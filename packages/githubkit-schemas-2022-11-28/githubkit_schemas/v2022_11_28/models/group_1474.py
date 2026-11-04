@@ -12,17 +12,30 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0308 import ActionsSecret
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
+    GitHubModel
+):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+    Parameters for AI agent assignment. Only used when an agent bot login is
+    included in `assignees`. Ignored when no agent is being assigned.
+    """
+
+    custom_instructions: Missing[str] = Field(
+        default=UNSET, description="Custom instructions for the agent."
+    )
+    custom_agent: Missing[str] = Field(
+        default=UNSET, description="A custom agent identifier."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model to use for the agent."
+    )
+
+
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)

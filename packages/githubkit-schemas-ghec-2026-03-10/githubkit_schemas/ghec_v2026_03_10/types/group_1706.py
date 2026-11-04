@@ -9,31 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType(TypedDict):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
-    ]
-    dismissed_comment: NotRequired[str]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    dismissed_reason: Literal[
-        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
-    ]
-    dismissed_comment: NotRequired[str]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyType",
-    "ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBodyTypeForResponse",
+    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",
+    "ReposOwnerRepoCodespacesSecretsSecretNamePutBodyTypeForResponse",
 )

@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0298 import Codespace
+
+class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ] = Field(description="The type of credential to revoke for the user.")
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
+model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody)
 
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
-
-
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
-
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",)

@@ -9,86 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgCampaignsCampaignNumberPatchBody(GitHubModel):
+    """OrgsOrgCampaignsCampaignNumberPatchBody"""
 
     name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
+        min_length=1,
+        max_length=50,
+        default=UNSET,
+        description="The name of the campaign",
     )
     description: Missing[str] = Field(
-        default=UNSET, description="A description of the Copilot Space."
-    )
-    general_instructions: Missing[str] = Field(
-        max_length=4000,
+        min_length=1,
+        max_length=255,
         default=UNSET,
-        description="General instructions for the Copilot Space.",
+        description="A description for the campaign",
     )
-    base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
+    managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
+        description="The logins of the users to set as the campaign managers. At this time, only a single manager can be supplied.",
     )
-    resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
-    ] = Field(default=UNSET, description="Resources to attach to the space.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
-
-    resource_type: Missing[
-        Literal[
-            "repository",
-            "github_file",
-            "free_text",
-            "github_issue",
-            "github_pull_request",
-            "media_content",
-            "uploaded_text_file",
-        ]
-    ] = Field(default=UNSET, description="The type of resource.")
-    metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-    ] = Field(default=UNSET, description="Metadata specific to the resource type.")
-
-
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-
-    Metadata specific to the resource type.
-    """
-
-    repository_id: Missing[int] = Field(
-        default=UNSET, description="Repository ID for repository or file resources."
+    team_managers: Missing[list[str]] = Field(
+        max_length=10 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The slugs of the teams to set as the campaign managers.",
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="File path for file resources."
+    ends_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
     )
-    text: Missing[str] = Field(
-        default=UNSET, description="Text content for free text resources."
+    contact_link: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contact link of the campaign. Must be a URI."
     )
-    name: Missing[str] = Field(default=UNSET, description="Name for the resource.")
-    number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        title="Campaign state",
+        description="Indicates whether a campaign is open or closed",
+    )
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-)
+model_rebuild(OrgsOrgCampaignsCampaignNumberPatchBody)
 
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
-)
+__all__ = ("OrgsOrgCampaignsCampaignNumberPatchBody",)

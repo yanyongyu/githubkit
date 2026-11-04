@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersPutBody"""
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    enabled_repositories: Literal["all", "selected", "none"] = Field(
+        description="The policy that controls whether self-hosted runners can be used in the organization"
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersPutBody)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersPutBody",)

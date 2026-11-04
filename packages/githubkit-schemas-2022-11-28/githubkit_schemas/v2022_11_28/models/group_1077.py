@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems]
+        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,10 +47,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems
 
     A single validation error
     """
@@ -69,12 +69,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404",
-    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems",
 )

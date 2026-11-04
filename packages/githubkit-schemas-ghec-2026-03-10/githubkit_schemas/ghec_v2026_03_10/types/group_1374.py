@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0210 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreateType]
-
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    message: NotRequired[str]
+    warning: NotRequired[str]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202"""
+
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostResponse202TypeForResponse",
 )

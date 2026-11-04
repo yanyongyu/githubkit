@@ -9,96 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0214 import (
-    PublicMonitoringRepositoryType,
-    PublicMonitoringRepositoryTypeForResponse,
-)
-from .group_0215 import BaseGistType, BaseGistTypeForResponse
-from .group_0218 import (
-    PublicMonitoringAlertPropAttributionType,
-    PublicMonitoringAlertPropAttributionTypeForResponse,
-)
 
+class PublicMonitoringSecretAuthorType(TypedDict):
+    """PublicMonitoringSecretAuthor
 
-class PublicMonitoringAlertType(TypedDict):
-    """PublicMonitoringAlert"""
+    Delivered public details for the user attributed as the secret author.
+    """
 
-    number: int
-    url: str
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    created_at: NotRequired[_dt.datetime]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
-    resolved_by: NotRequired[Union[SimpleUserType, None]]
-    resolved_at: NotRequired[Union[_dt.datetime, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret: NotRequired[Union[str, None]]
-    repository: NotRequired[
-        Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
-    ]
-    gist: NotRequired[
-        Union[BaseGistType, PublicMonitoringAlertPropGistAnyof1Type, None]
-    ]
-    attribution: NotRequired[PublicMonitoringAlertPropAttributionType]
-
-
-class PublicMonitoringAlertTypeForResponse(TypedDict):
-    """PublicMonitoringAlert"""
-
-    number: int
-    url: str
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    created_at: NotRequired[str]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
-    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    resolved_at: NotRequired[Union[str, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret: NotRequired[Union[str, None]]
-    repository: NotRequired[
-        Union[
-            SimpleRepositoryTypeForResponse,
-            PublicMonitoringRepositoryTypeForResponse,
-            None,
-        ]
-    ]
-    gist: NotRequired[
-        Union[
-            BaseGistTypeForResponse,
-            PublicMonitoringAlertPropGistAnyof1TypeForResponse,
-            None,
-        ]
-    ]
-    attribution: NotRequired[PublicMonitoringAlertPropAttributionTypeForResponse]
-
-
-class PublicMonitoringAlertPropGistAnyof1Type(TypedDict):
-    """PublicMonitoringAlertPropGistAnyof1"""
-
-    id: str
+    login: str
+    avatar_url: NotRequired[Union[str, None]]
     html_url: NotRequired[Union[str, None]]
 
 
-class PublicMonitoringAlertPropGistAnyof1TypeForResponse(TypedDict):
-    """PublicMonitoringAlertPropGistAnyof1"""
+class PublicMonitoringSecretAuthorTypeForResponse(TypedDict):
+    """PublicMonitoringSecretAuthor
 
-    id: str
+    Delivered public details for the user attributed as the secret author.
+    """
+
+    login: str
+    avatar_url: NotRequired[Union[str, None]]
     html_url: NotRequired[Union[str, None]]
+
+
+class PublicMonitoringAlertLocationType(TypedDict):
+    """PublicMonitoringAlertLocation
+
+    Delivered source location details for a public monitoring alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    blob_sha: NotRequired[str]
+    commit_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    content_number: NotRequired[int]
+    content_id: NotRequired[int]
+
+
+class PublicMonitoringAlertLocationTypeForResponse(TypedDict):
+    """PublicMonitoringAlertLocation
+
+    Delivered source location details for a public monitoring alert.
+    """
+
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    blob_sha: NotRequired[str]
+    commit_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    content_number: NotRequired[int]
+    content_id: NotRequired[int]
 
 
 __all__ = (
-    "PublicMonitoringAlertPropGistAnyof1Type",
-    "PublicMonitoringAlertPropGistAnyof1TypeForResponse",
-    "PublicMonitoringAlertType",
-    "PublicMonitoringAlertTypeForResponse",
+    "PublicMonitoringAlertLocationType",
+    "PublicMonitoringAlertLocationTypeForResponse",
+    "PublicMonitoringSecretAuthorType",
+    "PublicMonitoringSecretAuthorTypeForResponse",
 )

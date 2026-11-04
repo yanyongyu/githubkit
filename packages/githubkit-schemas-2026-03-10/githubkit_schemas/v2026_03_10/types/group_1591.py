@@ -9,65 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
-    """Validation Error
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
+    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
-    """Validation Error
-
-    Validation Error
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[
-            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
+    assignee: Union[str, None]
+    validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
 )

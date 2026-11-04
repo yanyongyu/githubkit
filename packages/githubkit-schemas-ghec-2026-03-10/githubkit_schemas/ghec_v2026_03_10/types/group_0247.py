@@ -15,67 +15,28 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0239 import MilestoneType, MilestoneTypeForResponse
-from .group_0240 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0241 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0242 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0245 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0246 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0248 import (
-    IssuePropLabelsItemsOneof1Type,
-    IssuePropLabelsItemsOneof1TypeForResponse,
-    IssuePropPullRequestType,
-    IssuePropPullRequestTypeForResponse,
-)
+from .group_0243 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0245 import PinnedIssueCommentType, PinnedIssueCommentTypeForResponse
+from .group_0246 import IssueCommentMinimizedType, IssueCommentMinimizedTypeForResponse
 
 
-class IssueType(TypedDict):
-    """Issue
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    Comments provide a way for people to collaborate on an issue.
     """
 
     id: int
     node_id: str
     url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    number: int
-    state: str
-    state_reason: NotRequired[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
     user: Union[SimpleUserType, None]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
-    assignees: NotRequired[list[SimpleUserType]]
-    milestone: Union[MilestoneType, None]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestType]
-    closed_at: Union[_dt.datetime, None]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[SimpleUserType, None]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    issue_url: str
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",
@@ -88,55 +49,29 @@ class IssueType(TypedDict):
             "OWNER",
         ]
     ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
     reactions: NotRequired[ReactionRollupType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[IssueCommentType, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    pin: NotRequired[Union[PinnedIssueCommentType, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
 
 
-class IssueTypeForResponse(TypedDict):
-    """Issue
+class IssueCommentTypeForResponse(TypedDict):
+    """Issue Comment
 
-    Issues are a great way to keep track of tasks, enhancements, and bugs for your
-    projects.
+    Comments provide a way for people to collaborate on an issue.
     """
 
     id: int
     node_id: str
     url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    number: int
-    state: str
-    state_reason: NotRequired[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
     user: Union[SimpleUserTypeForResponse, None]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    milestone: Union[MilestoneTypeForResponse, None]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestTypeForResponse]
-    closed_at: Union[str, None]
     created_at: str
     updated_at: str
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    repository: NotRequired[RepositoryTypeForResponse]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    issue_url: str
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",
@@ -149,15 +84,13 @@ class IssueTypeForResponse(TypedDict):
             "OWNER",
         ]
     ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
     reactions: NotRequired[ReactionRollupTypeForResponse]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
+    minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]
 
 
 __all__ = (
-    "IssueType",
-    "IssueTypeForResponse",
+    "IssueCommentType",
+    "IssueCommentTypeForResponse",
 )

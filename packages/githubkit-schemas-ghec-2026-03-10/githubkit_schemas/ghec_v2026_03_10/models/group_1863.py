@@ -11,22 +11,32 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: list[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.",
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+    )
+    name: str = Field(description="The name of the new repository.")
+    description: Missing[str] = Field(
+        default=UNSET, description="A short description of the new repository."
+    )
+    include_all_branches: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Either `true` to create a new private repository or `false` to create a new public one.",
     )
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)

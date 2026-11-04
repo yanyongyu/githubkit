@@ -9,20 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0281 import MinimalRepository
+
+class OrgsOrgCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
+    )
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
 
 
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability)
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = (
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
+)

@@ -11,42 +11,31 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
-
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
-    )
-
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
+    GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-    rors
-
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
+    ponse202
     """
 
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
+    )
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
+
 model_rebuild(
-    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
 )

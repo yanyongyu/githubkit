@@ -10,45 +10,40 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserCodespacesSecretsGetResponse200(GitHubModel):
-    """UserCodespacesSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[CodespacesSecret] = Field()
+from .group_0606 import PullRequestStackPullRequest
 
 
-class CodespacesSecret(GitHubModel):
-    """Codespaces Secret
+class ReposOwnerRepoStacksStackNumberAddPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: _dt.datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    updated_at: _dt.datetime = Field(
-        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: str = Field(
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UserCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesSecret)
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase)
 
 __all__ = (
-    "CodespacesSecret",
-    "UserCodespacesSecretsGetResponse200",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase",
 )

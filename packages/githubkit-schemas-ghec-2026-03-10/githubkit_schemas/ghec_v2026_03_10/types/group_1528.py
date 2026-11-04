@@ -9,49 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, Literal, TypeAlias
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
 
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ]
+    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType
+
+
+class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+
+    resource_type: Literal[
+        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
+    ]
+    metadata: (
+        OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse
     )
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-
-
-class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
+Resource-specific metadata.
+"""
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
 
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
+Resource-specific metadata.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200Type",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyTypeForResponse",
 )

@@ -13,250 +13,373 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0108 import TeamType, TeamTypeForResponse
-from .group_0366 import (
-    RepositoryAdvisoryCreditType,
-    RepositoryAdvisoryCreditTypeForResponse,
-)
 
+class RuleSuiteType(TypedDict):
+    """Rule Suite
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
-
-    A repository security advisory.
+    Response
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[Literal["critical", "high", "medium", "low"], None]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[_dt.datetime, None]
-    updated_at: Union[_dt.datetime, None]
-    published_at: Union[_dt.datetime, None]
-    closed_at: Union[_dt.datetime, None]
-    withdrawn_at: Union[_dt.datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[list[SimpleUserType], None]
-    collaborating_teams: Union[list[TeamType], None]
-    private_fork: None
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[_dt.datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-class RepositoryAdvisoryTypeForResponse(TypedDict):
-    """RepositoryAdvisory
+class RuleSuiteTypeForResponse(TypedDict):
+    """Rule Suite
 
-    A repository security advisory.
+    Response
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[Literal["critical", "high", "medium", "low"], None]
-    author: None
-    publisher: None
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[str, None]
-    updated_at: Union[str, None]
-    published_at: Union[str, None]
-    closed_at: Union[str, None]
-    withdrawn_at: Union[str, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionTypeForResponse, None]
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityTypeForResponse], None]
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: Union[list[RepositoryAdvisoryPropCwesItemsTypeForResponse], None]
-    cwe_ids: Union[list[str], None]
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsTypeForResponse], None]
-    credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
-    collaborating_users: Union[list[SimpleUserTypeForResponse], None]
-    collaborating_teams: Union[list[TeamTypeForResponse], None]
-    private_fork: None
+    id: NotRequired[int]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[str]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
+    rule_evaluations: NotRequired[
+        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
+    ]
 
 
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    metadata: NotRequired[
+        Union[RuleSuitePullRequestType, RuleSuiteRequiredStatusChecksType, None]
+    ]
+    details: NotRequired[Union[str, None]]
 
 
-class RepositoryAdvisoryPropSubmissionTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
+class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    accepted: bool
+    rule_source: NotRequired[
+        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
+    ]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    metadata: NotRequired[
+        Union[
+            RuleSuitePullRequestTypeForResponse,
+            RuleSuiteRequiredStatusChecksTypeForResponse,
+            None,
+        ]
+    ]
+    details: NotRequired[Union[str, None]]
 
 
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
 
 
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
 
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+class RuleSuiteRequiredStatusChecksType(TypedDict):
+    """Required status checks rule suite metadata
+
+    Metadata for a required status checks rule evaluation result.
+    """
+
+    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
+
+
+class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
+    """Required status checks rule suite metadata
+
+    Metadata for a required status checks rule evaluation result.
+    """
+
+    checks: NotRequired[
+        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: NotRequired[int]
+    context: NotRequired[str]
+    state: NotRequired[str]
+    type: NotRequired[str]
+    app: NotRequired[
+        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
+    ]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    name: NotRequired[str]
+
+
+class RuleSuitePullRequestType(TypedDict):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
+
+
+class RuleSuitePullRequestTypeForResponse(TypedDict):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
+
+
+class RuleSuitePullRequestPropPullRequestType(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
+    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
+    proof_of_presence: NotRequired[
+        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresenceType, None]
+    ]
+
+
+class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: NotRequired[int]
+    number: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
+    reviews: NotRequired[
+        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
+    ]
+    proof_of_presence: NotRequired[
+        Union[
+            RuleSuitePullRequestPropPullRequestPropProofOfPresenceTypeForResponse, None
         ]
     ]
 
 
-class RepositoryAdvisoryPropCreditsItemsTypeForResponse(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
+class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
 
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
     login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropProofOfPresenceType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
+
+    The proof of presence evaluation for the pull request. Null if proof of presence
+    was not evaluated.
+    """
+
+    state: NotRequired[str]
+    code: NotRequired[str]
+    base_sha: NotRequired[str]
+    head_sha: NotRequired[str]
+    required_level: NotRequired[str]
+    verified_level: NotRequired[str]
+    verified_at: NotRequired[str]
+    verifier: NotRequired[
+        Union[
+            RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierType, None
         ]
     ]
 
 
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
+class RuleSuitePullRequestPropPullRequestPropProofOfPresenceTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
 
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
+    The proof of presence evaluation for the pull request. Null if proof of presence
+    was not evaluated.
     """
 
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[list[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    state: NotRequired[str]
+    code: NotRequired[str]
+    base_sha: NotRequired[str]
+    head_sha: NotRequired[str]
+    required_level: NotRequired[str]
+    verified_level: NotRequired[str]
+    verified_at: NotRequired[str]
+    verifier: NotRequired[
+        Union[
+            RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierTypeForResponse,
+            None,
+        ]
     ]
-    name: Union[str, None]
 
 
-class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
 
-    The name of the package affected by the vulnerability.
+    The user who provided proof of presence. Null if no proof of presence was
+    recorded.
     """
 
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
+
+    The user who provided proof of presence. Null if no proof of presence was
+    recorded.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: NotRequired[int]
+    user: NotRequired[
+        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
     ]
-    name: Union[str, None]
+    state: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
+    TypedDict
+):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: NotRequired[int]
+    login: NotRequired[str]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCwesItemsTypeForResponse",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropSubmissionTypeForResponse",
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
-    "RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierType",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresenceType",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresenceTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestPropUserType",
+    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
+    "RuleSuitePullRequestPropPullRequestType",
+    "RuleSuitePullRequestPropPullRequestTypeForResponse",
+    "RuleSuitePullRequestType",
+    "RuleSuitePullRequestTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
+    "RuleSuiteRequiredStatusChecksType",
+    "RuleSuiteRequiredStatusChecksTypeForResponse",
+    "RuleSuiteType",
+    "RuleSuiteTypeForResponse",
 )

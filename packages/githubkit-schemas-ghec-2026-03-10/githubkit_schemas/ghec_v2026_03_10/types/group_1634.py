@@ -9,55 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
-
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
-    ]
-
-
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
-
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse
-    ]
-
-
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType: TypeAlias = (
-    dict[str, Any]
+from .group_0051 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
 )
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+from .group_0052 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
-Input keys and values configured in the workflow file. The maximum number of
-properties is 25. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
+
+class ReposOwnerRepoActionsPoliciesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
+
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+class ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-Input keys and values configured in the workflow file. The maximum number of
-properties is 25. Any default properties configured in the workflow file will be
-used when `inputs` are omitted.
-"""
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsTypeForResponse",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyTypeForResponse",
+    "ReposOwnerRepoActionsPoliciesPostBodyType",
+    "ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse",
 )

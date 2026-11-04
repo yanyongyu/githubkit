@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,44 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
 
-    organizations: Missing[list[str]] = Field(
-        default=UNSET,
-        description="List of organization logins within the enterprise to disable Copilot cloud agent for.",
-    )
-    custom_properties: Missing[
-        list[
-            EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+    custom_agents: Missing[
+        Union[
+            list[
+                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+            ],
+            None,
         ]
     ] = Field(
         default=UNSET,
-        description="List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy.",
+        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
     )
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems(
+class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustom
-    PropertiesItems
-    """
+    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
 
-    property_name: str = Field(
-        description="The name of the custom property to filter by."
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The display name of the custom agent (derived from filename).",
     )
-    values: list[str] = Field(description="The values of the custom property to match.")
+    file_path: Missing[str] = Field(
+        default=UNSET, description="The path to the agent definition file."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to view the agent definition file."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems
+    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
 )

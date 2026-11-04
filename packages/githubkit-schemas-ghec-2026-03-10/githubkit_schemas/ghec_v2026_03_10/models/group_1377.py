@@ -13,26 +13,37 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0212 import SecretScanningCustomPatternToDelete
 
+class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+    Optional filters that scope the export to a subset of the inventory.
+    """
 
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
+    token_types: Missing[list[str]] = Field(
+        default=UNSET, description="The credential types to include."
     )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+    authorization_state: Missing[
+        Literal["currently_authorized", "member_owned_only"]
+    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
+    owner: Missing[str] = Field(
         default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+        description="Filter to credentials owned by this user, given as a login.",
+    )
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
+    )
+    application: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody)
+model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
 
-__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody",)
+__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0301 import CopilotSpaceType, CopilotSpaceTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesGetResponse200Type(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UserGpgKeysPostBodyType(TypedDict):
+    """UserGpgKeysPostBody"""
 
-    spaces: list[CopilotSpaceType]
+    name: NotRequired[str]
+    armored_public_key: str
 
 
-class UsersUsernameCopilotSpacesGetResponse200TypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesGetResponse200"""
+class UserGpgKeysPostBodyTypeForResponse(TypedDict):
+    """UserGpgKeysPostBody"""
 
-    spaces: list[CopilotSpaceTypeForResponse]
+    name: NotRequired[str]
+    armored_public_key: str
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesGetResponse200Type",
-    "UsersUsernameCopilotSpacesGetResponse200TypeForResponse",
+    "UserGpgKeysPostBodyType",
+    "UserGpgKeysPostBodyTypeForResponse",
 )

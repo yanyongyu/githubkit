@@ -9,26 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202Type(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202Type",
-    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

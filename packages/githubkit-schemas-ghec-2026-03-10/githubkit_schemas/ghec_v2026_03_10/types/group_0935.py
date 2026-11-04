@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0658 import (
+from .group_0658 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0659 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0660 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0681 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
+from .group_0661 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0683 import WebhooksMilestoneType, WebhooksMilestoneTypeForResponse
 
 
-class WebhookMilestoneDeletedType(TypedDict):
-    """milestone deleted event"""
+class WebhookMilestoneClosedType(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     milestone: WebhooksMilestoneType
@@ -35,10 +35,10 @@ class WebhookMilestoneDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookMilestoneDeletedTypeForResponse(TypedDict):
-    """milestone deleted event"""
+class WebhookMilestoneClosedTypeForResponse(TypedDict):
+    """milestone closed event"""
 
-    action: Literal["deleted"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     milestone: WebhooksMilestoneTypeForResponse
@@ -48,6 +48,6 @@ class WebhookMilestoneDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookMilestoneDeletedType",
-    "WebhookMilestoneDeletedTypeForResponse",
+    "WebhookMilestoneClosedType",
+    "WebhookMilestoneClosedTypeForResponse",
 )

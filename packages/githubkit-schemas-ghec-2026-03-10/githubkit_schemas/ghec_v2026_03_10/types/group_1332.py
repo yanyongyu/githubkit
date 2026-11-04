@@ -9,59 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
 
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType
-            ],
-            None,
-        ]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType
     ]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
 
-    custom_agents: NotRequired[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse
-            ],
-            None,
-        ]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
 
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
+    model_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
 
-    name: NotRequired[str]
-    file_path: NotRequired[str]
-    url: NotRequired[str]
+    model_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsType",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse",
 )

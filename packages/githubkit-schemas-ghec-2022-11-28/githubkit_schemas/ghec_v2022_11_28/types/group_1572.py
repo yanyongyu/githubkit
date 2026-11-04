@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    title: str
-    body: NotRequired[str]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
+    include_drafts: NotRequired[bool]
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    title: str
-    body: NotRequired[str]
+    enabled: bool
+    max_open_pull_requests: NotRequired[int]
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
-    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyType",
+    "OrgsOrgInteractionLimitsPullsCreationCapPatchBodyTypeForResponse",
 )

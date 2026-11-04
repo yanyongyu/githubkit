@@ -9,31 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrganizationCustomRepositoryRoleCreateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleCreateSchema"""
+class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
+    """Copilot Organization Content Exclusion Details
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: list[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
+    List all Copilot Content Exclusion rules for an organization.
+    """
 
 
-model_rebuild(OrganizationCustomRepositoryRoleCreateSchema)
+model_rebuild(CopilotOrganizationContentExclusionDetails)
 
-__all__ = ("OrganizationCustomRepositoryRoleCreateSchema",)
+__all__ = ("CopilotOrganizationContentExclusionDetails",)

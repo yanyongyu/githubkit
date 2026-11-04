@@ -12,25 +12,23 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoForksPostBodyType(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    organization: NotRequired[str]
+    name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoForksPostBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    organization: NotRequired[str]
+    name: NotRequired[str]
+    default_branch_only: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
+    "ReposOwnerRepoForksPostBodyType",
+    "ReposOwnerRepoForksPostBodyTypeForResponse",
 )

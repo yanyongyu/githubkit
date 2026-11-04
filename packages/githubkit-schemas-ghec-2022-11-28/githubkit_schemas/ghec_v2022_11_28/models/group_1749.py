@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,154 +19,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    Pending suggestions for each suggestible field (`type`,
-    `issue_field_values`, `labels`, `assignees`, `state`) the
-    request touched. Omitted for fields not in the request or
-    with no pending or ignored suggestions. Items tagged
-    `ignored` are echoes of the current request's inputs that
-    were not persisted as pending suggestions.
-    """
-
-    type: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
-        ]
-    ] = Field(default=UNSET)
-    issue_field_values: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
-        ]
-    ] = Field(default=UNSET)
-    labels: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
-        ]
-    ] = Field(default=UNSET)
-    assignees: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
-        ]
-    ] = Field(default=UNSET)
-    state: Missing[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
-        ]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
-    s
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    )
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
+    )
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
+    )
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+        default=UNSET,
+        description="An object with information about the individual creating the tag.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
-    ldValuesItems
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
     """
 
-    field_id: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, float, list[str]]] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
-    ems
-    """
-
-    name: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
-    sItems
-    """
-
-    login: Missing[str] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
-    )
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
-    ms
-    """
-
-    value: Missing[str] = Field(default=UNSET)
-    state_reason: Missing[str] = Field(default=UNSET)
-    duplicate_issue_id: Missing[int] = Field(default=UNSET)
-    rationale: Missing[str] = Field(default=UNSET)
-    suggest: Missing[bool] = Field(default=UNSET)
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(default=UNSET)
-    ignored: Missing[bool] = Field(default=UNSET)
-    ignored_reason: Missing[Literal["already_applied", "issue_already_closed"]] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems
-)
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems",
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
 )

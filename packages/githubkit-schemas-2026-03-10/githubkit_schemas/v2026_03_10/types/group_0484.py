@@ -27,6 +27,8 @@ class PullRequestReviewType(TypedDict):
     user: Union[SimpleUserType, None]
     body: str
     state: str
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_effort: NotRequired[Union[str, None]]
     html_url: str
     pull_request_url: str
     links: PullRequestReviewPropLinksType
@@ -57,6 +59,8 @@ class PullRequestReviewTypeForResponse(TypedDict):
     user: Union[SimpleUserTypeForResponse, None]
     body: str
     state: str
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_effort: NotRequired[Union[str, None]]
     html_url: str
     pull_request_url: str
     links: PullRequestReviewPropLinksTypeForResponse

@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0658 import (
+from .group_0658 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0659 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0660 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0659 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0710 import (
-    PublicMonitoringAlertWebhookType,
-    PublicMonitoringAlertWebhookTypeForResponse,
+from .group_0661 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0711 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningPublicMonitoringAlertDismissedType(TypedDict):
-    """secret_scanning_public_monitoring_alert dismissed event"""
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["dismissed"]
-    alert: PublicMonitoringAlertWebhookType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningPublicMonitoringAlertDismissedTypeForResponse(TypedDict):
-    """secret_scanning_public_monitoring_alert dismissed event"""
+class WebhookSecretScanningAlertValidatedTypeForResponse(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["dismissed"]
-    alert: PublicMonitoringAlertWebhookTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecretScanningPublicMonitoringAlertDismissedType",
-    "WebhookSecretScanningPublicMonitoringAlertDismissedTypeForResponse",
+    "WebhookSecretScanningAlertValidatedType",
+    "WebhookSecretScanningAlertValidatedTypeForResponse",
 )

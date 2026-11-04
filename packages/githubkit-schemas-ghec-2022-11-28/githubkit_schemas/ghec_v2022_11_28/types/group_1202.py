@@ -10,92 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503Type(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Response from accepting an automation run request.
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsType
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
+    task_id: str
+    automation_id: str
+    event: Literal["manual"]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    Response from accepting an automation run request.
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
-
-
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    task_id: str
+    automation_id: str
+    event: Literal["manual"]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503Type",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse",
 )

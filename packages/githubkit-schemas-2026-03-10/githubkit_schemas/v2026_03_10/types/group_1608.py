@@ -11,26 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+
+class ReposOwnerRepoStargazersCountGetResponse200Type(TypedDict):
+    """ReposOwnerRepoStargazersCountGetResponse200"""
+
+    count: int
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoStargazersCountGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStargazersCountGetResponse200"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
-
-
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    count: int
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoStargazersCountGetResponse200Type",
+    "ReposOwnerRepoStargazersCountGetResponse200TypeForResponse",
 )

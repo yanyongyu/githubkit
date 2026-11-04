@@ -9,43 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBodyType(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
-    )
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
-
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
-    )
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType
+    ]
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled"]
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    policy_state: Literal["enabled", "disabled"]
+    metadata: NotRequired[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse
+    ]
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
+
+
+OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+Updated resource-specific metadata.
+"""
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyType",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyType",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyTypeForResponse",
 )

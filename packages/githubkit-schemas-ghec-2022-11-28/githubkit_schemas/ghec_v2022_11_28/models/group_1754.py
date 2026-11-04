@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,44 +18,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
-    assignees: Missing[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
-            ]
-        ]
-    ] = Field(
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
         default=UNSET,
-        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
     )
-
-
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1"""
-
-    login: str = Field(description="The login of the user to assign.")
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this assignee."
-    )
-    suggest: Missing[bool] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="If `true`, the assignee is stored as a pending suggestion for human review rather than applied directly.",
+        description="If authentication is required, the username to provide to `vcs_url`.",
     )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this assignee choice."
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the password to provide to `vcs_url`.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1)
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",
-    "ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1",
-)
+__all__ = ("ReposOwnerRepoImportPutBody",)

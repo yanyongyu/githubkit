@@ -13,23 +13,36 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0140 import CustomPropertyValue
 
+class OrganizationExternalPropertyInstallation(GitHubModel):
+    """Organization External Custom Property Installation
 
-class OrgRepoCustomPropertyValues(GitHubModel):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    repository_id: int = Field()
-    repository_name: str = Field()
-    repository_full_name: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
+    display_name: str = Field(
+        description="The display name assigned to the app installation's external custom properties in the organization."
+    )
+    installation: OrganizationExternalPropertyInstallationPropInstallation = Field(
+        description="The GitHub App installation that was registered."
     )
 
 
-model_rebuild(OrgRepoCustomPropertyValues)
+class OrganizationExternalPropertyInstallationPropInstallation(GitHubModel):
+    """OrganizationExternalPropertyInstallationPropInstallation
 
-__all__ = ("OrgRepoCustomPropertyValues",)
+    The GitHub App installation that was registered.
+    """
+
+    id: int = Field(description="The unique identifier of the GitHub App installation.")
+
+
+model_rebuild(OrganizationExternalPropertyInstallation)
+model_rebuild(OrganizationExternalPropertyInstallationPropInstallation)
+
+__all__ = (
+    "OrganizationExternalPropertyInstallation",
+    "OrganizationExternalPropertyInstallationPropInstallation",
+)

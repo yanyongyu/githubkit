@@ -16,23 +16,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
-    include_drafts: Missing[bool] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
+        description="Optional parameter to specify the organization name if forking into an organization.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, a new name for the fork.",
+    )
+    default_branch_only: Missing[bool] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

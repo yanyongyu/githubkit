@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,9 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems]
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems
+        ]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,10 +49,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems
 
     A single validation error
     """
@@ -69,12 +71,12 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400)
 model_rebuild(
-    AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems",
 )

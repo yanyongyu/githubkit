@@ -101,6 +101,8 @@ class UsersClient:
 
         The private and public user response types are unrelated to the [private profile](https://docs.github.com/enterprise-cloud@latest/account-and-profile/concepts/personal-profile#private-profiles) setting. A token without scopes still authenticates as the token's owner, so values subject to private profile visibility, such as `followers` and `following`, may differ from an unauthenticated response.
 
+        For enterprise-managed users, if their email is unverified, this endpoint will return a placeholder email in the format `email+shortcode@domain.com` instead of their actual email. This placeholder email [may cause issues with some third-party apps](https://github.blog/changelog/2024-08-01-enterprise-managed-user-accounts-now-require-email-verification/). Once the user has [verified their email address](https://docs.github.com/enterprise-cloud@latest/account-and-profile/how-tos/email-preferences/verifying-your-email-address), the endpoint will return their real email.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-the-authenticated-user
         """
 
@@ -140,6 +142,8 @@ class UsersClient:
         OAuth app tokens and personal access tokens (classic) need the `read:user` scope, or the broader `user` scope, for this endpoint to return the private user response. The private user response includes additional fields such as `private_gists`, `total_private_repos`, `owned_private_repos`, `disk_usage`, `collaborators`, and `two_factor_authentication`. Tokens without these scopes receive the public user response.
 
         The private and public user response types are unrelated to the [private profile](https://docs.github.com/enterprise-cloud@latest/account-and-profile/concepts/personal-profile#private-profiles) setting. A token without scopes still authenticates as the token's owner, so values subject to private profile visibility, such as `followers` and `following`, may differ from an unauthenticated response.
+
+        For enterprise-managed users, if their email is unverified, this endpoint will return a placeholder email in the format `email+shortcode@domain.com` instead of their actual email. This placeholder email [may cause issues with some third-party apps](https://github.blog/changelog/2024-08-01-enterprise-managed-user-accounts-now-require-email-verification/). Once the user has [verified their email address](https://docs.github.com/enterprise-cloud@latest/account-and-profile/how-tos/email-preferences/verifying-your-email-address), the endpoint will return their real email.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/users/users#get-the-authenticated-user
         """
@@ -759,6 +763,8 @@ class UsersClient:
 
         OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
 
+        For enterprise-managed users, if their email is unverified, this endpoint will return a placeholder email in the format `email+shortcode@domain.com` instead of their actual email. This placeholder email [may cause issues with some third-party apps](https://github.blog/changelog/2024-08-01-enterprise-managed-user-accounts-now-require-email-verification/). Once the user has [verified their email address](https://docs.github.com/enterprise-cloud@latest/account-and-profile/how-tos/email-preferences/verifying-your-email-address), the endpoint will return their real email.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#list-email-addresses-for-the-authenticated-user
         """
 
@@ -803,6 +809,8 @@ class UsersClient:
         to the public.
 
         OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
+
+        For enterprise-managed users, if their email is unverified, this endpoint will return a placeholder email in the format `email+shortcode@domain.com` instead of their actual email. This placeholder email [may cause issues with some third-party apps](https://github.blog/changelog/2024-08-01-enterprise-managed-user-accounts-now-require-email-verification/). Once the user has [verified their email address](https://docs.github.com/enterprise-cloud@latest/account-and-profile/how-tos/email-preferences/verifying-your-email-address), the endpoint will return their real email.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/users/emails#list-email-addresses-for-the-authenticated-user
         """

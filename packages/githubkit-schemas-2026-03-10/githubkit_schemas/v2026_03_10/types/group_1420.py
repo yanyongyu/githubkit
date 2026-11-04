@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
-
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: list[str]
+from .group_0307 import ActionsVariableType, ActionsVariableTypeForResponse
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody
+class ReposOwnerRepoAgentsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAgentsVariablesGetResponse200"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
+    total_count: int
+    variables: list[ActionsVariableType]
 
-    apps: list[str]
+
+class ReposOwnerRepoAgentsVariablesGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoAgentsVariablesGetResponse200"""
+
+    total_count: int
+    variables: list[ActionsVariableTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyTypeForResponse",
+    "ReposOwnerRepoAgentsVariablesGetResponse200Type",
+    "ReposOwnerRepoAgentsVariablesGetResponse200TypeForResponse",
 )

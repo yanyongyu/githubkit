@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0134 import NetworkConfigurationType, NetworkConfigurationTypeForResponse
+
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+
+    credential_id: int
+    credential_type: Literal["classic_pat"]
+    organizations: list[str]
 
 
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
-
-    total_count: int
-    network_configurations: list[NetworkConfigurationType]
-
-
-class EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseNetworkConfigurationsGetResponse200"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
-    total_count: int
-    network_configurations: list[NetworkConfigurationTypeForResponse]
+    credential_id: int
+    credential_type: Literal["classic_pat"]
+    organizations: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200Type",
-    "EnterprisesEnterpriseNetworkConfigurationsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse",
 )

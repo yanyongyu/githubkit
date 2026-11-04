@@ -12,14 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to remove")
+    name: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="The new human-readable name of the artifact.",
+    )
+    body: str = Field(min_length=1, description="The new artifact content.")
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1",)

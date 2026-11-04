@@ -13,44 +13,44 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0659 import (
+from .group_0249 import IssueType, IssueTypeForResponse
+from .group_0660 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0661 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0875 import (
-    WebhookIssuesClosedPropIssueType,
-    WebhookIssuesClosedPropIssueTypeForResponse,
-)
+from .group_0662 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookIssuesClosedType(TypedDict):
-    """issues closed event"""
+class WebhookIssueRelatesToRemovedType(TypedDict):
+    """relates to issue removed event"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["relates_to_removed"]
+    issue_id: NotRequired[float]
+    issue: NotRequired[IssueType]
+    related_issue_id: NotRequired[float]
+    related_issue: NotRequired[IssueType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesClosedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesClosedTypeForResponse(TypedDict):
-    """issues closed event"""
+class WebhookIssueRelatesToRemovedTypeForResponse(TypedDict):
+    """relates to issue removed event"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    action: Literal["relates_to_removed"]
+    issue_id: NotRequired[float]
+    issue: NotRequired[IssueTypeForResponse]
+    related_issue_id: NotRequired[float]
+    related_issue: NotRequired[IssueTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesClosedPropIssueTypeForResponse
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    organization: OrganizationSimpleWebhooksTypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesClosedType",
-    "WebhookIssuesClosedTypeForResponse",
+    "WebhookIssueRelatesToRemovedType",
+    "WebhookIssueRelatesToRemovedTypeForResponse",
 )

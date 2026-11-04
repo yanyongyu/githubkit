@@ -18,113 +18,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200
+class AgentsReposOwnerRepoAutomationsPostResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostResponse404
 
-    Tools available to the authenticated caller for configuring automations in a
-    repository.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    tool_groups: list[
-        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
-    ] = Field(description="Caller-filtered built-in automation tool groups.")
-    mcp_servers: list[
-        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems]
     ] = Field(
-        description="Configured repository MCP servers, sorted by name. Empty when repository MCP is disabled or unconfigured."
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
-
-    A group of tools available for use in automations
-    """
-
-    id: str = Field(description="The unique identifier of the group.")
-    title: str = Field(description="The human-readable name of the group.")
-    tools: list[
-        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems
-    ] = Field(description="The tools currently available in this group.")
-
-
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPr
-    opToolsItems
-
-    A tool that can be selected for use in an automation.
-    """
-
-    id: str = Field(
-        description="The unique identifier of the tool accepted when creating or updating an automation."
-    )
-    title: str = Field(description="The human-readable name of the tool.")
-    description: str = Field(description="A short description of what the tool does.")
-    scope: Missing[Literal["read", "write"]] = Field(
         default=UNSET,
-        description="The tool's behavior level. `read` tools only retrieve data. `write` tools can change data. This is not a GitHub token permission.",
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
+class AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems
 
-    A projection of a repository MCP server's configured tool allowlist, not live
-    tool discovery or a guarantee of runtime availability.
+    A single validation error
     """
 
-    name: str = Field(
-        description="The server name from the repository MCP configuration."
-    )
-    tools: list[
-        AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems
-    ] = Field(
-        description='Explicitly configured tools with server-qualified IDs, in configuration order. Empty when the server\'s allowlist is ["*"].'
-    )
-    supports_wildcard: bool = Field(
-        description='Whether the effective repository configuration permits selecting all tools on this server using ["*"], including future tools. Mutually exclusive with a non-empty tools list.'
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPr
-    opToolsItems
-
-    An explicitly configured MCP tool with a server-qualified ID. Descriptions and
-    input schemas are not discovered.
-    """
-
-    id: str = Field(
-        description="The tool identifier in <server-name>/<tool-name> format, for example sentry/list_issues."
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems
-)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200",
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems",
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems",
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems",
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems",
+    "AgentsReposOwnerRepoAutomationsPostResponse404",
+    "AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems",
 )

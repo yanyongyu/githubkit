@@ -9,57 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409
 
-    The Agent Merge configuration for an enrolled pull request.
-
-    Examples:
-        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
-    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
-    9876}}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The set of actions which Copilot may perform on the pull request.",
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    created_at: _dt.datetime = Field(
-        description="Timestamp when the pull request was enrolled for Agent Merge."
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
     )
-    updated_at: _dt.datetime = Field(
-        description="Timestamp when the Agent Merge enrollment was last updated."
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
     )
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser = Field(
-        description="The user who most recently enabled Agent Merge for the pull request"
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
 
-    The user who most recently enabled Agent Merge for the pull request
-
-    Examples:
-        {'id': 9876}
+    A single validation error
     """
 
-    id: int = Field(ge=1.0, description="The unique identifier of the user")
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201)
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems
+)
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems",
 )

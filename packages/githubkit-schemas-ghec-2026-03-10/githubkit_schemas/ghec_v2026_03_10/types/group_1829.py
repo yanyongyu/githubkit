@@ -9,24 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    body: str
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
-class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyTypeForResponse(
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody"""
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    body: str
+    message: str
+    event: NotRequired[Literal["DISMISS"]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType",
-    "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
+    "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyTypeForResponse",
 )

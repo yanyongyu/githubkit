@@ -14,16 +14,13 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+class ReposOwnerRepoAgentsVariablesPostBody(GitHubModel):
+    """ReposOwnerRepoAgentsVariablesPostBody"""
 
-    Examples:
-        {'teams': ['justice-league']}
-    """
-
-    teams: list[str] = Field(description="The slug values for teams")
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0)
+model_rebuild(ReposOwnerRepoAgentsVariablesPostBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",)
+__all__ = ("ReposOwnerRepoAgentsVariablesPostBody",)

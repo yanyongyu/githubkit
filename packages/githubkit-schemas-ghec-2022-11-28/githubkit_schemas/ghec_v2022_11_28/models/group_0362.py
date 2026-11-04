@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
+class ExternalProperty(GitHubModel):
+    """External Property
 
-    Code of Conduct Simple
+    External custom property defined for a GitHub App installation
     """
 
-    url: str = Field()
-    key: str = Field()
-    name: str = Field()
-    html_url: Union[str, None] = Field()
+    property_name: str = Field(description="The name of the external property")
 
 
-model_rebuild(CodeOfConductSimple)
+model_rebuild(ExternalProperty)
 
-__all__ = ("CodeOfConductSimple",)
+__all__ = ("ExternalProperty",)

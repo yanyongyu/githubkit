@@ -46,6 +46,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsType(Type
     A summary representation of an automation (used in list responses).
     """
 
+    tools: NotRequired[list[str]]
     id: str
     name: str
     enabled: NotRequired[bool]
@@ -69,6 +70,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsTypeForRe
     A summary representation of an automation (used in list responses).
     """
 
+    tools: NotRequired[list[str]]
     id: str
     name: str
     enabled: NotRequired[bool]

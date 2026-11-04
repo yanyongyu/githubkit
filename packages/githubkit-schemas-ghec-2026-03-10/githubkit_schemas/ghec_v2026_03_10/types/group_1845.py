@@ -9,84 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    schemas: NotRequired[list[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
-    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
-
-    schemas: NotRequired[list[str]]
-    display_name: NotRequired[str]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
-    user_name: str
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse
-    emails: list[
-        ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
     ]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse(
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    type: NotRequired[str]
-    value: str
-    primary: NotRequired[bool]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameTypeForResponse",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

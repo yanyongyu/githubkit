@@ -9,13 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCopilotContentExclusionPutBody(ExtraGitHubModel):
+    """OrgsOrgCopilotContentExclusionPutBody"""
 
 
-model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
+model_rebuild(OrgsOrgCopilotContentExclusionPutBody)
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("OrgsOrgCopilotContentExclusionPutBody",)

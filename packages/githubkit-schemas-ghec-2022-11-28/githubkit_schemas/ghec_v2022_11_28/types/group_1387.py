@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0137 import (
+    OrganizationCustomPropertyType,
+    OrganizationCustomPropertyTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    name: NotRequired[str]
-    ai_credit_pool_enabled: bool
+    properties: list[OrganizationCustomPropertyType]
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1"""
+class EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseOrgPropertiesSchemaPatchBody"""
 
-    name: NotRequired[str]
-    ai_credit_pool_enabled: bool
+    properties: list[OrganizationCustomPropertyTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1Type",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof1TypeForResponse",
+    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyType",
+    "EnterprisesEnterpriseOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

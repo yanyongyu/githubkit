@@ -10,55 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class PullRequestStackType(TypedDict):
+    """Pull Request Stack
 
-    label: Union[str, None]
+    The stack information associated with a pull request.
+    """
+
+    base: PullRequestStackPropBaseType
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+
+
+class PullRequestStackTypeForResponse(TypedDict):
+    """Pull Request Stack
+
+    The stack information associated with a pull request.
+    """
+
+    base: PullRequestStackPropBaseTypeForResponse
+    size: NotRequired[int]
+    position: NotRequired[int]
+    id: NotRequired[int]
+    number: NotRequired[int]
+
+
+class PullRequestStackPropBaseType(TypedDict):
+    """PullRequestStackPropBase"""
+
     ref: str
-    repo: Union[RepositoryType, None]
-    sha: str
-    user: Union[SimpleUserType, None]
+    sha: Union[str, None]
 
 
-class PullRequestSimplePropHeadTypeForResponse(TypedDict):
-    """PullRequestSimplePropHead"""
+class PullRequestStackPropBaseTypeForResponse(TypedDict):
+    """PullRequestStackPropBase"""
 
-    label: Union[str, None]
     ref: str
-    repo: Union[RepositoryTypeForResponse, None]
-    sha: str
-    user: Union[SimpleUserTypeForResponse, None]
-
-
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[SimpleUserType, None]
-
-
-class PullRequestSimplePropBaseTypeForResponse(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: Union[SimpleUserTypeForResponse, None]
+    sha: Union[str, None]
 
 
 __all__ = (
-    "PullRequestSimplePropBaseType",
-    "PullRequestSimplePropBaseTypeForResponse",
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropHeadTypeForResponse",
+    "PullRequestStackPropBaseType",
+    "PullRequestStackPropBaseTypeForResponse",
+    "PullRequestStackType",
+    "PullRequestStackTypeForResponse",
 )

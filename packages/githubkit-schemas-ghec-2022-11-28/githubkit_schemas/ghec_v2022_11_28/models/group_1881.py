@@ -12,22 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class UserUserIdProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """UserUserIdProjectsV2ProjectNumberDraftsPostBody"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
-    )
-    body: Missing[str] = Field(
-        default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
     )
 
 
-model_rebuild(UserUserIdProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("UserUserIdProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)

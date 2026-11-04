@@ -14,31 +14,31 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
-
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems
-    ] = Field(min_length=1 if PYDANTIC_V2 else None)
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    PatchBody
+    """
 
-    model_name: str = Field(min_length=1)
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="Use `optional` to remove the apps policy."
+    repository_selection: Literal["all", "selected"] = Field(
+        description="One of either 'all' or 'selected'"
+    )
+    repositories: Missing[list[str]] = Field(
+        max_length=50 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The repository names to add to the installation. Only required when repository_selection is 'selected'",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody)
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems)
+model_rebuild(
+    EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody
+)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesPatchBody",
 )

@@ -9,229 +9,108 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
-from .group_0102 import CodeScanningDefaultSetupOptions, CodeScanningOptions
+
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody"""
+
+    logical_environment: str = Field(
+        min_length=1, max_length=128, description="The stage of the deployment."
+    )
+    physical_environment: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The physical region of the deployment.",
+    )
+    deployments: list[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems
+    ] = Field(
+        max_length=5000 if PYDANTIC_V2 else None,
+        description="The list of deployments to record.",
+    )
 
 
-class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsPostBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItems
+    """
 
     name: str = Field(
-        description="The name of the code security configuration. Must be unique within the organization."
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    description: Missing[str] = Field(
-        max_length=255,
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The hex encoded digest of the artifact.",
+    )
+    version: Missing[str] = Field(
+        max_length=100, default=UNSET, description="The artifact version."
+    )
+    status: Missing[Literal["deployed", "decommissioned"]] = Field(
+        default=UNSET, description="The deployment status of the artifact."
+    )
+    deployment_name: str = Field(
+        min_length=1,
+        max_length=256,
+        description="The unique identifier for the deployment represented by the new record.\n",
+    )
+    github_repository: Missing[str] = Field(
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
         default=UNSET,
-        description="A description of the code security configuration",
+        description="The name of the GitHub repository associated with the artifact.",
     )
-    advanced_security: Missing[
-        Literal["enabled", "disabled", "code_security", "secret_protection"]
+    tags: Missing[
+        OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags
     ] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Advanced Security features. `enabled` will enable both Code Security and Secret Protection features.\n\n> [!WARNING]\n> `code_security` and `secret_protection` are deprecated values for this field. Prefer the individual `code_security` and `secret_protection` fields to set the status of these features.\n",
+        default=UNSET, description="Key-value pairs to tag the deployment record."
     )
-    code_security: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Code Security features.",
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependency_graph_autosubmit_action: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of Automatic dependency submission",
-    )
-    dependency_graph_autosubmit_action_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
-    ] = Field(
-        default=UNSET, description="Feature options for Automatic dependency submission"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_reachability: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of reachability analysis for Dependabot. Only available for organizations with access to reachability analysis.\nRequires Dependabot alerts to be enabled when set to `enabled`. Must be `disabled` when Dependabot alerts is `disabled`.\n`not_set` leaves existing repository settings unchanged.",
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    dependabot_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of Dependabot delegated alert dismissal. Requires Dependabot alerts to be enabled.",
-    )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    code_scanning_default_setup_options: Missing[
-        Union[CodeScanningDefaultSetupOptions, None]
-    ] = Field(
-        default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of code scanning delegated alert dismissal",
-    )
-    secret_protection: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET,
-        description="The enablement status of GitHub Secret Protection features.",
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
-    )
-    secret_scanning_delegated_bypass: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated bypass",
-    )
-    secret_scanning_delegated_bypass_options: Missing[
-        OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions
-    ] = Field(
-        default=UNSET,
-        description="Feature options for secret scanning delegated bypass",
-    )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    secret_scanning_non_provider_patterns: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning non provider patterns",
-    )
-    secret_scanning_generic_secrets: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET, description="The enablement status of Copilot secret scanning"
-    )
-    secret_scanning_generic_secrets_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of generic secrets push protection",
-    )
-    secret_scanning_delegated_alert_dismissal: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning delegated alert dismissal",
-    )
-    secret_scanning_extended_metadata: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning extended metadata",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
-    )
-
-
-class OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOpti
-    ons
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
-    )
-
-
-class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOption
-    s
-
-    Feature options for secret scanning delegated bypass
-    """
-
-    reviewers: Missing[
-        list[
-            OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+    runtime_risks: Missing[
+        UniqueList[
+            Literal[
+                "critical-resource",
+                "internet-exposed",
+                "lateral-movement",
+                "sensitive-data",
+            ]
         ]
     ] = Field(
+        max_length=4 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The bypass reviewers for secret scanning delegated bypass",
+        description="A list of runtime risks associated with the deployment.",
     )
 
 
-class OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems(
-    GitHubModel
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags(
+    ExtraGitHubModel
 ):
-    """OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOption
-    sPropReviewersItems
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeployment
+    sItemsPropTags
+
+    Key-value pairs to tag the deployment record.
     """
 
-    reviewer_id: int = Field(
-        description="The ID of the team or role selected as a bypass reviewer"
-    )
-    reviewer_type: Literal["TEAM", "ROLE"] = Field(
-        description="The type of the bypass reviewer"
-    )
-    mode: Missing[Literal["ALWAYS", "EXEMPT"]] = Field(
-        default=UNSET, description="The bypass mode for the reviewer"
-    )
 
-
-model_rebuild(OrgsOrgCodeSecurityConfigurationsPostBody)
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody)
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems
 )
 model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions
-)
-model_rebuild(
-    OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags
 )
 
 __all__ = (
-    "OrgsOrgCodeSecurityConfigurationsPostBody",
-    "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
-    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions",
-    "OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags",
 )

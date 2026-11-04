@@ -9,32 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoTasksPostBodyType(TypedDict):
-    """AgentsReposOwnerRepoTasksPostBody"""
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403
 
-    prompt: str
-    model: NotRequired[str]
-    custom_agent: NotRequired[str]
-    create_pull_request: NotRequired[bool]
-    base_ref: NotRequired[str]
-    head_ref: NotRequired[str]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsType
+        ]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoTasksPostBodyTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoTasksPostBody"""
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403
 
-    prompt: str
-    model: NotRequired[str]
-    custom_agent: NotRequired[str]
-    create_pull_request: NotRequired[bool]
-    base_ref: NotRequired[str]
-    head_ref: NotRequired[str]
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoTasksPostBodyType",
-    "AgentsReposOwnerRepoTasksPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403Type",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403TypeForResponse",
 )

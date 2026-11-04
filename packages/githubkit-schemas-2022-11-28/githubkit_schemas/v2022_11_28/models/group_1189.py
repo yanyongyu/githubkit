@@ -9,27 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody(GitHubModel):
+    """EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
-    )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+    default_level: Literal["public", "internal"] = Field(
+        description="The default repository access level for Dependabot updates."
     )
 
 
-model_rebuild(NotificationsPutBody)
+model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody)
 
-__all__ = ("NotificationsPutBody",)
+__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody",)

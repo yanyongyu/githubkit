@@ -9,46 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class GetBudgetUserStatesType(TypedDict):
-    """GetBudgetUserStates"""
+class DeleteBudgetType(TypedDict):
+    """DeleteBudget"""
 
-    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
-    has_next_page: bool
-    total_count: int
-
-
-class GetBudgetUserStatesTypeForResponse(TypedDict):
-    """GetBudgetUserStates"""
-
-    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
-    has_next_page: bool
-    total_count: int
+    message: str
+    id: str
 
 
-class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
-    """GetBudgetUserStatesPropUserStatesItems"""
+class DeleteBudgetTypeForResponse(TypedDict):
+    """DeleteBudget"""
 
-    user: NotRequired[str]
-    consumed_amount: float
-    target_amount: float
-    override_budget_id: NotRequired[str]
-
-
-class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
-    """GetBudgetUserStatesPropUserStatesItems"""
-
-    user: NotRequired[str]
-    consumed_amount: float
-    target_amount: float
-    override_budget_id: NotRequired[str]
+    message: str
+    id: str
 
 
 __all__ = (
-    "GetBudgetUserStatesPropUserStatesItemsType",
-    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
-    "GetBudgetUserStatesType",
-    "GetBudgetUserStatesTypeForResponse",
+    "DeleteBudgetType",
+    "DeleteBudgetTypeForResponse",
 )

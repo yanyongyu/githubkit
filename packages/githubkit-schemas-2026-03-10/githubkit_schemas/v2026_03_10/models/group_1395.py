@@ -9,20 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0307 import ActionsVariable
+from .group_0122 import ActionsPolicyRepoConditionsOneof0
+from .group_0123 import ActionsPolicyRepoConditionsOneof1
+from .group_0145 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
 
-class ReposOwnerRepoActionsVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsVariablesGetResponse200"""
+class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
 
-    total_count: int = Field()
-    variables: list[ActionsVariable] = Field()
+    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    )
+    conditions: Missing[
+        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    ] = Field(
+        default=UNSET,
+        title="Repository Actions policy conditions",
+        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoActionsVariablesGetResponse200)
+model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
 
-__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)

@@ -11,23 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody"""
 
-    organization_id: int = Field(
-        description="The ID of the organization to use as the custom agents source."
-    )
-    create_ruleset: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
+    selected_enterprise_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of enterprise team names within the enterprise to which to grant access to GitHub Copilot.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsPostBody",)

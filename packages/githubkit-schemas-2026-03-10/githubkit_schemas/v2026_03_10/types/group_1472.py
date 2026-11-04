@@ -9,41 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0409 import (
-    CustomDeploymentRuleAppType,
-    CustomDeploymentRuleAppTypeForResponse,
-)
+from typing import Any, TypeAlias, Union
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
+
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType,
+        None,
+    ]
+    enabled_tools: (
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType
+    )
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+    is_automations_enabled: bool
+    require_write_access_for_automation_triggers: bool
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
-    """
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200"""
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppType]
+    mcp_configuration: Union[
+        ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse,
+        None,
     ]
+    enabled_tools: ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse
+    require_actions_workflow_approval: bool
+    is_firewall_enabled: bool
+    is_firewall_recommended_allowlist_enabled: bool
+    custom_allowlist: list[str]
+    is_automations_enabled: bool
+    require_write_access_for_automation_triggers: bool
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse(
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration
+
+The user-supplied MCP server configuration for the repository, as a free-form
+JSON object. This will be set to `null` if no configuration has been set.
+
+The shape of a valid MCP configuration may evolve over time, so this property is
+intentionally not strictly typed. Clients should not assume a fixed schema.
+"""
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType(
     TypedDict
 ):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
     """
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        list[CustomDeploymentRuleAppTypeForResponse]
-    ]
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
+
+
+class ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools
+
+    The enabled review tools for Copilot cloud agent.
+    """
+
+    codeql: bool
+    copilot_code_review: bool
+    secret_scanning: bool
+    dependency_vulnerability_checks: bool
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationTypeForResponse",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
+    "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse",
 )

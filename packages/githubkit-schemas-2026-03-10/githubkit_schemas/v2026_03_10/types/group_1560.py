@@ -9,28 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0217 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    properties: list[CustomPropertyValueType]
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
+class ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    reviewers: list[str]
-    team_reviewers: NotRequired[list[str]]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoPropertiesValuesPatchBodyType",
+    "ReposOwnerRepoPropertiesValuesPatchBodyTypeForResponse",
 )

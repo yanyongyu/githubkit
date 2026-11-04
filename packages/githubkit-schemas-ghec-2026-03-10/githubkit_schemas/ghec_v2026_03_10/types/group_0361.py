@@ -11,34 +11,56 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0140 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
+class OrganizationExternalPropertyInstallationType(TypedDict):
+    """Organization External Custom Property Installation
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+    display_name: str
+    installation: OrganizationExternalPropertyInstallationPropInstallationType
 
 
-class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
-    """Organization Repository Custom Property Values
+class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
+    """Organization External Custom Property Installation
 
-    List of custom property values for a repository
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    display_name: str
+    installation: (
+        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
+    )
+
+
+class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
+
+
+class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
+    TypedDict
+):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
 
 
 __all__ = (
-    "OrgRepoCustomPropertyValuesType",
-    "OrgRepoCustomPropertyValuesTypeForResponse",
+    "OrganizationExternalPropertyInstallationPropInstallationType",
+    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
+    "OrganizationExternalPropertyInstallationType",
+    "OrganizationExternalPropertyInstallationTypeForResponse",
 )

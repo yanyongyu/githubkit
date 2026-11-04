@@ -12,42 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0659 import (
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0659 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0660 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0661 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0711 import (
-    PublicMonitoringAlertWebhookType,
-    PublicMonitoringAlertWebhookTypeForResponse,
+from .group_0662 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0712 import (
+    SecretScanningAlertWebhookType,
+    SecretScanningAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningPublicMonitoringAlertCreatedType(TypedDict):
-    """secret_scanning_public_monitoring_alert created event"""
+class WebhookSecretScanningAlertUnassignedType(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["created"]
-    alert: PublicMonitoringAlertWebhookType
-    enterprise: EnterpriseWebhooksType
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookType
+    assignee: NotRequired[SimpleUserType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningPublicMonitoringAlertCreatedTypeForResponse(TypedDict):
-    """secret_scanning_public_monitoring_alert created event"""
+class WebhookSecretScanningAlertUnassignedTypeForResponse(TypedDict):
+    """secret_scanning_alert unassigned event"""
 
-    action: Literal["created"]
-    alert: PublicMonitoringAlertWebhookTypeForResponse
-    enterprise: EnterpriseWebhooksTypeForResponse
+    action: Literal["unassigned"]
+    alert: SecretScanningAlertWebhookTypeForResponse
+    assignee: NotRequired[SimpleUserTypeForResponse]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: NotRequired[RepositoryWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookSecretScanningPublicMonitoringAlertCreatedType",
-    "WebhookSecretScanningPublicMonitoringAlertCreatedTypeForResponse",
+    "WebhookSecretScanningAlertUnassignedType",
+    "WebhookSecretScanningAlertUnassignedTypeForResponse",
 )

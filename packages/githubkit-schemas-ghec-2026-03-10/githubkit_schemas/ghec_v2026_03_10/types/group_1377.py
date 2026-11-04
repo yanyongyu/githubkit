@@ -12,29 +12,38 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0212 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+
+class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
+
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
+class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    Optional filters that scope the export to a subset of the inventory.
+    """
 
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
 )

@@ -9,75 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
-    ]
-    models: NotRequired[
-        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
-    ]
+    selected_usernames: list[str]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
-
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
-    ]
-    models: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
-        ]
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBody"""
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
-    ]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
-    ]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersDeleteBodyTypeForResponse",
 )

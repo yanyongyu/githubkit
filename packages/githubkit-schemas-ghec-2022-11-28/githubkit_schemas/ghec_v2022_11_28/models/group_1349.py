@@ -9,28 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    credential_id: Union[int, str] = Field()
-    credential_type: Literal["classic_pat", "ssh_key"] = Field(
-        description="The type of credential to authorize."
-    )
-    organizations: UniqueList[str] = Field(
-        max_length=50 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="Organization slugs within the enterprise. A maximum of 50 organizations can be specified.",
-    )
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
+        None,
+    ] = Field()
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
+    ] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostBody)
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostBody",)
+    id: int = Field(description="Unique identifier of the organization")
+    login: str = Field(description="Login of the organization")
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="Name of the repository")
+    full_name: str = Field(description="Full name of the repository including owner")
+
+
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
+)
+model_rebuild(
+    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
+)
+
+__all__ = (
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
+)

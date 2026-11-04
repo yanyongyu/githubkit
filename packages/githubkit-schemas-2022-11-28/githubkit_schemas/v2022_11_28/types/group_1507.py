@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
+class ReposOwnerRepoImportLfsPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    name: str
-    body: NotRequired[str]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
+class ReposOwnerRepoImportLfsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportLfsPatchBody"""
 
-    name: str
-    body: NotRequired[str]
+    use_lfs: Literal["opt_in", "opt_out"]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0Type",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0TypeForResponse",
+    "ReposOwnerRepoImportLfsPatchBodyType",
+    "ReposOwnerRepoImportLfsPatchBodyTypeForResponse",
 )

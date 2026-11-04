@@ -9,67 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0051 import (
-    ActionsPolicyRepoConditionsOneof0Type,
-    ActionsPolicyRepoConditionsOneof0TypeForResponse,
-)
-from .group_0052 import (
-    ActionsPolicyRepoConditionsOneof1Type,
-    ActionsPolicyRepoConditionsOneof1TypeForResponse,
-)
-from .group_0074 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
-)
 
+class OrgsOrgTeamsPostBodyType(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
-
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
-        ]
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
+    parent_team_slug: NotRequired[str]
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0TypeForResponse,
-            ActionsPolicyRepoConditionsOneof1TypeForResponse,
-        ]
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
+    parent_team_slug: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgTeamsPostBodyType",
+    "OrgsOrgTeamsPostBodyTypeForResponse",
 )

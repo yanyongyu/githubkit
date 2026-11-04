@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,9 +31,7 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503(GitHubModel
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems
-        ]
+        list[AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -49,10 +47,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503(GitHubModel
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems
 
     A single validation error
     """
@@ -71,12 +69,12 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsIt
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400)
 model_rebuild(
-    AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems
+    AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems",
 )

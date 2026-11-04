@@ -12,16 +12,23 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberRelatesToPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
 
-    issue_id: int = Field(
-        description="The id of the issue to mark as related to the current issue"
+    name: str = Field(
+        min_length=1, description="The new human-readable name of the artifact."
+    )
+    body: Missing[str] = Field(
+        min_length=1, default=UNSET, description="The new artifact content."
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberRelatesToPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberRelatesToPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0",)

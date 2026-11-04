@@ -11,30 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
-    """Package license compliance results
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
-        Field()
+    assignees: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
     )
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
 
-
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
-
-__all__ = (
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
-)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)

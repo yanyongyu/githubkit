@@ -16,20 +16,12 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200"""
+class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
+    """ReposOwnerRepoAttestationsPostResponse201"""
 
-    bypass_review_id: Missing[int] = Field(
-        default=UNSET, description="ID of the bypass review."
-    )
+    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
 
 
-model_rebuild(
-    ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200
-)
+model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
 
-__all__ = (
-    "ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchResponse200",
-)
+__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)

@@ -18,20 +18,58 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgArtifactsMetadataStorageRecordPostBody(GitHubModel):
+    """OrgsOrgArtifactsMetadataStorageRecordPostBody"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    name: str = Field(
+        min_length=1, max_length=256, description="The name of the artifact."
     )
-    selected_repository_ids: Missing[list[int]] = Field(
+    digest: str = Field(
+        min_length=71,
+        max_length=71,
+        pattern="^sha256:[a-f0-9]{64}$",
+        description="The digest of the artifact (algorithm:hex-encoded-digest).",
+    )
+    version: Missing[str] = Field(
+        min_length=1, max_length=100, default=UNSET, description="The artifact version."
+    )
+    artifact_url: Missing[str] = Field(
+        max_length=152,
+        pattern="^https://",
         default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+        description="The URL where the artifact is stored.",
+    )
+    path: Missing[str] = Field(
+        max_length=512, default=UNSET, description="The path of the artifact."
+    )
+    registry_url: str = Field(
+        min_length=1,
+        max_length=256,
+        pattern="^https://",
+        description="The base URL of the artifact registry.",
+    )
+    repository: Missing[str] = Field(
+        max_length=128,
+        default=UNSET,
+        description="The repository name within the registry.",
+    )
+    status: Missing[Literal["active", "eol", "deleted"]] = Field(
+        default=UNSET,
+        description="The status of the artifact (e.g., active, inactive).",
+    )
+    github_repository: Missing[str] = Field(
+        min_length=1,
+        max_length=100,
+        pattern="^[A-Za-z0-9.\\-_]+$",
+        default=UNSET,
+        description="The name of the GitHub repository associated with the artifact. This should be used\nwhen there are no provenance attestations available for the artifact. The repository\nmust belong to the organization specified in the path parameter.\n\nIf a provenance attestation is available for the artifact, the API will use\nthe repository information from the attestation instead of this parameter.",
+    )
+    return_records: Missing[bool] = Field(
+        default=UNSET,
+        description="If true, the endpoint will return the created record in the response body.\n",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+model_rebuild(OrgsOrgArtifactsMetadataStorageRecordPostBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+__all__ = ("OrgsOrgArtifactsMetadataStorageRecordPostBody",)

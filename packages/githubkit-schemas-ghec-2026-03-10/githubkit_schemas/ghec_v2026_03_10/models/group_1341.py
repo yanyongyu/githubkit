@@ -9,63 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    default_availability: Missing[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability
-    ] = Field(default=UNSET)
-    models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems
-    ] = Field()
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int = Field()
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201)
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
-    )
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str = Field()
-    display_name: str = Field()
-    policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ] = Field(
-        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability
-)
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems)
-
-__all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201",)

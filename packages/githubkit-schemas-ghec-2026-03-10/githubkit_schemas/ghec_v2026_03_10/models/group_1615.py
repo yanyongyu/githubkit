@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,34 +17,41 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0051 import ActionsPolicyRepoConditionsOneof0
-from .group_0052 import ActionsPolicyRepoConditionsOneof1
-from .group_0074 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
 
+class OrgsOrgTeamsPostBody(GitHubModel):
+    """OrgsOrgTeamsPostBody"""
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
     )
-    conditions: Missing[
-        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
+    maintainers: Missing[list[str]] = Field(
+        default=UNSET,
+        description="List GitHub usernames for organization members who will become team maintainers.",
+    )
+    repo_names: Missing[list[str]] = Field(
+        default=UNSET,
+        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
+        default=UNSET,
+        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
     ] = Field(
         default=UNSET,
-        title="Repository Actions policy conditions",
-        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    parent_team_id: Missing[int] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
+    )
+    parent_team_slug: Missing[str] = Field(
+        default=UNSET,
+        description="The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
+model_rebuild(OrgsOrgTeamsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)
+__all__ = ("OrgsOrgTeamsPostBody",)

@@ -9,45 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0606 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserCodespacesPostBodyOneof0Type(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberGetResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    repository_id: int
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class UserCodespacesPostBodyOneof0TypeForResponse(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    repository_id: int
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof0Type",
-    "UserCodespacesPostBodyOneof0TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberGetResponse200Type",
+    "ReposOwnerRepoStacksStackNumberGetResponse200TypeForResponse",
 )

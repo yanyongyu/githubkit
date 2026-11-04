@@ -9,59 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class OrgsOrgHooksPostBodyType(TypedDict):
-    """OrgsOrgHooksPostBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigType
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
-
-
-class OrgsOrgHooksPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgHooksPostBody"""
-
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigTypeForResponse
-    events: NotRequired[list[str]]
-    active: NotRequired[bool]
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
-class OrgsOrgHooksPostBodyPropConfigTypeForResponse(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    Key/value pairs to provide settings for this webhook.
+    The default policy applied to newly released Copilot features and clients.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
 __all__ = (
-    "OrgsOrgHooksPostBodyPropConfigType",
-    "OrgsOrgHooksPostBodyPropConfigTypeForResponse",
-    "OrgsOrgHooksPostBodyType",
-    "OrgsOrgHooksPostBodyTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
 )

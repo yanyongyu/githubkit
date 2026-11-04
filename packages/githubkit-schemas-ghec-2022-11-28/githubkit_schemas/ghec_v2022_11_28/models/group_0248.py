@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,36 +18,59 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class IssuePropLabelsItemsOneof1(GitHubModel):
-    """IssuePropLabelsItemsOneof1"""
+class IssueFieldValue(GitHubModel):
+    """Issue Field Value
 
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-    archived_by: Missing[None] = Field(
-        default=UNSET,
-        description="The user who archived the label, or `null` if it has not been archived.",
+    A value assigned to an issue field
+    """
+
+    issue_field_id: int = Field(description="Unique identifier for the issue field.")
+    issue_field_name: Missing[str] = Field(
+        default=UNSET, description="The human-readable name of the issue field."
     )
+    node_id: str = Field()
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"] = (
+        Field(description="The data type of the issue field")
+    )
+    value: Union[str, float, int, None] = Field(
+        description="The value of the issue field"
+    )
+    single_select_option: Missing[
+        Union[IssueFieldValuePropSingleSelectOption, None]
+    ] = Field(
+        default=UNSET,
+        description="Details about the selected option (only present for single_select fields)",
+    )
+    multi_select_options: Missing[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItems], None]
+    ] = Field(default=UNSET, description="Details about the selected options")
 
 
-class IssuePropPullRequest(GitHubModel):
-    """IssuePropPullRequest"""
+class IssueFieldValuePropSingleSelectOption(GitHubModel):
+    """IssueFieldValuePropSingleSelectOption
 
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
 
 
-model_rebuild(IssuePropLabelsItemsOneof1)
-model_rebuild(IssuePropPullRequest)
+class IssueFieldValuePropMultiSelectOptionsItems(GitHubModel):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int = Field(description="Unique identifier for the option.")
+    name: str = Field(description="The name of the option")
+    color: str = Field(description="The color of the option")
+
+
+model_rebuild(IssueFieldValue)
+model_rebuild(IssueFieldValuePropSingleSelectOption)
+model_rebuild(IssueFieldValuePropMultiSelectOptionsItems)
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1",
-    "IssuePropPullRequest",
+    "IssueFieldValue",
+    "IssueFieldValuePropMultiSelectOptionsItems",
+    "IssueFieldValuePropSingleSelectOption",
 )

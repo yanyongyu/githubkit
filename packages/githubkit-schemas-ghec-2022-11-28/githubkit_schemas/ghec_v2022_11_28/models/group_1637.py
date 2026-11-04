@@ -9,46 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0051 import ActionsPolicyRepoConditionsOneof0
+from .group_0052 import ActionsPolicyRepoConditionsOneof1
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-    ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
+class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
+
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
     )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    conditions: Missing[
+        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
     ] = Field(
         default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 25. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        title="Repository Actions policy conditions",
+        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
     )
-    return_run_details: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the response should include the workflow run ID and URLs.",
-    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
 
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 25. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
-)
+__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)

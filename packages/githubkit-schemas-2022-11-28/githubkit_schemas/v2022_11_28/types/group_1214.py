@@ -9,74 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0130 import (
-    ActionsPolicyOrgConditionsOneof0Type,
-    ActionsPolicyOrgConditionsOneof0TypeForResponse,
-)
-from .group_0131 import (
-    ActionsPolicyOrgConditionsOneof1Type,
-    ActionsPolicyOrgConditionsOneof1TypeForResponse,
-)
-from .group_0132 import (
-    ActionsPolicyOrgConditionsOneof2Type,
-    ActionsPolicyOrgConditionsOneof2TypeForResponse,
-)
-from .group_0145 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
+from .group_0105 import (
+    ActionsHostedRunnerMachineSpecType,
+    ActionsHostedRunnerMachineSpecTypeForResponse,
 )
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0Type,
-            ActionsPolicyOrgConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecType]
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersMachineSizesGetResponse200"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0TypeForResponse,
-            ActionsPolicyOrgConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof2TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    total_count: int
+    machine_specs: list[ActionsHostedRunnerMachineSpecTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersMachineSizesGetResponse200TypeForResponse",
 )

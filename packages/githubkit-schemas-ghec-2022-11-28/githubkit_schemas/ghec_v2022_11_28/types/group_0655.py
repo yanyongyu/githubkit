@@ -9,44 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    Hovercard
+    A public SSH key used to sign Git commits
     """
 
-    contexts: list[HovercardPropContextsItemsType]
+    key: str
+    id: int
+    title: str
+    created_at: _dt.datetime
 
 
-class HovercardTypeForResponse(TypedDict):
-    """Hovercard
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    Hovercard
+    A public SSH key used to sign Git commits
     """
 
-    contexts: list[HovercardPropContextsItemsTypeForResponse]
-
-
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-class HovercardPropContextsItemsTypeForResponse(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
+    key: str
+    id: int
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "HovercardPropContextsItemsType",
-    "HovercardPropContextsItemsTypeForResponse",
-    "HovercardType",
-    "HovercardTypeForResponse",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

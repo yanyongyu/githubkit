@@ -9,27 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0285 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    type: Literal["Issue", "PullRequest"]
+    id: int
+    owner: NotRequired[str]
+    repo: NotRequired[str]
+    number: NotRequired[int]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostBodyType",
-    "OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0Type",
+    "OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0TypeForResponse",
 )

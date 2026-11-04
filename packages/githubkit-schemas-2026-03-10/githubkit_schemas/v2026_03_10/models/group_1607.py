@@ -9,30 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0527 import PullRequestStackPullRequest
 
 
-class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    selected_repository_ids: Missing[list[Union[int, str]]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UserCodespacesSecretsSecretNamePutBody)
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
+)

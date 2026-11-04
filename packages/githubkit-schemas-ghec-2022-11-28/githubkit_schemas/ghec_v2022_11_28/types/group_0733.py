@@ -13,44 +13,68 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0657 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0658 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0659 import (
+from .group_0659 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0660 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0661 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0660 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0665 import (
+from .group_0662 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0667 import (
     CheckRunWithSimpleCheckSuiteType,
     CheckRunWithSimpleCheckSuiteTypeForResponse,
 )
 
 
-class WebhookCheckRunRerequestedType(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunRequestedActionType(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["rerequested"]
+    action: Literal["requested_action"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
     sender: SimpleUserType
 
 
-class WebhookCheckRunRerequestedTypeForResponse(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunRequestedActionTypeForResponse(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["rerequested"]
+    action: Literal["requested_action"]
     check_run: CheckRunWithSimpleCheckSuiteTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
+    requested_action: NotRequired[
+        WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse
+    ]
     sender: SimpleUserTypeForResponse
 
 
+class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
+class WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
 __all__ = (
-    "WebhookCheckRunRerequestedType",
-    "WebhookCheckRunRerequestedTypeForResponse",
+    "WebhookCheckRunRequestedActionPropRequestedActionType",
+    "WebhookCheckRunRequestedActionPropRequestedActionTypeForResponse",
+    "WebhookCheckRunRequestedActionType",
+    "WebhookCheckRunRequestedActionTypeForResponse",
 )

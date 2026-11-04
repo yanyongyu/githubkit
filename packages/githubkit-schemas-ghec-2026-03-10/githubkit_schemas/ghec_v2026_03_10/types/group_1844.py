@@ -11,78 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
-
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
-    schemas: NotRequired[list[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
+from .group_0210 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class ScimV2OrganizationsOrgUsersPostBodyTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse
-    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse]
-    schemas: NotRequired[list[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[list[str]]
-    active: NotRequired[bool]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsTypeForResponse",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameTypeForResponse",
-    "ScimV2OrganizationsOrgUsersPostBodyType",
-    "ScimV2OrganizationsOrgUsersPostBodyTypeForResponse",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201Type",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

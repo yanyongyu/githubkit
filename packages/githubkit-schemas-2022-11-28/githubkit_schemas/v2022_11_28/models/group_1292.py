@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody"""
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
-    resource_type: Literal[
-        "repository", "github_file", "free_text", "github_issue", "github_pull_request"
-    ] = Field(description="The type of resource to create.")
-    metadata: OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata = Field(
-        description="Resource-specific metadata."
+    selected_usernames: list[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members and outside collaborators whose codespaces should not be billed to the organization.",
     )
 
 
-class OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata(ExtraGitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
 
-    Resource-specific metadata.
-    """
-
-
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata)
-
-__all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody",
-    "OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata",
-)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)

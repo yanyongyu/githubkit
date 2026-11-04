@@ -9,27 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202)
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostResponse202",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
+)

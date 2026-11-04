@@ -9,53 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
-
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
-    ]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
-    ]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422Type",
-    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse",
 )

@@ -9,29 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-from githubkit.typing import UniqueList
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType,
+        None,
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
 
-    credential_id: Union[int, str]
-    credential_type: Literal["classic_pat", "ssh_key"]
-    organizations: UniqueList[str]
+    organization: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse,
+        None,
+    ]
+    repository: Union[
+        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse,
+        None,
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
 
-    credential_id: Union[int, str]
-    credential_type: Literal["classic_pat", "ssh_key"]
-    organizations: UniqueList[str]
+    id: int
+    login: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+
+    id: int
+    login: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
+
+
+class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
+
+    id: int
+    name: str
+    full_name: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganizationTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryType",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepositoryTypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200TypeForResponse",
 )

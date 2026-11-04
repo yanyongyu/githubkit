@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
@@ -19,21 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksLabelUnarchivedAllof1(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksLabelArchivedAllof1PropArchivedBy(GitHubModel):
+    """WebhooksLabelArchivedAllof1PropArchivedBy
 
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived. This is `null` after the label is unarchived."
-    )
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedBy, None] = Field(
-        description="The user who archived the label. This is `null` after the label is unarchived."
-    )
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedBy(GitHubModel):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
+    The user who archived the label.
     """
 
     name: Missing[Union[str, None]] = Field(default=UNSET)
@@ -60,10 +48,6 @@ class WebhooksLabelUnarchivedAllof1PropArchivedBy(GitHubModel):
     user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksLabelUnarchivedAllof1)
-model_rebuild(WebhooksLabelUnarchivedAllof1PropArchivedBy)
+model_rebuild(WebhooksLabelArchivedAllof1PropArchivedBy)
 
-__all__ = (
-    "WebhooksLabelUnarchivedAllof1",
-    "WebhooksLabelUnarchivedAllof1PropArchivedBy",
-)
+__all__ = ("WebhooksLabelArchivedAllof1PropArchivedBy",)

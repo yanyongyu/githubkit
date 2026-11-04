@@ -12,40 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
+class OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody"""
 
-    job_id: int = Field(description="The ID of the created job.")
-    errors: Missing[
-        list[
-            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="Deployments that were rejected during authorization.",
+    selected_repository_ids: list[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
 
 
-class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems(
-    GitHubModel
-):
-    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
-    orsItems
-    """
+model_rebuild(OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody)
 
-
-model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202)
-model_rebuild(
-    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
-)
-
-__all__ = (
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202",
-    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems",
-)
+__all__ = ("OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody",)

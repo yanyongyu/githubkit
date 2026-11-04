@@ -9,29 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgAttestationsBulkListPostResponse200(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200"""
 
-    scope: Literal[
-        "all", "all_without_configurations", "public", "private_or_internal", "selected"
-    ] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+    attestations_subject_digests: Missing[
+        OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
+    ] = Field(default=UNSET, description="Mapping of subject digest to bundles.")
+    page_info: Missing[OrgsOrgAttestationsBulkListPostResponse200PropPageInfo] = Field(
+        default=UNSET, description="Information about the current page."
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+class OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests(
+    ExtraGitHubModel
+):
+    """OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+    Mapping of subject digest to bundles.
+    """
+
+
+class OrgsOrgAttestationsBulkListPostResponse200PropPageInfo(GitHubModel):
+    """OrgsOrgAttestationsBulkListPostResponse200PropPageInfo
+
+    Information about the current page.
+    """
+
+    has_next: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a next page."
+    )
+    has_previous: Missing[bool] = Field(
+        default=UNSET, description="Indicates whether there is a previous page."
+    )
+    next_: Missing[str] = Field(
+        default=UNSET, alias="next", description="The cursor to the next page."
+    )
+    previous: Missing[str] = Field(
+        default=UNSET, description="The cursor to the previous page."
+    )
+
+
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests)
+model_rebuild(OrgsOrgAttestationsBulkListPostResponse200PropPageInfo)
+
+__all__ = (
+    "OrgsOrgAttestationsBulkListPostResponse200",
+    "OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests",
+    "OrgsOrgAttestationsBulkListPostResponse200PropPageInfo",
+)

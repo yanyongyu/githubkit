@@ -18,17 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    lock_reason: Missing[Literal["off-topic", "too heated", "resolved", "spam"]] = (
-        Field(
-            default=UNSET,
-            description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
-        )
+    type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = Field(
+        default=UNSET, description="The artifact type."
+    )
+    name: str = Field(
+        min_length=1, description="The human-readable name of the artifact."
+    )
+    body: str = Field(
+        min_length=1,
+        description="The artifact content. For `embedded_html` artifacts, provide the HTML source.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsPostBody",)

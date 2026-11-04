@@ -12,27 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0385 import ActionsSecret
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
-    include_drafts: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
-    )
+    total_count: int = Field()
+    secrets: list[ActionsSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
 
-__all__ = ("ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)

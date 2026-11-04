@@ -9,93 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0Type(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropCreatorAllof0
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A GitHub user
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
+    id: NotRequired[int]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropCreatorAllof0
 
-    A single validation error
+    A GitHub user
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0TypeForResponse",
 )

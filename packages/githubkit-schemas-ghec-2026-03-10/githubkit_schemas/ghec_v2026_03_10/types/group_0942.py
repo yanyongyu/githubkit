@@ -17,31 +17,28 @@ from .group_0137 import (
     OrganizationCustomPropertyType,
     OrganizationCustomPropertyTypeForResponse,
 )
-from .group_0656 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0657 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0658 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
 
 
-class WebhookOrganizationCustomPropertyUpdatedType(TypedDict):
-    """organization custom property updated event"""
+class WebhookOrganizationCustomPropertyCreatedType(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["updated"]
+    action: Literal["created"]
     definition: OrganizationCustomPropertyType
     enterprise: EnterpriseWebhooksType
-    installation: NotRequired[SimpleInstallationType]
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookOrganizationCustomPropertyUpdatedTypeForResponse(TypedDict):
-    """organization custom property updated event"""
+class WebhookOrganizationCustomPropertyCreatedTypeForResponse(TypedDict):
+    """organization custom property created event"""
 
-    action: Literal["updated"]
+    action: Literal["created"]
     definition: OrganizationCustomPropertyTypeForResponse
     enterprise: EnterpriseWebhooksTypeForResponse
-    installation: NotRequired[SimpleInstallationTypeForResponse]
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookOrganizationCustomPropertyUpdatedType",
-    "WebhookOrganizationCustomPropertyUpdatedTypeForResponse",
+    "WebhookOrganizationCustomPropertyCreatedType",
+    "WebhookOrganizationCustomPropertyCreatedTypeForResponse",
 )

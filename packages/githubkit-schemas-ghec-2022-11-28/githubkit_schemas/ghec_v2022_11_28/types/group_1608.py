@@ -9,24 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
     message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class ReposOwnerRepoDeleteResponse403TypeForResponse(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse(TypedDict):
+    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
 
     message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    validation_errors: NotRequired[
+        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoDeleteResponse403Type",
-    "ReposOwnerRepoDeleteResponse403TypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422Type",
+    "OrgsOrgSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

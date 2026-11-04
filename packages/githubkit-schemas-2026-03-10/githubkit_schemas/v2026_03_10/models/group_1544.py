@@ -12,16 +12,25 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200(GitHubModel):
-    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
 
-    enabled: bool = Field(
-        description="Whether or not private vulnerability reporting is enabled for the repository."
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
+    )
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET,
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200)
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

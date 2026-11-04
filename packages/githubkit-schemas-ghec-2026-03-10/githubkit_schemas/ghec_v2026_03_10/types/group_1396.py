@@ -9,71 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
-
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
+    pattern_config_version: NotRequired[str]
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
-    s
-    """
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
-    s
-    """
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

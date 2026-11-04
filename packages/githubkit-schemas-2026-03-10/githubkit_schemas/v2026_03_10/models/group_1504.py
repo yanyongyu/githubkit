@@ -18,21 +18,27 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-    type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = Field(
-        default=UNSET, description="The artifact type."
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="The username to provide to the originating repository.",
     )
-    name: str = Field(
-        min_length=1, description="The human-readable name of the artifact."
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="The password to provide to the originating repository.",
     )
-    body: str = Field(
-        min_length=1,
-        description="The artifact content. For `embedded_html` artifacts, provide the HTML source.",
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+        default=UNSET,
+        description="The type of version control system you are migrating from.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsPostBody)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsPostBody",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

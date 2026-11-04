@@ -9,34 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ]
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
 
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
-
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
-    """
-
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
 )

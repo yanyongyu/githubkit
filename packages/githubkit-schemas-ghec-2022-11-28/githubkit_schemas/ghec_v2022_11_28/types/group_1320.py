@@ -9,67 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
-
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
 
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
-    ]
+    repositories: list[str]
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType(
+class EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+    """EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositories
+    AddPatchBody
+    """
 
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
+    repositories: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyType",
+    "EnterprisesEnterpriseAppsOrganizationsOrgInstallationsInstallationIdRepositoriesAddPatchBodyTypeForResponse",
 )

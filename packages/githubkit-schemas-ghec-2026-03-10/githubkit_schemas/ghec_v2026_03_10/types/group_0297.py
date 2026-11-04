@@ -9,41 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class CodeScanningAiScanOrgSettingsType(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    A description of the machine powering a codespace.
+    The AI Scan organization setting
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
+    pr_scan: Literal["enabled", "disabled"]
 
 
-class CodespaceMachineTypeForResponse(TypedDict):
-    """Codespace machine
+class CodeScanningAiScanOrgSettingsTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    A description of the machine powering a codespace.
+    The AI Scan organization setting
     """
 
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[Literal["none", "ready", "in_progress"], None]
+    pr_scan: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "CodespaceMachineType",
-    "CodespaceMachineTypeForResponse",
+    "CodeScanningAiScanOrgSettingsType",
+    "CodeScanningAiScanOrgSettingsTypeForResponse",
 )

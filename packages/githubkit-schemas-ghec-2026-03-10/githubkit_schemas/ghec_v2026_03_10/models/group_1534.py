@@ -12,22 +12,18 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
+class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
-    )
+    The total number of seats set to "pending cancellation" for members of the
+    specified team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)

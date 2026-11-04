@@ -13,55 +13,112 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0214 import (
-    PublicMonitoringRepositoryType,
-    PublicMonitoringRepositoryTypeForResponse,
-)
-from .group_0215 import BaseGistType, BaseGistTypeForResponse
-from .group_0711 import (
-    PublicMonitoringAlertWebhookPropAttributionType,
-    PublicMonitoringAlertWebhookPropAttributionTypeForResponse,
-)
 
+class WebhooksAlertType(TypedDict):
+    """Repository Vulnerability Alert Alert
 
-class PublicMonitoringAlertWebhookType(TypedDict):
-    """Public Monitoring Alert Webhook
-
-    A public monitoring alert as delivered via webhook.
+    The security alert of the vulnerable dependency.
     """
 
-    number: int
-    url: str
-    secret_type: str
-    secret_type_display_name: str
-    created_at: _dt.datetime
-    validity: Literal["active", "inactive", "unknown"]
-    repository: Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
-    gist: NotRequired[Union[BaseGistType, None]]
-    attribution: PublicMonitoringAlertWebhookPropAttributionType
-
-
-class PublicMonitoringAlertWebhookTypeForResponse(TypedDict):
-    """Public Monitoring Alert Webhook
-
-    A public monitoring alert as delivered via webhook.
-    """
-
-    number: int
-    url: str
-    secret_type: str
-    secret_type_display_name: str
+    affected_package_name: str
+    affected_range: str
     created_at: str
-    validity: Literal["active", "inactive", "unknown"]
-    repository: Union[
-        SimpleRepositoryTypeForResponse, PublicMonitoringRepositoryTypeForResponse, None
-    ]
-    gist: NotRequired[Union[BaseGistTypeForResponse, None]]
-    attribution: PublicMonitoringAlertWebhookPropAttributionTypeForResponse
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[_dt.datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["auto_dismissed", "open"]
+
+
+class WebhooksAlertTypeForResponse(TypedDict):
+    """Repository Vulnerability Alert Alert
+
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str
+    affected_range: str
+    created_at: str
+    dismiss_reason: NotRequired[str]
+    dismissed_at: NotRequired[str]
+    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
+    external_identifier: str
+    external_reference: Union[str, None]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[str]
+    fixed_in: NotRequired[str]
+    ghsa_id: str
+    id: int
+    node_id: str
+    number: int
+    severity: str
+    state: Literal["auto_dismissed", "open"]
+
+
+class WebhooksAlertPropDismisserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "PublicMonitoringAlertWebhookType",
-    "PublicMonitoringAlertWebhookTypeForResponse",
+    "WebhooksAlertPropDismisserType",
+    "WebhooksAlertPropDismisserTypeForResponse",
+    "WebhooksAlertType",
+    "WebhooksAlertTypeForResponse",
 )

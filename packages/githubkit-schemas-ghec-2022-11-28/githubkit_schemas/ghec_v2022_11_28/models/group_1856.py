@@ -9,62 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0608 import PullRequestStackPullRequest
 
 
-class UserCodespacesPostBodyOneof0(GitHubModel):
-    """UserCodespacesPostBodyOneof0"""
+class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200"""
 
-    repository_id: int = Field(description="Repository id for this codespace")
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    location: Missing[str] = Field(
-        default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UserCodespacesPostBodyOneof0)
+class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
 
-__all__ = ("UserCodespacesPostBodyOneof0",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberGetResponse200",
+    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
+)

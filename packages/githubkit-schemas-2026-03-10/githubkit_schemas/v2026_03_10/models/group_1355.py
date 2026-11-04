@@ -9,41 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422"""
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
+    fields: list[OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems] = (
+        Field(description="A list of field updates to apply.")
     )
 
 
-class OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors
+class OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems"""
 
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
-    """
+    id: int = Field(description="The ID of the project field to update.")
+    value: Union[str, float, None] = Field(
+        description="The new value for the field:\n- For text, number, and date fields, provide the new value directly.\n- For single select and iteration fields, provide the ID of the option or iteration.\n- To clear the field, set this to null."
+    )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422)
-model_rebuild(OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems)
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422",
-    "OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody",
+    "OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems",
 )

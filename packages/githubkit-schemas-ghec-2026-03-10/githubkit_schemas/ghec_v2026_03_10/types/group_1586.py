@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0210 import (
-    SecretScanningCustomPatternToCreateType,
-    SecretScanningCustomPatternToCreateTypeForResponse,
-)
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyType(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateType]
+    title: str
+    body: NotRequired[str]
 
 
-class OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgSecretScanningCustomPatternsPostBody"""
+class OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
+    title: str
+    body: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgSecretScanningCustomPatternsPostBodyType",
-    "OrgsOrgSecretScanningCustomPatternsPostBodyTypeForResponse",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyType",
+    "OrgsOrgProjectsV2ProjectNumberDraftsPostBodyTypeForResponse",
 )

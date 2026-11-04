@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503Type",
-    "EnterprisesEnterpriseCodeScanningAlertsGetResponse503TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

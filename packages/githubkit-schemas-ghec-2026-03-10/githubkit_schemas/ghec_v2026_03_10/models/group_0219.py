@@ -9,53 +9,118 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
-    )
-    purchased_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
-    )
-    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
-
-
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
-
-
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
-
-__all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
+from .group_0003 import SimpleUser
+from .group_0205 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
 )
+from .group_0206 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+from .group_0217 import PublicMonitoringAlertLocation, PublicMonitoringSecretAuthor
+
+
+class PublicMonitoringAlertPropAttribution(GitHubModel):
+    """PublicMonitoringAlertPropAttribution
+
+    Attribution information for the alert.
+    """
+
+    secret_author: Missing[Union[SimpleUser, PublicMonitoringSecretAuthor, None]] = (
+        Field(default=UNSET)
+    )
+    committer_email: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The email address associated with the secret's author.",
+    )
+    method: Missing[Literal["member_activity", "verified_domain"]] = Field(
+        default=UNSET,
+        description="The method used to attribute the alert to the enterprise.",
+    )
+    commit: Missing[
+        Union[SecretScanningLocationCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    wiki_commit: Missing[
+        Union[SecretScanningLocationWikiCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_title: Missing[
+        Union[SecretScanningLocationIssueTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_body: Missing[
+        Union[SecretScanningLocationIssueBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        Union[SecretScanningLocationIssueComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_title: Missing[
+        Union[SecretScanningLocationPullRequestTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_body: Missing[
+        Union[SecretScanningLocationPullRequestBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        Union[SecretScanningLocationPullRequestComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_review_comment: Missing[
+        Union[
+            SecretScanningLocationPullRequestReviewComment,
+            PublicMonitoringAlertLocation,
+        ]
+    ] = Field(default=UNSET)
+    pull_request_review: Missing[
+        Union[SecretScanningLocationPullRequestReview, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_timeline_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    discussion_title: Missing[
+        Union[SecretScanningLocationDiscussionTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_body: Missing[
+        Union[SecretScanningLocationDiscussionBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        Union[SecretScanningLocationDiscussionComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    commit_metadata: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    commit_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    actions_log: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    gist_blob: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+
+
+model_rebuild(PublicMonitoringAlertPropAttribution)
+
+__all__ = ("PublicMonitoringAlertPropAttribution",)

@@ -9,28 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0387 import ActionsSecretType, ActionsSecretTypeForResponse
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    total_count: int
+    secrets: list[ActionsSecretType]
 
 
-class ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200"""
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    total_count: int
+    secrets: list[ActionsSecretTypeForResponse]
 
 
 __all__ = (
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200Type",
-    "ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
 )

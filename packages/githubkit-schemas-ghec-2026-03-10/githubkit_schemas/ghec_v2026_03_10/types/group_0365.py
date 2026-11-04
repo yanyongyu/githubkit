@@ -10,376 +10,285 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Literal, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0019 import LicenseSimpleType, LicenseSimpleTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0282 import SecurityAndAnalysisType, SecurityAndAnalysisTypeForResponse
+from .group_0364 import CodeOfConductSimpleType, CodeOfConductSimpleTypeForResponse
 
-class RuleSuiteType(TypedDict):
-    """Rule Suite
 
-    Response
+class FullRepositoryType(TypedDict):
+    """Full Repository
+
+    Full Repository
     """
 
-    id: NotRequired[int]
-    actor_id: NotRequired[Union[int, None]]
-    actor_name: NotRequired[Union[str, None]]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[_dt.datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
-    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
-
-
-class RuleSuiteTypeForResponse(TypedDict):
-    """Rule Suite
-
-    Response
-    """
-
-    id: NotRequired[int]
-    actor_id: NotRequired[Union[int, None]]
-    actor_name: NotRequired[Union[str, None]]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[str]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Union[Literal["pass", "fail", "bypass"], None]]
-    rule_evaluations: NotRequired[
-        list[RuleSuitePropRuleEvaluationsItemsTypeForResponse]
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserType
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_discussions: bool
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: _dt.datetime
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    permissions: NotRequired[FullRepositoryPropPermissionsType]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[Union[RepositoryType, None]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: int
+    network_count: int
+    license_: Union[LicenseSimpleType, None]
+    organization: NotRequired[Union[SimpleUserType, None]]
+    parent: NotRequired[RepositoryType]
+    source: NotRequired[RepositoryType]
+    forks: int
+    master_branch: NotRequired[str]
+    open_issues: int
+    watchers: int
+    anonymous_access_enabled: NotRequired[bool]
+    code_of_conduct: NotRequired[CodeOfConductSimpleType]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    custom_properties: NotRequired[FullRepositoryPropCustomPropertiesType]
 
 
-class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
+class FullRepositoryTypeForResponse(TypedDict):
+    """Full Repository
 
-    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    metadata: NotRequired[
-        Union[RuleSuitePullRequestType, RuleSuiteRequiredStatusChecksType, None]
+    Full Repository
+    """
+
+    id: int
+    node_id: str
+    name: str
+    full_name: str
+    owner: SimpleUserTypeForResponse
+    private: bool
+    html_url: str
+    description: Union[str, None]
+    fork: bool
+    url: str
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    downloads_url: str
+    events_url: str
+    forks_url: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    notifications_url: str
+    pulls_url: str
+    releases_url: str
+    ssh_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    clone_url: str
+    mirror_url: Union[str, None]
+    hooks_url: str
+    svn_url: str
+    homepage: Union[str, None]
+    language: Union[str, None]
+    forks_count: int
+    stargazers_count: int
+    watchers_count: int
+    size: int
+    default_branch: str
+    open_issues_count: int
+    is_template: NotRequired[bool]
+    topics: NotRequired[list[str]]
+    has_issues: bool
+    has_projects: bool
+    has_wiki: bool
+    has_pages: bool
+    has_discussions: bool
+    has_pull_requests: NotRequired[bool]
+    pull_request_creation_policy: NotRequired[Literal["all", "collaborators_only"]]
+    archived: bool
+    disabled: bool
+    visibility: NotRequired[str]
+    pushed_at: str
+    created_at: str
+    updated_at: str
+    permissions: NotRequired[FullRepositoryPropPermissionsTypeForResponse]
+    allow_rebase_merge: NotRequired[bool]
+    template_repository: NotRequired[Union[RepositoryTypeForResponse, None]]
+    temp_clone_token: NotRequired[Union[str, None]]
+    allow_squash_merge: NotRequired[bool]
+    allow_auto_merge: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
     ]
-    details: NotRequired[Union[str, None]]
-
-
-class RuleSuitePropRuleEvaluationsItemsTypeForResponse(TypedDict):
-    """RuleSuitePropRuleEvaluationsItems"""
-
-    rule_source: NotRequired[
-        RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse
-    ]
-    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
-    result: NotRequired[Literal["pass", "fail"]]
-    rule_type: NotRequired[str]
-    metadata: NotRequired[
-        Union[
-            RuleSuitePullRequestTypeForResponse,
-            RuleSuiteRequiredStatusChecksTypeForResponse,
-            None,
-        ]
-    ]
-    details: NotRequired[Union[str, None]]
-
-
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
-
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-
-
-class RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse(TypedDict):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
-
-    type: NotRequired[str]
-    id: NotRequired[Union[int, None]]
-    name: NotRequired[Union[str, None]]
-
-
-class RuleSuiteRequiredStatusChecksType(TypedDict):
-    """Required status checks rule suite metadata
-
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: NotRequired[list[RuleSuiteRequiredStatusChecksPropChecksItemsType]]
-
-
-class RuleSuiteRequiredStatusChecksTypeForResponse(TypedDict):
-    """Required status checks rule suite metadata
-
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: NotRequired[
-        list[RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
-
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
-    type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType, None]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
-
-    id: NotRequired[int]
-    context: NotRequired[str]
-    state: NotRequired[str]
-    type: NotRequired[str]
-    app: NotRequired[
-        Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse, None]
-    ]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse(TypedDict):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: NotRequired[int]
-    slug: NotRequired[str]
-    name: NotRequired[str]
-
-
-class RuleSuitePullRequestType(TypedDict):
-    """Pull request rule suite metadata
-
-    Metadata for a pull request rule evaluation result.
-    """
-
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestType]
-
-
-class RuleSuitePullRequestTypeForResponse(TypedDict):
-    """Pull request rule suite metadata
-
-    Metadata for a pull request rule evaluation result.
-    """
-
-    pull_request: NotRequired[RuleSuitePullRequestPropPullRequestTypeForResponse]
-
-
-class RuleSuitePullRequestPropPullRequestType(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserType]
-    reviews: NotRequired[list[RuleSuitePullRequestPropPullRequestPropReviewsItemsType]]
-    proof_of_presence: NotRequired[
-        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresenceType, None]
-    ]
-
-
-class RuleSuitePullRequestPropPullRequestTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: NotRequired[int]
-    number: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropUserTypeForResponse]
-    reviews: NotRequired[
-        list[RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse]
-    ]
-    proof_of_presence: NotRequired[
-        Union[
-            RuleSuitePullRequestPropPullRequestPropProofOfPresenceTypeForResponse, None
-        ]
-    ]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropUserTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropProofOfPresenceType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
-
-    The proof of presence evaluation for the pull request. Null if proof of presence
-    was not evaluated.
-    """
-
-    state: NotRequired[str]
-    code: NotRequired[str]
-    base_sha: NotRequired[str]
-    head_sha: NotRequired[str]
-    required_level: NotRequired[str]
-    verified_level: NotRequired[str]
-    verified_at: NotRequired[str]
-    verifier: NotRequired[
-        Union[
-            RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierType, None
-        ]
-    ]
-
-
-class RuleSuitePullRequestPropPullRequestPropProofOfPresenceTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
-
-    The proof of presence evaluation for the pull request. Null if proof of presence
-    was not evaluated.
-    """
-
-    state: NotRequired[str]
-    code: NotRequired[str]
-    base_sha: NotRequired[str]
-    head_sha: NotRequired[str]
-    required_level: NotRequired[str]
-    verified_level: NotRequired[str]
-    verified_at: NotRequired[str]
-    verifier: NotRequired[
-        Union[
-            RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierTypeForResponse,
-            None,
-        ]
-    ]
-
-
-class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
-
-    The user who provided proof of presence. Null if no proof of presence was
-    recorded.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierTypeForResponse(
-    TypedDict
-):
-    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
-
-    The user who provided proof of presence. Null if no proof of presence was
-    recorded.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType]
-    state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: NotRequired[int]
-    user: NotRequired[
-        RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse
-    ]
-    state: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType(TypedDict):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse(
-    TypedDict
-):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: NotRequired[int]
-    login: NotRequired[str]
-    type: NotRequired[str]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    allow_forking: NotRequired[bool]
+    web_commit_signoff_required: NotRequired[bool]
+    subscribers_count: int
+    network_count: int
+    license_: Union[LicenseSimpleTypeForResponse, None]
+    organization: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    parent: NotRequired[RepositoryTypeForResponse]
+    source: NotRequired[RepositoryTypeForResponse]
+    forks: int
+    master_branch: NotRequired[str]
+    open_issues: int
+    watchers: int
+    anonymous_access_enabled: NotRequired[bool]
+    code_of_conduct: NotRequired[CodeOfConductSimpleTypeForResponse]
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisTypeForResponse, None]]
+    custom_properties: NotRequired[FullRepositoryPropCustomPropertiesTypeForResponse]
+
+
+class FullRepositoryPropPermissionsType(TypedDict):
+    """FullRepositoryPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
+class FullRepositoryPropPermissionsTypeForResponse(TypedDict):
+    """FullRepositoryPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    push: bool
+    triage: NotRequired[bool]
+    pull: bool
+
+
+FullRepositoryPropCustomPropertiesType: TypeAlias = dict[str, Any]
+"""FullRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
+
+
+FullRepositoryPropCustomPropertiesTypeForResponse: TypeAlias = dict[str, Any]
+"""FullRepositoryPropCustomProperties
+
+The custom properties that were defined for the repository. The keys are the
+custom property names, and the values are the corresponding custom property
+values.
+"""
 
 
 __all__ = (
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceTypeForResponse",
-    "RuleSuitePropRuleEvaluationsItemsType",
-    "RuleSuitePropRuleEvaluationsItemsTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierType",
-    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifierTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropProofOfPresenceType",
-    "RuleSuitePullRequestPropPullRequestPropProofOfPresenceTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsType",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestPropUserType",
-    "RuleSuitePullRequestPropPullRequestPropUserTypeForResponse",
-    "RuleSuitePullRequestPropPullRequestType",
-    "RuleSuitePullRequestPropPullRequestTypeForResponse",
-    "RuleSuitePullRequestType",
-    "RuleSuitePullRequestTypeForResponse",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropAppTypeForResponse",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsType",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsTypeForResponse",
-    "RuleSuiteRequiredStatusChecksType",
-    "RuleSuiteRequiredStatusChecksTypeForResponse",
-    "RuleSuiteType",
-    "RuleSuiteTypeForResponse",
+    "FullRepositoryPropCustomPropertiesType",
+    "FullRepositoryPropCustomPropertiesTypeForResponse",
+    "FullRepositoryPropPermissionsType",
+    "FullRepositoryPropPermissionsTypeForResponse",
+    "FullRepositoryType",
+    "FullRepositoryTypeForResponse",
 )

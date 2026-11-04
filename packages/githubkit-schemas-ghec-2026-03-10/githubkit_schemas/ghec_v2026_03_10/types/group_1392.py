@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0210 import (
+    SecretScanningCustomPatternType,
+    SecretScanningCustomPatternTypeForResponse,
+)
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    usernames: list[str]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    usernames: list[str]
+    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
 )

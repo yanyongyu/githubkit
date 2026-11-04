@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsVariablesNamePatchBodyType",
-    "ReposOwnerRepoActionsVariablesNamePatchBodyTypeForResponse",
+    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
+    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

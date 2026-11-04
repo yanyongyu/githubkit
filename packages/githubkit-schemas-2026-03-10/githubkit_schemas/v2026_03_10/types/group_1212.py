@@ -9,74 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0130 import (
-    ActionsPolicyOrgConditionsOneof0Type,
-    ActionsPolicyOrgConditionsOneof0TypeForResponse,
-)
-from .group_0131 import (
-    ActionsPolicyOrgConditionsOneof1Type,
-    ActionsPolicyOrgConditionsOneof1TypeForResponse,
-)
-from .group_0132 import (
-    ActionsPolicyOrgConditionsOneof2Type,
-    ActionsPolicyOrgConditionsOneof2TypeForResponse,
-)
-from .group_0145 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
+from .group_0107 import (
+    ActionsHostedRunnerCuratedImageType,
+    ActionsHostedRunnerCuratedImageTypeForResponse,
 )
 
 
-class OrgsOrgActionsPoliciesPostBodyType(TypedDict):
-    """OrgsOrgActionsPoliciesPostBody"""
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0Type,
-            ActionsPolicyOrgConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageType]
 
 
-class OrgsOrgActionsPoliciesPostBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesPostBody"""
+class OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200"""
 
-    name: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyOrgConditionsOneof0TypeForResponse,
-            ActionsPolicyOrgConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof2TypeForResponse,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
+    total_count: int
+    images: list[ActionsHostedRunnerCuratedImageTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesPostBodyType",
-    "OrgsOrgActionsPoliciesPostBodyTypeForResponse",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200Type",
+    "OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200TypeForResponse",
 )

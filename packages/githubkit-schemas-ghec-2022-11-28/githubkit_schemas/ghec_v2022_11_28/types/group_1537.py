@@ -9,29 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    selected_usernames: list[str]
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyType",
-    "OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyType",
+    "OrgsOrgCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

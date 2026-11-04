@@ -9,41 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
+    name: str = Field(description="The new name for the cost center")
+    ai_credit_pool_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
-    )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0
+)
 
 __all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdPatchBodyAnyof0",
 )

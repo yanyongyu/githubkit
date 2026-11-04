@@ -9,24 +9,73 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0140 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType
+    ]
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
 
-    properties: list[CustomPropertyValueType]
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
+    ems
+    """
 
-    properties: list[CustomPropertyValueTypeForResponse]
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
+    ems
+    """
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyType",
-    "OrganizationsOrgOrgPropertiesValuesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse",
 )

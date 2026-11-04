@@ -9,229 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0205 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationCommitTypeForResponse,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionCommentTypeForResponse,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationDiscussionTitleTypeForResponse,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationIssueBodyTypeForResponse,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestBodyTypeForResponse,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationPullRequestReviewTypeForResponse,
-    SecretScanningLocationWikiCommitType,
-    SecretScanningLocationWikiCommitTypeForResponse,
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0215 import (
+    PublicMonitoringRepositoryType,
+    PublicMonitoringRepositoryTypeForResponse,
 )
-from .group_0206 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueCommentTypeForResponse,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationIssueTitleTypeForResponse,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-    SecretScanningLocationPullRequestTitleType,
-    SecretScanningLocationPullRequestTitleTypeForResponse,
-)
-from .group_0207 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationDiscussionBodyTypeForResponse,
-    SecretScanningLocationPullRequestCommentType,
-    SecretScanningLocationPullRequestCommentTypeForResponse,
-)
-from .group_0216 import (
-    PublicMonitoringAlertLocationType,
-    PublicMonitoringAlertLocationTypeForResponse,
-    PublicMonitoringSecretAuthorType,
-    PublicMonitoringSecretAuthorTypeForResponse,
+from .group_0216 import BaseGistType, BaseGistTypeForResponse
+from .group_0219 import (
+    PublicMonitoringAlertPropAttributionType,
+    PublicMonitoringAlertPropAttributionTypeForResponse,
 )
 
 
-class PublicMonitoringAlertPropAttributionType(TypedDict):
-    """PublicMonitoringAlertPropAttribution
+class PublicMonitoringAlertType(TypedDict):
+    """PublicMonitoringAlert"""
 
-    Attribution information for the alert.
-    """
-
-    secret_author: NotRequired[
-        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
+    number: int
+    url: str
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    created_at: NotRequired[_dt.datetime]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolved_by: NotRequired[Union[SimpleUserType, None]]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret: NotRequired[Union[str, None]]
+    repository: NotRequired[
+        Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
     ]
-    committer_email: NotRequired[Union[str, None]]
-    method: NotRequired[Literal["member_activity", "verified_domain"]]
-    commit: NotRequired[
-        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
+    gist: NotRequired[
+        Union[BaseGistType, PublicMonitoringAlertPropGistAnyof1Type, None]
     ]
-    wiki_commit: NotRequired[
-        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
-    ]
-    issue_title: NotRequired[
-        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
-    ]
-    issue_body: NotRequired[
-        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
-    ]
-    issue_comment: NotRequired[
-        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
-    ]
-    pull_request_title: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestTitleType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_body: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    pull_request_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_review_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_review: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
-    discussion_title: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    discussion_body: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    discussion_comment: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
-    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
-    actions_log: NotRequired[PublicMonitoringAlertLocationType]
-    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
+    attribution: NotRequired[PublicMonitoringAlertPropAttributionType]
 
 
-class PublicMonitoringAlertPropAttributionTypeForResponse(TypedDict):
-    """PublicMonitoringAlertPropAttribution
+class PublicMonitoringAlertTypeForResponse(TypedDict):
+    """PublicMonitoringAlert"""
 
-    Attribution information for the alert.
-    """
+    number: int
+    url: str
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    created_at: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    resolved_at: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret: NotRequired[Union[str, None]]
+    repository: NotRequired[
+        Union[
+            SimpleRepositoryTypeForResponse,
+            PublicMonitoringRepositoryTypeForResponse,
+            None,
+        ]
+    ]
+    gist: NotRequired[
+        Union[
+            BaseGistTypeForResponse,
+            PublicMonitoringAlertPropGistAnyof1TypeForResponse,
+            None,
+        ]
+    ]
+    attribution: NotRequired[PublicMonitoringAlertPropAttributionTypeForResponse]
 
-    secret_author: NotRequired[
-        Union[
-            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
-        ]
-    ]
-    committer_email: NotRequired[Union[str, None]]
-    method: NotRequired[Literal["member_activity", "verified_domain"]]
-    commit: NotRequired[
-        Union[
-            SecretScanningLocationCommitTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    wiki_commit: NotRequired[
-        Union[
-            SecretScanningLocationWikiCommitTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_title: NotRequired[
-        Union[
-            SecretScanningLocationIssueTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_body: NotRequired[
-        Union[
-            SecretScanningLocationIssueBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_comment: NotRequired[
-        Union[
-            SecretScanningLocationIssueCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_title: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_body: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_review_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_review: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_timeline_comment: NotRequired[
-        PublicMonitoringAlertLocationTypeForResponse
-    ]
-    discussion_title: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    discussion_body: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    discussion_comment: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+
+class PublicMonitoringAlertPropGistAnyof1Type(TypedDict):
+    """PublicMonitoringAlertPropGistAnyof1"""
+
+    id: str
+    html_url: NotRequired[Union[str, None]]
+
+
+class PublicMonitoringAlertPropGistAnyof1TypeForResponse(TypedDict):
+    """PublicMonitoringAlertPropGistAnyof1"""
+
+    id: str
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PublicMonitoringAlertPropAttributionType",
-    "PublicMonitoringAlertPropAttributionTypeForResponse",
+    "PublicMonitoringAlertPropGistAnyof1Type",
+    "PublicMonitoringAlertPropGistAnyof1TypeForResponse",
+    "PublicMonitoringAlertType",
+    "PublicMonitoringAlertTypeForResponse",
 )

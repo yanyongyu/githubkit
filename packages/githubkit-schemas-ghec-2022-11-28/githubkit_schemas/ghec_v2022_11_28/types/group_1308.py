@@ -9,81 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0088 import (
-    AmazonS3AccessKeysConfigType,
-    AmazonS3AccessKeysConfigTypeForResponse,
-    AzureBlobConfigType,
-    AzureBlobConfigTypeForResponse,
-    AzureHubConfigType,
-    AzureHubConfigTypeForResponse,
-    DatadogConfigType,
-    DatadogConfigTypeForResponse,
-    HecConfigType,
-    HecConfigTypeForResponse,
-)
-from .group_0089 import (
-    AmazonS3OidcConfigType,
-    AmazonS3OidcConfigTypeForResponse,
-    SplunkConfigType,
-    SplunkConfigTypeForResponse,
-)
-from .group_0090 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
+from .group_0077 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigType,
-        AzureHubConfigType,
-        AmazonS3OidcConfigType,
-        AmazonS3AccessKeysConfigType,
-        SplunkConfigType,
-        HecConfigType,
-        GoogleCloudConfigType,
-        DatadogConfigType,
-    ]
+    total_count: float
+    runners: list[RunnerType]
 
 
-class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    enabled: bool
-    stream_type: Literal[
-        "Azure Blob Storage",
-        "Azure Event Hubs",
-        "Amazon S3",
-        "Splunk",
-        "HTTPS Event Collector",
-        "Google Cloud Storage",
-        "Datadog",
-    ]
-    vendor_specific: Union[
-        AzureBlobConfigTypeForResponse,
-        AzureHubConfigTypeForResponse,
-        AmazonS3OidcConfigTypeForResponse,
-        AmazonS3AccessKeysConfigTypeForResponse,
-        SplunkConfigTypeForResponse,
-        HecConfigTypeForResponse,
-        GoogleCloudConfigTypeForResponse,
-        DatadogConfigTypeForResponse,
-    ]
+    total_count: float
+    runners: list[RunnerTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200TypeForResponse",
 )

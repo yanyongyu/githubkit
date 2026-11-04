@@ -9,90 +9,161 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestStackMinimalType(TypedDict):
-    """Pull Request Stack Minimal"""
+class RepositoryAdvisoryUpdateType(TypedDict):
+    """RepositoryAdvisoryUpdate"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
-
-
-class PullRequestStackMinimalTypeForResponse(TypedDict):
-    """Pull Request Stack Minimal"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: PullRequestStackMinimalPropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[list[str], None]]
+    collaborating_teams: NotRequired[Union[list[str], None]]
 
 
-class PullRequestStackMinimalPropBaseType(TypedDict):
-    """PullRequestStackMinimalPropBase"""
+class RepositoryAdvisoryUpdateTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdate"""
 
-    ref: str
-
-
-class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[_dt.datetime, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse]
+    ]
+    cwe_ids: NotRequired[Union[list[str], None]]
+    credits_: NotRequired[
+        Union[list[RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse], None]
+    ]
+    severity: NotRequired[Union[Literal["critical", "high", "medium", "low"], None]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[list[str], None]]
+    collaborating_teams: NotRequired[Union[list[str], None]]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
+class RepositoryAdvisoryUpdatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
 
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[str, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+class RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
 
-    ref: str
-    sha: str
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
 
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
 
-    ref: str
-    sha: str
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse(
+    TypedDict
+):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
+    """
+
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PullRequestStackMinimalPropBaseType",
-    "PullRequestStackMinimalPropBaseTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsType",
-    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
-    "PullRequestStackMinimalType",
-    "PullRequestStackMinimalTypeForResponse",
+    "RepositoryAdvisoryUpdatePropCreditsItemsType",
+    "RepositoryAdvisoryUpdatePropCreditsItemsTypeForResponse",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageTypeForResponse",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsTypeForResponse",
+    "RepositoryAdvisoryUpdateType",
+    "RepositoryAdvisoryUpdateTypeForResponse",
 )

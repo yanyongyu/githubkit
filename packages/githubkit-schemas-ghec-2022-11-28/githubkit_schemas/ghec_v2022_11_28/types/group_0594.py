@@ -9,24 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0181 import (
+    RepositoryRuleMaxFileSizePropParametersType,
+    RepositoryRuleMaxFileSizePropParametersTypeForResponse,
+)
 
 
-class SecretScanningAlertMetadataItemsType(TypedDict):
-    """SecretScanningAlertMetadataItems"""
+class RepositoryRuleDetailedOneof24Type(TypedDict):
+    """RepositoryRuleDetailedOneof24"""
 
-    key: str
-    value: str
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class SecretScanningAlertMetadataItemsTypeForResponse(TypedDict):
-    """SecretScanningAlertMetadataItems"""
+class RepositoryRuleDetailedOneof24TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof24"""
 
-    key: str
-    value: str
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleMaxFileSizePropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningAlertMetadataItemsType",
-    "SecretScanningAlertMetadataItemsTypeForResponse",
+    "RepositoryRuleDetailedOneof24Type",
+    "RepositoryRuleDetailedOneof24TypeForResponse",
 )

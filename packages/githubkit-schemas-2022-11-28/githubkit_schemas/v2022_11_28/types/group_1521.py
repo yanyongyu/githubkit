@@ -9,27 +9,192 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1Type(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    artifact: IssueArtifactType
+    versions: list[
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsType
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    artifact: IssueArtifactTypeForResponse
+    versions: list[
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsTypeForResponse
     ]
+
+
+class IssueArtifactType(TypedDict):
+    """Issue artifact
+
+    Issue artifacts are named, typed pieces of content attached to an issue.
+    They give people and agents a durable place to preserve context and
+    supporting material alongside the work. Each artifact has a number unique
+    within the issue.
+    """
+
+    id: int
+    html_url: NotRequired[str]
+    number: int
+    type: str
+    name: str
+    body: str
+    body_html: Union[str, None]
+    description: str
+    creator: Union[IssueArtifactPropCreatorType, None]
+    updated_by_actor: Union[IssueArtifactPropUpdatedByActorType, None]
+    created_at: Union[_dt.datetime, None]
+    updated_at: Union[_dt.datetime, None]
+
+
+class IssueArtifactTypeForResponse(TypedDict):
+    """Issue artifact
+
+    Issue artifacts are named, typed pieces of content attached to an issue.
+    They give people and agents a durable place to preserve context and
+    supporting material alongside the work. Each artifact has a number unique
+    within the issue.
+    """
+
+    id: int
+    html_url: NotRequired[str]
+    number: int
+    type: str
+    name: str
+    body: str
+    body_html: Union[str, None]
+    description: str
+    creator: Union[IssueArtifactPropCreatorTypeForResponse, None]
+    updated_by_actor: Union[IssueArtifactPropUpdatedByActorTypeForResponse, None]
+    created_at: Union[str, None]
+    updated_at: Union[str, None]
+
+
+class IssueArtifactPropCreatorType(TypedDict):
+    """IssueArtifactPropCreator
+
+    The user or integration that created the artifact.
+    """
+
+    login: str
+    id: int
+
+
+class IssueArtifactPropCreatorTypeForResponse(TypedDict):
+    """IssueArtifactPropCreator
+
+    The user or integration that created the artifact.
+    """
+
+    login: str
+    id: int
+
+
+class IssueArtifactPropUpdatedByActorType(TypedDict):
+    """IssueArtifactPropUpdatedByActor
+
+    The user or integration that most recently updated the artifact.
+    """
+
+    login: str
+    id: int
+
+
+class IssueArtifactPropUpdatedByActorTypeForResponse(TypedDict):
+    """IssueArtifactPropUpdatedByActor
+
+    The user or integration that most recently updated the artifact.
+    """
+
+    login: str
+    id: int
+
+
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
+    rsionsItems
+    """
+
+    version: int
+    name: str
+    body: str
+    body_html: Union[str, None]
+    created_at: Union[_dt.datetime, None]
+    actor: Union[
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorType,
+        None,
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
+    rsionsItems
+    """
+
+    version: int
+    name: str
+    body: str
+    body_html: Union[str, None]
+    created_at: Union[str, None]
+    actor: Union[
+        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorTypeForResponse,
+        None,
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorType(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
+    rsionsItemsPropActor
+
+    The user or integration that created this version.
+    """
+
+    login: str
+    id: int
+
+
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
+    rsionsItemsPropActor
+
+    The user or integration that created this version.
+    """
+
+    login: str
+    id: int
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberReactionsPostBodyTypeForResponse",
+    "IssueArtifactPropCreatorType",
+    "IssueArtifactPropCreatorTypeForResponse",
+    "IssueArtifactPropUpdatedByActorType",
+    "IssueArtifactPropUpdatedByActorTypeForResponse",
+    "IssueArtifactType",
+    "IssueArtifactTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorType",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActorTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsType",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1TypeForResponse",
 )

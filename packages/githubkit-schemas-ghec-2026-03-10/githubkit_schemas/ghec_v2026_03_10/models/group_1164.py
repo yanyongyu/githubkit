@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401
+class AgentsReposOwnerRepoAutomationsPostResponse422(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostResponse422
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems]
+        list[AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,10 +47,8 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems
+class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems
 
     A single validation error
     """
@@ -69,12 +67,10 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems
-)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse422)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401",
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsPostResponse422",
+    "AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems",
 )

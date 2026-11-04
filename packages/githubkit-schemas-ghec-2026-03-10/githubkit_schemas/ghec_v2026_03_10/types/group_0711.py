@@ -9,229 +9,114 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0205 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationCommitTypeForResponse,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionCommentTypeForResponse,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationDiscussionTitleTypeForResponse,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationIssueBodyTypeForResponse,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestBodyTypeForResponse,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationPullRequestReviewTypeForResponse,
-    SecretScanningLocationWikiCommitType,
-    SecretScanningLocationWikiCommitTypeForResponse,
-)
-from .group_0206 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueCommentTypeForResponse,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationIssueTitleTypeForResponse,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-    SecretScanningLocationPullRequestTitleType,
-    SecretScanningLocationPullRequestTitleTypeForResponse,
-)
-from .group_0207 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationDiscussionBodyTypeForResponse,
-    SecretScanningLocationPullRequestCommentType,
-    SecretScanningLocationPullRequestCommentTypeForResponse,
-)
-from .group_0216 import (
-    PublicMonitoringAlertLocationType,
-    PublicMonitoringAlertLocationTypeForResponse,
-    PublicMonitoringSecretAuthorType,
-    PublicMonitoringSecretAuthorTypeForResponse,
+from .group_0594 import (
+    SecretScanningAlertMetadataItemsType,
+    SecretScanningAlertMetadataItemsTypeForResponse,
 )
 
 
-class PublicMonitoringAlertWebhookPropAttributionType(TypedDict):
-    """PublicMonitoringAlertWebhookPropAttribution
+class SecretScanningAlertWebhookType(TypedDict):
+    """SecretScanningAlertWebhook"""
 
-    Attribution information for the alert.
-    """
-
-    secret_author: NotRequired[
-        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
-    ]
-    committer_email: NotRequired[Union[str, None]]
-    commit: NotRequired[
-        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
-    ]
-    wiki_commit: NotRequired[
-        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
-    ]
-    issue_title: NotRequired[
-        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
-    ]
-    issue_body: NotRequired[
-        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
-    ]
-    issue_comment: NotRequired[
-        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
-    ]
-    pull_request_title: NotRequired[
+    number: NotRequired[int]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[Union[_dt.datetime, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    resolution: NotRequired[
         Union[
-            SecretScanningLocationPullRequestTitleType,
-            PublicMonitoringAlertLocationType,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+            None,
         ]
     ]
-    pull_request_body: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    pull_request_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_review_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_review: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
-    discussion_title: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    discussion_body: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    discussion_comment: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
-    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
-    actions_log: NotRequired[PublicMonitoringAlertLocationType]
-    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
-    method: NotRequired[Literal["member_activity", "verified_domain"]]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolved_by: NotRequired[Union[SimpleUserType, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
+    secret_category: NotRequired[Literal["default", "generic"]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[SimpleUserType, None]]
+    push_protection_bypassed_at: NotRequired[Union[_dt.datetime, None]]
+    push_protection_bypass_request_reviewer: NotRequired[Union[SimpleUserType, None]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    assigned_to: NotRequired[Union[SimpleUserType, None]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[SimpleUserType, None]]
+    metadata: NotRequired[list[SecretScanningAlertMetadataItemsType]]
 
 
-class PublicMonitoringAlertWebhookPropAttributionTypeForResponse(TypedDict):
-    """PublicMonitoringAlertWebhookPropAttribution
+class SecretScanningAlertWebhookTypeForResponse(TypedDict):
+    """SecretScanningAlertWebhook"""
 
-    Attribution information for the alert.
-    """
-
-    secret_author: NotRequired[
+    number: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    resolution: NotRequired[
         Union[
-            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+            None,
         ]
     ]
-    committer_email: NotRequired[Union[str, None]]
-    commit: NotRequired[
-        Union[
-            SecretScanningLocationCommitTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
+    resolved_at: NotRequired[Union[str, None]]
+    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    provider: NotRequired[Union[str, None]]
+    provider_slug: NotRequired[Union[str, None]]
+    secret_category: NotRequired[Literal["default", "generic"]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    push_protection_bypassed_at: NotRequired[Union[str, None]]
+    push_protection_bypass_request_reviewer: NotRequired[
+        Union[SimpleUserTypeForResponse, None]
     ]
-    wiki_commit: NotRequired[
-        Union[
-            SecretScanningLocationWikiCommitTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_title: NotRequired[
-        Union[
-            SecretScanningLocationIssueTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_body: NotRequired[
-        Union[
-            SecretScanningLocationIssueBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_comment: NotRequired[
-        Union[
-            SecretScanningLocationIssueCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_title: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_body: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_review_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_review: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_timeline_comment: NotRequired[
-        PublicMonitoringAlertLocationTypeForResponse
-    ]
-    discussion_title: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    discussion_body: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    discussion_comment: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    method: NotRequired[Literal["member_activity", "verified_domain"]]
+    push_protection_bypass_request_reviewer_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_comment: NotRequired[Union[str, None]]
+    push_protection_bypass_request_html_url: NotRequired[Union[str, None]]
+    publicly_leaked: NotRequired[Union[bool, None]]
+    multi_repo: NotRequired[Union[bool, None]]
+    assigned_to: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    closure_request_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer_comment: NotRequired[Union[str, None]]
+    closure_request_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    metadata: NotRequired[list[SecretScanningAlertMetadataItemsTypeForResponse]]
 
 
 __all__ = (
-    "PublicMonitoringAlertWebhookPropAttributionType",
-    "PublicMonitoringAlertWebhookPropAttributionTypeForResponse",
+    "SecretScanningAlertWebhookType",
+    "SecretScanningAlertWebhookTypeForResponse",
 )

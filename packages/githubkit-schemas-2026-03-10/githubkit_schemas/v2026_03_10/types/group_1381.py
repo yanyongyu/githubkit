@@ -9,26 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0148 import RunnerType, RunnerTypeForResponse
-
-
-class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
-
-    total_count: int
-    runners: list[RunnerType]
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200Type(TypedDict):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
 
-    total_count: int
-    runners: list[RunnerTypeForResponse]
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsType
+    ]
+    extra_known_marketplaces: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesType
+    ]
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
+
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsTypeForResponse
+    ]
+    extra_known_marketplaces: NotRequired[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesTypeForResponse
+    ]
+
+
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+
+Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+"""
+
+
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+
+Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+"""
+
+
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
+s
+
+Additional plugin marketplaces available to the team, keyed by marketplace name.
+"""
+
+
+OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
+s
+
+Additional plugin marketplaces available to the team, keyed by marketplace name.
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersGetResponse200TypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200Type",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200TypeForResponse",
 )

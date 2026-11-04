@@ -9,24 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
-    message: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType
+    ]
 
 
-class EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotContentExclusionPutResponse200"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
-    message: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200Type",
-    "EnterprisesEnterpriseCopilotContentExclusionPutResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse",
 )

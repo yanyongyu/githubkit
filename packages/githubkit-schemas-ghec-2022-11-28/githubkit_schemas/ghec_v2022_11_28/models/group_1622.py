@@ -11,18 +11,63 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200(ExtraGitHubModel):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
 
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+    ] = Field(
+        default=UNSET,
+        alias="pluginAssignments",
+        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
+    )
+    extra_known_marketplaces: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces
+    ] = Field(
+        default=UNSET,
+        alias="extraKnownMarketplaces",
+        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)
+    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+    """
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
+    s
+
+    Additional plugin marketplaces available to the team, keyed by marketplace name.
+    """
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces
+)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments",
+)

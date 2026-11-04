@@ -14,25 +14,70 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401
 
-    Response from accepting an automation run request.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    task_id: str = Field(
-        description="The preallocated ID of the accepted run. The task may not yet be readable, and downstream skips or failures can prevent its creation."
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    automation_id: str = Field(
-        description="The ID of the automation that was triggered."
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
     )
-    event: Literal["manual"] = Field(
-        description='The trigger event name, always "manual" for public API runs.'
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202)
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItem
+    s
 
-__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems",
+)

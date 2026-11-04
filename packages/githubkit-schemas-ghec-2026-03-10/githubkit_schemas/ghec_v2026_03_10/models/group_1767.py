@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,20 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    sub_issue_id: int = Field(description="The id of the sub-issue to reprioritize")
-    after_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
+    type: Missing[Literal["generic", "link", "plan", "embedded_html"]] = Field(
+        default=UNSET, description="The artifact type."
     )
-    before_id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
+    name: str = Field(
+        min_length=1, description="The human-readable name of the artifact."
+    )
+    body: str = Field(
+        min_length=1,
+        description="The artifact content. For `embedded_html` artifacts, provide the HTML source.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsPostBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsPostBody",)

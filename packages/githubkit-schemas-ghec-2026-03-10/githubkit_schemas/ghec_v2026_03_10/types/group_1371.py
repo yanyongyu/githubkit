@@ -9,24 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0142 import CustomPropertyType, CustomPropertyTypeForResponse
-
-
-class EnterprisesEnterprisePropertiesSchemaPatchBodyType(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
 
-    properties: list[CustomPropertyTypeForResponse]
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBody"""
+
+    credential_type: Literal[
+        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
+    ]
+    revoke_credentials: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterprisePropertiesSchemaPatchBodyType",
-    "EnterprisesEnterprisePropertiesSchemaPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostBodyTypeForResponse",
 )

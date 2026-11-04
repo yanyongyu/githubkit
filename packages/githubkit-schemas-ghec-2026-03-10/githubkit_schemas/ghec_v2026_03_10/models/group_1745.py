@@ -15,22 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1746 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
 
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
-
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
-    ] = Field(
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
         default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

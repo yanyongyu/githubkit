@@ -9,42 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0606 import PullRequestStackPullRequest
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksPostResponse201(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
-    )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
-    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UserPatchBody)
+class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse201PropBase"""
 
-__all__ = ("UserPatchBody",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksPostResponse201)
+model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksPostResponse201",
+    "ReposOwnerRepoStacksPostResponse201PropBase",
+)

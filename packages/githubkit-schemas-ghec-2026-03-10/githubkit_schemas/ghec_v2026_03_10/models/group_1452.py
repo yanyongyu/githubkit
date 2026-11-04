@@ -9,20 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0281 import MinimalRepository
+from .group_0059 import ActionsPolicyOrgConditionsOneof0
+from .group_0060 import ActionsPolicyOrgConditionsOneof1
+from .group_0061 import ActionsPolicyOrgConditionsOneof2
+from .group_0074 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsPoliciesPostBody(GitHubModel):
+    """OrgsOrgActionsPoliciesPostBody"""
 
-    total_count: int = Field()
-    repositories: list[MinimalRepository] = Field()
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    conditions: Missing[
+        Union[
+            ActionsPolicyOrgConditionsOneof0,
+            ActionsPolicyOrgConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization Actions policy conditions",
+        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
+    )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(OrgsOrgActionsPoliciesPostBody)
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsPoliciesPostBody",)

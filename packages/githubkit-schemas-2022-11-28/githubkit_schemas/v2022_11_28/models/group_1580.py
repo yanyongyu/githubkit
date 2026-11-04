@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0284 import SecretScanningCustomPattern
 
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostResponse201(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse201"""
-
-    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
-        default=UNSET, description="The list of successfully created custom patterns."
+    message: str = Field(
+        description="The message for the pull request review dismissal"
     )
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse201)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostResponse201",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

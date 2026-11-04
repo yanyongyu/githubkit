@@ -16,18 +16,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberDraftsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberDraftsPostBody"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
-    title: str = Field(
-        description="The title of the draft issue item to create in the project."
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
     )
-    body: Missing[str] = Field(
+    max_open_pull_requests: Missing[int] = Field(
+        le=1000.0,
+        ge=1.0,
         default=UNSET,
-        description="The body content of the draft issue item to create in the project.",
+        description="The maximum number of open pull requests a user can have at one time",
+    )
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberDraftsPostBody)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberDraftsPostBody",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)

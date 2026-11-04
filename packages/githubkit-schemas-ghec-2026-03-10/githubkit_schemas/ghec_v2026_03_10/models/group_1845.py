@@ -11,59 +11,41 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422"""
 
-    schemas: Missing[list[str]] = Field(default=UNSET)
-    display_name: Missing[str] = Field(
+    message: Missing[str] = Field(
+        default=UNSET, description="A summary message describing the error."
+    )
+    validation_errors: Missing[
+        ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+    ] = Field(
         default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
-    )
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[list[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
-    )
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
-    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
+        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+class ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
+    A map of validation errors keyed by the zero-based index of the pattern that
+    failed.
     """
 
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
 
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: Missing[str] = Field(default=UNSET)
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostResponse422)
+model_rebuild(
+    ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors
+)
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422",
+    "ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors",
 )

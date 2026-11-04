@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsTasksTaskIdGetResponse404(GitHubModel):
-    """AgentsTasksTaskIdGetResponse404
+class AgentsTasksGetResponse401(GitHubModel):
+    """AgentsTasksGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,15 +30,15 @@ class AgentsTasksTaskIdGetResponse404(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[list[AgentsTasksTaskIdGetResponse404PropErrorsItems]] = Field(
+    errors: Missing[list[AgentsTasksGetResponse401PropErrorsItems]] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
     documentation_url: str = Field(description="URL to relevant API documentation")
 
 
-class AgentsTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
-    """AgentsTasksTaskIdGetResponse404PropErrorsItems
+class AgentsTasksGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsTasksGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -57,10 +57,10 @@ class AgentsTasksTaskIdGetResponse404PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse404)
-model_rebuild(AgentsTasksTaskIdGetResponse404PropErrorsItems)
+model_rebuild(AgentsTasksGetResponse401)
+model_rebuild(AgentsTasksGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsTasksTaskIdGetResponse404",
-    "AgentsTasksTaskIdGetResponse404PropErrorsItems",
+    "AgentsTasksGetResponse401",
+    "AgentsTasksGetResponse401PropErrorsItems",
 )

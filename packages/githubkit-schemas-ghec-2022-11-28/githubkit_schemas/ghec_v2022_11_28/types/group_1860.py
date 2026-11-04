@@ -9,28 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing_extensions import TypedDict
 
-from .group_0281 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0608 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryType]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse(
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
     TypedDict
 ):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-    total_count: int
-    repositories: list[MinimalRepositoryTypeForResponse]
+    ref: str
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
-    "UserCodespacesSecretsSecretNameRepositoriesGetResponse200TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
 )

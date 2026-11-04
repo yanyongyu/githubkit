@@ -18,42 +18,64 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0099 import SimpleRepository
-from .group_0214 import PublicMonitoringRepository
-from .group_0215 import BaseGist
-from .group_0711 import PublicMonitoringAlertWebhookPropAttribution
 
+class WebhooksAlert(GitHubModel):
+    """Repository Vulnerability Alert Alert
 
-class PublicMonitoringAlertWebhook(GitHubModel):
-    """Public Monitoring Alert Webhook
-
-    A public monitoring alert as delivered via webhook.
+    The security alert of the vulnerable dependency.
     """
 
-    number: int = Field(
-        ge=1.0,
-        description="The enterprise-scoped number of the public monitoring alert.",
+    affected_package_name: str = Field()
+    affected_range: str = Field()
+    created_at: str = Field()
+    dismiss_reason: Missing[str] = Field(default=UNSET)
+    dismissed_at: Missing[str] = Field(default=UNSET)
+    dismisser: Missing[Union[WebhooksAlertPropDismisser, None]] = Field(
+        default=UNSET, title="User"
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    secret_type: str = Field(
-        description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: str = Field(
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."'
-    )
-    created_at: _dt.datetime = Field(
-        description="The time that the secret was detected in ISO 8601 format."
-    )
-    validity: Literal["active", "inactive", "unknown"] = Field(
-        description="The validity status of the secret as of the latest validity check for the enterprise alert."
-    )
-    repository: Union[SimpleRepository, PublicMonitoringRepository, None] = Field()
-    gist: Missing[Union[BaseGist, None]] = Field(default=UNSET)
-    attribution: PublicMonitoringAlertWebhookPropAttribution = Field(
-        description="Attribution information for the alert."
-    )
+    external_identifier: str = Field()
+    external_reference: Union[str, None] = Field()
+    fix_reason: Missing[str] = Field(default=UNSET)
+    fixed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    severity: str = Field()
+    state: Literal["auto_dismissed", "open"] = Field()
 
 
-model_rebuild(PublicMonitoringAlertWebhook)
+class WebhooksAlertPropDismisser(GitHubModel):
+    """User"""
 
-__all__ = ("PublicMonitoringAlertWebhook",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksAlert)
+model_rebuild(WebhooksAlertPropDismisser)
+
+__all__ = (
+    "WebhooksAlert",
+    "WebhooksAlertPropDismisser",
+)

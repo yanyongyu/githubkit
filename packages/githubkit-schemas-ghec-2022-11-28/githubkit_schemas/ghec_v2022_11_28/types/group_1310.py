@@ -11,22 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
-
-    errors: NotRequired[list[str]]
+from .group_0077 import RunnerType, RunnerTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    errors: NotRequired[list[str]]
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerType]]
+
+
+class EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+
+    total_count: NotRequired[float]
+    runners: NotRequired[list[RunnerTypeForResponse]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200Type",
+    "EnterprisesEnterpriseActionsRunnersGetResponse200TypeForResponse",
 )

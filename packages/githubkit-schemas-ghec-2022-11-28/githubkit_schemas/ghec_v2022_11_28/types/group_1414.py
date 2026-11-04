@@ -9,22 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
 
-    message: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType
+    ]
 
 
-class NotificationsPutResponse202TypeForResponse(TypedDict):
-    """NotificationsPutResponse202"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
 
-    message: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
+    s
+    """
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
+    s
+    """
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "NotificationsPutResponse202Type",
-    "NotificationsPutResponse202TypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse",
 )

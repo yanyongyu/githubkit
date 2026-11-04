@@ -17,129 +17,110 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0205 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0206 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0207 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+from .group_0217 import PublicMonitoringAlertLocation, PublicMonitoringSecretAuthor
 
-class WebhooksSponsorship(GitHubModel):
-    """WebhooksSponsorship"""
 
-    created_at: str = Field()
-    maintainer: Missing[WebhooksSponsorshipPropMaintainer] = Field(default=UNSET)
-    node_id: str = Field()
-    privacy_level: str = Field()
-    sponsor: Union[WebhooksSponsorshipPropSponsor, None] = Field(title="User")
-    sponsorable: Union[WebhooksSponsorshipPropSponsorable, None] = Field(title="User")
-    tier: WebhooksSponsorshipPropTier = Field(
-        title="Sponsorship Tier",
-        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
+class PublicMonitoringAlertWebhookPropAttribution(GitHubModel):
+    """PublicMonitoringAlertWebhookPropAttribution
+
+    Attribution information for the alert.
+    """
+
+    secret_author: Missing[Union[SimpleUser, PublicMonitoringSecretAuthor, None]] = (
+        Field(default=UNSET)
+    )
+    committer_email: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The email address associated with the secret's author.",
+    )
+    commit: Missing[
+        Union[SecretScanningLocationCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    wiki_commit: Missing[
+        Union[SecretScanningLocationWikiCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_title: Missing[
+        Union[SecretScanningLocationIssueTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_body: Missing[
+        Union[SecretScanningLocationIssueBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        Union[SecretScanningLocationIssueComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_title: Missing[
+        Union[SecretScanningLocationPullRequestTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_body: Missing[
+        Union[SecretScanningLocationPullRequestBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        Union[SecretScanningLocationPullRequestComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_review_comment: Missing[
+        Union[
+            SecretScanningLocationPullRequestReviewComment,
+            PublicMonitoringAlertLocation,
+        ]
+    ] = Field(default=UNSET)
+    pull_request_review: Missing[
+        Union[SecretScanningLocationPullRequestReview, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_timeline_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    discussion_title: Missing[
+        Union[SecretScanningLocationDiscussionTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_body: Missing[
+        Union[SecretScanningLocationDiscussionBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        Union[SecretScanningLocationDiscussionComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    commit_metadata: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    commit_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    actions_log: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    gist_blob: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    method: Missing[Literal["member_activity", "verified_domain"]] = Field(
+        default=UNSET,
+        description="The method used to attribute the alert to the enterprise.",
     )
 
 
-class WebhooksSponsorshipPropMaintainer(GitHubModel):
-    """WebhooksSponsorshipPropMaintainer"""
+model_rebuild(PublicMonitoringAlertWebhookPropAttribution)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksSponsorshipPropSponsor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksSponsorshipPropSponsorable(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class WebhooksSponsorshipPropTier(GitHubModel):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
-    """
-
-    created_at: str = Field()
-    description: str = Field()
-    is_custom_ammount: Missing[bool] = Field(default=UNSET)
-    is_custom_amount: Missing[bool] = Field(default=UNSET)
-    is_one_time: bool = Field()
-    monthly_price_in_cents: int = Field()
-    monthly_price_in_dollars: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-
-
-model_rebuild(WebhooksSponsorship)
-model_rebuild(WebhooksSponsorshipPropMaintainer)
-model_rebuild(WebhooksSponsorshipPropSponsor)
-model_rebuild(WebhooksSponsorshipPropSponsorable)
-model_rebuild(WebhooksSponsorshipPropTier)
-
-__all__ = (
-    "WebhooksSponsorship",
-    "WebhooksSponsorshipPropMaintainer",
-    "WebhooksSponsorshipPropSponsor",
-    "WebhooksSponsorshipPropSponsorable",
-    "WebhooksSponsorshipPropTier",
-)
+__all__ = ("PublicMonitoringAlertWebhookPropAttribution",)

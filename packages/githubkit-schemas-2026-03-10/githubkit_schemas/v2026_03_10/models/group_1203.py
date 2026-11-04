@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +19,67 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody(GitHubModel):
-    """OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
-    name: Missing[str] = Field(
+    budget_amount: Missing[int] = Field(
         default=UNSET,
-        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
+        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
     )
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The existing runner group to add this runner to."
-    )
-    maximum_runners: Missing[int] = Field(
+    prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
     )
-    enable_static_ip: Missing[bool] = Field(
+    budget_alerting: Missing[
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
+    ] = Field(default=UNSET)
+    budget_scope: Missing[
+        Literal["organization", "repository", "multi_user_customer", "user"]
+    ] = Field(
         default=UNSET,
-        description="Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.\n\n`user` and `multi_user_customer` scopes are only supported when\n`budget_product_sku` is `ai_credits` or `premium_requests`.",
     )
-    size: Missing[str] = Field(
+    budget_entity_name: Missing[str] = Field(
         default=UNSET,
-        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
+        description="The entity to apply the budget to. The expected value depends on `budget_scope`.\n\n- `repository`: The repository name, or `owner/repo`.\n- `organization`, `multi_user_customer`, and `user`: Not used. For `user`, set the `user` field instead.",
     )
-    image_source: Missing[Literal["github", "partner", "custom"]] = Field(
-        default=UNSET,
-        description="The source type of the runner image to use. Must match the source of the image specified by `image_id`. Can be one of `github`, `partner`, or `custom`.",
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
     )
-    image_id: Missing[str] = Field(
+    budget_product_sku: Missing[str] = Field(
         default=UNSET,
-        description="The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
+        description="A single product or SKU that will be covered in the budget",
     )
-    image_version: Missing[Union[str, None]] = Field(
+    user: Missing[str] = Field(
         default=UNSET,
-        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
     )
-    image_gen: Missing[bool] = Field(
+    expires_at: Missing[_dt.date] = Field(
         default=UNSET,
-        description="Whether to enable image generation for this runner pool. When enabled, the runner pool is used to build and publish custom runner images.",
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
     )
 
 
-model_rebuild(OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody)
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
-__all__ = ("OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody",)
+    will_alert: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
+    )
+    alert_recipients: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
+    )
+
+
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
+
+__all__ = (
+    "OrganizationsOrgSettingsBillingBudgetsPostBody",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
+)

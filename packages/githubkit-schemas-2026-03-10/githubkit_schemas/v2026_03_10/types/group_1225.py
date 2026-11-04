@@ -9,26 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0148 import RunnerType, RunnerTypeForResponse
+from .group_0130 import (
+    ActionsPolicyOrgConditionsOneof0Type,
+    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+)
+from .group_0131 import (
+    ActionsPolicyOrgConditionsOneof1Type,
+    ActionsPolicyOrgConditionsOneof1TypeForResponse,
+)
+from .group_0132 import (
+    ActionsPolicyOrgConditionsOneof2Type,
+    ActionsPolicyOrgConditionsOneof2TypeForResponse,
+)
+from .group_0145 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
 
-    runner: RunnerType
-    encoded_jit_config: str
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyOrgConditionsOneof0Type,
+            ActionsPolicyOrgConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof2Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
 
-    runner: RunnerTypeForResponse
-    encoded_jit_config: str
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyOrgConditionsOneof0TypeForResponse,
+            ActionsPolicyOrgConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof2TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",
-    "OrgsOrgActionsRunnersGenerateJitconfigPostResponse201TypeForResponse",
+    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
+    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
 )

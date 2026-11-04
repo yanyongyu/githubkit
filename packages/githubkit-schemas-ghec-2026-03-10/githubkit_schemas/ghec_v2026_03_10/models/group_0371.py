@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,45 +18,35 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class TeamMember(GitHubModel):
-    """Team Member
+class GroupMapping(GitHubModel):
+    """GroupMapping
 
-    A user that is a member of a team, including their role on the team and whether
-    the membership is inherited from a child team.
+    External Groups to be mapped to a team for membership
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-    role: Missing[Literal["member", "maintainer"]] = Field(
-        default=UNSET,
-        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
-    )
-    inherited: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
+        default=UNSET, description="Array of groups to be mapped to this team"
     )
 
 
-model_rebuild(TeamMember)
+class GroupMappingPropGroupsItems(GitHubModel):
+    """GroupMappingPropGroupsItems"""
 
-__all__ = ("TeamMember",)
+    group_id: str = Field(description="The ID of the group")
+    group_name: str = Field(description="The name of the group")
+    group_description: str = Field(description="a description of the group")
+    status: Missing[str] = Field(
+        default=UNSET, description="synchronization status for this group mapping"
+    )
+    synced_at: Missing[Union[str, None]] = Field(
+        default=UNSET, description="the time of the last sync for this group-mapping"
+    )
+
+
+model_rebuild(GroupMapping)
+model_rebuild(GroupMappingPropGroupsItems)
+
+__all__ = (
+    "GroupMapping",
+    "GroupMappingPropGroupsItems",
+)

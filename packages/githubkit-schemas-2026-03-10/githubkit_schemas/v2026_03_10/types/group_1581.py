@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0287 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
+
+    expected_head_sha: NotRequired[str]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    expected_head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
-    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",
+    "ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyTypeForResponse",
 )

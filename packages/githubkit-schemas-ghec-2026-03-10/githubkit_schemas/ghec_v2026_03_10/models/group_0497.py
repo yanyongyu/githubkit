@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckImmutableReleases(GitHubModel):
-    """Check immutable releases
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    Check immutable releases
-    """
-
-    enabled: bool = Field(
-        description="Whether immutable releases are enabled for the repository."
-    )
-    enforced_by_owner: bool = Field(
-        description="Whether immutable releases are enforced by the repository owner."
-    )
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(CheckImmutableReleases)
+model_rebuild(HookResponse)
 
-__all__ = ("CheckImmutableReleases",)
+__all__ = ("HookResponse",)

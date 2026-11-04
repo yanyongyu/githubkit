@@ -11,15 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0285 import SecretScanningCustomPatternToCreate
 
 
-class ReposOwnerRepoStargazersCountGetResponse200(GitHubModel):
-    """ReposOwnerRepoStargazersCountGetResponse200"""
+class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
 
-    count: int = Field()
+    patterns: list[SecretScanningCustomPatternToCreate] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        description="The list of custom patterns to create (maximum 100).",
+    )
 
 
-model_rebuild(ReposOwnerRepoStargazersCountGetResponse200)
+model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
 
-__all__ = ("ReposOwnerRepoStargazersCountGetResponse200",)
+__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)

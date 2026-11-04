@@ -14,14 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoMergeUpstreamPostBody(GitHubModel):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
 
-    branch: str = Field(
-        description="The name of the branch which should be updated to match upstream."
-    )
+    body: str = Field(description="The contents of the comment.")
 
 
-model_rebuild(ReposOwnerRepoMergeUpstreamPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoMergeUpstreamPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",)

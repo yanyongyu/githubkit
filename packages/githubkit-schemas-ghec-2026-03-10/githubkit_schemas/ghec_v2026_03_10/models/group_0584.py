@@ -17,14 +17,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0197 import RepositoryRuleCodeCoveragePropParameters
+from .group_0186 import RepositoryRuleCodeScanningPropParameters
 
 
-class RepositoryRuleDetailedOneof18(GitHubModel):
-    """RepositoryRuleDetailedOneof18"""
+class RepositoryRuleDetailedOneof16(GitHubModel):
+    """RepositoryRuleDetailedOneof16"""
 
-    type: Literal["code_coverage"] = Field()
-    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +38,6 @@ class RepositoryRuleDetailedOneof18(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof18)
+model_rebuild(RepositoryRuleDetailedOneof16)
 
-__all__ = ("RepositoryRuleDetailedOneof18",)
+__all__ = ("RepositoryRuleDetailedOneof16",)

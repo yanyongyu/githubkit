@@ -9,118 +9,133 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
+class PullRequestMergeAsyncResultType(TypedDict):
+    """Pull Request Merge Async Result
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
-
-    Pull Request Reviews are reviews on pull requests.
+    Pull Request Merge Async Result
     """
 
-    id: int
-    node_id: str
-    user: Union[SimpleUserType, None]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[_dt.datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof1Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof2Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof3Type,
     ]
 
 
-class PullRequestReviewTypeForResponse(TypedDict):
-    """Pull Request Review
+class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
+    """Pull Request Merge Async Result
 
-    Pull Request Reviews are reviews on pull requests.
+    Pull Request Merge Async Result
     """
 
-    id: int
-    node_id: str
-    user: Union[SimpleUserTypeForResponse, None]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksTypeForResponse
-    submitted_at: NotRequired[str]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse,
     ]
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
+class PullRequestMergeAsyncResultPropDetailsAnyof0Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
+    When the asynchronous merge request is pending
+    """
 
-
-class PullRequestReviewPropLinksTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlTypeForResponse
-    pull_request: PullRequestReviewPropLinksPropPullRequestTypeForResponse
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+    bypass_rules: NotRequired[bool]
 
 
-class PullRequestReviewPropLinksPropHtmlTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
+class PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-    href: str
+    When the asynchronous merge request is pending
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+    bypass_rules: NotRequired[bool]
 
 
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class PullRequestMergeAsyncResultPropDetailsAnyof1Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
 
-    href: str
+    When the pull request is in a merge queue
+    """
+
+    message: str
 
 
-class PullRequestReviewPropLinksPropPullRequestTypeForResponse(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
+class PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
 
-    href: str
+    When the pull request is in a merge queue
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str
+    sha: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str
+    sha: str
 
 
 __all__ = (
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropHtmlTypeForResponse",
-    "PullRequestReviewPropLinksPropPullRequestType",
-    "PullRequestReviewPropLinksPropPullRequestTypeForResponse",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksTypeForResponse",
-    "PullRequestReviewType",
-    "PullRequestReviewTypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse",
+    "PullRequestMergeAsyncResultType",
+    "PullRequestMergeAsyncResultTypeForResponse",
 )

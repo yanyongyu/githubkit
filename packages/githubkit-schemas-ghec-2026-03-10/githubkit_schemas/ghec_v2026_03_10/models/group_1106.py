@@ -17,20 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0656 import EnterpriseWebhooks
-from .group_0657 import SimpleInstallation
-from .group_0658 import OrganizationSimpleWebhooks
-from .group_0659 import RepositoryWebhooks
-from .group_0712 import WebhooksSecurityAdvisory
+from .group_0658 import EnterpriseWebhooks
+from .group_0659 import SimpleInstallation
+from .group_0660 import OrganizationSimpleWebhooks
+from .group_0661 import RepositoryWebhooks
+from .group_0712 import PublicMonitoringAlertWebhook
 
 
-class WebhookSecurityAdvisoryPublished(GitHubModel):
-    """security_advisory published event"""
+class WebhookSecretScanningPublicMonitoringAlertValidated(GitHubModel):
+    """secret_scanning_public_monitoring_alert validated event"""
 
-    action: Literal["published"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
+    action: Literal["validated"] = Field()
+    alert: PublicMonitoringAlertWebhook = Field(
+        title="Public Monitoring Alert Webhook",
+        description="A public monitoring alert as delivered via webhook.",
+    )
+    enterprise: EnterpriseWebhooks = Field(
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
@@ -49,14 +51,8 @@ class WebhookSecurityAdvisoryPublished(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    security_advisory: WebhooksSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
-    )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
 
 
-model_rebuild(WebhookSecurityAdvisoryPublished)
+model_rebuild(WebhookSecretScanningPublicMonitoringAlertValidated)
 
-__all__ = ("WebhookSecurityAdvisoryPublished",)
+__all__ = ("WebhookSecretScanningPublicMonitoringAlertValidated",)

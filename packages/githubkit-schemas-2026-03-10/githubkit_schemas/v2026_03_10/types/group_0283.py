@@ -16,6 +16,8 @@ from typing_extensions import NotRequired, TypedDict
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 from .group_0280 import (
+    SecretScanningLocationActionsLogType,
+    SecretScanningLocationActionsLogTypeForResponse,
     SecretScanningLocationCommitType,
     SecretScanningLocationCommitTypeForResponse,
     SecretScanningLocationDiscussionCommentType,
@@ -97,6 +99,7 @@ class OrganizationSecretScanningAlertType(TypedDict):
             SecretScanningLocationPullRequestCommentType,
             SecretScanningLocationPullRequestReviewType,
             SecretScanningLocationPullRequestReviewCommentType,
+            SecretScanningLocationActionsLogType,
             None,
         ]
     ]
@@ -157,6 +160,7 @@ class OrganizationSecretScanningAlertTypeForResponse(TypedDict):
             SecretScanningLocationPullRequestCommentTypeForResponse,
             SecretScanningLocationPullRequestReviewTypeForResponse,
             SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            SecretScanningLocationActionsLogTypeForResponse,
             None,
         ]
     ]

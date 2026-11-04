@@ -46,14 +46,14 @@ from .group_0207 import (
     SecretScanningLocationPullRequestCommentType,
     SecretScanningLocationPullRequestCommentTypeForResponse,
 )
-from .group_0594 import (
-    SecretScanningAlertMetadataItemsType,
-    SecretScanningAlertMetadataItemsTypeForResponse,
+from .group_0208 import (
+    SecretScanningLocationActionsLogType,
+    SecretScanningLocationActionsLogTypeForResponse,
 )
 
 
-class SecretScanningAlertWithMetadataType(TypedDict):
-    """SecretScanningAlertWithMetadata"""
+class SecretScanningAlertType(TypedDict):
+    """SecretScanningAlert"""
 
     number: NotRequired[int]
     created_at: NotRequired[_dt.datetime]
@@ -99,6 +99,7 @@ class SecretScanningAlertWithMetadataType(TypedDict):
             SecretScanningLocationPullRequestCommentType,
             SecretScanningLocationPullRequestReviewType,
             SecretScanningLocationPullRequestReviewCommentType,
+            SecretScanningLocationActionsLogType,
             None,
         ]
     ]
@@ -107,11 +108,10 @@ class SecretScanningAlertWithMetadataType(TypedDict):
     closure_request_comment: NotRequired[Union[str, None]]
     closure_request_reviewer_comment: NotRequired[Union[str, None]]
     closure_request_reviewer: NotRequired[Union[SimpleUserType, None]]
-    metadata: NotRequired[list[SecretScanningAlertMetadataItemsType]]
 
 
-class SecretScanningAlertWithMetadataTypeForResponse(TypedDict):
-    """SecretScanningAlertWithMetadata"""
+class SecretScanningAlertTypeForResponse(TypedDict):
+    """SecretScanningAlert"""
 
     number: NotRequired[int]
     created_at: NotRequired[str]
@@ -159,6 +159,7 @@ class SecretScanningAlertWithMetadataTypeForResponse(TypedDict):
             SecretScanningLocationPullRequestCommentTypeForResponse,
             SecretScanningLocationPullRequestReviewTypeForResponse,
             SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            SecretScanningLocationActionsLogTypeForResponse,
             None,
         ]
     ]
@@ -167,10 +168,9 @@ class SecretScanningAlertWithMetadataTypeForResponse(TypedDict):
     closure_request_comment: NotRequired[Union[str, None]]
     closure_request_reviewer_comment: NotRequired[Union[str, None]]
     closure_request_reviewer: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    metadata: NotRequired[list[SecretScanningAlertMetadataItemsTypeForResponse]]
 
 
 __all__ = (
-    "SecretScanningAlertWithMetadataType",
-    "SecretScanningAlertWithMetadataTypeForResponse",
+    "SecretScanningAlertType",
+    "SecretScanningAlertTypeForResponse",
 )

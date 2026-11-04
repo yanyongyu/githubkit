@@ -9,54 +9,75 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesPostBody"""
 
+    title: Union[str, int] = Field(description="The title of the issue.")
+    body: Missing[str] = Field(default=UNSET, description="The contents of the issue.")
+    assignee: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is closing down.**_",
+    )
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
     labels: Missing[
-        list[
-            Union[
-                str,
-                ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1,
-            ]
-        ]
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
     ] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description='The labels to add to the issue\'s existing labels. You can also pass an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. To replace all of the labels for an issue, use "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/labels#set-labels-for-an-issue)."',
+        description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1"""
-
-    name: str = Field(description="The name of the label to add.")
-    rationale: Missing[str] = Field(
-        default=UNSET, description="Optional reasoning for adding this label."
-    )
-    suggest: Missing[bool] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
-        description="If `true`, the label is stored as a pending suggestion for human review rather than applied directly.",
+        description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
     )
-    confidence: Missing[Literal["low", "medium", "high"]] = Field(
-        default=UNSET, description="The confidence level for this label choice."
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems]
+    ] = Field(
+        default=UNSET,
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Issue fields are only available for organization-owned repositories with the feature enabled. Field values are silently dropped otherwise.",
+    )
+    type: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
+    )
+    parent_issue_id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of the parent issue to add this issue to as a sub-issue. _NOTE: Only users with triage access to both the parent issue's repository and this repository can set the parent issue._",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1)
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
+
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesPostBody)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems)
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1",
+    "ReposOwnerRepoIssuesPostBody",
+    "ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
 )

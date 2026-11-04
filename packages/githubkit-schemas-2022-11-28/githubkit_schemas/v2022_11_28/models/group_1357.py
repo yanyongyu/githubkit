@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Annotated, Literal, Union
 
 from pydantic import Field
 
@@ -17,22 +17,49 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0287 import SecretScanningCustomPatternToDelete
 
+class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
+    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
 
-class OrgsOrgSecretScanningCustomPatternsDeleteBody(GitHubModel):
-    """OrgsOrgSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDelete] = Field(
-        max_length=500 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to delete.",
+    name: str = Field(description="The name of the view.")
+    layout: Literal["table", "board", "roadmap"] = Field(
+        description="The layout of the view."
     )
-    post_delete_action: Missing[Literal["delete_alerts", "resolve_alerts"]] = Field(
+    filter_: Missing[str] = Field(
         default=UNSET,
-        description='What to do with alerts associated with the deleted patterns.\n`delete_alerts` permanently removes the alerts.\n`resolve_alerts` resolves the alerts as "pattern deleted".\nDefaults to `delete_alerts` when not specified.',
+        alias="filter",
+        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+    )
+    visible_fields: Missing[list[int]] = Field(
+        default=UNSET,
+        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+    )
+    sort_by: Missing[
+        list[
+            Annotated[
+                list[Union[int, str]],
+                Field(
+                    max_length=2 if PYDANTIC_V2 else None,
+                    min_length=2 if PYDANTIC_V2 else None,
+                ),
+            ]
+        ]
+    ] = Field(
+        default=UNSET,
+        description='Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order.',
+    )
+    group_by: Missing[list[int]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
+    )
+    vertical_group_by: Missing[list[int]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
     )
 
 
-model_rebuild(OrgsOrgSecretScanningCustomPatternsDeleteBody)
+model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
 
-__all__ = ("OrgsOrgSecretScanningCustomPatternsDeleteBody",)
+__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)

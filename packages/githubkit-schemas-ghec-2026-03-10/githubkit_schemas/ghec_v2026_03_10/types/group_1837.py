@@ -9,58 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0604 import (
-    PullRequestStackPullRequestType,
-    PullRequestStackPullRequestTypeForResponse,
-)
+
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
+
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
-    open_: bool
-    created_at: _dt.datetime
-    pull_requests: list[PullRequestStackPullRequestType]
-
-
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
-
-    id: int
-    number: int
-    node_id: str
-    url: str
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
-    open_: bool
-    created_at: str
-    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
-
-
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
-
-    ref: str
-
-
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
-
-    ref: str
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
 __all__ = (
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",
+    "ReposOwnerRepoReleasesReleaseIdReactionsPostBodyTypeForResponse",
 )

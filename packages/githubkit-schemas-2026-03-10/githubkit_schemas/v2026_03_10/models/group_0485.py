@@ -14,7 +14,7 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
@@ -29,6 +29,17 @@ class ReviewComment(GitHubModel):
     Legacy Review Comment
     """
 
+    is_copilot_code_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this comment was produced by Copilot code review.",
+    )
+    copilot_code_review_sources: Missing[
+        list[ReviewCommentPropCopilotCodeReviewSourcesItems]
+    ] = Field(
+        max_length=16 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Sources reported as contributing to this comment; may be incomplete.",
+    )
     url: str = Field()
     pull_request_review_id: Union[int, None] = Field()
     id: int = Field()
@@ -93,6 +104,25 @@ class ReviewComment(GitHubModel):
     )
 
 
-model_rebuild(ReviewComment)
+class ReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
+    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
 
-__all__ = ("ReviewComment",)
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
+        description="The kind of contributing source."
+    )
+    name: str = Field(
+        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS.'
+    )
+    path: Missing[str] = Field(
+        default=UNSET,
+        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
+    )
+
+
+model_rebuild(ReviewComment)
+model_rebuild(ReviewCommentPropCopilotCodeReviewSourcesItems)
+
+__all__ = (
+    "ReviewComment",
+    "ReviewCommentPropCopilotCodeReviewSourcesItems",
+)

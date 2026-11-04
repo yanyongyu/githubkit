@@ -9,22 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserEmailVisibilityPatchBodyType(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    subject_digests: list[str]
+    visibility: Literal["public", "private"]
 
 
-class UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """UsersUsernameAttestationsDeleteRequestPostBodyOneof0"""
+class UserEmailVisibilityPatchBodyTypeForResponse(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    subject_digests: list[str]
+    visibility: Literal["public", "private"]
 
 
 __all__ = (
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type",
-    "UsersUsernameAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "UserEmailVisibilityPatchBodyType",
+    "UserEmailVisibilityPatchBodyTypeForResponse",
 )

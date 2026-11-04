@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,100 +18,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
+from .group_0099 import SimpleRepository
+from .group_0215 import PublicMonitoringRepository
+from .group_0216 import BaseGist
+from .group_0714 import PublicMonitoringAlertWebhookPropAttribution
 
 
-class WebhooksSecurityAdvisory(GitHubModel):
-    """WebhooksSecurityAdvisory
+class PublicMonitoringAlertWebhook(GitHubModel):
+    """Public Monitoring Alert Webhook
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    A public monitoring alert as delivered via webhook.
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItems] = Field()
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
-    published_at: str = Field()
-    references: list[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
-    withdrawn_at: Union[str, None] = Field()
+    number: int = Field(
+        ge=1.0,
+        description="The enterprise-scoped number of the public monitoring alert.",
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: str = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."'
+    )
+    created_at: _dt.datetime = Field(
+        description="The time that the secret was detected in ISO 8601 format."
+    )
+    validity: Literal["active", "inactive", "unknown"] = Field(
+        description="The validity status of the secret as of the latest validity check for the enterprise alert."
+    )
+    repository: Union[SimpleRepository, PublicMonitoringRepository, None] = Field()
+    gist: Missing[Union[BaseGist, None]] = Field(default=UNSET)
+    attribution: PublicMonitoringAlertWebhookPropAttribution = Field(
+        description="Attribution information for the alert."
+    )
 
 
-class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCvss"""
+model_rebuild(PublicMonitoringAlertWebhook)
 
-    score: float = Field()
-    vector_string: Union[str, None] = Field()
-
-
-class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
-    name: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str = Field()
-    value: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
-    ] = Field()
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str = Field()
-    name: str = Field()
-
-
-model_rebuild(WebhooksSecurityAdvisory)
-model_rebuild(WebhooksSecurityAdvisoryPropCvss)
-model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
-
-__all__ = (
-    "WebhooksSecurityAdvisory",
-    "WebhooksSecurityAdvisoryPropCvss",
-    "WebhooksSecurityAdvisoryPropCwesItems",
-    "WebhooksSecurityAdvisoryPropIdentifiersItems",
-    "WebhooksSecurityAdvisoryPropReferencesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
-)
+__all__ = ("PublicMonitoringAlertWebhook",)

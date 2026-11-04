@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
-from .group_0110 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
-
-
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseMembersUsernameCopilotGetResponse200"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    credential_id: Union[int, str]
+    credential_type: Literal["classic_pat", "ssh_key"]
+    organizations: UniqueList[str]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+
+    credential_id: Union[int, str]
+    credential_type: Literal["classic_pat", "ssh_key"]
+    organizations: UniqueList[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200Type",
-    "EnterprisesEnterpriseMembersUsernameCopilotGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse",
 )

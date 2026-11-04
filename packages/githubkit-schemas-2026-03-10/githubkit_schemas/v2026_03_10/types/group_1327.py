@@ -9,24 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgHooksHookIdConfigPatchBodyType(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
-    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
+    "OrgsOrgHooksHookIdConfigPatchBodyType",
+    "OrgsOrgHooksHookIdConfigPatchBodyTypeForResponse",
 )

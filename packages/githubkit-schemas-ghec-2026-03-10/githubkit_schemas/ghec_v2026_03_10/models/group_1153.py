@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsGetResponse400
+class AgentsAutomationsGetResponse401(GitHubModel):
+    """AgentsAutomationsGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,9 +30,7 @@ class AgentsReposOwnerRepoAutomationsGetResponse400(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems]
-    ] = Field(
+    errors: Missing[list[AgentsAutomationsGetResponse401PropErrorsItems]] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
@@ -47,8 +45,8 @@ class AgentsReposOwnerRepoAutomationsGetResponse400(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems
+class AgentsAutomationsGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsAutomationsGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -67,10 +65,10 @@ class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems(GitHubModel):
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse400)
-model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems)
+model_rebuild(AgentsAutomationsGetResponse401)
+model_rebuild(AgentsAutomationsGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsGetResponse400",
-    "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems",
+    "AgentsAutomationsGetResponse401",
+    "AgentsAutomationsGetResponse401PropErrorsItems",
 )

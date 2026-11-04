@@ -9,55 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-    budget_amount: Missing[int] = Field(
-        default=UNSET,
-        description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
     )
-    prevent_further_usage: Missing[bool] = Field(
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
         default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
-    )
-    budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
-    ] = Field(default=UNSET)
-    expires_at: Missing[Union[_dt.date, Literal[0], None]] = Field(
-        default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set.\n\nOnly supported for existing user-scoped budgets.",
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
     )
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
 
-    will_alert: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether alerts are enabled for this budget. Ignored for user-scopes as alerting is always disabled for them.",
-    )
-    alert_recipients: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of user login names who will receive alerts. Ignored for user-scopes as alerting is always disabled for them.",
-    )
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    """
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
 )

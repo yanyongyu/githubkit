@@ -9,24 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType(TypedDict):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    usernames: list[str]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    ]
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBody"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
 
-    usernames: list[str]
+    message: NotRequired[str]
+    validation_errors: NotRequired[
+        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    ]
+
+
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
+
+
+EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
+rors
+
+A map of validation errors keyed by the zero-based index of the pattern that
+failed.
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyType",
-    "EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsRemovePostBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
 )

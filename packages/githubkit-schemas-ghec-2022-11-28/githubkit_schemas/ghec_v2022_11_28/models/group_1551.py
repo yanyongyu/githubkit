@@ -9,32 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgCopilotModelPoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    content_type: Missing[str] = Field(
+    default_availability: Missing[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+    ] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="The organization's default availability for eligible models without an explicit\npolicy. It cannot be updated when it is inherited from the enterprise.",
     )
-    secret: Missing[str] = Field(
+    models: Missing[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+        description="The model policies to update. Each `model_name` must be unique.",
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field()
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(
+        min_length=1,
+        description="The public identifier of a model returned by the get endpoint.",
+    )
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The explicit policy state to set for the organization."
+    )
+
+
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems)
+
+__all__ = (
+    "OrgsOrgCopilotModelPoliciesPatchBody",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems",
+)

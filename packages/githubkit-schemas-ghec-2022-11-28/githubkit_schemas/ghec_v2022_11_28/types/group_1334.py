@@ -9,22 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    message: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType
+    ]
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse404"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    message: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404Type",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse404TypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse",
 )

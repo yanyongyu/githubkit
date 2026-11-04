@@ -4345,6 +4345,9 @@ class SecretScanningClient:
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
 
+        > [!NOTE]
+        > If [delegated alert dismissal](https://docs.github.com/enterprise-cloud@latest/code-security/how-tos/manage-security-alerts/manage-secret-scanning-alerts/enable-delegated-dismissal) is enabled, resolving or reopening an alert also requires write access to the "Secret scanning alert dismissal requests" permission. Granting the permission to the app alone is not sufficient if the token's permissions exclude it.
+
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """
 
@@ -4507,6 +4510,9 @@ class SecretScanningClient:
         The authenticated user must be an administrator for the repository or for the organization that owns the repository to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `repo` or `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+
+        > [!NOTE]
+        > If [delegated alert dismissal](https://docs.github.com/enterprise-cloud@latest/code-security/how-tos/manage-security-alerts/manage-secret-scanning-alerts/enable-delegated-dismissal) is enabled, resolving or reopening an alert also requires write access to the "Secret scanning alert dismissal requests" permission. Granting the permission to the app alone is not sufficient if the token's permissions exclude it.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/secret-scanning#update-a-secret-scanning-alert
         """

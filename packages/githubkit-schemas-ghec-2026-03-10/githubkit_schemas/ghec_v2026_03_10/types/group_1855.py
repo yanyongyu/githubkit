@@ -10,53 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class UserCodespacesSecretsGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[CodespacesSecretType]
+from .group_0606 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserCodespacesSecretsGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    total_count: int
-    secrets: list[CodespacesSecretTypeForResponse]
-
-
-class CodespacesSecretType(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType
+    open_: bool
     created_at: _dt.datetime
-    updated_at: _dt.datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class CodespacesSecretTypeForResponse(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200"""
 
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse
+    open_: bool
     created_at: str
-    updated_at: str
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "CodespacesSecretType",
-    "CodespacesSecretTypeForResponse",
-    "UserCodespacesSecretsGetResponse200Type",
-    "UserCodespacesSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse200TypeForResponse",
 )

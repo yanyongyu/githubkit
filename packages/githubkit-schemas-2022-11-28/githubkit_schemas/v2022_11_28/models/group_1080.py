@@ -9,74 +9,1328 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Annotated, Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A page of an automation's revision history, newest first.
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-    error_code: Missing[str] = Field(
-        default=UNSET,
-        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
-    )
-    limited_resource: Missing[str] = Field(
-        default=UNSET,
-        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
-    )
+    revisions: list[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems
+    ] = Field(description="Revisions ordered by revision number descending.")
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    tems
 
-    A single validation error
+    An immutable snapshot of an automation's public definition after one
+    configuration save, with the attribution needed to understand who made the
+    change.
+    Legacy history may also contain lifecycle-only snapshots.
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
+    id: str = Field(description="The unique identifier of this revision.")
+    automation_id: str = Field(description="The automation this revision belongs to.")
+    revision_number: int = Field(
+        description="Position of this revision in the automation's history, starting at 1."
+    )
+    change_type: Literal[
+        "created", "edited", "enabled", "disabled", "deleted", "rolled_back", "unknown"
+    ] = Field(description="The kind of change recorded by the revision.")
+    creator: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator
+    ] = Field(
         default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+        description="The automation's original creator. Omitted when not recorded.",
+    )
+    editor: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor
+    ] = Field(
+        default=UNSET,
+        description="The person who made this change. Omitted for system changes and legacy records.",
+    )
+    editor_type: Missing[Literal["user", "system", "unknown"]] = Field(
+        default=UNSET, description="The kind of actor that made the change."
+    )
+    changed_at: _dt.datetime = Field(description="When the change was applied.")
+    restored_from_revision_id: Missing[str] = Field(
+        default=UNSET,
+        description="The revision a rollback restored. Present only when `change_type` is `rolled_back`.",
+    )
+    snapshot: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot
+    ] = Field(
+        default=UNSET,
+        description="The automation's public detail representation after the change,\nincluding its enabled state at configuration-save time, not its current\nlifecycle state. Legacy deleted revisions are identified by `change_type`.\n",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401)
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropCreator
+
+    The automation's original creator. Omitted when not recorded.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropEditor
+
+    The person who made this change. Omitted for system changes and legacy records.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshot
+
+    The automation's public detail representation after the change,
+    including its enabled state at configuration-save time, not its current
+    lifecycle state. Legacy deleted revisions are identified by `change_type`.
+    """
+
+    id: str = Field(description="The unique identifier of the automation.")
+    name: str = Field(description="The name of the automation.")
+    enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the automation was enabled when this configuration was saved.",
+    )
+    type: Missing[Literal["personal", "shared"]] = Field(
+        default=UNSET,
+        description="The type of automation. `personal` keeps it private to its creator and its runs act as that user. `shared` makes it belong to the repository, visible to anyone with read access to the repository, and its runs act as the Copilot app rather than as a person.",
+    )
+    require_actor_write_permission: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, event-triggered runs require the event actor to have repo write permission, even when the org's allow_read_access_triggers policy is enabled. Does not apply to interval-scheduled runs, which always run as the automation owner.",
+    )
+    triggers: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers
+    ] = Field(default=UNSET, description="Trigger configuration for the automation.")
+    prompt: str = Field(description="The prompt for the automation.")
+    tools: Missing[list[str]] = Field(
+        default=UNSET, description="The tools available to the automation."
+    )
+    model: Missing[str] = Field(
+        default=UNSET,
+        description="The model override for sessions triggered by this automation. Absent when the platform selects the model.",
+    )
+    reasoning_effort: Missing[str] = Field(
+        default=UNSET,
+        description="The reasoning effort override for sessions triggered by this automation. Absent when the model's default is used.",
+    )
+    created_at: _dt.datetime = Field(description="When the automation was created.")
+    updated_at: _dt.datetime = Field(
+        description="When the automation was last updated."
+    )
+    created_by: AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy = Field(
+        description="A GitHub user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropCreatedBy
+
+    A GitHub user
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggers
+
+    Trigger configuration for the automation.
+    """
+
+    interval: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval
+    ] = Field(default=UNSET)
+    issue_opened: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened
+    ] = Field(default=UNSET)
+    issue_labeled: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled
+    ] = Field(default=UNSET)
+    workflow_run: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun
+    ] = Field(default=UNSET)
+    pull_request_opened: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened
+    ] = Field(default=UNSET)
+    pull_request_synchronize: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize
+    ] = Field(default=UNSET)
+    pull_request_merged: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment
+    ] = Field(default=UNSET)
+    discussion_opened: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened
+    ] = Field(default=UNSET)
+    discussion_updated: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment
+    ] = Field(default=UNSET)
+    issue_assigned: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned
+    ] = Field(default=UNSET)
+    pull_request_assigned: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned
+    ] = Field(default=UNSET)
+    sub_issue_added: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded
+    ] = Field(default=UNSET)
+    pull_request_ready_for_review: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview
+    ] = Field(default=UNSET)
+    pull_request_labeled: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled
+    ] = Field(default=UNSET)
+    pull_request_merge_conflict: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict
+    ] = Field(default=UNSET)
+    pull_request_review_submitted: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted
+    ] = Field(default=UNSET)
+    pull_request_review_requested: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested
+    ] = Field(default=UNSET)
+    issue_closed: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed
+    ] = Field(default=UNSET)
+    issue_reopened: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened
+    ] = Field(default=UNSET)
+    pull_request_closed: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed
+    ] = Field(default=UNSET)
+    pull_request_reopened: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened
+    ] = Field(default=UNSET)
+    pull_request_converted_to_draft: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft
+    ] = Field(default=UNSET)
+    pull_request_review_dismissed: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed
+    ] = Field(default=UNSET)
+    pull_request_review_thread_resolved: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved
+    ] = Field(default=UNSET)
+    pull_request_review_thread_unresolved: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved
+    ] = Field(default=UNSET)
+    automation_completed: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted
+    ] = Field(default=UNSET)
+    automation_failed: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed
+    ] = Field(default=UNSET)
+    code_scanning_alert: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert
+    ] = Field(
+        default=UNSET,
+        description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
+    )
+    secret_scanning_alert: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert
+    ] = Field(
+        default=UNSET,
+        description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
+    )
+    dependabot_alert: Missing[
+        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert
+    ] = Field(
+        default=UNSET,
+        description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropInterval
+    """
+
+    cadence: UniqueList[Literal["hourly", "daily", "weekly"]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="One or more schedules on which the Automation runs.",
+    )
+    hour_utc: Missing[int] = Field(
+        le=23.0,
+        default=UNSET,
+        description="UTC hour anchor (0 through 23) for daily and weekly schedules. Omitted daily and weekly values default to `0` (midnight UTC).",
+    )
+    day_of_week: Missing[int] = Field(
+        le=6.0,
+        default=UNSET,
+        description="UTC weekday anchor for weekly schedules, where `0` is Sunday and `6` is Saturday. Omitted weekly values default to Monday (`1`).",
+    )
+    minute_utc: Missing[Literal[0, 15, 30, 45]] = Field(
+        default=UNSET,
+        description="UTC minute anchor for daily and weekly schedules. Omitted daily and weekly values default to `0`. Must be omitted whenever `cadence` includes `hourly`.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Has no effect: scheduled runs can change any resource in the repository, and an organization or repository policy requiring trigger-scoped writes does not apply to them.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropIssueOpened
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropIssueLabeled
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    labels: Missing[UniqueList[str]] = Field(
+        default=UNSET,
+        description="Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropWorkflowRun
+    """
+
+    workflows: list[Annotated[str, Field(min_length=1)]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Workflow names matched against the name in each workflow YAML file.",
+    )
+    conclusions: list[Literal["failure"]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Workflow conclusions to match. The current trigger supports failure.",
+    )
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestOpened
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestSynchronize
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestMerged
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropIssueComment
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestComment
+    """
+
+    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]] = Field(
+        max_length=2 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Pull request conversation and inline review comment types to match.",
+    )
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropDiscussionOpened
+    """
+
+    categories: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Discussion category names matched case-insensitively.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropDiscussionUpdated
+    """
+
+    categories: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Discussion category names matched case-insensitively.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropDiscussionComment
+    """
+
+    comment_types: Missing[UniqueList[Literal["comment", "reply"]]] = Field(
+        max_length=2 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Top-level discussion comments and replies to match. Omit to match both.",
+    )
+    categories: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Discussion category names matched case-insensitively.",
+    )
+    body_substring: Missing[str] = Field(
+        default=UNSET,
+        description="A case-insensitive substring matched against the event body.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropIssueAssigned
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    assignees: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Affected assignee logins matched case-insensitively.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestAssigned
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    assignees: Missing[UniqueList[str]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Affected assignee logins matched case-insensitively.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropSubIssueAdded
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReadyForReview
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestLabeled
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    labels: Missing[UniqueList[str]] = Field(
+        default=UNSET,
+        description="Label names matched case-insensitively against the label added by the event. Omit or use an empty array to match every added label.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestMergeConflict
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReviewSubmitted
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    states: UniqueList[Literal["approved", "changes_requested", "commented"]] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Submitted review states to match.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReviewRequested
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropIssueClosed
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropIssueReopened
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestClosed
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReopened
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestConvertedToDraft
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReviewDismissed
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropAutomationCompleted
+    """
+
+    automation_ids: UniqueList[str] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Upstream Automation IDs in the same repository.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropAutomationFailed
+    """
+
+    automation_ids: UniqueList[str] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="Upstream Automation IDs in the same repository. An Automation cannot list itself, and a user-owned Automation can only be listed by its creator's user-owned Automations.",
+    )
+    reasons: Missing[UniqueList[Literal["reported", "crashed", "timed_out"]]] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Failure reasons to match. Omit to match only reported failures.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropCodeScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropSecretScanningAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropSnapshotPropTriggersPropDependabotAlert
+
+    Runs on the default branch when a security alert of this kind is created in the
+    repository. These are system events without an issue, pull request, or human
+    actor, and cannot be run manually.
+    """
+
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert
+)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun",
 )

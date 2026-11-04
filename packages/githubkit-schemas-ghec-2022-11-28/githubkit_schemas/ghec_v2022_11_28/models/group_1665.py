@@ -12,14 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoAgentsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoAgentsVariablesNamePatchBody"""
 
-    new_name: str = Field(description="The new name of the branch.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchRenamePostBody)
+model_rebuild(ReposOwnerRepoAgentsVariablesNamePatchBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBody",)
+__all__ = ("ReposOwnerRepoAgentsVariablesNamePatchBody",)

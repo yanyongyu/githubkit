@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,19 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
+class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    name: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="The new human-readable name of the artifact.",
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
-    body: str = Field(min_length=1, description="The new artifact content.")
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoHooksHookIdConfigPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoHooksHookIdConfigPatchBody",)

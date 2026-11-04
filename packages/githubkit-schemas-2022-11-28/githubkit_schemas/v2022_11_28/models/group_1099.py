@@ -13,25 +13,70 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403
 
-    The Agent Merge enrollment configuration
-
-    Examples:
-        {'allowed_actions': ['fix_ci']}
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The set of actions that Copilot may perform on the pull request.",
+    message: str = Field(
+        description='Summary message (e.g. "Validation Failed", "Not Found")'
+    )
+    errors: Missing[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="List of validation errors (present only for 422 responses)",
+    )
+    documentation_url: str = Field(description="URL to relevant API documentation")
+    error_code: Missing[str] = Field(
+        default=UNSET,
+        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
+    )
+    limited_resource: Missing[str] = Field(
+        default=UNSET,
+        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody)
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems
 
-__all__ = ("AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody",)
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ] = Field(description="Machine-readable error code")
+    message: Missing[str] = Field(
+        default=UNSET,
+        description='Human-readable message (populated when code is "custom")',
+    )
+
+
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems
+)
+
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems",
+)

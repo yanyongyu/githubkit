@@ -13,23 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
+class ReposOwnerRepoImportPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
-    name: str
-    body: str
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
+class ReposOwnerRepoImportPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
-    name: str
-    body: str
+    vcs_username: NotRequired[str]
+    vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
+    tfvc_project: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse",
+    "ReposOwnerRepoImportPatchBodyType",
+    "ReposOwnerRepoImportPatchBodyTypeForResponse",
 )

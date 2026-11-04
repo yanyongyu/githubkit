@@ -9,30 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0212 import (
-    SecretScanningCustomPatternToDeleteType,
-    SecretScanningCustomPatternToDeleteTypeForResponse,
-)
+
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
+
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
 
-    patterns: list[SecretScanningCustomPatternToDeleteType]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
-
-
-class ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecretScanningCustomPatternsDeleteBody"""
-
-    patterns: list[SecretScanningCustomPatternToDeleteTypeForResponse]
-    post_delete_action: NotRequired[Literal["delete_alerts", "resolve_alerts"]]
+    reviewers: NotRequired[list[str]]
+    team_reviewers: list[str]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyType",
-    "ReposOwnerRepoSecretScanningCustomPatternsDeleteBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1TypeForResponse",
 )

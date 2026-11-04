@@ -13,8 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse422Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsPostResponse422
+class AgentsReposOwnerRepoAutomationsPostResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -24,15 +24,15 @@ class AgentsReposOwnerRepoAutomationsPostResponse422Type(TypedDict):
 
     message: str
     errors: NotRequired[
-        list[AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsType]
+        list[AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsType]
     ]
     documentation_url: str
     error_code: NotRequired[str]
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse422TypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoAutomationsPostResponse422
+class AgentsReposOwnerRepoAutomationsPostResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -43,7 +43,7 @@ class AgentsReposOwnerRepoAutomationsPostResponse422TypeForResponse(TypedDict):
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsTypeForResponse
+            AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -51,8 +51,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse422TypeForResponse(TypedDict):
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsType(TypedDict):
-    """AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems
+class AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems
 
     A single validation error
     """
@@ -68,10 +68,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsType(TypedDic
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems
 
     A single validation error
     """
@@ -88,8 +88,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsTypeForRespon
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsPostResponse422Type",
-    "AgentsReposOwnerRepoAutomationsPostResponse422TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostResponse403Type",
+    "AgentsReposOwnerRepoAutomationsPostResponse403TypeForResponse",
 )

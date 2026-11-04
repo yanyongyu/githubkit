@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke across the organization.")
+    selected_usernames: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The usernames of the organization members to be granted access to GitHub Copilot.",
+    )
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)

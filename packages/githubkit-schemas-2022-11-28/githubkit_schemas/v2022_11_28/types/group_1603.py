@@ -13,33 +13,55 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserPatchBodyType(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksPostResponse422Type(TypedDict):
+    """Validation Error
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsType]]
 
 
-class UserPatchBodyTypeForResponse(TypedDict):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    blog: NotRequired[str]
-    twitter_username: NotRequired[Union[str, None]]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    hireable: NotRequired[bool]
-    bio: NotRequired[str]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse]
+    ]
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+
+
+class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "UserPatchBodyType",
-    "UserPatchBodyTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksPostResponse422Type",
+    "ReposOwnerRepoStacksPostResponse422TypeForResponse",
 )

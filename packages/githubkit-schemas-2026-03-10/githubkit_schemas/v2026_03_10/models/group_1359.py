@@ -9,27 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgSettingsImmutableReleasesPutBody(GitHubModel):
-    """OrgsOrgSettingsImmutableReleasesPutBody"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    enforced_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls how immutable releases are enforced in the organization."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints.",
+    repository_values: list[RepositoryExternalPropertyPayload] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories and the values that the named external custom property will be set to.",
     )
 
 
-model_rebuild(OrgsOrgSettingsImmutableReleasesPutBody)
+class RepositoryExternalPropertyPayload(GitHubModel):
+    """Repository External Custom Property Value Payload
 
-__all__ = ("OrgsOrgSettingsImmutableReleasesPutBody",)
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str = Field(description="The name of the repository")
+    value: Union[str, None] = Field(
+        description="The value assigned to the repository. Set to `null` to unset the value for this repository."
+    )
+
+
+model_rebuild(OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody)
+model_rebuild(RepositoryExternalPropertyPayload)
+
+__all__ = (
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
+    "RepositoryExternalPropertyPayload",
+)

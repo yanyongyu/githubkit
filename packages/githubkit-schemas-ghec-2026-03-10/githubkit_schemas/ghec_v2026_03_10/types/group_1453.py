@@ -9,22 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0059 import (
+    ActionsPolicyOrgConditionsOneof0Type,
+    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+)
+from .group_0060 import (
+    ActionsPolicyOrgConditionsOneof1Type,
+    ActionsPolicyOrgConditionsOneof1TypeForResponse,
+)
+from .group_0061 import (
+    ActionsPolicyOrgConditionsOneof2Type,
+    ActionsPolicyOrgConditionsOneof2TypeForResponse,
+)
+from .group_0074 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
 
-    selected_repository_ids: list[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyOrgConditionsOneof0Type,
+            ActionsPolicyOrgConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof2Type,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
 
-    selected_repository_ids: list[int]
+    name: NotRequired[str]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyOrgConditionsOneof0TypeForResponse,
+            ActionsPolicyOrgConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof2TypeForResponse,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",
-    "OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyTypeForResponse",
+    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
+    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
 )

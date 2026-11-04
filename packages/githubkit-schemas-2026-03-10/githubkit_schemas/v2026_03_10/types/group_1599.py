@@ -9,39 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+    body: str
 
 
-class TeamsTeamIdPatchBodyTypeForResponse(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
-    parent_team_slug: NotRequired[Union[str, None]]
+    body: str
 
 
 __all__ = (
-    "TeamsTeamIdPatchBodyType",
-    "TeamsTeamIdPatchBodyTypeForResponse",
+    "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyType",
+    "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBodyTypeForResponse",
 )

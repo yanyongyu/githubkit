@@ -17,39 +17,59 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0059 import ActionsPolicyOrgConditionsOneof0
-from .group_0060 import ActionsPolicyOrgConditionsOneof1
-from .group_0061 import ActionsPolicyOrgConditionsOneof2
-from .group_0074 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
+
+class OrgsOrgActionsHostedRunnersPostBody(GitHubModel):
+    """OrgsOrgActionsHostedRunnersPostBody"""
+
+    name: str = Field(
+        description="Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'."
+    )
+    image: OrgsOrgActionsHostedRunnersPostBodyPropImage = Field(
+        description="The image of runner. To list all available images, use `GET /actions/hosted-runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`."
+    )
+    size: str = Field(
+        description="The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`"
+    )
+    runner_group_id: int = Field(
+        description="The existing runner group to add this runner to."
+    )
+    maximum_runners: Missing[int] = Field(
+        default=UNSET,
+        description="The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
+    )
+    enable_static_ip: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
+    )
+    image_gen: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this runner should be used to generate custom images.",
+    )
+
+
+class OrgsOrgActionsHostedRunnersPostBodyPropImage(GitHubModel):
+    """OrgsOrgActionsHostedRunnersPostBodyPropImage
+
+    The image of runner. To list all available images, use `GET /actions/hosted-
+    runners/images/github-owned` or `GET /actions/hosted-runners/images/partner`.
+    """
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The unique identifier of the runner image."
+    )
+    source: Missing[Literal["github", "partner", "custom"]] = Field(
+        default=UNSET, description="The source of the runner image."
+    )
+    version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the runner image to deploy. This is relevant only for runners using custom images.",
+    )
+
+
+model_rebuild(OrgsOrgActionsHostedRunnersPostBody)
+model_rebuild(OrgsOrgActionsHostedRunnersPostBodyPropImage)
+
+__all__ = (
+    "OrgsOrgActionsHostedRunnersPostBody",
+    "OrgsOrgActionsHostedRunnersPostBodyPropImage",
 )
-
-
-class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target.",
-    )
-    conditions: Missing[
-        Union[
-            ActionsPolicyOrgConditionsOneof0,
-            ActionsPolicyOrgConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof2,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Organization Actions policy conditions",
-        description="Conditions for an organization Actions policy. The conditions object should contain one of\n`repository_name`, `repository_id`, or `repository_property`, and may also contain `workflow_path`.",
-    )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
-
-
-model_rebuild(OrgsOrgActionsPoliciesPolicyIdPutBody)
-
-__all__ = ("OrgsOrgActionsPoliciesPolicyIdPutBody",)

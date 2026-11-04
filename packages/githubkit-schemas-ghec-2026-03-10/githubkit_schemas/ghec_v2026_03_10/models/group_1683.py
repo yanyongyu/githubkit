@@ -9,20 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0297 import CodespaceMachine
+
+class ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody(
+    GitHubModel
+):
+    """ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody"""
+
+    status: Literal["approve", "reject"] = Field(
+        description="The review action to perform on the bypass request."
+    )
+    message: str = Field(
+        description="A message to include with the review. Has a maximum character length of 2048."
+    )
 
 
-class ReposOwnerRepoCodespacesMachinesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
+model_rebuild(ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody)
 
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
-
-
-model_rebuild(ReposOwnerRepoCodespacesMachinesGetResponse200)
-
-__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200",)
+__all__ = ("ReposOwnerRepoBypassRequestsSecretScanningBypassRequestNumberPatchBody",)

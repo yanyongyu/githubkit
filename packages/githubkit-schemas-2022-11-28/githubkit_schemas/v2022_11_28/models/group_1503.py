@@ -9,28 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_1504 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
 
+class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
-
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
-    ] = Field(
-        default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1)
+model_rebuild(ReposOwnerRepoHooksHookIdConfigPatchBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1",)
+__all__ = ("ReposOwnerRepoHooksHookIdConfigPatchBody",)

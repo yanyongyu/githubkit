@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type(TypedDict):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    body: str
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    body: str
+    enabled: bool
+    max_open_pull_requests: int
+    include_drafts: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",
-    "ReposOwnerRepoIssuesIssueNumberCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200Type",
+    "ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200TypeForResponse",
 )

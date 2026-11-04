@@ -9,43 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
-
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
+
+    seats_cancelled: int
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
 
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    seats_cancelled: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200TypeForResponse",
 )

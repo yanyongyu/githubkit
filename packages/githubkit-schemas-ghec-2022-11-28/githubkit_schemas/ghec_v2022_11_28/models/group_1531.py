@@ -9,31 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBody(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody(GitHubModel):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The organization default policy applied to newly released Copilot features and clients."
-    )
+    metadata: Missing[
+        OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+    ] = Field(default=UNSET, description="Updated resource-specific metadata.")
 
 
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBody)
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability)
+class OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata(
+    ExtraGitHubModel
+):
+    """OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+
+    Updated resource-specific metadata.
+    """
+
+
+model_rebuild(OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody)
+model_rebuild(
+    OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata
+)
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchBody",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody",
+    "OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata",
 )

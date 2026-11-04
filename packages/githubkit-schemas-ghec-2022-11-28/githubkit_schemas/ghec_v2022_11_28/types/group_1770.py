@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
+    name: str
+    body: str
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsPostBody"""
 
-    sub_issue_id: int
-    after_id: NotRequired[int]
-    before_id: NotRequired[int]
+    type: NotRequired[Literal["generic", "link", "plan", "embedded_html"]]
+    name: str
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsPostBodyTypeForResponse",
 )

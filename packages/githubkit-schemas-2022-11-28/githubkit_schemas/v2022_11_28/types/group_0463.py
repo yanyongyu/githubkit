@@ -24,6 +24,10 @@ class PullRequestReviewCommentType(TypedDict):
     diff.
     """
 
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_sources: NotRequired[
+        list[PullRequestReviewCommentPropCopilotCodeReviewSourcesItemsType]
+    ]
     url: str
     pull_request_review_id: Union[int, None]
     id: int
@@ -71,6 +75,10 @@ class PullRequestReviewCommentTypeForResponse(TypedDict):
     diff.
     """
 
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_sources: NotRequired[
+        list[PullRequestReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse]
+    ]
     url: str
     pull_request_review_id: Union[int, None]
     id: int
@@ -109,6 +117,24 @@ class PullRequestReviewCommentTypeForResponse(TypedDict):
     reactions: NotRequired[ReactionRollupTypeForResponse]
     body_html: NotRequired[str]
     body_text: NotRequired[str]
+
+
+class PullRequestReviewCommentPropCopilotCodeReviewSourcesItemsType(TypedDict):
+    """PullRequestReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
+    name: str
+    path: NotRequired[str]
+
+
+class PullRequestReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse(
+    TypedDict
+):
+    """PullRequestReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
+    name: str
+    path: NotRequired[str]
 
 
 class PullRequestReviewCommentPropLinksType(TypedDict):
@@ -186,6 +212,8 @@ class TimelineLineCommentedEventTypeForResponse(TypedDict):
 
 
 __all__ = (
+    "PullRequestReviewCommentPropCopilotCodeReviewSourcesItemsType",
+    "PullRequestReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse",
     "PullRequestReviewCommentPropLinksPropHtmlType",
     "PullRequestReviewCommentPropLinksPropHtmlTypeForResponse",
     "PullRequestReviewCommentPropLinksPropPullRequestType",

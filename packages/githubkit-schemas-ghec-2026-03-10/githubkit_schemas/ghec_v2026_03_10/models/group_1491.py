@@ -11,19 +11,41 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202"""
 
-    selected_repository_ids: list[int] = Field(
-        max_length=250 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="An array of repository IDs to detach from configurations. Up to 250 IDs can be provided.",
+    job_id: int = Field(description="The ID of the created job.")
+    errors: Missing[
+        list[
+            OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
+        ]
+    ] = Field(
+        default=UNSET,
+        description="Deployments that were rejected during authorization.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
+class OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems(
+    GitHubModel
+):
+    """OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErr
+    orsItems
+    """
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)
+
+model_rebuild(OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202)
+model_rebuild(
+    OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems
+)
+
+__all__ = (
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202",
+    "OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems",
+)

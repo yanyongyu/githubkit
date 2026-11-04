@@ -16,27 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
-    """ReposOwnerRepoLabelsNamePatchBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
 
-    new_name: Missing[str] = Field(
+    name: Missing[str] = Field(
+        min_length=1,
         default=UNSET,
-        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
+        description="The new human-readable name of the artifact.",
     )
-    color: Missing[str] = Field(
-        default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
-    )
-    archived: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether to archive or unarchive the label. Archived labels cannot be added to issues or pull requests. For more information, see "[Archiving labels](https://docs.github.com/enterprise-cloud@latest/issues/organizing-your-work-with-labels/managing-labels)."',
-    )
+    body: str = Field(min_length=1, description="The new artifact content.")
 
 
-model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1",)

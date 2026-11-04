@@ -9,21 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0140 import CustomPropertyValue
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
+    ems
+    """
 
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the organization."
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
     )
 
 
-model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
+)
 
-__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems",
+)

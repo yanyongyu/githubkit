@@ -9,25 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class SelfHostedRunnersSettingsType(TypedDict):
-    """SelfHostedRunnersSettings"""
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
-class SelfHostedRunnersSettingsTypeForResponse(TypedDict):
-    """SelfHostedRunnersSettings"""
+class OidcCustomSubTypeForResponse(TypedDict):
+    """Actions OIDC Subject customization
 
-    enabled_repositories: Literal["all", "selected", "none"]
-    selected_repositories_url: NotRequired[str]
+    Actions OIDC Subject customization
+    """
+
+    include_claim_keys: list[str]
+    use_immutable_subject: NotRequired[bool]
 
 
 __all__ = (
-    "SelfHostedRunnersSettingsType",
-    "SelfHostedRunnersSettingsTypeForResponse",
+    "OidcCustomSubType",
+    "OidcCustomSubTypeForResponse",
 )

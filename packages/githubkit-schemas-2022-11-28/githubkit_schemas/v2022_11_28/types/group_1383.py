@@ -9,30 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
-    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    runner_version: str
-    registration_deprecates_at: NotRequired[Union[str, None]]
-    runtime_deprecates_at: NotRequired[Union[str, None]]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
 __all__ = (
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200Type",
-    "ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",
+    "OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyTypeForResponse",
 )

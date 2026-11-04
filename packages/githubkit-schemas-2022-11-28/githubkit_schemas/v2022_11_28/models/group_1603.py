@@ -18,33 +18,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class ReposOwnerRepoStacksPostResponse422(GitHubModel):
+    """Validation Error
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
-    )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
-    )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    Validation Error
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(UserPatchBody)
+class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
 
-__all__ = ("UserPatchBody",)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ReposOwnerRepoStacksPostResponse422)
+model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
+
+__all__ = (
+    "ReposOwnerRepoStacksPostResponse422",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
+)

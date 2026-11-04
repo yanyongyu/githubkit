@@ -11,20 +11,15 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-
-from .group_0285 import SecretScanningCustomPatternToCreate
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
-    )
+    body: str = Field(description="The body text of the pull request review.")
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",)

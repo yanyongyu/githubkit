@@ -13,23 +13,61 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422Type(TypedDict):
+    """Validation Error
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType]
+    ]
 
 
-class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse(TypedDict):
+    """Validation Error
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    Validation Error
+    """
+
+    message: str
+    documentation_url: str
+    errors: NotRequired[
+        list[
+            ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse
+        ]
+    ]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+
+
+class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNamePutBodyType",
-    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422Type",
+    "ReposOwnerRepoStacksStackNumberAddPostResponse422TypeForResponse",
 )

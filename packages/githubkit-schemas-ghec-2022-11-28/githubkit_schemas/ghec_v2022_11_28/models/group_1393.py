@@ -12,16 +12,20 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0210 import SecretScanningCustomPattern
 
 
-class EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
 
-    usernames: list[str] = Field(
-        description="The GitHub user handles to add to the team."
+    created_patterns: Missing[list[SecretScanningCustomPattern]] = Field(
+        default=UNSET, description="The list of successfully created custom patterns."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201)
 
-__all__ = ("EnterprisesEnterpriseTeamsEnterpriseTeamMembershipsAddPostBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201",)

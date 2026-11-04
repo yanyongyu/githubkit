@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,36 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoStacksStackNumberAddPostResponse422(GitHubModel):
-    """Validation Error
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
 
-    Validation Error
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[
-        list[ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems"""
-
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    code: str = Field()
-    index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    )
+    assignee: Union[str, None] = Field(
+        description="The username of the user to assign to the alert. Set to `null` to unassign the alert."
+    )
+    validity: Missing[Union[Literal["active", "inactive"], None]] = Field(
+        default=UNSET,
+        description="Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override.",
     )
 
 
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422)
-model_rebuild(ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1)
 
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422",
-    "ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems",
-)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1",)

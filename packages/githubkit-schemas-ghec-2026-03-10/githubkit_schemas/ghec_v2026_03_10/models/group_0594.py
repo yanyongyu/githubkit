@@ -9,77 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0205 import (
-    SecretScanningLocationCommit,
-    SecretScanningLocationDiscussionComment,
-    SecretScanningLocationDiscussionTitle,
-    SecretScanningLocationIssueBody,
-    SecretScanningLocationPullRequestBody,
-    SecretScanningLocationPullRequestReview,
-    SecretScanningLocationWikiCommit,
-)
-from .group_0206 import (
-    SecretScanningLocationIssueComment,
-    SecretScanningLocationIssueTitle,
-    SecretScanningLocationPullRequestReviewComment,
-    SecretScanningLocationPullRequestTitle,
-)
-from .group_0207 import (
-    SecretScanningLocationDiscussionBody,
-    SecretScanningLocationPullRequestComment,
-)
 
 
-class SecretScanningLocation(GitHubModel):
-    """SecretScanningLocation"""
+class SecretScanningAlertMetadataItems(GitHubModel):
+    """SecretScanningAlertMetadataItems"""
 
-    type: Missing[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
-    )
-    details: Missing[
-        Union[
-            SecretScanningLocationCommit,
-            SecretScanningLocationWikiCommit,
-            SecretScanningLocationIssueTitle,
-            SecretScanningLocationIssueBody,
-            SecretScanningLocationIssueComment,
-            SecretScanningLocationDiscussionTitle,
-            SecretScanningLocationDiscussionBody,
-            SecretScanningLocationDiscussionComment,
-            SecretScanningLocationPullRequestTitle,
-            SecretScanningLocationPullRequestBody,
-            SecretScanningLocationPullRequestComment,
-            SecretScanningLocationPullRequestReview,
-            SecretScanningLocationPullRequestReviewComment,
-        ]
-    ] = Field(default=UNSET)
+    key: str = Field(description="The metadata key.")
+    value: str = Field(description="The metadata value.")
 
 
-model_rebuild(SecretScanningLocation)
+model_rebuild(SecretScanningAlertMetadataItems)
 
-__all__ = ("SecretScanningLocation",)
+__all__ = ("SecretScanningAlertMetadataItems",)

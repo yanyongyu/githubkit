@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0293 import (
-    OrganizationActionsVariableType,
-    OrganizationActionsVariableTypeForResponse,
-)
+import datetime as _dt
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsVariablesGetResponse200Type(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableType]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[_dt.datetime, None]]
+    runtime_deprecates_at: NotRequired[Union[_dt.datetime, None]]
 
 
-class OrgsOrgAgentsVariablesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesGetResponse200"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    total_count: int
-    variables: list[OrganizationActionsVariableTypeForResponse]
+    runner_version: str
+    registration_deprecates_at: NotRequired[Union[str, None]]
+    runtime_deprecates_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesGetResponse200Type",
-    "OrgsOrgAgentsVariablesGetResponse200TypeForResponse",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200Type",
+    "OrgsOrgActionsRunnersDeprecationsVersionGetResponse200TypeForResponse",
 )

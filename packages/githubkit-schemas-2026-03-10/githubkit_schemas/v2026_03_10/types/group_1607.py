@@ -9,27 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0527 import (
+    PullRequestStackPullRequestType,
+    PullRequestStackPullRequestTypeForResponse,
+)
 
 
-class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType
+    open_: bool
+    created_at: _dt.datetime
+    pull_requests: list[PullRequestStackPullRequestType]
 
 
-class UserCodespacesSecretsSecretNamePutBodyTypeForResponse(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[list[Union[int, str]]]
+    id: int
+    number: int
+    node_id: str
+    url: str
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse
+    open_: bool
+    created_at: str
+    pull_requests: list[PullRequestStackPullRequestTypeForResponse]
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
+
+
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+
+    ref: str
 
 
 __all__ = (
-    "UserCodespacesSecretsSecretNamePutBodyType",
-    "UserCodespacesSecretsSecretNamePutBodyTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseType",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBaseTypeForResponse",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200Type",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200TypeForResponse",
 )

@@ -16,33 +16,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoKeysPostBody(GitHubModel):
+    """ReposOwnerRepoKeysPostBody"""
 
-    The object used to create GitHub Pages deployment
-    """
-
-    artifact_id: Missing[int] = Field(
+    title: Missing[str] = Field(default=UNSET, description="A name for the key.")
+    key: str = Field(description="The contents of the key.")
+    read_only: Missing[bool] = Field(
         default=UNSET,
-        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The target environment for this GitHub Pages deployment.",
-    )
-    pages_build_version: str = Field(
-        default="GITHUB_SHA",
-        description="A unique string that represents the version of the build for this deployment.",
-    )
-    oidc_token: str = Field(
-        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
+        description='If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  \n  \nDeploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/enterprise-cloud@latest/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/enterprise-cloud@latest/articles/permission-levels-for-a-user-account-repository/)."',
     )
 
 
-model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoKeysPostBody)
 
-__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoKeysPostBody",)

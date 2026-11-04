@@ -9,30 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200"""
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200(ExtraGitHubModel):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
 
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    The team's customization document. Only the keys `pluginAssignments` and
+    `extraKnownMarketplaces` are supported.
+    """
+
+    plugin_assignments: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
+    ] = Field(
         default=UNSET,
-        description="The date after which this runner version can no longer register. Only set for runner versions below the minimum version required to register (currently 2.329.0); `null` for versions with no registration end date.",
+        alias="pluginAssignments",
+        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
     )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+    extra_known_marketplaces: Missing[
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
+    ] = Field(
         default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version. `null` when no newer runner release exists yet.",
+        alias="extraKnownMarketplaces",
+        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200)
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
 
-__all__ = ("ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200",)
+    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+    """
+
+
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces(
+    ExtraGitHubModel
+):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
+    s
+
+    Additional plugin marketplaces available to the team, keyed by marketplace name.
+    """
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
+)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
+)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments",
+)
