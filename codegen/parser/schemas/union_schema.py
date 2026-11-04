@@ -89,12 +89,13 @@ def build_union_schema(
         )
 
     types = data.type or (base_schema and base_schema.type)
+    can_be_object = bool(data.properties or data.allOf)
     if isinstance(types, list):
         for type in types:
             if type not in TYPES_MAP:
                 continue
-            types = TYPES_MAP[type]
-            if any(isinstance(shema, types) for shema in schemas):
+            schema_types = TYPES_MAP[type]
+            if any(isinstance(schema, schema_types) for schema in schemas):
                 continue
             if type == "null":
                 schemas.append(build_none_schema(source))
@@ -109,11 +110,15 @@ def build_union_schema(
             elif type == "array":
                 schemas.append(build_list_schema(source, class_name, base_source))
             elif type == "object":
-                schema = build_model_schema(
-                    source, class_name, base_source, prestore_schema=False
-                )
-                add_schema((source / "union_object").uri, schema)
-                schemas.append(schema)
+                can_be_object = True
+
+    # build the object schema finally
+    if can_be_object:
+        schema = build_model_schema(
+            source, class_name, base_source, prestore_schema=False
+        )
+        add_schema((source / "union_object").uri, schema)
+        schemas.append(schema)
 
     if not schemas:
         return AnySchema(

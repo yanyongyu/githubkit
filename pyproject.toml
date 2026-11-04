@@ -139,6 +139,7 @@ ignore = [
   "RUF002", # ambiguous-unicode-character-docstring
   "RUF003", # ambiguous-unicode-character-comment
 ]
+extend-safe-fixes = ["RUF036"]
 
 [tool.ruff.lint.per-file-ignores]
 "packages/githubkit-schemas-**/**" = ["E501", "PYI016", "TID", "UP007"]
