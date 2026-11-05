@@ -37,11 +37,11 @@ class IssueTypeAddedIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
     issue_type: Union[IssueTypeWebhook, None] = Field(
         title="Issue Type", description="The type of issue."
     )
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
 
 
 model_rebuild(IssueTypeAddedIssueEvent)

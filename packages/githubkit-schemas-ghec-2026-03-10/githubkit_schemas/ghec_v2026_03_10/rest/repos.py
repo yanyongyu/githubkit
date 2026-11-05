@@ -8260,7 +8260,7 @@ class ReposClient:
         *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         permission: Missing[
-            Literal["pull", "triage", "triage_plus", "push", "maintain", "admin"]
+            Literal["pull", "triage", "moderate", "push", "maintain", "admin"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
@@ -8315,7 +8315,7 @@ class ReposClient:
         *,
         affiliation: Missing[Literal["outside", "direct", "all"]] = UNSET,
         permission: Missing[
-            Literal["pull", "triage", "triage_plus", "push", "maintain", "admin"]
+            Literal["pull", "triage", "moderate", "push", "maintain", "admin"]
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
@@ -12451,7 +12451,7 @@ class ReposClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
+                Union[None, ReposOwnerRepoEnvironmentsEnvironmentNamePutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -12555,7 +12555,7 @@ class ReposClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
+                Union[None, ReposOwnerRepoEnvironmentsEnvironmentNamePutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -13822,7 +13822,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(Union[ReposOwnerRepoForksPostBody, None], json)
+            json = type_validate_python(Union[None, ReposOwnerRepoForksPostBody], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -13909,7 +13909,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(Union[ReposOwnerRepoForksPostBody, None], json)
+            json = type_validate_python(Union[None, ReposOwnerRepoForksPostBody], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -14146,7 +14146,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(Union[ReposOwnerRepoHooksPostBody, None], json)
+            json = type_validate_python(Union[None, ReposOwnerRepoHooksPostBody], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -14228,7 +14228,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(Union[ReposOwnerRepoHooksPostBody, None], json)
+            json = type_validate_python(Union[None, ReposOwnerRepoHooksPostBody], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -15520,7 +15520,7 @@ class ReposClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permissions: Missing[
-            Literal["read", "write", "maintain", "triage", "admin"]
+            Literal["read", "write", "maintain", "triage", "moderate", "admin"]
         ] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
@@ -15594,7 +15594,7 @@ class ReposClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         permissions: Missing[
-            Literal["read", "write", "maintain", "triage", "admin"]
+            Literal["read", "write", "maintain", "triage", "moderate", "admin"]
         ] = UNSET,
     ) -> Response[RepositoryInvitation, RepositoryInvitationTypeForResponse]: ...
 
@@ -17023,7 +17023,6 @@ class ReposClient:
         stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
-            None,
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
@@ -17065,7 +17064,6 @@ class ReposClient:
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
-                None,
                 ReposOwnerRepoPagesPostBodyAnyof1Type,
                 None,
             ]
@@ -17107,10 +17105,9 @@ class ReposClient:
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
+                    None,
                     ReposOwnerRepoPagesPostBodyAnyof0,
-                    None,
                     ReposOwnerRepoPagesPostBodyAnyof1,
-                    None,
                 ],
                 json,
             )
@@ -17139,7 +17136,6 @@ class ReposClient:
         stream: bool = False,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
-            None,
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
@@ -17181,7 +17177,6 @@ class ReposClient:
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
-                None,
                 ReposOwnerRepoPagesPostBodyAnyof1Type,
                 None,
             ]
@@ -17223,10 +17218,9 @@ class ReposClient:
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
+                    None,
                     ReposOwnerRepoPagesPostBodyAnyof0,
-                    None,
                     ReposOwnerRepoPagesPostBodyAnyof1,
-                    None,
                 ],
                 json,
             )

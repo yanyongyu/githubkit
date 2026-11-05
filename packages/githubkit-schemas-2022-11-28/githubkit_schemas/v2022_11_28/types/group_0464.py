@@ -31,9 +31,9 @@ class TimelineAssignedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
+    performed_via_github_app: Union[IntegrationType, None]
     assignee: SimpleUserType
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
 class TimelineAssignedIssueEventTypeForResponse(TypedDict):
@@ -50,9 +50,9 @@ class TimelineAssignedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     assignee: SimpleUserTypeForResponse
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (

@@ -76,11 +76,11 @@ class IssueEvent(GitHubModel):
     prev_issue_type: Missing[Union[IssueTypeWebhook, None]] = Field(
         default=UNSET, title="Issue Type", description="The type of issue."
     )
-    sub_issue: Missing[Union[None, IssueReference, None]] = Field(default=UNSET)
-    parent_issue: Missing[Union[None, IssueReference, None]] = Field(default=UNSET)
-    blocked_by: Missing[Union[None, IssueReference, None]] = Field(default=UNSET)
-    blocking: Missing[Union[None, IssueReference, None]] = Field(default=UNSET)
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    sub_issue: Missing[Union[IssueReference, None]] = Field(default=UNSET)
+    parent_issue: Missing[Union[IssueReference, None]] = Field(default=UNSET)
+    blocked_by: Missing[Union[IssueReference, None]] = Field(default=UNSET)
+    blocking: Missing[Union[IssueReference, None]] = Field(default=UNSET)
+    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
     author_association: Missing[
         Literal[
             "COLLABORATOR",
@@ -98,9 +98,7 @@ class IssueEvent(GitHubModel):
         description="How the author is associated with the repository.",
     )
     lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    performed_via_github_app: Missing[Union[Integration, None]] = Field(default=UNSET)
 
 
 class IssueEventLabel(GitHubModel):

@@ -37,7 +37,7 @@ class ValidationErrorPropErrorsItems(GitHubModel):
     message: Missing[str] = Field(default=UNSET)
     code: str = Field()
     index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
+    value: Missing[Union[str, int, list[str], None]] = Field(default=UNSET)
 
 
 model_rebuild(ValidationError)

@@ -2047,7 +2047,7 @@ class PullsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
+                Union[None, ReposOwnerRepoPullsPullNumberMergePutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2149,7 +2149,7 @@ class PullsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
+                Union[None, ReposOwnerRepoPullsPullNumberMergePutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2259,7 +2259,7 @@ class PullsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBody, None], json
+                Union[None, ReposOwnerRepoPullsPullNumberMergeAsyncPutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2369,7 +2369,7 @@ class PullsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoPullsPullNumberMergeAsyncPutBody, None], json
+                Union[None, ReposOwnerRepoPullsPullNumberMergeAsyncPutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4372,7 +4372,7 @@ class PullsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
+                Union[None, ReposOwnerRepoPullsPullNumberUpdateBranchPutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4468,7 +4468,7 @@ class PullsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
+                Union[None, ReposOwnerRepoPullsPullNumberUpdateBranchPutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

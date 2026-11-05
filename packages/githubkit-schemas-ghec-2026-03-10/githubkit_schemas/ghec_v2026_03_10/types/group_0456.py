@@ -27,7 +27,7 @@ class RepositoryInvitationType(TypedDict):
     repository: MinimalRepositoryType
     invitee: Union[SimpleUserType, None]
     inviter: Union[SimpleUserType, None]
-    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    permissions: Literal["read", "write", "admin", "triage", "moderate", "maintain"]
     created_at: _dt.datetime
     expired: NotRequired[bool]
     url: str
@@ -45,7 +45,7 @@ class RepositoryInvitationTypeForResponse(TypedDict):
     repository: MinimalRepositoryTypeForResponse
     invitee: Union[SimpleUserTypeForResponse, None]
     inviter: Union[SimpleUserTypeForResponse, None]
-    permissions: Literal["read", "write", "admin", "triage", "triage_plus", "maintain"]
+    permissions: Literal["read", "write", "admin", "triage", "moderate", "maintain"]
     created_at: str
     expired: NotRequired[bool]
     url: str

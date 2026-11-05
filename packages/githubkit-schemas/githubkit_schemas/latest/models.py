@@ -3124,6 +3124,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        IssuePropLabelsItemsOneof1PropArchivedBy as IssuePropLabelsItemsOneof1PropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         IssuePropPullRequest as IssuePropPullRequest,
     )
     from githubkit_schemas.v2026_03_10.models import IssueReference as IssueReference
@@ -3135,6 +3138,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropLabelsItems as IssueSearchResultItemPropLabelsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueSearchResultItemPropLabelsItemsPropArchivedBy as IssueSearchResultItemPropLabelsItemsPropArchivedBy,
     )
     from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
@@ -3168,7 +3174,13 @@ if TYPE_CHECKING or is_lazy_disabled():
         LabeledIssueEventPropLabel as LabeledIssueEventPropLabel,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        LabelPropArchivedBy as LabelPropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         LabelSearchResultItem as LabelSearchResultItem,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        LabelSearchResultItemPropArchivedBy as LabelSearchResultItemPropArchivedBy,
     )
     from githubkit_schemas.v2026_03_10.models import Language as Language
     from githubkit_schemas.v2026_03_10.models import License as License
@@ -4329,6 +4341,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestPropLabelsItems as PullRequestPropLabelsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        PullRequestPropLabelsItemsPropArchivedBy as PullRequestPropLabelsItemsPropArchivedBy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         PullRequestPropLinks as PullRequestPropLinks,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4414,6 +4429,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropLabelsItems as PullRequestSimplePropLabelsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        PullRequestSimplePropLabelsItemsPropArchivedBy as PullRequestSimplePropLabelsItemsPropArchivedBy,
     )
     from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropLinks as PullRequestSimplePropLinks,
@@ -4524,6 +4542,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems as RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        RepositoryAdvisoryPropAuthor as RepositoryAdvisoryPropAuthor,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4531,6 +4552,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryAdvisoryPropPrivateFork as RepositoryAdvisoryPropPrivateFork,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryAdvisoryPropPublisher as RepositoryAdvisoryPropPublisher,
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
@@ -8237,6 +8264,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropLabelsItems as WebhookIssuesReopenedPropIssuePropLabelsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy as WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropMilestone as WebhookIssuesReopenedPropIssuePropMilestone,
@@ -13148,6 +13178,7 @@ else:
             "DependabotAlertWithRepositoryPropDependency",
             "DependabotRepositoryAccessDetails",
             "Label",
+            "LabelPropArchivedBy",
             "Discussion",
             "DiscussionPropAnswerChosenBy",
             "DiscussionPropCategory",
@@ -13166,6 +13197,7 @@ else:
             "IssueFieldValuePropMultiSelectOptionsItems",
             "Issue",
             "IssuePropLabelsItemsOneof1",
+            "IssuePropLabelsItemsOneof1PropArchivedBy",
             "IssuePropPullRequest",
             "PullRequestMinimal",
             "PullRequestMinimalPropHead",
@@ -13429,6 +13461,7 @@ else:
             "PullRequestStackPropBase",
             "PullRequestSimple",
             "PullRequestSimplePropLabelsItems",
+            "PullRequestSimplePropLabelsItemsPropArchivedBy",
             "PullRequestSimplePropHead",
             "PullRequestSimplePropBase",
             "PullRequestSimplePropLinks",
@@ -13564,7 +13597,10 @@ else:
             "SecretScanningPatternConfiguration",
             "SecretScanningPatternOverride",
             "RepositoryAdvisoryCredit",
+            "RepositoryAdvisoryPropPrivateFork",
             "RepositoryAdvisory",
+            "RepositoryAdvisoryPropAuthor",
+            "RepositoryAdvisoryPropPublisher",
             "RepositoryAdvisoryPropIdentifiersItems",
             "RepositoryAdvisoryPropSubmission",
             "RepositoryAdvisoryPropCwesItems",
@@ -13922,6 +13958,7 @@ else:
             "PagesHealthCheckPropAltDomain",
             "PullRequest",
             "PullRequestPropLabelsItems",
+            "PullRequestPropLabelsItemsPropArchivedBy",
             "PullRequestPropHead",
             "PullRequestPropBase",
             "PullRequestPropLinks",
@@ -14021,10 +14058,12 @@ else:
             "CommitSearchResultItemPropCommitPropAuthor",
             "CommitSearchResultItemPropCommitPropTree",
             "IssueSearchResultItem",
-            "IssueSearchResultItemPropLabelsItems",
             "IssueSearchResultItemPropPullRequest",
+            "IssueSearchResultItemPropLabelsItems",
+            "IssueSearchResultItemPropLabelsItemsPropArchivedBy",
             "SearchIssuesGetResponse200",
             "LabelSearchResultItem",
+            "LabelSearchResultItemPropArchivedBy",
             "SearchLabelsGetResponse200",
             "RepoSearchResultItem",
             "RepoSearchResultItemPropPermissions",
@@ -14855,6 +14894,7 @@ else:
             "WebhookIssuesReopenedPropIssuePropAssignee",
             "WebhookIssuesReopenedPropIssuePropAssigneesItems",
             "WebhookIssuesReopenedPropIssuePropLabelsItems",
+            "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy",
             "WebhookIssuesReopenedPropIssuePropMilestone",
             "WebhookIssuesReopenedPropIssuePropMilestonePropCreator",
             "WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp",

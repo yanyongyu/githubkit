@@ -49,7 +49,7 @@ class TimelineCommentEventType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
     reactions: NotRequired[ReactionRollupType]
     pin: NotRequired[Union[PinnedIssueCommentType, None]]
     minimized: NotRequired[Union[IssueCommentMinimizedType, None]]
@@ -84,7 +84,7 @@ class TimelineCommentEventTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
     reactions: NotRequired[ReactionRollupTypeForResponse]
     pin: NotRequired[Union[PinnedIssueCommentTypeForResponse, None]]
     minimized: NotRequired[Union[IssueCommentMinimizedTypeForResponse, None]]

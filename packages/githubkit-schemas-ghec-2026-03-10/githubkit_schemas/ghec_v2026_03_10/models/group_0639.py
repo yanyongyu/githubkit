@@ -96,11 +96,19 @@ class IssueSearchResultItem(GitHubModel):
         title="Issue Type",
         description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    performed_via_github_app: Missing[Union[Integration, None]] = Field(default=UNSET)
     pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
     reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+
+
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
 
 
 class IssueSearchResultItemPropLabelsItems(GitHubModel):
@@ -117,20 +125,42 @@ class IssueSearchResultItemPropLabelsItems(GitHubModel):
         default=UNSET,
         description="Timestamp indicating when the label was archived, or `null` if it has not been archived.",
     )
-    archived_by: Missing[None] = Field(
+    archived_by: Missing[
+        Union[IssueSearchResultItemPropLabelsItemsPropArchivedBy, None]
+    ] = Field(
         default=UNSET,
         description="The user who archived the label, or `null` if it has not been archived.",
     )
 
 
-class IssueSearchResultItemPropPullRequest(GitHubModel):
-    """IssueSearchResultItemPropPullRequest"""
+class IssueSearchResultItemPropLabelsItemsPropArchivedBy(GitHubModel):
+    """IssueSearchResultItemPropLabelsItemsPropArchivedBy
 
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
 class SearchIssuesGetResponse200(GitHubModel):
@@ -162,13 +192,15 @@ class SearchIssuesGetResponse200(GitHubModel):
 
 
 model_rebuild(IssueSearchResultItem)
-model_rebuild(IssueSearchResultItemPropLabelsItems)
 model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropLabelsItemsPropArchivedBy)
 model_rebuild(SearchIssuesGetResponse200)
 
 __all__ = (
     "IssueSearchResultItem",
     "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropLabelsItemsPropArchivedBy",
     "IssueSearchResultItemPropPullRequest",
     "SearchIssuesGetResponse200",
 )

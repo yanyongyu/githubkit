@@ -34,7 +34,7 @@ class AssignedIssueEventType(TypedDict):
     performed_via_github_app: Union[IntegrationType, None]
     assignee: SimpleUserType
     assigner: SimpleUserType
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
 class AssignedIssueEventTypeForResponse(TypedDict):
@@ -54,7 +54,7 @@ class AssignedIssueEventTypeForResponse(TypedDict):
     performed_via_github_app: Union[IntegrationTypeForResponse, None]
     assignee: SimpleUserTypeForResponse
     assigner: SimpleUserTypeForResponse
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (

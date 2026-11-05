@@ -39,9 +39,7 @@ class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
     message: Missing[str] = Field(default=UNSET)
     code: str = Field()
     index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[Union[str, int]], None]] = Field(
-        default=UNSET
-    )
+    value: Missing[Union[str, int, list[Union[str, int]], None]] = Field(default=UNSET)
 
 
 model_rebuild(ReposOwnerRepoStacksPostResponse422)

@@ -16,13 +16,17 @@ from typing_extensions import NotRequired, TypedDict
 class ReposOwnerRepoInvitationsInvitationIdPatchBodyType(TypedDict):
     """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+    permissions: NotRequired[
+        Literal["read", "write", "maintain", "triage", "moderate", "admin"]
+    ]
 
 
 class ReposOwnerRepoInvitationsInvitationIdPatchBodyTypeForResponse(TypedDict):
     """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    permissions: NotRequired[Literal["read", "write", "maintain", "triage", "admin"]]
+    permissions: NotRequired[
+        Literal["read", "write", "maintain", "triage", "moderate", "admin"]
+    ]
 
 
 __all__ = (

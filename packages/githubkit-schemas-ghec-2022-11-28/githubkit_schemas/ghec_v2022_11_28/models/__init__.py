@@ -899,6 +899,7 @@ if TYPE_CHECKING or is_lazy_disabled():
         EnterpriseTeamWithMemberCount as EnterpriseTeamWithMemberCount,
     )
     from .group_0239 import Label as Label
+    from .group_0239 import LabelPropArchivedBy as LabelPropArchivedBy
     from .group_0240 import Discussion as Discussion
     from .group_0240 import DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy
     from .group_0240 import DiscussionPropCategory as DiscussionPropCategory
@@ -921,6 +922,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0249 import Issue as Issue
     from .group_0250 import IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1
+    from .group_0250 import (
+        IssuePropLabelsItemsOneof1PropArchivedBy as IssuePropLabelsItemsOneof1PropArchivedBy,
+    )
     from .group_0250 import IssuePropPullRequest as IssuePropPullRequest
     from .group_0251 import PullRequestMinimal as PullRequestMinimal
     from .group_0252 import PullRequestMinimalPropBase as PullRequestMinimalPropBase
@@ -1299,6 +1303,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0351 import (
         PullRequestSimplePropLabelsItems as PullRequestSimplePropLabelsItems,
     )
+    from .group_0351 import (
+        PullRequestSimplePropLabelsItemsPropArchivedBy as PullRequestSimplePropLabelsItemsPropArchivedBy,
+    )
     from .group_0352 import PullRequestSimplePropBase as PullRequestSimplePropBase
     from .group_0352 import PullRequestSimplePropHead as PullRequestSimplePropHead
     from .group_0353 import PullRequestSimplePropLinks as PullRequestSimplePropLinks
@@ -1392,7 +1399,11 @@ if TYPE_CHECKING or is_lazy_disabled():
         RuleSuiteRequiredStatusChecksPropChecksItemsPropApp as RuleSuiteRequiredStatusChecksPropChecksItemsPropApp,
     )
     from .group_0368 import RepositoryAdvisoryCredit as RepositoryAdvisoryCredit
+    from .group_0368 import (
+        RepositoryAdvisoryPropPrivateFork as RepositoryAdvisoryPropPrivateFork,
+    )
     from .group_0369 import RepositoryAdvisory as RepositoryAdvisory
+    from .group_0369 import RepositoryAdvisoryPropAuthor as RepositoryAdvisoryPropAuthor
     from .group_0369 import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
     )
@@ -1402,6 +1413,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0369 import (
         RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
+    )
+    from .group_0369 import (
+        RepositoryAdvisoryPropPublisher as RepositoryAdvisoryPropPublisher,
     )
     from .group_0369 import (
         RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
@@ -2024,6 +2038,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0557 import PagesHealthCheckPropDomain as PagesHealthCheckPropDomain
     from .group_0558 import PullRequest as PullRequest
     from .group_0559 import PullRequestPropLabelsItems as PullRequestPropLabelsItems
+    from .group_0559 import (
+        PullRequestPropLabelsItemsPropArchivedBy as PullRequestPropLabelsItemsPropArchivedBy,
+    )
     from .group_0560 import PullRequestPropBase as PullRequestPropBase
     from .group_0560 import PullRequestPropHead as PullRequestPropHead
     from .group_0561 import PullRequestPropLinks as PullRequestPropLinks
@@ -2271,10 +2288,16 @@ if TYPE_CHECKING or is_lazy_disabled():
         IssueSearchResultItemPropLabelsItems as IssueSearchResultItemPropLabelsItems,
     )
     from .group_0641 import (
+        IssueSearchResultItemPropLabelsItemsPropArchivedBy as IssueSearchResultItemPropLabelsItemsPropArchivedBy,
+    )
+    from .group_0641 import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
     )
     from .group_0641 import SearchIssuesGetResponse200 as SearchIssuesGetResponse200
     from .group_0642 import LabelSearchResultItem as LabelSearchResultItem
+    from .group_0642 import (
+        LabelSearchResultItemPropArchivedBy as LabelSearchResultItemPropArchivedBy,
+    )
     from .group_0642 import SearchLabelsGetResponse200 as SearchLabelsGetResponse200
     from .group_0643 import RepoSearchResultItem as RepoSearchResultItem
     from .group_0643 import (
@@ -4459,6 +4482,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0907 import (
         WebhookIssuesReopenedPropIssuePropLabelsItems as WebhookIssuesReopenedPropIssuePropLabelsItems,
+    )
+    from .group_0907 import (
+        WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy as WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy,
     )
     from .group_0907 import (
         WebhookIssuesReopenedPropIssuePropMilestone as WebhookIssuesReopenedPropIssuePropMilestone,
@@ -13457,7 +13483,10 @@ else:
             "BillingUsageSummaryReportGhePropUsageItemsItems",
         ),
         ".group_0238": ("EnterpriseTeamWithMemberCount",),
-        ".group_0239": ("Label",),
+        ".group_0239": (
+            "Label",
+            "LabelPropArchivedBy",
+        ),
         ".group_0240": (
             "Discussion",
             "DiscussionPropAnswerChosenBy",
@@ -13483,6 +13512,7 @@ else:
         ".group_0249": ("Issue",),
         ".group_0250": (
             "IssuePropLabelsItemsOneof1",
+            "IssuePropLabelsItemsOneof1PropArchivedBy",
             "IssuePropPullRequest",
         ),
         ".group_0251": ("PullRequestMinimal",),
@@ -13757,6 +13787,7 @@ else:
         ".group_0351": (
             "PullRequestSimple",
             "PullRequestSimplePropLabelsItems",
+            "PullRequestSimplePropLabelsItemsPropArchivedBy",
         ),
         ".group_0352": (
             "PullRequestSimplePropHead",
@@ -13816,9 +13847,14 @@ else:
             "RuleSuitePullRequestPropPullRequestPropReviewsItems",
             "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
         ),
-        ".group_0368": ("RepositoryAdvisoryCredit",),
+        ".group_0368": (
+            "RepositoryAdvisoryCredit",
+            "RepositoryAdvisoryPropPrivateFork",
+        ),
         ".group_0369": (
             "RepositoryAdvisory",
+            "RepositoryAdvisoryPropAuthor",
+            "RepositoryAdvisoryPropPublisher",
             "RepositoryAdvisoryPropIdentifiersItems",
             "RepositoryAdvisoryPropSubmission",
             "RepositoryAdvisoryPropCvss",
@@ -14330,7 +14366,10 @@ else:
             "PagesHealthCheckPropAltDomain",
         ),
         ".group_0558": ("PullRequest",),
-        ".group_0559": ("PullRequestPropLabelsItems",),
+        ".group_0559": (
+            "PullRequestPropLabelsItems",
+            "PullRequestPropLabelsItemsPropArchivedBy",
+        ),
         ".group_0560": (
             "PullRequestPropHead",
             "PullRequestPropBase",
@@ -14515,12 +14554,14 @@ else:
         ),
         ".group_0641": (
             "IssueSearchResultItem",
-            "IssueSearchResultItemPropLabelsItems",
             "IssueSearchResultItemPropPullRequest",
+            "IssueSearchResultItemPropLabelsItems",
+            "IssueSearchResultItemPropLabelsItemsPropArchivedBy",
             "SearchIssuesGetResponse200",
         ),
         ".group_0642": (
             "LabelSearchResultItem",
+            "LabelSearchResultItemPropArchivedBy",
             "SearchLabelsGetResponse200",
         ),
         ".group_0643": (
@@ -15620,6 +15661,7 @@ else:
             "WebhookIssuesReopenedPropIssuePropAssignee",
             "WebhookIssuesReopenedPropIssuePropAssigneesItems",
             "WebhookIssuesReopenedPropIssuePropLabelsItems",
+            "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy",
             "WebhookIssuesReopenedPropIssuePropMilestone",
             "WebhookIssuesReopenedPropIssuePropMilestonePropCreator",
             "WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp",

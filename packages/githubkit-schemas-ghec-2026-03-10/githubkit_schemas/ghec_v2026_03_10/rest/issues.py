@@ -5732,7 +5732,7 @@ class IssuesClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoIssuesIssueNumberLockPutBody, None], json
+                Union[None, ReposOwnerRepoIssuesIssueNumberLockPutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5822,7 +5822,7 @@ class IssuesClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoIssuesIssueNumberLockPutBody, None], json
+                Union[None, ReposOwnerRepoIssuesIssueNumberLockPutBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

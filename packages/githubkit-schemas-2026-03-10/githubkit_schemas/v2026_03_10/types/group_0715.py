@@ -41,7 +41,7 @@ class WebhookIssueCommentCreatedPropCommentType(TypedDict):
     id: int
     issue_url: str
     node_id: str
-    performed_via_github_app: Union[None, IntegrationType, None]
+    performed_via_github_app: Union[IntegrationType, None]
     reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
     updated_at: _dt.datetime
     url: str
@@ -73,7 +73,7 @@ class WebhookIssueCommentCreatedPropCommentTypeForResponse(TypedDict):
     id: int
     issue_url: str
     node_id: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     reactions: WebhookIssueCommentCreatedPropCommentPropReactionsTypeForResponse
     updated_at: str
     url: str

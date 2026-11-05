@@ -39,7 +39,7 @@ class DeploymentStatusType(TypedDict):
     repository_url: str
     environment_url: NotRequired[str]
     log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
 
 
 class DeploymentStatusTypeForResponse(TypedDict):
@@ -64,7 +64,7 @@ class DeploymentStatusTypeForResponse(TypedDict):
     repository_url: str
     environment_url: NotRequired[str]
     log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
 
 
 __all__ = (

@@ -45,7 +45,7 @@ class ReposOwnerRepoStacksPostResponse422PropErrorsItemsType(TypedDict):
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    value: NotRequired[Union[str, int, list[Union[str, int]], None]]
 
 
 class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDict):
@@ -56,7 +56,7 @@ class ReposOwnerRepoStacksPostResponse422PropErrorsItemsTypeForResponse(TypedDic
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    value: NotRequired[Union[str, int, list[Union[str, int]], None]]
 
 
 __all__ = (

@@ -16,13 +16,13 @@ from typing_extensions import NotRequired, TypedDict
 class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
     """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    permission: NotRequired[Literal["pull", "moderate", "push", "admin"]]
 
 
 class TeamsTeamIdReposOwnerRepoPutBodyTypeForResponse(TypedDict):
     """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    permission: NotRequired[Literal["pull", "moderate", "push", "admin"]]
 
 
 __all__ = (

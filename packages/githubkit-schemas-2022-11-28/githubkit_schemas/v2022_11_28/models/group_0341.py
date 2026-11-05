@@ -58,7 +58,7 @@ class CheckRun(GitHubModel):
     output: CheckRunPropOutput = Field()
     name: str = Field(description="The name of the check.")
     check_suite: Union[CheckRunPropCheckSuite, None] = Field()
-    app: Union[None, Integration, None] = Field()
+    app: Union[Integration, None] = Field()
     pull_requests: list[PullRequestMinimal] = Field(
         description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
     )

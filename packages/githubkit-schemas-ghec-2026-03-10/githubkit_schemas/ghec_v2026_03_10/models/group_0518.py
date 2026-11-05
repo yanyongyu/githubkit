@@ -33,7 +33,7 @@ class LockedIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
     lock_reason: Union[str, None] = Field()
 
 

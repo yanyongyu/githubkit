@@ -76,7 +76,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200Type(TypedDict):
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeType, None]]
     repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",
@@ -137,7 +137,7 @@ class ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse(TypedDict):
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeTypeForResponse, None]]
     repository: NotRequired[RepositoryTypeForResponse]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",

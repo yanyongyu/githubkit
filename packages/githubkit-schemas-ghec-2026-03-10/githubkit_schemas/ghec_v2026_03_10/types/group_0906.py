@@ -258,7 +258,9 @@ class WebhookIssuesReopenedPropIssuePropLabelsItemsType(TypedDict):
     """Label"""
 
     archived_at: NotRequired[Union[_dt.datetime, None]]
-    archived_by: NotRequired[None]
+    archived_by: NotRequired[
+        Union[WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType, None]
+    ]
     color: str
     default: bool
     description: Union[str, None]
@@ -272,7 +274,12 @@ class WebhookIssuesReopenedPropIssuePropLabelsItemsTypeForResponse(TypedDict):
     """Label"""
 
     archived_at: NotRequired[Union[str, None]]
-    archived_by: NotRequired[None]
+    archived_by: NotRequired[
+        Union[
+            WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByTypeForResponse,
+            None,
+        ]
+    ]
     color: str
     default: bool
     description: Union[str, None]
@@ -280,6 +287,68 @@ class WebhookIssuesReopenedPropIssuePropLabelsItemsTypeForResponse(TypedDict):
     name: str
     node_id: str
     url: str
+
+
+class WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType(TypedDict):
+    """WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByTypeForResponse(
+    TypedDict
+):
+    """WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 class WebhookIssuesReopenedPropIssuePropMilestoneType(TypedDict):
@@ -694,6 +763,8 @@ __all__ = (
     "WebhookIssuesReopenedPropIssuePropAssigneeTypeForResponse",
     "WebhookIssuesReopenedPropIssuePropAssigneesItemsType",
     "WebhookIssuesReopenedPropIssuePropAssigneesItemsTypeForResponse",
+    "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType",
+    "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByTypeForResponse",
     "WebhookIssuesReopenedPropIssuePropLabelsItemsType",
     "WebhookIssuesReopenedPropIssuePropLabelsItemsTypeForResponse",
     "WebhookIssuesReopenedPropIssuePropMilestonePropCreatorType",

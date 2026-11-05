@@ -36,9 +36,9 @@ class StateChangeIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
     state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
 
 
 model_rebuild(StateChangeIssueEvent)

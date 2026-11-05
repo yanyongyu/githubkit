@@ -62,7 +62,7 @@ class CheckSuite(GitHubModel):
     before: Union[str, None] = Field()
     after: Union[str, None] = Field()
     pull_requests: Union[list[PullRequestMinimal], None] = Field()
-    app: Union[None, Integration, None] = Field()
+    app: Union[Integration, None] = Field()
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
     )

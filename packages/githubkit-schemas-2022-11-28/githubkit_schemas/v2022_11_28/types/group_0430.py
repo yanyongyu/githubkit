@@ -49,11 +49,11 @@ class IssueEventType(TypedDict):
     rename: NotRequired[IssueEventRenameType]
     issue_type: NotRequired[Union[IssueTypeWebhookType, None]]
     prev_issue_type: NotRequired[Union[IssueTypeWebhookType, None]]
-    sub_issue: NotRequired[Union[None, IssueReferenceType, None]]
-    parent_issue: NotRequired[Union[None, IssueReferenceType, None]]
-    blocked_by: NotRequired[Union[None, IssueReferenceType, None]]
-    blocking: NotRequired[Union[None, IssueReferenceType, None]]
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    sub_issue: NotRequired[Union[IssueReferenceType, None]]
+    parent_issue: NotRequired[Union[IssueReferenceType, None]]
+    blocked_by: NotRequired[Union[IssueReferenceType, None]]
+    blocking: NotRequired[Union[IssueReferenceType, None]]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",
@@ -67,7 +67,7 @@ class IssueEventType(TypedDict):
         ]
     ]
     lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
 
 
 class IssueEventTypeForResponse(TypedDict):
@@ -97,11 +97,11 @@ class IssueEventTypeForResponse(TypedDict):
     rename: NotRequired[IssueEventRenameTypeForResponse]
     issue_type: NotRequired[Union[IssueTypeWebhookTypeForResponse, None]]
     prev_issue_type: NotRequired[Union[IssueTypeWebhookTypeForResponse, None]]
-    sub_issue: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    parent_issue: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    blocked_by: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    blocking: NotRequired[Union[None, IssueReferenceTypeForResponse, None]]
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    sub_issue: NotRequired[Union[IssueReferenceTypeForResponse, None]]
+    parent_issue: NotRequired[Union[IssueReferenceTypeForResponse, None]]
+    blocked_by: NotRequired[Union[IssueReferenceTypeForResponse, None]]
+    blocking: NotRequired[Union[IssueReferenceTypeForResponse, None]]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
     author_association: NotRequired[
         Literal[
             "COLLABORATOR",
@@ -115,7 +115,7 @@ class IssueEventTypeForResponse(TypedDict):
         ]
     ]
     lock_reason: NotRequired[Union[str, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
 
 
 class IssueEventLabelType(TypedDict):

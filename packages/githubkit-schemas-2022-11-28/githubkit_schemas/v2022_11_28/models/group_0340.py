@@ -47,9 +47,7 @@ class DeploymentSimple(GitHubModel):
         default=UNSET,
         description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
     )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
+    performed_via_github_app: Missing[Union[Integration, None]] = Field(default=UNSET)
 
 
 model_rebuild(DeploymentSimple)

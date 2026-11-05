@@ -51,7 +51,7 @@ class CheckRunType(TypedDict):
     output: CheckRunPropOutputType
     name: str
     check_suite: Union[CheckRunPropCheckSuiteType, None]
-    app: Union[None, IntegrationType, None]
+    app: Union[IntegrationType, None]
     pull_requests: list[PullRequestMinimalType]
     deployment: NotRequired[DeploymentSimpleType]
 
@@ -89,7 +89,7 @@ class CheckRunTypeForResponse(TypedDict):
     output: CheckRunPropOutputTypeForResponse
     name: str
     check_suite: Union[CheckRunPropCheckSuiteTypeForResponse, None]
-    app: Union[None, IntegrationTypeForResponse, None]
+    app: Union[IntegrationTypeForResponse, None]
     pull_requests: list[PullRequestMinimalTypeForResponse]
     deployment: NotRequired[DeploymentSimpleTypeForResponse]
 

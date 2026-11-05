@@ -342,6 +342,7 @@ class ActivityClient:
         self,
         *,
         all_: Missing[bool] = UNSET,
+        is_done: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         before: Missing[_dt.datetime] = UNSET,
@@ -365,6 +366,7 @@ class ActivityClient:
 
         params = {
             "all": all_,
+            "is_done": is_done,
             "participating": participating,
             "since": since,
             "before": before,
@@ -392,6 +394,7 @@ class ActivityClient:
         self,
         *,
         all_: Missing[bool] = UNSET,
+        is_done: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         before: Missing[_dt.datetime] = UNSET,
@@ -415,6 +418,7 @@ class ActivityClient:
 
         params = {
             "all": all_,
+            "is_done": is_done,
             "participating": participating,
             "since": since,
             "before": before,
@@ -1230,6 +1234,7 @@ class ActivityClient:
         repo: str,
         *,
         all_: Missing[bool] = UNSET,
+        is_done: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         before: Missing[_dt.datetime] = UNSET,
@@ -1253,6 +1258,7 @@ class ActivityClient:
 
         params = {
             "all": all_,
+            "is_done": is_done,
             "participating": participating,
             "since": since,
             "before": before,
@@ -1277,6 +1283,7 @@ class ActivityClient:
         repo: str,
         *,
         all_: Missing[bool] = UNSET,
+        is_done: Missing[bool] = UNSET,
         participating: Missing[bool] = UNSET,
         since: Missing[_dt.datetime] = UNSET,
         before: Missing[_dt.datetime] = UNSET,
@@ -1300,6 +1307,7 @@ class ActivityClient:
 
         params = {
             "all": all_,
+            "is_done": is_done,
             "participating": participating,
             "since": since,
             "before": before,

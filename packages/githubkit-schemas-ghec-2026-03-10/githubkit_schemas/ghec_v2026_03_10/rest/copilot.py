@@ -4155,10 +4155,13 @@ class CopilotClient:
         Gets information about which repositories in an organization have been enabled
         or disabled for the Copilot cloud agent.
 
-        Organization owners can configure whether Copilot cloud agent is enabled for
-        all repositories, selected repositories, or no repositories owned by organization.
+        Organization owners and members with a custom organization role that includes
+        either the `View organization Copilot cloud agent settings` or `Manage organization
+        Copilot cloud agent settings` permission can use this endpoint to view whether
+        Copilot cloud agent is enabled for all repositories, selected repositories, or
+        no repositories owned by the organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#get-copilot-cloud-agent-permissions-for-an-organization
         """
@@ -4206,10 +4209,13 @@ class CopilotClient:
         Gets information about which repositories in an organization have been enabled
         or disabled for the Copilot cloud agent.
 
-        Organization owners can configure whether Copilot cloud agent is enabled for
-        all repositories, selected repositories, or no repositories owned by organization.
+        Organization owners and members with a custom organization role that includes
+        either the `View organization Copilot cloud agent settings` or `Manage organization
+        Copilot cloud agent settings` permission can use this endpoint to view whether
+        Copilot cloud agent is enabled for all repositories, selected repositories, or
+        no repositories owned by the organization.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#get-copilot-cloud-agent-permissions-for-an-organization
         """
@@ -4424,10 +4430,12 @@ class CopilotClient:
 
         Lists the selected repositories that are enabled for Copilot cloud agent in an organization.
 
-        Organization owners can use this endpoint when the coding agent repository policy
-        is set to `selected` to see which repositories have been enabled.
+        Organization owners and members with a custom organization role that includes
+        either the `View organization Copilot cloud agent settings` or `Manage organization
+        Copilot cloud agent settings` permission can use this endpoint when the coding agent
+        repository policy is set to `selected` to see which repositories have been enabled.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-cloud-agent-in-an-organization
         """
@@ -4483,10 +4491,12 @@ class CopilotClient:
 
         Lists the selected repositories that are enabled for Copilot cloud agent in an organization.
 
-        Organization owners can use this endpoint when the coding agent repository policy
-        is set to `selected` to see which repositories have been enabled.
+        Organization owners and members with a custom organization role that includes
+        either the `View organization Copilot cloud agent settings` or `Manage organization
+        Copilot cloud agent settings` permission can use this endpoint when the coding agent
+        repository policy is set to `selected` to see which repositories have been enabled.
 
-        OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-coding-agent-management#list-repositories-enabled-for-copilot-cloud-agent-in-an-organization
         """

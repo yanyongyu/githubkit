@@ -49,7 +49,7 @@ class WebhookIssueCommentPinnedPropIssueType(TypedDict):
         Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
     assignee: Union[
-        Union[WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType, None], None
+        Union[None, WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeType], None
     ]
     assignees: list[WebhookIssueCommentPinnedPropIssueMergedAssigneesType]
     author_association: Literal[
@@ -109,7 +109,7 @@ class WebhookIssueCommentPinnedPropIssueTypeForResponse(TypedDict):
     ]
     assignee: Union[
         Union[
-            WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeTypeForResponse, None
+            None, WebhookIssueCommentPinnedPropIssueAllof0PropAssigneeTypeForResponse
         ],
         None,
     ]

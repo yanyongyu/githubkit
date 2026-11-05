@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class LabelType(TypedDict):
@@ -29,7 +29,7 @@ class LabelType(TypedDict):
     color: str
     default: bool
     archived_at: Union[_dt.datetime, None]
-    archived_by: None
+    archived_by: Union[LabelPropArchivedByType, None]
 
 
 class LabelTypeForResponse(TypedDict):
@@ -47,10 +47,72 @@ class LabelTypeForResponse(TypedDict):
     color: str
     default: bool
     archived_at: Union[str, None]
-    archived_by: None
+    archived_by: Union[LabelPropArchivedByTypeForResponse, None]
+
+
+class LabelPropArchivedByType(TypedDict):
+    """LabelPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class LabelPropArchivedByTypeForResponse(TypedDict):
+    """LabelPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
+    "LabelPropArchivedByType",
+    "LabelPropArchivedByTypeForResponse",
     "LabelType",
     "LabelTypeForResponse",
 )

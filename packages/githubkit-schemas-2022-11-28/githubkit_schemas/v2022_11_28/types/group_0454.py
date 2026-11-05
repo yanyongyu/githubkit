@@ -31,8 +31,8 @@ class BlockedByRemovedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    blocked_by: Union[None, IssueReferenceType, None]
+    performed_via_github_app: Union[IntegrationType, None]
+    blocked_by: Union[IssueReferenceType, None]
 
 
 class BlockedByRemovedIssueEventTypeForResponse(TypedDict):
@@ -49,8 +49,8 @@ class BlockedByRemovedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    blocked_by: Union[None, IssueReferenceTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    blocked_by: Union[IssueReferenceTypeForResponse, None]
 
 
 __all__ = (

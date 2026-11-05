@@ -32,10 +32,10 @@ class IssueTypeChangedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
+    performed_via_github_app: Union[IntegrationType, None]
     issue_type: Union[IssueTypeWebhookType, None]
     prev_issue_type: Union[IssueTypeWebhookType, None]
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
 class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
@@ -52,10 +52,10 @@ class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     issue_type: Union[IssueTypeWebhookTypeForResponse, None]
     prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (

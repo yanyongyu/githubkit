@@ -49,7 +49,7 @@ class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsType(Typed
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    value: NotRequired[Union[str, int, list[Union[str, int]], None]]
 
 
 class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForResponse(
@@ -62,7 +62,7 @@ class ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItemsTypeForRes
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[Union[str, int]], None]]
+    value: NotRequired[Union[str, int, list[Union[str, int]], None]]
 
 
 __all__ = (

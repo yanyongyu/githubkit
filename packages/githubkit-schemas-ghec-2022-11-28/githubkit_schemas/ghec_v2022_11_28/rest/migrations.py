@@ -1152,7 +1152,7 @@ class MigrationsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoImportPatchBody, None], json
+                Union[None, ReposOwnerRepoImportPatchBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1239,7 +1239,7 @@ class MigrationsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoImportPatchBody, None], json
+                Union[None, ReposOwnerRepoImportPatchBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

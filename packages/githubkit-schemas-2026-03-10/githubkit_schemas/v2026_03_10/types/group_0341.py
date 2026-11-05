@@ -53,7 +53,7 @@ class CheckSuiteType(TypedDict):
     before: Union[str, None]
     after: Union[str, None]
     pull_requests: Union[list[PullRequestMinimalType], None]
-    app: Union[None, IntegrationType, None]
+    app: Union[IntegrationType, None]
     repository: MinimalRepositoryType
     created_at: Union[_dt.datetime, None]
     updated_at: Union[_dt.datetime, None]
@@ -98,7 +98,7 @@ class CheckSuiteTypeForResponse(TypedDict):
     before: Union[str, None]
     after: Union[str, None]
     pull_requests: Union[list[PullRequestMinimalTypeForResponse], None]
-    app: Union[None, IntegrationTypeForResponse, None]
+    app: Union[IntegrationTypeForResponse, None]
     repository: MinimalRepositoryTypeForResponse
     created_at: Union[str, None]
     updated_at: Union[str, None]

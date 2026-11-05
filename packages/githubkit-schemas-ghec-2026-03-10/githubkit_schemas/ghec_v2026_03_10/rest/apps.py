@@ -129,7 +129,7 @@ class AppsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[Integration, None],
+            response_model=Union[None, Integration],
         )
 
     async def async_get_authenticated(
@@ -162,7 +162,7 @@ class AppsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[Integration, None],
+            response_model=Union[None, Integration],
         )
 
     def create_from_manifest(
@@ -2047,7 +2047,7 @@ class AppsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[Integration, None],
+            response_model=Union[None, Integration],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2084,7 +2084,7 @@ class AppsClient:
             url,
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[Integration, None],
+            response_model=Union[None, Integration],
             error_models={
                 "403": BasicError,
                 "404": BasicError,

@@ -8374,7 +8374,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueField, None],
+            response_model=Union[None, IssueField],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -8459,7 +8459,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueField, None],
+            response_model=Union[None, IssueField],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -8624,7 +8624,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueField, None],
+            response_model=Union[None, IssueField],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -8711,7 +8711,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueField, None],
+            response_model=Union[None, IssueField],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -8874,7 +8874,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueType, None],
+            response_model=Union[None, IssueType],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -8963,7 +8963,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueType, None],
+            response_model=Union[None, IssueType],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -9055,7 +9055,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueType, None],
+            response_model=Union[None, IssueType],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,
@@ -9147,7 +9147,7 @@ class OrgsClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=Union[IssueType, None],
+            response_model=Union[None, IssueType],
             error_models={
                 "404": BasicError,
                 "422": ValidationErrorSimple,

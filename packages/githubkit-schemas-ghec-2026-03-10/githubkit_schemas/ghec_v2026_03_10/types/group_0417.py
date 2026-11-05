@@ -36,7 +36,7 @@ class DeploymentSimpleType(TypedDict):
     repository_url: str
     transient_environment: NotRequired[bool]
     production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
 
 
 class DeploymentSimpleTypeForResponse(TypedDict):
@@ -59,7 +59,7 @@ class DeploymentSimpleTypeForResponse(TypedDict):
     repository_url: str
     transient_environment: NotRequired[bool]
     production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
 
 
 __all__ = (

@@ -42,7 +42,7 @@ class AssignedIssueEvent(GitHubModel):
     )
     assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
 
 
 model_rebuild(AssignedIssueEvent)

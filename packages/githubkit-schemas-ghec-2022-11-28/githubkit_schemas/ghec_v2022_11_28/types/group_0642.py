@@ -33,7 +33,7 @@ class LabelSearchResultItemType(TypedDict):
     default: bool
     description: Union[str, None]
     archived_at: Union[_dt.datetime, None]
-    archived_by: None
+    archived_by: Union[LabelSearchResultItemPropArchivedByType, None]
     score: float
     text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
@@ -52,9 +52,69 @@ class LabelSearchResultItemTypeForResponse(TypedDict):
     default: bool
     description: Union[str, None]
     archived_at: Union[str, None]
-    archived_by: None
+    archived_by: Union[LabelSearchResultItemPropArchivedByTypeForResponse, None]
     score: float
     text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+
+
+class LabelSearchResultItemPropArchivedByType(TypedDict):
+    """LabelSearchResultItemPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class LabelSearchResultItemPropArchivedByTypeForResponse(TypedDict):
+    """LabelSearchResultItemPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 class SearchLabelsGetResponse200Type(TypedDict):
@@ -74,6 +134,8 @@ class SearchLabelsGetResponse200TypeForResponse(TypedDict):
 
 
 __all__ = (
+    "LabelSearchResultItemPropArchivedByType",
+    "LabelSearchResultItemPropArchivedByTypeForResponse",
     "LabelSearchResultItemType",
     "LabelSearchResultItemTypeForResponse",
     "SearchLabelsGetResponse200Type",

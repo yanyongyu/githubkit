@@ -11358,7 +11358,7 @@ class ActionsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
+                Union[None, ReposOwnerRepoActionsJobsJobIdRerunPostBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -11445,7 +11445,7 @@ class ActionsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
+                Union[None, ReposOwnerRepoActionsJobsJobIdRerunPostBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -17399,7 +17399,7 @@ class ActionsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
+                Union[None, ReposOwnerRepoActionsRunsRunIdRerunPostBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -17478,7 +17478,7 @@ class ActionsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
+                Union[None, ReposOwnerRepoActionsRunsRunIdRerunPostBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -17560,7 +17560,7 @@ class ActionsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
+                Union[None, ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -17642,7 +17642,7 @@ class ActionsClient:
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
             json = type_validate_python(
-                Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
+                Union[None, ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody], json
             )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

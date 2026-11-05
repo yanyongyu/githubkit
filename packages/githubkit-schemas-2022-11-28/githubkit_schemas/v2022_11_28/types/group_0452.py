@@ -31,8 +31,8 @@ class ParentIssueRemovedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    parent_issue: Union[None, IssueReferenceType, None]
+    performed_via_github_app: Union[IntegrationType, None]
+    parent_issue: Union[IssueReferenceType, None]
 
 
 class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
@@ -49,8 +49,8 @@ class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    parent_issue: Union[None, IssueReferenceTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    parent_issue: Union[IssueReferenceTypeForResponse, None]
 
 
 __all__ = (

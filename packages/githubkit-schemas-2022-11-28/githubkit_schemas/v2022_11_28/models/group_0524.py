@@ -41,7 +41,7 @@ class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
         description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
     )
     index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
+    value: Missing[Union[str, int, list[str], None]] = Field(default=UNSET)
     section: Missing[str] = Field(
         default=UNSET, description="The report template section the violation concerns."
     )

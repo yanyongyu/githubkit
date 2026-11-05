@@ -84,7 +84,7 @@ class IssueSearchResultItemType(TypedDict):
     body_text: NotRequired[str]
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeType, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
     pinned_comment: NotRequired[Union[IssueCommentType, None]]
     reactions: NotRequired[ReactionRollupType]
 
@@ -140,37 +140,9 @@ class IssueSearchResultItemTypeForResponse(TypedDict):
     body_text: NotRequired[str]
     timeline_url: NotRequired[str]
     type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    performed_via_github_app: NotRequired[Union[None, IntegrationTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
     pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
     reactions: NotRequired[ReactionRollupTypeForResponse]
-
-
-class IssueSearchResultItemPropLabelsItemsType(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    archived_at: NotRequired[Union[_dt.datetime, None]]
-    archived_by: NotRequired[None]
-
-
-class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    archived_at: NotRequired[Union[str, None]]
-    archived_by: NotRequired[None]
 
 
 class IssueSearchResultItemPropPullRequestType(TypedDict):
@@ -191,6 +163,98 @@ class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
     html_url: Union[str, None]
     patch_url: Union[str, None]
     url: Union[str, None]
+
+
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    archived_by: NotRequired[
+        Union[IssueSearchResultItemPropLabelsItemsPropArchivedByType, None]
+    ]
+
+
+class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    archived_at: NotRequired[Union[str, None]]
+    archived_by: NotRequired[
+        Union[IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse, None]
+    ]
+
+
+class IssueSearchResultItemPropLabelsItemsPropArchivedByType(TypedDict):
+    """IssueSearchResultItemPropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 class SearchIssuesGetResponse200Type(TypedDict):
@@ -240,6 +304,8 @@ class SearchIssuesGetResponse200TypeForResponse(TypedDict):
 
 
 __all__ = (
+    "IssueSearchResultItemPropLabelsItemsPropArchivedByType",
+    "IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse",
     "IssueSearchResultItemPropLabelsItemsType",
     "IssueSearchResultItemPropLabelsItemsTypeForResponse",
     "IssueSearchResultItemPropPullRequestType",

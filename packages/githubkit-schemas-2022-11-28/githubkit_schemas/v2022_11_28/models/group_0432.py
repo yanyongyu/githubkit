@@ -36,9 +36,9 @@ class UnlabeledIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
     label: UnlabeledIssueEventPropLabel = Field()
-    intent: Missing[Union[None, IssueEventIntent, None]] = Field(default=UNSET)
+    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
 
 
 class UnlabeledIssueEventPropLabel(GitHubModel):

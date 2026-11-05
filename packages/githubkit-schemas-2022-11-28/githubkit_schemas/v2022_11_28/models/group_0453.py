@@ -34,8 +34,8 @@ class BlockedByAddedIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    blocked_by: Union[None, IssueReference, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
+    blocked_by: Union[IssueReference, None] = Field()
 
 
 model_rebuild(BlockedByAddedIssueEvent)

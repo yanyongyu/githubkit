@@ -40,7 +40,7 @@ class WebhookIssueCommentCreatedPropIssue(GitHubModel):
         Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Union[
-        Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssignee, None], None
+        Union[None, WebhookIssueCommentCreatedPropIssueAllof0PropAssignee], None
     ] = Field(title="User")
     assignees: list[WebhookIssueCommentCreatedPropIssueMergedAssignees] = Field()
     author_association: Literal[

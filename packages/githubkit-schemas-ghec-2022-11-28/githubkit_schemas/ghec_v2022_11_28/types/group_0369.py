@@ -19,6 +19,8 @@ from .group_0108 import TeamType, TeamTypeForResponse
 from .group_0368 import (
     RepositoryAdvisoryCreditType,
     RepositoryAdvisoryCreditTypeForResponse,
+    RepositoryAdvisoryPropPrivateForkType,
+    RepositoryAdvisoryPropPrivateForkTypeForResponse,
 )
 
 
@@ -35,8 +37,8 @@ class RepositoryAdvisoryType(TypedDict):
     summary: str
     description: Union[str, None]
     severity: Union[Literal["critical", "high", "medium", "low"], None]
-    author: None
-    publisher: None
+    author: Union[RepositoryAdvisoryPropAuthorType, None]
+    publisher: Union[RepositoryAdvisoryPropPublisherType, None]
     identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
     state: Literal["published", "closed", "withdrawn", "draft", "triage"]
     created_at: Union[_dt.datetime, None]
@@ -54,7 +56,7 @@ class RepositoryAdvisoryType(TypedDict):
     credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
     collaborating_users: Union[list[SimpleUserType], None]
     collaborating_teams: Union[list[TeamType], None]
-    private_fork: None
+    private_fork: Union[RepositoryAdvisoryPropPrivateForkType, None]
 
 
 class RepositoryAdvisoryTypeForResponse(TypedDict):
@@ -70,8 +72,8 @@ class RepositoryAdvisoryTypeForResponse(TypedDict):
     summary: str
     description: Union[str, None]
     severity: Union[Literal["critical", "high", "medium", "low"], None]
-    author: None
-    publisher: None
+    author: Union[RepositoryAdvisoryPropAuthorTypeForResponse, None]
+    publisher: Union[RepositoryAdvisoryPropPublisherTypeForResponse, None]
     identifiers: list[RepositoryAdvisoryPropIdentifiersItemsTypeForResponse]
     state: Literal["published", "closed", "withdrawn", "draft", "triage"]
     created_at: Union[str, None]
@@ -89,7 +91,127 @@ class RepositoryAdvisoryTypeForResponse(TypedDict):
     credits_detailed: Union[list[RepositoryAdvisoryCreditTypeForResponse], None]
     collaborating_users: Union[list[SimpleUserTypeForResponse], None]
     collaborating_teams: Union[list[TeamTypeForResponse], None]
-    private_fork: None
+    private_fork: Union[RepositoryAdvisoryPropPrivateForkTypeForResponse, None]
+
+
+class RepositoryAdvisoryPropAuthorType(TypedDict):
+    """RepositoryAdvisoryPropAuthor
+
+    The author of the advisory.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class RepositoryAdvisoryPropAuthorTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropAuthor
+
+    The author of the advisory.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class RepositoryAdvisoryPropPublisherType(TypedDict):
+    """RepositoryAdvisoryPropPublisher
+
+    The publisher of the advisory.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class RepositoryAdvisoryPropPublisherTypeForResponse(TypedDict):
+    """RepositoryAdvisoryPropPublisher
+
+    The publisher of the advisory.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
@@ -261,6 +383,8 @@ class RepositoryAdvisoryVulnerabilityPropPackageTypeForResponse(TypedDict):
 
 
 __all__ = (
+    "RepositoryAdvisoryPropAuthorType",
+    "RepositoryAdvisoryPropAuthorTypeForResponse",
     "RepositoryAdvisoryPropCreditsItemsType",
     "RepositoryAdvisoryPropCreditsItemsTypeForResponse",
     "RepositoryAdvisoryPropCvssType",
@@ -269,6 +393,8 @@ __all__ = (
     "RepositoryAdvisoryPropCwesItemsTypeForResponse",
     "RepositoryAdvisoryPropIdentifiersItemsType",
     "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
+    "RepositoryAdvisoryPropPublisherType",
+    "RepositoryAdvisoryPropPublisherTypeForResponse",
     "RepositoryAdvisoryPropSubmissionType",
     "RepositoryAdvisoryPropSubmissionTypeForResponse",
     "RepositoryAdvisoryType",

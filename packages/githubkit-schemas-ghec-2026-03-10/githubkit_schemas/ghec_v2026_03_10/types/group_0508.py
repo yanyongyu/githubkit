@@ -31,9 +31,9 @@ class LabeledIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
+    performed_via_github_app: Union[IntegrationType, None]
     label: LabeledIssueEventPropLabelType
-    intent: NotRequired[Union[None, IssueEventIntentType, None]]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
 class LabeledIssueEventTypeForResponse(TypedDict):
@@ -50,9 +50,9 @@ class LabeledIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     label: LabeledIssueEventPropLabelTypeForResponse
-    intent: NotRequired[Union[None, IssueEventIntentTypeForResponse, None]]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 class LabeledIssueEventPropLabelType(TypedDict):

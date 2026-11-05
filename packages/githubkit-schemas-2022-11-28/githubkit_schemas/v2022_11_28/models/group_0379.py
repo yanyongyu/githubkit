@@ -34,9 +34,9 @@ class RepositoryInvitation(GitHubModel):
     )
     invitee: Union[SimpleUser, None] = Field()
     inviter: Union[SimpleUser, None] = Field()
-    permissions: Literal[
-        "read", "write", "admin", "triage", "triage_plus", "maintain"
-    ] = Field(description="The permission associated with the invitation.")
+    permissions: Literal["read", "write", "admin", "triage", "moderate", "maintain"] = (
+        Field(description="The permission associated with the invitation.")
+    )
     created_at: _dt.datetime = Field()
     expired: Missing[bool] = Field(
         default=UNSET, description="Whether or not the invitation has expired"

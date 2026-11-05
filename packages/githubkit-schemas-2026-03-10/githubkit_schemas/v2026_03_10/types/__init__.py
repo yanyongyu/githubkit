@@ -338,6 +338,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0042 import (
         DependabotRepositoryAccessDetailsTypeForResponse as DependabotRepositoryAccessDetailsTypeForResponse,
     )
+    from .group_0043 import LabelPropArchivedByType as LabelPropArchivedByType
+    from .group_0043 import (
+        LabelPropArchivedByTypeForResponse as LabelPropArchivedByTypeForResponse,
+    )
     from .group_0043 import LabelType as LabelType
     from .group_0043 import LabelTypeForResponse as LabelTypeForResponse
     from .group_0044 import (
@@ -404,6 +408,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0053 import IssueType as IssueType
     from .group_0053 import IssueTypeForResponse as IssueTypeForResponse
+    from .group_0054 import (
+        IssuePropLabelsItemsOneof1PropArchivedByType as IssuePropLabelsItemsOneof1PropArchivedByType,
+    )
+    from .group_0054 import (
+        IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse as IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse,
+    )
     from .group_0054 import (
         IssuePropLabelsItemsOneof1Type as IssuePropLabelsItemsOneof1Type,
     )
@@ -1667,6 +1677,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestStackTypeForResponse as PullRequestStackTypeForResponse,
     )
     from .group_0205 import (
+        PullRequestSimplePropLabelsItemsPropArchivedByType as PullRequestSimplePropLabelsItemsPropArchivedByType,
+    )
+    from .group_0205 import (
+        PullRequestSimplePropLabelsItemsPropArchivedByTypeForResponse as PullRequestSimplePropLabelsItemsPropArchivedByTypeForResponse,
+    )
+    from .group_0205 import (
         PullRequestSimplePropLabelsItemsType as PullRequestSimplePropLabelsItemsType,
     )
     from .group_0205 import (
@@ -2438,6 +2454,18 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0289 import (
         RepositoryAdvisoryCreditTypeForResponse as RepositoryAdvisoryCreditTypeForResponse,
     )
+    from .group_0289 import (
+        RepositoryAdvisoryPropPrivateForkType as RepositoryAdvisoryPropPrivateForkType,
+    )
+    from .group_0289 import (
+        RepositoryAdvisoryPropPrivateForkTypeForResponse as RepositoryAdvisoryPropPrivateForkTypeForResponse,
+    )
+    from .group_0290 import (
+        RepositoryAdvisoryPropAuthorType as RepositoryAdvisoryPropAuthorType,
+    )
+    from .group_0290 import (
+        RepositoryAdvisoryPropAuthorTypeForResponse as RepositoryAdvisoryPropAuthorTypeForResponse,
+    )
     from .group_0290 import (
         RepositoryAdvisoryPropCreditsItemsType as RepositoryAdvisoryPropCreditsItemsType,
     )
@@ -2455,6 +2483,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0290 import (
         RepositoryAdvisoryPropIdentifiersItemsTypeForResponse as RepositoryAdvisoryPropIdentifiersItemsTypeForResponse,
+    )
+    from .group_0290 import (
+        RepositoryAdvisoryPropPublisherType as RepositoryAdvisoryPropPublisherType,
+    )
+    from .group_0290 import (
+        RepositoryAdvisoryPropPublisherTypeForResponse as RepositoryAdvisoryPropPublisherTypeForResponse,
     )
     from .group_0290 import (
         RepositoryAdvisoryPropSubmissionType as RepositoryAdvisoryPropSubmissionType,
@@ -4141,6 +4175,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     from .group_0477 import PullRequestType as PullRequestType
     from .group_0477 import PullRequestTypeForResponse as PullRequestTypeForResponse
     from .group_0478 import (
+        PullRequestPropLabelsItemsPropArchivedByType as PullRequestPropLabelsItemsPropArchivedByType,
+    )
+    from .group_0478 import (
+        PullRequestPropLabelsItemsPropArchivedByTypeForResponse as PullRequestPropLabelsItemsPropArchivedByTypeForResponse,
+    )
+    from .group_0478 import (
         PullRequestPropLabelsItemsType as PullRequestPropLabelsItemsType,
     )
     from .group_0478 import (
@@ -4655,6 +4695,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         CommitSearchResultItemPropCommitTypeForResponse as CommitSearchResultItemPropCommitTypeForResponse,
     )
     from .group_0546 import (
+        IssueSearchResultItemPropLabelsItemsPropArchivedByType as IssueSearchResultItemPropLabelsItemsPropArchivedByType,
+    )
+    from .group_0546 import (
+        IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse as IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse,
+    )
+    from .group_0546 import (
         IssueSearchResultItemPropLabelsItemsType as IssueSearchResultItemPropLabelsItemsType,
     )
     from .group_0546 import (
@@ -4675,6 +4721,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0546 import (
         SearchIssuesGetResponse200TypeForResponse as SearchIssuesGetResponse200TypeForResponse,
+    )
+    from .group_0547 import (
+        LabelSearchResultItemPropArchivedByType as LabelSearchResultItemPropArchivedByType,
+    )
+    from .group_0547 import (
+        LabelSearchResultItemPropArchivedByTypeForResponse as LabelSearchResultItemPropArchivedByTypeForResponse,
     )
     from .group_0547 import LabelSearchResultItemType as LabelSearchResultItemType
     from .group_0547 import (
@@ -9399,6 +9451,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from .group_0808 import (
         WebhookIssuesReopenedPropIssuePropAssigneeTypeForResponse as WebhookIssuesReopenedPropIssuePropAssigneeTypeForResponse,
+    )
+    from .group_0808 import (
+        WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType as WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType,
+    )
+    from .group_0808 import (
+        WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByTypeForResponse as WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByTypeForResponse,
     )
     from .group_0808 import (
         WebhookIssuesReopenedPropIssuePropLabelsItemsType as WebhookIssuesReopenedPropIssuePropLabelsItemsType,
@@ -25711,6 +25769,8 @@ else:
         ".group_0043": (
             "LabelType",
             "LabelTypeForResponse",
+            "LabelPropArchivedByType",
+            "LabelPropArchivedByTypeForResponse",
         ),
         ".group_0044": (
             "DiscussionType",
@@ -25769,6 +25829,8 @@ else:
         ".group_0054": (
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropLabelsItemsOneof1TypeForResponse",
+            "IssuePropLabelsItemsOneof1PropArchivedByType",
+            "IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse",
             "IssuePropPullRequestType",
             "IssuePropPullRequestTypeForResponse",
         ),
@@ -26597,6 +26659,8 @@ else:
             "PullRequestSimpleTypeForResponse",
             "PullRequestSimplePropLabelsItemsType",
             "PullRequestSimplePropLabelsItemsTypeForResponse",
+            "PullRequestSimplePropLabelsItemsPropArchivedByType",
+            "PullRequestSimplePropLabelsItemsPropArchivedByTypeForResponse",
         ),
         ".group_0206": (
             "PullRequestSimplePropHeadType",
@@ -27035,10 +27099,16 @@ else:
         ".group_0289": (
             "RepositoryAdvisoryCreditType",
             "RepositoryAdvisoryCreditTypeForResponse",
+            "RepositoryAdvisoryPropPrivateForkType",
+            "RepositoryAdvisoryPropPrivateForkTypeForResponse",
         ),
         ".group_0290": (
             "RepositoryAdvisoryType",
             "RepositoryAdvisoryTypeForResponse",
+            "RepositoryAdvisoryPropAuthorType",
+            "RepositoryAdvisoryPropAuthorTypeForResponse",
+            "RepositoryAdvisoryPropPublisherType",
+            "RepositoryAdvisoryPropPublisherTypeForResponse",
             "RepositoryAdvisoryPropIdentifiersItemsType",
             "RepositoryAdvisoryPropIdentifiersItemsTypeForResponse",
             "RepositoryAdvisoryPropSubmissionType",
@@ -28129,6 +28199,8 @@ else:
         ".group_0478": (
             "PullRequestPropLabelsItemsType",
             "PullRequestPropLabelsItemsTypeForResponse",
+            "PullRequestPropLabelsItemsPropArchivedByType",
+            "PullRequestPropLabelsItemsPropArchivedByTypeForResponse",
         ),
         ".group_0479": (
             "PullRequestPropHeadType",
@@ -28463,16 +28535,20 @@ else:
         ".group_0546": (
             "IssueSearchResultItemType",
             "IssueSearchResultItemTypeForResponse",
-            "IssueSearchResultItemPropLabelsItemsType",
-            "IssueSearchResultItemPropLabelsItemsTypeForResponse",
             "IssueSearchResultItemPropPullRequestType",
             "IssueSearchResultItemPropPullRequestTypeForResponse",
+            "IssueSearchResultItemPropLabelsItemsType",
+            "IssueSearchResultItemPropLabelsItemsTypeForResponse",
+            "IssueSearchResultItemPropLabelsItemsPropArchivedByType",
+            "IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse",
             "SearchIssuesGetResponse200Type",
             "SearchIssuesGetResponse200TypeForResponse",
         ),
         ".group_0547": (
             "LabelSearchResultItemType",
             "LabelSearchResultItemTypeForResponse",
+            "LabelSearchResultItemPropArchivedByType",
+            "LabelSearchResultItemPropArchivedByTypeForResponse",
             "SearchLabelsGetResponse200Type",
             "SearchLabelsGetResponse200TypeForResponse",
         ),
@@ -30655,6 +30731,8 @@ else:
             "WebhookIssuesReopenedPropIssuePropAssigneesItemsTypeForResponse",
             "WebhookIssuesReopenedPropIssuePropLabelsItemsType",
             "WebhookIssuesReopenedPropIssuePropLabelsItemsTypeForResponse",
+            "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType",
+            "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByTypeForResponse",
             "WebhookIssuesReopenedPropIssuePropMilestoneType",
             "WebhookIssuesReopenedPropIssuePropMilestoneTypeForResponse",
             "WebhookIssuesReopenedPropIssuePropMilestonePropCreatorType",

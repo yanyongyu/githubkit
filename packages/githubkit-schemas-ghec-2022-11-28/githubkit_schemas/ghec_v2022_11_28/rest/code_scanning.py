@@ -1760,7 +1760,7 @@ class CodeScanningClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(Union[CodeScanningAutofixCommits, None], json)
+            json = type_validate_python(Union[None, CodeScanningAutofixCommits], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1858,7 +1858,7 @@ class CodeScanningClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(Union[CodeScanningAutofixCommits, None], json)
+            json = type_validate_python(Union[None, CodeScanningAutofixCommits], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

@@ -3174,6 +3174,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         IssueFieldValueType as IssueFieldValueType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        IssuePropLabelsItemsOneof1PropArchivedByType as IssuePropLabelsItemsOneof1PropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         IssuePropLabelsItemsOneof1Type as IssuePropLabelsItemsOneof1Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3184,6 +3187,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         IssueReferenceType as IssueReferenceType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueSearchResultItemPropLabelsItemsPropArchivedByType as IssueSearchResultItemPropLabelsItemsPropArchivedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         IssueSearchResultItemPropLabelsItemsType as IssueSearchResultItemPropLabelsItemsType,
@@ -3223,6 +3229,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         LabeledIssueEventType as LabeledIssueEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        LabelPropArchivedByType as LabelPropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        LabelSearchResultItemPropArchivedByType as LabelSearchResultItemPropArchivedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         LabelSearchResultItemType as LabelSearchResultItemType,
@@ -4413,6 +4425,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestPropHeadType as PullRequestPropHeadType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        PullRequestPropLabelsItemsPropArchivedByType as PullRequestPropLabelsItemsPropArchivedByType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         PullRequestPropLabelsItemsType as PullRequestPropLabelsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4495,6 +4510,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         PullRequestSimplePropHeadType as PullRequestSimplePropHeadType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        PullRequestSimplePropLabelsItemsPropArchivedByType as PullRequestSimplePropLabelsItemsPropArchivedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         PullRequestSimplePropLabelsItemsType as PullRequestSimplePropLabelsItemsType,
@@ -4612,6 +4630,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         RepositoryAdvisoryDescriptionValidationErrorType as RepositoryAdvisoryDescriptionValidationErrorType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        RepositoryAdvisoryPropAuthorType as RepositoryAdvisoryPropAuthorType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         RepositoryAdvisoryPropCreditsItemsType as RepositoryAdvisoryPropCreditsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4619,6 +4640,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryAdvisoryPropIdentifiersItemsType as RepositoryAdvisoryPropIdentifiersItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryAdvisoryPropPrivateForkType as RepositoryAdvisoryPropPrivateForkType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryAdvisoryPropPublisherType as RepositoryAdvisoryPropPublisherType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryAdvisoryPropSubmissionType as RepositoryAdvisoryPropSubmissionType,
@@ -8356,6 +8383,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesReopenedPropIssuePropAssigneeType as WebhookIssuesReopenedPropIssuePropAssigneeType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType as WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesReopenedPropIssuePropLabelsItemsType as WebhookIssuesReopenedPropIssuePropLabelsItemsType,
@@ -13306,6 +13336,7 @@ else:
             "DependabotAlertWithRepositoryPropDependencyType",
             "DependabotRepositoryAccessDetailsType",
             "LabelType",
+            "LabelPropArchivedByType",
             "DiscussionType",
             "DiscussionPropAnswerChosenByType",
             "DiscussionPropCategoryType",
@@ -13324,6 +13355,7 @@ else:
             "IssueFieldValuePropMultiSelectOptionsItemsType",
             "IssueType",
             "IssuePropLabelsItemsOneof1Type",
+            "IssuePropLabelsItemsOneof1PropArchivedByType",
             "IssuePropPullRequestType",
             "PullRequestMinimalType",
             "PullRequestMinimalPropHeadType",
@@ -13587,6 +13619,7 @@ else:
             "PullRequestStackPropBaseType",
             "PullRequestSimpleType",
             "PullRequestSimplePropLabelsItemsType",
+            "PullRequestSimplePropLabelsItemsPropArchivedByType",
             "PullRequestSimplePropHeadType",
             "PullRequestSimplePropBaseType",
             "PullRequestSimplePropLinksType",
@@ -13722,7 +13755,10 @@ else:
             "SecretScanningPatternConfigurationType",
             "SecretScanningPatternOverrideType",
             "RepositoryAdvisoryCreditType",
+            "RepositoryAdvisoryPropPrivateForkType",
             "RepositoryAdvisoryType",
+            "RepositoryAdvisoryPropAuthorType",
+            "RepositoryAdvisoryPropPublisherType",
             "RepositoryAdvisoryPropIdentifiersItemsType",
             "RepositoryAdvisoryPropSubmissionType",
             "RepositoryAdvisoryPropCwesItemsType",
@@ -14080,6 +14116,7 @@ else:
             "PagesHealthCheckPropAltDomainType",
             "PullRequestType",
             "PullRequestPropLabelsItemsType",
+            "PullRequestPropLabelsItemsPropArchivedByType",
             "PullRequestPropHeadType",
             "PullRequestPropBaseType",
             "PullRequestPropLinksType",
@@ -14179,10 +14216,12 @@ else:
             "CommitSearchResultItemPropCommitPropAuthorType",
             "CommitSearchResultItemPropCommitPropTreeType",
             "IssueSearchResultItemType",
-            "IssueSearchResultItemPropLabelsItemsType",
             "IssueSearchResultItemPropPullRequestType",
+            "IssueSearchResultItemPropLabelsItemsType",
+            "IssueSearchResultItemPropLabelsItemsPropArchivedByType",
             "SearchIssuesGetResponse200Type",
             "LabelSearchResultItemType",
+            "LabelSearchResultItemPropArchivedByType",
             "SearchLabelsGetResponse200Type",
             "RepoSearchResultItemType",
             "RepoSearchResultItemPropPermissionsType",
@@ -15013,6 +15052,7 @@ else:
             "WebhookIssuesReopenedPropIssuePropAssigneeType",
             "WebhookIssuesReopenedPropIssuePropAssigneesItemsType",
             "WebhookIssuesReopenedPropIssuePropLabelsItemsType",
+            "WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedByType",
             "WebhookIssuesReopenedPropIssuePropMilestoneType",
             "WebhookIssuesReopenedPropIssuePropMilestonePropCreatorType",
             "WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppType",

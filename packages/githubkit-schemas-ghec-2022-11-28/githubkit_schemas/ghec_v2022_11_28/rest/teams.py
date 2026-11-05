@@ -3661,7 +3661,7 @@ class TeamsClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
+        permission: Missing[Literal["pull", "moderate", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
     @deprecated("Deprecated API endpoint. See the docstring for more details.")
@@ -3745,7 +3745,7 @@ class TeamsClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
+        permission: Missing[Literal["pull", "moderate", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
     @deprecated("Deprecated API endpoint. See the docstring for more details.")

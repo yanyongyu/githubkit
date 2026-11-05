@@ -49,7 +49,7 @@ class WebhookIssueCommentCreatedPropComment(GitHubModel):
     id: int = Field(description="Unique identifier of the issue comment")
     issue_url: str = Field()
     node_id: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
     reactions: WebhookIssueCommentCreatedPropCommentPropReactions = Field(
         title="Reactions"
     )

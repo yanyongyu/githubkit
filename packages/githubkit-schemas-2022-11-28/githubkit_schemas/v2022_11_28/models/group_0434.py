@@ -33,7 +33,7 @@ class UnassignedIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
+    performed_via_github_app: Union[Integration, None] = Field()
     assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 

@@ -47,7 +47,7 @@ class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict)
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    value: NotRequired[Union[str, int, list[str], None]]
     section: NotRequired[str]
     option: NotRequired[str]
 
@@ -62,7 +62,7 @@ class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse
     message: NotRequired[str]
     code: str
     index: NotRequired[int]
-    value: NotRequired[Union[str, None, int, None, list[str], None]]
+    value: NotRequired[Union[str, int, list[str], None]]
     section: NotRequired[str]
     option: NotRequired[str]
 

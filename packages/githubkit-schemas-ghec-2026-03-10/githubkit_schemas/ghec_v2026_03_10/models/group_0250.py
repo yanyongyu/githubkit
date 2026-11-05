@@ -29,10 +29,40 @@ class IssuePropLabelsItemsOneof1(GitHubModel):
     description: Missing[Union[str, None]] = Field(default=UNSET)
     color: Missing[Union[str, None]] = Field(default=UNSET)
     default: Missing[bool] = Field(default=UNSET)
-    archived_by: Missing[None] = Field(
+    archived_by: Missing[Union[IssuePropLabelsItemsOneof1PropArchivedBy, None]] = Field(
         default=UNSET,
         description="The user who archived the label, or `null` if it has not been archived.",
     )
+
+
+class IssuePropLabelsItemsOneof1PropArchivedBy(GitHubModel):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
 class IssuePropPullRequest(GitHubModel):
@@ -46,9 +76,11 @@ class IssuePropPullRequest(GitHubModel):
 
 
 model_rebuild(IssuePropLabelsItemsOneof1)
+model_rebuild(IssuePropLabelsItemsOneof1PropArchivedBy)
 model_rebuild(IssuePropPullRequest)
 
 __all__ = (
     "IssuePropLabelsItemsOneof1",
+    "IssuePropLabelsItemsOneof1PropArchivedBy",
     "IssuePropPullRequest",
 )

@@ -24,7 +24,7 @@ class IssuePropLabelsItemsOneof1Type(TypedDict):
     description: NotRequired[Union[str, None]]
     color: NotRequired[Union[str, None]]
     default: NotRequired[bool]
-    archived_by: NotRequired[None]
+    archived_by: NotRequired[Union[IssuePropLabelsItemsOneof1PropArchivedByType, None]]
 
 
 class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
@@ -37,7 +37,69 @@ class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
     description: NotRequired[Union[str, None]]
     color: NotRequired[Union[str, None]]
     default: NotRequired[bool]
-    archived_by: NotRequired[None]
+    archived_by: NotRequired[
+        Union[IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse, None]
+    ]
+
+
+class IssuePropLabelsItemsOneof1PropArchivedByType(TypedDict):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 class IssuePropPullRequestType(TypedDict):
@@ -61,6 +123,8 @@ class IssuePropPullRequestTypeForResponse(TypedDict):
 
 
 __all__ = (
+    "IssuePropLabelsItemsOneof1PropArchivedByType",
+    "IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse",
     "IssuePropLabelsItemsOneof1Type",
     "IssuePropLabelsItemsOneof1TypeForResponse",
     "IssuePropPullRequestType",

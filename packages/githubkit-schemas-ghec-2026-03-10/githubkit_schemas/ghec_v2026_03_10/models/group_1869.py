@@ -21,7 +21,7 @@ from githubkit.utils import UNSET
 class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
     """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+    permission: Missing[Literal["pull", "moderate", "push", "admin"]] = Field(
         default=UNSET,
         description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )

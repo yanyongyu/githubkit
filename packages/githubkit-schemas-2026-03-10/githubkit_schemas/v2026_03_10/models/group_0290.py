@@ -21,7 +21,7 @@ from githubkit.utils import UNSET
 from .group_0001 import CvssSeverities
 from .group_0003 import SimpleUser
 from .group_0156 import Team
-from .group_0289 import RepositoryAdvisoryCredit
+from .group_0289 import RepositoryAdvisoryCredit, RepositoryAdvisoryPropPrivateFork
 
 
 class RepositoryAdvisory(GitHubModel):
@@ -45,8 +45,12 @@ class RepositoryAdvisory(GitHubModel):
     severity: Union[Literal["critical", "high", "medium", "low"], None] = Field(
         description="The severity of the advisory."
     )
-    author: None = Field(description="The author of the advisory.")
-    publisher: None = Field(description="The publisher of the advisory.")
+    author: Union[RepositoryAdvisoryPropAuthor, None] = Field(
+        description="The author of the advisory."
+    )
+    publisher: Union[RepositoryAdvisoryPropPublisher, None] = Field(
+        description="The publisher of the advisory."
+    )
     identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
     state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
         description="The state of the advisory."
@@ -81,9 +85,69 @@ class RepositoryAdvisory(GitHubModel):
     collaborating_teams: Union[list[Team], None] = Field(
         description="A list of teams that collaborate on the advisory."
     )
-    private_fork: None = Field(
+    private_fork: Union[RepositoryAdvisoryPropPrivateFork, None] = Field(
         description="A temporary private fork of the advisory's repository for collaborating on a fix."
     )
+
+
+class RepositoryAdvisoryPropAuthor(GitHubModel):
+    """RepositoryAdvisoryPropAuthor
+
+    The author of the advisory.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+class RepositoryAdvisoryPropPublisher(GitHubModel):
+    """RepositoryAdvisoryPropPublisher
+
+    The publisher of the advisory.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
 class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
@@ -178,6 +242,8 @@ class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
 
 
 model_rebuild(RepositoryAdvisory)
+model_rebuild(RepositoryAdvisoryPropAuthor)
+model_rebuild(RepositoryAdvisoryPropPublisher)
 model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
 model_rebuild(RepositoryAdvisoryPropSubmission)
 model_rebuild(RepositoryAdvisoryPropCwesItems)
@@ -187,9 +253,11 @@ model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
 
 __all__ = (
     "RepositoryAdvisory",
+    "RepositoryAdvisoryPropAuthor",
     "RepositoryAdvisoryPropCreditsItems",
     "RepositoryAdvisoryPropCwesItems",
     "RepositoryAdvisoryPropIdentifiersItems",
+    "RepositoryAdvisoryPropPublisher",
     "RepositoryAdvisoryPropSubmission",
     "RepositoryAdvisoryVulnerability",
     "RepositoryAdvisoryVulnerabilityPropPackage",

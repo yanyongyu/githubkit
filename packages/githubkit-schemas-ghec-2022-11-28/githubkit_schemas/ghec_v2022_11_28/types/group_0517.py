@@ -31,7 +31,7 @@ class ReviewRequestedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
+    performed_via_github_app: Union[IntegrationType, None]
     review_requester: SimpleUserType
     requested_team: NotRequired[TeamType]
     requested_reviewer: NotRequired[SimpleUserType]
@@ -51,7 +51,7 @@ class ReviewRequestedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
     review_requester: SimpleUserTypeForResponse
     requested_team: NotRequired[TeamTypeForResponse]
     requested_reviewer: NotRequired[SimpleUserTypeForResponse]

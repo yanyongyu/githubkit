@@ -31,8 +31,8 @@ class BlockingAddedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    blocking: Union[None, IssueReferenceType, None]
+    performed_via_github_app: Union[IntegrationType, None]
+    blocking: Union[IssueReferenceType, None]
 
 
 class BlockingAddedIssueEventTypeForResponse(TypedDict):
@@ -49,8 +49,8 @@ class BlockingAddedIssueEventTypeForResponse(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationTypeForResponse, None]
-    blocking: Union[None, IssueReferenceTypeForResponse, None]
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    blocking: Union[IssueReferenceTypeForResponse, None]
 
 
 __all__ = (

@@ -21,11 +21,11 @@ from githubkit.utils import UNSET
 class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
     """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    permissions: Missing[
+        Literal["read", "write", "maintain", "triage", "moderate", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, `moderate`, and `admin`.",
     )
 
 
