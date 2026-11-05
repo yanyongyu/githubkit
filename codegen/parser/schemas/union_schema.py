@@ -42,6 +42,33 @@ TYPES_MAP = {
 }
 
 
+def _add_schema_dedup(schemas: list[SchemaData], schema: SchemaData) -> None:
+    # deduplicate simple schemas based on their type
+    if isinstance(
+        schema,
+        (
+            NoneSchema,
+            StringSchema,
+            DateSchema,
+            DateTimeSchema,
+            FileSchema,
+            FloatSchema,
+            IntSchema,
+            BoolSchema,
+        ),
+    ):
+        if any(isinstance(s, type(schema)) for s in schemas):
+            return
+    schemas.append(schema)
+
+
+def _extend_schemas_dedup(
+    schemas: list[SchemaData], new_schemas: list[SchemaData]
+) -> None:
+    for schema in new_schemas:
+        _add_schema_dedup(schemas, schema)
+
+
 def _build_sub_schema(
     source: "Source", class_name: str, base_source: "Source"
 ) -> list[SchemaData]:
@@ -55,9 +82,9 @@ def _build_sub_schema(
             schema_source, concat_snake_name(class_name, f"{index}"), base_source
         )
         if isinstance(schema, UnionSchema):
-            schemas.extend(schema.schemas)
+            _extend_schemas_dedup(schemas, schema.schemas)
         else:
-            schemas.append(schema)
+            _add_schema_dedup(schemas, schema)
     return schemas
 
 
@@ -76,16 +103,18 @@ def build_union_schema(
             parse_schema(prop_source, concat_snake_name(class_name, "prop", name))
 
     if data.anyOf:
-        schemas.extend(
+        _extend_schemas_dedup(
+            schemas,
             _build_sub_schema(
                 source / "anyOf", concat_snake_name(class_name, "anyof"), source
-            )
+            ),
         )
     if data.oneOf:
-        schemas.extend(
+        _extend_schemas_dedup(
+            schemas,
             _build_sub_schema(
                 source / "oneOf", concat_snake_name(class_name, "oneof"), source
-            )
+            ),
         )
 
     types = data.type or (base_schema and base_schema.type)
@@ -96,23 +125,31 @@ def build_union_schema(
         for type in types:
             if type not in TYPES_MAP:
                 continue
+
+            # some type already built when oneOf/anyOf was processed
             schema_types = TYPES_MAP[type]
             if any(isinstance(schema, schema_types) for schema in schemas):
                 continue
+
+            # build remain conditions
+            schema = None
             if type == "null":
-                schemas.append(build_none_schema(source))
+                schema = build_none_schema(source)
             elif type == "string":
-                schemas.append(build_string_schema(source, base_source))
+                schema = build_string_schema(source, base_source)
             elif type == "number":
-                schemas.append(build_float_schema(source, base_source))
+                schema = build_float_schema(source, base_source)
             elif type == "integer":
-                schemas.append(build_int_schema(source, base_source))
+                schema = build_int_schema(source, base_source)
             elif type == "boolean":
-                schemas.append(build_bool_schema(source))
+                schema = build_bool_schema(source)
             elif type == "array":
-                schemas.append(build_list_schema(source, class_name, base_source))
+                schema = build_list_schema(source, class_name, base_source)
             elif type == "object":
                 can_be_object = True
+
+            if schema is not None:
+                _add_schema_dedup(schemas, schema)
 
     # build the object schema finally
     if can_be_object:
