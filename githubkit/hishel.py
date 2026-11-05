@@ -6,62 +6,61 @@ import anysqlite
 from hishel import (
     AsyncBaseStorage,
     AsyncSqliteStorage,
-    CachePolicy,
-    SyncBaseStorage,
-    SyncSqliteStorage,
+    BaseStorage,
+    CacheOptions,
+    SqliteStorage,
 )
 
-from ._httpx import AsyncCacheTransport, SyncCacheTransport, httpx
+from ._httpx import AsyncCacheTransport, CacheTransport, httpx
 
 
 class SyncCacheClient(httpx.Client):
     def __init__(self, *args: Any, **kwargs: Any):
-        self.storage: SyncBaseStorage | None = kwargs.pop("storage", None)
-        self.policy: CachePolicy | None = kwargs.pop("policy", None)
+        self.storage: BaseStorage | None = kwargs.pop("storage", None)
+        self.policy: CacheOptions | bool = kwargs.pop("policy", True)
         super().__init__(*args, **kwargs)
 
     def _init_transport(self, *args, **kwargs) -> httpx.BaseTransport:
         _transport = super()._init_transport(*args, **kwargs)
-        return SyncCacheTransport(
-            next_transport=_transport, storage=self.storage, policy=self.policy
+        return CacheTransport(
+            next_transport=_transport, storage=self.storage, rfc=self.policy
         )
 
     def _init_proxy_transport(self, *args, **kwargs) -> httpx.BaseTransport:
         _transport = super()._init_proxy_transport(*args, **kwargs)
-        return SyncCacheTransport(
-            next_transport=_transport, storage=self.storage, policy=self.policy
+        return CacheTransport(
+            next_transport=_transport, storage=self.storage, rfc=self.policy
         )
 
 
 class AsyncCacheClient(httpx.AsyncClient):
     def __init__(self, *args: Any, **kwargs: Any):
         self.storage: AsyncBaseStorage | None = kwargs.pop("storage", None)
-        self.policy: CachePolicy | None = kwargs.pop("policy", None)
+        self.policy: CacheOptions | bool = kwargs.pop("policy", True)
         super().__init__(*args, **kwargs)
 
     def _init_transport(self, *args, **kwargs) -> httpx.AsyncBaseTransport:
         _transport = super()._init_transport(*args, **kwargs)
         return AsyncCacheTransport(
-            next_transport=_transport, storage=self.storage, policy=self.policy
+            next_transport=_transport, storage=self.storage, rfc=self.policy
         )
 
     def _init_proxy_transport(self, *args, **kwargs) -> httpx.AsyncBaseTransport:
         _transport = super()._init_proxy_transport(*args, **kwargs)
         return AsyncCacheTransport(
-            next_transport=_transport, storage=self.storage, policy=self.policy
+            next_transport=_transport, storage=self.storage, rfc=self.policy
         )
 
 
-class SyncMemoryStorage(SyncSqliteStorage):
+class SyncMemoryStorage(SqliteStorage):
     def __init__(
         self,
         *,
         default_ttl: float | None = None,
-        refresh_ttl_on_access: bool | None = None,
         keep_unclosed: bool = False,
     ) -> None:
         super().__init__(
-            default_ttl=default_ttl, refresh_ttl_on_access=refresh_ttl_on_access
+            default_ttl=default_ttl,
         )
         # NOTE: hishel close the storage when the client transport is closed.
         # but for in-memory sqlite,
@@ -91,11 +90,10 @@ class AsyncMemoryStorage(AsyncSqliteStorage):
         self,
         *,
         default_ttl: float | None = None,
-        refresh_ttl_on_access: bool | None = None,
         keep_unclosed: bool = False,
     ) -> None:
         super().__init__(
-            default_ttl=default_ttl, refresh_ttl_on_access=refresh_ttl_on_access
+            default_ttl=default_ttl,
         )
         # NOTE: hishel close the storage when the client transport is closed.
         # but for in-memory sqlite,
@@ -117,7 +115,7 @@ class AsyncMemoryStorage(AsyncSqliteStorage):
     async def close(self) -> None:
         if self.keep_unclosed:
             # Do not close the connection, but drain all pending writes
-            async with self._write_lock:
+            async with self._init_lock:
                 return
         return await super().close()
 

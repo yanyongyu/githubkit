@@ -1,9 +1,9 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = ">=3.10, <4.0"
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
     "python_full_version < '3.11'",
 ]
 conflicts = [[
@@ -35,9 +35,9 @@ name = "anyio"
 version = "4.15.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "exceptiongroup", marker = "python_full_version < '3.11'" },
+    { name = "exceptiongroup", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "idna" },
-    { name = "typing-extensions", marker = "python_full_version < '3.15'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.15' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a9/d2/f4d173e22df740bc37b1db102b386ba719b66e95b0f0d751f556b387e6d2/anyio-4.15.1.tar.gz", hash = "sha256:9f28306018cbd6d329e64a36d58256edff76dd996fe423bc957326e578b82a94", size = 276966, upload-time = "2026-09-05T10:42:39.44Z" }
 wheels = [
@@ -102,8 +102,8 @@ name = "cffi"
 version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pycparser", version = "3.11", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' and implementation_name != 'PyPy'" },
-    { name = "pycparser", version = "3.12", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' and implementation_name != 'PyPy'" },
+    { name = "pycparser", version = "3.11", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.11' and implementation_name != 'PyPy') or (python_full_version >= '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (implementation_name == 'PyPy' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "pycparser", version = "3.12", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and implementation_name != 'PyPy') or (python_full_version < '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (implementation_name == 'PyPy' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz", hash = "sha256:dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be", size = 530807, upload-time = "2026-08-03T21:21:18.939Z" }
 wheels = [
@@ -531,7 +531,7 @@ wheels = [
 
 [package.optional-dependencies]
 toml = [
-    { name = "tomli" },
+    { name = "tomli", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 
 [[package]]
@@ -540,7 +540,7 @@ version = "7.17.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d2/79/e78bd8f75a9b8e32233ce92d4607f0a21ce88a9156cace2884e7175a82f5/coverage-7.17.0.tar.gz", hash = "sha256:cc010a0a7fbdd9bb8bdfd0d3f04a5151275860213cbd7e2b876b29778489c712", size = 991021, upload-time = "2026-10-22T16:06:50.009Z" }
 wheels = [
@@ -669,8 +669,8 @@ name = "coverage-conditional-plugin"
 version = "0.9.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "coverage", version = "7.16.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "coverage", version = "7.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "coverage", version = "7.16.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "coverage", version = "7.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "packaging" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/2e/6e/82f411d325a38cc24289060ca5f80d990ee8d026f4de9782006acf061f9b/coverage_conditional_plugin-0.9.0.tar.gz", hash = "sha256:6893dab0542695dbd5ea714281dae0dfec8d0e36480ba32d839e9fa7344f8215", size = 10579, upload-time = "2023-06-02T10:25:10.166Z" }
@@ -683,8 +683,8 @@ name = "cryptography"
 version = "50.0.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "cffi", marker = "platform_python_implementation != 'PyPy' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9d/af/182eb91b0df3fe75c4d9f26fe70684569566745f6ba7e5c9c73a862c5252/cryptography-50.0.2.tar.gz", hash = "sha256:7b46165bb56eb4704e2eaaf86f3c940d19154535d9b0ca7d6d590b04060e00d5", size = 880623, upload-time = "2026-09-30T15:30:04.884Z" }
 wheels = [
@@ -762,7 +762,7 @@ name = "exceptiongroup"
 version = "1.3.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
@@ -796,7 +796,7 @@ version = "4.2.4"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d8/28/3893324bcadf8f89b1616637468d766af3f625008c0735bf704fdfa86617/filelock-4.2.4.tar.gz", hash = "sha256:c6d8663535e1650ee430507b4ffbac7b464dd64b7647ea0112a9f406499d163d", size = 652444, upload-time = "2026-10-19T01:57:51.001Z" }
 wheels = [
@@ -837,7 +837,7 @@ dependencies = [
     { name = "hishel", extra = ["async", "httpx"] },
     { name = "httpx" },
     { name = "pydantic", version = "1.10.26", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-githubkit-pydantic-v1'" },
-    { name = "pydantic", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
+    { name = "pydantic", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
     { name = "typing-extensions" },
 ]
 
@@ -861,8 +861,8 @@ jwt = [
 
 [package.dev-dependencies]
 codegen = [
-    { name = "httpx2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "httpx2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "httpx2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "httpx2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "jinja2" },
     { name = "jsonpointer" },
     { name = "openapi-pydantic" },
@@ -871,8 +871,8 @@ codegen = [
 dev = [
     { name = "coverage-conditional-plugin" },
     { name = "hishel", extra = ["redis"] },
-    { name = "httpx2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "httpx2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "httpx2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "httpx2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "jinja2" },
     { name = "jsonpointer" },
     { name = "mkdocs-git-committers-plugin-2" },
@@ -880,8 +880,8 @@ dev = [
     { name = "mkdocs-material" },
     { name = "nonemoji" },
     { name = "openapi-pydantic" },
-    { name = "pre-commit", version = "4.6.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "pre-commit", version = "4.7.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "pre-commit", version = "4.6.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "pre-commit", version = "4.7.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "pygments" },
     { name = "pymdown-extensions" },
     { name = "pytest" },
@@ -906,8 +906,8 @@ pydantic-v2 = [
 test = [
     { name = "coverage-conditional-plugin" },
     { name = "hishel", extra = ["redis"] },
-    { name = "httpx2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "httpx2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "httpx2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "httpx2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "pytest-xdist" },
@@ -922,7 +922,7 @@ requires-dist = [
     { name = "githubkit-schemas", editable = "packages/githubkit-schemas" },
     { name = "githubkit-schemas", extras = ["all"], marker = "extra == 'all'", editable = "packages/githubkit-schemas" },
     { name = "githubkit-schemas", extras = ["all"], marker = "extra == 'all-schemas'", editable = "packages/githubkit-schemas" },
-    { name = "hishel", extras = ["async", "httpx"], specifier = ">=1.4.0,<=2.0.0" },
+    { name = "hishel", extras = ["async", "httpx"], specifier = ">=2.0.0,<3.0.0" },
     { name = "httpx", specifier = ">=0.23.0,<1.0.0" },
     { name = "pydantic", specifier = ">=1.9.1,!=2.5.0,!=2.5.1,<3.0.0" },
     { name = "pyjwt", extras = ["crypto"], marker = "extra == 'all'", specifier = ">=2.4.0,<3.0.0" },
@@ -1107,15 +1107,15 @@ wheels = [
 
 [[package]]
 name = "hishel"
-version = "1.4.0"
+version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "msgpack" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c6/ff/efba29288e1d304359491fa3aab83174c3ef24a63819e6acad6873d8c0a9/hishel-1.4.0.tar.gz", hash = "sha256:e406b052c658ce28629fc31423b9914b637d47d7c923f5fe9e288ec47e4823d1", size = 813499, upload-time = "2026-09-16T15:38:54.085Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/13/83/e8c4e482b6f5e9c2f9d1c7a1503137eed81b689d358ae0df6ac50d79f172/hishel-2.0.0.tar.gz", hash = "sha256:f043c88acf9b476fdbf203986253cd4e27e2468a3319b43c3946a641e1cb7696", size = 902409, upload-time = "2026-11-05T14:10:42.119Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/da/c5/2cf7b80da9833de6ae5099111b64cf541830ccb4ef26605ae86f23ed5604/hishel-1.4.0-py3-none-any.whl", hash = "sha256:38cb62d7d38fb437dc086f789c26d0cab41310d12497ec3f56dcead4b08571f0", size = 80795, upload-time = "2026-09-16T15:38:52.545Z" },
+    { url = "https://files.pythonhosted.org/packages/01/9e/3657bc96268326f911952e2b6d67494344ef0c49220db342f1d625cb2cf3/hishel-2.0.0-py3-none-any.whl", hash = "sha256:3e96613d05a13d08d4ee22621dff3aebcdffbe41472efc2b5d4d01d6bd254983", size = 81878, upload-time = "2026-11-05T14:10:40.115Z" },
 ]
 
 [package.optional-dependencies]
@@ -1153,8 +1153,8 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 dependencies = [
-    { name = "h11" },
-    { name = "truststore" },
+    { name = "h11", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "truststore", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/30/ff/b53af1b49bb2cb5fa97c92215614b173ca5c1a99ded80e2d52f15a94fa6d/httpcore2-2.14.0.tar.gz", hash = "sha256:4f57a1a8249fe6af589d935cfd456f1d13bbdcb0f0fc72af9142368fc94811d7", size = 69096, upload-time = "2026-10-18T16:29:21.898Z" }
 wheels = [
@@ -1166,11 +1166,11 @@ name = "httpcore2"
 version = "2.16.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 dependencies = [
-    { name = "h11" },
-    { name = "truststore" },
+    { name = "h11", marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten') or (python_full_version != '3.11.*' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform != 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "truststore", marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten') or (python_full_version != '3.11.*' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform != 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c0/61/afa9d6b7452f9eca73f73d45324eb0bb52f098fd5e6049bf6b8263be9b4e/httpcore2-2.16.0.tar.gz", hash = "sha256:c72cd0413563b17e1cd8354677dff887466f8ec2551679759e93126534428643", size = 69886, upload-time = "2026-10-21T07:09:45.31Z" }
 wheels = [
@@ -1200,11 +1200,11 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 dependencies = [
-    { name = "anyio", marker = "sys_platform != 'emscripten'" },
-    { name = "httpcore2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'emscripten'" },
-    { name = "idna" },
-    { name = "truststore", marker = "sys_platform != 'emscripten'" },
-    { name = "typing-extensions" },
+    { name = "anyio", marker = "(python_full_version < '3.11' and sys_platform != 'emscripten') or (python_full_version >= '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform == 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "httpcore2", version = "2.14.0", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version < '3.11' and sys_platform != 'emscripten') or (python_full_version >= '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform == 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "idna", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "truststore", marker = "(python_full_version < '3.11' and sys_platform != 'emscripten') or (python_full_version >= '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform == 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/e8/67/58353f1848b4ba568e1ec22ea1e0d8e039f0bca5fde7e2d1f07739fd83e7/httpx2-2.14.0.tar.gz", hash = "sha256:47ad61a3c40282cd8d0dc96311531f00f5bfc71a066c6fe3b36d8f63fb9e4f6e", size = 102036, upload-time = "2026-10-18T16:29:22.627Z" }
 wheels = [
@@ -1217,15 +1217,15 @@ version = "2.16.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 dependencies = [
-    { name = "anyio", marker = "sys_platform != 'emscripten'" },
-    { name = "httpcore2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'emscripten'" },
-    { name = "httpx2-jsfetch", marker = "python_full_version >= '3.12' and sys_platform == 'emscripten'" },
-    { name = "idna" },
-    { name = "truststore", marker = "sys_platform != 'emscripten'" },
-    { name = "typing-extensions", marker = "python_full_version < '3.13'" },
+    { name = "anyio", marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version < '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform == 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "httpcore2", version = "2.16.0", source = { registry = "https://pypi.org/simple" }, marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version < '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform == 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "httpx2-jsfetch", marker = "(python_full_version >= '3.12' and sys_platform == 'emscripten') or (python_full_version < '3.12' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform != 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "idna", marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "truststore", marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version < '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (sys_platform == 'emscripten' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "typing-extensions", marker = "(python_full_version >= '3.11' and python_full_version < '3.13') or (python_full_version < '3.11' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2') or (python_full_version >= '3.13' and extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/43/73/5ca2cedf5e4e50423d1c258877865a6b62793633b561c58499f8aeb33b7e/httpx2-2.16.0.tar.gz", hash = "sha256:0d54c98128e8f2ff7fbbde0fca8c359e5f032edeaaaac443cdb7f31f685bcd7f", size = 103116, upload-time = "2026-10-21T07:09:46.348Z" }
 wheels = [
@@ -1307,7 +1307,7 @@ version = "3.11.2"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f4/32/0b4d0297064244f04af4331b65de16237cc3cce07474171ee14222a28981/markdown-3.11.2.tar.gz", hash = "sha256:87bf5d90f2d2882e2c02fcda182c2800456b985bff38913867c49706481514b0", size = 491445, upload-time = "2026-10-19T19:41:42.687Z" }
 wheels = [
@@ -1472,11 +1472,11 @@ version = "1.6.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "click" },
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "ghp-import" },
     { name = "jinja2" },
-    { name = "markdown", version = "3.10.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "markdown", version = "3.11.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "markdown", version = "3.10.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "markdown", version = "3.11.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "markupsafe" },
     { name = "mergedeep" },
     { name = "mkdocs-get-deps" },
@@ -1497,8 +1497,8 @@ version = "0.2.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "mergedeep" },
-    { name = "platformdirs", version = "4.12.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "platformdirs", version = "4.13.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "platformdirs", version = "4.12.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "platformdirs", version = "4.13.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "pyyaml" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ce/25/b3cccb187655b9393572bde9b09261d267c3bf2f2cdabe347673be5976a6/mkdocs_get_deps-0.2.2.tar.gz", hash = "sha256:8ee8d5f316cdbbb2834bc1df6e69c08fe769a83e040060de26d3c19fad3599a1", size = 11047, upload-time = "2026-03-10T02:46:33.632Z" }
@@ -1529,7 +1529,7 @@ dependencies = [
     { name = "gitpython" },
     { name = "mkdocs" },
     { name = "packaging" },
-    { name = "tzdata", marker = "sys_platform == 'win32'" },
+    { name = "tzdata", marker = "sys_platform == 'win32' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/d8/d0/b2910714ae14ee925c99535b2e5c2a19d49669a53cbac9d4242fca0f8906/mkdocs_git_revision_date_localized_plugin-1.6.2.tar.gz", hash = "sha256:9f38e5cfef3d180f1c479a7190d72617267a5d79d8159b12e3ae39c80f6e7488", size = 40432, upload-time = "2026-10-26T07:55:53.746Z" }
 wheels = [
@@ -1545,8 +1545,8 @@ dependencies = [
     { name = "backrefs" },
     { name = "colorama" },
     { name = "jinja2" },
-    { name = "markdown", version = "3.10.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "markdown", version = "3.11.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "markdown", version = "3.10.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "markdown", version = "3.11.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "mkdocs" },
     { name = "mkdocs-material-extensions" },
     { name = "paginate" },
@@ -1705,7 +1705,7 @@ version = "0.5.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic", version = "1.10.26", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-githubkit-pydantic-v1'" },
-    { name = "pydantic", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
+    { name = "pydantic", version = "2.14.1", source = { registry = "https://pypi.org/simple" }, marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/02/2e/58d83848dd1a79cb92ed8e63f6ba901ca282c5f09d04af9423ec26c56fd7/openapi_pydantic-0.5.1.tar.gz", hash = "sha256:ff6835af6bde7a459fb93eb93bb92b8749b754fc6e51b2f1590a19dc3005ee0d", size = 60892, upload-time = "2025-01-08T19:29:27.083Z" }
 wheels = [
@@ -1757,7 +1757,7 @@ version = "4.13.7"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/35/e9/bf409046a91b6a9ca652e9b0ac3c39481674f6774e23e58b52315516099a/platformdirs-4.13.7.tar.gz", hash = "sha256:f7f351c027d6632c30471124e1fdb6ac0fef9ccc5cbac1b34cb333431b1fc3e1", size = 63906, upload-time = "2026-10-28T05:49:31.898Z" }
 wheels = [
@@ -1781,11 +1781,11 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 dependencies = [
-    { name = "cfgv" },
-    { name = "identify" },
-    { name = "nodeenv" },
-    { name = "pyyaml" },
-    { name = "virtualenv" },
+    { name = "cfgv", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "identify", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "nodeenv", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "pyyaml", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "virtualenv", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/74/89/1f3e8e1fc3e97de0fa963495832f581f025f29471602a309e48808244292/pre_commit-4.6.2.tar.gz", hash = "sha256:8f5d7bfb021ecdbcd9d49d89847082dd24172ccde534390081a679ad046e2441", size = 198670, upload-time = "2026-08-10T22:07:18.421Z" }
 wheels = [
@@ -1798,14 +1798,14 @@ version = "4.7.0"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 dependencies = [
-    { name = "cfgv" },
-    { name = "identify" },
-    { name = "nodeenv" },
-    { name = "pyyaml" },
-    { name = "virtualenv" },
+    { name = "cfgv", marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "identify", marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "nodeenv", marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "pyyaml", marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "virtualenv", marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/3a/c3/6965c2690ddce885ec75121572d065a5b94c5a5d8d3e657927ecda9fd715/pre_commit-4.7.0.tar.gz", hash = "sha256:1f3deee12b914c8fa184bd2b5953391c2e4f36763e403d4a23dc9983fa7c6e86", size = 198120, upload-time = "2026-10-12T20:45:40.32Z" }
 wheels = [
@@ -1842,7 +1842,7 @@ version = "3.12"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/cb/27/eeb9f307bf07060f3d9f9aa0fb8c15b01bdfded0a941e4b2719c7f94cacd/pycparser-3.12.tar.gz", hash = "sha256:f03387877eab82ce01bbdfd0ba7252ee55a90b1c708d5129e2ce915475cf1db6", size = 158785, upload-time = "2026-10-22T13:40:03.56Z" }
 wheels = [
@@ -1855,7 +1855,7 @@ version = "1.10.26"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
     "python_full_version < '3.11'",
 ]
 dependencies = [
@@ -1897,14 +1897,14 @@ version = "2.14.1"
 source = { registry = "https://pypi.org/simple" }
 resolution-markers = [
     "python_full_version >= '3.12' and sys_platform == 'emscripten'",
-    "python_full_version == '3.11.*' or (python_full_version >= '3.12' and sys_platform != 'emscripten')",
+    "(python_full_version >= '3.11' and sys_platform != 'emscripten') or (python_full_version == '3.11.*' and sys_platform == 'emscripten')",
     "python_full_version < '3.11'",
 ]
 dependencies = [
-    { name = "annotated-types", marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
-    { name = "pydantic-core", marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
-    { name = "typing-extensions", marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
-    { name = "typing-inspection", marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
+    { name = "annotated-types", marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
+    { name = "pydantic-core", marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
+    { name = "typing-extensions", marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
+    { name = "typing-inspection", marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/7c/0b/8e10b2e693af8ec54346a14caf36221334775975a747c9ceaa3f8371d96d/pydantic-2.14.1.tar.gz", hash = "sha256:94f478203dd03404682a1ada216965651dd74b1d2d5ffd62e00e0837caab5c26", size = 900362, upload-time = "2026-10-11T18:37:55.396Z" }
 wheels = [
@@ -1916,7 +1916,7 @@ name = "pydantic-core"
 version = "2.50.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
+    { name = "typing-extensions", marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a6/24/af4ec4be49fbc810f35b0bdcacc3d433b56bbfa469fd3bfd4ae116cd9bf1/pydantic_core-2.50.1.tar.gz", hash = "sha256:e50d7b94baac6c7d09927fa5ca5800a0c7ee5015c7fcff65beb3a1931b5a6e09", size = 513515, upload-time = "2026-10-11T18:35:44.82Z" }
 wheels = [
@@ -2072,7 +2072,7 @@ name = "pyjwt"
 version = "2.15.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/43/ea/5194e52748b0da83d71e082d75496eaec6e58f419f5e184786ded517e6a9/pyjwt-2.15.1.tar.gz", hash = "sha256:4f259e80cdfb6b3fc18a7de51fd1ef9ec79652f25019bae68975ca2468a34df8", size = 121252, upload-time = "2026-09-28T18:40:42.598Z" }
 wheels = [
@@ -2089,8 +2089,8 @@ name = "pymdown-extensions"
 version = "10.21.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "markdown", version = "3.10.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "markdown", version = "3.11.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "markdown", version = "3.10.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "markdown", version = "3.11.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "pyyaml" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9e/26/d1015444da4d952a1ca487a236b522eb979766f0295a0bd0c5fc089989a9/pymdown_extensions-10.21.3.tar.gz", hash = "sha256:72cfcf55f07aea0d4af2c4f11dd4e52466ddfb1bb819673146398e0bd3a77354", size = 854140, upload-time = "2026-05-13T12:57:32.267Z" }
@@ -2103,13 +2103,13 @@ name = "pytest"
 version = "9.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-    { name = "exceptiongroup", marker = "python_full_version < '3.11'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "exceptiongroup", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "iniconfig" },
     { name = "packaging" },
     { name = "pluggy" },
     { name = "pygments" },
-    { name = "tomli", marker = "python_full_version < '3.11'" },
+    { name = "tomli", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/79/42/bb4641652e58dedeac2ec51abc1f8cae4fee4ec63899a0999016229a0f2a/pytest-9.2.0.tar.gz", hash = "sha256:97c4f3b1f3c7414aa36465e09b8220f1d03627993bd51b1282e193753c80557b", size = 1797555, upload-time = "2026-10-27T21:30:20.728Z" }
 wheels = [
@@ -2121,8 +2121,8 @@ name = "pytest-cov"
 version = "7.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "coverage", version = "7.16.2", source = { registry = "https://pypi.org/simple" }, extra = ["toml"], marker = "python_full_version < '3.11'" },
-    { name = "coverage", version = "7.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "coverage", version = "7.16.2", source = { registry = "https://pypi.org/simple" }, extra = ["toml"], marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "coverage", version = "7.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "pluggy" },
     { name = "pytest" },
 ]
@@ -2162,8 +2162,8 @@ name = "python-discovery"
 version = "1.6.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "filelock", version = "4.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "filelock", version = "4.2.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "filelock", version = "4.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "filelock", version = "4.2.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a3/0b/908da9ef8a14b600fc188eee8d63ede071996114613721153f6fc9ea3cd5/python_discovery-1.6.7.tar.gz", hash = "sha256:7f7c28568c8ec3d988d8bddbdbec8e65f08e8767e52f734e18b8b498549b9b70", size = 117807, upload-time = "2026-10-28T06:24:21.878Z" }
 wheels = [
@@ -2251,7 +2251,7 @@ name = "redis"
 version = "8.1.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "async-timeout", marker = "python_full_version < '3.11.3'" },
+    { name = "async-timeout", marker = "python_full_version < '3.11.3' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a8/99/604f0b666d4c616d891cf77ebb9db6bb21601344c051aebf1b72b9ff915f/redis-8.1.0.tar.gz", hash = "sha256:6e1a19beef9225c83efd689c7e6b7da2d5215b1f42cd13b7fc3714d0a09c7b25", size = 5254356, upload-time = "2026-07-30T08:51:00.269Z" }
 wheels = [
@@ -2420,7 +2420,7 @@ name = "typing-inspection"
 version = "0.4.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "extra != 'group-9-githubkit-pydantic-v1' or extra == 'group-9-githubkit-pydantic-v2'" },
+    { name = "typing-extensions", marker = "extra == 'group-9-githubkit-pydantic-v2' or extra != 'group-9-githubkit-pydantic-v1'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a3/26/b09b8010994eccc3c09092e6b34058f36a460eea2d4c3e8b910c695975a0/typing_inspection-0.4.4.tar.gz", hash = "sha256:547274fa6b0a561ccf549cc9524b999a578e737d015d8709d021f9d0d13bea47", size = 76928, upload-time = "2026-08-12T12:37:25.997Z" }
 wheels = [
@@ -2451,13 +2451,13 @@ version = "21.15.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "distlib" },
-    { name = "filelock", version = "4.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "filelock", version = "4.2.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "filelock", version = "4.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "filelock", version = "4.2.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "packaging" },
-    { name = "platformdirs", version = "4.12.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "platformdirs", version = "4.13.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "platformdirs", version = "4.12.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
+    { name = "platformdirs", version = "4.13.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
     { name = "python-discovery" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'group-9-githubkit-pydantic-v1' and extra == 'group-9-githubkit-pydantic-v2')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/b2/24/20282bc8e69ff8dee680dc2b95e9dc81fa7e7894b14c1a8d06330e97fef7/virtualenv-21.15.1.tar.gz", hash = "sha256:e79c90b8f601701599c25905e02839924fede2c798d52325670d24fbdaab74ee", size = 5517048, upload-time = "2026-10-28T01:12:50.919Z" }
 wheels = [
