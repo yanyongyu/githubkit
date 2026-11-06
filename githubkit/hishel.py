@@ -14,10 +14,20 @@ from hishel import (
 from ._httpx import AsyncCacheTransport, CacheTransport, httpx
 
 
+def _validate_policy(policy: Any) -> CacheOptions | bool:
+    if not isinstance(policy, (bool, dict)):
+        raise TypeError(
+            "policy must be a hishel CacheOptions instance or a bool, "
+            f"got {type(policy).__name__}. hishel 2.0 removed CachePolicy "
+            "(e.g. SpecificationPolicy); pass CacheOptions(...) instead."
+        )
+    return policy
+
+
 class SyncCacheClient(httpx.Client):
     def __init__(self, *args: Any, **kwargs: Any):
         self.storage: BaseStorage | None = kwargs.pop("storage", None)
-        self.policy: CacheOptions | bool = kwargs.pop("policy", True)
+        self.policy: CacheOptions | bool = _validate_policy(kwargs.pop("policy", True))
         super().__init__(*args, **kwargs)
 
     def _init_transport(self, *args, **kwargs) -> httpx.BaseTransport:
@@ -36,7 +46,7 @@ class SyncCacheClient(httpx.Client):
 class AsyncCacheClient(httpx.AsyncClient):
     def __init__(self, *args: Any, **kwargs: Any):
         self.storage: AsyncBaseStorage | None = kwargs.pop("storage", None)
-        self.policy: CacheOptions | bool = kwargs.pop("policy", True)
+        self.policy: CacheOptions | bool = _validate_policy(kwargs.pop("policy", True))
         super().__init__(*args, **kwargs)
 
     def _init_transport(self, *args, **kwargs) -> httpx.AsyncBaseTransport:
