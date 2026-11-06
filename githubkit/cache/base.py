@@ -3,10 +3,8 @@ from datetime import timedelta
 
 from hishel import (
     AsyncBaseStorage,
+    BaseStorage,
     CacheOptions,
-    CachePolicy,
-    SpecificationPolicy,
-    SyncBaseStorage,
 )
 
 
@@ -47,12 +45,12 @@ class BaseCacheStrategy(abc.ABC):
         """
         raise NotImplementedError
 
-    def get_hishel_policy(self) -> CachePolicy:
+    def get_hishel_policy(self) -> CacheOptions:
         """Get the hishel cache policy instance"""
-        return SpecificationPolicy(cache_options=CacheOptions(shared=False))
+        return CacheOptions(shared=False)
 
     @abc.abstractmethod
-    def get_hishel_storage(self) -> SyncBaseStorage:
+    def get_hishel_storage(self) -> BaseStorage:
         """Get the hishel storage instance used in sync context"""
         raise NotImplementedError
 
