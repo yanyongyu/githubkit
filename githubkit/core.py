@@ -275,7 +275,7 @@ class GitHubCore(Generic[A]):
                 transport=self.config.transport,
                 event_hooks=self.config.event_hooks,
                 storage=self.config.cache_strategy.get_hishel_storage(),
-                policy=self.config.cache_strategy.get_hishel_policy(),
+                rfc=self.config.cache_strategy.get_hishel_options(),
             )
 
         return httpx.Client(
@@ -303,7 +303,7 @@ class GitHubCore(Generic[A]):
                 transport=self.config.async_transport,
                 event_hooks=self.config.async_event_hooks,
                 storage=await self.config.cache_strategy.get_async_hishel_storage(),
-                policy=self.config.cache_strategy.get_hishel_policy(),
+                rfc=self.config.cache_strategy.get_hishel_options(),
             )
 
         return httpx.AsyncClient(

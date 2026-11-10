@@ -14,54 +14,41 @@ from hishel import (
 from ._httpx import AsyncCacheTransport, CacheTransport, httpx
 
 
-def _check_policy(policy: Any) -> None:
-    if not isinstance(policy, (bool, dict)):
-        raise TypeError(
-            "policy must be a hishel CacheOptions instance or a bool, "
-            f"got {type(policy).__name__}. hishel 2.0 removed CachePolicy "
-            "(e.g. SpecificationPolicy); pass CacheOptions(...) instead."
-        )
-
-
 class SyncCacheClient(httpx.Client):
     def __init__(self, *args: Any, **kwargs: Any):
         self.storage: BaseStorage | None = kwargs.pop("storage", None)
-        policy = kwargs.pop("policy", True)
-        _check_policy(policy)
-        self.policy: CacheOptions | bool = policy
+        self.rfc: CacheOptions | bool = kwargs.pop("rfc", True)
         super().__init__(*args, **kwargs)
 
     def _init_transport(self, *args, **kwargs) -> httpx.BaseTransport:
         _transport = super()._init_transport(*args, **kwargs)
         return CacheTransport(
-            next_transport=_transport, storage=self.storage, rfc=self.policy
+            next_transport=_transport, storage=self.storage, rfc=self.rfc
         )
 
     def _init_proxy_transport(self, *args, **kwargs) -> httpx.BaseTransport:
         _transport = super()._init_proxy_transport(*args, **kwargs)
         return CacheTransport(
-            next_transport=_transport, storage=self.storage, rfc=self.policy
+            next_transport=_transport, storage=self.storage, rfc=self.rfc
         )
 
 
 class AsyncCacheClient(httpx.AsyncClient):
     def __init__(self, *args: Any, **kwargs: Any):
         self.storage: AsyncBaseStorage | None = kwargs.pop("storage", None)
-        policy = kwargs.pop("policy", True)
-        _check_policy(policy)
-        self.policy: CacheOptions | bool = policy
+        self.rfc: CacheOptions | bool = kwargs.pop("rfc", True)
         super().__init__(*args, **kwargs)
 
     def _init_transport(self, *args, **kwargs) -> httpx.AsyncBaseTransport:
         _transport = super()._init_transport(*args, **kwargs)
         return AsyncCacheTransport(
-            next_transport=_transport, storage=self.storage, rfc=self.policy
+            next_transport=_transport, storage=self.storage, rfc=self.rfc
         )
 
     def _init_proxy_transport(self, *args, **kwargs) -> httpx.AsyncBaseTransport:
         _transport = super()._init_proxy_transport(*args, **kwargs)
         return AsyncCacheTransport(
-            next_transport=_transport, storage=self.storage, rfc=self.policy
+            next_transport=_transport, storage=self.storage, rfc=self.rfc
         )
 
 
@@ -72,9 +59,7 @@ class SyncMemoryStorage(SqliteStorage):
         default_ttl: float | None = None,
         keep_unclosed: bool = False,
     ) -> None:
-        super().__init__(
-            default_ttl=default_ttl,
-        )
+        super().__init__(default_ttl=default_ttl)
         # NOTE: hishel close the storage when the client transport is closed.
         # but for in-memory sqlite,
         # we may want to keep it unclosed to preserve the data for the next client.
@@ -105,9 +90,7 @@ class AsyncMemoryStorage(AsyncSqliteStorage):
         default_ttl: float | None = None,
         keep_unclosed: bool = False,
     ) -> None:
-        super().__init__(
-            default_ttl=default_ttl,
-        )
+        super().__init__(default_ttl=default_ttl)
         # NOTE: hishel close the storage when the client transport is closed.
         # but for in-memory sqlite,
         # we may want to keep it unclosed to preserve the data for the next client.

@@ -1,11 +1,7 @@
 import abc
 from datetime import timedelta
 
-from hishel import (
-    AsyncBaseStorage,
-    BaseStorage,
-    CacheOptions,
-)
+from hishel import AsyncBaseStorage, BaseStorage, CacheOptions
 
 
 class BaseCache(abc.ABC):
@@ -45,8 +41,8 @@ class BaseCacheStrategy(abc.ABC):
         """
         raise NotImplementedError
 
-    def get_hishel_policy(self) -> CacheOptions:
-        """Get the hishel cache policy instance"""
+    def get_hishel_options(self) -> CacheOptions:
+        """Get the hishel cache options instance"""
         return CacheOptions(shared=False)
 
     @abc.abstractmethod

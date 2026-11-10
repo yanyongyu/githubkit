@@ -316,9 +316,9 @@ github = GitHub(
 
     githubkit now depends on Hishel `>=2.0`. If you implement a custom `BaseCacheStrategy` or use githubkit's cache clients directly, note these breaking changes:
 
-    - `get_hishel_policy()` must return a `hishel.CacheOptions` instead of a `CachePolicy`. Hishel 2.0 removed `CachePolicy` and `SpecificationPolicy`. For example, replace `SpecificationPolicy(cache_options=CacheOptions(shared=False))` with `CacheOptions(shared=False)`.
+    - `get_hishel_policy()` has been replaced by `get_hishel_options()`, which returns a `hishel.CacheOptions` instead of a `CachePolicy`. Hishel 2.0 removed `CachePolicy` and `SpecificationPolicy`. For example, replace `SpecificationPolicy(cache_options=CacheOptions(shared=False))` with `CacheOptions(shared=False)`.
     - `get_hishel_storage()` must return a `hishel.BaseStorage` (formerly `SyncBaseStorage`). `SyncSqliteStorage` is now `SqliteStorage`.
-    - The `policy` argument of `SyncCacheClient` / `AsyncCacheClient` now accepts `CacheOptions | bool` and defaults to `True` (RFC 9111 caching, same behavior as before). Passing an old `CachePolicy` raises a `TypeError`.
+    - The `policy` argument of `SyncCacheClient` / `AsyncCacheClient` has been renamed to `rfc` to align with Hishel 2.0. It accepts `CacheOptions | bool` and defaults to `True` (RFC 9111 caching, same behavior as before).
     - `SyncMemoryStorage` / `AsyncMemoryStorage` no longer accept `refresh_ttl_on_access`.
 
 ### `http_cache`
