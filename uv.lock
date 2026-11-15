@@ -944,7 +944,7 @@ requires-dist = [
     { name = "githubkit-schemas", editable = "packages/githubkit-schemas" },
     { name = "githubkit-schemas", extras = ["all"], marker = "extra == 'all'", editable = "packages/githubkit-schemas" },
     { name = "githubkit-schemas", extras = ["all"], marker = "extra == 'all-schemas'", editable = "packages/githubkit-schemas" },
-    { name = "hishel", extras = ["async", "httpx"], specifier = ">=1.4.0,<2.0.0" },
+    { name = "hishel", extras = ["async", "httpx"], specifier = ">=2.0.0,<3.0.0" },
     { name = "httpx", specifier = ">=0.23.0,<1.0.0" },
     { name = "pydantic", specifier = ">=1.9.1,!=2.5.0,!=2.5.1,<3.0.0" },
     { name = "pyjwt", extras = ["crypto"], marker = "extra == 'all'", specifier = ">=2.4.0,<3.0.0" },
@@ -1129,15 +1129,15 @@ wheels = [
 
 [[package]]
 name = "hishel"
-version = "1.4.0"
+version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "msgpack" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c6/ff/efba29288e1d304359491fa3aab83174c3ef24a63819e6acad6873d8c0a9/hishel-1.4.0.tar.gz", hash = "sha256:e406b052c658ce28629fc31423b9914b637d47d7c923f5fe9e288ec47e4823d1", size = 813499, upload-time = "2026-09-16T15:38:54.085Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/13/83/e8c4e482b6f5e9c2f9d1c7a1503137eed81b689d358ae0df6ac50d79f172/hishel-2.0.0.tar.gz", hash = "sha256:f043c88acf9b476fdbf203986253cd4e27e2468a3319b43c3946a641e1cb7696", size = 902409, upload-time = "2026-11-05T14:10:42.119Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/da/c5/2cf7b80da9833de6ae5099111b64cf541830ccb4ef26605ae86f23ed5604/hishel-1.4.0-py3-none-any.whl", hash = "sha256:38cb62d7d38fb437dc086f789c26d0cab41310d12497ec3f56dcead4b08571f0", size = 80795, upload-time = "2026-09-16T15:38:52.545Z" },
+    { url = "https://files.pythonhosted.org/packages/01/9e/3657bc96268326f911952e2b6d67494344ef0c49220db342f1d625cb2cf3/hishel-2.0.0-py3-none-any.whl", hash = "sha256:3e96613d05a13d08d4ee22621dff3aebcdffbe41472efc2b5d4d01d6bd254983", size = 81878, upload-time = "2026-11-05T14:10:40.115Z" },
 ]
 
 [package.optional-dependencies]
