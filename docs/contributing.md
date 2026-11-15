@@ -13,7 +13,7 @@ Local development environment setup:
 Make sure you have installed [uv](https://docs.astral.sh/uv/).
 
 ```bash
-uv sync --all-extras && uv run pre-commit install
+uv sync --all-extras --all-packages && uv run pre-commit install
 ```
 
 ## GitHub Schema Update
@@ -56,7 +56,7 @@ If you want to switch between pydantic v1 and v2, you can use the following comm
 
 ```bash
 # Pydantic v1
-uv sync --all-extras --group pydantic-v1
+uv sync --all-extras --all-packages --group pydantic-v1
 # Pydantic v2
-uv sync --all-extras --group pydantic-v2
+uv sync --all-extras --all-packages --group pydantic-v2
 ```
