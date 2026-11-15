@@ -13,36 +13,38 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0262 import (
-    RepositoryRuleCopilotCodeReviewPropParametersType,
-    RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse,
+    RepositoryRuleCodeCoveragePropParametersType,
+    RepositoryRuleCodeCoveragePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCopilotCodeReviewType(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCodeCoverageType(TypedDict):
+    """code_coverage
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and AI credits.
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[RepositoryRuleCopilotCodeReviewPropParametersType]
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
 
 
-class RepositoryRuleCopilotCodeReviewTypeForResponse(TypedDict):
-    """copilot_code_review
+class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
+    """code_coverage
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and AI credits.
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
     """
 
-    type: Literal["copilot_code_review"]
-    parameters: NotRequired[
-        RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse
-    ]
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewType",
-    "RepositoryRuleCopilotCodeReviewTypeForResponse",
+    "RepositoryRuleCodeCoverageType",
+    "RepositoryRuleCodeCoverageTypeForResponse",
 )

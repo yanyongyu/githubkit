@@ -9,26 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0018 import InstallationType, InstallationTypeForResponse
+
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+    )
 
 
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    total_count: int
-    installations: list[InstallationType]
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
 
 
-class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
 
 
 __all__ = (
-    "OrgsOrgInstallationsGetResponse200Type",
-    "OrgsOrgInstallationsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
 )

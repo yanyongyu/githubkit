@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,9 +31,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422(GitHubModel
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
-        ]
+        list[AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -49,10 +47,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422(GitHubModel
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems
 
     A single validation error
     """
@@ -71,12 +69,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsIt
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems",
 )

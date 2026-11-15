@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -19,39 +19,32 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
+from .group_0515 import IssueEventIntent
 
 
-class ReviewDismissedIssueEvent(GitHubModel):
-    """Review Dismissed Issue Event
+class AssignedIssueEvent(GitHubModel):
+    """Assigned Issue Event
 
-    Review Dismissed Issue Event
+    Assigned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_dismissed"] = Field()
+    event: str = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field()
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReview = Field()
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
 
 
-class ReviewDismissedIssueEventPropDismissedReview(GitHubModel):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+model_rebuild(AssignedIssueEvent)
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReviewDismissedIssueEvent)
-model_rebuild(ReviewDismissedIssueEventPropDismissedReview)
-
-__all__ = (
-    "ReviewDismissedIssueEvent",
-    "ReviewDismissedIssueEventPropDismissedReview",
-)
+__all__ = ("AssignedIssueEvent",)

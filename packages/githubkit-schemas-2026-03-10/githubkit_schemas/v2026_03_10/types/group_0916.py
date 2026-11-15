@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0569 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0570 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0571 import (
+from .group_0582 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0583 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0584 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0572 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0612 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
+from .group_0585 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0625 import PullRequestWebhookType, PullRequestWebhookTypeForResponse
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestClosedType(TypedDict):
+    """pull_request closed event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -36,10 +36,10 @@ class WebhookPullRequestReadyForReviewType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookPullRequestReadyForReviewTypeForResponse(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestClosedTypeForResponse(TypedDict):
+    """pull_request closed event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     number: int
@@ -50,6 +50,6 @@ class WebhookPullRequestReadyForReviewTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPullRequestReadyForReviewType",
-    "WebhookPullRequestReadyForReviewTypeForResponse",
+    "WebhookPullRequestClosedType",
+    "WebhookPullRequestClosedTypeForResponse",
 )

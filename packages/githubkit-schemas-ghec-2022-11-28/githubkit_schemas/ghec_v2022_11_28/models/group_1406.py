@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,51 +17,95 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0146 import RepositoryRulesetBypassActor
+from .group_0149 import EnterpriseRulesetConditionsOneof0
+from .group_0150 import EnterpriseRulesetConditionsOneof1
+from .group_0151 import EnterpriseRulesetConditionsOneof2
+from .group_0152 import EnterpriseRulesetConditionsOneof3
+from .group_0153 import EnterpriseRulesetConditionsOneof4
+from .group_0154 import EnterpriseRulesetConditionsOneof5
+from .group_0155 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0156 import RepositoryRuleUpdate
+from .group_0158 import RepositoryRuleRequiredLinearHistory
+from .group_0159 import RepositoryRuleRequiredDeployments
+from .group_0162 import RepositoryRulePullRequest
+from .group_0164 import RepositoryRuleRequiredStatusChecks
+from .group_0166 import RepositoryRuleCommitMessagePattern
+from .group_0168 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0170 import RepositoryRuleCommitterEmailPattern
+from .group_0172 import RepositoryRuleBranchNamePattern
+from .group_0174 import RepositoryRuleTagNamePattern
+from .group_0176 import RepositoryRuleFilePathRestriction
+from .group_0178 import RepositoryRuleMaxFilePathLength
+from .group_0180 import RepositoryRuleFileExtensionRestriction
+from .group_0182 import RepositoryRuleMaxFileSize
+from .group_0185 import RepositoryRuleWorkflows
+from .group_0187 import RepositoryRuleCodeScanning
+from .group_0189 import RepositoryRuleCopilotCodeReview
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00
-    """
 
-    message: Missing[str] = Field(default=UNSET)
-    reassigned_resources: Missing[
+class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
+    """EnterprisesEnterpriseRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
+    )
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
         Union[
-            list[
-                EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
-            ],
-            None,
+            EnterpriseRulesetConditionsOneof0,
+            EnterpriseRulesetConditionsOneof1,
+            EnterpriseRulesetConditionsOneof2,
+            EnterpriseRulesetConditionsOneof3,
+            EnterpriseRulesetConditionsOneof4,
+            EnterpriseRulesetConditionsOneof5,
         ]
-    ] = Field(default=UNSET)
-
-
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse2
-    00PropReassignedResourcesItems
-    """
-
-    resource_type: Missing[str] = Field(
-        default=UNSET, description="The type of resource that was reassigned."
+    ] = Field(
+        default=UNSET,
+        title="Enterprise ruleset conditions",
+        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
     )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the resource that was reassigned."
-    )
-    previous_cost_center: Missing[str] = Field(
-        default=UNSET, description="The previous cost center of the resource."
-    )
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCopilotCodeReview,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
-)
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems
-)
+model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200",
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200PropReassignedResourcesItems",
-)
+__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)

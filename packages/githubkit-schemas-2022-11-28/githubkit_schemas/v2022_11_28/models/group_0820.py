@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0570 import EnterpriseWebhooks
-from .group_0571 import SimpleInstallation
-from .group_0572 import OrganizationSimpleWebhooks
-from .group_0573 import RepositoryWebhooks
-from .group_0596 import WebhooksLabelArchived
+from .group_0583 import EnterpriseWebhooks
+from .group_0584 import SimpleInstallation
+from .group_0585 import OrganizationSimpleWebhooks
+from .group_0586 import RepositoryWebhooks
+from .group_0607 import WebhooksIssue2
 
 
-class WebhookLabelArchived(GitHubModel):
-    """label archived event"""
+class WebhookIssuesPinned(GitHubModel):
+    """issues pinned event"""
 
-    action: Literal["archived"] = Field()
+    action: Literal["pinned"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,10 @@ class WebhookLabelArchived(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabelArchived = Field(title="Archived label")
+    issue: WebhooksIssue2 = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,6 +55,6 @@ class WebhookLabelArchived(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelArchived)
+model_rebuild(WebhookIssuesPinned)
 
-__all__ = ("WebhookLabelArchived",)
+__all__ = ("WebhookIssuesPinned",)

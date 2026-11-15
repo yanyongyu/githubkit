@@ -18,24 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgInvitationsPostBody(GitHubModel):
+    """OrgsOrgInvitationsPostBody"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    invitee_id: Missing[int] = Field(
+        default=UNSET,
+        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
     )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
     )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
+    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
+        Field(
+            default=UNSET,
+            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
+        )
     )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
+    team_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="Specify IDs for the teams you want to invite new members to.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
+model_rebuild(OrgsOrgInvitationsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)
+__all__ = ("OrgsOrgInvitationsPostBody",)

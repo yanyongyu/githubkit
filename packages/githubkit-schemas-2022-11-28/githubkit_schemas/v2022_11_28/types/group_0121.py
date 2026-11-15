@@ -9,24 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsPolicyWorkflowPathConditionPropWorkflowPathType(TypedDict):
-    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    include: list[str]
-    exclude: list[str]
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
-class ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse(TypedDict):
-    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
+class ActionsSetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    include: list[str]
-    exclude: list[str]
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsPolicyWorkflowPathConditionPropWorkflowPathType",
-    "ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse",
+    "ActionsSetDefaultWorkflowPermissionsType",
+    "ActionsSetDefaultWorkflowPermissionsTypeForResponse",
 )

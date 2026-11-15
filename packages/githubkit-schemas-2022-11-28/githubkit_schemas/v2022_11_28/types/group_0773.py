@@ -13,47 +13,47 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0053 import IssueType, IssueTypeForResponse
-from .group_0571 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0572 import (
+from .group_0583 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0584 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0585 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0573 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0586 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0603 import WebhooksIssueCommentType, WebhooksIssueCommentTypeForResponse
+from .group_0774 import (
+    WebhookIssueCommentUnpinnedPropIssueType,
+    WebhookIssueCommentUnpinnedPropIssueTypeForResponse,
+)
 
 
-class WebhookIssueDependenciesBlockingAddedType(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueCommentUnpinnedType(TypedDict):
+    """issue_comment unpinned event"""
 
-    action: Literal["blocking_added"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueType]
-    blocked_issue_repo: NotRequired[RepositoryType]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueType]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    issue: WebhookIssueCommentUnpinnedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssueDependenciesBlockingAddedTypeForResponse(TypedDict):
-    """blocking issue added event"""
+class WebhookIssueCommentUnpinnedTypeForResponse(TypedDict):
+    """issue_comment unpinned event"""
 
-    action: Literal["blocking_added"]
-    blocked_issue_id: NotRequired[float]
-    blocked_issue: NotRequired[IssueTypeForResponse]
-    blocked_issue_repo: NotRequired[RepositoryTypeForResponse]
-    blocking_issue_id: NotRequired[float]
-    blocking_issue: NotRequired[IssueTypeForResponse]
+    action: Literal["unpinned"]
+    comment: WebhooksIssueCommentTypeForResponse
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: OrganizationSimpleWebhooksTypeForResponse
+    issue: WebhookIssueCommentUnpinnedPropIssueTypeForResponse
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssueDependenciesBlockingAddedType",
-    "WebhookIssueDependenciesBlockingAddedTypeForResponse",
+    "WebhookIssueCommentUnpinnedType",
+    "WebhookIssueCommentUnpinnedTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,20 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0569 import EnterpriseWebhooks
-from .group_0570 import SimpleInstallation
-from .group_0571 import OrganizationSimpleWebhooks
-from .group_0572 import RepositoryWebhooks
-from .group_0585 import WebhooksLabel
+from .group_0582 import EnterpriseWebhooks
+from .group_0583 import SimpleInstallation
+from .group_0584 import OrganizationSimpleWebhooks
+from .group_0585 import RepositoryWebhooks
+from .group_0604 import WebhooksIssue
 
 
-class WebhookLabelEdited(GitHubModel):
-    """label edited event"""
+class WebhookIssuesStatusChanged(GitHubModel):
+    """issues status_changed event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookLabelEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the label if the action was `edited`.",
+    action: Literal["status_changed"] = Field()
+    changes: WebhookIssuesStatusChangedPropChanges = Field(
+        description="The changes to the issue. `state` and `state_reason` are only included when the status change also closed or reopened the issue, or changed the reason it was closed."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -43,7 +42,10 @@ class WebhookLabelEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
+    issue: WebhooksIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -54,58 +56,99 @@ class WebhookLabelEdited(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    status: WebhookIssuesStatusChangedPropStatus = Field(
+        title="Planning status", description="The status the issue changed to."
+    )
 
 
-class WebhookLabelEditedPropChanges(GitHubModel):
-    """WebhookLabelEditedPropChanges
+class WebhookIssuesStatusChangedPropStatus(GitHubModel):
+    """Planning status
 
-    The changes to the label if the action was `edited`.
+    The status the issue changed to.
     """
 
-    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
-    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
+    id: int = Field(description="The stable identifier of the planning status.")
+    name: str = Field(
+        description="The display name of the planning status, which may change in the future."
+    )
+    category: str = Field(
+        description="A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added."
+    )
+
+
+class WebhookIssuesStatusChangedPropChanges(GitHubModel):
+    """WebhookIssuesStatusChangedPropChanges
+
+    The changes to the issue. `state` and `state_reason` are only included when the
+    status change also closed or reopened the issue, or changed the reason it was
+    closed.
+    """
+
+    status: WebhookIssuesStatusChangedPropChangesPropStatus = Field()
+    state: Missing[WebhookIssuesStatusChangedPropChangesPropState] = Field(
         default=UNSET
     )
-    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookLabelEditedPropChangesPropColor(GitHubModel):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the color if the action was `edited`.",
+    state_reason: Missing[WebhookIssuesStatusChangedPropChangesPropStateReason] = Field(
+        default=UNSET
     )
 
 
-class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
-    """WebhookLabelEditedPropChangesPropDescription"""
+class WebhookIssuesStatusChangedPropChangesPropState(GitHubModel):
+    """WebhookIssuesStatusChangedPropChangesPropState"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
+    from_: Literal["open", "closed"] = Field(
+        alias="from", description="The state of the issue before the change."
     )
 
 
-class WebhookLabelEditedPropChangesPropName(GitHubModel):
-    """WebhookLabelEditedPropChangesPropName"""
+class WebhookIssuesStatusChangedPropChangesPropStateReason(GitHubModel):
+    """WebhookIssuesStatusChangedPropChangesPropStateReason"""
 
-    from_: str = Field(
+    from_: Union[str, None] = Field(
         alias="from",
-        description="The previous version of the name if the action was `edited`.",
+        description="The reason for the state of the issue before the change.",
     )
 
 
-model_rebuild(WebhookLabelEdited)
-model_rebuild(WebhookLabelEditedPropChanges)
-model_rebuild(WebhookLabelEditedPropChangesPropColor)
-model_rebuild(WebhookLabelEditedPropChangesPropDescription)
-model_rebuild(WebhookLabelEditedPropChangesPropName)
+class WebhookIssuesStatusChangedPropChangesPropStatus(GitHubModel):
+    """WebhookIssuesStatusChangedPropChangesPropStatus"""
+
+    from_: Union[WebhookIssuesStatusChangedPropChangesPropStatusPropFrom, None] = Field(
+        alias="from",
+        title="Planning status",
+        description="The status the issue had before the change, or `null` if it had none.",
+    )
+
+
+class WebhookIssuesStatusChangedPropChangesPropStatusPropFrom(GitHubModel):
+    """Planning status
+
+    The status the issue had before the change, or `null` if it had none.
+    """
+
+    id: int = Field(description="The stable identifier of the planning status.")
+    name: str = Field(
+        description="The display name of the planning status, which may change in the future."
+    )
+    category: str = Field(
+        description="A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added."
+    )
+
+
+model_rebuild(WebhookIssuesStatusChanged)
+model_rebuild(WebhookIssuesStatusChangedPropStatus)
+model_rebuild(WebhookIssuesStatusChangedPropChanges)
+model_rebuild(WebhookIssuesStatusChangedPropChangesPropState)
+model_rebuild(WebhookIssuesStatusChangedPropChangesPropStateReason)
+model_rebuild(WebhookIssuesStatusChangedPropChangesPropStatus)
+model_rebuild(WebhookIssuesStatusChangedPropChangesPropStatusPropFrom)
 
 __all__ = (
-    "WebhookLabelEdited",
-    "WebhookLabelEditedPropChanges",
-    "WebhookLabelEditedPropChangesPropColor",
-    "WebhookLabelEditedPropChangesPropDescription",
-    "WebhookLabelEditedPropChangesPropName",
+    "WebhookIssuesStatusChanged",
+    "WebhookIssuesStatusChangedPropChanges",
+    "WebhookIssuesStatusChangedPropChangesPropState",
+    "WebhookIssuesStatusChangedPropChangesPropStateReason",
+    "WebhookIssuesStatusChangedPropChangesPropStatus",
+    "WebhookIssuesStatusChangedPropChangesPropStatusPropFrom",
+    "WebhookIssuesStatusChangedPropStatus",
 )

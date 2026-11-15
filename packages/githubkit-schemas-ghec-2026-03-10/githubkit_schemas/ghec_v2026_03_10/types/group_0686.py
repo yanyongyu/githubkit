@@ -9,45 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0688 import (
-    WebhooksLabelArchivedAllof1PropArchivedByType,
-    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
-)
 
+class WebhooksWorkflowJobRunType(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-class WebhooksLabelArchivedType(TypedDict):
-    """Archived label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: _dt.datetime
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
     id: int
-    name: str
-    node_id: str
-    url: str
+    name: None
+    status: str
+    updated_at: str
 
 
-class WebhooksLabelArchivedTypeForResponse(TypedDict):
-    """Archived label"""
+class WebhooksWorkflowJobRunTypeForResponse(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
-    archived_at: str
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
     id: int
-    name: str
-    node_id: str
-    url: str
+    name: None
+    status: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhooksLabelArchivedType",
-    "WebhooksLabelArchivedTypeForResponse",
+    "WebhooksWorkflowJobRunType",
+    "WebhooksWorkflowJobRunTypeForResponse",
 )

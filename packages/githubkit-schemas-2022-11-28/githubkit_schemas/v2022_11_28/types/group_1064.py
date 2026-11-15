@@ -13,8 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401
+class AgentsReposOwnerRepoAutomationsGetResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsGetResponse400
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsGetResponse400TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoAutomationsGetResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -25,7 +43,7 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type(TypedDi
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsType
+            AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -33,32 +51,8 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type(TypedDi
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems
+class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems
 
     A single validation error
     """
@@ -74,10 +68,10 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsIt
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems
 
     A single validation error
     """
@@ -94,8 +88,8 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsIt
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401Type",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsGetResponse400Type",
+    "AgentsReposOwnerRepoAutomationsGetResponse400TypeForResponse",
 )

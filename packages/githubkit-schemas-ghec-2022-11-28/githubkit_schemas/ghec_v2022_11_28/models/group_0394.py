@@ -9,81 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ConcurrencyGroupRunList(GitHubModel):
-    """Concurrency Group Run List
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    A list of concurrency groups associated with a workflow run.
+    A commit.
     """
 
-    total_count: int = Field(
-        description="The total number of concurrency groups this workflow run participates in,\nderived from the run's configuration. This count is not filtered by\nwhether the run currently holds or is waiting in each group, so it can\ninclude groups whose `group_members` array is empty (for example, when\nthe run has already released its lease in that group)."
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: _dt.datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
     )
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItems] = (
-        Field()
-    )
-
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItems(GitHubModel):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str = Field(description="The name of the concurrency group.")
-    group_url: str = Field(
-        description="API URL for this concurrency group. May return 404 if the group\nhas no active items at the time it is requested, since the\nget-by-name endpoint reports the live repo-wide state of a group\nwhile this endpoint lists groups associated with a run by\nconfiguration."
-    )
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems
-    ] = Field(
-        description="Items belonging to this workflow run that are either currently holding or\nwaiting for the concurrency group lease. May be empty if the run no\nlonger has any active or queued items in this group."
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
     )
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems(
-    GitHubModel
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
 
-    run_id: int = Field(description="The ID of the workflow run.")
-    run_name: str = Field(description="The name of the workflow run.")
-    run_url: Union[str, None] = Field(description="API URL for the workflow run.")
-    run_html_url: Union[str, None] = Field(description="Web URL for the workflow run.")
-    position: int = Field(
-        description="Queue position. 0 means the item holds the concurrency lease (in_progress), 1 or higher means queued (pending)."
-    )
-    position_url: str = Field(
-        description="API URL to get items ahead of this item in the concurrency group."
-    )
-    job_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the job, when the item represents a job-level or reusable-workflow-level lease.",
-    )
-    job_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The display name of the job, when the item represents a job-level or reusable-workflow-level lease.",
-    )
-    job_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="API URL for the job."
-    )
-    job_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Web URL for the job."
-    )
-    status: Literal["in_progress", "pending"] = Field()
+    Information about the Git author
+    """
+
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
 
 
-model_rebuild(ConcurrencyGroupRunList)
-model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItems)
-model_rebuild(ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems)
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "ConcurrencyGroupRunList",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItems",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

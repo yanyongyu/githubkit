@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,9 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems]
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
+        ]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,10 +49,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
 
     A single validation error
     """
@@ -69,12 +71,12 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422)
 model_rebuild(
-    AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems",
 )

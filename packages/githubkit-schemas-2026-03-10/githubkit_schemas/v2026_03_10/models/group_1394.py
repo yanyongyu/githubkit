@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,33 +18,47 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0122 import ActionsPolicyRepoConditionsOneof0
-from .group_0123 import ActionsPolicyRepoConditionsOneof1
-from .group_0145 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
+
+class OrgsOrgSettingsNetworkConfigurationsGetResponse200(GitHubModel):
+    """OrgsOrgSettingsNetworkConfigurationsGetResponse200"""
+
+    total_count: int = Field()
+    network_configurations: list[NetworkConfiguration] = Field()
 
 
-class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPostBody"""
+class NetworkConfiguration(GitHubModel):
+    """Hosted compute network configuration
 
-    name: str = Field(description="The name of the policy.")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    conditions: Missing[
-        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
-    ] = Field(
+    A hosted compute network configuration.
+    """
+
+    id: str = Field(description="The unique identifier of the network configuration.")
+    name: str = Field(description="The name of the network configuration.")
+    compute_service: Missing[Literal["none", "actions", "codespaces"]] = Field(
         default=UNSET,
-        title="Repository Actions policy conditions",
-        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
+        description="The hosted compute service the network configuration supports.",
     )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each network settings in the configuration.",
+    )
+    failover_network_settings_ids: Missing[list[str]] = Field(
+        default=UNSET,
+        description="The unique identifier of each failover network settings in the configuration.",
+    )
+    failover_network_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the failover network resource is enabled.",
+    )
+    created_on: Union[_dt.datetime, None] = Field(
+        description="The time at which the network configuration was created, in ISO 8601 format."
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
+model_rebuild(OrgsOrgSettingsNetworkConfigurationsGetResponse200)
+model_rebuild(NetworkConfiguration)
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)
+__all__ = (
+    "NetworkConfiguration",
+    "OrgsOrgSettingsNetworkConfigurationsGetResponse200",
+)

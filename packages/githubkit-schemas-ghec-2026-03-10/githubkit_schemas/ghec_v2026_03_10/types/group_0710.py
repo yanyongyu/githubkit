@@ -9,62 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-    The security alert of the vulnerable dependency.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserType, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[_dt.datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["auto_dismissed", "open"]
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
+    url: str
+    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksAlertTypeForResponse(TypedDict):
-    """Repository Vulnerability Alert Alert
+class WebhooksMembershipTypeForResponse(TypedDict):
+    """Membership
 
-    The security alert of the vulnerable dependency.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[Union[WebhooksAlertPropDismisserTypeForResponse, None]]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[str]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["auto_dismissed", "open"]
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
+    url: str
+    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
 
 
-class WebhooksAlertPropDismisserType(TypedDict):
+class WebhooksMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -88,9 +69,10 @@ class WebhooksAlertPropDismisserType(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
+class WebhooksMembershipPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -114,11 +96,12 @@ class WebhooksAlertPropDismisserTypeForResponse(TypedDict):
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksAlertPropDismisserType",
-    "WebhooksAlertPropDismisserTypeForResponse",
-    "WebhooksAlertType",
-    "WebhooksAlertTypeForResponse",
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipPropUserTypeForResponse",
+    "WebhooksMembershipType",
+    "WebhooksMembershipTypeForResponse",
 )

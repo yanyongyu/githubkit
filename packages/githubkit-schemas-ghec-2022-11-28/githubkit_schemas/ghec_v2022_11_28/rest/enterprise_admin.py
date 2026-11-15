@@ -117,8 +117,8 @@ if TYPE_CHECKING:
         AzureBlobConfigType,
         AzureHubConfigType,
         CustomPropertiesForOrgsGetEnterprisePropertyValuesTypeForResponse,
+        CustomPropertyBatchItemPayloadType,
         CustomPropertySetPayloadType,
-        CustomPropertyType,
         CustomPropertyTypeForResponse,
         CustomPropertyValueType,
         DatadogConfigType,
@@ -11690,7 +11690,7 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        properties: list[CustomPropertyType],
+        properties: list[CustomPropertyBatchItemPayloadType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     def custom_properties_for_repos_create_or_update_enterprise_definitions(
@@ -11769,7 +11769,7 @@ class EnterpriseAdminClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        properties: list[CustomPropertyType],
+        properties: list[CustomPropertyBatchItemPayloadType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     async def async_custom_properties_for_repos_create_or_update_enterprise_definitions(
@@ -12008,6 +12008,7 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
+        regex: Missing[Union[str, None]] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
@@ -12090,6 +12091,7 @@ class EnterpriseAdminClient:
         values_editable_by: Missing[
             Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
+        regex: Missing[Union[str, None]] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 

@@ -9,124 +9,336 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0570 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0571 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0572 import (
-    OrganizationSimpleWebhooksType,
-    OrganizationSimpleWebhooksTypeForResponse,
+from .group_0864 import (
+    WebhookRubygemsMetadataType,
+    WebhookRubygemsMetadataTypeForResponse,
 )
-from .group_0573 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
 
 
-class WebhookRepositoryEditedType(TypedDict):
-    """repository edited event"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
 
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
-
-
-class WebhookRepositoryEditedTypeForResponse(TypedDict):
-    """repository edited event"""
-
-    action: Literal["edited"]
-    changes: WebhookRepositoryEditedPropChangesTypeForResponse
-    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
-    installation: NotRequired[SimpleInstallationTypeForResponse]
-    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    repository: RepositoryWebhooksTypeForResponse
-    sender: SimpleUserTypeForResponse
-
-
-class WebhookRepositoryEditedPropChangesType(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[WebhookRepositoryEditedPropChangesPropDefaultBranchType]
-    description: NotRequired[WebhookRepositoryEditedPropChangesPropDescriptionType]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageType]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsType]
-
-
-class WebhookRepositoryEditedPropChangesTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChanges"""
-
-    default_branch: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse
+    author: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType
+    )
+    body: str
+    body_html: str
+    created_at: str
+    description: str
+    docker_metadata: NotRequired[
+        list[
+            Union[
+                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType,
+                None,
+            ]
+        ]
     ]
-    description: NotRequired[
-        WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse
+    draft: NotRequired[bool]
+    html_url: str
+    id: int
+    installation_command: str
+    manifest: NotRequired[str]
+    metadata: list[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType
     ]
-    homepage: NotRequired[WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse]
-    topics: NotRequired[WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse]
+    name: str
+    package_files: list[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType
+    ]
+    package_url: str
+    prerelease: NotRequired[bool]
+    release: NotRequired[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType
+    ]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
+    summary: str
+    tag_name: NotRequired[str]
+    target_commitish: str
+    target_oid: str
+    updated_at: str
+    version: str
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
 
-    from_: str
+    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorTypeForResponse
+    body: str
+    body_html: str
+    created_at: str
+    description: str
+    docker_metadata: NotRequired[
+        list[
+            Union[
+                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse,
+                None,
+            ]
+        ]
+    ]
+    draft: NotRequired[bool]
+    html_url: str
+    id: int
+    installation_command: str
+    manifest: NotRequired[str]
+    metadata: list[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsTypeForResponse
+    ]
+    name: str
+    package_files: list[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsTypeForResponse
+    ]
+    package_url: str
+    prerelease: NotRequired[bool]
+    release: NotRequired[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseTypeForResponse
+    ]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataTypeForResponse]]
+    summary: str
+    tag_name: NotRequired[str]
+    target_commitish: str
+    target_oid: str
+    updated_at: str
+    version: str
 
 
-class WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
 
-    from_: str
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
-
-
-class WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None]
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsType(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
 
-    from_: NotRequired[Union[list[str], None]]
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
 
 
-class WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse(TypedDict):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
+    dataItems
+    """
 
-    from_: NotRequired[Union[list[str], None]]
+    tags: NotRequired[list[str]]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
+    dataItems
+    """
+
+    tags: NotRequired[list[str]]
+
+
+WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType: TypeAlias = dict[
+    str, Any
+]
+"""WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
+ems
+"""
+
+
+WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
+ems
+"""
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
+    esItems
+    """
+
+    content_type: NotRequired[str]
+    created_at: NotRequired[str]
+    download_url: NotRequired[str]
+    id: NotRequired[int]
+    md5: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    sha1: NotRequired[Union[str, None]]
+    sha256: NotRequired[str]
+    size: NotRequired[int]
+    state: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
+    esItems
+    """
+
+    content_type: NotRequired[str]
+    created_at: NotRequired[str]
+    download_url: NotRequired[str]
+    id: NotRequired[int]
+    md5: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    sha1: NotRequired[Union[str, None]]
+    sha256: NotRequired[str]
+    size: NotRequired[int]
+    state: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
+
+    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType
+    created_at: str
+    draft: bool
+    html_url: str
+    id: int
+    name: str
+    prerelease: bool
+    published_at: str
+    tag_name: str
+    target_commitish: str
+    url: str
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
+
+    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorTypeForResponse
+    created_at: str
+    draft: bool
+    html_url: str
+    id: int
+    name: str
+    prerelease: bool
+    published_at: str
+    tag_name: str
+    target_commitish: str
+    url: str
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
+    pAuthor
+    """
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorTypeForResponse(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
+    pAuthor
+    """
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchType",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranchTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropDescriptionType",
-    "WebhookRepositoryEditedPropChangesPropDescriptionTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropHomepageType",
-    "WebhookRepositoryEditedPropChangesPropHomepageTypeForResponse",
-    "WebhookRepositoryEditedPropChangesPropTopicsType",
-    "WebhookRepositoryEditedPropChangesPropTopicsTypeForResponse",
-    "WebhookRepositoryEditedPropChangesType",
-    "WebhookRepositoryEditedPropChangesTypeForResponse",
-    "WebhookRepositoryEditedType",
-    "WebhookRepositoryEditedTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseTypeForResponse",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionTypeForResponse",
 )

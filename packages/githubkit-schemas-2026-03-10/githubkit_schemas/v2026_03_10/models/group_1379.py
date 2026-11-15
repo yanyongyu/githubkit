@@ -9,65 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200(ExtraGitHubModel):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
-    ] = Field(
-        default=UNSET,
-        alias="pluginAssignments",
-        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
-    )
-    extra_known_marketplaces: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
-    ] = Field(
-        default=UNSET,
-        alias="extraKnownMarketplaces",
-        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
+    repository_values: list[RepositoryExternalPropertyPayload] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of repositories and the values that the named external custom property will be set to.",
     )
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments(
-    ExtraGitHubModel
-):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
+class RepositoryExternalPropertyPayload(GitHubModel):
+    """Repository External Custom Property Value Payload
 
-    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
+    Repository name and associated external custom property value
     """
 
-
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces(
-    ExtraGitHubModel
-):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
-    s
-
-    Additional plugin marketplaces available to the team, keyed by marketplace name.
-    """
+    repository_name: str = Field(description="The name of the repository")
+    value: Union[str, None] = Field(
+        description="The value assigned to the repository. Set to `null` to unset the value for this repository."
+    )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200)
-model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
-)
-model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
-)
+model_rebuild(OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody)
+model_rebuild(RepositoryExternalPropertyPayload)
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
+    "RepositoryExternalPropertyPayload",
 )

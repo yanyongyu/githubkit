@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    body: str
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    body: str
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyType",
-    "ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBodyTypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse",
 )

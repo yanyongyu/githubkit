@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,53 +17,53 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0660 import SimpleInstallation
-from .group_0661 import OrganizationSimpleWebhooks
-from .group_0703 import ProjectsV2Item
+
+class WebhookProjectCardMovedPropProjectCardAllof1(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
+
+    after_id: Union[int, None] = Field()
+    archived: Missing[bool] = Field(default=UNSET)
+    column_id: Missing[int] = Field(default=UNSET)
+    column_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    creator: Missing[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreator, None]
+    ] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    note: Missing[Union[str, None]] = Field(default=UNSET)
+    project_url: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectsV2ItemConverted(GitHubModel):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreator(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
-
-    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
-        Field(default=UNSET)
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemConverted)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1PropCreator)
 
 __all__ = (
-    "WebhookProjectsV2ItemConverted",
-    "WebhookProjectsV2ItemConvertedPropChanges",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
+    "WebhookProjectCardMovedPropProjectCardAllof1",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreator",
 )

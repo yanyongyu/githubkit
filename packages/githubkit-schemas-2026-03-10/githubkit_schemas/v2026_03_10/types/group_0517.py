@@ -9,128 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0280 import (
-    SecretScanningLocationActionsLogType,
-    SecretScanningLocationActionsLogTypeForResponse,
-    SecretScanningLocationCommitType,
-    SecretScanningLocationCommitTypeForResponse,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionCommentTypeForResponse,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationDiscussionTitleTypeForResponse,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationIssueBodyTypeForResponse,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestBodyTypeForResponse,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationPullRequestReviewTypeForResponse,
-    SecretScanningLocationWikiCommitType,
-    SecretScanningLocationWikiCommitTypeForResponse,
-)
-from .group_0281 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueCommentTypeForResponse,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationIssueTitleTypeForResponse,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-    SecretScanningLocationPullRequestTitleType,
-    SecretScanningLocationPullRequestTitleTypeForResponse,
-)
-from .group_0282 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationDiscussionBodyTypeForResponse,
-    SecretScanningLocationPullRequestCommentType,
-    SecretScanningLocationPullRequestCommentTypeForResponse,
+from .group_0262 import (
+    RepositoryRuleCodeCoveragePropParametersType,
+    RepositoryRuleCodeCoveragePropParametersTypeForResponse,
 )
 
 
-class SecretScanningLocationType(TypedDict):
-    """SecretScanningLocation"""
+class RepositoryRuleDetailedOneof18Type(TypedDict):
+    """RepositoryRuleDetailedOneof18"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "actions_log",
-        ]
-    ]
-    details: NotRequired[
-        Union[
-            SecretScanningLocationCommitType,
-            SecretScanningLocationWikiCommitType,
-            SecretScanningLocationIssueTitleType,
-            SecretScanningLocationIssueBodyType,
-            SecretScanningLocationIssueCommentType,
-            SecretScanningLocationDiscussionTitleType,
-            SecretScanningLocationDiscussionBodyType,
-            SecretScanningLocationDiscussionCommentType,
-            SecretScanningLocationPullRequestTitleType,
-            SecretScanningLocationPullRequestBodyType,
-            SecretScanningLocationPullRequestCommentType,
-            SecretScanningLocationPullRequestReviewType,
-            SecretScanningLocationPullRequestReviewCommentType,
-            SecretScanningLocationActionsLogType,
-        ]
-    ]
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-class SecretScanningLocationTypeForResponse(TypedDict):
-    """SecretScanningLocation"""
+class RepositoryRuleDetailedOneof18TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof18"""
 
-    type: NotRequired[
-        Literal[
-            "commit",
-            "wiki_commit",
-            "issue_title",
-            "issue_body",
-            "issue_comment",
-            "discussion_title",
-            "discussion_body",
-            "discussion_comment",
-            "pull_request_title",
-            "pull_request_body",
-            "pull_request_comment",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "actions_log",
-        ]
-    ]
-    details: NotRequired[
-        Union[
-            SecretScanningLocationCommitTypeForResponse,
-            SecretScanningLocationWikiCommitTypeForResponse,
-            SecretScanningLocationIssueTitleTypeForResponse,
-            SecretScanningLocationIssueBodyTypeForResponse,
-            SecretScanningLocationIssueCommentTypeForResponse,
-            SecretScanningLocationDiscussionTitleTypeForResponse,
-            SecretScanningLocationDiscussionBodyTypeForResponse,
-            SecretScanningLocationDiscussionCommentTypeForResponse,
-            SecretScanningLocationPullRequestTitleTypeForResponse,
-            SecretScanningLocationPullRequestBodyTypeForResponse,
-            SecretScanningLocationPullRequestCommentTypeForResponse,
-            SecretScanningLocationPullRequestReviewTypeForResponse,
-            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-            SecretScanningLocationActionsLogTypeForResponse,
-        ]
-    ]
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "SecretScanningLocationType",
-    "SecretScanningLocationTypeForResponse",
+    "RepositoryRuleDetailedOneof18Type",
+    "RepositoryRuleDetailedOneof18TypeForResponse",
 )

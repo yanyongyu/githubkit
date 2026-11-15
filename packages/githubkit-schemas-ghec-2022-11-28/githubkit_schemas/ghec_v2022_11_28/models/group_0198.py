@@ -14,18 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0199 import RepositoryRuleCodeCoveragePropParameters
 
 
-class RepositoryRuleLicenseComplianceScanning(GitHubModel):
-    """license_compliance_scanning
+class RepositoryRuleCodeCoverage(GitHubModel):
+    """code_coverage
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
     """
 
-    type: Literal["license_compliance_scanning"] = Field()
+    type: Literal["code_coverage"] = Field()
+    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleLicenseComplianceScanning)
+model_rebuild(RepositoryRuleCodeCoverage)
 
-__all__ = ("RepositoryRuleLicenseComplianceScanning",)
+__all__ = ("RepositoryRuleCodeCoverage",)

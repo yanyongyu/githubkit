@@ -9,34 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0056 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
+from .group_0282 import (
+    SecretScanningLocationActionsLog,
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0283 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0284 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
 
 
-class PullRequestStackPullRequest(GitHubModel):
-    """Pull Request Stack Pull Request"""
+class SecretScanningLocation(GitHubModel):
+    """SecretScanningLocation"""
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
-    node_id: str = Field()
-    title: str = Field()
-    state: Literal["open", "closed"] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    draft: bool = Field()
-    html_url: str = Field()
-    user: Union[SimpleUser, None] = Field()
+    type: Missing[
+        Literal[
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "actions_log",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
+    )
+    details: Missing[
+        Union[
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
+            SecretScanningLocationActionsLog,
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestStackPullRequest)
+model_rebuild(SecretScanningLocation)
 
-__all__ = ("PullRequestStackPullRequest",)
+__all__ = ("SecretScanningLocation",)

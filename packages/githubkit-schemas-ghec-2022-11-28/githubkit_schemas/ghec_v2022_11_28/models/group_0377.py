@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0376 import RateLimit
-from .group_0378 import RateLimitOverviewPropResources
 
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
-
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
+    url: str = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
+    )
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
+    )
 
 
-model_rebuild(RateLimitOverview)
+model_rebuild(TeamMembership)
 
-__all__ = ("RateLimitOverview",)
+__all__ = ("TeamMembership",)

@@ -9,35 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class OrganizationExternalPropertyInstallationType(TypedDict):
+    """Organization External Custom Property Installation
 
-    Code of Conduct Simple
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    display_name: str
+    installation: OrganizationExternalPropertyInstallationPropInstallationType
 
 
-class CodeOfConductSimpleTypeForResponse(TypedDict):
-    """Code Of Conduct Simple
+class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
+    """Organization External Custom Property Installation
 
-    Code of Conduct Simple
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    display_name: str
+    installation: (
+        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
+    )
+
+
+class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
+
+
+class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
+    TypedDict
+):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
 
 
 __all__ = (
-    "CodeOfConductSimpleType",
-    "CodeOfConductSimpleTypeForResponse",
+    "OrganizationExternalPropertyInstallationPropInstallationType",
+    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
+    "OrganizationExternalPropertyInstallationType",
+    "OrganizationExternalPropertyInstallationTypeForResponse",
 )

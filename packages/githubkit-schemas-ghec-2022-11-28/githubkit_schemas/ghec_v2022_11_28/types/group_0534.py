@@ -10,17 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0507 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0513 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0515 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class BlockingAddedIssueEventType(TypedDict):
-    """Blocking Added Issue Event
+class IssueTypeChangedIssueEventType(TypedDict):
+    """Issue Type Changed Issue Event
 
-    Blocking Added Issue Event
+    Issue Type Changed Issue Event
     """
 
     id: int
@@ -32,13 +33,15 @@ class BlockingAddedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[IntegrationType, None]
-    blocking: Union[IssueReferenceType, None]
+    issue_type: Union[IssueTypeWebhookType, None]
+    prev_issue_type: Union[IssueTypeWebhookType, None]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
-class BlockingAddedIssueEventTypeForResponse(TypedDict):
-    """Blocking Added Issue Event
+class IssueTypeChangedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Changed Issue Event
 
-    Blocking Added Issue Event
+    Issue Type Changed Issue Event
     """
 
     id: int
@@ -50,10 +53,12 @@ class BlockingAddedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    blocking: Union[IssueReferenceTypeForResponse, None]
+    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
+    prev_issue_type: Union[IssueTypeWebhookTypeForResponse, None]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "BlockingAddedIssueEventType",
-    "BlockingAddedIssueEventTypeForResponse",
+    "IssueTypeChangedIssueEventType",
+    "IssueTypeChangedIssueEventTypeForResponse",
 )

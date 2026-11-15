@@ -13,10 +13,8 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -27,7 +25,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType
+            AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType
         ]
     ]
     documentation_url: str
@@ -35,10 +33,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -49,7 +47,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse
+            AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -57,11 +55,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Prop
-    ErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
 
     A single validation error
     """
@@ -77,11 +74,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Prop
-    ErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems
 
     A single validation error
     """
@@ -98,8 +94,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400TypeForResponse",
 )

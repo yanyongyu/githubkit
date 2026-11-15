@@ -9,48 +9,171 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0659 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0660 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0661 import (
+from .group_0673 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0675 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0662 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0690 import (
-    WebhooksLabelUnarchivedType,
-    WebhooksLabelUnarchivedTypeForResponse,
-)
+from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0697 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookLabelUnarchivedType(TypedDict):
-    """label unarchived event"""
+class WebhookIssuesStatusChangedType(TypedDict):
+    """issues status_changed event"""
 
-    action: Literal["unarchived"]
+    action: Literal["status_changed"]
+    changes: WebhookIssuesStatusChangedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelUnarchivedType
+    issue: WebhooksIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
+    status: WebhookIssuesStatusChangedPropStatusType
 
 
-class WebhookLabelUnarchivedTypeForResponse(TypedDict):
-    """label unarchived event"""
+class WebhookIssuesStatusChangedTypeForResponse(TypedDict):
+    """issues status_changed event"""
 
-    action: Literal["unarchived"]
+    action: Literal["status_changed"]
+    changes: WebhookIssuesStatusChangedPropChangesTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelUnarchivedTypeForResponse
+    issue: WebhooksIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
+    status: WebhookIssuesStatusChangedPropStatusTypeForResponse
+
+
+class WebhookIssuesStatusChangedPropStatusType(TypedDict):
+    """Planning status
+
+    The status the issue changed to.
+    """
+
+    id: int
+    name: str
+    category: str
+
+
+class WebhookIssuesStatusChangedPropStatusTypeForResponse(TypedDict):
+    """Planning status
+
+    The status the issue changed to.
+    """
+
+    id: int
+    name: str
+    category: str
+
+
+class WebhookIssuesStatusChangedPropChangesType(TypedDict):
+    """WebhookIssuesStatusChangedPropChanges
+
+    The changes to the issue. `state` and `state_reason` are only included when the
+    status change also closed or reopened the issue, or changed the reason it was
+    closed.
+    """
+
+    status: WebhookIssuesStatusChangedPropChangesPropStatusType
+    state: NotRequired[WebhookIssuesStatusChangedPropChangesPropStateType]
+    state_reason: NotRequired[WebhookIssuesStatusChangedPropChangesPropStateReasonType]
+
+
+class WebhookIssuesStatusChangedPropChangesTypeForResponse(TypedDict):
+    """WebhookIssuesStatusChangedPropChanges
+
+    The changes to the issue. `state` and `state_reason` are only included when the
+    status change also closed or reopened the issue, or changed the reason it was
+    closed.
+    """
+
+    status: WebhookIssuesStatusChangedPropChangesPropStatusTypeForResponse
+    state: NotRequired[WebhookIssuesStatusChangedPropChangesPropStateTypeForResponse]
+    state_reason: NotRequired[
+        WebhookIssuesStatusChangedPropChangesPropStateReasonTypeForResponse
+    ]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStateType(TypedDict):
+    """WebhookIssuesStatusChangedPropChangesPropState"""
+
+    from_: Literal["open", "closed"]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStateTypeForResponse(TypedDict):
+    """WebhookIssuesStatusChangedPropChangesPropState"""
+
+    from_: Literal["open", "closed"]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStateReasonType(TypedDict):
+    """WebhookIssuesStatusChangedPropChangesPropStateReason"""
+
+    from_: Union[str, None]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStateReasonTypeForResponse(TypedDict):
+    """WebhookIssuesStatusChangedPropChangesPropStateReason"""
+
+    from_: Union[str, None]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStatusType(TypedDict):
+    """WebhookIssuesStatusChangedPropChangesPropStatus"""
+
+    from_: Union[WebhookIssuesStatusChangedPropChangesPropStatusPropFromType, None]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStatusTypeForResponse(TypedDict):
+    """WebhookIssuesStatusChangedPropChangesPropStatus"""
+
+    from_: Union[
+        WebhookIssuesStatusChangedPropChangesPropStatusPropFromTypeForResponse, None
+    ]
+
+
+class WebhookIssuesStatusChangedPropChangesPropStatusPropFromType(TypedDict):
+    """Planning status
+
+    The status the issue had before the change, or `null` if it had none.
+    """
+
+    id: int
+    name: str
+    category: str
+
+
+class WebhookIssuesStatusChangedPropChangesPropStatusPropFromTypeForResponse(TypedDict):
+    """Planning status
+
+    The status the issue had before the change, or `null` if it had none.
+    """
+
+    id: int
+    name: str
+    category: str
 
 
 __all__ = (
-    "WebhookLabelUnarchivedType",
-    "WebhookLabelUnarchivedTypeForResponse",
+    "WebhookIssuesStatusChangedPropChangesPropStateReasonType",
+    "WebhookIssuesStatusChangedPropChangesPropStateReasonTypeForResponse",
+    "WebhookIssuesStatusChangedPropChangesPropStateType",
+    "WebhookIssuesStatusChangedPropChangesPropStateTypeForResponse",
+    "WebhookIssuesStatusChangedPropChangesPropStatusPropFromType",
+    "WebhookIssuesStatusChangedPropChangesPropStatusPropFromTypeForResponse",
+    "WebhookIssuesStatusChangedPropChangesPropStatusType",
+    "WebhookIssuesStatusChangedPropChangesPropStatusTypeForResponse",
+    "WebhookIssuesStatusChangedPropChangesType",
+    "WebhookIssuesStatusChangedPropChangesTypeForResponse",
+    "WebhookIssuesStatusChangedPropStatusType",
+    "WebhookIssuesStatusChangedPropStatusTypeForResponse",
+    "WebhookIssuesStatusChangedType",
+    "WebhookIssuesStatusChangedTypeForResponse",
 )

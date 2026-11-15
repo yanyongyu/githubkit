@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersType(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
 
 
-class RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    review_draft_pull_requests: NotRequired[bool]
-    review_on_push: NotRequired[bool]
+    max_coverage_drop: NotRequired[float]
+    minimum_coverage: NotRequired[float]
 
 
 __all__ = (
-    "RepositoryRuleCopilotCodeReviewPropParametersType",
-    "RepositoryRuleCopilotCodeReviewPropParametersTypeForResponse",
+    "RepositoryRuleCodeCoveragePropParametersType",
+    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
 )

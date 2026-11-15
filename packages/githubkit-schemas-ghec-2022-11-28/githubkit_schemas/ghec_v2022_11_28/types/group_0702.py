@@ -10,39 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0703 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
+)
 
 
-class WebhooksProjectChangesType(TypedDict):
-    """WebhooksProjectChanges"""
+class WebhooksLabelArchivedAllof1Type(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
-
-
-class WebhooksProjectChangesTypeForResponse(TypedDict):
-    """WebhooksProjectChanges"""
-
-    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
 
 
-class WebhooksProjectChangesPropArchivedAtType(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
+class WebhooksLabelArchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    from_: NotRequired[Union[_dt.datetime, None]]
-    to: NotRequired[Union[_dt.datetime, None]]
-
-
-class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
-    """WebhooksProjectChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
 
 
 __all__ = (
-    "WebhooksProjectChangesPropArchivedAtType",
-    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
-    "WebhooksProjectChangesType",
-    "WebhooksProjectChangesTypeForResponse",
+    "WebhooksLabelArchivedAllof1Type",
+    "WebhooksLabelArchivedAllof1TypeForResponse",
 )

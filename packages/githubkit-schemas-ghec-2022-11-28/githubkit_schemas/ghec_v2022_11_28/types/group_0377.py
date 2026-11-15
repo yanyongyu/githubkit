@@ -9,46 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0376 import RateLimitType, RateLimitTypeForResponse
-from .group_0378 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
-)
 
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
-
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
+class TeamMembershipTypeForResponse(TypedDict):
+    """Team Membership
 
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
+    Team Membership
     """
 
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "TeamMembershipType",
+    "TeamMembershipTypeForResponse",
 )

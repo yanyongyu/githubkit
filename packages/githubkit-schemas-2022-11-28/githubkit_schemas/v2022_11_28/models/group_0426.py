@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimitPullRequestBypassList(GitHubModel):
-    """Interaction Limits Pull Request Bypass List
+class HookResponse(GitHubModel):
+    """Hook Response"""
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
-    """
-
-    users: list[str] = Field(
-        description="A list of user logins to add or remove from the bypass list."
-    )
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-model_rebuild(InteractionLimitPullRequestBypassList)
+model_rebuild(HookResponse)
 
-__all__ = ("InteractionLimitPullRequestBypassList",)
+__all__ = ("HookResponse",)

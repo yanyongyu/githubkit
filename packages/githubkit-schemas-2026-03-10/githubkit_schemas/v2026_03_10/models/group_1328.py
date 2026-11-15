@@ -9,20 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0018 import Installation
-
-
-class OrgsOrgInstallationsGetResponse200(GitHubModel):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int = Field()
-    installations: list[Installation] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgInstallationsGetResponse200)
+class OrgsOrgCopilotCodeReviewRunnerPutBody(GitHubModel):
+    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
 
-__all__ = ("OrgsOrgInstallationsGetResponse200",)
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="The type of runner. `standard` uses GitHub-hosted runners. `labeled` uses runners that match the labels or runner group."
+    )
+    runner_labels: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The runner labels for a labeled runner."
+    )
+    runner_group_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The runner group for a labeled runner."
+    )
+    allow_repository_customization: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether repositories can use their own runner configuration.",
+    )
+
+
+model_rebuild(OrgsOrgCopilotCodeReviewRunnerPutBody)
+
+__all__ = ("OrgsOrgCopilotCodeReviewRunnerPutBody",)

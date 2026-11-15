@@ -9,16 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
-    """Copilot Organization Content Exclusion Details
+class CopilotSpaceCollaboratorAnyof0Allof1(GitHubModel):
+    """CopilotSpaceCollaboratorAnyof0Allof1"""
 
-    List all Copilot Content Exclusion rules for an organization.
-    """
+    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
+    role: Literal["reader", "writer", "admin"] = Field(
+        description="The role granted to the collaborator"
+    )
 
 
-model_rebuild(CopilotOrganizationContentExclusionDetails)
+model_rebuild(CopilotSpaceCollaboratorAnyof0Allof1)
 
-__all__ = ("CopilotOrganizationContentExclusionDetails",)
+__all__ = ("CopilotSpaceCollaboratorAnyof0Allof1",)

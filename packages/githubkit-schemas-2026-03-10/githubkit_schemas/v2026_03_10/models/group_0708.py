@@ -18,41 +18,34 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0018 import Installation
-from .group_0569 import EnterpriseWebhooks
-from .group_0571 import OrganizationSimpleWebhooks
-from .group_0572 import RepositoryWebhooks
-from .group_0587 import WebhooksRepositoriesItems
+from .group_0045 import Discussion
+from .group_0584 import OrganizationSimpleWebhooks
+from .group_0585 import RepositoryWebhooks
+from .group_0596 import WebhooksAnswer
 
 
-class WebhookInstallationNewPermissionsAccepted(GitHubModel):
-    """installation new_permissions_accepted event"""
+class WebhookDiscussionUnanswered(GitHubModel):
+    """discussion unanswered event"""
 
-    action: Literal["new_permissions_accepted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    action: Literal["unanswered"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
-    installation: Installation = Field(title="Installation", description="Installation")
+    old_answer: WebhooksAnswer = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories: Missing[list[WebhooksRepositoriesItems]] = Field(
-        default=UNSET,
-        description="An array of repository objects that the installation can access.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[None] = Field(default=UNSET)
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookInstallationNewPermissionsAccepted)
+model_rebuild(WebhookDiscussionUnanswered)
 
-__all__ = ("WebhookInstallationNewPermissionsAccepted",)
+__all__ = ("WebhookDiscussionUnanswered",)

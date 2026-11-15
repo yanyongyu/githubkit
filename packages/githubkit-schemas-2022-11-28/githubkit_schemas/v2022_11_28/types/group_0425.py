@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    Porter Large File
+    Repository hash algorithm
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class PorterLargeFileTypeForResponse(TypedDict):
-    """Porter Large File
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    Porter Large File
+    Repository hash algorithm
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "PorterLargeFileType",
-    "PorterLargeFileTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

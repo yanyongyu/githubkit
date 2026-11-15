@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,36 +19,36 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksLabelPropArchivedBy(GitHubModel):
-    """WebhooksLabelPropArchivedBy
+class ExemptionResponse(GitHubModel):
+    """Exemption response
 
-    The user who archived the label, or `null` if it has not been archived.
+    A response to an exemption request by a delegated bypasser.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption response."
+    )
+    reviewer_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user who reviewed the exemption request.",
+    )
+    reviewer_login: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user who reviewed the exemption request.",
+    )
+    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
+        default=UNSET, description="The status of the exemption response."
+    )
+    reviewer_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment the reviewer provided when responding to the exemption request.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
 
 
-model_rebuild(WebhooksLabelPropArchivedBy)
+model_rebuild(ExemptionResponse)
 
-__all__ = ("WebhooksLabelPropArchivedBy",)
+__all__ = ("ExemptionResponse",)

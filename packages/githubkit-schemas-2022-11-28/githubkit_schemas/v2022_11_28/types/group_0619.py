@@ -9,172 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRelease1Type(TypedDict):
-    """Release
+class WebhooksMembershipType(TypedDict):
+    """Membership
 
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    assets: list[Union[WebhooksRelease1PropAssetsItemsType, None]]
-    assets_url: str
-    author: Union[WebhooksRelease1PropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[_dt.datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
-    id: int
-    immutable: bool
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[_dt.datetime, None]
-    reactions: NotRequired[WebhooksRelease1PropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    updated_at: Union[_dt.datetime, None]
-    upload_url: str
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
     url: str
-    zipball_url: Union[str, None]
+    user: Union[WebhooksMembershipPropUserType, None]
 
 
-class WebhooksRelease1TypeForResponse(TypedDict):
-    """Release
+class WebhooksMembershipTypeForResponse(TypedDict):
+    """Membership
 
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
     """
 
-    assets: list[Union[WebhooksRelease1PropAssetsItemsTypeForResponse, None]]
-    assets_url: str
-    author: Union[WebhooksRelease1PropAuthorTypeForResponse, None]
-    body: Union[str, None]
-    created_at: Union[str, None]
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
-    id: int
-    immutable: bool
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[str, None]
-    reactions: NotRequired[WebhooksRelease1PropReactionsTypeForResponse]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    updated_at: Union[str, None]
-    upload_url: str
+    organization_url: str
+    role: str
+    direct_membership: NotRequired[bool]
+    enterprise_teams_providing_indirect_membership: NotRequired[list[str]]
+    state: str
     url: str
-    zipball_url: Union[str, None]
+    user: Union[WebhooksMembershipPropUserTypeForResponse, None]
 
 
-class WebhooksRelease1PropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: _dt.datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    digest: Union[str, None]
-    state: Literal["uploaded"]
-    updated_at: _dt.datetime
-    uploader: NotRequired[Union[WebhooksRelease1PropAssetsItemsPropUploaderType, None]]
-    url: str
-
-
-class WebhooksRelease1PropAssetsItemsTypeForResponse(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: str
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    digest: Union[str, None]
-    state: Literal["uploaded"]
-    updated_at: str
-    uploader: NotRequired[
-        Union[WebhooksRelease1PropAssetsItemsPropUploaderTypeForResponse, None]
-    ]
-    url: str
-
-
-class WebhooksRelease1PropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksRelease1PropAssetsItemsPropUploaderTypeForResponse(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksRelease1PropAuthorType(TypedDict):
+class WebhooksMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -201,7 +72,7 @@ class WebhooksRelease1PropAuthorType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksRelease1PropAuthorTypeForResponse(TypedDict):
+class WebhooksMembershipPropUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -226,47 +97,11 @@ class WebhooksRelease1PropAuthorTypeForResponse(TypedDict):
     type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
-
-
-class WebhooksRelease1PropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksRelease1PropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
 
 
 __all__ = (
-    "WebhooksRelease1PropAssetsItemsPropUploaderType",
-    "WebhooksRelease1PropAssetsItemsPropUploaderTypeForResponse",
-    "WebhooksRelease1PropAssetsItemsType",
-    "WebhooksRelease1PropAssetsItemsTypeForResponse",
-    "WebhooksRelease1PropAuthorType",
-    "WebhooksRelease1PropAuthorTypeForResponse",
-    "WebhooksRelease1PropReactionsType",
-    "WebhooksRelease1PropReactionsTypeForResponse",
-    "WebhooksRelease1Type",
-    "WebhooksRelease1TypeForResponse",
+    "WebhooksMembershipPropUserType",
+    "WebhooksMembershipPropUserTypeForResponse",
+    "WebhooksMembershipType",
+    "WebhooksMembershipTypeForResponse",
 )

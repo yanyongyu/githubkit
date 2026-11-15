@@ -9,25 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ActionsCacheStorageLimitForOrganization(GitHubModel):
-    """Actions cache storage limit for an organization
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-    GitHub Actions cache storage policy for an organization.
+    A GitHub organization.
     """
 
-    max_cache_size_gb: Missing[int] = Field(
-        default=UNSET,
-        description="For repositories in the organization, the maximum size limit for the sum of all caches in a repository, in gigabytes.",
-    )
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(ActionsCacheStorageLimitForOrganization)
+model_rebuild(OrganizationSimple)
 
-__all__ = ("ActionsCacheStorageLimitForOrganization",)
+__all__ = ("OrganizationSimple",)

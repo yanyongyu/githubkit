@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,108 +16,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetAllBudgets(GitHubModel):
-    """GetAllBudgets"""
+class AdvancedSecurityActiveCommitters(GitHubModel):
+    """AdvancedSecurityActiveCommitters"""
 
-    budgets: list[Budget] = Field(
-        description="Array of budget objects for the enterprise"
-    )
-    user: Missing[str] = Field(
+    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
+    total_count: Missing[int] = Field(default=UNSET)
+    maximum_advanced_security_committers: Missing[int] = Field(
         default=UNSET,
-        description="User login included when the response is scoped with the `user` query parameter.",
+        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
     )
-    effective_budget: Missing[GetAllBudgetsPropEffectiveBudget] = Field(
+    purchased_advanced_security_committers: Missing[int] = Field(
         default=UNSET,
-        description="Effective user-level budget details returned when the response is scoped with the `user` query parameter.",
+        description="The total number of GitHub Advanced Security licences purchased",
     )
-    has_next_page: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates if there are more pages of results available",
-    )
-    total_count: Missing[int] = Field(
-        default=UNSET, description="Total number of budgets matching the query"
-    )
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
-class GetAllBudgetsPropEffectiveBudget(GitHubModel):
-    """GetAllBudgetsPropEffectiveBudget
+class AdvancedSecurityActiveCommittersRepository(GitHubModel):
+    """AdvancedSecurityActiveCommittersRepository"""
 
-    Effective user-level budget details returned when the response is scoped with
-    the `user` query parameter.
-    """
-
-    id: str = Field(description="The unique identifier of the effective budget.")
-    budget_amount: int = Field(
-        description="The budget amount for the effective budget."
-    )
-    consumed_amount: float = Field(
-        description="The consumed amount for the specified user within the effective budget."
-    )
+    name: str = Field()
+    advanced_security_committers: int = Field()
+    advanced_security_committers_breakdown: list[
+        AdvancedSecurityActiveCommittersUser
+    ] = Field()
 
 
-class Budget(GitHubModel):
-    """Budget"""
+class AdvancedSecurityActiveCommittersUser(GitHubModel):
+    """AdvancedSecurityActiveCommittersUser"""
 
-    id: str = Field(description="The unique identifier for the budget")
-    budget_type: Literal["SkuPricing", "ProductPricing", "BundlePricing"] = Field(
-        description="The type of pricing for the budget"
-    )
-    budget_amount: int = Field(
-        description="The budget amount limit in whole dollars. For license-based products, this represents the number of licenses."
-    )
-    prevent_further_usage: bool = Field(
-        description="The type of limit enforcement for the budget"
-    )
-    budget_scope: Literal[
-        "enterprise",
-        "organization",
-        "repository",
-        "cost_center",
-        "multi_user_customer",
-        "multi_user_cost_center",
-        "user",
-    ] = Field(description="The scope of the budget")
-    budget_entity_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the entity for the budget (enterprise does not require a name).",
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
-    )
-    consumed_amount: Missing[float] = Field(
-        default=UNSET,
-        description="The amount consumed for a user-scoped budget, or for a multi-user budget when filtering by user.",
-    )
-    budget_product_sku: str = Field(
-        description="A single product or sku to apply the budget to."
-    )
-    budget_alerting: BudgetPropBudgetAlerting = Field()
-    expires_at: Missing[_dt.date] = Field(
-        default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
-    )
+    user_login: str = Field()
+    last_pushed_date: str = Field()
+    last_pushed_email: str = Field()
 
 
-class BudgetPropBudgetAlerting(GitHubModel):
-    """BudgetPropBudgetAlerting"""
-
-    will_alert: bool = Field(
-        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is disabled for them."
-    )
-    alert_recipients: list[str] = Field(
-        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is disabled for them."
-    )
-
-
-model_rebuild(GetAllBudgets)
-model_rebuild(GetAllBudgetsPropEffectiveBudget)
-model_rebuild(Budget)
-model_rebuild(BudgetPropBudgetAlerting)
+model_rebuild(AdvancedSecurityActiveCommitters)
+model_rebuild(AdvancedSecurityActiveCommittersRepository)
+model_rebuild(AdvancedSecurityActiveCommittersUser)
 
 __all__ = (
-    "Budget",
-    "BudgetPropBudgetAlerting",
-    "GetAllBudgets",
-    "GetAllBudgetsPropEffectiveBudget",
+    "AdvancedSecurityActiveCommitters",
+    "AdvancedSecurityActiveCommittersRepository",
+    "AdvancedSecurityActiveCommittersUser",
 )

@@ -13,20 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserSocialAccountsPostBody(GitHubModel):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: list[str] = Field(
-        description="Full URLs for the social media profiles to add."
-    )
+from .group_0303 import Codespace
 
 
-model_rebuild(UserSocialAccountsPostBody)
+class UserCodespacesGetResponse200(GitHubModel):
+    """UserCodespacesGetResponse200"""
 
-__all__ = ("UserSocialAccountsPostBody",)
+    total_count: int = Field()
+    codespaces: list[Codespace] = Field()
+
+
+model_rebuild(UserCodespacesGetResponse200)
+
+__all__ = ("UserCodespacesGetResponse200",)

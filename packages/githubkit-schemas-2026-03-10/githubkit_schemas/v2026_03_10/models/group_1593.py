@@ -9,22 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0285 import SecretScanningCustomPatternToCreate
 
+class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
 
-class ReposOwnerRepoSecretScanningCustomPatternsPostBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningCustomPatternsPostBody"""
-
-    patterns: list[SecretScanningCustomPatternToCreate] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        description="The list of custom patterns to create (maximum 100).",
+    commit_title: Missing[str] = Field(
+        default=UNSET,
+        description="Title for the automatic commit message. Only supported for direct merges.",
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET,
+        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
+    )
+    sha: Missing[str] = Field(
+        default=UNSET,
+        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
+    )
+    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
+        default=UNSET,
+        description="The merge method to use for a direct merge. Only supported for direct merges.",
+    )
+    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
+        default=UNSET,
+        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
+    )
+    bypass_rules: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to bypass repository rules that the authenticated actor is permitted to bypass.",
     )
 
 
-model_rebuild(ReposOwnerRepoSecretScanningCustomPatternsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningCustomPatternsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)

@@ -9,44 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422(GitHubModel):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A summary message describing the error."
-    )
-    validation_errors: Missing[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-    ] = Field(
-        default=UNSET,
-        description="A map of validation errors keyed by the zero-based index of the pattern that failed.",
-    )
-
-
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors(
-    ExtraGitHubModel
-):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-    rors
-
-    A map of validation errors keyed by the zero-based index of the pattern that
-    failed.
+    Optional filters that scope the export to a subset of the inventory.
     """
 
+    token_types: Missing[list[str]] = Field(
+        default=UNSET, description="The credential types to include."
+    )
+    authorization_state: Missing[
+        Literal["currently_authorized", "member_owned_only"]
+    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials owned by this user, given as a login.",
+    )
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
+    )
+    application: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
+    )
 
-model_rebuild(EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422)
-model_rebuild(
-    EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors
-)
 
-__all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrors",
-)
+model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
+
+__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)

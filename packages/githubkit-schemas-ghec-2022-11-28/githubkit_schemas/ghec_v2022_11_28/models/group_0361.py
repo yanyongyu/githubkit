@@ -9,40 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrganizationExternalPropertyInstallation(GitHubModel):
-    """Organization External Custom Property Installation
+class ProjectsV2FieldIterationConfiguration(GitHubModel):
+    """ProjectsV2FieldIterationConfiguration
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
+    The configuration for iteration fields.
     """
 
-    display_name: str = Field(
-        description="The display name assigned to the app installation's external custom properties in the organization."
+    start_date: _dt.date = Field(description="The start date of the first iteration.")
+    duration: int = Field(
+        description="The default duration for iterations in days. Individual iterations can override this value."
     )
-    installation: OrganizationExternalPropertyInstallationPropInstallation = Field(
-        description="The GitHub App installation that was registered."
-    )
+    iterations: Missing[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItems]
+    ] = Field(default=UNSET, description="Zero or more iterations for the field.")
 
 
-class OrganizationExternalPropertyInstallationPropInstallation(GitHubModel):
-    """OrganizationExternalPropertyInstallationPropInstallation
+class ProjectsV2FieldIterationConfigurationPropIterationsItems(GitHubModel):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    The GitHub App installation that was registered.
-    """
+    title: str = Field(description="The title of the iteration.")
+    start_date: _dt.date = Field(description="The start date of the iteration.")
+    duration: int = Field(description="The duration of the iteration in days.")
 
-    id: int = Field(description="The unique identifier of the GitHub App installation.")
 
-
-model_rebuild(OrganizationExternalPropertyInstallation)
-model_rebuild(OrganizationExternalPropertyInstallationPropInstallation)
+model_rebuild(ProjectsV2FieldIterationConfiguration)
+model_rebuild(ProjectsV2FieldIterationConfigurationPropIterationsItems)
 
 __all__ = (
-    "OrganizationExternalPropertyInstallation",
-    "OrganizationExternalPropertyInstallationPropInstallation",
+    "ProjectsV2FieldIterationConfiguration",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItems",
 )

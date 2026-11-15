@@ -14,17 +14,19 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class StargazerHistory(GitHubModel):
+    """Stargazer History
 
-    Referrer Traffic
+    Stargazer History
     """
 
-    referrer: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    days: list[int] = Field(
+        description="The number of stars created on each day of the week, starting on Sunday."
+    )
+    total: int = Field(description="The number of stars created during the week.")
+    week: int = Field(description="The start of the week, given as a Unix timestamp.")
 
 
-model_rebuild(ReferrerTraffic)
+model_rebuild(StargazerHistory)
 
-__all__ = ("ReferrerTraffic",)
+__all__ = ("StargazerHistory",)

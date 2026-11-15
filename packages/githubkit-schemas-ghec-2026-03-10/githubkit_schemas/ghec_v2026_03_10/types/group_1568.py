@@ -9,26 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgCopilotModelPoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    ]
+    models: NotRequired[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]]
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    ]
+    models: NotRequired[
+        list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse]
+    ]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
-    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse",
 )

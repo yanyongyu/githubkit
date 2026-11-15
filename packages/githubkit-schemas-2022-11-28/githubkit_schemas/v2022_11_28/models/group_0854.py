@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0570 import EnterpriseWebhooks
-from .group_0571 import SimpleInstallation
-from .group_0572 import OrganizationSimpleWebhooks
-from .group_0573 import RepositoryWebhooks
-from .group_0855 import WebhookPackageUpdatedPropPackage
+from .group_0583 import EnterpriseWebhooks
+from .group_0584 import SimpleInstallation
+from .group_0585 import OrganizationSimpleWebhooks
+from .group_0586 import RepositoryWebhooks
+from .group_0606 import WebhooksMilestone
 
 
-class WebhookPackageUpdated(GitHubModel):
-    """package updated event"""
+class WebhookMilestoneDeleted(GitHubModel):
+    """milestone deleted event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,13 +39,14 @@ class WebhookPackageUpdated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    milestone: WebhooksMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    package: WebhookPackageUpdatedPropPackage = Field(
-        description="Information about the package."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -54,6 +55,6 @@ class WebhookPackageUpdated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPackageUpdated)
+model_rebuild(WebhookMilestoneDeleted)
 
-__all__ = ("WebhookPackageUpdated",)
+__all__ = ("WebhookMilestoneDeleted",)

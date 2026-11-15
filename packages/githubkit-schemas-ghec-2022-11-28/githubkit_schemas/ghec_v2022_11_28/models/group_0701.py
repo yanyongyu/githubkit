@@ -15,24 +15,30 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0703 import WebhooksLabelArchivedAllof1PropArchivedBy
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksLabelArchived(GitHubModel):
+    """Archived label"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: _dt.datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    archived_at: _dt.datetime = Field(
+        description="Timestamp indicating when the label was archived."
+    )
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedBy = Field(
+        description="The user who archived the label."
+    )
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    project_url: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhooksProjectColumn)
+model_rebuild(WebhooksLabelArchived)
 
-__all__ = ("WebhooksProjectColumn",)
+__all__ = ("WebhooksLabelArchived",)

@@ -9,87 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class WebhooksLabelPropArchivedByType(TypedDict):
+    """WebhooksLabelPropArchivedBy
 
-    account: WebhooksMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhooksMarketplacePurchasePropPlanType
-    unit_count: int
+    The user who archived the label, or `null` if it has not been archived.
+    """
 
-
-class WebhooksMarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhooksMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhooksMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
-
-
-class WebhooksMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksMarketplacePurchasePropAccount"""
-
-    id: int
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
     login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksMarketplacePurchasePropAccountTypeForResponse(TypedDict):
-    """WebhooksMarketplacePurchasePropAccount"""
-
     id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksLabelPropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
     login: str
+    id: int
     node_id: str
-    organization_billing_email: Union[str, None]
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
     type: str
-
-
-class WebhooksMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksMarketplacePurchasePropPlan"""
-
-    bullets: list[Union[str, None]]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-class WebhooksMarketplacePurchasePropPlanTypeForResponse(TypedDict):
-    """WebhooksMarketplacePurchasePropPlan"""
-
-    bullets: list[Union[str, None]]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksMarketplacePurchasePropAccountType",
-    "WebhooksMarketplacePurchasePropAccountTypeForResponse",
-    "WebhooksMarketplacePurchasePropPlanType",
-    "WebhooksMarketplacePurchasePropPlanTypeForResponse",
-    "WebhooksMarketplacePurchaseType",
-    "WebhooksMarketplacePurchaseTypeForResponse",
+    "WebhooksLabelPropArchivedByType",
+    "WebhooksLabelPropArchivedByTypeForResponse",
 )

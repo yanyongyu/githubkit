@@ -9,20 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class Topic(GitHubModel):
-    """Topic
 
-    A topic aggregates entities that are related to a subject.
+class RepositoryAdvisoryComment(GitHubModel):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
     """
 
-    names: list[str] = Field()
+    id: int = Field(description="Unique identifier of the advisory comment.")
+    node_id: str = Field()
+    url: str = Field(description="API URL for the advisory comment.")
+    html_url: str = Field(description="Web URL for the advisory comment.")
+    body: str = Field(description="Contents of the advisory comment.")
+    user: Union[SimpleUser, None] = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    advisory_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-model_rebuild(Topic)
+model_rebuild(RepositoryAdvisoryComment)
 
-__all__ = ("Topic",)
+__all__ = ("RepositoryAdvisoryComment",)

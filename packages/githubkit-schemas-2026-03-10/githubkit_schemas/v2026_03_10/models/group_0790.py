@@ -18,18 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0569 import EnterpriseWebhooks
-from .group_0570 import SimpleInstallation
-from .group_0571 import OrganizationSimpleWebhooks
-from .group_0572 import RepositoryWebhooks
-from .group_0592 import WebhooksMilestone
-from .group_0791 import WebhookIssuesDemilestonedPropIssue
+from .group_0582 import EnterpriseWebhooks
+from .group_0583 import SimpleInstallation
+from .group_0584 import OrganizationSimpleWebhooks
+from .group_0585 import RepositoryWebhooks
+from .group_0791 import WebhookIssuesClosedPropIssue
 
 
-class WebhookIssuesDemilestoned(GitHubModel):
-    """issues demilestoned event"""
+class WebhookIssuesClosed(GitHubModel):
+    """issues closed event"""
 
-    action: Literal["demilestoned"] = Field()
+    action: Literal["closed"] = Field(description="The action that was performed.")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,14 +39,8 @@ class WebhookIssuesDemilestoned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesDemilestonedPropIssue = Field(
-        title="Issue",
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.",
-    )
-    milestone: Missing[WebhooksMilestone] = Field(
-        default=UNSET,
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    issue: WebhookIssuesClosedPropIssue = Field(
+        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -61,6 +54,6 @@ class WebhookIssuesDemilestoned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesDemilestoned)
+model_rebuild(WebhookIssuesClosed)
 
-__all__ = ("WebhookIssuesDemilestoned",)
+__all__ = ("WebhookIssuesClosed",)

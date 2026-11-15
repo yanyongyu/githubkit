@@ -9,51 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from .group_0029 import (
+    CodeSecurityConfigurationType,
+    CodeSecurityConfigurationTypeForResponse,
+)
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Repository invitations let you manage who you collaborate with.
+    Code security configuration associated with a repository and attachment status
     """
 
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[SimpleUserType, None]
-    inviter: Union[SimpleUserType, None]
-    permissions: Literal["read", "write", "admin", "triage", "moderate", "maintain"]
-    created_at: _dt.datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-class RepositoryInvitationTypeForResponse(TypedDict):
-    """Repository Invitation
+class CodeSecurityConfigurationForRepositoryTypeForResponse(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Repository invitations let you manage who you collaborate with.
+    Code security configuration associated with a repository and attachment status
     """
 
-    id: int
-    repository: MinimalRepositoryTypeForResponse
-    invitee: Union[SimpleUserTypeForResponse, None]
-    inviter: Union[SimpleUserTypeForResponse, None]
-    permissions: Literal["read", "write", "admin", "triage", "moderate", "maintain"]
-    created_at: str
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+            "enterprise_enforced",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationTypeForResponse]
 
 
 __all__ = (
-    "RepositoryInvitationType",
-    "RepositoryInvitationTypeForResponse",
+    "CodeSecurityConfigurationForRepositoryType",
+    "CodeSecurityConfigurationForRepositoryTypeForResponse",
 )

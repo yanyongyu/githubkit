@@ -18,59 +18,85 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateCostCenter(GitHubModel):
-    """UpdateCostCenter"""
+class BillingCostCenterMembership(GitHubModel):
+    """BillingCostCenterMembership"""
 
-    id: str = Field(description="ID of the cost center.")
-    name: str = Field(description="Name of the cost center.")
-    azure_subscription: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
-    )
-    state: Missing[Literal["active", "deleted"]] = Field(
-        default=UNSET, description="State of the cost center."
-    )
-    resources: list[UpdateCostCenterPropResourcesItems] = Field()
-    ai_credit_pool_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
-    )
-    ai_credit_pool_state: Missing[UpdateCostCenterPropAiCreditPoolState] = Field(
-        default=UNSET,
-        description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
+    resource: BillingCostCenterMembershipPropResource = Field()
+    memberships: list[BillingCostCenterMembershipPropMembershipsItems] = Field(
+        description="The list of cost center memberships for the resource."
     )
 
 
-class UpdateCostCenterPropResourcesItems(GitHubModel):
-    """UpdateCostCenterPropResourcesItems"""
+class BillingCostCenterMembershipPropResource(GitHubModel):
+    """BillingCostCenterMembershipPropResource"""
 
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
-    """UpdateCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The AI credit pool cap target amount, in AI Credits. Null when the cap budget has not been materialized yet.",
+    type: Literal["user", "organization", "repository", "team"] = Field(
+        description="The type of resource."
     )
-    current_amount: Missing[Union[float, None]] = Field(
-        default=UNSET,
-        description="The current-month applied amount against the AI credit pool cap, in AI Credits. Null when the cap budget has not been materialized yet.",
-    )
+    identifier: Union[
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof0,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof1,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof2,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof3,
+    ] = Field(description="The identifier for the resource.")
 
 
-model_rebuild(UpdateCostCenter)
-model_rebuild(UpdateCostCenterPropResourcesItems)
-model_rebuild(UpdateCostCenterPropAiCreditPoolState)
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof0(GitHubModel):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
+
+    login: str = Field(description="The login name for a user.")
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof1(GitHubModel):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
+
+    name: str = Field(description="The name for an organization.")
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof2(GitHubModel):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
+
+    owner: str = Field(description="The owner of the repository.")
+    name: str = Field(description="The name of the repository.")
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof3(GitHubModel):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
+
+    slug: str = Field(description="The slug for an enterprise team.")
+
+
+class BillingCostCenterMembershipPropMembershipsItems(GitHubModel):
+    """BillingCostCenterMembershipPropMembershipsItems"""
+
+    cost_center: Missing[
+        BillingCostCenterMembershipPropMembershipsItemsPropCostCenter
+    ] = Field(default=UNSET)
+
+
+class BillingCostCenterMembershipPropMembershipsItemsPropCostCenter(GitHubModel):
+    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
+
+    id: str = Field(description="The unique identifier of the cost center.")
+    name: str = Field(description="The name of the cost center.")
+
+
+model_rebuild(BillingCostCenterMembership)
+model_rebuild(BillingCostCenterMembershipPropResource)
+model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof0)
+model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof1)
+model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof2)
+model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof3)
+model_rebuild(BillingCostCenterMembershipPropMembershipsItems)
+model_rebuild(BillingCostCenterMembershipPropMembershipsItemsPropCostCenter)
 
 __all__ = (
-    "UpdateCostCenter",
-    "UpdateCostCenterPropAiCreditPoolState",
-    "UpdateCostCenterPropResourcesItems",
+    "BillingCostCenterMembership",
+    "BillingCostCenterMembershipPropMembershipsItems",
+    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenter",
+    "BillingCostCenterMembershipPropResource",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3",
 )

@@ -9,18 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type(TypedDict):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
+
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"]
+    policy: OrganizationCopilotCodeReviewPolicyType
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409TypeForResponse(TypedDict):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
+
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"]
+    policy: OrganizationCopilotCodeReviewPolicyTypeForResponse
+
+
+class OrganizationCopilotCodeReviewPolicyType(TypedDict):
+    """Organization Copilot Code Review Policy
+
+    The organization's configured and effective Copilot code review policy.
+    """
+
+    configured_state: Union[Literal["enabled", "disabled"], None]
+    effective_state: Literal["enabled", "disabled"]
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
+
+
+class OrganizationCopilotCodeReviewPolicyTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Policy
+
+    The organization's configured and effective Copilot code review policy.
+    """
+
+    configured_state: Union[Literal["enabled", "disabled"], None]
+    effective_state: Literal["enabled", "disabled"]
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
 
 
 __all__ = (
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
-    "OrgsOrgOutsideCollaboratorsUsernamePutResponse202TypeForResponse",
+    "OrganizationCopilotCodeReviewPolicyType",
+    "OrganizationCopilotCodeReviewPolicyTypeForResponse",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409TypeForResponse",
 )

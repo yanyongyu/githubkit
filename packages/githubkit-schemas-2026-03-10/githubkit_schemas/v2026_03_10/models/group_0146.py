@@ -9,103 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0122 import ActionsPolicyRepoConditionsOneof0
-from .group_0123 import ActionsPolicyRepoConditionsOneof1
-from .group_0130 import ActionsPolicyOrgConditionsOneof0
-from .group_0131 import ActionsPolicyOrgConditionsOneof1
-from .group_0132 import ActionsPolicyOrgConditionsOneof2
-from .group_0139 import ActionsPolicyEnterpriseConditionsOneof0
-from .group_0140 import ActionsPolicyEnterpriseConditionsOneof1
-from .group_0141 import ActionsPolicyEnterpriseConditionsOneof2
-from .group_0142 import ActionsPolicyEnterpriseConditionsOneof3
-from .group_0143 import ActionsPolicyEnterpriseConditionsOneof4
-from .group_0144 import ActionsPolicyEnterpriseConditionsOneof5
-from .group_0145 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
+from .group_0123 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0131 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
+from .group_0140 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
 )
 
 
-class ActionsPolicy(GitHubModel):
-    """Actions Policy
+class ActionsPolicyEnterpriseConditionsOneof5(GitHubModel):
+    """organization_property_and_repository_property
 
-    An Actions policy defines rules for workflow execution protection.
+    Conditions to target organizations by property and repositories by property
     """
 
-    id: int = Field(description="The ID of the policy")
-    name: str = Field(description="The name of the policy")
-    target: Literal["actions"] = Field(description="The target of the policy")
-    source_type: Literal["Repository", "Organization", "Enterprise"] = Field(
-        description="The type of the source of the policy"
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
-    source: str = Field(description="The name of the source")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    conditions: Missing[
-        Union[
-            ActionsPolicyRepoConditionsOneof0,
-            ActionsPolicyRepoConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof0,
-            ActionsPolicyOrgConditionsOneof1,
-            ActionsPolicyOrgConditionsOneof2,
-            ActionsPolicyEnterpriseConditionsOneof0,
-            ActionsPolicyEnterpriseConditionsOneof1,
-            ActionsPolicyEnterpriseConditionsOneof2,
-            ActionsPolicyEnterpriseConditionsOneof3,
-            ActionsPolicyEnterpriseConditionsOneof4,
-            ActionsPolicyEnterpriseConditionsOneof5,
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description='When workflow path targeting is available, detailed responses represent an omitted stored\nworkflow condition as `workflow_path` with `include` set to `["~ALL"]` and `exclude` set to `[]`.\nWhen workflow path targeting is unavailable, an omitted stored condition remains omitted.',
-    )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy")
-    node_id: Missing[str] = Field(default=UNSET)
-    links: Missing[ActionsPolicyPropLinks] = Field(default=UNSET, alias="_links")
-    created_at: Missing[_dt.datetime] = Field(default=UNSET)
-    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-class ActionsPolicyPropLinks(GitHubModel):
-    """ActionsPolicyPropLinks"""
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof5)
 
-    self_: Missing[ActionsPolicyPropLinksPropSelf] = Field(default=UNSET, alias="self")
-    html: Missing[ActionsPolicyPropLinksPropHtml] = Field(default=UNSET)
-
-
-class ActionsPolicyPropLinksPropSelf(GitHubModel):
-    """ActionsPolicyPropLinksPropSelf"""
-
-    href: Missing[str] = Field(default=UNSET, description="The URL of the policy")
-
-
-class ActionsPolicyPropLinksPropHtml(GitHubModel):
-    """ActionsPolicyPropLinksPropHtml"""
-
-    href: Missing[str] = Field(default=UNSET, description="The html URL of the policy")
-
-
-model_rebuild(ActionsPolicy)
-model_rebuild(ActionsPolicyPropLinks)
-model_rebuild(ActionsPolicyPropLinksPropSelf)
-model_rebuild(ActionsPolicyPropLinksPropHtml)
-
-__all__ = (
-    "ActionsPolicy",
-    "ActionsPolicyPropLinks",
-    "ActionsPolicyPropLinksPropHtml",
-    "ActionsPolicyPropLinksPropSelf",
-)
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof5",)

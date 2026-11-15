@@ -9,51 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0121 import (
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
-    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ActionsPolicyWorkflowPathConditionType(TypedDict):
-    """Actions policy workflow path condition
+class ActionsGetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    Parameters for an Actions policy workflow path condition. Omitting
-    `workflow_path` when creating
-    a policy targets all workflows without storing an explicit condition. Omitting
-    it when updating a
-    policy preserves the existing workflow targeting. For new or changed workflow
-    conditions, the API
-    requires at least one included or excluded pattern. This is validated server-
-    side rather than by
-    this schema, which can also describe existing stored conditions.
-    """
-
-    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+    default_workflow_permissions: Literal["read", "write"]
+    can_approve_pull_request_reviews: bool
 
 
-class ActionsPolicyWorkflowPathConditionTypeForResponse(TypedDict):
-    """Actions policy workflow path condition
+class ActionsGetDefaultWorkflowPermissionsTypeForResponse(TypedDict):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-    Parameters for an Actions policy workflow path condition. Omitting
-    `workflow_path` when creating
-    a policy targets all workflows without storing an explicit condition. Omitting
-    it when updating a
-    policy preserves the existing workflow targeting. For new or changed workflow
-    conditions, the API
-    requires at least one included or excluded pattern. This is validated server-
-    side rather than by
-    this schema, which can also describe existing stored conditions.
-    """
-
-    workflow_path: NotRequired[
-        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
-    ]
+    default_workflow_permissions: Literal["read", "write"]
+    can_approve_pull_request_reviews: bool
 
 
 __all__ = (
-    "ActionsPolicyWorkflowPathConditionType",
-    "ActionsPolicyWorkflowPathConditionTypeForResponse",
+    "ActionsGetDefaultWorkflowPermissionsType",
+    "ActionsGetDefaultWorkflowPermissionsTypeForResponse",
 )

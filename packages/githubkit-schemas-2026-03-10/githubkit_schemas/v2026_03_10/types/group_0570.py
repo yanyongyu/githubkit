@@ -9,38 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class SimpleInstallationType(TypedDict):
-    """Simple Installation
+class UserUpdateIssueFieldType(TypedDict):
+    """UserUpdateIssueField"""
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
-    """
-
-    id: int
-    node_id: str
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["restricted", "all"]]
+    options: NotRequired[list[UserUpdateIssueFieldPropOptionsItemsType]]
 
 
-class SimpleInstallationTypeForResponse(TypedDict):
-    """Simple Installation
+class UserUpdateIssueFieldTypeForResponse(TypedDict):
+    """UserUpdateIssueField"""
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
-    """
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["restricted", "all"]]
+    options: NotRequired[list[UserUpdateIssueFieldPropOptionsItemsTypeForResponse]]
 
-    id: int
-    node_id: str
+
+class UserUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """UserUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+class UserUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """UserUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "SimpleInstallationType",
-    "SimpleInstallationTypeForResponse",
+    "UserUpdateIssueFieldPropOptionsItemsType",
+    "UserUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "UserUpdateIssueFieldType",
+    "UserUpdateIssueFieldTypeForResponse",
 )

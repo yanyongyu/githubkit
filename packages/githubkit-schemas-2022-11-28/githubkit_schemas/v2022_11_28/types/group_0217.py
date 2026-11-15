@@ -9,31 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class OrganizationExternalPropertyInstallationType(TypedDict):
+    """Organization External Custom Property Installation
 
-    Custom property name and associated value
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    display_name: str
+    installation: OrganizationExternalPropertyInstallationPropInstallationType
 
 
-class CustomPropertyValueTypeForResponse(TypedDict):
-    """Custom Property Value
+class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
+    """Organization External Custom Property Installation
 
-    Custom property name and associated value
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    property_name: str
-    value: Union[str, list[str], None]
+    display_name: str
+    installation: (
+        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
+    )
+
+
+class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
+
+
+class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
+    TypedDict
+):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
 
 
 __all__ = (
-    "CustomPropertyValueType",
-    "CustomPropertyValueTypeForResponse",
+    "OrganizationExternalPropertyInstallationPropInstallationType",
+    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
+    "OrganizationExternalPropertyInstallationType",
+    "OrganizationExternalPropertyInstallationTypeForResponse",
 )

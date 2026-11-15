@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,22 +19,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0658 import EnterpriseWebhooks
-from .group_0659 import SimpleInstallation
-from .group_0660 import OrganizationSimpleWebhooks
-from .group_0661 import RepositoryWebhooks
-from .group_0712 import PublicMonitoringAlertWebhook
+from .group_0672 import EnterpriseWebhooks
+from .group_0673 import SimpleInstallation
+from .group_0674 import OrganizationSimpleWebhooks
+from .group_0675 import RepositoryWebhooks
 
 
-class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
-    """secret_scanning_public_monitoring_alert dismissed event"""
+class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
+    """repository_vulnerability_alert dismiss event"""
 
-    action: Literal["dismissed"] = Field()
-    alert: PublicMonitoringAlertWebhook = Field(
-        title="Public Monitoring Alert Webhook",
-        description="A public monitoring alert as delivered via webhook.",
+    action: Literal["dismiss"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
     )
-    enterprise: EnterpriseWebhooks = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
     )
@@ -47,16 +48,74 @@ class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookSecretScanningPublicMonitoringAlertDismissed)
+class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+    """Repository Vulnerability Alert Alert
 
-__all__ = ("WebhookSecretScanningPublicMonitoringAlertDismissed",)
+    The security alert of the vulnerable dependency.
+    """
+
+    affected_package_name: str = Field()
+    affected_range: str = Field()
+    created_at: str = Field()
+    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
+    dismiss_reason: str = Field()
+    dismissed_at: str = Field()
+    dismisser: Union[
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
+    ] = Field(title="User")
+    external_identifier: str = Field()
+    external_reference: Union[str, None] = Field()
+    fix_reason: Missing[str] = Field(default=UNSET)
+    fixed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    fixed_in: Missing[str] = Field(default=UNSET)
+    ghsa_id: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    number: int = Field()
+    severity: str = Field()
+    state: Literal["dismissed"] = Field()
+
+
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
+
+__all__ = (
+    "WebhookRepositoryVulnerabilityAlertDismiss",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
+)

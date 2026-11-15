@@ -9,47 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type(TypedDict):
-    """Package license compliance results
-
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType
-
-
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse(
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type(
     TypedDict
 ):
-    """Package license compliance results
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
 
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse
+    name: NotRequired[str]
+    body: str
 
 
-ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType: TypeAlias = (
-    dict[str, Any]
-)
-"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
-"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
 
-
-ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
-"""
+    name: NotRequired[str]
+    body: str
 
 
 __all__ = (
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1Type",
+    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1TypeForResponse",
 )

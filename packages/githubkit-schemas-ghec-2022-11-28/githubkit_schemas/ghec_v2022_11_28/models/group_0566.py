@@ -14,49 +14,66 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0243 import ReactionRollup
-from .group_0567 import ReviewCommentPropLinks
+from .group_0107 import TeamSimple
+from .group_0243 import Milestone
+from .group_0352 import AutoMerge
+from .group_0353 import PullRequestStack
+from .group_0567 import PullRequestPropLabelsItems
+from .group_0568 import PullRequestPropBase, PullRequestPropHead
+from .group_0569 import PullRequestPropLinks
 
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
+class PullRequest(GitHubModel):
+    """Pull Request
 
-    Legacy Review Comment
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
-    is_copilot_code_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this comment was produced by Copilot code review.",
-    )
-    copilot_code_review_sources: Missing[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItems]
-    ] = Field(
-        max_length=16 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Sources reported as contributing to this comment; may be incomplete.",
-    )
     url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[SimpleUser, None] = Field()
-    body: str = Field()
+    html_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
+    statuses_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
+    )
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
+    )
+    locked: bool = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
+    milestone: Union[Milestone, None] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     created_at: _dt.datetime = Field()
     updated_at: _dt.datetime = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
+    closed_at: Union[_dt.datetime, None] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[SimpleUser, None] = Field()
+    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
+    requested_teams: Missing[list[TeamSimple]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -70,59 +87,34 @@ class ReviewComment(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
     )
-    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
+    stack: Missing[Union[PullRequestStack, None]] = Field(
         default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
+        title="Pull Request Stack",
+        description="The stack information associated with a pull request.",
     )
-    line: Missing[int] = Field(
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+        description="Indicates whether or not the pull request is a draft.",
     )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[SimpleUser, None] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
     )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
 
 
-class ReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+model_rebuild(PullRequest)
 
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
-        description="The kind of contributing source."
-    )
-    name: str = Field(
-        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS.'
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
-    )
-
-
-model_rebuild(ReviewComment)
-model_rebuild(ReviewCommentPropCopilotCodeReviewSourcesItems)
-
-__all__ = (
-    "ReviewComment",
-    "ReviewCommentPropCopilotCodeReviewSourcesItems",
-)
+__all__ = ("PullRequest",)

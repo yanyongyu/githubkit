@@ -9,60 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoHooksPostBody(GitHubModel):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
+    id: int = Field(description="ID of the created snapshot.")
+    created_at: str = Field(description="The time at which the snapshot was created.")
+    result: str = Field(
+        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
     )
-    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
-    )
-    events: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    message: str = Field(
+        description="A message providing further details about the result, such as why the dependencies were not updated."
     )
 
 
-class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoHooksPostBody)
-model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
-
-__all__ = (
-    "ReposOwnerRepoHooksPostBody",
-    "ReposOwnerRepoHooksPostBodyPropConfig",
-)
+__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400
+class AgentsReposOwnerRepoAutomationsGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems]
+        list[AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,10 +47,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems
+class AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems
 
     A single validation error
     """
@@ -69,10 +67,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems(
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400)
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems)
+model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400",
-    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsGetResponse404",
+    "AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems",
 )

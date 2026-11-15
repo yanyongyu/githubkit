@@ -9,23 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostBody(GitHubModel):
+    """ReposOwnerRepoLicenseCompliancePackageChecksPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest/rest/reactions/reactions#about-reactions) to add to the pull request review comment."
+    purls: list[str] = Field(
+        max_length=40 if PYDANTIC_V2 else None,
+        description="Up to 40 package URLs to check against the license compliance policy. Duplicate package URLs count toward the limit but are checked once.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody)
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostBody)
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",)
+__all__ = ("ReposOwnerRepoLicenseCompliancePackageChecksPostBody",)

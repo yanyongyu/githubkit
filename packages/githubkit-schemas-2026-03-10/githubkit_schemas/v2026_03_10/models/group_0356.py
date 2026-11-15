@@ -9,26 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0032 import SimpleRepository
+from .group_0047 import IssueType
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+class CodeScanningAlertLinkedIssue(GitHubModel):
+    """CodeScanningAlertLinkedIssue
+
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int = Field(description="The issue number.")
+    title: str = Field(description="The title of the issue.")
+    state: str = Field(description="The state of the issue.")
+    url: str = Field(description="The REST API URL of the issue.")
+    html_url: str = Field(description="The URL to view the issue on GitHub.")
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    issue_type: Union[IssueType, None] = Field(
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
     )
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(CodeScanningAlertLinkedIssue)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("CodeScanningAlertLinkedIssue",)

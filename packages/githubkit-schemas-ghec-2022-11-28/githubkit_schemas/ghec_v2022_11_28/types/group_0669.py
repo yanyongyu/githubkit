@@ -9,46 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0116 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class DependabotAlertWithdrawnWebhookPropDependencyType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropDependency
+class SshSigningKeyType(TypedDict):
+    """SSH Signing Key
 
-    Details for the vulnerable dependency.
+    A public SSH key used to sign Git commits
     """
 
-    package: DependabotAlertPackageType
-    manifest_path: Union[str, None]
-    version_requirement: NotRequired[Union[str, None]]
-    scope: Union[Literal["development", "runtime"], None]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    key: str
+    id: int
+    title: str
+    created_at: _dt.datetime
 
 
-class DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropDependency
+class SshSigningKeyTypeForResponse(TypedDict):
+    """SSH Signing Key
 
-    Details for the vulnerable dependency.
+    A public SSH key used to sign Git commits
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    manifest_path: Union[str, None]
-    version_requirement: NotRequired[Union[str, None]]
-    scope: Union[Literal["development", "runtime"], None]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    key: str
+    id: int
+    title: str
+    created_at: str
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropDependencyType",
-    "DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse",
+    "SshSigningKeyType",
+    "SshSigningKeyTypeForResponse",
 )

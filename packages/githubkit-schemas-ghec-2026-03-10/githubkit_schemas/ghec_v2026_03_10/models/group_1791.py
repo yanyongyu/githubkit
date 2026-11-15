@@ -11,18 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostBody(GitHubModel):
-    """ReposOwnerRepoLicenseCompliancePackageChecksPostBody"""
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0(
+    GitHubModel
+):
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
 
-    purls: list[str] = Field(
-        max_length=40 if PYDANTIC_V2 else None,
-        description="Up to 40 package URLs to check against the license compliance policy. Duplicate package URLs count toward the limit but are checked once.",
+    name: str = Field(
+        min_length=1, description="The new human-readable name of the artifact."
+    )
+    body: Missing[str] = Field(
+        min_length=1, default=UNSET, description="The new artifact content."
     )
 
 
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoLicenseCompliancePackageChecksPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0",)

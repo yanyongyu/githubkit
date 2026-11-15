@@ -9,32 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+
+
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest/webhooks/event-payloads/#delivery-headers).",
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability)
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)
+__all__ = (
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
+)

@@ -16,24 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
-    GitHubModel
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotCodeReviewSettingsPatchBody(GitHubModel):
+    """OrgsOrgCopilotCodeReviewSettingsPatchBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
+    default_review_effort: Missing[str] = Field(
         default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
+        description="The default review effort for repositories that do not choose their own. Use `inherit` to clear the organization's value. Only efforts listed in the settings' `available_review_efforts` are accepted, and a rejected effort's error message lists them. For more information, see [Review effort level](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
     )
 
 
-model_rebuild(
-    OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
-)
+model_rebuild(OrgsOrgCopilotCodeReviewSettingsPatchBody)
 
-__all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
-)
+__all__ = ("OrgsOrgCopilotCodeReviewSettingsPatchBody",)

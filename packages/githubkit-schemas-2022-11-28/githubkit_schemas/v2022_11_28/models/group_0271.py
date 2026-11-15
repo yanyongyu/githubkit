@@ -12,24 +12,16 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleMaxFileSizePropParameters(GitHubModel):
-    """RepositoryRuleMaxFileSizePropParameters"""
+class RepositoryRuleFileExtensionRestrictionPropParameters(GitHubModel):
+    """RepositoryRuleFileExtensionRestrictionPropParameters"""
 
-    ignored_file_paths: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Files matching these patterns may exceed the maximum size.",
-    )
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    restricted_file_extensions: list[str] = Field(
+        description="The file extensions that are restricted from being pushed to the commit graph."
     )
 
 
-model_rebuild(RepositoryRuleMaxFileSizePropParameters)
+model_rebuild(RepositoryRuleFileExtensionRestrictionPropParameters)
 
-__all__ = ("RepositoryRuleMaxFileSizePropParameters",)
+__all__ = ("RepositoryRuleFileExtensionRestrictionPropParameters",)

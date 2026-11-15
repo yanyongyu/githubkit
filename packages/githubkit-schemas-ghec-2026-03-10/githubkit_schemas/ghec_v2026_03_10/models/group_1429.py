@@ -9,27 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
 
-    last_read_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
+    s
+    """
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
     )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
     )
 
 
-model_rebuild(NotificationsPutBody)
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems
+)
 
-__all__ = ("NotificationsPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItems",
+)

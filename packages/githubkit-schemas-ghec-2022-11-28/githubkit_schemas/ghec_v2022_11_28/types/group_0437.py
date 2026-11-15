@@ -13,24 +13,44 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
-
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class PullRequestsOnAlertsType(TypedDict):
+    """Pull Requests on Alerts
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    A pull request linked to a code scanning alert.
+    """
+
+    number: int
+    id: int
+    repository: SimpleRepositoryType
+    title: str
+    state: Literal["open", "closed", "merged"]
+    merged_at: Union[_dt.datetime, None]
+    html_url: str
+    url: str
+    draft: bool
+
+
+class PullRequestsOnAlertsTypeForResponse(TypedDict):
+    """Pull Requests on Alerts
+
+    A pull request linked to a code scanning alert.
+    """
+
+    number: int
+    id: int
+    repository: SimpleRepositoryTypeForResponse
+    title: str
+    state: Literal["open", "closed", "merged"]
+    merged_at: Union[str, None]
+    html_url: str
+    url: str
+    draft: bool
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "PullRequestsOnAlertsType",
+    "PullRequestsOnAlertsTypeForResponse",
 )

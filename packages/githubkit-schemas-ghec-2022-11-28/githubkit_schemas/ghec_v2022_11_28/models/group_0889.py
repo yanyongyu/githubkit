@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,18 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0659 import EnterpriseWebhooks
-from .group_0660 import SimpleInstallation
-from .group_0661 import OrganizationSimpleWebhooks
-from .group_0662 import RepositoryWebhooks
-from .group_0684 import WebhooksMilestone
-from .group_0890 import WebhookIssuesDemilestonedPropIssue
+from .group_0673 import EnterpriseWebhooks
+from .group_0674 import SimpleInstallation
+from .group_0675 import OrganizationSimpleWebhooks
+from .group_0676 import RepositoryWebhooks
+from .group_0688 import WebhooksUser
+from .group_0697 import WebhooksIssue
 
 
-class WebhookIssuesDemilestoned(GitHubModel):
-    """issues demilestoned event"""
+class WebhookIssuesAssigned(GitHubModel):
+    """issues assigned event"""
 
-    action: Literal["demilestoned"] = Field()
+    action: Literal["assigned"] = Field(description="The action that was performed.")
+    assignee: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,14 +41,9 @@ class WebhookIssuesDemilestoned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesDemilestonedPropIssue = Field(
+    issue: WebhooksIssue = Field(
         title="Issue",
         description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
-    )
-    milestone: Missing[WebhooksMilestone] = Field(
-        default=UNSET,
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -61,6 +57,6 @@ class WebhookIssuesDemilestoned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssuesDemilestoned)
+model_rebuild(WebhookIssuesAssigned)
 
-__all__ = ("WebhookIssuesDemilestoned",)
+__all__ = ("WebhookIssuesAssigned",)

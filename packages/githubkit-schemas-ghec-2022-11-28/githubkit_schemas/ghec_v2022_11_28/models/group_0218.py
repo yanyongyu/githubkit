@@ -10,85 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0099 import SimpleRepository
-from .group_0215 import PublicMonitoringRepository
-from .group_0216 import BaseGist
-from .group_0219 import PublicMonitoringAlertPropAttribution
 
 
-class PublicMonitoringAlert(GitHubModel):
-    """PublicMonitoringAlert"""
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    number: int = Field(
-        ge=1.0, description="The enterprise-scoped public monitoring alert number."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET,
-        description="The validity status of the secret as of the latest validity check.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The time that the secret was detected in ISO 8601 format.",
-    )
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
-    )
-    resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when resolving or reopening an alert.",
-    )
-    secret: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The secret that was detected."
-    )
-    repository: Missing[Union[SimpleRepository, PublicMonitoringRepository, None]] = (
-        Field(default=UNSET)
-    )
-    gist: Missing[Union[BaseGist, PublicMonitoringAlertPropGistAnyof1, None]] = Field(
-        default=UNSET, description="The gist the secret was found in."
-    )
-    attribution: Missing[PublicMonitoringAlertPropAttribution] = Field(
-        default=UNSET, description="Attribution information for the alert."
-    )
+    Base Gist
+    """
 
-
-class PublicMonitoringAlertPropGistAnyof1(GitHubModel):
-    """PublicMonitoringAlertPropGistAnyof1"""
-
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
     id: str = Field()
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
-model_rebuild(PublicMonitoringAlert)
-model_rebuild(PublicMonitoringAlertPropGistAnyof1)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
+
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "PublicMonitoringAlert",
-    "PublicMonitoringAlertPropGistAnyof1",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

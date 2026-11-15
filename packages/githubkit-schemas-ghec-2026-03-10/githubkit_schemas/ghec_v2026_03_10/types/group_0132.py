@@ -10,40 +10,91 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0131 import (
-    EnterpriseLicensePolicyItemPropLicensesType,
-    EnterpriseLicensePolicyItemPropLicensesTypeForResponse,
-    EnterpriseLicensePolicyItemPropPackagesItemsType,
-    EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse,
-)
+
+class EnterpriseLicensePolicyItemPropLicensesType(TypedDict):
+    """EnterpriseLicensePolicyItemPropLicenses"""
+
+    allowed: list[EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsType]
 
 
-class EnterpriseLicensePolicyResponseType(TypedDict):
-    """Enterprise license policy
+class EnterpriseLicensePolicyItemPropLicensesTypeForResponse(TypedDict):
+    """EnterpriseLicensePolicyItemPropLicenses"""
 
-    The license compliance policy for an enterprise.
-    """
-
-    licenses: EnterpriseLicensePolicyItemPropLicensesType
-    packages: list[EnterpriseLicensePolicyItemPropPackagesItemsType]
-    created_at: Union[_dt.datetime, None]
+    allowed: list[
+        EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsTypeForResponse
+    ]
 
 
-class EnterpriseLicensePolicyResponseTypeForResponse(TypedDict):
-    """Enterprise license policy
+class EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsType(TypedDict):
+    """Allowed license"""
 
-    The license compliance policy for an enterprise.
-    """
+    spdx_id: str
+    added_at: Union[_dt.datetime, None]
 
-    licenses: EnterpriseLicensePolicyItemPropLicensesTypeForResponse
-    packages: list[EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse]
-    created_at: Union[str, None]
+
+class EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsTypeForResponse(TypedDict):
+    """Allowed license"""
+
+    spdx_id: str
+    added_at: Union[str, None]
+
+
+class EnterpriseLicensePolicyItemPropPackagesItemsType(TypedDict):
+    """License policy package exception"""
+
+    package_manager: Literal[
+        "unknown",
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "gomod",
+        "rust",
+        "actions",
+        "pub",
+        "swift",
+    ]
+    name: str
+    action: Literal["unknown", "allowed", "private"]
+    reason: str
+    extra_allowed_spdx_ids: list[str]
+    added_at: Union[_dt.datetime, None]
+
+
+class EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse(TypedDict):
+    """License policy package exception"""
+
+    package_manager: Literal[
+        "unknown",
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "gomod",
+        "rust",
+        "actions",
+        "pub",
+        "swift",
+    ]
+    name: str
+    action: Literal["unknown", "allowed", "private"]
+    reason: str
+    extra_allowed_spdx_ids: list[str]
+    added_at: Union[str, None]
 
 
 __all__ = (
-    "EnterpriseLicensePolicyResponseType",
-    "EnterpriseLicensePolicyResponseTypeForResponse",
+    "EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsType",
+    "EnterpriseLicensePolicyItemPropLicensesPropAllowedItemsTypeForResponse",
+    "EnterpriseLicensePolicyItemPropLicensesType",
+    "EnterpriseLicensePolicyItemPropLicensesTypeForResponse",
+    "EnterpriseLicensePolicyItemPropPackagesItemsType",
+    "EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse",
 )

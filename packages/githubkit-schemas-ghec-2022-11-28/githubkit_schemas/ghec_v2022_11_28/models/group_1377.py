@@ -9,33 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
-    ponse202
-    """
+class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
 
-    message: Missing[str] = Field(
-        default=UNSET, description="A message indicating the revocation has been queued"
-    )
-    warning: Missing[str] = Field(
-        default=UNSET,
-        description="A warning message if the token used for this request may be revoked",
-    )
+    policy_state: Literal[
+        "enabled_for_all_organizations",
+        "disabled_for_all_organizations",
+        "configured_by_organization_admins",
+    ] = Field(description="The enterprise's Copilot code review policy.")
 
 
-model_rebuild(
-    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
-)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
-)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody",)

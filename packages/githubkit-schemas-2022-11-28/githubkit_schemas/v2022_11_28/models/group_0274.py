@@ -18,302 +18,145 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0225 import RepositoryRulesetBypassActor
+from .group_0226 import RepositoryRulesetConditions
+from .group_0228 import OrgRulesetConditionsOneof0
+from .group_0229 import OrgRulesetConditionsOneof1
+from .group_0230 import OrgRulesetConditionsOneof2
+from .group_0231 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
+from .group_0232 import RepositoryRuleUpdate
+from .group_0234 import RepositoryRuleRequiredLinearHistory
+from .group_0235 import RepositoryRuleMergeQueue
+from .group_0237 import RepositoryRuleRequiredDeployments
+from .group_0240 import RepositoryRulePullRequest
+from .group_0242 import RepositoryRuleRequiredStatusChecks
+from .group_0244 import RepositoryRuleCommitMessagePattern
+from .group_0246 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0248 import RepositoryRuleCommitterEmailPattern
+from .group_0250 import RepositoryRuleBranchNamePattern
+from .group_0252 import RepositoryRuleTagNamePattern
+from .group_0255 import RepositoryRuleWorkflows
+from .group_0257 import RepositoryRuleCodeScanning
+from .group_0259 import RepositoryRuleCodeQuality
+from .group_0261 import RepositoryRuleCodeCoverage
+from .group_0263 import RepositoryRuleCopilotCodeReview
+from .group_0265 import RepositoryRuleLicenseComplianceScanning
+from .group_0266 import RepositoryRuleFilePathRestriction
+from .group_0268 import RepositoryRuleMaxFilePathLength
+from .group_0270 import RepositoryRuleFileExtensionRestriction
+from .group_0272 import RepositoryRuleMaxFileSize
 
-class RuleSuite(GitHubModel):
-    """Rule Suite
 
-    Response
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the rule insight."
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The number that identifies the user."
+    source_type: Missing[Literal["Repository", "Organization", "Enterprise"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
     )
-    actor_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
-    before_sha: Missing[str] = Field(
-        default=UNSET, description="The previous commit SHA of the ref."
-    )
-    after_sha: Missing[str] = Field(
-        default=UNSET, description="The new commit SHA of the ref."
-    )
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref name that the evaluation ran on."
-    )
-    repository_id: Missing[int] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="The ID of the repository associated with the rule evaluation.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    repository_name: Missing[str] = Field(
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never", "exempt"]
+    ] = Field(
         default=UNSET,
-        description="The name of the repository without the `.git` extension.",
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
     )
-    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
-    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` enforcement status.",
-    )
-    evaluation_result: Missing[Union[Literal["pass", "fail", "bypass"], None]] = Field(
-        default=UNSET,
-        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
-    )
-    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
-        default=UNSET, description="Details on the evaluated rules."
-    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        list[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+                RepositoryRuleCodeQuality,
+                RepositoryRuleCodeCoverage,
+                RepositoryRuleCopilotCodeReview,
+                RepositoryRuleLicenseComplianceScanning,
+                RepositoryRuleFilePathRestriction,
+                RepositoryRuleMaxFilePathLength,
+                RepositoryRuleFileExtensionRestriction,
+                RepositoryRuleMaxFileSize,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-class RuleSuitePropRuleEvaluationsItems(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItems"""
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
 
-    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
         default=UNSET
     )
-    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
-        default=UNSET, description="The enforcement level of this rule source."
-    )
-    result: Missing[Literal["pass", "fail"]] = Field(
-        default=UNSET,
-        description="The result of the evaluation of the individual rule.",
-    )
-    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
-    metadata: Missing[
-        Union[RuleSuitePullRequest, RuleSuiteRequiredStatusChecks, None]
-    ] = Field(
-        default=UNSET, description="Additional metadata about the rule evaluation."
-    )
-    details: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The detailed failure message for the rule. Null if the rule passed.",
-    )
 
 
-class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
 
-    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
-    id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the rule source."
-    )
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the rule source."
-    )
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
 
 
-class RuleSuiteRequiredStatusChecks(GitHubModel):
-    """Required status checks rule suite metadata
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
 
-    Metadata for a required status checks rule evaluation result.
-    """
-
-    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
-        default=UNSET,
-        description="The status checks associated with the rule evaluation.",
-    )
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
 
 
-class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItems"""
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the status check."
-    )
-    context: Missing[str] = Field(
-        default=UNSET, description="The context name of the status check."
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="The state of the status check."
-    )
-    type: Missing[str] = Field(
-        default=UNSET, description="The type of the status check."
-    )
-    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
-        Field(
-            default=UNSET,
-            description="The GitHub App associated with the status check.",
-        )
-    )
-
-
-class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
-    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
-
-    The GitHub App associated with the status check.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the GitHub App."
-    )
-    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
-    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
-
-
-class RuleSuitePullRequest(GitHubModel):
-    """Pull request rule suite metadata
-
-    Metadata for a pull request rule evaluation result.
-    """
-
-    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
-        default=UNSET,
-        description="The pull request associated with the rule evaluation.",
-    )
-
-
-class RuleSuitePullRequestPropPullRequest(GitHubModel):
-    """RuleSuitePullRequestPropPullRequest
-
-    The pull request associated with the rule evaluation.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the pull request."
-    )
-    number: Missing[int] = Field(
-        default=UNSET, description="The number of the pull request."
-    )
-    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
-        default=UNSET, description="The user who created the pull request."
-    )
-    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
-        default=UNSET, description="The reviews associated with the pull request."
-    )
-    proof_of_presence: Missing[
-        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresence, None]
-    ] = Field(
-        default=UNSET,
-        description="The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.",
-    )
-
-
-class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropUser
-
-    The user who created the pull request.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
-
-
-class RuleSuitePullRequestPropPullRequestPropProofOfPresence(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
-
-    The proof of presence evaluation for the pull request. Null if proof of presence
-    was not evaluated.
-    """
-
-    state: Missing[str] = Field(
-        default=UNSET, description="The state of the proof of presence evaluation."
-    )
-    code: Missing[str] = Field(
-        default=UNSET,
-        description="A code describing the reason for the proof of presence state.",
-    )
-    base_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The base commit SHA the proof of presence evaluation applies to. Empty if unavailable.",
-    )
-    head_sha: Missing[str] = Field(
-        default=UNSET,
-        description="The head commit SHA the proof of presence evaluation applies to. Empty if unavailable.",
-    )
-    required_level: Missing[str] = Field(
-        default=UNSET,
-        description="The authentication level required by the rule. Empty if unavailable.",
-    )
-    verified_level: Missing[str] = Field(
-        default=UNSET,
-        description="The authentication level that was verified. Empty if proof of presence has not been completed.",
-    )
-    verified_at: Missing[str] = Field(
-        default=UNSET,
-        description="The time proof of presence was verified, in ISO 8601 format. Empty if proof of presence has not been completed.",
-    )
-    verifier: Missing[
-        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier, None]
-    ] = Field(
-        default=UNSET,
-        description="The user who provided proof of presence. Null if no proof of presence was recorded.",
-    )
-
-
-class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
-
-    The user who provided proof of presence. Null if no proof of presence was
-    recorded.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the review."
-    )
-    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
-        default=UNSET, description="The user who submitted the review."
-    )
-    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
-
-
-class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
-    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
-
-    The user who submitted the review.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user."
-    )
-    login: Missing[str] = Field(
-        default=UNSET, description="The handle for the GitHub user account."
-    )
-    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
-
-
-model_rebuild(RuleSuite)
-model_rebuild(RuleSuitePropRuleEvaluationsItems)
-model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
-model_rebuild(RuleSuiteRequiredStatusChecks)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
-model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
-model_rebuild(RuleSuitePullRequest)
-model_rebuild(RuleSuitePullRequestPropPullRequest)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropProofOfPresence)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
-model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "RuleSuite",
-    "RuleSuitePropRuleEvaluationsItems",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
-    "RuleSuitePullRequest",
-    "RuleSuitePullRequestPropPullRequest",
-    "RuleSuitePullRequestPropPullRequestPropProofOfPresence",
-    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
-    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
-    "RuleSuitePullRequestPropPullRequestPropUser",
-    "RuleSuiteRequiredStatusChecks",
-    "RuleSuiteRequiredStatusChecksPropChecksItems",
-    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropHtml",
+    "RepositoryRulesetPropLinksPropSelf",
 )

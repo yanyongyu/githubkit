@@ -18,21 +18,20 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_1263 import (
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+)
 from .group_1264 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent,
-    AgentsTasksTaskIdGetResponse200Allof0PropRepository,
-    AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
+    AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
 )
-from .group_1265 import (
-    AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    AgentsTasksTaskIdGetResponse200Allof0PropOwner,
-)
-from .group_1267 import AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems
 
 
-class AgentsTasksTaskIdGetResponse200(GitHubModel):
-    """AgentsTasksTaskIdGetResponse200"""
+class AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0(GitHubModel):
+    """AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0"""
 
     id: str = Field(description="Unique task identifier")
     url: Missing[str] = Field(default=UNSET, description="API URL for this task")
@@ -40,21 +39,23 @@ class AgentsTasksTaskIdGetResponse200(GitHubModel):
     name: Missing[str] = Field(
         default=UNSET, description="Human-readable name derived from the task prompt"
     )
-    creator: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0] = Field(
-        default=UNSET, description="The entity who created this task"
-    )
+    creator: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0
+    ] = Field(default=UNSET, description="The entity who created this task")
     creator_type: Missing[Literal["user", "organization"]] = Field(
         default=UNSET, description="Type of the task creator"
     )
     user_collaborators: Missing[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems]
+        list[
+            AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems
+        ]
     ] = Field(default=UNSET, description="User objects of collaborators on this task")
-    owner: Missing[AgentsTasksTaskIdGetResponse200Allof0PropOwner] = Field(
-        default=UNSET, description="The owner of the repository"
+    owner: Missing[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner] = (
+        Field(default=UNSET, description="The owner of the repository")
     )
-    repository: Missing[AgentsTasksTaskIdGetResponse200Allof0PropRepository] = Field(
-        default=UNSET, description="The repository this task belongs to"
-    )
+    repository: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository
+    ] = Field(default=UNSET, description="The repository this task belongs to")
     state: Literal[
         "queued",
         "in_progress",
@@ -71,7 +72,7 @@ class AgentsTasksTaskIdGetResponse200(GitHubModel):
         default=UNSET, description="Number of sessions in this task"
     )
     artifacts: Missing[
-        list[AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems]
+        list[AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems]
     ] = Field(
         default=UNSET,
         description="Resources created by this task (PRs, branches, etc.)",
@@ -84,14 +85,13 @@ class AgentsTasksTaskIdGetResponse200(GitHubModel):
         default=UNSET, description="Timestamp of the most recent update"
     )
     created_at: _dt.datetime = Field(description="Timestamp when the task was created")
-    custom_agent: Missing[AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent] = Field(
+    custom_agent: Missing[
+        AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent
+    ] = Field(
         default=UNSET, description="Custom agent metadata associated with this task"
     )
-    sessions: Missing[list[AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems]] = (
-        Field(default=UNSET, description="Sessions associated with this task")
-    )
 
 
-model_rebuild(AgentsTasksTaskIdGetResponse200)
+model_rebuild(AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0)
 
-__all__ = ("AgentsTasksTaskIdGetResponse200",)
+__all__ = ("AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0",)

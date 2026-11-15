@@ -16,19 +16,32 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0099 import SimpleRepository
 
-class CodeScanningAutofix(GitHubModel):
-    """CodeScanningAutofix"""
 
-    status: Literal["pending", "error", "success", "outdated"] = Field(
-        description="The status of an autofix."
+class PullRequestsOnAlerts(GitHubModel):
+    """Pull Requests on Alerts
+
+    A pull request linked to a code scanning alert.
+    """
+
+    number: int = Field(description="The number of the linked pull request.")
+    id: int = Field(description="The ID of the linked pull request.")
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
     )
-    description: Union[str, None] = Field(description="The description of an autofix.")
-    started_at: _dt.datetime = Field(
-        description="The start time of an autofix in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    title: str = Field(description="The title of the linked pull request.")
+    state: Literal["open", "closed", "merged"] = Field(
+        description="The state of the referenced pull request."
     )
+    merged_at: Union[_dt.datetime, None] = Field(
+        description="The time the linked pull request was merged. Null if it has not been merged."
+    )
+    html_url: str = Field(description="The URL of the linked pull request on GitHub.")
+    url: str = Field(description="The REST API URL for the linked pull request.")
+    draft: bool = Field(description="Whether the linked pull request is a draft.")
 
 
-model_rebuild(CodeScanningAutofix)
+model_rebuild(PullRequestsOnAlerts)
 
-__all__ = ("CodeScanningAutofix",)
+__all__ = ("PullRequestsOnAlerts",)

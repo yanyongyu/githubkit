@@ -2589,6 +2589,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         ConvertedNoteToIssueIssueEventType as ConvertedNoteToIssueIssueEventType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        CopilotCodeReviewRequestDeniedAllof1Type as CopilotCodeReviewRequestDeniedAllof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CopilotCodeReviewRequestDeniedType as CopilotCodeReviewRequestDeniedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CopilotCodeReviewRequestType as CopilotCodeReviewRequestType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         CopilotOrganizationContentExclusionDetailsType as CopilotOrganizationContentExclusionDetailsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2641,6 +2650,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         CustomDeploymentRuleAppType as CustomDeploymentRuleAppType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        CustomPropertyBatchItemPayloadType as CustomPropertyBatchItemPayloadType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         CustomPropertySetPayloadType as CustomPropertySetPayloadType,
@@ -2729,6 +2741,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         DependabotRepositoryAccessDetailsType as DependabotRepositoryAccessDetailsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        DependabotRunnerSettingsType as DependabotRunnerSettingsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        DependabotRunnerSettingsUpdateType as DependabotRunnerSettingsUpdateType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         DependabotSecretType as DependabotSecretType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2805,6 +2823,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import EmptyObjectType as EmptyObjectType
     from githubkit_schemas.v2026_03_10.types import (
+        EnterpriseCopilotCodeReviewPolicyType as EnterpriseCopilotCodeReviewPolicyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationIdType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -2845,6 +2866,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType as EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType,
@@ -3183,6 +3207,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         IssuePropPullRequestType as IssuePropPullRequestType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        IssuePropStatusType as IssuePropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         IssueReferencePropIssueTypeType as IssueReferencePropIssueTypeType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3196,6 +3223,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         IssueSearchResultItemPropPullRequestType as IssueSearchResultItemPropPullRequestType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueSearchResultItemPropStatusType as IssueSearchResultItemPropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         IssueSearchResultItemType as IssueSearchResultItemType,
@@ -3213,6 +3243,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         IssueTypeRemovedIssueEventType as IssueTypeRemovedIssueEventType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        IssueTypeRequestType as IssueTypeRequestType,
     )
     from githubkit_schemas.v2026_03_10.types import IssueTypeType as IssueTypeType
     from githubkit_schemas.v2026_03_10.types import (
@@ -3347,13 +3380,22 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrganizationActionsVariableType as OrganizationActionsVariableType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        OrganizationCopilotCodeReviewPolicyType as OrganizationCopilotCodeReviewPolicyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrganizationCopilotCodeReviewRunnerType as OrganizationCopilotCodeReviewRunnerType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortType as OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrganizationCopilotCodeReviewSettingsType as OrganizationCopilotCodeReviewSettingsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         OrganizationCreateIssueFieldPropOptionsItemsType as OrganizationCreateIssueFieldPropOptionsItemsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrganizationCreateIssueFieldType as OrganizationCreateIssueFieldType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        OrganizationCreateIssueTypeType as OrganizationCreateIssueTypeType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrganizationDependabotSecretType as OrganizationDependabotSecretType,
@@ -3432,9 +3474,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrganizationUpdateIssueFieldType as OrganizationUpdateIssueFieldType,
-    )
-    from githubkit_schemas.v2026_03_10.types import (
-        OrganizationUpdateIssueTypeType as OrganizationUpdateIssueTypeType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrgHookPropConfigType as OrgHookPropConfigType,
@@ -3828,6 +3867,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgCopilotBillingSelectedUsersPostResponse201Type as OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgCopilotCodeReviewRunnerPutBodyType as OrgsOrgCopilotCodeReviewRunnerPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgCopilotCodeReviewSettingsPatchBodyType as OrgsOrgCopilotCodeReviewSettingsPatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgCopilotCodeReviewSettingsPatchResponse409Type as OrgsOrgCopilotCodeReviewSettingsPatchResponse409Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type as OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -3844,6 +3892,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgCopilotContentExclusionPutResponse200Type as OrgsOrgCopilotContentExclusionPutResponse200Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgCopilotPoliciesCodeReviewPutBodyType as OrgsOrgCopilotPoliciesCodeReviewPutBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type as OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
         OrgsOrgCopilotSpacesGetResponse200Type as OrgsOrgCopilotSpacesGetResponse200Type,
@@ -4238,6 +4292,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.types import (
         PinnedIssueCommentType as PinnedIssueCommentType,
     )
+    from githubkit_schemas.v2026_03_10.types import (
+        PlanningStatusType as PlanningStatusType,
+    )
     from githubkit_schemas.v2026_03_10.types import PorterAuthorType as PorterAuthorType
     from githubkit_schemas.v2026_03_10.types import (
         PorterLargeFileType as PorterLargeFileType,
@@ -4524,6 +4581,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestSimpleType as PullRequestSimpleType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        PullRequestsOnAlertsType as PullRequestsOnAlertsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         PullRequestStackMinimalPropBaseType as PullRequestStackMinimalPropBaseType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -4673,6 +4733,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryCollaboratorPermissionType as RepositoryCollaboratorPermissionType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryCopilotCodeReviewSettingsPropReviewEffortType as RepositoryCopilotCodeReviewSettingsPropReviewEffortType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        RepositoryCopilotCodeReviewSettingsType as RepositoryCopilotCodeReviewSettingsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         RepositoryExternalPropertyPayloadType as RepositoryExternalPropertyPayloadType,
@@ -5351,6 +5417,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType as ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoDeleteResponse403Type as ReposOwnerRepoDeleteResponse403Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -5754,6 +5823,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoPullsPullNumberCommentsPostBodyType as ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType as ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType as ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType,
@@ -6416,6 +6488,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         UserCodespacesSecretsSecretNameRepositoriesPutBodyType as UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        UserCreateIssueFieldPropOptionsItemsType as UserCreateIssueFieldPropOptionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserCreateIssueFieldType as UserCreateIssueFieldType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         UserEmailsDeleteBodyOneof0Type as UserEmailsDeleteBodyOneof0Type,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -6444,6 +6522,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         UserInteractionLimitsGetResponse200Anyof1Type as UserInteractionLimitsGetResponse200Anyof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserIssueFieldPropOptionsItemsType as UserIssueFieldPropOptionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserIssueFieldType as UserIssueFieldType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         UserKeysPostBodyType as UserKeysPostBodyType,
@@ -6570,6 +6654,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1Type,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserUpdateIssueFieldPropOptionsItemsType as UserUpdateIssueFieldPropOptionsItemsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        UserUpdateIssueFieldType as UserUpdateIssueFieldType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         UserUserIdProjectsV2ProjectNumberDraftsPostBodyType as UserUserIdProjectsV2ProjectNumberDraftsPostBodyType,
@@ -7941,6 +8031,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesClosedPropIssueAllof0PropReactionsType as WebhookIssuesClosedPropIssueAllof0PropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesClosedPropIssueAllof0PropStatusType as WebhookIssuesClosedPropIssueAllof0PropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesClosedPropIssueAllof0PropUserType as WebhookIssuesClosedPropIssueAllof0PropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -8025,6 +8118,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesDeletedPropIssuePropReactionsType as WebhookIssuesDeletedPropIssuePropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesDeletedPropIssuePropStatusType as WebhookIssuesDeletedPropIssuePropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesDeletedPropIssuePropUserType as WebhookIssuesDeletedPropIssuePropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -8062,6 +8158,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesDemilestonedPropIssuePropReactionsType as WebhookIssuesDemilestonedPropIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesDemilestonedPropIssuePropStatusType as WebhookIssuesDemilestonedPropIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesDemilestonedPropIssuePropUserType as WebhookIssuesDemilestonedPropIssuePropUserType,
@@ -8107,6 +8206,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesEditedPropIssuePropReactionsType as WebhookIssuesEditedPropIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesEditedPropIssuePropStatusType as WebhookIssuesEditedPropIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesEditedPropIssuePropUserType as WebhookIssuesEditedPropIssuePropUserType,
@@ -8196,6 +8298,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesLabeledPropIssuePropReactionsType as WebhookIssuesLabeledPropIssuePropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesLabeledPropIssuePropStatusType as WebhookIssuesLabeledPropIssuePropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesLabeledPropIssuePropUserType as WebhookIssuesLabeledPropIssuePropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -8233,6 +8338,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesLockedPropIssuePropReactionsType as WebhookIssuesLockedPropIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesLockedPropIssuePropStatusType as WebhookIssuesLockedPropIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesLockedPropIssuePropUserType as WebhookIssuesLockedPropIssuePropUserType,
@@ -8274,6 +8382,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesMilestonedPropIssuePropReactionsType as WebhookIssuesMilestonedPropIssuePropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesMilestonedPropIssuePropStatusType as WebhookIssuesMilestonedPropIssuePropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesMilestonedPropIssuePropUserType as WebhookIssuesMilestonedPropIssuePropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -8311,6 +8422,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType as WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesOpenedPropChangesPropOldIssuePropStatusType as WebhookIssuesOpenedPropChangesPropOldIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropUserType as WebhookIssuesOpenedPropChangesPropOldIssuePropUserType,
@@ -8367,6 +8481,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesOpenedPropIssuePropReactionsType as WebhookIssuesOpenedPropIssuePropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesOpenedPropIssuePropStatusType as WebhookIssuesOpenedPropIssuePropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesOpenedPropIssuePropUserType as WebhookIssuesOpenedPropIssuePropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -8412,6 +8529,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesReopenedPropIssuePropReactionsType as WebhookIssuesReopenedPropIssuePropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesReopenedPropIssuePropStatusType as WebhookIssuesReopenedPropIssuePropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesReopenedPropIssuePropUserType as WebhookIssuesReopenedPropIssuePropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -8419,6 +8539,27 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesReopenedType as WebhookIssuesReopenedType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedPropChangesPropStateReasonType as WebhookIssuesStatusChangedPropChangesPropStateReasonType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedPropChangesPropStateType as WebhookIssuesStatusChangedPropChangesPropStateType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedPropChangesPropStatusPropFromType as WebhookIssuesStatusChangedPropChangesPropStatusPropFromType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedPropChangesPropStatusType as WebhookIssuesStatusChangedPropChangesPropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedPropChangesType as WebhookIssuesStatusChangedPropChangesType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedPropStatusType as WebhookIssuesStatusChangedPropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesStatusChangedType as WebhookIssuesStatusChangedType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType as WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType,
@@ -8449,6 +8590,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType as WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesTransferredPropChangesPropNewIssuePropStatusType as WebhookIssuesTransferredPropChangesPropNewIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropUserType as WebhookIssuesTransferredPropChangesPropNewIssuePropUserType,
@@ -8515,6 +8659,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesUnlockedPropIssuePropReactionsType as WebhookIssuesUnlockedPropIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhookIssuesUnlockedPropIssuePropStatusType as WebhookIssuesUnlockedPropIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhookIssuesUnlockedPropIssuePropUserType as WebhookIssuesUnlockedPropIssuePropUserType,
@@ -12419,6 +12566,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhooksIssue2PropReactionsType as WebhooksIssue2PropReactionsType,
     )
     from githubkit_schemas.v2026_03_10.types import (
+        WebhooksIssue2PropStatusType as WebhooksIssue2PropStatusType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
         WebhooksIssue2PropUserType as WebhooksIssue2PropUserType,
     )
     from githubkit_schemas.v2026_03_10.types import (
@@ -12459,6 +12609,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhooksIssuePropReactionsType as WebhooksIssuePropReactionsType,
+    )
+    from githubkit_schemas.v2026_03_10.types import (
+        WebhooksIssuePropStatusType as WebhooksIssuePropStatusType,
     )
     from githubkit_schemas.v2026_03_10.types import (
         WebhooksIssuePropUserType as WebhooksIssuePropUserType,
@@ -13322,6 +13475,7 @@ else:
             "CodeSecurityConfigurationRepositoriesType",
             "CopilotUsageMetrics1DayReportType",
             "CopilotUsageMetrics28DayReportType",
+            "EnterpriseCopilotCodeReviewPolicyType",
             "DependabotAlertPackageType",
             "DependabotAlertSecurityVulnerabilityType",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
@@ -13354,6 +13508,7 @@ else:
             "IssueFieldValuePropSingleSelectOptionType",
             "IssueFieldValuePropMultiSelectOptionsItemsType",
             "IssueType",
+            "IssuePropStatusType",
             "IssuePropLabelsItemsOneof1Type",
             "IssuePropLabelsItemsOneof1PropArchivedByType",
             "IssuePropPullRequestType",
@@ -13567,6 +13722,7 @@ else:
             "CopilotSeatDetailsType",
             "EnterpriseTeamType",
             "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+            "OrganizationCopilotCodeReviewRunnerType",
             "CopilotOrganizationContentExclusionDetailsType",
             "DependabotPublicKeyType",
             "PackageType",
@@ -13586,8 +13742,7 @@ else:
             "OrganizationCreateIssueFieldPropOptionsItemsType",
             "OrganizationUpdateIssueFieldType",
             "OrganizationUpdateIssueFieldPropOptionsItemsType",
-            "OrganizationCreateIssueTypeType",
-            "OrganizationUpdateIssueTypeType",
+            "IssueTypeRequestType",
             "OrgMembershipType",
             "OrgMembershipPropPermissionsType",
             "MigrationType",
@@ -13899,6 +14054,7 @@ else:
             "CodeQualitySetupUpdateResponseType",
             "CodeScanningAiScanEnablementType",
             "CodeScanningAiScanEnablementUpdateType",
+            "PullRequestsOnAlertsType",
             "CodeScanningAlertLinkedIssueType",
             "CodeScanningAlertItemsType",
             "CodeScanningAlertType",
@@ -13969,9 +14125,13 @@ else:
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningType",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItemsType",
             "ContributorType",
+            "RepositoryCopilotCodeReviewSettingsType",
+            "RepositoryCopilotCodeReviewSettingsPropReviewEffortType",
             "DependabotAlertType",
             "DependabotAlertPropReachabilityType",
             "DependabotAlertPropDependencyType",
+            "DependabotRunnerSettingsType",
+            "DependabotRunnerSettingsUpdateType",
             "DependencyGraphDiffItemsType",
             "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
             "DependencyGraphSpdxSbomType",
@@ -14114,12 +14274,16 @@ else:
             "PagesHealthCheckType",
             "PagesHealthCheckPropDomainType",
             "PagesHealthCheckPropAltDomainType",
+            "PlanningStatusType",
             "PullRequestType",
             "PullRequestPropLabelsItemsType",
             "PullRequestPropLabelsItemsPropArchivedByType",
             "PullRequestPropHeadType",
             "PullRequestPropBaseType",
             "PullRequestPropLinksType",
+            "CopilotCodeReviewRequestType",
+            "CopilotCodeReviewRequestDeniedType",
+            "CopilotCodeReviewRequestDeniedAllof1Type",
             "PullRequestMergeResultType",
             "PullRequestMergeAsyncResultType",
             "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
@@ -14216,6 +14380,7 @@ else:
             "CommitSearchResultItemPropCommitPropAuthorType",
             "CommitSearchResultItemPropCommitPropTreeType",
             "IssueSearchResultItemType",
+            "IssueSearchResultItemPropStatusType",
             "IssueSearchResultItemPropPullRequestType",
             "IssueSearchResultItemPropLabelsItemsType",
             "IssueSearchResultItemPropLabelsItemsPropArchivedByType",
@@ -14248,6 +14413,12 @@ else:
             "GpgKeyPropEmailsItemsType",
             "GpgKeyPropSubkeysItemsType",
             "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+            "UserIssueFieldType",
+            "UserIssueFieldPropOptionsItemsType",
+            "UserCreateIssueFieldType",
+            "UserCreateIssueFieldPropOptionsItemsType",
+            "UserUpdateIssueFieldType",
+            "UserUpdateIssueFieldPropOptionsItemsType",
             "KeyType",
             "UserMarketplacePurchaseType",
             "MarketplaceAccountType",
@@ -14316,6 +14487,7 @@ else:
             "WebhooksIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhooksIssuePropPullRequestType",
             "WebhooksIssuePropReactionsType",
+            "WebhooksIssuePropStatusType",
             "WebhooksIssuePropUserType",
             "WebhooksMilestoneType",
             "WebhooksMilestonePropCreatorType",
@@ -14329,6 +14501,7 @@ else:
             "WebhooksIssue2PropPerformedViaGithubAppPropPermissionsType",
             "WebhooksIssue2PropPullRequestType",
             "WebhooksIssue2PropReactionsType",
+            "WebhooksIssue2PropStatusType",
             "WebhooksIssue2PropUserType",
             "WebhooksUserMannequinType",
             "WebhooksLabelArchivedType",
@@ -14909,6 +15082,7 @@ else:
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppType",
             "WebhookIssuesClosedPropIssueAllof0PropPullRequestType",
+            "WebhookIssuesClosedPropIssueAllof0PropStatusType",
             "WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType",
             "WebhookIssuesClosedPropIssueAllof1Type",
             "WebhookIssuesClosedPropIssueAllof1PropAssigneeType",
@@ -14931,6 +15105,7 @@ else:
             "WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesDeletedPropIssuePropPullRequestType",
             "WebhookIssuesDeletedPropIssuePropReactionsType",
+            "WebhookIssuesDeletedPropIssuePropStatusType",
             "WebhookIssuesDeletedPropIssuePropUserType",
             "WebhookIssuesDemilestonedType",
             "WebhookIssuesDemilestonedPropIssueType",
@@ -14944,6 +15119,7 @@ else:
             "WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesDemilestonedPropIssuePropPullRequestType",
             "WebhookIssuesDemilestonedPropIssuePropReactionsType",
+            "WebhookIssuesDemilestonedPropIssuePropStatusType",
             "WebhookIssuesDemilestonedPropIssuePropUserType",
             "WebhookIssuesEditedType",
             "WebhookIssuesEditedPropChangesType",
@@ -14959,6 +15135,7 @@ else:
             "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesEditedPropIssuePropPullRequestType",
             "WebhookIssuesEditedPropIssuePropReactionsType",
+            "WebhookIssuesEditedPropIssuePropStatusType",
             "WebhookIssuesEditedPropIssuePropUserType",
             "WebhookIssuesFieldAddedType",
             "WebhookIssuesFieldAddedPropIssueFieldType",
@@ -14986,6 +15163,7 @@ else:
             "WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesLabeledPropIssuePropPullRequestType",
             "WebhookIssuesLabeledPropIssuePropReactionsType",
+            "WebhookIssuesLabeledPropIssuePropStatusType",
             "WebhookIssuesLabeledPropIssuePropUserType",
             "WebhookIssuesLabeledPropIssuePropLabelsItemsType",
             "WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedByType",
@@ -15001,6 +15179,7 @@ else:
             "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesLockedPropIssuePropPullRequestType",
             "WebhookIssuesLockedPropIssuePropReactionsType",
+            "WebhookIssuesLockedPropIssuePropStatusType",
             "WebhookIssuesLockedPropIssuePropUserType",
             "WebhookIssuesMilestonedType",
             "WebhookIssuesMilestonedPropIssueType",
@@ -15014,6 +15193,7 @@ else:
             "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesMilestonedPropIssuePropPullRequestType",
             "WebhookIssuesMilestonedPropIssuePropReactionsType",
+            "WebhookIssuesMilestonedPropIssuePropStatusType",
             "WebhookIssuesMilestonedPropIssuePropUserType",
             "WebhookIssuesOpenedType",
             "WebhookIssuesOpenedPropChangesType",
@@ -15033,6 +15213,7 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequestType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType",
+            "WebhookIssuesOpenedPropChangesPropOldIssuePropStatusType",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropUserType",
             "WebhookIssuesOpenedPropIssueType",
             "WebhookIssuesOpenedPropIssuePropAssigneeType",
@@ -15045,6 +15226,7 @@ else:
             "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesOpenedPropIssuePropPullRequestType",
             "WebhookIssuesOpenedPropIssuePropReactionsType",
+            "WebhookIssuesOpenedPropIssuePropStatusType",
             "WebhookIssuesOpenedPropIssuePropUserType",
             "WebhookIssuesPinnedType",
             "WebhookIssuesReopenedType",
@@ -15060,7 +15242,15 @@ else:
             "WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesReopenedPropIssuePropPullRequestType",
             "WebhookIssuesReopenedPropIssuePropReactionsType",
+            "WebhookIssuesReopenedPropIssuePropStatusType",
             "WebhookIssuesReopenedPropIssuePropUserType",
+            "WebhookIssuesStatusChangedType",
+            "WebhookIssuesStatusChangedPropStatusType",
+            "WebhookIssuesStatusChangedPropChangesType",
+            "WebhookIssuesStatusChangedPropChangesPropStateType",
+            "WebhookIssuesStatusChangedPropChangesPropStateReasonType",
+            "WebhookIssuesStatusChangedPropChangesPropStatusType",
+            "WebhookIssuesStatusChangedPropChangesPropStatusPropFromType",
             "WebhookIssuesTransferredType",
             "WebhookIssuesTransferredPropChangesType",
             "WebhookIssuesTransferredPropChangesPropNewRepositoryType",
@@ -15079,6 +15269,7 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequestType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType",
+            "WebhookIssuesTransferredPropChangesPropNewIssuePropStatusType",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUserType",
             "WebhookIssuesTypedType",
             "WebhookIssuesUnassignedType",
@@ -15095,6 +15286,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissionsType",
             "WebhookIssuesUnlockedPropIssuePropPullRequestType",
             "WebhookIssuesUnlockedPropIssuePropReactionsType",
+            "WebhookIssuesUnlockedPropIssuePropStatusType",
             "WebhookIssuesUnlockedPropIssuePropUserType",
             "WebhookIssuesUnpinnedType",
             "WebhookIssuesUntypedType",
@@ -17133,6 +17325,7 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+            "EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType",
@@ -17303,12 +17496,20 @@ else:
             "OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",
             "OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",
             "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+            "OrgsOrgCopilotCodeReviewRunnerPutBodyType",
+            "OrgsOrgCopilotCodeReviewSettingsPatchBodyType",
+            "OrgsOrgCopilotCodeReviewSettingsPatchResponse409Type",
+            "OrganizationCopilotCodeReviewSettingsType",
+            "OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortType",
             "OrgsOrgCopilotCodingAgentPermissionsGetResponse200Type",
             "OrgsOrgCopilotCodingAgentPermissionsPutBodyType",
             "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200Type",
             "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType",
             "OrgsOrgCopilotContentExclusionPutBodyType",
             "OrgsOrgCopilotContentExclusionPutResponse200Type",
+            "OrgsOrgCopilotPoliciesCodeReviewPutBodyType",
+            "OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type",
+            "OrganizationCopilotCodeReviewPolicyType",
             "OrgsOrgDependabotRepositoryAccessPatchBodyType",
             "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBodyType",
             "OrgsOrgDependabotSecretsGetResponse200Type",
@@ -17357,6 +17558,7 @@ else:
             "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
             "RepositoryExternalPropertyPayloadType",
             "OrgsOrgPropertiesSchemaPatchBodyType",
+            "CustomPropertyBatchItemPayloadType",
             "OrgsOrgPropertiesValuesPatchBodyType",
             "OrgsOrgReposPostBodyType",
             "OrgsOrgReposPostBodyPropCustomPropertiesType",
@@ -17522,6 +17724,7 @@ else:
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200Type",
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfigurationType",
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledToolsType",
+            "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
@@ -17648,6 +17851,7 @@ else:
             "ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",
             "ReposOwnerRepoPullsPullNumberCommentsPostBodyType",
             "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
+            "ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType",
             "ReposOwnerRepoPullsPullNumberMergePutBodyType",
             "ReposOwnerRepoPullsPullNumberMergePutResponse405Type",
             "ReposOwnerRepoPullsPullNumberMergePutResponse409Type",

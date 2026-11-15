@@ -10,58 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class ExternalVulnerabilitySyncResultType(TypedDict):
-    """External Vulnerability Sync Result
+class ExternalVulnerabilitySyncAcceptedType(TypedDict):
+    """External Vulnerability Sync Accepted
 
-    Result of an external vulnerability synchronization operation
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    processed: int
-    created: int
-    updated: int
-    withdrawn: int
-    errors: int
-    results: list[ExternalVulnerabilitySyncResultPropResultsItemsType]
+    id: str
+    url: str
+    status: Literal["queued"]
 
 
-class ExternalVulnerabilitySyncResultTypeForResponse(TypedDict):
-    """External Vulnerability Sync Result
+class ExternalVulnerabilitySyncAcceptedTypeForResponse(TypedDict):
+    """External Vulnerability Sync Accepted
 
-    Result of an external vulnerability synchronization operation
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    processed: int
-    created: int
-    updated: int
-    withdrawn: int
-    errors: int
-    results: list[ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse]
-
-
-class ExternalVulnerabilitySyncResultPropResultsItemsType(TypedDict):
-    """ExternalVulnerabilitySyncResultPropResultsItems"""
-
-    external_id: str
-    status: Literal["created", "updated", "withdrawn", "error"]
-    ghsa_id: NotRequired[str]
-    error: NotRequired[str]
-
-
-class ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse(TypedDict):
-    """ExternalVulnerabilitySyncResultPropResultsItems"""
-
-    external_id: str
-    status: Literal["created", "updated", "withdrawn", "error"]
-    ghsa_id: NotRequired[str]
-    error: NotRequired[str]
+    id: str
+    url: str
+    status: Literal["queued"]
 
 
 __all__ = (
-    "ExternalVulnerabilitySyncResultPropResultsItemsType",
-    "ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse",
-    "ExternalVulnerabilitySyncResultType",
-    "ExternalVulnerabilitySyncResultTypeForResponse",
+    "ExternalVulnerabilitySyncAcceptedType",
+    "ExternalVulnerabilitySyncAcceptedTypeForResponse",
 )

@@ -9,23 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimitPullRequestBypassList(GitHubModel):
-    """Interaction Limits Pull Request Bypass List
+class RepositoryHashAlgorithm(GitHubModel):
+    """Repository hash algorithm
 
-    A list of user logins to add or remove from the pull request creation cap bypass
-    list.
+    Repository hash algorithm
     """
 
-    users: list[str] = Field(
-        description="A list of user logins to add or remove from the bypass list."
+    hash_algorithm: Literal["sha1", "sha256"] = Field(
+        description="The Git hash algorithm used by this repository."
     )
 
 
-model_rebuild(InteractionLimitPullRequestBypassList)
+model_rebuild(RepositoryHashAlgorithm)
 
-__all__ = ("InteractionLimitPullRequestBypassList",)
+__all__ = ("RepositoryHashAlgorithm",)

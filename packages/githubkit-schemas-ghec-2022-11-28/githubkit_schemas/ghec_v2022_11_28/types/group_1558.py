@@ -12,25 +12,19 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotCodeReviewSettingsPatchBodyType(TypedDict):
+    """OrgsOrgCopilotCodeReviewSettingsPatchBody"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    default_review_effort: NotRequired[str]
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202"""
+class OrgsOrgCopilotCodeReviewSettingsPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodeReviewSettingsPatchBody"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    default_review_effort: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
+    "OrgsOrgCopilotCodeReviewSettingsPatchBodyType",
+    "OrgsOrgCopilotCodeReviewSettingsPatchBodyTypeForResponse",
 )

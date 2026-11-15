@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,23 +16,14 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class InteractionLimit(GitHubModel):
-    """Interaction Restrictions
+class ApiInsightsTimeStatsItems(GitHubModel):
+    """ApiInsightsTimeStatsItems"""
 
-    Limit interactions to a specific type of user for a specified duration
-    """
-
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
-    )
-    expiry: Missing[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ] = Field(
-        default=UNSET,
-        description="The duration of the interaction restriction. Default: `one_day`.",
-    )
+    timestamp: Missing[str] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(InteractionLimit)
+model_rebuild(ApiInsightsTimeStatsItems)
 
-__all__ = ("InteractionLimit",)
+__all__ = ("ApiInsightsTimeStatsItems",)

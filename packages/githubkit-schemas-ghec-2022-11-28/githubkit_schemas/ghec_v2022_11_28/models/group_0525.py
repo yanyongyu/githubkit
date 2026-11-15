@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,31 +19,37 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0010 import Integration
-from .group_0506 import IssueTypeWebhook
-from .group_0508 import IssueEventIntent
+from .group_0108 import Team
 
 
-class IssueTypeAddedIssueEvent(GitHubModel):
-    """Issue Type Added Issue Event
+class ReviewRequestRemovedIssueEvent(GitHubModel):
+    """Review Request Removed Issue Event
 
-    Issue Type Added Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["review_request_removed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[Integration, None] = Field()
-    issue_type: Union[IssueTypeWebhook, None] = Field(
-        title="Issue Type", description="The type of issue."
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
     )
-    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(IssueTypeAddedIssueEvent)
+model_rebuild(ReviewRequestRemovedIssueEvent)
 
-__all__ = ("IssueTypeAddedIssueEvent",)
+__all__ = ("ReviewRequestRemovedIssueEvent",)

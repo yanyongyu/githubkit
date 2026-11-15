@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,33 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseWebhooks(GitHubModel):
-    """Enterprise
+class UserCreateIssueField(GitHubModel):
+    """UserCreateIssueField"""
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
-    """
-
+    name: str = Field(description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the enterprise."
+        default=UNSET, description="Description of the issue field."
     )
-    html_url: str = Field()
-    website_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The enterprise's website URL."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
-    id: int = Field(description="Unique identifier of the enterprise")
-    node_id: str = Field()
-    name: str = Field(description="The name of the enterprise.")
-    slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[_dt.datetime, None] = Field()
-    updated_at: Union[_dt.datetime, None] = Field()
-    avatar_url: str = Field()
+    visibility: Missing[Literal["restricted", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). Defaults to `restricted`.",
+    )
+    options: Missing[Union[list[UserCreateIssueFieldPropOptionsItems], None]] = Field(
+        default=UNSET,
+        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+    )
 
 
-model_rebuild(EnterpriseWebhooks)
+class UserCreateIssueFieldPropOptionsItems(GitHubModel):
+    """UserCreateIssueFieldPropOptionsItems"""
 
-__all__ = ("EnterpriseWebhooks",)
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(UserCreateIssueField)
+model_rebuild(UserCreateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "UserCreateIssueField",
+    "UserCreateIssueFieldPropOptionsItems",
+)

@@ -9,108 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CodeQualityFinding(GitHubModel):
-    """CodeQualityFinding
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    Code quality finding
+    Check Annotation
     """
 
-    number: int = Field(description="The finding number.")
-    state: Literal["open", "dismissed"] = Field(
-        description="State of the code quality finding."
-    )
-    url: str = Field(
-        description="The REST API URL of the code quality finding resource."
-    )
-    rule: CodeQualityFindingRule = Field(description="Code quality rule")
-    location: CodeQualityFindingLocation = Field(
-        description="Code quality file location"
-    )
-    message: CodeQualityFindingMessage = Field(
-        description="Code quality finding message"
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the code quality finding was created."
-    )
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-class CodeQualityFindingRule(GitHubModel):
-    """CodeQualityFindingRule
+model_rebuild(CheckAnnotation)
 
-    Code quality rule
-    """
-
-    id: str = Field(
-        description="A unique identifier for the rule used to detect the finding."
-    )
-    title: str = Field(description="The name of the rule used to detect the finding.")
-    description: str = Field(
-        description="A short description of the rule used to detect the finding."
-    )
-    help_: Missing[str] = Field(
-        default=UNSET,
-        alias="help",
-        description="A detailed description of the rule used to detect the finding.",
-    )
-    severity: Literal["error", "warning", "note", "none"] = Field(
-        description="The severity of the rule used to detect the finding."
-    )
-    category: Literal["none", "maintainability", "reliability"] = Field(
-        description="The category of the rule used to detect the finding."
-    )
-
-
-class CodeQualityFindingLocation(GitHubModel):
-    """CodeQualityFindingLocation
-
-    Code quality file location
-    """
-
-    path: str = Field(description="The file path where the finding was detected.")
-    start_line: Missing[int] = Field(
-        default=UNSET, description="The line number where the finding starts."
-    )
-    start_column: Missing[int] = Field(
-        default=UNSET, description="The column number where the finding starts."
-    )
-    end_line: Missing[int] = Field(
-        default=UNSET, description="The line number where the finding ends."
-    )
-    end_column: Missing[int] = Field(
-        default=UNSET, description="The column number where the finding ends."
-    )
-
-
-class CodeQualityFindingMessage(GitHubModel):
-    """CodeQualityFindingMessage
-
-    Code quality finding message
-    """
-
-    text: str = Field(description="The message text of the code quality finding.")
-    markdown: str = Field(
-        description="The message text of the code quality finding in markdown format."
-    )
-
-
-model_rebuild(CodeQualityFinding)
-model_rebuild(CodeQualityFindingRule)
-model_rebuild(CodeQualityFindingLocation)
-model_rebuild(CodeQualityFindingMessage)
-
-__all__ = (
-    "CodeQualityFinding",
-    "CodeQualityFindingLocation",
-    "CodeQualityFindingMessage",
-    "CodeQualityFindingRule",
-)
+__all__ = ("CheckAnnotation",)

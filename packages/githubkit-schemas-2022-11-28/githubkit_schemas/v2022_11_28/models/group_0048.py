@@ -14,27 +14,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SubIssuesSummary(GitHubModel):
-    """Sub-issues Summary"""
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-    total: int = Field()
-    completed: int = Field()
-    percent_completed: int = Field()
-
-
-class IssueDependenciesSummary(GitHubModel):
-    """Issue Dependencies Summary"""
-
-    blocked_by: int = Field()
-    blocking: int = Field()
-    total_blocked_by: int = Field()
-    total_blocking: int = Field()
+    url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-model_rebuild(SubIssuesSummary)
-model_rebuild(IssueDependenciesSummary)
+model_rebuild(ReactionRollup)
 
-__all__ = (
-    "IssueDependenciesSummary",
-    "SubIssuesSummary",
-)
+__all__ = ("ReactionRollup",)

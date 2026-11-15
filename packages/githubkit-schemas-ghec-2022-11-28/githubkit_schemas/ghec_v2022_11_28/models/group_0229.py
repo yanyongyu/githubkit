@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,85 +16,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingCostCenterMembership(GitHubModel):
-    """BillingCostCenterMembership"""
+class GetBudgetUserStates(GitHubModel):
+    """GetBudgetUserStates"""
 
-    resource: BillingCostCenterMembershipPropResource = Field()
-    memberships: list[BillingCostCenterMembershipPropMembershipsItems] = Field(
-        description="The list of cost center memberships for the resource."
+    user_states: list[GetBudgetUserStatesPropUserStatesItems] = Field(
+        description="Per-user state entries for the budget."
+    )
+    has_next_page: bool = Field(
+        description="Indicates if there are more pages of results available."
+    )
+    total_count: int = Field(
+        description="Total number of user state entries matching the query."
     )
 
 
-class BillingCostCenterMembershipPropResource(GitHubModel):
-    """BillingCostCenterMembershipPropResource"""
+class GetBudgetUserStatesPropUserStatesItems(GitHubModel):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    type: Literal["user", "organization", "repository", "team"] = Field(
-        description="The type of resource."
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user, when the user record is available.",
     )
-    identifier: Union[
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof0,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof1,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof2,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof3,
-    ] = Field(description="The identifier for the resource.")
+    consumed_amount: float = Field(
+        description="The amount currently consumed by this user against the budget."
+    )
+    target_amount: float = Field(
+        description="The target amount allocated to this user within the budget."
+    )
+    override_budget_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of a user-scoped budget that overrides the per-user allocation, when present.",
+    )
 
 
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof0(GitHubModel):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
-
-    login: str = Field(description="The login name for a user.")
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof1(GitHubModel):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
-
-    name: str = Field(description="The name for an organization.")
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof2(GitHubModel):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
-
-    owner: str = Field(description="The owner of the repository.")
-    name: str = Field(description="The name of the repository.")
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof3(GitHubModel):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
-
-    slug: str = Field(description="The slug for an enterprise team.")
-
-
-class BillingCostCenterMembershipPropMembershipsItems(GitHubModel):
-    """BillingCostCenterMembershipPropMembershipsItems"""
-
-    cost_center: Missing[
-        BillingCostCenterMembershipPropMembershipsItemsPropCostCenter
-    ] = Field(default=UNSET)
-
-
-class BillingCostCenterMembershipPropMembershipsItemsPropCostCenter(GitHubModel):
-    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
-
-    id: str = Field(description="The unique identifier of the cost center.")
-    name: str = Field(description="The name of the cost center.")
-
-
-model_rebuild(BillingCostCenterMembership)
-model_rebuild(BillingCostCenterMembershipPropResource)
-model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof0)
-model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof1)
-model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof2)
-model_rebuild(BillingCostCenterMembershipPropResourcePropIdentifierOneof3)
-model_rebuild(BillingCostCenterMembershipPropMembershipsItems)
-model_rebuild(BillingCostCenterMembershipPropMembershipsItemsPropCostCenter)
+model_rebuild(GetBudgetUserStates)
+model_rebuild(GetBudgetUserStatesPropUserStatesItems)
 
 __all__ = (
-    "BillingCostCenterMembership",
-    "BillingCostCenterMembershipPropMembershipsItems",
-    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenter",
-    "BillingCostCenterMembershipPropResource",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3",
+    "GetBudgetUserStates",
+    "GetBudgetUserStatesPropUserStatesItems",
 )

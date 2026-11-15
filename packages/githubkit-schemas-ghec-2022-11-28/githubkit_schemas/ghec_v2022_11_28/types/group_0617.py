@@ -9,28 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class TopicType(TypedDict):
-    """Topic
 
-    A topic aggregates entities that are related to a subject.
+class RepositoryAdvisoryCommentType(TypedDict):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
     """
 
-    names: list[str]
+    id: int
+    node_id: str
+    url: str
+    html_url: str
+    body: str
+    user: Union[SimpleUserType, None]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    advisory_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class RepositoryAdvisoryCommentTypeForResponse(TypedDict):
+    """Repository Advisory Comment
 
-    A topic aggregates entities that are related to a subject.
+    A comment on a repository security advisory.
     """
 
-    names: list[str]
+    id: int
+    node_id: str
+    url: str
+    html_url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
+    created_at: str
+    updated_at: str
+    advisory_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "RepositoryAdvisoryCommentType",
+    "RepositoryAdvisoryCommentTypeForResponse",
 )

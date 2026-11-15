@@ -9,40 +9,74 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class OrganizationExternalPropertyInstallation(GitHubModel):
-    """Organization External Custom Property Installation
+class ProjectsV2ItemWithContent(GitHubModel):
+    """Projects v2 Item
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
+    An item belonging to a project
     """
 
-    display_name: str = Field(
-        description="The display name assigned to the app installation's external custom properties in the organization."
+    id: float = Field(description="The unique identifier of the project item.")
+    node_id: Missing[str] = Field(
+        default=UNSET, description="The node ID of the project item."
     )
-    installation: OrganizationExternalPropertyInstallationPropInstallation = Field(
-        description="The GitHub App installation that was registered."
+    project_url: Missing[str] = Field(
+        default=UNSET, description="The API URL of the project that contains this item."
+    )
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"] = Field(
+        title="Projects v2 Item Content Type",
+        description="The type of content tracked in a project item",
+    )
+    content: Missing[Union[ProjectsV2ItemWithContentPropContent, None]] = Field(
+        default=UNSET,
+        description="The content of the item, which varies by content type.",
+    )
+    creator: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: _dt.datetime = Field(description="The time when the item was created.")
+    updated_at: _dt.datetime = Field(
+        description="The time when the item was last updated."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="The time when the item was archived."
+    )
+    item_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The API URL of this item."
+    )
+    fields: Missing[list[ProjectsV2ItemWithContentPropFieldsItems]] = Field(
+        default=UNSET, description="The fields and values associated with this item."
     )
 
 
-class OrganizationExternalPropertyInstallationPropInstallation(GitHubModel):
-    """OrganizationExternalPropertyInstallationPropInstallation
+class ProjectsV2ItemWithContentPropContent(ExtraGitHubModel):
+    """ProjectsV2ItemWithContentPropContent
 
-    The GitHub App installation that was registered.
+    The content of the item, which varies by content type.
     """
 
-    id: int = Field(description="The unique identifier of the GitHub App installation.")
+
+class ProjectsV2ItemWithContentPropFieldsItems(ExtraGitHubModel):
+    """ProjectsV2ItemWithContentPropFieldsItems"""
 
 
-model_rebuild(OrganizationExternalPropertyInstallation)
-model_rebuild(OrganizationExternalPropertyInstallationPropInstallation)
+model_rebuild(ProjectsV2ItemWithContent)
+model_rebuild(ProjectsV2ItemWithContentPropContent)
+model_rebuild(ProjectsV2ItemWithContentPropFieldsItems)
 
 __all__ = (
-    "OrganizationExternalPropertyInstallation",
-    "OrganizationExternalPropertyInstallationPropInstallation",
+    "ProjectsV2ItemWithContent",
+    "ProjectsV2ItemWithContentPropContent",
+    "ProjectsV2ItemWithContentPropFieldsItems",
 )

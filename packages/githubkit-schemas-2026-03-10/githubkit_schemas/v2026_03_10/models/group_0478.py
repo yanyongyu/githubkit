@@ -9,64 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0003 import SimpleUser
 
 
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
+class PageBuild(GitHubModel):
+    """Page Build
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-    archived_by: Union[PullRequestPropLabelsItemsPropArchivedBy, None] = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
-
-
-class PullRequestPropLabelsItemsPropArchivedBy(GitHubModel):
-    """PullRequestPropLabelsItemsPropArchivedBy
-
-    The user who archived the label, or `null` if it has not been archived.
+    Page Build
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[SimpleUser, None] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(PullRequestPropLabelsItems)
-model_rebuild(PullRequestPropLabelsItemsPropArchivedBy)
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
+
+    message: Union[str, None] = Field()
+
+
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
 
 __all__ = (
-    "PullRequestPropLabelsItems",
-    "PullRequestPropLabelsItemsPropArchivedBy",
+    "PageBuild",
+    "PageBuildPropError",
 )

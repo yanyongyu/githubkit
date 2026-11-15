@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,54 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+class TeamMember(GitHubModel):
+    """Team Member
 
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
+    A user that is a member of a team, including their role on the team and whether
+    the membership is inherited from a child team.
     """
 
-    resources: RateLimitOverviewPropResources = Field()
-
-
-class RateLimitOverviewPropResources(GitHubModel):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimit = Field(title="Rate Limit")
-    graphql: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    search: RateLimit = Field(title="Rate Limit")
-    code_search: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    source_import: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    integration_manifest: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    actions_runner_registration: Missing[RateLimit] = Field(
-        default=UNSET, title="Rate Limit"
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET,
+        description="The member's role on the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
     )
-    scim: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_snapshots: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    dependency_sbom: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    code_scanning_autofix: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
-    copilot_usage_records: Missing[RateLimit] = Field(default=UNSET, title="Rate Limit")
+    inherited: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the user is a member of the team only through a child team. `true` means the membership is inherited from a child team; `false` means the user is a direct (immediate) member of the team. Only present on the `List team members` endpoint, and only when the feature is enabled for the organization.",
+    )
 
 
-class RateLimit(GitHubModel):
-    """Rate Limit"""
+model_rebuild(TeamMember)
 
-    limit: int = Field()
-    remaining: int = Field()
-    reset: int = Field()
-    used: int = Field()
-
-
-model_rebuild(RateLimitOverview)
-model_rebuild(RateLimitOverviewPropResources)
-model_rebuild(RateLimit)
-
-__all__ = (
-    "RateLimit",
-    "RateLimitOverview",
-    "RateLimitOverviewPropResources",
-)
+__all__ = ("TeamMember",)

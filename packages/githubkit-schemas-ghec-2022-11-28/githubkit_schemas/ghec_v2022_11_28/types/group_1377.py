@@ -9,32 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
-    ponse202
-    """
+class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    policy_state: Literal[
+        "enabled_for_all_organizations",
+        "disabled_for_all_organizations",
+        "configured_by_organization_admins",
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
-    ponse202
-    """
+class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    policy_state: Literal[
+        "enabled_for_all_organizations",
+        "disabled_for_all_organizations",
+        "configured_by_organization_admins",
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyTypeForResponse",
 )

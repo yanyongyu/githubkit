@@ -14,40 +14,65 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0243 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0107 import TeamSimpleType, TeamSimpleTypeForResponse
+from .group_0243 import MilestoneType, MilestoneTypeForResponse
+from .group_0352 import AutoMergeType, AutoMergeTypeForResponse
+from .group_0353 import PullRequestStackType, PullRequestStackTypeForResponse
 from .group_0567 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
+    PullRequestPropLabelsItemsType,
+    PullRequestPropLabelsItemsTypeForResponse,
 )
+from .group_0568 import (
+    PullRequestPropBaseType,
+    PullRequestPropBaseTypeForResponse,
+    PullRequestPropHeadType,
+    PullRequestPropHeadTypeForResponse,
+)
+from .group_0569 import PullRequestPropLinksType, PullRequestPropLinksTypeForResponse
 
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
+class PullRequestType(TypedDict):
+    """Pull Request
 
-    Legacy Review Comment
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
-    is_copilot_code_review: NotRequired[bool]
-    copilot_code_review_sources: NotRequired[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItemsType]
-    ]
     url: str
-    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserType, None]
-    body: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsType]
+    milestone: Union[MilestoneType, None]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
+    closed_at: Union[_dt.datetime, None]
+    merged_at: Union[_dt.datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[SimpleUserType, None]
+    assignees: NotRequired[list[SimpleUserType]]
+    requested_reviewers: NotRequired[list[SimpleUserType]]
+    requested_teams: NotRequired[list[TeamSimpleType]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -58,46 +83,65 @@ class ReviewCommentType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    auto_merge: Union[AutoMergeType, None]
+    stack: NotRequired[Union[PullRequestStackType, None]]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[SimpleUserType, None]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
+class PullRequestTypeForResponse(TypedDict):
+    """Pull Request
 
-    Legacy Review Comment
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
     """
 
-    is_copilot_code_review: NotRequired[bool]
-    copilot_code_review_sources: NotRequired[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse]
-    ]
     url: str
-    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserTypeForResponse, None]
-    body: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserTypeForResponse
+    body: Union[str, None]
+    labels: list[PullRequestPropLabelsItemsTypeForResponse]
+    milestone: Union[MilestoneTypeForResponse, None]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: str
     updated_at: str
-    html_url: str
-    pull_request_url: str
+    closed_at: Union[str, None]
+    merged_at: Union[str, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[SimpleUserTypeForResponse, None]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_reviewers: NotRequired[list[SimpleUserTypeForResponse]]
+    requested_teams: NotRequired[list[TeamSimpleTypeForResponse]]
+    head: PullRequestPropHeadTypeForResponse
+    base: PullRequestPropBaseTypeForResponse
+    links: PullRequestPropLinksTypeForResponse
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -108,38 +152,24 @@ class ReviewCommentTypeForResponse(TypedDict):
         "NONE",
         "OWNER",
     ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
-
-
-class ReviewCommentPropCopilotCodeReviewSourcesItemsType(TypedDict):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
-
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
-    name: str
-    path: NotRequired[str]
-
-
-class ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse(TypedDict):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
-
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
-    name: str
-    path: NotRequired[str]
+    auto_merge: Union[AutoMergeTypeForResponse, None]
+    stack: NotRequired[Union[PullRequestStackTypeForResponse, None]]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[SimpleUserTypeForResponse, None]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
 __all__ = (
-    "ReviewCommentPropCopilotCodeReviewSourcesItemsType",
-    "ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse",
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "PullRequestType",
+    "PullRequestTypeForResponse",
 )

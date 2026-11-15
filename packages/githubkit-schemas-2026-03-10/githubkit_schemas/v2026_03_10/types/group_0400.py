@@ -9,61 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0398 import MetadataType, MetadataTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class DependabotRunnerSettingsType(TypedDict):
+    """Dependabot runner settings
 
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
+    """
 
-
-class ManifestTypeForResponse(TypedDict):
-    """Manifest"""
-
-    name: str
-    file: NotRequired[ManifestPropFileTypeForResponse]
-    metadata: NotRequired[MetadataTypeForResponse]
-    resolved: NotRequired[ManifestPropResolvedTypeForResponse]
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group: Union[str, None]
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class DependabotRunnerSettingsTypeForResponse(TypedDict):
+    """Dependabot runner settings
 
-    source_location: NotRequired[str]
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
+    """
 
-
-class ManifestPropFileTypeForResponse(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-ManifestPropResolvedType: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
-
-
-ManifestPropResolvedTypeForResponse: TypeAlias = dict[str, Any]
-"""ManifestPropResolved
-
-A collection of resolved package dependencies.
-"""
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group: Union[str, None]
 
 
 __all__ = (
-    "ManifestPropFileType",
-    "ManifestPropFileTypeForResponse",
-    "ManifestPropResolvedType",
-    "ManifestPropResolvedTypeForResponse",
-    "ManifestType",
-    "ManifestTypeForResponse",
+    "DependabotRunnerSettingsType",
+    "DependabotRunnerSettingsTypeForResponse",
 )

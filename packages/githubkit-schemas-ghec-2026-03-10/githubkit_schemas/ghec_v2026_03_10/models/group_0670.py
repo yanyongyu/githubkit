@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksWorkflow(GitHubModel):
-    """Workflow"""
+class Hovercard(GitHubModel):
+    """Hovercard
 
-    badge_url: str = Field()
-    created_at: _dt.datetime = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: _dt.datetime = Field()
-    url: str = Field()
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItems] = Field()
 
 
-model_rebuild(WebhooksWorkflow)
+class HovercardPropContextsItems(GitHubModel):
+    """HovercardPropContextsItems"""
 
-__all__ = ("WebhooksWorkflow",)
+    message: str = Field()
+    octicon: str = Field()
+
+
+model_rebuild(Hovercard)
+model_rebuild(HovercardPropContextsItems)
+
+__all__ = (
+    "Hovercard",
+    "HovercardPropContextsItems",
+)

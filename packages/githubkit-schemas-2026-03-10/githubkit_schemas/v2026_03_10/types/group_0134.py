@@ -11,26 +11,35 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0123 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
+from .group_0131 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+)
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+class ActionsPolicyOrgConditionsOneof2Type(TypedDict):
+    """ActionsPolicyOrgConditionsOneof2"""
+
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse(
-    TypedDict
-):
-    """EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName"""
+class ActionsPolicyOrgConditionsOneof2TypeForResponse(TypedDict):
+    """ActionsPolicyOrgConditionsOneof2"""
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameType",
-    "EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationNameTypeForResponse",
+    "ActionsPolicyOrgConditionsOneof2Type",
+    "ActionsPolicyOrgConditionsOneof2TypeForResponse",
 )

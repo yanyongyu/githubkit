@@ -9,49 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType
-    ]
+    The total number of seats created for the specified user(s).
+    """
+
+    seats_created: int
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse
-    ]
+    The total number of seats created for the specified user(s).
+    """
 
-
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled"]
-
-
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str
-    policy_state: Literal["enabled", "disabled"]
+    seats_created: int
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201Type",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201TypeForResponse",
 )

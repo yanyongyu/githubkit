@@ -11,20 +11,50 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhookPingFormEncoded(GitHubModel):
-    """WebhookPingFormEncoded
+class WebhookRubygemsMetadata(GitHubModel):
+    """Ruby Gems metadata"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
-
-    payload: str = Field(
-        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object."
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    readme: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    version_info: Missing[WebhookRubygemsMetadataPropVersionInfo] = Field(default=UNSET)
+    platform: Missing[str] = Field(default=UNSET)
+    metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
+    repo: Missing[str] = Field(default=UNSET)
+    dependencies: Missing[list[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
+        default=UNSET
     )
+    commit_oid: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPingFormEncoded)
+class WebhookRubygemsMetadataPropVersionInfo(GitHubModel):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-__all__ = ("WebhookPingFormEncoded",)
+    version: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRubygemsMetadataPropMetadata(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItems(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+model_rebuild(WebhookRubygemsMetadata)
+model_rebuild(WebhookRubygemsMetadataPropVersionInfo)
+model_rebuild(WebhookRubygemsMetadataPropMetadata)
+model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
+
+__all__ = (
+    "WebhookRubygemsMetadata",
+    "WebhookRubygemsMetadataPropDependenciesItems",
+    "WebhookRubygemsMetadataPropMetadata",
+    "WebhookRubygemsMetadataPropVersionInfo",
+)

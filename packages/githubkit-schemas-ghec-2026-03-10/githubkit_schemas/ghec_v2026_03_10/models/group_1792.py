@@ -11,30 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
-    """Package license compliance results
-
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
-        Field()
-    )
-
-
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
-    ExtraGitHubModel
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1(
+    GitHubModel
 ):
-    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
+
+    name: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="The new human-readable name of the artifact.",
+    )
+    body: str = Field(min_length=1, description="The new artifact content.")
 
 
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1)
 
-__all__ = (
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
-)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1",)

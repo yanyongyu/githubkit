@@ -17,16 +17,11 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0262 import RepositoryRuleCopilotCodeReviewPropParameters
 
+class RepositoryRuleDetailedOneof9(GitHubModel):
+    """RepositoryRuleDetailedOneof9"""
 
-class RepositoryRuleDetailedOneof19(GitHubModel):
-    """RepositoryRuleDetailedOneof19"""
-
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["non_fast_forward"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -40,6 +35,6 @@ class RepositoryRuleDetailedOneof19(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof19)
+model_rebuild(RepositoryRuleDetailedOneof9)
 
-__all__ = ("RepositoryRuleDetailedOneof19",)
+__all__ = ("RepositoryRuleDetailedOneof9",)

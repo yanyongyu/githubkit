@@ -9,25 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeOfConductSimple(GitHubModel):
-    """Code Of Conduct Simple
+class OrganizationExternalPropertyInstallation(GitHubModel):
+    """Organization External Custom Property Installation
 
-    Code of Conduct Simple
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    url: str = Field()
-    key: str = Field()
-    name: str = Field()
-    html_url: Union[str, None] = Field()
+    display_name: str = Field(
+        description="The display name assigned to the app installation's external custom properties in the organization."
+    )
+    installation: OrganizationExternalPropertyInstallationPropInstallation = Field(
+        description="The GitHub App installation that was registered."
+    )
 
 
-model_rebuild(CodeOfConductSimple)
+class OrganizationExternalPropertyInstallationPropInstallation(GitHubModel):
+    """OrganizationExternalPropertyInstallationPropInstallation
 
-__all__ = ("CodeOfConductSimple",)
+    The GitHub App installation that was registered.
+    """
+
+    id: int = Field(description="The unique identifier of the GitHub App installation.")
+
+
+model_rebuild(OrganizationExternalPropertyInstallation)
+model_rebuild(OrganizationExternalPropertyInstallationPropInstallation)
+
+__all__ = (
+    "OrganizationExternalPropertyInstallation",
+    "OrganizationExternalPropertyInstallationPropInstallation",
+)

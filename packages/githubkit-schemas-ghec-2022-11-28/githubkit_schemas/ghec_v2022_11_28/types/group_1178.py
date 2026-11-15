@@ -13,8 +13,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404
+class AgentsReposOwnerRepoAutomationsPostResponse403Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse403
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsType]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsPostResponse403TypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -25,7 +43,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404Type(TypedDict
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsType
+            AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -33,32 +51,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404Type(TypedDict
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404
-
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
-    """
-
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
+class AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems
 
     A single validation error
     """
@@ -74,10 +68,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItem
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems
 
     A single validation error
     """
@@ -94,8 +88,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItem
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsPostResponse403Type",
+    "AgentsReposOwnerRepoAutomationsPostResponse403TypeForResponse",
 )

@@ -9,28 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202Type(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200"""
+
+    models: list[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsType
+    ]
+
+
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    models: list[
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+    required_for_copilot_fusion_max: NotRequired[Literal[True]]
+
+
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+    required_for_copilot_fusion_max: NotRequired[Literal[True]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202TypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse",
 )

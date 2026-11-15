@@ -9,24 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleCodeCoveragePropParametersType(TypedDict):
-    """RepositoryRuleCodeCoveragePropParameters"""
+class RepositoryRuleCodeQualityPropParametersType(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    max_coverage_drop: NotRequired[float]
-    minimum_coverage: NotRequired[float]
+    severity: Literal["errors", "warnings", "notes", "all"]
 
 
-class RepositoryRuleCodeCoveragePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeCoveragePropParameters"""
+class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    max_coverage_drop: NotRequired[float]
-    minimum_coverage: NotRequired[float]
+    severity: Literal["errors", "warnings", "notes", "all"]
 
 
 __all__ = (
-    "RepositoryRuleCodeCoveragePropParametersType",
-    "RepositoryRuleCodeCoveragePropParametersTypeForResponse",
+    "RepositoryRuleCodeQualityPropParametersType",
+    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
 )

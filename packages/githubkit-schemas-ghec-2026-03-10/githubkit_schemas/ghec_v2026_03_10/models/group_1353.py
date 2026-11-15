@@ -9,35 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
-
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
-    )
+    The total number of seats set to "pending cancellation" for the members of the
+    specified enterprise team(s).
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability
+    EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteResponse200",
 )

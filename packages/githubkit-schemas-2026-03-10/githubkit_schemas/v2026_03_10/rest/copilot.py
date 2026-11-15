@@ -21,7 +21,7 @@ from githubkit.utils import UNSET, exclude_unset, parse_query_params
 
 if TYPE_CHECKING:
     import datetime as _dt
-    from typing import Literal
+    from typing import Literal, Union
 
     from githubkit import GitHubCore
     from githubkit.response import Response
@@ -34,6 +34,10 @@ if TYPE_CHECKING:
         CopilotSeatDetails,
         CopilotUsageMetrics1DayReport,
         CopilotUsageMetrics28DayReport,
+        EnterpriseCopilotCodeReviewPolicy,
+        OrganizationCopilotCodeReviewPolicy,
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewSettings,
         OrgsOrgCopilotBillingSeatsGetResponse200,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
@@ -44,6 +48,7 @@ if TYPE_CHECKING:
         OrgsOrgCopilotContentExclusionPutResponse200,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200,
+        RepositoryCopilotCodeReviewSettings,
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
     )
     from ..types import (
@@ -52,11 +57,16 @@ if TYPE_CHECKING:
         CopilotSeatDetailsTypeForResponse,
         CopilotUsageMetrics1DayReportTypeForResponse,
         CopilotUsageMetrics28DayReportTypeForResponse,
+        EnterpriseCopilotCodeReviewPolicyTypeForResponse,
+        EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItemsType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItemsType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyType,
         EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType,
+        OrganizationCopilotCodeReviewPolicyTypeForResponse,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
         OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200TypeForResponse,
@@ -66,18 +76,23 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse,
         OrgsOrgCopilotBillingSelectedUsersPostBodyType,
         OrgsOrgCopilotBillingSelectedUsersPostResponse201TypeForResponse,
+        OrgsOrgCopilotCodeReviewRunnerPutBodyType,
+        OrgsOrgCopilotCodeReviewSettingsPatchBodyType,
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200TypeForResponse,
         OrgsOrgCopilotCodingAgentPermissionsPutBodyType,
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200TypeForResponse,
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBodyType,
         OrgsOrgCopilotContentExclusionPutBodyType,
         OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse,
+        OrgsOrgCopilotPoliciesCodeReviewPutBodyType,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200TypeForResponse,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType,
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200TypeForResponse,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200TypeForResponse,
+        ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType,
     )
 
 
@@ -657,6 +672,272 @@ class CopilotClient:
                 "500": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def get_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseCopilotCodeReviewPolicy,
+        EnterpriseCopilotCodeReviewPolicyTypeForResponse,
+    ]:
+        """copilot/get-enterprise-code-review-policy
+
+        GET /enterprises/{enterprise}/copilot/policies/code-review
+
+        Gets the configured Copilot code review policy for an enterprise.
+        This does not return a user's effective access, preview approval controls, or automatic-review rulesets.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-the-copilot-code-review-policy-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseCopilotCodeReviewPolicy
+
+        url = f"/enterprises/{enterprise}/copilot/policies/code-review"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseCopilotCodeReviewPolicy,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        EnterpriseCopilotCodeReviewPolicy,
+        EnterpriseCopilotCodeReviewPolicyTypeForResponse,
+    ]:
+        """copilot/get-enterprise-code-review-policy
+
+        GET /enterprises/{enterprise}/copilot/policies/code-review
+
+        Gets the configured Copilot code review policy for an enterprise.
+        This does not return a user's effective access, preview approval controls, or automatic-review rulesets.
+
+        Enterprise owners and users with the `read_enterprise_ai_controls` permission can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-the-copilot-code-review-policy-for-an-enterprise
+        """
+
+        from ..models import BasicError, EnterpriseCopilotCodeReviewPolicy
+
+        url = f"/enterprises/{enterprise}/copilot/policies/code-review"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=EnterpriseCopilotCodeReviewPolicy,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        policy_state: Literal[
+            "enabled_for_all_organizations",
+            "disabled_for_all_organizations",
+            "configured_by_organization_admins",
+        ],
+    ) -> Response: ...
+
+    def set_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-enterprise-code-review-policy
+
+        PUT /enterprises/{enterprise}/copilot/policies/code-review
+
+        Sets the configured Copilot code review policy for an enterprise, using the same
+        asynchronous propagation and notifications as enterprise settings. Policies that
+        depend on Copilot code review keep their values.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        Standalone enterprises support enabled and disabled policies, but cannot delegate
+        policy to organization administrators. Invalid or unsupported input does not change any policy.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#set-the-copilot-code-review-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/code-review"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        policy_state: Literal[
+            "enabled_for_all_organizations",
+            "disabled_for_all_organizations",
+            "configured_by_organization_admins",
+        ],
+    ) -> Response: ...
+
+    async def async_set_enterprise_code_review_policy(
+        self,
+        enterprise: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-enterprise-code-review-policy
+
+        PUT /enterprises/{enterprise}/copilot/policies/code-review
+
+        Sets the configured Copilot code review policy for an enterprise, using the same
+        asynchronous propagation and notifications as enterprise settings. Policies that
+        depend on Copilot code review keep their values.
+
+        Enterprise owners and users with the `write_enterprise_ai_controls` permission can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `admin:enterprise` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        Standalone enterprises support enabled and disabled policies, but cannot delegate
+        policy to organization administrators. Invalid or unsupported input does not change any policy.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#set-the-copilot-code-review-policy-for-an-enterprise
+        """
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/policies/code-review"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )
 
@@ -2145,6 +2426,608 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def get_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]:
+        """copilot/get-organization-code-review-runner
+
+        GET /orgs/{org}/copilot/code-review/runner
+
+        Gets the runner configuration that Copilot code review uses for an organization.
+        Until the organization saves a Copilot code review runner configuration, the response reports the values
+        inherited from the organization's Copilot coding agent runner configuration, with `configured_by` set to `coding_agent`.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `read:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-the-copilot-code-review-runner-configuration-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewRunner,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/runner"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewRunner,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]:
+        """copilot/get-organization-code-review-runner
+
+        GET /orgs/{org}/copilot/code-review/runner
+
+        Gets the runner configuration that Copilot code review uses for an organization.
+        Until the organization saves a Copilot code review runner configuration, the response reports the values
+        inherited from the organization's Copilot coding agent runner configuration, with `configured_by` set to `coding_agent`.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `read:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-the-copilot-code-review-runner-configuration-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewRunner,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/runner"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewRunner,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    def set_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodeReviewRunnerPutBodyType,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]: ...
+
+    @overload
+    def set_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        runner_type: Literal["standard", "labeled"],
+        runner_labels: Missing[Union[list[str], None]] = UNSET,
+        runner_group_name: Missing[Union[str, None]] = UNSET,
+        allow_repository_customization: Missing[bool] = UNSET,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]: ...
+
+    def set_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodeReviewRunnerPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]:
+        """copilot/set-organization-code-review-runner
+
+        PUT /orgs/{org}/copilot/code-review/runner
+
+        Sets the runner configuration that Copilot code review uses for an organization. After a successful
+        update, Copilot code review uses its own runner configuration and `configured_by` is `code_review`.
+
+        A `labeled` runner requires at least one label in `runner_labels` or a `runner_group_name`. A `standard`
+        runner does not accept labels or a runner group. When `allow_repository_customization` is omitted, the current
+        effective value is kept. The whole request is validated before any change is made, so invalid input does not
+        change the configuration.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `admin:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#set-the-copilot-code-review-runner-configuration-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewRunner,
+            OrgsOrgCopilotCodeReviewRunnerPutBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/runner"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotCodeReviewRunnerPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewRunner,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_set_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodeReviewRunnerPutBodyType,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_set_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        runner_type: Literal["standard", "labeled"],
+        runner_labels: Missing[Union[list[str], None]] = UNSET,
+        runner_group_name: Missing[Union[str, None]] = UNSET,
+        allow_repository_customization: Missing[bool] = UNSET,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]: ...
+
+    async def async_set_organization_code_review_runner(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodeReviewRunnerPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrganizationCopilotCodeReviewRunner,
+        OrganizationCopilotCodeReviewRunnerTypeForResponse,
+    ]:
+        """copilot/set-organization-code-review-runner
+
+        PUT /orgs/{org}/copilot/code-review/runner
+
+        Sets the runner configuration that Copilot code review uses for an organization. After a successful
+        update, Copilot code review uses its own runner configuration and `configured_by` is `code_review`.
+
+        A `labeled` runner requires at least one label in `runner_labels` or a `runner_group_name`. A `standard`
+        runner does not accept labels or a runner group. When `allow_repository_customization` is omitted, the current
+        effective value is kept. The whole request is validated before any change is made, so invalid input does not
+        change the configuration.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `admin:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#set-the-copilot-code-review-runner-configuration-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewRunner,
+            OrgsOrgCopilotCodeReviewRunnerPutBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/runner"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotCodeReviewRunnerPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewRunner,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    def get_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/get-organization-code-review-settings
+
+        GET /orgs/{org}/copilot/code-review/settings
+
+        Gets the Copilot code review settings for an organization. Currently this is the default review effort
+        that repositories in the organization use when they do not choose their own.
+        For each setting, the response includes the configured value, the effective value, the default inherited
+        when nothing is configured, whether organization administrators can edit it, and whether the enterprise
+        or the organization manages it.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `read:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-copilot-code-review-settings-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewSettings,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/settings"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewSettings,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    async def async_get_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/get-organization-code-review-settings
+
+        GET /orgs/{org}/copilot/code-review/settings
+
+        Gets the Copilot code review settings for an organization. Currently this is the default review effort
+        that repositories in the organization use when they do not choose their own.
+        For each setting, the response includes the configured value, the effective value, the default inherited
+        when nothing is configured, whether organization administrators can edit it, and whether the enterprise
+        or the organization manages it.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `read:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-copilot-code-review-settings-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewSettings,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/settings"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewSettings,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    def update_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodeReviewSettingsPatchBodyType,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    @overload
+    def update_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_review_effort: Missing[str] = UNSET,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    def update_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodeReviewSettingsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/update-organization-code-review-settings
+
+        PATCH /orgs/{org}/copilot/code-review/settings
+
+        Updates the Copilot code review settings for an organization. Omitted settings are not changed.
+        Set `default_review_effort` to `inherit` to clear the organization's value so repositories use the
+        inherited default again. Changes use the same audit logging and telemetry as organization settings.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `admin:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        When a submitted setting cannot be changed by the organization, the request fails with `409` and the
+        code `SETTING_NOT_EDITABLE`. The whole request is validated before any change is made, so invalid input
+        and conflicts do not change any setting.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#update-copilot-code-review-settings-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewSettings,
+            OrgsOrgCopilotCodeReviewSettingsPatchBody,
+            OrgsOrgCopilotCodeReviewSettingsPatchResponse409,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/settings"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotCodeReviewSettingsPatchBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewSettings,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": OrgsOrgCopilotCodeReviewSettingsPatchResponse409,
+                "422": ValidationErrorSimple,
+                "503": EventsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_update_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotCodeReviewSettingsPatchBodyType,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        default_review_effort: Missing[str] = UNSET,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    async def async_update_organization_code_review_settings(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotCodeReviewSettingsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        OrganizationCopilotCodeReviewSettings,
+        OrganizationCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/update-organization-code-review-settings
+
+        PATCH /orgs/{org}/copilot/code-review/settings
+
+        Updates the Copilot code review settings for an organization. Omitted settings are not changed.
+        Set `default_review_effort` to `inherit` to clear the organization's value so repositories use the
+        inherited default again. Changes use the same audit logging and telemetry as organization settings.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `admin:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        When a submitted setting cannot be changed by the organization, the request fails with `409` and the
+        code `SETTING_NOT_EDITABLE`. The whole request is validated before any change is made, so invalid input
+        and conflicts do not change any setting.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#update-copilot-code-review-settings-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            EventsGetResponse503,
+            OrganizationCopilotCodeReviewSettings,
+            OrgsOrgCopilotCodeReviewSettingsPatchBody,
+            OrgsOrgCopilotCodeReviewSettingsPatchResponse409,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/code-review/settings"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotCodeReviewSettingsPatchBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewSettings,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": OrgsOrgCopilotCodeReviewSettingsPatchResponse409,
+                "422": ValidationErrorSimple,
+                "503": EventsGetResponse503,
             },
         )
 
@@ -3786,6 +4669,268 @@ class CopilotClient:
             },
         )
 
+    def get_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrganizationCopilotCodeReviewPolicy,
+        OrganizationCopilotCodeReviewPolicyTypeForResponse,
+    ]:
+        """copilot/get-organization-code-review-policy
+
+        GET /orgs/{org}/copilot/policies/code-review
+
+        Gets the configured and effective Copilot code review policy for an organization,
+        whether organization administrators can edit it, and whether the enterprise or the organization manages it.
+        This does not return review effort, repository settings, preview approval controls, or automatic-review rulesets.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `read:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-the-copilot-code-review-policy-for-an-organization
+        """
+
+        from ..models import BasicError, OrganizationCopilotCodeReviewPolicy
+
+        url = f"/orgs/{org}/copilot/policies/code-review"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewPolicy,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        OrganizationCopilotCodeReviewPolicy,
+        OrganizationCopilotCodeReviewPolicyTypeForResponse,
+    ]:
+        """copilot/get-organization-code-review-policy
+
+        GET /orgs/{org}/copilot/policies/code-review
+
+        Gets the configured and effective Copilot code review policy for an organization,
+        whether organization administrators can edit it, and whether the enterprise or the organization manages it.
+        This does not return review effort, repository settings, preview approval controls, or automatic-review rulesets.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `read:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-the-copilot-code-review-policy-for-an-organization
+        """
+
+        from ..models import BasicError, OrganizationCopilotCodeReviewPolicy
+
+        url = f"/orgs/{org}/copilot/policies/code-review"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=OrganizationCopilotCodeReviewPolicy,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotPoliciesCodeReviewPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        state: Literal["enabled", "disabled"],
+    ) -> Response: ...
+
+    def set_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotPoliciesCodeReviewPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-organization-code-review-policy
+
+        PUT /orgs/{org}/copilot/policies/code-review
+
+        Sets the Copilot code review policy for an organization, using the same
+        user settings propagation and notifications as organization settings. Policies that
+        depend on Copilot code review keep their values.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `admin:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        When the enterprise manages the policy, the request fails with `409` and the code
+        `POLICY_MANAGED_BY_ENTERPRISE`, even if the requested state matches the effective state.
+        Invalid input and conflicts do not change any policy.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#set-the-copilot-code-review-policy-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotPoliciesCodeReviewPutBody,
+            OrgsOrgCopilotPoliciesCodeReviewPutResponse409,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/policies/code-review"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotPoliciesCodeReviewPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": OrgsOrgCopilotPoliciesCodeReviewPutResponse409,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_set_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: OrgsOrgCopilotPoliciesCodeReviewPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        state: Literal["enabled", "disabled"],
+    ) -> Response: ...
+
+    async def async_set_organization_code_review_policy(
+        self,
+        org: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[OrgsOrgCopilotPoliciesCodeReviewPutBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """copilot/set-organization-code-review-policy
+
+        PUT /orgs/{org}/copilot/policies/code-review
+
+        Sets the Copilot code review policy for an organization, using the same
+        user settings propagation and notifications as organization settings. Policies that
+        depend on Copilot code review keep their values.
+
+        Organization owners can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need either the
+        `manage_billing:copilot` or `admin:org` scope.
+        GitHub App tokens and fine-grained personal access tokens are not supported.
+
+        When the enterprise manages the policy, the request fails with `409` and the code
+        `POLICY_MANAGED_BY_ENTERPRISE`, even if the requested state matches the effective state.
+        Invalid input and conflicts do not change any policy.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#set-the-copilot-code-review-policy-for-an-organization
+        """
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCopilotPoliciesCodeReviewPutBody,
+            OrgsOrgCopilotPoliciesCodeReviewPutResponse409,
+            ValidationErrorSimple,
+        )
+
+        url = f"/orgs/{org}/copilot/policies/code-review"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgCopilotPoliciesCodeReviewPutBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": OrgsOrgCopilotPoliciesCodeReviewPutResponse409,
+                "422": ValidationErrorSimple,
+            },
+        )
+
     def get_copilot_seat_details_for_user(
         self,
         org: str,
@@ -4393,5 +5538,305 @@ class CopilotClient:
                 "401": BasicError,
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    def get_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/get-repository-code-review-settings
+
+        GET /repos/{owner}/{repo}/copilot/code-review/settings
+
+        Gets the Copilot code review settings for a repository. These settings tune how Copilot code review
+        reviews pull requests in the repository. They do not enable Copilot code review.
+
+        `review_effort.configured` is `null` when the repository inherits its review effort from the organization,
+        the enterprise, or GitHub's default. `review_effort.effective` is the review effort that reviews use when the
+        requester and the pull request do not choose one. Only review efforts available for the repository are reported;
+        when reviews would use an unavailable effort, `review_effort.effective` is the review effort they would use without it.
+
+        Repository administrators can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-copilot-code-review-settings-for-a-repository
+        """
+
+        from ..models import BasicError, RepositoryCopilotCodeReviewSettings
+
+        url = f"/repos/{owner}/{repo}/copilot/code-review/settings"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryCopilotCodeReviewSettings,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/get-repository-code-review-settings
+
+        GET /repos/{owner}/{repo}/copilot/code-review/settings
+
+        Gets the Copilot code review settings for a repository. These settings tune how Copilot code review
+        reviews pull requests in the repository. They do not enable Copilot code review.
+
+        `review_effort.configured` is `null` when the repository inherits its review effort from the organization,
+        the enterprise, or GitHub's default. `review_effort.effective` is the review effort that reviews use when the
+        requester and the pull request do not choose one. Only review efforts available for the repository are reported;
+        when reviews would use an unavailable effort, `review_effort.effective` is the review effort they would use without it.
+
+        Repository administrators can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#get-copilot-code-review-settings-for-a-repository
+        """
+
+        from ..models import BasicError, RepositoryCopilotCodeReviewSettings
+
+        url = f"/repos/{owner}/{repo}/copilot/code-review/settings"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryCopilotCodeReviewSettings,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def update_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    @overload
+    def update_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        review_effort: Missing[str] = UNSET,
+        severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = UNSET,
+        custom_instructions_enabled: Missing[bool] = UNSET,
+        mcp_enabled: Missing[bool] = UNSET,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    def update_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/update-repository-code-review-settings
+
+        PATCH /repos/{owner}/{repo}/copilot/code-review/settings
+
+        Updates the Copilot code review settings for a repository. These settings tune how Copilot code review
+        reviews pull requests in the repository. They do not enable Copilot code review, and they can be stored
+        while an enterprise or organization policy disables Copilot code review.
+
+        Omitted settings are not changed. Set `review_effort` to `inherit` to clear the repository's review effort
+        so it inherits the effort from the organization, the enterprise, or GitHub's default. The whole request is
+        validated before any change is made, so invalid input does not change any setting. Changes use the same
+        audit logging and telemetry as the repository settings page.
+
+        Repository administrators can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#update-copilot-code-review-settings-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            RepositoryCopilotCodeReviewSettings,
+            ReposOwnerRepoCopilotCodeReviewSettingsPatchBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/repos/{owner}/{repo}/copilot/code-review/settings"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoCopilotCodeReviewSettingsPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryCopilotCodeReviewSettings,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    @overload
+    async def async_update_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        review_effort: Missing[str] = UNSET,
+        severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = UNSET,
+        custom_instructions_enabled: Missing[bool] = UNSET,
+        mcp_enabled: Missing[bool] = UNSET,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]: ...
+
+    async def async_update_repository_code_review_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        RepositoryCopilotCodeReviewSettings,
+        RepositoryCopilotCodeReviewSettingsTypeForResponse,
+    ]:
+        """copilot/update-repository-code-review-settings
+
+        PATCH /repos/{owner}/{repo}/copilot/code-review/settings
+
+        Updates the Copilot code review settings for a repository. These settings tune how Copilot code review
+        reviews pull requests in the repository. They do not enable Copilot code review, and they can be stored
+        while an enterprise or organization policy disables Copilot code review.
+
+        Omitted settings are not changed. Set `review_effort` to `inherit` to clear the repository's review effort
+        so it inherits the effort from the organization, the enterprise, or GitHub's default. The whole request is
+        validated before any change is made, so invalid input does not change any setting. Changes use the same
+        audit logging and telemetry as the repository settings page.
+
+        Repository administrators can use this endpoint.
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/copilot/copilot-code-review#update-copilot-code-review-settings-for-a-repository
+        """
+
+        from ..models import (
+            BasicError,
+            RepositoryCopilotCodeReviewSettings,
+            ReposOwnerRepoCopilotCodeReviewSettingsPatchBody,
+            ValidationErrorSimple,
+        )
+
+        url = f"/repos/{owner}/{repo}/copilot/code-review/settings"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                ReposOwnerRepoCopilotCodeReviewSettingsPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=RepositoryCopilotCodeReviewSettings,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationErrorSimple,
             },
         )

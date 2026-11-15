@@ -9,46 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0036 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
-)
 
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-class DependabotAlertWithdrawnWebhookPropDependencyType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropDependency
-
-    Details for the vulnerable dependency.
+    Key Simple
     """
 
-    package: DependabotAlertPackageType
-    manifest_path: Union[str, None]
-    version_requirement: NotRequired[Union[str, None]]
-    scope: Union[Literal["development", "runtime"], None]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    key: str
+    created_at: NotRequired[_dt.datetime]
+    last_used: NotRequired[Union[_dt.datetime, None]]
 
 
-class DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropDependency
+class KeySimpleTypeForResponse(TypedDict):
+    """Key Simple
 
-    Details for the vulnerable dependency.
+    Key Simple
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    manifest_path: Union[str, None]
-    version_requirement: NotRequired[Union[str, None]]
-    scope: Union[Literal["development", "runtime"], None]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    key: str
+    created_at: NotRequired[str]
+    last_used: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropDependencyType",
-    "DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse",
+    "KeySimpleType",
+    "KeySimpleTypeForResponse",
 )

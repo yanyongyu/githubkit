@@ -9,41 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0529 import PullRequestStackPullRequest
 
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-class ReposOwnerRepoStacksStackNumberGetResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberGetResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    expected_head_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-class ReposOwnerRepoStacksStackNumberGetResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberGetResponse200PropBase"""
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberGetResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberGetResponse200",
-    "ReposOwnerRepoStacksStackNumberGetResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)

@@ -10,28 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaType(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class OrganizationCopilotCodeReviewRunnerType(TypedDict):
+    """Organization Copilot Code Review Runner Configuration
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    The effective runner configuration that Copilot code review uses for the
+    organization.
+    """
+
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group_name: Union[str, None]
+    allow_repository_customization: bool
+    configured_by: Literal["code_review", "coding_agent"]
 
 
-class OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse(TypedDict):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class OrganizationCopilotCodeReviewRunnerTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Runner Configuration
 
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    base_role: NotRequired[Literal["read", "triage", "write", "maintain"]]
-    permissions: NotRequired[list[str]]
+    The effective runner configuration that Copilot code review uses for the
+    organization.
+    """
+
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group_name: Union[str, None]
+    allow_repository_customization: bool
+    configured_by: Literal["code_review", "coding_agent"]
 
 
 __all__ = (
-    "OrganizationCustomRepositoryRoleUpdateSchemaType",
-    "OrganizationCustomRepositoryRoleUpdateSchemaTypeForResponse",
+    "OrganizationCopilotCodeReviewRunnerType",
+    "OrganizationCopilotCodeReviewRunnerTypeForResponse",
 )

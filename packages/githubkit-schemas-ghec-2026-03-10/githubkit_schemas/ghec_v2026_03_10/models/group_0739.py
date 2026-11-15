@@ -18,23 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0658 import EnterpriseWebhooks
-from .group_0659 import SimpleInstallation
-from .group_0660 import OrganizationSimpleWebhooks
-from .group_0661 import RepositoryWebhooks
-from .group_0740 import WebhookCodeScanningAlertAppearedInBranchPropAlert
+from .group_0672 import EnterpriseWebhooks
+from .group_0673 import SimpleInstallation
+from .group_0674 import OrganizationSimpleWebhooks
+from .group_0675 import RepositoryWebhooks
+from .group_0678 import ExemptionRequest
 
 
-class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
-    """code_scanning_alert appeared_in_branch event"""
+class WebhookExemptionRequestCreated(GitHubModel):
+    """Exemption request created event"""
 
-    action: Literal["appeared_in_branch"] = Field()
-    alert: WebhookCodeScanningAlertAppearedInBranchPropAlert = Field(
-        description="The code scanning alert involved in the event."
-    )
-    commit_oid: str = Field(
-        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,16 +44,18 @@ class WebhookCodeScanningAlertAppearedInBranch(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field(
-        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
-    )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    exemption_request: ExemptionRequest = Field(
+        title="Exemption Request",
+        description="A request from a user to be exempted from a set of rules.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookCodeScanningAlertAppearedInBranch)
+model_rebuild(WebhookExemptionRequestCreated)
 
-__all__ = ("WebhookCodeScanningAlertAppearedInBranch",)
+__all__ = ("WebhookExemptionRequestCreated",)

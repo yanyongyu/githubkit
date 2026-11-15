@@ -12,34 +12,32 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from githubkit.typing import UniqueList
 
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
-
-    The Agent Merge enrollment configuration
-
-    Examples:
-        {'allowed_actions': ['fix_ci']}
+    Response from accepting an automation run request.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    task_id: str
+    automation_id: str
+    event: Literal["manual"]
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
 
-    The Agent Merge enrollment configuration
-
-    Examples:
-        {'allowed_actions': ['fix_ci']}
+    Response from accepting an automation run request.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    task_id: str
+    automation_id: str
+    event: Literal["manual"]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse",
 )

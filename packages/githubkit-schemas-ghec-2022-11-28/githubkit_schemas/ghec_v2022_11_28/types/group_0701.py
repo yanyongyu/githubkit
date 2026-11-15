@@ -11,38 +11,43 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0703 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
+)
 
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
+class WebhooksLabelArchivedType(TypedDict):
+    """Archived label"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: _dt.datetime
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
     id: int
     name: str
     node_id: str
-    project_url: str
-    updated_at: _dt.datetime
     url: str
 
 
-class WebhooksProjectColumnTypeForResponse(TypedDict):
-    """Project Column"""
+class WebhooksLabelArchivedTypeForResponse(TypedDict):
+    """Archived label"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: str
+    color: str
+    default: bool
+    description: Union[str, None]
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
     id: int
     name: str
     node_id: str
-    project_url: str
-    updated_at: str
     url: str
 
 
 __all__ = (
-    "WebhooksProjectColumnType",
-    "WebhooksProjectColumnTypeForResponse",
+    "WebhooksLabelArchivedType",
+    "WebhooksLabelArchivedTypeForResponse",
 )

@@ -13,31 +13,27 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PublicMonitoringRepositoryType(TypedDict):
-    """PublicMonitoringRepository
+class SecretScanningCustomPatternToDeleteType(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    Delivered details for the public repository where the secret was found.
+    A custom pattern to delete in a bulk operation.
     """
 
-    name: str
-    full_name: str
-    private: bool
-    html_url: NotRequired[Union[str, None]]
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
-class PublicMonitoringRepositoryTypeForResponse(TypedDict):
-    """PublicMonitoringRepository
+class SecretScanningCustomPatternToDeleteTypeForResponse(TypedDict):
+    """Secret Scanning Custom Pattern To Delete
 
-    Delivered details for the public repository where the secret was found.
+    A custom pattern to delete in a bulk operation.
     """
 
-    name: str
-    full_name: str
-    private: bool
-    html_url: NotRequired[Union[str, None]]
+    pattern_id: int
+    custom_pattern_version: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "PublicMonitoringRepositoryType",
-    "PublicMonitoringRepositoryTypeForResponse",
+    "SecretScanningCustomPatternToDeleteType",
+    "SecretScanningCustomPatternToDeleteTypeForResponse",
 )

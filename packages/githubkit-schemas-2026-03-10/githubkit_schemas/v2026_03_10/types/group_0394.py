@@ -9,158 +9,205 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0037 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0038 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0039 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0395 import (
-    DependabotAlertPropDependencyType,
-    DependabotAlertPropDependencyTypeForResponse,
-)
 
+class FileCommitType(TypedDict):
+    """File Commit
 
-class DependabotAlertType(TypedDict):
-    """DependabotAlert
-
-    A Dependabot alert.
+    File Commit
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
-    reachability: NotRequired[DependabotAlertPropReachabilityType]
+    content: Union[FileCommitPropContentType, None]
+    commit: FileCommitPropCommitType
 
 
-class DependabotAlertTypeForResponse(TypedDict):
-    """DependabotAlert
+class FileCommitTypeForResponse(TypedDict):
+    """File Commit
 
-    A Dependabot alert.
+    File Commit
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
-    url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    reachability: NotRequired[DependabotAlertPropReachabilityTypeForResponse]
+    content: Union[FileCommitPropContentTypeForResponse, None]
+    commit: FileCommitPropCommitTypeForResponse
 
 
-class DependabotAlertPropReachabilityType(TypedDict):
-    """DependabotAlertPropReachability
+class FileCommitPropContentType(TypedDict):
+    """FileCommitPropContent"""
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
-    """
-
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ]
-    reason: NotRequired[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ]
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksType]
 
 
-class DependabotAlertPropReachabilityTypeForResponse(TypedDict):
-    """DependabotAlertPropReachability
+class FileCommitPropContentTypeForResponse(TypedDict):
+    """FileCommitPropContent"""
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
-    """
+    name: NotRequired[str]
+    path: NotRequired[str]
+    sha: NotRequired[str]
+    size: NotRequired[int]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    git_url: NotRequired[str]
+    download_url: NotRequired[str]
+    type: NotRequired[str]
+    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
 
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ]
-    reason: NotRequired[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ]
+
+class FileCommitPropContentPropLinksType(TypedDict):
+    """FileCommitPropContentPropLinks"""
+
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
+
+
+class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
+    """FileCommitPropContentPropLinks"""
+
+    self_: NotRequired[str]
+    git: NotRequired[str]
+    html: NotRequired[str]
+
+
+class FileCommitPropCommitType(TypedDict):
+    """FileCommitPropCommit"""
+
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorType]
+    committer: NotRequired[FileCommitPropCommitPropCommitterType]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeType]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationType]
+
+
+class FileCommitPropCommitTypeForResponse(TypedDict):
+    """FileCommitPropCommit"""
+
+    sha: NotRequired[str]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
+    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
+    message: NotRequired[str]
+    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
+    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
+    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
+
+
+class FileCommitPropCommitPropAuthorType(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropCommitterType(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class FileCommitPropCommitPropTreeType(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropTree"""
+
+    url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsType(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
+
+
+class FileCommitPropCommitPropVerificationType(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
+
+
+class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: NotRequired[bool]
+    reason: NotRequired[str]
+    signature: NotRequired[Union[str, None]]
+    payload: NotRequired[Union[str, None]]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependabotAlertPropReachabilityType",
-    "DependabotAlertPropReachabilityTypeForResponse",
-    "DependabotAlertType",
-    "DependabotAlertTypeForResponse",
+    "FileCommitPropCommitPropAuthorType",
+    "FileCommitPropCommitPropAuthorTypeForResponse",
+    "FileCommitPropCommitPropCommitterType",
+    "FileCommitPropCommitPropCommitterTypeForResponse",
+    "FileCommitPropCommitPropParentsItemsType",
+    "FileCommitPropCommitPropParentsItemsTypeForResponse",
+    "FileCommitPropCommitPropTreeType",
+    "FileCommitPropCommitPropTreeTypeForResponse",
+    "FileCommitPropCommitPropVerificationType",
+    "FileCommitPropCommitPropVerificationTypeForResponse",
+    "FileCommitPropCommitType",
+    "FileCommitPropCommitTypeForResponse",
+    "FileCommitPropContentPropLinksType",
+    "FileCommitPropContentPropLinksTypeForResponse",
+    "FileCommitPropContentType",
+    "FileCommitPropContentTypeForResponse",
+    "FileCommitType",
+    "FileCommitTypeForResponse",
 )

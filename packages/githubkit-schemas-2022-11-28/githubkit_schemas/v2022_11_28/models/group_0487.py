@@ -9,120 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0047 import ReactionRollup
-from .group_0488 import ReviewCommentPropLinks
 
+class PullRequestPropLabelsItems(GitHubModel):
+    """PullRequestPropLabelsItems"""
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
-
-    Legacy Review Comment
-    """
-
-    is_copilot_code_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this comment was produced by Copilot code review.",
-    )
-    copilot_code_review_sources: Missing[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItems]
-    ] = Field(
-        max_length=16 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Sources reported as contributing to this comment; may be incomplete.",
-    )
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[SimpleUser, None] = Field()
-    body: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
+    archived_by: Union[PullRequestPropLabelsItemsPropArchivedBy, None] = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
+
+
+class PullRequestPropLabelsItemsPropArchivedBy(GitHubModel):
+    """PullRequestPropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
     html_url: str = Field()
-    pull_request_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class ReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
-
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
-        description="The kind of contributing source."
-    )
-    name: str = Field(
-        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS.'
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
-    )
-
-
-model_rebuild(ReviewComment)
-model_rebuild(ReviewCommentPropCopilotCodeReviewSourcesItems)
+model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(PullRequestPropLabelsItemsPropArchivedBy)
 
 __all__ = (
-    "ReviewComment",
-    "ReviewCommentPropCopilotCodeReviewSourcesItems",
+    "PullRequestPropLabelsItems",
+    "PullRequestPropLabelsItemsPropArchivedBy",
 )

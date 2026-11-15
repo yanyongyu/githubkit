@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-    Runner Application
+    A label for a self hosted runner
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-class RunnerApplicationTypeForResponse(TypedDict):
-    """Runner Application
+class RunnerLabelTypeForResponse(TypedDict):
+    """Self hosted runner label
 
-    Runner Application
+    A label for a self hosted runner
     """
 
-    os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    id: NotRequired[int]
+    name: str
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
 __all__ = (
-    "RunnerApplicationType",
-    "RunnerApplicationTypeForResponse",
+    "RunnerLabelType",
+    "RunnerLabelTypeForResponse",
 )

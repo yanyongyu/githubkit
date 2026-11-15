@@ -9,34 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ConcurrencyGroupListType(TypedDict):
+    """Concurrency Group List
 
-    Actions OIDC subject customization for a repository
+    A list of active concurrency groups for a repository.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
-    sub_claim_prefix: NotRequired[str]
+    total_count: int
+    concurrency_groups: list[ConcurrencyGroupListPropConcurrencyGroupsItemsType]
 
 
-class OidcCustomSubRepoTypeForResponse(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ConcurrencyGroupListTypeForResponse(TypedDict):
+    """Concurrency Group List
 
-    Actions OIDC subject customization for a repository
+    A list of active concurrency groups for a repository.
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[list[str]]
-    use_immutable_subject: NotRequired[bool]
-    sub_claim_prefix: NotRequired[str]
+    total_count: int
+    concurrency_groups: list[
+        ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse
+    ]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsType(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[_dt.datetime, None]
+
+
+class ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
+    """ConcurrencyGroupListPropConcurrencyGroupsItems"""
+
+    group_name: str
+    group_url: str
+    last_acquired_at: Union[str, None]
 
 
 __all__ = (
-    "OidcCustomSubRepoType",
-    "OidcCustomSubRepoTypeForResponse",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsType",
+    "ConcurrencyGroupListPropConcurrencyGroupsItemsTypeForResponse",
+    "ConcurrencyGroupListType",
+    "ConcurrencyGroupListTypeForResponse",
 )

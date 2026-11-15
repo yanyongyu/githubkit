@@ -12,33 +12,74 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0155 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+
+class CopilotCodeReviewRequestDeniedType(TypedDict):
+    """Copilot Code Review Request Denied
+
+    A Copilot code review request was denied, conflicted with an existing request,
+    or could not be serviced. The `failure_reason` field is present for stable,
+    machine-readable denials -- overlapping with the reasons returned by the
+    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
+    few additional reasons this REST endpoint reports explicitly rather than as an
+    opaque error -- and is absent for generic validation failures.
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
+    failure_reason: NotRequired[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ]
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class CopilotCodeReviewRequestDeniedTypeForResponse(TypedDict):
+    """Copilot Code Review Request Denied
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    A Copilot code review request was denied, conflicted with an existing request,
+    or could not be serviced. The `failure_reason` field is present for stable,
+    machine-readable denials -- overlapping with the reasons returned by the
+    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
+    few additional reasons this REST endpoint reports explicitly rather than as an
+    opaque error -- and is absent for generic validation failures.
+    """
 
-
-class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
+    failure_reason: NotRequired[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof1Type",
-    "RepositoryRuleDetailedOneof1TypeForResponse",
+    "CopilotCodeReviewRequestDeniedType",
+    "CopilotCodeReviewRequestDeniedTypeForResponse",
 )

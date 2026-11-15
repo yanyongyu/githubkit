@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0018 import InstallationType, InstallationTypeForResponse
-
-
-class OrgsOrgInstallationsGetResponse200Type(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
-
-    total_count: int
-    installations: list[InstallationType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInstallationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInstallationsGetResponse200"""
+class OrgsOrgCopilotCodeReviewRunnerPutBodyType(TypedDict):
+    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
 
-    total_count: int
-    installations: list[InstallationTypeForResponse]
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[Union[list[str], None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    allow_repository_customization: NotRequired[bool]
+
+
+class OrgsOrgCopilotCodeReviewRunnerPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
+
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[Union[list[str], None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    allow_repository_customization: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgInstallationsGetResponse200Type",
-    "OrgsOrgInstallationsGetResponse200TypeForResponse",
+    "OrgsOrgCopilotCodeReviewRunnerPutBodyType",
+    "OrgsOrgCopilotCodeReviewRunnerPutBodyTypeForResponse",
 )

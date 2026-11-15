@@ -9,48 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksProjectType(TypedDict):
-    """Project"""
-
-    body: Union[str, None]
-    columns_url: str
-    created_at: _dt.datetime
-    creator: Union[WebhooksProjectPropCreatorType, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: _dt.datetime
-    url: str
-
-
-class WebhooksProjectTypeForResponse(TypedDict):
-    """Project"""
-
-    body: Union[str, None]
-    columns_url: str
-    created_at: str
-    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: str
-    url: str
-
-
-class WebhooksProjectPropCreatorType(TypedDict):
+class WebhooksUserMannequinType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -72,12 +35,12 @@ class WebhooksProjectPropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
-class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
+class WebhooksUserMannequinTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -99,14 +62,12 @@ class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
     user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksProjectPropCreatorType",
-    "WebhooksProjectPropCreatorTypeForResponse",
-    "WebhooksProjectType",
-    "WebhooksProjectTypeForResponse",
+    "WebhooksUserMannequinType",
+    "WebhooksUserMannequinTypeForResponse",
 )

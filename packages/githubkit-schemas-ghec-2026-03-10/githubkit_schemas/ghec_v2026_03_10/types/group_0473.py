@@ -9,158 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0117 import (
-    DependabotAlertSecurityVulnerabilityType,
-    DependabotAlertSecurityVulnerabilityTypeForResponse,
-)
-from .group_0118 import (
-    DependabotAlertSecurityAdvisoryType,
-    DependabotAlertSecurityAdvisoryTypeForResponse,
-)
-from .group_0119 import (
-    DependabotAlertDismissalRequestSimpleType,
-    DependabotAlertDismissalRequestSimpleTypeForResponse,
-)
-from .group_0474 import (
-    DependabotAlertPropDependencyType,
-    DependabotAlertPropDependencyTypeForResponse,
-)
+from typing_extensions import TypedDict
 
 
-class DependabotAlertType(TypedDict):
-    """DependabotAlert
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    A Dependabot alert.
+    An object describing a submodule
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    html_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    dismissed_at: Union[_dt.datetime, None]
-    dismissed_by: Union[SimpleUserType, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[_dt.datetime, None]
-    auto_dismissed_at: NotRequired[Union[_dt.datetime, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleType, None]
-    ]
-    assignees: NotRequired[list[SimpleUserType]]
-    reachability: NotRequired[DependabotAlertPropReachabilityType]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-class DependabotAlertTypeForResponse(TypedDict):
-    """DependabotAlert
+class ContentSubmoduleTypeForResponse(TypedDict):
+    """Submodule Content
 
-    A Dependabot alert.
+    An object describing a submodule
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertPropDependencyTypeForResponse
-    security_advisory: DependabotAlertSecurityAdvisoryTypeForResponse
-    security_vulnerability: DependabotAlertSecurityVulnerabilityTypeForResponse
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
     url: str
-    html_url: str
-    created_at: str
-    updated_at: str
-    dismissed_at: Union[str, None]
-    dismissed_by: Union[SimpleUserTypeForResponse, None]
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[str, None]
-    auto_dismissed_at: NotRequired[Union[str, None]]
-    dismissal_request: NotRequired[
-        Union[DependabotAlertDismissalRequestSimpleTypeForResponse, None]
-    ]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    reachability: NotRequired[DependabotAlertPropReachabilityTypeForResponse]
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksTypeForResponse
 
 
-class DependabotAlertPropReachabilityType(TypedDict):
-    """DependabotAlertPropReachability
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
-    """
-
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ]
-    reason: NotRequired[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class DependabotAlertPropReachabilityTypeForResponse(TypedDict):
-    """DependabotAlertPropReachability
+class ContentSubmodulePropLinksTypeForResponse(TypedDict):
+    """ContentSubmodulePropLinks"""
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
-    """
-
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ]
-    reason: NotRequired[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "DependabotAlertPropReachabilityType",
-    "DependabotAlertPropReachabilityTypeForResponse",
-    "DependabotAlertType",
-    "DependabotAlertTypeForResponse",
+    "ContentSubmodulePropLinksType",
+    "ContentSubmodulePropLinksTypeForResponse",
+    "ContentSubmoduleType",
+    "ContentSubmoduleTypeForResponse",
 )

@@ -9,52 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
+class IssueTypeWebhookType(TypedDict):
+    """Issue Type
 
-    Unassigned Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    name: str
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
-class UnassignedIssueEventTypeForResponse(TypedDict):
-    """Unassigned Issue Event
+class IssueTypeWebhookTypeForResponse(TypedDict):
+    """Issue Type
 
-    Unassigned Issue Event
+    The type of issue.
     """
 
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    assignee: SimpleUserTypeForResponse
-    assigner: SimpleUserTypeForResponse
+    name: str
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
 
 
 __all__ = (
-    "UnassignedIssueEventType",
-    "UnassignedIssueEventTypeForResponse",
+    "IssueTypeWebhookType",
+    "IssueTypeWebhookTypeForResponse",
 )

@@ -9,70 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0515 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class ReviewDismissedIssueEventType(TypedDict):
-    """Review Dismissed Issue Event
+class AssignedIssueEventType(TypedDict):
+    """Assigned Issue Event
 
-    Review Dismissed Issue Event
+    Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_dismissed"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[IntegrationType, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+    assignee: SimpleUserType
+    assigner: SimpleUserType
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
-class ReviewDismissedIssueEventTypeForResponse(TypedDict):
-    """Review Dismissed Issue Event
+class AssignedIssueEventTypeForResponse(TypedDict):
+    """Assigned Issue Event
 
-    Review Dismissed Issue Event
+    Assigned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserTypeForResponse
-    event: Literal["review_dismissed"]
+    event: str
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewTypeForResponse
-
-
-class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
-
-
-class ReviewDismissedIssueEventPropDismissedReviewTypeForResponse(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
+    assignee: SimpleUserTypeForResponse
+    assigner: SimpleUserTypeForResponse
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "ReviewDismissedIssueEventPropDismissedReviewType",
-    "ReviewDismissedIssueEventPropDismissedReviewTypeForResponse",
-    "ReviewDismissedIssueEventType",
-    "ReviewDismissedIssueEventTypeForResponse",
+    "AssignedIssueEventType",
+    "AssignedIssueEventTypeForResponse",
 )

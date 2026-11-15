@@ -9,43 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class CodeScanningAiScanOrgSettingsType(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    The AI Scan organization setting
+    """
+
+    pr_scan: Literal["enabled", "disabled"]
+    repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeScanningAlertRuleSummaryTypeForResponse(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class CodeScanningAiScanOrgSettingsTypeForResponse(TypedDict):
+    """Code scanning AI Scan organization settings
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
-    security_severity_level: NotRequired[
-        Union[Literal["low", "medium", "high", "critical"], None]
-    ]
-    description: NotRequired[str]
-    full_description: NotRequired[str]
-    tags: NotRequired[Union[list[str], None]]
-    help_: NotRequired[Union[str, None]]
-    help_uri: NotRequired[Union[str, None]]
+    The AI Scan organization setting
+    """
+
+    pr_scan: Literal["enabled", "disabled"]
+    repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodeScanningAlertRuleSummaryType",
-    "CodeScanningAlertRuleSummaryTypeForResponse",
+    "CodeScanningAiScanOrgSettingsType",
+    "CodeScanningAiScanOrgSettingsTypeForResponse",
 )

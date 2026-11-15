@@ -9,229 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0205 import (
-    SecretScanningLocationCommitType,
-    SecretScanningLocationCommitTypeForResponse,
-    SecretScanningLocationDiscussionCommentType,
-    SecretScanningLocationDiscussionCommentTypeForResponse,
-    SecretScanningLocationDiscussionTitleType,
-    SecretScanningLocationDiscussionTitleTypeForResponse,
-    SecretScanningLocationIssueBodyType,
-    SecretScanningLocationIssueBodyTypeForResponse,
-    SecretScanningLocationPullRequestBodyType,
-    SecretScanningLocationPullRequestBodyTypeForResponse,
-    SecretScanningLocationPullRequestReviewType,
-    SecretScanningLocationPullRequestReviewTypeForResponse,
-    SecretScanningLocationWikiCommitType,
-    SecretScanningLocationWikiCommitTypeForResponse,
-)
-from .group_0206 import (
-    SecretScanningLocationIssueCommentType,
-    SecretScanningLocationIssueCommentTypeForResponse,
-    SecretScanningLocationIssueTitleType,
-    SecretScanningLocationIssueTitleTypeForResponse,
-    SecretScanningLocationPullRequestReviewCommentType,
-    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-    SecretScanningLocationPullRequestTitleType,
-    SecretScanningLocationPullRequestTitleTypeForResponse,
-)
-from .group_0207 import (
-    SecretScanningLocationDiscussionBodyType,
-    SecretScanningLocationDiscussionBodyTypeForResponse,
-    SecretScanningLocationPullRequestCommentType,
-    SecretScanningLocationPullRequestCommentTypeForResponse,
-)
-from .group_0217 import (
-    PublicMonitoringAlertLocationType,
-    PublicMonitoringAlertLocationTypeForResponse,
-    PublicMonitoringSecretAuthorType,
-    PublicMonitoringSecretAuthorTypeForResponse,
-)
+
+class WebhooksProjectType(TypedDict):
+    """Project"""
+
+    body: Union[str, None]
+    columns_url: str
+    created_at: _dt.datetime
+    creator: Union[WebhooksProjectPropCreatorType, None]
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
+    updated_at: _dt.datetime
+    url: str
 
 
-class PublicMonitoringAlertWebhookPropAttributionType(TypedDict):
-    """PublicMonitoringAlertWebhookPropAttribution
+class WebhooksProjectTypeForResponse(TypedDict):
+    """Project"""
 
-    Attribution information for the alert.
-    """
-
-    secret_author: NotRequired[
-        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
-    ]
-    committer_email: NotRequired[Union[str, None]]
-    commit: NotRequired[
-        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
-    ]
-    wiki_commit: NotRequired[
-        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
-    ]
-    issue_title: NotRequired[
-        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
-    ]
-    issue_body: NotRequired[
-        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
-    ]
-    issue_comment: NotRequired[
-        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
-    ]
-    pull_request_title: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestTitleType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_body: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    pull_request_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_review_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_review: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
-    discussion_title: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    discussion_body: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
-        ]
-    ]
-    discussion_comment: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionCommentType,
-            PublicMonitoringAlertLocationType,
-        ]
-    ]
-    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
-    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
-    actions_log: NotRequired[PublicMonitoringAlertLocationType]
-    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
-    method: NotRequired[Literal["member_activity", "verified_domain"]]
+    body: Union[str, None]
+    columns_url: str
+    created_at: str
+    creator: Union[WebhooksProjectPropCreatorTypeForResponse, None]
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
+    updated_at: str
+    url: str
 
 
-class PublicMonitoringAlertWebhookPropAttributionTypeForResponse(TypedDict):
-    """PublicMonitoringAlertWebhookPropAttribution
+class WebhooksProjectPropCreatorType(TypedDict):
+    """User"""
 
-    Attribution information for the alert.
-    """
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
-    secret_author: NotRequired[
-        Union[
-            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
-        ]
-    ]
-    committer_email: NotRequired[Union[str, None]]
-    commit: NotRequired[
-        Union[
-            SecretScanningLocationCommitTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    wiki_commit: NotRequired[
-        Union[
-            SecretScanningLocationWikiCommitTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_title: NotRequired[
-        Union[
-            SecretScanningLocationIssueTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_body: NotRequired[
-        Union[
-            SecretScanningLocationIssueBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    issue_comment: NotRequired[
-        Union[
-            SecretScanningLocationIssueCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_title: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_body: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_review_comment: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_review: NotRequired[
-        Union[
-            SecretScanningLocationPullRequestReviewTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    pull_request_timeline_comment: NotRequired[
-        PublicMonitoringAlertLocationTypeForResponse
-    ]
-    discussion_title: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionTitleTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    discussion_body: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionBodyTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    discussion_comment: NotRequired[
-        Union[
-            SecretScanningLocationDiscussionCommentTypeForResponse,
-            PublicMonitoringAlertLocationTypeForResponse,
-        ]
-    ]
-    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
-    method: NotRequired[Literal["member_activity", "verified_domain"]]
+
+class WebhooksProjectPropCreatorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "PublicMonitoringAlertWebhookPropAttributionType",
-    "PublicMonitoringAlertWebhookPropAttributionTypeForResponse",
+    "WebhooksProjectPropCreatorType",
+    "WebhooksProjectPropCreatorTypeForResponse",
+    "WebhooksProjectType",
+    "WebhooksProjectTypeForResponse",
 )

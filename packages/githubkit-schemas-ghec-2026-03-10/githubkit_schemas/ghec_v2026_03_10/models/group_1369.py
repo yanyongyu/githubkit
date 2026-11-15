@@ -9,22 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
 
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nenterprise members. This option is only available for Enterprise Managed User\n(EMU) enterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby enterprise members will be destroyed in addition to the credential authorizations.",
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field()
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
+    ty
+    """
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
+)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,46 +18,55 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0349 import ProjectsV2StatusUpdate
 
-class PullRequestStack(GitHubModel):
-    """Pull Request Stack
 
-    The stack information associated with a pull request.
+class ProjectsV2(GitHubModel):
+    """Projects v2 Project
+
+    A projects v2 project
     """
 
-    base: PullRequestStackPropBase = Field()
-    size: Missing[int] = Field(
-        default=UNSET, description="The total number of pull requests in the stack."
+    id: float = Field(description="The unique identifier of the project.")
+    node_id: str = Field(description="The node ID of the project.")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    title: str = Field(description="The project title.")
+    description: Union[str, None] = Field(
+        description="A short description of the project."
     )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
+    public: bool = Field(
+        description="Whether the project is visible to anyone with access to the owner."
     )
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the stack that this pull request belongs to.",
+    closed_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was closed."
     )
-    number: Missing[int] = Field(
-        default=UNSET,
-        description="The number of the stack that this pull request belongs to.",
+    created_at: _dt.datetime = Field(
+        description="The time when the project was created."
+    )
+    updated_at: _dt.datetime = Field(
+        description="The time when the project was last updated."
+    )
+    number: int = Field(description="The project number.")
+    short_description: Union[str, None] = Field(
+        description="A concise summary of the project."
+    )
+    deleted_at: Union[_dt.datetime, None] = Field(
+        description="The time when the project was deleted."
+    )
+    deleted_by: Union[SimpleUser, None] = Field()
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The current state of the project."
+    )
+    latest_status_update: Missing[Union[ProjectsV2StatusUpdate, None]] = Field(
+        default=UNSET
+    )
+    is_template: Missing[bool] = Field(
+        default=UNSET, description="Whether this project is a template"
     )
 
 
-class PullRequestStackPropBase(GitHubModel):
-    """PullRequestStackPropBase"""
+model_rebuild(ProjectsV2)
 
-    ref: str = Field(
-        description="The base ref of the stack this pull request belongs to."
-    )
-    sha: Union[str, None] = Field(
-        description="The base SHA of the stack this pull request belongs to."
-    )
-
-
-model_rebuild(PullRequestStack)
-model_rebuild(PullRequestStackPropBase)
-
-__all__ = (
-    "PullRequestStack",
-    "PullRequestStackPropBase",
-)
+__all__ = ("ProjectsV2",)

@@ -17,22 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0260 import RepositoryRuleCodeCoveragePropParameters
+from .group_0260 import RepositoryRuleCodeQualityPropParameters
 
 
-class RepositoryRuleCodeCoverage(GitHubModel):
-    """code_coverage
+class RepositoryRuleCodeQuality(GitHubModel):
+    """code_quality
 
-    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
-    uploaded coverage data but does not wait for coverage uploads. To ensure
-    coverage is evaluated before merging, make each status check associated with a
-    coverage upload a required status check.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    type: Literal["code_coverage"] = Field()
-    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
+    type: Literal["code_quality"] = Field()
+    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCodeCoverage)
+model_rebuild(RepositoryRuleCodeQuality)
 
-__all__ = ("RepositoryRuleCodeCoverage",)
+__all__ = ("RepositoryRuleCodeQuality",)

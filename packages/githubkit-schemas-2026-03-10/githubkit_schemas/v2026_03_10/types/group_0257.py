@@ -13,36 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0258 import (
-    RepositoryRuleCodeQualityPropParametersType,
-    RepositoryRuleCodeQualityPropParametersTypeForResponse,
+    RepositoryRuleCodeScanningPropParametersType,
+    RepositoryRuleCodeScanningPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCodeQualityType(TypedDict):
-    """code_quality
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["code_quality"]
-    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
-    """code_quality
+class RepositoryRuleCodeScanningTypeForResponse(TypedDict):
+    """code_scanning
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["code_quality"]
-    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCodeQualityType",
-    "RepositoryRuleCodeQualityTypeForResponse",
+    "RepositoryRuleCodeScanningType",
+    "RepositoryRuleCodeScanningTypeForResponse",
 )

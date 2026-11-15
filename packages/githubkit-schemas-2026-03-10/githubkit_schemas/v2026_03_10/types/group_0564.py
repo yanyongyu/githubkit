@@ -14,31 +14,39 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class KeySimpleType(TypedDict):
-    """Key Simple
+class CodespaceExportDetailsType(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    Key Simple
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    id: int
-    key: str
-    created_at: NotRequired[_dt.datetime]
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[_dt.datetime, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
-class KeySimpleTypeForResponse(TypedDict):
-    """Key Simple
+class CodespaceExportDetailsTypeForResponse(TypedDict):
+    """Fetches information about an export of a codespace.
 
-    Key Simple
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    id: int
-    key: str
-    created_at: NotRequired[str]
-    last_used: NotRequired[Union[str, None]]
+    state: NotRequired[Union[str, None]]
+    completed_at: NotRequired[Union[str, None]]
+    branch: NotRequired[Union[str, None]]
+    sha: NotRequired[Union[str, None]]
+    id: NotRequired[str]
+    export_url: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "KeySimpleType",
-    "KeySimpleTypeForResponse",
+    "CodespaceExportDetailsType",
+    "CodespaceExportDetailsTypeForResponse",
 )

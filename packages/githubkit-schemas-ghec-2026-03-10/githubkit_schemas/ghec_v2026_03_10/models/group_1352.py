@@ -9,35 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field()
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
+    selected_enterprise_teams: list[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        description="List of enterprise team names within the enterprise to remove from the GitHub Copilot subscription.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
-)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedEnterpriseTeamsDeleteBody",)

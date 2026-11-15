@@ -12,22 +12,26 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0379 import RateLimit
+from .group_0381 import RateLimitOverviewPropResources
 
 
-class ActionsCacheRetentionLimitForRepository(GitHubModel):
-    """Actions cache retention limit for a repository
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
 
-    GitHub Actions cache retention policy for a repository.
+    Rate limit status for the applicable requester and resource category. Requests
+    authenticated as a user share the user's rate limit across credentials. Requests
+    without authentication use the requesting IP address. API requests routed
+    through
+    either an API hostname or a web hostname can count against the same applicable
+    limit.
     """
 
-    max_cache_retention_days: Missing[int] = Field(
-        default=UNSET,
-        description="The maximum number of days to keep caches in this repository.",
-    )
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(ActionsCacheRetentionLimitForRepository)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("ActionsCacheRetentionLimitForRepository",)
+__all__ = ("RateLimitOverview",)

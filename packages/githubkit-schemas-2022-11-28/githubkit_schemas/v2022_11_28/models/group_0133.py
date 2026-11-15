@@ -12,21 +12,24 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0134 import (
-    EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-)
-
-
-class EnterpriseRulesetConditionsOrganizationNameTarget(GitHubModel):
-    """Repository ruleset conditions for organization names
-
-    Parameters for an organization name condition
-    """
-
-    organization_name: EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName = Field()
+from .group_0123 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0129 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
 
-model_rebuild(EnterpriseRulesetConditionsOrganizationNameTarget)
+class ActionsPolicyOrgConditionsOneof1(GitHubModel):
+    """ActionsPolicyOrgConditionsOneof1"""
 
-__all__ = ("EnterpriseRulesetConditionsOrganizationNameTarget",)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
+    )
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ActionsPolicyOrgConditionsOneof1)
+
+__all__ = ("ActionsPolicyOrgConditionsOneof1",)

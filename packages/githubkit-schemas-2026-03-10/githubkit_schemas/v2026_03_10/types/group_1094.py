@@ -9,33 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
-
-    Request body for requesting an automation run.
-    """
-
-    event: Literal["manual"]
-    context: NotRequired[str]
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0Type(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropCreatorAllof0
 
-    Request body for requesting an automation run.
+    A GitHub user
     """
 
-    event: Literal["manual"]
-    context: NotRequired[str]
+    id: NotRequired[int]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0TypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropCreatorAllof0
+
+    A GitHub user
+    """
+
+    id: NotRequired[int]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0TypeForResponse",
 )

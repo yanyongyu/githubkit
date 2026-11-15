@@ -9,46 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
 
 
-class UserNameResponseType(TypedDict):
-    """UserNameResponse"""
+class TrafficType(TypedDict):
+    """Traffic"""
 
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
-
-
-class UserNameResponseTypeForResponse(TypedDict):
-    """UserNameResponse"""
-
-    formatted: NotRequired[str]
-    family_name: NotRequired[str]
-    given_name: NotRequired[str]
-    middle_name: NotRequired[str]
+    timestamp: _dt.datetime
+    uniques: int
+    count: int
 
 
-class UserEmailsResponseItemsType(TypedDict):
-    """UserEmailsResponseItems"""
+class TrafficTypeForResponse(TypedDict):
+    """Traffic"""
 
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-class UserEmailsResponseItemsTypeForResponse(TypedDict):
-    """UserEmailsResponseItems"""
-
-    value: str
-    type: NotRequired[str]
-    primary: NotRequired[bool]
+    timestamp: str
+    uniques: int
+    count: int
 
 
 __all__ = (
-    "UserEmailsResponseItemsType",
-    "UserEmailsResponseItemsTypeForResponse",
-    "UserNameResponseType",
-    "UserNameResponseTypeForResponse",
+    "TrafficType",
+    "TrafficTypeForResponse",
 )

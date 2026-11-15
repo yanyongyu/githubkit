@@ -10,28 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof0Type(TypedDict):
-    """RepositoryRuleDetailedOneof0"""
+class CopilotCodeReviewRequestType(TypedDict):
+    """Copilot Code Review Request
 
-    type: Literal["creation"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    A request for Copilot to review a pull request.
+    """
+
+    node_id: str
+    state: Literal["PENDING"]
 
 
-class RepositoryRuleDetailedOneof0TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof0"""
+class CopilotCodeReviewRequestTypeForResponse(TypedDict):
+    """Copilot Code Review Request
 
-    type: Literal["creation"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    A request for Copilot to review a pull request.
+    """
+
+    node_id: str
+    state: Literal["PENDING"]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof0Type",
-    "RepositoryRuleDetailedOneof0TypeForResponse",
+    "CopilotCodeReviewRequestType",
+    "CopilotCodeReviewRequestTypeForResponse",
 )

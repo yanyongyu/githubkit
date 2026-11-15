@@ -13,20 +13,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
-from .group_0156 import Team
 
+class PlanningStatus(GitHubModel):
+    """Planning status
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    A planning status and its lifecycle category.
     """
 
-    users: list[SimpleUser] = Field()
-    teams: list[Team] = Field()
+    id: int = Field(description="The stable identifier of the planning status.")
+    name: str = Field(
+        description="The display name of the planning status, which may change in the future."
+    )
+    category: str = Field(
+        description="A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added."
+    )
 
 
-model_rebuild(PullRequestReviewRequest)
+model_rebuild(PlanningStatus)
 
-__all__ = ("PullRequestReviewRequest",)
+__all__ = ("PlanningStatus",)

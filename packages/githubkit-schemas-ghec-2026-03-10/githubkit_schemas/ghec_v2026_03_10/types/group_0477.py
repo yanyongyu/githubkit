@@ -9,25 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-MetadataType: TypeAlias = dict[str, Any]
-"""metadata
-
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-MetadataTypeForResponse: TypeAlias = dict[str, Any]
-"""metadata
+class RepositoryCopilotCodeReviewSettingsType(TypedDict):
+    """Repository Copilot Code Review Settings
 
-User-defined metadata to store domain-specific information limited to 8 keys
-with scalar values.
-"""
+    The repository's Copilot code review settings. These settings tune reviews; they
+    do not enable Copilot code review.
+    """
+
+    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffortType
+    available_review_efforts: list[str]
+    severity_filter: Literal["no_filter", "low", "low_and_medium"]
+    custom_instructions_enabled: bool
+    mcp_enabled: bool
+
+
+class RepositoryCopilotCodeReviewSettingsTypeForResponse(TypedDict):
+    """Repository Copilot Code Review Settings
+
+    The repository's Copilot code review settings. These settings tune reviews; they
+    do not enable Copilot code review.
+    """
+
+    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffortTypeForResponse
+    available_review_efforts: list[str]
+    severity_filter: Literal["no_filter", "low", "low_and_medium"]
+    custom_instructions_enabled: bool
+    mcp_enabled: bool
+
+
+class RepositoryCopilotCodeReviewSettingsPropReviewEffortType(TypedDict):
+    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
+
+    The review effort for the repository. For more information, see [Review effort
+    level](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agent-
+    capabilities/agent-powered-workflows-and-operations/code-review#review-effort-
+    level).
+    """
+
+    configured: Union[str, None]
+    effective: str
+
+
+class RepositoryCopilotCodeReviewSettingsPropReviewEffortTypeForResponse(TypedDict):
+    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
+
+    The review effort for the repository. For more information, see [Review effort
+    level](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agent-
+    capabilities/agent-powered-workflows-and-operations/code-review#review-effort-
+    level).
+    """
+
+    configured: Union[str, None]
+    effective: str
 
 
 __all__ = (
-    "MetadataType",
-    "MetadataTypeForResponse",
+    "RepositoryCopilotCodeReviewSettingsPropReviewEffortType",
+    "RepositoryCopilotCodeReviewSettingsPropReviewEffortTypeForResponse",
+    "RepositoryCopilotCodeReviewSettingsType",
+    "RepositoryCopilotCodeReviewSettingsTypeForResponse",
 )

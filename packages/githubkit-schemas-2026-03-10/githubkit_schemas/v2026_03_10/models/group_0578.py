@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,25 +16,75 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class BillingAiCreditUsageReportUser(GitHubModel):
+    """BillingAiCreditUsageReportUser"""
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
-    """
+    time_period: BillingAiCreditUsageReportUserPropTimePeriod = Field(
+        alias="timePeriod"
+    )
+    user: str = Field(description="The unique identifier of the user.")
+    product: Missing[str] = Field(
+        default=UNSET, description="The product for the usage report."
+    )
+    model: Missing[str] = Field(
+        default=UNSET, description="The model for the usage report."
+    )
+    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItems] = Field(
+        alias="usageItems"
+    )
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+
+class BillingAiCreditUsageReportUserPropTimePeriod(GitHubModel):
+    """BillingAiCreditUsageReportUserPropTimePeriod"""
+
+    year: int = Field(description="The year for the usage report.")
+    month: Missing[int] = Field(
+        default=UNSET, description="The month for the usage report."
+    )
+    day: Missing[int] = Field(
+        default=UNSET, description="The day for the usage report."
+    )
 
 
-model_rebuild(WebhooksDeployKey)
+class BillingAiCreditUsageReportUserPropUsageItemsItems(GitHubModel):
+    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
 
-__all__ = ("WebhooksDeployKey",)
+    product: str = Field(description="Product name.")
+    sku: str = Field(description="SKU name.")
+    model: str = Field(description="Model name.")
+    unit_type: str = Field(
+        alias="unitType", description="Unit type of the usage line item."
+    )
+    price_per_unit: float = Field(
+        alias="pricePerUnit", description="Price per unit of the usage line item."
+    )
+    gross_quantity: float = Field(
+        alias="grossQuantity", description="Gross quantity of the usage line item."
+    )
+    gross_amount: float = Field(
+        alias="grossAmount", description="Gross amount of the usage line item."
+    )
+    discount_quantity: float = Field(
+        alias="discountQuantity",
+        description="Discount quantity of the usage line item.",
+    )
+    discount_amount: float = Field(
+        alias="discountAmount", description="Discount amount of the usage line item."
+    )
+    net_quantity: float = Field(
+        alias="netQuantity", description="Net quantity of the usage line item."
+    )
+    net_amount: float = Field(
+        alias="netAmount", description="Net amount of the usage line item."
+    )
+
+
+model_rebuild(BillingAiCreditUsageReportUser)
+model_rebuild(BillingAiCreditUsageReportUserPropTimePeriod)
+model_rebuild(BillingAiCreditUsageReportUserPropUsageItemsItems)
+
+__all__ = (
+    "BillingAiCreditUsageReportUser",
+    "BillingAiCreditUsageReportUserPropTimePeriod",
+    "BillingAiCreditUsageReportUserPropUsageItemsItems",
+)

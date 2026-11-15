@@ -12,29 +12,29 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class StargazerHistoryType(TypedDict):
+    """Stargazer History
 
-    Referrer Traffic
+    Stargazer History
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    days: list[int]
+    total: int
+    week: int
 
 
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
+class StargazerHistoryTypeForResponse(TypedDict):
+    """Stargazer History
 
-    Referrer Traffic
+    Stargazer History
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "StargazerHistoryType",
+    "StargazerHistoryTypeForResponse",
 )

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404
+class AgentsAutomationsGetResponse401(GitHubModel):
+    """AgentsAutomationsGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -30,9 +30,7 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404(GitHubModel):
     message: str = Field(
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
-    errors: Missing[
-        list[AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems]
-    ] = Field(
+    errors: Missing[list[AgentsAutomationsGetResponse401PropErrorsItems]] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
     )
@@ -47,10 +45,8 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems
+class AgentsAutomationsGetResponse401PropErrorsItems(GitHubModel):
+    """AgentsAutomationsGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -69,12 +65,10 @@ class AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems
-)
+model_rebuild(AgentsAutomationsGetResponse401)
+model_rebuild(AgentsAutomationsGetResponse401PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404",
-    "AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems",
+    "AgentsAutomationsGetResponse401",
+    "AgentsAutomationsGetResponse401PropErrorsItems",
 )

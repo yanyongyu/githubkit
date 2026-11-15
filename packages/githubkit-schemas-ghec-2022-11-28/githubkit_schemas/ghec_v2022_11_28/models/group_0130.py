@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0131 import (
-    EnterpriseLicensePolicyItemPropLicenses,
-    EnterpriseLicensePolicyItemPropPackagesItems,
-)
+
+class ExternalVulnerabilitySyncStatus(GitHubModel):
+    """External Vulnerability Sync Status
+
+    Status of an in-progress external vulnerability sync operation
+    """
+
+    id: str = Field(description="Job status ID")
+    status: Literal["processing"] = Field(description="Current processing status")
 
 
-class EnterpriseLicensePolicyItem(GitHubModel):
-    """Enterprise license policy content"""
+model_rebuild(ExternalVulnerabilitySyncStatus)
 
-    licenses: EnterpriseLicensePolicyItemPropLicenses = Field()
-    packages: list[EnterpriseLicensePolicyItemPropPackagesItems] = Field(
-        description="The package-level exceptions in this policy."
-    )
-
-
-model_rebuild(EnterpriseLicensePolicyItem)
-
-__all__ = ("EnterpriseLicensePolicyItem",)
+__all__ = ("ExternalVulnerabilitySyncStatus",)

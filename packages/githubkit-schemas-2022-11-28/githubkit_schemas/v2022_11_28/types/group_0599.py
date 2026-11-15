@@ -13,34 +13,34 @@ import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0587 import (
+from .group_0600 import (
     WebhooksLabelPropArchivedByType,
     WebhooksLabelPropArchivedByTypeForResponse,
 )
 
 
-class WebhooksLabelUnarchivedType(TypedDict):
-    """Unarchived label"""
+class WebhooksLabelType(TypedDict):
+    """Label"""
 
     color: str
     default: bool
     description: Union[str, None]
-    archived_at: Union[Union[_dt.datetime, None], None]
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedByType], None]
+    archived_at: Union[_dt.datetime, None]
+    archived_by: Union[WebhooksLabelPropArchivedByType, None]
     id: int
     name: str
     node_id: str
     url: str
 
 
-class WebhooksLabelUnarchivedTypeForResponse(TypedDict):
-    """Unarchived label"""
+class WebhooksLabelTypeForResponse(TypedDict):
+    """Label"""
 
     color: str
     default: bool
     description: Union[str, None]
-    archived_at: Union[Union[str, None], None]
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedByTypeForResponse], None]
+    archived_at: Union[str, None]
+    archived_by: Union[WebhooksLabelPropArchivedByTypeForResponse, None]
     id: int
     name: str
     node_id: str
@@ -48,6 +48,6 @@ class WebhooksLabelUnarchivedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedType",
-    "WebhooksLabelUnarchivedTypeForResponse",
+    "WebhooksLabelType",
+    "WebhooksLabelTypeForResponse",
 )

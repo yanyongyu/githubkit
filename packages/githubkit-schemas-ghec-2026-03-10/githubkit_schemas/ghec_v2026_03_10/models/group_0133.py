@@ -9,48 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+
+from .group_0132 import (
+    EnterpriseLicensePolicyItemPropLicenses,
+    EnterpriseLicensePolicyItemPropPackagesItems,
+)
 
 
-class GetLicenseSyncStatus(GitHubModel):
-    """License Sync Status
+class EnterpriseLicensePolicyResponse(GitHubModel):
+    """Enterprise license policy
 
-    Information about the status of a license sync job for an enterprise.
+    The license compliance policy for an enterprise.
     """
 
-    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
-        Field(default=UNSET)
+    licenses: EnterpriseLicensePolicyItemPropLicenses = Field()
+    packages: list[EnterpriseLicensePolicyItemPropPackagesItems] = Field(
+        description="The package-level exceptions in this policy."
+    )
+    created_at: Union[_dt.datetime, None] = Field(
+        description="The time the policy was created."
     )
 
 
-class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItems"""
+model_rebuild(EnterpriseLicensePolicyResponse)
 
-    server_id: Missing[str] = Field(default=UNSET)
-    hostname: Missing[str] = Field(default=UNSET)
-    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
-        Field(default=UNSET)
-    )
-
-
-class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
-    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
-
-    date: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    error: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GetLicenseSyncStatus)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
-model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
-
-__all__ = (
-    "GetLicenseSyncStatus",
-    "GetLicenseSyncStatusPropServerInstancesItems",
-    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
-)
+__all__ = ("EnterpriseLicensePolicyResponse",)

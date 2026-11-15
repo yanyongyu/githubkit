@@ -84,8 +84,8 @@ if TYPE_CHECKING:
         ApiInsightsTimeStatsItemsTypeForResponse,
         ApiInsightsUserStatsItemsTypeForResponse,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202TypeForResponse,
+        CustomPropertyBatchItemPayloadType,
         CustomPropertySetPayloadType,
-        CustomPropertyType,
         CustomPropertyTypeForResponse,
         CustomPropertyValueType,
         ExternalPropertyTypeForResponse,
@@ -93,11 +93,11 @@ if TYPE_CHECKING:
         HookDeliveryTypeForResponse,
         ImmutableReleasesOrganizationSettingsTypeForResponse,
         IssueFieldTypeForResponse,
+        IssueTypeRequestType,
         IssueTypeTypeForResponse,
         MinimalRepositoryTypeForResponse,
         OrganizationCreateIssueFieldPropOptionsItemsType,
         OrganizationCreateIssueFieldType,
-        OrganizationCreateIssueTypeType,
         OrganizationExternalPropertyInstallationTypeForResponse,
         OrganizationFullTypeForResponse,
         OrganizationInvitationTypeForResponse,
@@ -107,7 +107,6 @@ if TYPE_CHECKING:
         OrganizationSimpleTypeForResponse,
         OrganizationUpdateIssueFieldPropOptionsItemsType,
         OrganizationUpdateIssueFieldType,
-        OrganizationUpdateIssueTypeType,
         OrgHookTypeForResponse,
         OrgMembershipTypeForResponse,
         OrgRepoCustomPropertyValuesTypeForResponse,
@@ -750,7 +749,7 @@ class OrgsClient:
         This endpoint allows you to record information about a specific
         artifact, such as its name, digest, environments, cluster, and
         deployment.
-        The deployment name has to be uniqe within a cluster (i.e a
+        The deployment name has to be unique within a cluster (i.e a
         combination of logical, physical environment and cluster) as it
         identifies unique deployment.
         Multiple requests for the same combination of logical, physical
@@ -866,7 +865,7 @@ class OrgsClient:
         This endpoint allows you to record information about a specific
         artifact, such as its name, digest, environments, cluster, and
         deployment.
-        The deployment name has to be uniqe within a cluster (i.e a
+        The deployment name has to be unique within a cluster (i.e a
         combination of logical, physical environment and cluster) as it
         identifies unique deployment.
         Multiple requests for the same combination of logical, physical
@@ -2188,8 +2187,8 @@ class OrgsClient:
 
         GET /orgs/{org}/attestations/repositories
 
-        List repositories owned by the provided organization that have created at least one attested artifact
-        Results will be sorted in ascending order by repository ID
+        List repositories owned by the provided organization that have created at least one attested artifact.
+        Results will be sorted in ascending order by repository ID.
 
         See also: https://docs.github.com/rest/orgs/attestations#list-attestation-repositories
         """
@@ -2234,8 +2233,8 @@ class OrgsClient:
 
         GET /orgs/{org}/attestations/repositories
 
-        List repositories owned by the provided organization that have created at least one attested artifact
-        Results will be sorted in ascending order by repository ID
+        List repositories owned by the provided organization that have created at least one attested artifact.
+        Results will be sorted in ascending order by repository ID.
 
         See also: https://docs.github.com/rest/orgs/attestations#list-attestation-repositories
         """
@@ -5475,7 +5474,9 @@ class OrgsClient:
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         data_type: Literal["text", "date", "single_select", "multi_select", "number"],
-        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        visibility: Missing[
+            Literal["organization_members_only", "all", "restricted"]
+        ] = UNSET,
         options: Missing[
             Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
         ] = UNSET,
@@ -5560,7 +5561,9 @@ class OrgsClient:
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         data_type: Literal["text", "date", "single_select", "multi_select", "number"],
-        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        visibility: Missing[
+            Literal["organization_members_only", "all", "restricted"]
+        ] = UNSET,
         options: Missing[
             Union[list[OrganizationCreateIssueFieldPropOptionsItemsType], None]
         ] = UNSET,
@@ -5724,7 +5727,9 @@ class OrgsClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
-        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        visibility: Missing[
+            Literal["organization_members_only", "all", "restricted"]
+        ] = UNSET,
         options: Missing[
             list[OrganizationUpdateIssueFieldPropOptionsItemsType]
         ] = UNSET,
@@ -5811,7 +5816,9 @@ class OrgsClient:
         stream: bool = False,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
-        visibility: Missing[Literal["organization_members_only", "all"]] = UNSET,
+        visibility: Missing[
+            Literal["organization_members_only", "all", "restricted"]
+        ] = UNSET,
         options: Missing[
             list[OrganizationUpdateIssueFieldPropOptionsItemsType]
         ] = UNSET,
@@ -5957,7 +5964,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: OrganizationCreateIssueTypeType,
+        data: IssueTypeRequestType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
@@ -5987,7 +5994,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: Missing[OrganizationCreateIssueTypeType] = UNSET,
+        data: Missing[IssueTypeRequestType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/create-issue-type
@@ -6009,7 +6016,7 @@ class OrgsClient:
         from ..models import (
             BasicError,
             IssueType,
-            OrganizationCreateIssueType,
+            IssueTypeRequest,
             ValidationErrorSimple,
         )
 
@@ -6023,7 +6030,7 @@ class OrgsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrganizationCreateIssueType, json)
+            json = type_validate_python(IssueTypeRequest, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6046,7 +6053,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: OrganizationCreateIssueTypeType,
+        data: IssueTypeRequestType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
@@ -6076,7 +6083,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: Missing[OrganizationCreateIssueTypeType] = UNSET,
+        data: Missing[IssueTypeRequestType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/create-issue-type
@@ -6098,7 +6105,7 @@ class OrgsClient:
         from ..models import (
             BasicError,
             IssueType,
-            OrganizationCreateIssueType,
+            IssueTypeRequest,
             ValidationErrorSimple,
         )
 
@@ -6112,7 +6119,7 @@ class OrgsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrganizationCreateIssueType, json)
+            json = type_validate_python(IssueTypeRequest, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -6136,7 +6143,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: OrganizationUpdateIssueTypeType,
+        data: IssueTypeRequestType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
@@ -6168,7 +6175,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
+        data: Missing[IssueTypeRequestType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/update-issue-type
@@ -6190,7 +6197,7 @@ class OrgsClient:
         from ..models import (
             BasicError,
             IssueType,
-            OrganizationUpdateIssueType,
+            IssueTypeRequest,
             ValidationErrorSimple,
         )
 
@@ -6204,7 +6211,7 @@ class OrgsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrganizationUpdateIssueType, json)
+            json = type_validate_python(IssueTypeRequest, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6228,7 +6235,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: OrganizationUpdateIssueTypeType,
+        data: IssueTypeRequestType,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
 
     @overload
@@ -6260,7 +6267,7 @@ class OrgsClient:
         *,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        data: Missing[OrganizationUpdateIssueTypeType] = UNSET,
+        data: Missing[IssueTypeRequestType] = UNSET,
         **kwargs,
     ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
         """orgs/update-issue-type
@@ -6282,7 +6289,7 @@ class OrgsClient:
         from ..models import (
             BasicError,
             IssueType,
-            OrganizationUpdateIssueType,
+            IssueTypeRequest,
             ValidationErrorSimple,
         )
 
@@ -6296,7 +6303,7 @@ class OrgsClient:
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_validate_body:
-            json = type_validate_python(OrganizationUpdateIssueType, json)
+            json = type_validate_python(IssueTypeRequest, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -9970,7 +9977,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        properties: list[CustomPropertyType],
+        properties: list[CustomPropertyBatchItemPayloadType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     def custom_properties_for_repos_create_or_update_organization_definitions(
@@ -10049,7 +10056,7 @@ class OrgsClient:
         data: UnsetType = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
-        properties: list[CustomPropertyType],
+        properties: list[CustomPropertyBatchItemPayloadType],
     ) -> Response[list[CustomProperty], list[CustomPropertyTypeForResponse]]: ...
 
     async def async_custom_properties_for_repos_create_or_update_organization_definitions(
@@ -10212,6 +10219,7 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
+        regex: Missing[Union[str, None]] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 
@@ -10296,6 +10304,7 @@ class OrgsClient:
         values_editable_by: Missing[
             Union[Literal["org_actors", "org_and_repo_actors"], None]
         ] = UNSET,
+        regex: Missing[Union[str, None]] = UNSET,
         require_explicit_values: Missing[bool] = UNSET,
     ) -> Response[CustomProperty, CustomPropertyTypeForResponse]: ...
 

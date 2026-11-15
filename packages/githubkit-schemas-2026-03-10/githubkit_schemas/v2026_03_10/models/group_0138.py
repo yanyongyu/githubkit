@@ -16,39 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty(
-    GitHubModel
-):
-    """EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty"""
+class EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId(GitHubModel):
+    """EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId"""
 
-    include: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
+    organization_ids: Missing[list[int]] = Field(
         default=UNSET,
-        description="The organization properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[list[EnterpriseRulesetConditionsOrganizationPropertySpec]] = Field(
-        default=UNSET,
-        description="The organization properties and values to exclude. The condition will not pass if any of these properties match.",
+        description="The organization IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
     )
 
 
-class EnterpriseRulesetConditionsOrganizationPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+model_rebuild(EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId)
 
-    Parameters for a targeting a organization property
-    """
-
-    name: str = Field(description="The name of the organization property to target")
-    property_values: list[str] = Field(
-        description="The values to match for the organization property"
-    )
-
-
-model_rebuild(
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty
-)
-model_rebuild(EnterpriseRulesetConditionsOrganizationPropertySpec)
-
-__all__ = (
-    "EnterpriseRulesetConditionsOrganizationPropertySpec",
-    "EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty",
-)
+__all__ = ("EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId",)

@@ -9,87 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class WebhooksPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    account: WebhooksPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhooksPreviousMarketplacePurchaseTypeForResponse(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse
-    unit_count: int
-
-
-class WebhooksPreviousMarketplacePurchasePropAccountType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
+    full_name: str
     id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhooksPreviousMarketplacePurchasePropPlanType(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
-
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    node_id: str
+    private: bool
 
 
-class WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse(TypedDict):
-    """WebhooksPreviousMarketplacePurchasePropPlan"""
+class WebhooksRepositoriesAddedItemsTypeForResponse(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    bullets: list[str]
-    description: str
-    has_free_trial: bool
+    full_name: str
     id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    node_id: str
+    private: bool
 
 
 __all__ = (
-    "WebhooksPreviousMarketplacePurchasePropAccountType",
-    "WebhooksPreviousMarketplacePurchasePropAccountTypeForResponse",
-    "WebhooksPreviousMarketplacePurchasePropPlanType",
-    "WebhooksPreviousMarketplacePurchasePropPlanTypeForResponse",
-    "WebhooksPreviousMarketplacePurchaseType",
-    "WebhooksPreviousMarketplacePurchaseTypeForResponse",
+    "WebhooksRepositoriesAddedItemsType",
+    "WebhooksRepositoriesAddedItemsTypeForResponse",
 )

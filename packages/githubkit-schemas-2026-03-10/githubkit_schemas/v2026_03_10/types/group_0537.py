@@ -10,26 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0058 import (
+    PullRequestMinimalPropBaseType,
+    PullRequestMinimalPropBaseTypeForResponse,
+    PullRequestMinimalPropHeadType,
+    PullRequestMinimalPropHeadTypeForResponse,
+)
 
-class TrafficType(TypedDict):
-    """Traffic"""
 
-    timestamp: _dt.datetime
-    uniques: int
-    count: int
+class PullRequestStackPullRequestType(TypedDict):
+    """Pull Request Stack Pull Request"""
+
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[_dt.datetime, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserType, None]
 
 
-class TrafficTypeForResponse(TypedDict):
-    """Traffic"""
+class PullRequestStackPullRequestTypeForResponse(TypedDict):
+    """Pull Request Stack Pull Request"""
 
-    timestamp: str
-    uniques: int
-    count: int
+    id: int
+    number: int
+    url: str
+    head: PullRequestMinimalPropHeadTypeForResponse
+    base: PullRequestMinimalPropBaseTypeForResponse
+    node_id: str
+    title: str
+    state: Literal["open", "closed"]
+    merged_at: Union[str, None]
+    draft: bool
+    html_url: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "TrafficType",
-    "TrafficTypeForResponse",
+    "PullRequestStackPullRequestType",
+    "PullRequestStackPullRequestTypeForResponse",
 )

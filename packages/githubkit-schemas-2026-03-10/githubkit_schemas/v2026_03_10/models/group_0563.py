@@ -14,26 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Hovercard(GitHubModel):
-    """Hovercard
+class CodespacesUserPublicKey(GitHubModel):
+    """CodespacesUserPublicKey
 
-    Hovercard
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    contexts: list[HovercardPropContextsItems] = Field()
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
 
 
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
+model_rebuild(CodespacesUserPublicKey)
 
-    message: str = Field()
-    octicon: str = Field()
-
-
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
-
-__all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
-)
+__all__ = ("CodespacesUserPublicKey",)

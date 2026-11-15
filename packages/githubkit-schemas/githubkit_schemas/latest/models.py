@@ -2563,6 +2563,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         ConvertedNoteToIssueIssueEventPropProjectCard as ConvertedNoteToIssueIssueEventPropProjectCard,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        CopilotCodeReviewRequest as CopilotCodeReviewRequest,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CopilotCodeReviewRequestDenied as CopilotCodeReviewRequestDenied,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        CopilotCodeReviewRequestDeniedAllof1 as CopilotCodeReviewRequestDeniedAllof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         CopilotOrganizationContentExclusionDetails as CopilotOrganizationContentExclusionDetails,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2617,6 +2626,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         CustomDeploymentRuleApp as CustomDeploymentRuleApp,
     )
     from githubkit_schemas.v2026_03_10.models import CustomProperty as CustomProperty
+    from githubkit_schemas.v2026_03_10.models import (
+        CustomPropertyBatchItemPayload as CustomPropertyBatchItemPayload,
+    )
     from githubkit_schemas.v2026_03_10.models import (
         CustomPropertySetPayload as CustomPropertySetPayload,
     )
@@ -2697,6 +2709,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         DependabotRepositoryAccessDetails as DependabotRepositoryAccessDetails,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        DependabotRunnerSettings as DependabotRunnerSettings,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        DependabotRunnerSettingsUpdate as DependabotRunnerSettingsUpdate,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         DependabotSecret as DependabotSecret,
     )
     from githubkit_schemas.v2026_03_10.models import Dependency as Dependency
@@ -2772,6 +2790,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import EmptyObject as EmptyObject
     from githubkit_schemas.v2026_03_10.models import Enterprise as Enterprise
     from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseCopilotCodeReviewPolicy as EnterpriseCopilotCodeReviewPolicy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationIdTarget as EnterpriseRulesetConditionsOrganizationIdTarget,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -2812,6 +2833,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody as EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody,
@@ -3129,6 +3153,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         IssuePropPullRequest as IssuePropPullRequest,
     )
+    from githubkit_schemas.v2026_03_10.models import IssuePropStatus as IssuePropStatus
     from githubkit_schemas.v2026_03_10.models import IssueReference as IssueReference
     from githubkit_schemas.v2026_03_10.models import (
         IssueReferencePropIssueType as IssueReferencePropIssueType,
@@ -3145,6 +3170,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
     )
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueSearchResultItemPropStatus as IssueSearchResultItemPropStatus,
+    )
     from githubkit_schemas.v2026_03_10.models import IssuesEvent as IssuesEvent
     from githubkit_schemas.v2026_03_10.models import IssueSuggestion as IssueSuggestion
     from githubkit_schemas.v2026_03_10.models import IssueType as IssueType
@@ -3156,6 +3184,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         IssueTypeRemovedIssueEvent as IssueTypeRemovedIssueEvent,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        IssueTypeRequest as IssueTypeRequest,
     )
     from githubkit_schemas.v2026_03_10.models import (
         IssueTypeWebhook as IssueTypeWebhook,
@@ -3279,13 +3310,22 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrganizationActionsVariable as OrganizationActionsVariable,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        OrganizationCopilotCodeReviewPolicy as OrganizationCopilotCodeReviewPolicy,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrganizationCopilotCodeReviewRunner as OrganizationCopilotCodeReviewRunner,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrganizationCopilotCodeReviewSettings as OrganizationCopilotCodeReviewSettings,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort as OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCreateIssueField as OrganizationCreateIssueField,
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrganizationCreateIssueFieldPropOptionsItems as OrganizationCreateIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        OrganizationCreateIssueType as OrganizationCreateIssueType,
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrganizationDependabotSecret as OrganizationDependabotSecret,
@@ -3364,9 +3404,6 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrganizationUpdateIssueFieldPropOptionsItems as OrganizationUpdateIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
-        OrganizationUpdateIssueType as OrganizationUpdateIssueType,
     )
     from githubkit_schemas.v2026_03_10.models import OrgHook as OrgHook
     from githubkit_schemas.v2026_03_10.models import (
@@ -3758,6 +3795,15 @@ if TYPE_CHECKING or is_lazy_disabled():
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgCopilotCodeReviewRunnerPutBody as OrgsOrgCopilotCodeReviewRunnerPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgCopilotCodeReviewSettingsPatchBody as OrgsOrgCopilotCodeReviewSettingsPatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgCopilotCodeReviewSettingsPatchResponse409 as OrgsOrgCopilotCodeReviewSettingsPatchResponse409,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -3774,6 +3820,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotContentExclusionPutResponse200 as OrgsOrgCopilotContentExclusionPutResponse200,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgCopilotPoliciesCodeReviewPutBody as OrgsOrgCopilotPoliciesCodeReviewPutBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        OrgsOrgCopilotPoliciesCodeReviewPutResponse409 as OrgsOrgCopilotPoliciesCodeReviewPutResponse409,
     )
     from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesGetResponse200 as OrgsOrgCopilotSpacesGetResponse200,
@@ -4160,6 +4212,7 @@ if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         PinnedIssueComment as PinnedIssueComment,
     )
+    from githubkit_schemas.v2026_03_10.models import PlanningStatus as PlanningStatus
     from githubkit_schemas.v2026_03_10.models import PorterAuthor as PorterAuthor
     from githubkit_schemas.v2026_03_10.models import PorterLargeFile as PorterLargeFile
     from githubkit_schemas.v2026_03_10.models import PrivateUser as PrivateUser
@@ -4437,6 +4490,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         PullRequestSimplePropLinks as PullRequestSimplePropLinks,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        PullRequestsOnAlerts as PullRequestsOnAlerts,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStack as PullRequestStack,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -4582,6 +4638,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryCopilotCodeReviewSettings as RepositoryCopilotCodeReviewSettings,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        RepositoryCopilotCodeReviewSettingsPropReviewEffort as RepositoryCopilotCodeReviewSettingsPropReviewEffort,
     )
     from githubkit_schemas.v2026_03_10.models import (
         RepositoryExternalPropertyPayload as RepositoryExternalPropertyPayload,
@@ -5259,6 +5321,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoCopilotCodeReviewSettingsPatchBody as ReposOwnerRepoCopilotCodeReviewSettingsPatchBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -5662,6 +5727,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody as ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberMergeAsyncPutBody as ReposOwnerRepoPullsPullNumberMergeAsyncPutBody,
@@ -6302,6 +6370,12 @@ if TYPE_CHECKING or is_lazy_disabled():
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        UserCreateIssueField as UserCreateIssueField,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        UserCreateIssueFieldPropOptionsItems as UserCreateIssueFieldPropOptionsItems,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -6330,6 +6404,10 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import UserIssueField as UserIssueField
+    from githubkit_schemas.v2026_03_10.models import (
+        UserIssueFieldPropOptionsItems as UserIssueFieldPropOptionsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
         UserKeysPostBody as UserKeysPostBody,
@@ -6454,6 +6532,12 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        UserUpdateIssueField as UserUpdateIssueField,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        UserUpdateIssueFieldPropOptionsItems as UserUpdateIssueFieldPropOptionsItems,
     )
     from githubkit_schemas.v2026_03_10.models import (
         UserUserIdProjectsV2ProjectNumberDraftsPostBody as UserUserIdProjectsV2ProjectNumberDraftsPostBody,
@@ -7822,6 +7906,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesClosedPropIssueAllof0PropReactions as WebhookIssuesClosedPropIssueAllof0PropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesClosedPropIssueAllof0PropStatus as WebhookIssuesClosedPropIssueAllof0PropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropUser as WebhookIssuesClosedPropIssueAllof0PropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -7903,6 +7990,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesDeletedPropIssuePropReactions as WebhookIssuesDeletedPropIssuePropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesDeletedPropIssuePropStatus as WebhookIssuesDeletedPropIssuePropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropUser as WebhookIssuesDeletedPropIssuePropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -7940,6 +8030,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropReactions as WebhookIssuesDemilestonedPropIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesDemilestonedPropIssuePropStatus as WebhookIssuesDemilestonedPropIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropUser as WebhookIssuesDemilestonedPropIssuePropUser,
@@ -7985,6 +8078,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropReactions as WebhookIssuesEditedPropIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesEditedPropIssuePropStatus as WebhookIssuesEditedPropIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropUser as WebhookIssuesEditedPropIssuePropUser,
@@ -8074,6 +8170,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesLabeledPropIssuePropReactions as WebhookIssuesLabeledPropIssuePropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesLabeledPropIssuePropStatus as WebhookIssuesLabeledPropIssuePropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropUser as WebhookIssuesLabeledPropIssuePropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -8113,6 +8212,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesLockedPropIssuePropReactions as WebhookIssuesLockedPropIssuePropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesLockedPropIssuePropStatus as WebhookIssuesLockedPropIssuePropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropUser as WebhookIssuesLockedPropIssuePropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -8150,6 +8252,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropReactions as WebhookIssuesMilestonedPropIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesMilestonedPropIssuePropStatus as WebhookIssuesMilestonedPropIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropUser as WebhookIssuesMilestonedPropIssuePropUser,
@@ -8192,6 +8297,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropReactions as WebhookIssuesOpenedPropChangesPropOldIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesOpenedPropChangesPropOldIssuePropStatus as WebhookIssuesOpenedPropChangesPropOldIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropUser as WebhookIssuesOpenedPropChangesPropOldIssuePropUser,
@@ -8245,6 +8353,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesOpenedPropIssuePropReactions as WebhookIssuesOpenedPropIssuePropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesOpenedPropIssuePropStatus as WebhookIssuesOpenedPropIssuePropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropUser as WebhookIssuesOpenedPropIssuePropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -8290,7 +8401,31 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhookIssuesReopenedPropIssuePropReactions as WebhookIssuesReopenedPropIssuePropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesReopenedPropIssuePropStatus as WebhookIssuesReopenedPropIssuePropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropUser as WebhookIssuesReopenedPropIssuePropUser,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChanged as WebhookIssuesStatusChanged,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChangedPropChanges as WebhookIssuesStatusChangedPropChanges,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChangedPropChangesPropState as WebhookIssuesStatusChangedPropChangesPropState,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChangedPropChangesPropStateReason as WebhookIssuesStatusChangedPropChangesPropStateReason,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChangedPropChangesPropStatus as WebhookIssuesStatusChangedPropChangesPropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChangedPropChangesPropStatusPropFrom as WebhookIssuesStatusChangedPropChangesPropStatusPropFrom,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesStatusChangedPropStatus as WebhookIssuesStatusChangedPropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferred as WebhookIssuesTransferred,
@@ -8330,6 +8465,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropReactions as WebhookIssuesTransferredPropChangesPropNewIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesTransferredPropChangesPropNewIssuePropStatus as WebhookIssuesTransferredPropChangesPropNewIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropUser as WebhookIssuesTransferredPropChangesPropNewIssuePropUser,
@@ -8393,6 +8531,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropReactions as WebhookIssuesUnlockedPropIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhookIssuesUnlockedPropIssuePropStatus as WebhookIssuesUnlockedPropIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropUser as WebhookIssuesUnlockedPropIssuePropUser,
@@ -12283,6 +12424,9 @@ if TYPE_CHECKING or is_lazy_disabled():
         WebhooksIssue2PropReactions as WebhooksIssue2PropReactions,
     )
     from githubkit_schemas.v2026_03_10.models import (
+        WebhooksIssue2PropStatus as WebhooksIssue2PropStatus,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropUser as WebhooksIssue2PropUser,
     )
     from githubkit_schemas.v2026_03_10.models import (
@@ -12320,6 +12464,9 @@ if TYPE_CHECKING or is_lazy_disabled():
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropReactions as WebhooksIssuePropReactions,
+    )
+    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksIssuePropStatus as WebhooksIssuePropStatus,
     )
     from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropUser as WebhooksIssuePropUser,
@@ -13164,6 +13311,7 @@ else:
             "CodeSecurityConfigurationRepositories",
             "CopilotUsageMetrics1DayReport",
             "CopilotUsageMetrics28DayReport",
+            "EnterpriseCopilotCodeReviewPolicy",
             "DependabotAlertPackage",
             "DependabotAlertSecurityVulnerability",
             "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
@@ -13196,6 +13344,7 @@ else:
             "IssueFieldValuePropSingleSelectOption",
             "IssueFieldValuePropMultiSelectOptionsItems",
             "Issue",
+            "IssuePropStatus",
             "IssuePropLabelsItemsOneof1",
             "IssuePropLabelsItemsOneof1PropArchivedBy",
             "IssuePropPullRequest",
@@ -13409,6 +13558,7 @@ else:
             "CopilotSeatDetails",
             "EnterpriseTeam",
             "OrgsOrgCopilotBillingSeatsGetResponse200",
+            "OrganizationCopilotCodeReviewRunner",
             "CopilotOrganizationContentExclusionDetails",
             "DependabotPublicKey",
             "Package",
@@ -13428,8 +13578,7 @@ else:
             "OrganizationCreateIssueFieldPropOptionsItems",
             "OrganizationUpdateIssueField",
             "OrganizationUpdateIssueFieldPropOptionsItems",
-            "OrganizationCreateIssueType",
-            "OrganizationUpdateIssueType",
+            "IssueTypeRequest",
             "OrgMembership",
             "OrgMembershipPropPermissions",
             "Migration",
@@ -13741,6 +13890,7 @@ else:
             "CodeQualitySetupUpdateResponse",
             "CodeScanningAiScanEnablement",
             "CodeScanningAiScanEnablementUpdate",
+            "PullRequestsOnAlerts",
             "CodeScanningAlertLinkedIssue",
             "CodeScanningAlertItems",
             "CodeScanningAlert",
@@ -13811,9 +13961,13 @@ else:
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
             "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
             "Contributor",
+            "RepositoryCopilotCodeReviewSettings",
+            "RepositoryCopilotCodeReviewSettingsPropReviewEffort",
             "DependabotAlert",
             "DependabotAlertPropReachability",
             "DependabotAlertPropDependency",
+            "DependabotRunnerSettings",
+            "DependabotRunnerSettingsUpdate",
             "DependencyGraphDiffItems",
             "DependencyGraphDiffItemsPropVulnerabilitiesItems",
             "DependencyGraphSpdxSbom",
@@ -13956,12 +14110,16 @@ else:
             "PagesHealthCheck",
             "PagesHealthCheckPropDomain",
             "PagesHealthCheckPropAltDomain",
+            "PlanningStatus",
             "PullRequest",
             "PullRequestPropLabelsItems",
             "PullRequestPropLabelsItemsPropArchivedBy",
             "PullRequestPropHead",
             "PullRequestPropBase",
             "PullRequestPropLinks",
+            "CopilotCodeReviewRequest",
+            "CopilotCodeReviewRequestDenied",
+            "CopilotCodeReviewRequestDeniedAllof1",
             "PullRequestMergeResult",
             "PullRequestMergeAsyncResult",
             "PullRequestMergeAsyncResultPropDetailsAnyof0",
@@ -14058,6 +14216,7 @@ else:
             "CommitSearchResultItemPropCommitPropAuthor",
             "CommitSearchResultItemPropCommitPropTree",
             "IssueSearchResultItem",
+            "IssueSearchResultItemPropStatus",
             "IssueSearchResultItemPropPullRequest",
             "IssueSearchResultItemPropLabelsItems",
             "IssueSearchResultItemPropLabelsItemsPropArchivedBy",
@@ -14090,6 +14249,12 @@ else:
             "GpgKeyPropEmailsItems",
             "GpgKeyPropSubkeysItems",
             "GpgKeyPropSubkeysItemsPropEmailsItems",
+            "UserIssueField",
+            "UserIssueFieldPropOptionsItems",
+            "UserCreateIssueField",
+            "UserCreateIssueFieldPropOptionsItems",
+            "UserUpdateIssueField",
+            "UserUpdateIssueFieldPropOptionsItems",
             "Key",
             "UserMarketplacePurchase",
             "MarketplaceAccount",
@@ -14158,6 +14323,7 @@ else:
             "WebhooksIssuePropPerformedViaGithubAppPropPermissions",
             "WebhooksIssuePropPullRequest",
             "WebhooksIssuePropReactions",
+            "WebhooksIssuePropStatus",
             "WebhooksIssuePropUser",
             "WebhooksMilestone",
             "WebhooksMilestonePropCreator",
@@ -14171,6 +14337,7 @@ else:
             "WebhooksIssue2PropPerformedViaGithubAppPropPermissions",
             "WebhooksIssue2PropPullRequest",
             "WebhooksIssue2PropReactions",
+            "WebhooksIssue2PropStatus",
             "WebhooksIssue2PropUser",
             "WebhooksUserMannequin",
             "WebhooksLabelArchived",
@@ -14751,6 +14918,7 @@ else:
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp",
             "WebhookIssuesClosedPropIssueAllof0PropPullRequest",
+            "WebhookIssuesClosedPropIssueAllof0PropStatus",
             "WebhookIssuesClosedPropIssueAllof1PropLabelsItems",
             "WebhookIssuesClosedPropIssueAllof1",
             "WebhookIssuesClosedPropIssueAllof1PropAssignee",
@@ -14773,6 +14941,7 @@ else:
             "WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesDeletedPropIssuePropPullRequest",
             "WebhookIssuesDeletedPropIssuePropReactions",
+            "WebhookIssuesDeletedPropIssuePropStatus",
             "WebhookIssuesDeletedPropIssuePropUser",
             "WebhookIssuesDemilestoned",
             "WebhookIssuesDemilestonedPropIssue",
@@ -14786,6 +14955,7 @@ else:
             "WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesDemilestonedPropIssuePropPullRequest",
             "WebhookIssuesDemilestonedPropIssuePropReactions",
+            "WebhookIssuesDemilestonedPropIssuePropStatus",
             "WebhookIssuesDemilestonedPropIssuePropUser",
             "WebhookIssuesEdited",
             "WebhookIssuesEditedPropChanges",
@@ -14801,6 +14971,7 @@ else:
             "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesEditedPropIssuePropPullRequest",
             "WebhookIssuesEditedPropIssuePropReactions",
+            "WebhookIssuesEditedPropIssuePropStatus",
             "WebhookIssuesEditedPropIssuePropUser",
             "WebhookIssuesFieldAdded",
             "WebhookIssuesFieldAddedPropIssueField",
@@ -14828,6 +14999,7 @@ else:
             "WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesLabeledPropIssuePropPullRequest",
             "WebhookIssuesLabeledPropIssuePropReactions",
+            "WebhookIssuesLabeledPropIssuePropStatus",
             "WebhookIssuesLabeledPropIssuePropUser",
             "WebhookIssuesLabeledPropIssuePropLabelsItems",
             "WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedBy",
@@ -14843,6 +15015,7 @@ else:
             "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesLockedPropIssuePropPullRequest",
             "WebhookIssuesLockedPropIssuePropReactions",
+            "WebhookIssuesLockedPropIssuePropStatus",
             "WebhookIssuesLockedPropIssuePropUser",
             "WebhookIssuesMilestoned",
             "WebhookIssuesMilestonedPropIssue",
@@ -14856,6 +15029,7 @@ else:
             "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesMilestonedPropIssuePropPullRequest",
             "WebhookIssuesMilestonedPropIssuePropReactions",
+            "WebhookIssuesMilestonedPropIssuePropStatus",
             "WebhookIssuesMilestonedPropIssuePropUser",
             "WebhookIssuesOpened",
             "WebhookIssuesOpenedPropChanges",
@@ -14875,6 +15049,7 @@ else:
             "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropReactions",
+            "WebhookIssuesOpenedPropChangesPropOldIssuePropStatus",
             "WebhookIssuesOpenedPropChangesPropOldIssuePropUser",
             "WebhookIssuesOpenedPropIssue",
             "WebhookIssuesOpenedPropIssuePropAssignee",
@@ -14887,6 +15062,7 @@ else:
             "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesOpenedPropIssuePropPullRequest",
             "WebhookIssuesOpenedPropIssuePropReactions",
+            "WebhookIssuesOpenedPropIssuePropStatus",
             "WebhookIssuesOpenedPropIssuePropUser",
             "WebhookIssuesPinned",
             "WebhookIssuesReopened",
@@ -14902,7 +15078,15 @@ else:
             "WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesReopenedPropIssuePropPullRequest",
             "WebhookIssuesReopenedPropIssuePropReactions",
+            "WebhookIssuesReopenedPropIssuePropStatus",
             "WebhookIssuesReopenedPropIssuePropUser",
+            "WebhookIssuesStatusChanged",
+            "WebhookIssuesStatusChangedPropStatus",
+            "WebhookIssuesStatusChangedPropChanges",
+            "WebhookIssuesStatusChangedPropChangesPropState",
+            "WebhookIssuesStatusChangedPropChangesPropStateReason",
+            "WebhookIssuesStatusChangedPropChangesPropStatus",
+            "WebhookIssuesStatusChangedPropChangesPropStatusPropFrom",
             "WebhookIssuesTransferred",
             "WebhookIssuesTransferredPropChanges",
             "WebhookIssuesTransferredPropChangesPropNewRepository",
@@ -14921,6 +15105,7 @@ else:
             "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropReactions",
+            "WebhookIssuesTransferredPropChangesPropNewIssuePropStatus",
             "WebhookIssuesTransferredPropChangesPropNewIssuePropUser",
             "WebhookIssuesTyped",
             "WebhookIssuesUnassigned",
@@ -14937,6 +15122,7 @@ else:
             "WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions",
             "WebhookIssuesUnlockedPropIssuePropPullRequest",
             "WebhookIssuesUnlockedPropIssuePropReactions",
+            "WebhookIssuesUnlockedPropIssuePropStatus",
             "WebhookIssuesUnlockedPropIssuePropUser",
             "WebhookIssuesUnpinned",
             "WebhookIssuesUntyped",
@@ -16975,6 +17161,7 @@ else:
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
             "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
+            "EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody",
             "EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems",
@@ -17145,12 +17332,20 @@ else:
             "OrgsOrgCopilotBillingSelectedUsersPostResponse201",
             "OrgsOrgCopilotBillingSelectedUsersDeleteBody",
             "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",
+            "OrgsOrgCopilotCodeReviewRunnerPutBody",
+            "OrgsOrgCopilotCodeReviewSettingsPatchBody",
+            "OrgsOrgCopilotCodeReviewSettingsPatchResponse409",
+            "OrganizationCopilotCodeReviewSettings",
+            "OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort",
             "OrgsOrgCopilotCodingAgentPermissionsGetResponse200",
             "OrgsOrgCopilotCodingAgentPermissionsPutBody",
             "OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200",
             "OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody",
             "OrgsOrgCopilotContentExclusionPutBody",
             "OrgsOrgCopilotContentExclusionPutResponse200",
+            "OrgsOrgCopilotPoliciesCodeReviewPutBody",
+            "OrgsOrgCopilotPoliciesCodeReviewPutResponse409",
+            "OrganizationCopilotCodeReviewPolicy",
             "OrgsOrgDependabotRepositoryAccessPatchBody",
             "OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody",
             "OrgsOrgDependabotSecretsGetResponse200",
@@ -17199,6 +17394,7 @@ else:
             "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
             "RepositoryExternalPropertyPayload",
             "OrgsOrgPropertiesSchemaPatchBody",
+            "CustomPropertyBatchItemPayload",
             "OrgsOrgPropertiesValuesPatchBody",
             "OrgsOrgReposPostBody",
             "OrgsOrgReposPostBodyPropCustomProperties",
@@ -17364,6 +17560,7 @@ else:
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200",
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration",
             "ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools",
+            "ReposOwnerRepoCopilotCodeReviewSettingsPatchBody",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0",
             "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1",
@@ -17490,6 +17687,7 @@ else:
             "ReposOwnerRepoPullsPullNumberCodespacesPostBody",
             "ReposOwnerRepoPullsPullNumberCommentsPostBody",
             "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",
+            "ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody",
             "ReposOwnerRepoPullsPullNumberMergePutBody",
             "ReposOwnerRepoPullsPullNumberMergePutResponse405",
             "ReposOwnerRepoPullsPullNumberMergePutResponse409",

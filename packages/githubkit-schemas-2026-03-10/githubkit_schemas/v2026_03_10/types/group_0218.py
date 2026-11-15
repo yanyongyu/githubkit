@@ -9,51 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CustomPropertyType(TypedDict):
-    """Organization Custom Property
+class ExternalPropertyType(TypedDict):
+    """External Property
 
-    Custom property defined on an organization
+    External custom property defined for a GitHub App installation
     """
 
     property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    require_explicit_values: NotRequired[bool]
 
 
-class CustomPropertyTypeForResponse(TypedDict):
-    """Organization Custom Property
+class ExternalPropertyTypeForResponse(TypedDict):
+    """External Property
 
-    Custom property defined on an organization
+    External custom property defined for a GitHub App installation
     """
 
     property_name: str
-    url: NotRequired[str]
-    source_type: NotRequired[Literal["organization", "enterprise"]]
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "CustomPropertyType",
-    "CustomPropertyTypeForResponse",
+    "ExternalPropertyType",
+    "ExternalPropertyTypeForResponse",
 )

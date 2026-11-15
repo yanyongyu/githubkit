@@ -9,20 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0387 import ActionsSecret
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: list[ActionsSecret] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBody(GitHubModel):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+    review_effort: Missing[str] = Field(
+        default=UNSET,
+        description="The review effort for the repository. Use `inherit` to clear the repository's value. Only efforts listed in the settings' `available_review_efforts` are accepted, and a rejected effort's error message lists them. For more information, see [Review effort level](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
+    )
+    severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = Field(
+        default=UNSET,
+        description="Which review comment severities Copilot code review leaves out. Can only be set when the severity filter is available for the repository.",
+    )
+    custom_instructions_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether reviews use the repository's custom instructions.",
+    )
+    mcp_enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether reviews can use MCP servers."
+    )
+
+
+model_rebuild(ReposOwnerRepoCopilotCodeReviewSettingsPatchBody)
+
+__all__ = ("ReposOwnerRepoCopilotCodeReviewSettingsPatchBody",)

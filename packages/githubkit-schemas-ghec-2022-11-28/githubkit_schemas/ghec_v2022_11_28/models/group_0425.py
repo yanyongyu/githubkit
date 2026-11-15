@@ -18,47 +18,74 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0010 import Integration
+from .group_0254 import PullRequestMinimal
+from .group_0286 import MinimalRepository
+from .group_0394 import SimpleCommit
 
-class CodeQualitySetup(GitHubModel):
-    """CodeQualitySetup
 
-    Configuration for code quality setup.
+class CheckSuite(GitHubModel):
+    """CheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="Code quality setup has been configured or not."
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
     )
-    languages: Missing[
-        list[
-            Literal[
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "rust",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    runner_type: Missing[Union[Literal["standard", "labeled"], None]] = Field(
-        default=UNSET, description="Runner type to be used."
+    status: Union[
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
+        None,
+    ] = Field(
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
-    runner_label: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Runner label to be used if the runner type is labeled.",
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+        None,
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
+    app: Union[Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[Literal["weekly"], None]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
-    ai_findings_option: Missing[Union[Literal["disabled", "on_push"], None]] = Field(
-        default=UNSET, description="The AI findings configuration for the repository."
-    )
+    created_at: Union[_dt.datetime, None] = Field()
+    updated_at: Union[_dt.datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CodeQualitySetup)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-__all__ = ("CodeQualitySetup",)
+    total_count: int = Field()
+    check_suites: list[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+
+__all__ = (
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+)

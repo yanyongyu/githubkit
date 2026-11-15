@@ -9,54 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    organization: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization,
-        None,
-    ] = Field()
-    repository: Union[
-        EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository, None
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems
     ] = Field()
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
 
-    id: int = Field(description="Unique identifier of the organization")
-    login: str = Field(description="Login of the organization")
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the agent apps policy's configured value, or `optional` if no agent apps policy has been configured for this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the agent apps policy can be edited."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available apps policy controls allow the agent apps policy to be updated."
+    )
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository"""
-
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="Name of the repository")
-    full_name: str = Field(description="Full name of the repository including owner")
-
-
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization
-)
-model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository
+    EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropOrganization",
-    "EnterprisesEnterpriseCopilotCustomAgentsSourceGetResponse200PropRepository",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems",
 )

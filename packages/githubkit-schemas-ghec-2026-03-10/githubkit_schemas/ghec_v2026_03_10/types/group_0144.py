@@ -13,47 +13,47 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryRulesetBypassActorType(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CustomPropertyBatchItemPayloadType(TypedDict):
+    """Custom Property Batch Item Payload
 
-    An actor that can bypass rules in a ruleset
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
+    property_name: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    regex: NotRequired[Union[str, None]]
+    require_explicit_values: NotRequired[bool]
 
 
-class RepositoryRulesetBypassActorTypeForResponse(TypedDict):
-    """Repository Ruleset Bypass Actor
+class CustomPropertyBatchItemPayloadTypeForResponse(TypedDict):
+    """Custom Property Batch Item Payload
 
-    An actor that can bypass rules in a ruleset
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
     """
 
-    actor_id: NotRequired[Union[int, None]]
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
+    property_name: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
-    bypass_mode: NotRequired[Literal["always", "pull_request", "exempt"]]
+    regex: NotRequired[Union[str, None]]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "RepositoryRulesetBypassActorType",
-    "RepositoryRulesetBypassActorTypeForResponse",
+    "CustomPropertyBatchItemPayloadType",
+    "CustomPropertyBatchItemPayloadTypeForResponse",
 )

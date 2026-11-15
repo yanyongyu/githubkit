@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0387 import ActionsSecretType, ActionsSecretTypeForResponse
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int
-    secrets: list[ActionsSecretType]
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType(TypedDict):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    total_count: int
-    secrets: list[ActionsSecretTypeForResponse]
+    review_effort: NotRequired[str]
+    severity_filter: NotRequired[Literal["no_filter", "low", "low_and_medium"]]
+    custom_instructions_enabled: NotRequired[bool]
+    mcp_enabled: NotRequired[bool]
+
+
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
+
+    review_effort: NotRequired[str]
+    severity_filter: NotRequired[Literal["no_filter", "low", "low_and_medium"]]
+    custom_instructions_enabled: NotRequired[bool]
+    mcp_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200TypeForResponse",
+    "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType",
+    "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyTypeForResponse",
 )

@@ -9,128 +9,196 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0596 import SecretScanningAlertMetadataItems
 
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
+class PersonalAccessTokenRequest(GitHubModel):
+    """Personal Access Token Request
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    Details of a Personal Access Token Request.
+    """
+
+    id: int = Field(
+        description="Unique identifier of the request for access via fine-grained personal access token. Used as the `pat_request_id` parameter in the list and review API calls."
     )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    permissions_added: PersonalAccessTokenRequestPropPermissionsAdded = Field(
+        description="New requested permissions, categorized by type of permission."
     )
-    updated_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
+    permissions_upgraded: PersonalAccessTokenRequestPropPermissionsUpgraded = Field(
+        description="Requested permissions that elevate access for a previously approved request for access, categorized by type of permission."
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
+    permissions_result: PersonalAccessTokenRequestPropPermissionsResult = Field(
+        description="Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`."
     )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    resolution: Missing[
-        Union[
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    repository_count: Union[int, None] = Field(
+        description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
     )
-    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
+        Field(
+            description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
+        )
     )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
+    created_at: str = Field(
+        description="Date and time when the request for access was created."
     )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    token_id: int = Field(
+        description="Unique identifier of the user's token. This field can also be found in audit log events and the organization's settings for their PAT grants."
     )
-    provider: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The provider of the secret that was detected."
+    token_name: str = Field(
+        description="The name given to the user's token. This field can also be found in an organization's settings page for Active Tokens."
     )
-    provider_slug: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The slug identifier for the provider of the secret that was detected.",
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
     )
-    secret_category: Missing[Literal["default", "generic"]] = Field(
-        default=UNSET,
-        description="The category of the detected secret. `default` covers specific provider patterns and custom patterns; `generic` covers non-specific patterns and AI-detected secrets.",
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
     )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
     )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    push_protection_bypass_request_reviewer: Missing[Union[SimpleUser, None]] = Field(
+
+
+class PersonalAccessTokenRequestPropRepositoriesItems(GitHubModel):
+    """PersonalAccessTokenRequestPropRepositoriesItems"""
+
+    full_name: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    private: bool = Field(description="Whether the repository is private or public.")
+
+
+class PersonalAccessTokenRequestPropPermissionsAdded(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAdded
+
+    New requested permissions, categorized by type of permission.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsAddedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsAddedPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsAddedPropOther] = Field(
         default=UNSET
     )
-    push_protection_bypass_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when reviewing a push protection bypass.",
-    )
-    push_protection_bypass_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when requesting a push protection bypass.",
-    )
-    push_protection_bypass_request_html_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The URL to a push protection bypass request."
-    )
-    publicly_leaked: Missing[Union[bool, None]] = Field(
-        default=UNSET, description="Whether the detected secret was publicly leaked."
-    )
-    multi_repo: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether the detected secret was found in multiple repositories in the same organization or business.",
-    )
-    assigned_to: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    closure_request_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment from the closure request author.",
-    )
-    closure_request_reviewer_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment from the closure request reviewer.",
-    )
-    closure_request_reviewer: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    metadata: Missing[list[SecretScanningAlertMetadataItems]] = Field(
-        default=UNSET,
-        description="A list of metadata key/value pairs associated with the secret scanning alert.",
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOrganization(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsAddedPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsAddedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgraded(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgraded
+
+    Requested permissions that elevate access for a previously approved request for
+    access, categorized by type of permission.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsUpgradedPropOther] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(SecretScanningAlertWebhook)
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization(
+    ExtraGitHubModel
+):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization"""
 
-__all__ = ("SecretScanningAlertWebhook",)
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsUpgradedPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsUpgradedPropOther"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResult(GitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResult
+
+    Permissions requested, categorized by type of permission. This field
+    incorporates `permissions_added` and `permissions_upgraded`.
+    """
+
+    organization: Missing[
+        PersonalAccessTokenRequestPropPermissionsResultPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        PersonalAccessTokenRequestPropPermissionsResultPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[PersonalAccessTokenRequestPropPermissionsResultPropOther] = Field(
+        default=UNSET
+    )
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOrganization(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOrganization"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropRepository(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropRepository"""
+
+
+class PersonalAccessTokenRequestPropPermissionsResultPropOther(ExtraGitHubModel):
+    """PersonalAccessTokenRequestPropPermissionsResultPropOther"""
+
+
+model_rebuild(PersonalAccessTokenRequest)
+model_rebuild(PersonalAccessTokenRequestPropRepositoriesItems)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAdded)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsAddedPropOther)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgraded)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsUpgradedPropOther)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResult)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOrganization)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropRepository)
+model_rebuild(PersonalAccessTokenRequestPropPermissionsResultPropOther)
+
+__all__ = (
+    "PersonalAccessTokenRequest",
+    "PersonalAccessTokenRequestPropPermissionsAdded",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsAddedPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsResult",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsResultPropOther",
+    "PersonalAccessTokenRequestPropPermissionsResultPropRepository",
+    "PersonalAccessTokenRequestPropPermissionsUpgraded",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropOther",
+    "PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository",
+    "PersonalAccessTokenRequestPropRepositoriesItems",
+)

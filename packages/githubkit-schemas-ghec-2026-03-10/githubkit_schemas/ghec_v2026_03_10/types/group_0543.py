@@ -9,53 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0506 import IssueEventIntentType, IssueEventIntentTypeForResponse
+from .group_0544 import (
+    TimelineCrossReferencedEventPropSourceType,
+    TimelineCrossReferencedEventPropSourceTypeForResponse,
+)
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class TimelineCrossReferencedEventType(TypedDict):
+    """Timeline Cross Referenced Event
 
-    State Change Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    state_reason: NotRequired[Union[str, None]]
-    intent: NotRequired[Union[IssueEventIntentType, None]]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    source: TimelineCrossReferencedEventPropSourceType
 
 
-class StateChangeIssueEventTypeForResponse(TypedDict):
-    """State Change Issue Event
+class TimelineCrossReferencedEventTypeForResponse(TypedDict):
+    """Timeline Cross Referenced Event
 
-    State Change Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserTypeForResponse
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
+    event: Literal["cross-referenced"]
+    actor: NotRequired[SimpleUserTypeForResponse]
     created_at: str
-    performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    state_reason: NotRequired[Union[str, None]]
-    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
+    updated_at: str
+    source: TimelineCrossReferencedEventPropSourceTypeForResponse
 
 
 __all__ = (
-    "StateChangeIssueEventType",
-    "StateChangeIssueEventTypeForResponse",
+    "TimelineCrossReferencedEventType",
+    "TimelineCrossReferencedEventTypeForResponse",
 )

@@ -9,31 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0131 import (
-    EnterpriseLicensePolicyItemPropLicensesType,
-    EnterpriseLicensePolicyItemPropLicensesTypeForResponse,
-    EnterpriseLicensePolicyItemPropPackagesItemsType,
-    EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse,
-)
+
+class ExternalVulnerabilitySyncStatusType(TypedDict):
+    """External Vulnerability Sync Status
+
+    Status of an in-progress external vulnerability sync operation
+    """
+
+    id: str
+    status: Literal["processing"]
 
 
-class EnterpriseLicensePolicyItemType(TypedDict):
-    """Enterprise license policy content"""
+class ExternalVulnerabilitySyncStatusTypeForResponse(TypedDict):
+    """External Vulnerability Sync Status
 
-    licenses: EnterpriseLicensePolicyItemPropLicensesType
-    packages: list[EnterpriseLicensePolicyItemPropPackagesItemsType]
+    Status of an in-progress external vulnerability sync operation
+    """
 
-
-class EnterpriseLicensePolicyItemTypeForResponse(TypedDict):
-    """Enterprise license policy content"""
-
-    licenses: EnterpriseLicensePolicyItemPropLicensesTypeForResponse
-    packages: list[EnterpriseLicensePolicyItemPropPackagesItemsTypeForResponse]
+    id: str
+    status: Literal["processing"]
 
 
 __all__ = (
-    "EnterpriseLicensePolicyItemType",
-    "EnterpriseLicensePolicyItemTypeForResponse",
+    "ExternalVulnerabilitySyncStatusType",
+    "ExternalVulnerabilitySyncStatusTypeForResponse",
 )

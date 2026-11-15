@@ -15,24 +15,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0123 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    include: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
-    )
-    exclude: Missing[list[str]] = Field(
-        default=UNSET,
-        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
-    )
-    protected: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether renaming of target repositories is prevented.",
+class ActionsPolicyRepoConditionsOneof1(GitHubModel):
+    """ActionsPolicyRepoConditionsOneof1"""
+
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
+model_rebuild(ActionsPolicyRepoConditionsOneof1)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)
+__all__ = ("ActionsPolicyRepoConditionsOneof1",)

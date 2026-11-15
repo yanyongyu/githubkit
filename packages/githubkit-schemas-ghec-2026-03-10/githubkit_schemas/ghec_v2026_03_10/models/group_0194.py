@@ -17,21 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0195 import RepositoryRuleCodeQualityPropParameters
+from .group_0195 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleCodeQuality(GitHubModel):
-    """code_quality
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["code_quality"] = Field()
-    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCodeQuality)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleCodeQuality",)
+__all__ = ("RepositoryRuleMergeQueue",)

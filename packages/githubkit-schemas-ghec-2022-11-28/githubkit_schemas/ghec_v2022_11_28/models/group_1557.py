@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotCodeReviewRunnerPutBody(GitHubModel):
+    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke for the user.")
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="The type of runner. `standard` uses GitHub-hosted runners. `labeled` uses runners that match the labels or runner group."
+    )
+    runner_labels: Missing[Union[list[str], None]] = Field(
+        default=UNSET, description="The runner labels for a labeled runner."
+    )
+    runner_group_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The runner group for a labeled runner."
+    )
+    allow_repository_customization: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether repositories can use their own runner configuration.",
+    )
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody)
+model_rebuild(OrgsOrgCopilotCodeReviewRunnerPutBody)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",)
+__all__ = ("OrgsOrgCopilotCodeReviewRunnerPutBody",)

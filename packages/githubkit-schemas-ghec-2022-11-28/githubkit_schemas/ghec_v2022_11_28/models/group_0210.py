@@ -9,60 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPattern(GitHubModel):
-    """Secret Scanning Custom Pattern
+class SecretScanningLocationActionsLog(GitHubModel):
+    """SecretScanningLocationActionsLog
 
-    A custom pattern for secret scanning.
+    Represents an 'actions_log' secret scanning location type. The path identifies
+    the workflow definition, while line and column positions identify the secret in
+    the raw job log, not in the workflow file.
     """
 
-    id: int = Field(description="The ID of the custom pattern.")
-    name: str = Field(description="The name of the custom pattern.")
-    pattern: str = Field(description="The regular expression of the custom pattern.")
-    slug: str = Field(
-        description="A URL-friendly identifier for the custom pattern, derived from its name."
+    path: str = Field(
+        description="The workflow definition path. Dynamically generated workflows can have a synthetic path."
     )
-    state: Literal["published", "unpublished"] = Field(
-        description="The state of the custom pattern."
+    start_line: float = Field(
+        description="Line number at which the secret starts in the raw job log."
     )
-    push_protection_enabled: bool = Field(
-        description="Whether push protection is enabled for this custom pattern."
+    end_line: float = Field(
+        description="Line number at which the secret ends in the raw job log."
     )
-    start_delimiter: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The start delimiter regex for the custom pattern."
+    start_column: float = Field(
+        description="The one-based column at which the secret starts within the start line of the raw job log."
     )
-    end_delimiter: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The end delimiter regex for the custom pattern."
-    )
-    must_match: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="List of regexes that the secret must match."
-    )
-    must_not_match: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="List of regexes that the secret must not match."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the custom pattern was created in ISO 8601 format.",
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the custom pattern was last updated in ISO 8601 format.",
+    end_column: float = Field(
+        description="The one-based column at which the secret ends within the end line of the raw job log."
     )
 
 
-model_rebuild(SecretScanningCustomPattern)
+model_rebuild(SecretScanningLocationActionsLog)
 
-__all__ = ("SecretScanningCustomPattern",)
+__all__ = ("SecretScanningLocationActionsLog",)

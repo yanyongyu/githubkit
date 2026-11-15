@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type(TypedDict):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class UserKeysPostBodyType(TypedDict):
+    """UserKeysPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    title: NotRequired[str]
+    key: str
 
 
-class UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse(
-    TypedDict
-):
-    """UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0"""
+class UserKeysPostBodyTypeForResponse(TypedDict):
+    """UserKeysPostBody"""
 
-    name: str
-    data_type: Literal["text", "number", "date"]
+    title: NotRequired[str]
+    key: str
 
 
 __all__ = (
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0Type",
-    "UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0TypeForResponse",
+    "UserKeysPostBodyType",
+    "UserKeysPostBodyTypeForResponse",
 )

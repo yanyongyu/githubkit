@@ -18,12 +18,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CustomPropertySetPayload(GitHubModel):
-    """Custom Property Set Payload
+class CustomProperty(GitHubModel):
+    """Organization Custom Property
 
-    Custom property set payload
+    Custom property defined on an organization
     """
 
+    property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    )
+    source_type: Missing[Literal["organization", "enterprise"]] = Field(
+        default=UNSET, description="The source type of the property"
+    )
     value_type: Literal[
         "string", "single_select", "multi_select", "true_false", "url"
     ] = Field(description="The type of the value for the property")
@@ -43,11 +51,15 @@ class CustomPropertySetPayload(GitHubModel):
     values_editable_by: Missing[
         Union[Literal["org_actors", "org_and_repo_actors"], None]
     ] = Field(default=UNSET, description="Who can edit the values of the property")
+    regex: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A regular expression (RE2 syntax) that values of the property must match.\nOnly present for properties with a `value_type` of `string` that define a regular expression.",
+    )
     require_explicit_values: Missing[bool] = Field(
         default=UNSET, description="Whether setting properties values is mandatory"
     )
 
 
-model_rebuild(CustomPropertySetPayload)
+model_rebuild(CustomProperty)
 
-__all__ = ("CustomPropertySetPayload",)
+__all__ = ("CustomProperty",)

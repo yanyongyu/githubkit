@@ -9,83 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0219 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200Type(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsType
-    ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesType
-    ]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200TypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
+class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsTypeForResponse
-    ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesTypeForResponse
-    ]
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
-s
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
-s
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
+    repository_names: list[str]
+    properties: list[CustomPropertyValueTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplacesTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignmentsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200Type",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200TypeForResponse",
+    "OrgsOrgPropertiesValuesPatchBodyType",
+    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
 )

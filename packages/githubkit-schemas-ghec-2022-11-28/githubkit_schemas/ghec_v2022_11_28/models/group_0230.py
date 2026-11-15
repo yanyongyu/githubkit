@@ -18,42 +18,41 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class GetCostCenter(GitHubModel):
-    """GetCostCenter"""
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
+
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
+    )
+
+
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
-    azure_subscription: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
-    )
     state: Missing[Literal["active", "deleted"]] = Field(
         default=UNSET, description="State of the cost center."
     )
-    resources: list[GetCostCenterPropResourcesItems] = Field()
-    has_next_page: Missing[bool] = Field(
+    azure_subscription: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
+        description="Azure subscription ID associated with the cost center. Only present for cost centers linked to Azure subscriptions.",
     )
     ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
         description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
-    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
+    ai_credit_pool_state: Missing[
+        GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
+    ] = Field(
         default=UNSET,
         description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
 
 
-class GetCostCenterPropResourcesItems(GitHubModel):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str = Field(description="Type of the resource.")
-    name: str = Field(description="Name of the resource.")
-
-
-class GetCostCenterPropAiCreditPoolState(GitHubModel):
-    """GetCostCenterPropAiCreditPoolState
+class GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState
 
     Read-only cap-budget projection for the cost center. Only present when the cost
     center draws from the AI credit pool.
@@ -69,12 +68,21 @@ class GetCostCenterPropAiCreditPoolState(GitHubModel):
     )
 
 
-model_rebuild(GetCostCenter)
-model_rebuild(GetCostCenterPropResourcesItems)
-model_rebuild(GetCostCenterPropAiCreditPoolState)
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
 
 __all__ = (
-    "GetCostCenter",
-    "GetCostCenterPropAiCreditPoolState",
-    "GetCostCenterPropResourcesItems",
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropAiCreditPoolState",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
 )

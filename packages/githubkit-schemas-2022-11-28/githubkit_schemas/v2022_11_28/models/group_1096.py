@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropEditorAllof0
 
-    Response from accepting an automation run request.
+    A GitHub user
     """
 
-    task_id: str = Field(
-        description="The preallocated ID of the accepted run. The task may not yet be readable, and downstream skips or failures can prevent its creation."
-    )
-    automation_id: str = Field(
-        description="The ID of the automation that was triggered."
-    )
-    event: Literal["manual"] = Field(
-        description='The trigger event name, always "manual" for public API runs.'
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0
+)
 
-__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202",)
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0",
+)

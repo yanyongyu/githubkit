@@ -9,30 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgCopilotModelPoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    enabled: bool = Field(
-        description="Whether the pull request creation cap is enabled"
-    )
-    max_open_pull_requests: int = Field(
-        le=1000.0,
-        ge=1.0,
-        description="The maximum number of open pull requests a user can have at one time",
-    )
-    include_drafts: Missing[bool] = Field(
+    default_availability: Missing[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+    ] = Field(
         default=UNSET,
-        description="Whether draft pull requests count toward the pull request creation cap",
+        description="The organization's default availability for eligible models without an explicit\npolicy. It cannot be updated when it is inherited from the enterprise.",
+    )
+    models: Missing[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The model policies to update. Each `model_name` must be unique.",
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapGetResponse200)
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapGetResponse200",)
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field()
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(
+        min_length=1,
+        description="The public identifier of a model returned by the get endpoint.",
+    )
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The explicit policy state to set for the organization."
+    )
+
+
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems)
+
+__all__ = (
+    "OrgsOrgCopilotModelPoliciesPatchBody",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems",
+)

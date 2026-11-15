@@ -18,26 +18,47 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueType(GitHubModel):
-    """OrganizationUpdateIssueType"""
+class OrganizationCreateIssueField(GitHubModel):
+    """OrganizationCreateIssueField"""
 
-    name: str = Field(description="Name of the issue type.")
-    is_enabled: bool = Field(
-        description="Whether or not the issue type is enabled at the organization level."
-    )
+    name: str = Field(description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue type."
+        default=UNSET, description="Description of the issue field."
     )
-    color: Missing[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="Color for the issue type.")
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
+    )
+    visibility: Missing[Literal["organization_members_only", "all", "restricted"]] = (
+        Field(
+            default=UNSET,
+            description="The visibility of the issue field. Can be `restricted` (visible to organization members and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). `organization_members_only` is deprecated. Use `restricted` instead. Removal will be announced for a future REST API version; existing REST API versions will continue to support this value. Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+        )
+    )
+    options: Missing[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
+    ] = Field(
+        default=UNSET,
+        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+    )
 
 
-model_rebuild(OrganizationUpdateIssueType)
+class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-__all__ = ("OrganizationUpdateIssueType",)
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
+
+
+model_rebuild(OrganizationCreateIssueField)
+model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
+
+__all__ = (
+    "OrganizationCreateIssueField",
+    "OrganizationCreateIssueFieldPropOptionsItems",
+)

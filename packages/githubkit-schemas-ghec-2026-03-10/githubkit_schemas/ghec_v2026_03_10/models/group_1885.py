@@ -16,15 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
     )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
+    )
+    team_ids: Missing[list[int]] = Field(
+        default=UNSET,
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+    )
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

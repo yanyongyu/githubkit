@@ -9,19 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoStacksPostResponse422(GitHubModel):
+    """Validation Error
 
-    selected_repository_ids: list[int] = Field(
-        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    Validation Error
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[list[ReposOwnerRepoStacksPostResponse422PropErrorsItems]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
+class ReposOwnerRepoStacksPostResponse422PropErrorsItems(GitHubModel):
+    """ReposOwnerRepoStacksPostResponse422PropErrorsItems"""
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, int, list[Union[str, int]], None]] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoStacksPostResponse422)
+model_rebuild(ReposOwnerRepoStacksPostResponse422PropErrorsItems)
+
+__all__ = (
+    "ReposOwnerRepoStacksPostResponse422",
+    "ReposOwnerRepoStacksPostResponse422PropErrorsItems",
+)

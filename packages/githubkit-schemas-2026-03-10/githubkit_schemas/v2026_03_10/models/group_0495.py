@@ -9,32 +9,120 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0048 import ReactionRollup
+from .group_0496 import ReviewCommentPropLinks
 
-class RepositoryRuleDetailedOneof6(GitHubModel):
-    """RepositoryRuleDetailedOneof6"""
 
-    type: Literal["required_signatures"] = Field()
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+class ReviewComment(GitHubModel):
+    """Legacy Review Comment
+
+    Legacy Review Comment
+    """
+
+    is_copilot_code_review: Missing[bool] = Field(
         default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+        description="Whether this comment was produced by Copilot code review.",
     )
-    ruleset_source: Missing[str] = Field(
+    copilot_code_review_sources: Missing[
+        list[ReviewCommentPropCopilotCodeReviewSourcesItems]
+    ] = Field(
+        max_length=16 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+        description="Sources reported as contributing to this comment; may be incomplete.",
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+    url: str = Field()
+    pull_request_review_id: Union[int, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    diff_hunk: str = Field()
+    path: str = Field()
+    position: Union[int, None] = Field()
+    original_position: int = Field()
+    commit_id: str = Field()
+    original_commit_id: str = Field()
+    in_reply_to_id: Missing[int] = Field(default=UNSET)
+    user: Union[SimpleUser, None] = Field()
+    body: str = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    links: ReviewCommentPropLinks = Field(alias="_links")
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
+        default=UNSET,
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
+        default=UNSET,
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    original_line: Missing[int] = Field(
+        default=UNSET,
+        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    original_start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The original first line of the range for a multi-line comment.",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof6)
+class ReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
+    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
 
-__all__ = ("RepositoryRuleDetailedOneof6",)
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
+        description="The kind of contributing source."
+    )
+    name: str = Field(
+        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS. Copilot Dreaming\'s reviewer agent and checks skill are reported as one SKILL source named "Copilot dreaming".'
+    )
+    path: Missing[str] = Field(
+        default=UNSET,
+        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
+    )
+
+
+model_rebuild(ReviewComment)
+model_rebuild(ReviewCommentPropCopilotCodeReviewSourcesItems)
+
+__all__ = (
+    "ReviewComment",
+    "ReviewCommentPropCopilotCodeReviewSourcesItems",
+)

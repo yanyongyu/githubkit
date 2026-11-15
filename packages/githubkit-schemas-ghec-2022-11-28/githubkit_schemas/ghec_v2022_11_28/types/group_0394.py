@@ -9,93 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ConcurrencyGroupRunListType(TypedDict):
-    """Concurrency Group Run List
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    A list of concurrency groups associated with a workflow run.
+    A commit.
     """
 
-    total_count: int
-    concurrency_groups: list[ConcurrencyGroupRunListPropConcurrencyGroupsItemsType]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: _dt.datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class ConcurrencyGroupRunListTypeForResponse(TypedDict):
-    """Concurrency Group Run List
+class SimpleCommitTypeForResponse(TypedDict):
+    """Simple Commit
 
-    A list of concurrency groups associated with a workflow run.
+    A commit.
     """
 
-    total_count: int
-    concurrency_groups: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse
-    ]
+    id: str
+    tree_id: str
+    message: str
+    timestamp: str
+    author: Union[SimpleCommitPropAuthorTypeForResponse, None]
+    committer: Union[SimpleCommitPropCommitterTypeForResponse, None]
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsType(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
 
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType
-    ]
+    Information about the Git author
+    """
 
-
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse(TypedDict):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItems"""
-
-    group_name: str
-    group_url: str
-    group_members: list[
-        ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse
-    ]
+    name: str
+    email: str
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+class SimpleCommitPropAuthorTypeForResponse(TypedDict):
+    """SimpleCommitPropAuthor
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    Information about the Git author
+    """
+
+    name: str
+    email: str
 
 
-class ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse(
-    TypedDict
-):
-    """ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems"""
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
 
-    run_id: int
-    run_name: str
-    run_url: Union[str, None]
-    run_html_url: Union[str, None]
-    position: int
-    position_url: str
-    job_id: NotRequired[Union[int, None]]
-    job_name: NotRequired[Union[str, None]]
-    job_url: NotRequired[Union[str, None]]
-    job_html_url: NotRequired[Union[str, None]]
-    status: Literal["in_progress", "pending"]
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterTypeForResponse(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItemsTypeForResponse",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsType",
-    "ConcurrencyGroupRunListPropConcurrencyGroupsItemsTypeForResponse",
-    "ConcurrencyGroupRunListType",
-    "ConcurrencyGroupRunListTypeForResponse",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropAuthorTypeForResponse",
+    "SimpleCommitPropCommitterType",
+    "SimpleCommitPropCommitterTypeForResponse",
+    "SimpleCommitType",
+    "SimpleCommitTypeForResponse",
 )
